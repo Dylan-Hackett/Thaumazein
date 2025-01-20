@@ -58,9 +58,6 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     string_voice.SetDamping(knob3);
     string_voice.SetStructure(structure_value);
 
-    // Update parameters for the arpeggiator
-    arpeggiator.UpdateParameters(knob2, knob3, structure_value, knob1);
-
     arpeggiator.UpdateParameters(knob2, knob3, brightness * 2.0f + 0.2f, knob1);
     arpeggiator.SetOctaveJumpProbability(0.0f); // Adjust as needed
 
