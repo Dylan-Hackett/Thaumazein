@@ -91,6 +91,18 @@ public:
      */
     uint8_t BaselineData(uint8_t channel);
 
+    /** Gets the difference between baseline and filtered data
+     *  This is useful for proximity/continuous control
+     *  Returns the difference value (higher = closer)
+     */
+    int16_t GetBaselineDeviation(uint8_t channel);
+    
+    /** Gets a cumulative proximity value from all or selected sensors
+     *  This averages readings from specified channels for proximity sensing
+     *  Returns a 0.0f-1.0f value representing proximity
+     */
+    float GetProximityValue(const uint16_t channelMask = 0x0FFF, float sensitivity = 1.0f);
+
     /** Sets the touch and release thresholds for all channels.
      *  touch: 0-255
      *  release: 0-255

@@ -8,6 +8,7 @@ Archein is a polyphonic and percussive synthesizer for the Daisy Seed platform, 
 - Echo delay effect with feedback, time, lag, and mix controls
 - Touch-based interface using MPR121 capacitive touch sensor
 - Separate attack and release envelope controls with punchy response
+- Capacitive touch position and pressure sensing for continuous control of synth parameters
 
 ## Project Structure
 
@@ -134,6 +135,8 @@ This project requires the following hardware:
 
 **Touch Functionality:**
 - The 12 touch pads on the MPR121 act as a keyboard, playing notes in an E Phrygian scale
+- Touch pads provide dual functionality: note triggering and continuous control
+- The rightmost touched pad and its pressure (capacitance deviation) act as a continuous controller for the Morph parameter
 - The exact mapping is defined in `kTouchMidiNotes` array in the code
 - Multiple pads can be touched simultaneously in poly mode (engines 0-3)
 

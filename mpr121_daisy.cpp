@@ -1,5 +1,6 @@
 #include "mpr121_daisy.h"
 #include "sys/system.h"
+#include "daisysp.h"
 
 bool Mpr121::Init(const Config& config) {
     i2c_address_ = config.i2c_address << 1; // Shift address for HAL library
@@ -63,6 +64,55 @@ uint8_t Mpr121::BaselineData(uint8_t channel) {
     if (channel > 11) return 0;
     uint8_t bl = ReadRegister8(MPR121_BASELINE_0 + channel);
     return (bl << 2); // Datasheet says baseline is high 8 bits of 10-bit value
+}
+
+int16_t Mpr121::GetBaselineDeviation(uint8_t channel) {
+    if (channel > 11) return 0;
+    
+    // Get baseline data (scaled to match filtered data range)
+    uint16_t baseline = BaselineData(channel);
+    
+    // Get current filtered data
+    uint16_t filtered = FilteredData(channel);
+    
+    // Deviation is baseline - filtered (higher value = closer proximity)
+    // When something approaches the sensor, filtered value decreases
+    return (int16_t)(baseline - filtered);
+}
+
+float Mpr121::GetProximityValue(const uint16_t channelMask, float sensitivity) {
+    int32_t totalDeviation = 0;
+    int numChannels = 0;
+    int16_t maxDeviation = 0;
+    
+    // Iterate through all channels in the mask
+    for (uint8_t i = 0; i < 12; i++) {
+        if (channelMask & (1 << i)) {
+            int16_t dev = GetBaselineDeviation(i);
+            
+            // Track maximum deviation for any single channel
+            if (dev > maxDeviation) {
+                maxDeviation = dev;
+            }
+            
+            totalDeviation += dev;
+            numChannels++;
+        }
+    }
+    
+    // Avoid division by zero
+    if (numChannels == 0) return 0.0f;
+    
+    // Use max deviation as the value (better for single-pad hover)
+    float proximityValue = (float)maxDeviation;
+    
+    // Apply sensitivity factor (higher = more responsive)
+    proximityValue *= sensitivity;
+    
+    // Clamp to 0.0-1.0 range (with 0.01 as typical threshold for light touch)
+    proximityValue = daisysp::fmax(0.0f, daisysp::fmin(1.0f, proximityValue / 100.0f));
+    
+    return proximityValue;
 }
 
 void Mpr121::SetThresholds(uint8_t touch, uint8_t release) {

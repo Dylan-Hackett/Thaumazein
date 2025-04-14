@@ -22,6 +22,7 @@ float attack_time, release_time;
 float mix_buffer_out[BLOCK_SIZE];
 float mix_buffer_aux[BLOCK_SIZE];
 uint16_t current_touch_state;
+float touch_cv_value = 0.0f; // New variable to store the touch control voltage
 
 extern VoiceEnvelope voice_envelopes[NUM_VOICES];
 extern float voice_values[NUM_VOICES];
@@ -84,6 +85,54 @@ void ProcessVoice(int voice_idx, float envelope_value) {
     voice_values[voice_idx] = envelope_value;
 }
 
+// Get a control value from the currently touched pad
+float GetTouchControlValue() {
+    // Read current touch state
+    uint16_t touched = touch_sensor.Touched();
+    if (touched == 0) {
+        // No pads touched, use a default value or maintain previous value
+        return touch_cv_value * 0.95f; // Slight decay when not touching
+    }
+    
+    // Find the rightmost (highest) touched pad
+    int highest_pad = -1;
+    for (int i = 11; i >= 0; i--) {
+        if (touched & (1 << i)) {
+            highest_pad = i;
+            break;
+        }
+    }
+    
+    if (highest_pad == -1) return 0.0f; // Safety check
+    
+    // Get capacitance deviation for the touched pad
+    int16_t deviation = touch_sensor.GetBaselineDeviation(highest_pad);
+    
+    // Normalize to 0.0-1.0 range with adjustable sensitivity
+    // Lower divisor = more sensitive to pressure changes
+    float sensitivity = 50.0f; // Adjust this value based on your MPR121 calibration
+    float normalized_value = daisysp::fmax(0.0f, daisysp::fmin(1.0f, deviation / sensitivity));
+    
+    // Apply curve for better control response (squared curve feels more natural)
+    normalized_value = normalized_value * normalized_value;
+    
+    // Map pad position (0-11) to full range (0.0-1.0)
+    float position_value = highest_pad / 11.0f;
+    
+    // Combine both position and pressure for more expressive control
+    // We use a weighted combination based on the current engine type
+    float position_weight = 0.7f;
+    float combined_value = position_value * position_weight + normalized_value * (1.0f - position_weight);
+    
+    // Apply adaptive smoothing - more smoothing for small changes, less for big changes
+    float change = fabs(combined_value - touch_cv_value);
+    float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+    
+    touch_cv_value = touch_cv_value * smoothing + combined_value * (1.0f - smoothing);
+    
+    return touch_cv_value;
+}
+
 void AudioCallback(AudioHandle::InterleavingInputBuffer in,
                  AudioHandle::InterleavingOutputBuffer out,
                  size_t size) {
@@ -92,6 +141,9 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     // Process controls & read values
     ProcessControls();
     ReadKnobValues();
+    
+    // Get touch control value
+    float touch_control = GetTouchControlValue();
     
     // Add panic button check (long press but not bootloader long)
     static uint32_t button_press_time = 0;
@@ -119,6 +171,16 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     ConfigureDelaySettings();
     
     // Process voice parameters and render audio
+    // Apply the touch control to modify a parameter (for example, morph)
+    morph_knob_val = morph_knob_val * 0.6f + touch_control * 0.4f;
+
+    // Alternate options for applying touch control to different parameters:
+    // Uncomment one of these to change which parameter the touch control affects
+    // harm_knob_val = harm_knob_val * 0.6f + touch_control * 0.4f;   // Touch controls harmonics
+    // decay_knob_val = decay_knob_val * 0.6f + touch_control * 0.4f; // Touch controls decay
+    // delay_feedback_val = delay_feedback_val * 0.6f + touch_control * 0.4f; // Touch controls delay feedback
+    // delay_time_val = delay_time_val * 0.6f + touch_control * 0.4f; // Touch controls delay time
+
     PrepareVoiceParameters(engineIndex, poly_mode, effective_num_voices - 1);
     
     // Process envelopes and mix audio
