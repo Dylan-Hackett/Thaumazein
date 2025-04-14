@@ -1,5 +1,5 @@
 # Project Name
-TARGET = plaits
+TARGET = archein
 
 # Library Locations
 LIBDAISY_DIR = lib/libdaisy

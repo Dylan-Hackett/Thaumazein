@@ -4,9 +4,10 @@
 
 Archein is a polyphonic and percussive synthesizer for the Daisy Seed platform, based on Mutable Instruments Plaits. The project extends the original Plaits source code with:
 
-- Polyphony (up to 4 voices) for Vitrtual Analog engines
+- Polyphony (up to 4 voices) for Virtual Analog engines
 - Echo delay effect with feedback, time, lag, and mix controls
 - Touch-based interface using MPR121 capacitive touch sensor
+- Separate attack and release envelope controls with punchy response
 
 ## Project Structure
 
