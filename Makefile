@@ -2,13 +2,19 @@
 TARGET = plaits
 
 # Library Locations
-LIBDAISY_DIR = lib/libDaisy
+LIBDAISY_DIR = lib/libdaisy
 DAISYSP_DIR = lib/DaisySP
 STMLIB_DIR = eurorack/stmlib
+MPR121_DIR = .
+EFFECTS_DIR = Effects
 
 # Sources
-CPP_SOURCES = Plaits.cpp \
-              mpr121_daisy.cpp \
+CPP_SOURCES = mpr121_daisy.cpp \
+              Archein.cpp \
+              AudioProcessor.cpp \
+              Polyphony.cpp \
+              Interface.cpp \
+              VoiceEnvelope.cpp \
               Effects/reverbsc.cpp \
               Effects/BiquadFilters.cpp
 
@@ -27,6 +33,8 @@ DAISYSP_SOURCES += $(wildcard $(DAISYSP_DIR)/Source/*.cpp)
 DAISYSP_SOURCES += $(wildcard $(DAISYSP_DIR)/Source/*/*.cpp)
 
 C_INCLUDES += \
+-I$(MPR121_DIR) \
+-I$(EFFECTS_DIR) \
 -I. \
 -Iresources \
 -Ieurorack \

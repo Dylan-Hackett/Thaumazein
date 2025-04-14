@@ -10,35 +10,42 @@ bool Mpr121::Init(const Config& config) {
     System::Delay(1); // Allow time for reset
 
     // Check if reset was successful by reading a register that should have a default value
-    // Here we check CONFIG2 which defaults to 0x24
     if (ReadRegister8(MPR121_CONFIG2) != 0x24) {
         return false; 
     }
 
-    // Default configuration
-    WriteRegister(MPR121_ECR, 0x00); // Stop mode to configure
+    // Stop mode to configure
+    WriteRegister(MPR121_ECR, 0x00);
 
-    SetThresholds(12, 6); // Default thresholds
-    WriteRegister(MPR121_MHDR, 0x01);
-    WriteRegister(MPR121_NHDR, 0x01);
-    WriteRegister(MPR121_NCLR, 0x01);
-    WriteRegister(MPR121_FDLR, 0x00);
+    // More sensitive touch/release thresholds
+    SetThresholds(8, 4); // Lower thresholds (was 12,6)
 
-    WriteRegister(MPR121_MHDF, 0x01);
-    WriteRegister(MPR121_NHDF, 0x01);
-    WriteRegister(MPR121_NCLF, 0x01);
-    WriteRegister(MPR121_FDLF, 0x00);
+    // First Filter (Rising)
+    WriteRegister(MPR121_MHDR, 0x01);  // Maximum half delta
+    WriteRegister(MPR121_NHDR, 0x03);  // Noise half delta (increased)
+    WriteRegister(MPR121_NCLR, 0x10);  // Noise count limit (increased)
+    WriteRegister(MPR121_FDLR, 0x20);  // Filter delay count limit (increased)
 
-    WriteRegister(MPR121_NHDT, 0x00);
-    WriteRegister(MPR121_NCLT, 0x00);
-    WriteRegister(MPR121_FDLT, 0x00);
+    // Second Filter (Falling)
+    WriteRegister(MPR121_MHDF, 0x01);  // Maximum half delta
+    WriteRegister(MPR121_NHDF, 0x03);  // Noise half delta (increased)
+    WriteRegister(MPR121_NCLF, 0x10);  // Noise count limit (increased)
+    WriteRegister(MPR121_FDLF, 0x20);  // Filter delay count limit (increased)
 
-    WriteRegister(MPR121_DEBOUNCE, 0);
-    WriteRegister(MPR121_CONFIG1, 0x10); // default, 16uA charge current
-    WriteRegister(MPR121_CONFIG2, 0x00); // Set sample period to 0.5ms (was 0x20 for 1ms)
+    // Touch Filter
+    WriteRegister(MPR121_NHDT, 0x01);  // Noise half delta for touch
+    WriteRegister(MPR121_NCLT, 0x05);  // Noise count limit for touch
+    WriteRegister(MPR121_FDLT, 0x00);  // Filter delay for touch
 
-    // Enable all 12 electrodes
-    WriteRegister(MPR121_ECR, 0x8F); // start with first 5 bits for baseline tracking
+    // Debounce settings
+    WriteRegister(MPR121_DEBOUNCE, (2 << 4) | 2); // 2 samples for both touch and release
+
+    // Charge current and timing settings
+    WriteRegister(MPR121_CONFIG1, 0x3F); // 63uA charge current (increased from 16uA)
+    WriteRegister(MPR121_CONFIG2, 0x00); // 0.5ms sample period (fastest)
+
+    // Enable all 12 electrodes with baseline tracking
+    WriteRegister(MPR121_ECR, 0x8F);
 
     return true;
 }

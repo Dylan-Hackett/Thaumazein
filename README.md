@@ -1,50 +1,142 @@
-# Plaits
-
-## Author
-
-Emilie Gillet, port by Ewan Hemingway, adapted for Daisy Seed by [Your Name]
+# Archein
 
 ## Description
 
-Port of Mutable Instruments Plaits to Daisy Seed.
+Archein is a polyphonic and percussive synthesizer for the Daisy Seed platform, based on Mutable Instruments Plaits. The project extends the original Plaits source code with:
+
+- Polyphony (up to 4 voices) for Vitrtual Analog engines
+- Echo delay effect with feedback, time, lag, and mix controls
+- Touch-based interface using MPR121 capacitive touch sensor
+
+## Project Structure
+
+The codebase has been refactored from a single monolithic file to a more modular design:
+
+* **Archein.h**: Main header defining project constants, external variables, and function declarations
+* **Archein.cpp**: Main program entry point and UI handling
+* **Polyphony.cpp**: Handles voice allocation, polyphony management, and voice initialization
+* **Interface.cpp**: Manages hardware interface, controls, and system initialization
+* **AudioProcessor.cpp**: Implements the audio processing callback and voice rendering
+* **VoiceEnvelope.h/cpp**: Custom envelope generator for polyphonic voices with attack/release phases
+
+## Codebase Architecture Diagram
+
+```
+┌───────────────────────┐
+│ External Libraries    │
+│                       │
+│ - libDaisy            │
+│ - DaisySP             │
+│ - Plaits engine       │
+│ - MPR121 touch        │
+└────────────┬──────────┘
+             │
+             ▼
+┌─────────────────────────────────────────────────────────────────────────┐
+│                               Archein.h                                 │
+│                                                                         │
+│ - Constants (NUM_VOICES, BLOCK_SIZE)                                    │
+│ - External declarations (variables, functions)                          │
+│ - Forward declarations                                                  │
+└───────────┬──────────────┬────────────────┬────────────────┬───────────-┘
+            │              │                │                │
+            ▼              ▼                ▼                ▼
+┌────────────────┐ ┌──────────────┐ ┌────────────────┐ ┌──────────────────┐
+│  Archein.cpp   │ │ Interface.cpp│ │ Polyphony.cpp  │ │AudioProcessor.cpp│
+│                │ │              │ │                │ │                  │
+│ - Main()       │ │ - Hardware   │ │ - Voice data   │ │ - AudioCallback()│
+│ - Display      │ │   setup      │ │ - Voice alloc  │ │ - Real-time      │
+│                │ │ - ADC config │ │ - MIDI mapping │ │   audio rendering│
+│                │ │ - Controls   │ │ - Voice init   │ │ - Control reading│
+│                │ │ - Button     │ │                │ │ - Effect params  │
+│                │ │ - LED control│ │                │ │                  │
+└────────────────┘ └──────────────┘ └────────────────┘ └──────────────────┘
+        │                 │                                     │
+        └───────────────--┼────────────────  ───────────────────┘
+                          │                
+                          ▼                
+                      ┌──────────────────┐
+                      │ VoiceEnvelope.h  │
+                      │ VoiceEnvelope.cpp│
+                      │                  │
+                      │ - Envelope       │
+                      │   processing     │
+                      └──────────────────┘
+```
+
+**Data Flow:**
+1. **Archein.cpp** contains `main()` - the entry point that initializes everything via `InitializeSynth()` and handles display updates
+2. **Interface.cpp** manages hardware setup, ADC mapping, button handling, LED control, and peripherals
+3. **Polyphony.cpp** handles voice allocation and initialization
+4. **AudioProcessor.cpp** contains the real-time audio callback that runs continuously
+5. **VoiceEnvelope.h/cpp** provides envelope processing for the audio system
 
 ## Controls
 
-| Pin Function | Daisy Pin | Hardware Connection | Comment |
-| --- | --- | --- | --- |
-| Pitch Knob | Pin 15 | Potentiometer | Coarse Tuning |
-| Harmonics Knob | Pin 16 | Potentiometer | Adjusts harmonics parameter |
-| Timbre Knob (Engine Selection) | Pin 17 | Potentiometer | Selects Plaits synthesis engine |
-| Decay Knob | Pin 18 | Potentiometer | Adjusts ADSR Decay time |
-| V/OCT Input | Pin 19 | CV Input | 1V/Octave pitch CV |
-| Harmonics CV | Pin 20 | CV Input | Harmonics CV modulation |
-| Morph CV | Pin 21 | CV Input | Morph CV modulation |
-| Trigger Input | Pin 25 | Gate/Trigger Input | Triggers envelope/excitation |
-| Model Button | Pin 27 | Button | Cycles through engine models |
-| Trigger Mode Toggle | Pin 28 | Switch | Active state enables trigger input |
-| Audio Out L | Audio Out L | Output Jack | Main output |
-| Audio Out R | Audio Out R | Output Jack | Aux output |
+The synthesizer has 11 knobs/analog inputs:
+
+- D15 / A0 (Pin 30): Plaits Pitch Offset
+- D16 / A1 (Pin 31): Plaits Harmonics
+- D17 / A2 (Pin 32): Plaits Timbre (Engine Select)
+- D18 / A3 (Pin 33): Plaits Decay
+- D20 / A5 (Pin 35): Plaits Morph
+- D21 / A6 (Pin 36): Delay Feedback
+- D22 / A7 (Pin 37): Delay Time
+- D23 / A8 (Pin 38): Delay Lag
+- D19 / A4 (Pin 34): Delay Wet/Dry Mix
+- D24 / A9 (Pin 39): Envelope Attack
+- D25 / A10 (Pin 40): Envelope Release
+
+Additional controls:
+- D27 (Pin 42): Reset to bootloader when held for 3 seconds
+- LED: Indicates active voices, blinks when idle
+
+## Engine Behavior
+
+- Engines 0-3: Operate in poly mode with custom envelope processing (4-voice polyphony)
+- Engines 4-12: Operate in mono mode with direct trigger processing (monophonic)
+
+## Daisy Seed Pinout Reference
+
+```
+////////////// SIMPLE X DAISY PINOUT CHEATSHEET ///////////////
+
+// 3v3           29  |       |   20    AGND
+// D15 / A0      30  |       |   19    OUT 01
+// D16 / A1      31  |       |   18    OUT 00
+// D17 / A2      32  |       |   17    IN 01
+// D18 / A3      33  |       |   16    IN 00
+// D19 / A4      34  |       |   15    D14
+// D20 / A5      35  |       |   14    D13
+// D21 / A6      36  |       |   13    D12
+// D22 / A7      37  |       |   12    D11
+// D23 / A8      38  |       |   11    D10
+// D24 / A9      39  |       |   10    D9
+// D25 / A10     40  |       |   09    D8
+// D26           41  |       |   08    D7
+// D27           42  |       |   07    D6
+// D28 / A11     43  |       |   06    D5
+// D29           44  |       |   05    D4
+// D30           45  |       |   04    D3
+// 3v3 Digital   46  |       |   03    D2
+// VIN           47  |       |   02    D1
+// DGND          48  |       |   01    D0
+```
 
 ## Hardware Setup
 
-This port requires the following hardware:
+This project requires the following hardware:
 - Daisy Seed
-- **Adafruit MPR121 Capacitive Touch Breakout:** Connected to Daisy Seed's I2C1 pins (Pin 11/PB8=SCL, Pin 12/PB9=SDA) and 3.3V/GND.
-- 4 potentiometers connected to pins 15-18 for parameter control.
-- 3 CV inputs connected to pins 19-21 for modulation.
-- 1 gate input connected to pin 25 for external triggering.
-- 2 buttons/switches connected to pins 27-28 for model/mode switching.
+- **Adafruit MPR121 Capacitive Touch Breakout:** Connected to Daisy Seed's I2C1 pins (D11/Pin 12=SCL, D10/Pin 11=SDA) and 3.3V/GND.
+- 11 potentiometers connected to the pins listed in the Controls section.
 - Audio outputs connected to Daisy Seed's audio outputs.
 
 **Touch Functionality:**
-- The 12 touch pads on the MPR121 act as a keyboard, playing notes from C4 upwards (see `kTouchMidiNotes` in `Plaits.cpp` for the exact mapping).
-- Touching a pad overrides the V/OCT CV input for pitch control.
-- The highest numbered pad touched takes priority.
-- Touching any pad generates a trigger signal for the Plaits engine.
+- The 12 touch pads on the MPR121 act as a keyboard, playing notes in an E Phrygian scale
+- The exact mapping is defined in `kTouchMidiNotes` array in the code
+- Multiple pads can be touched simultaneously in poly mode (engines 0-3)
 
-The onboard LED blinks based on the selected engine and flashes differently when a touch pad is active.
-
-### Building
+## Building
 
 1. Ensure you have the Daisy toolchain installed
 2. Build both libraries: 
@@ -62,11 +154,18 @@ The onboard LED blinks based on the selected engine and flashes differently when
    make program-dfu
    ```
 
-### License
+## Development
 
-This program is free software: you can redistribute it and/or modify it under the terms of the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.en.html) as published by the [Free Software Foundation](https://www.fsf.org/), either version 3 of the License, or (at your option) any later version.
+When adding features or making changes, follow the modular structure:
+1. Add new class definitions to appropriate headers
+2. Implement voice-related code in Polyphony.cpp
+3. Implement hardware interface code in Interface.cpp  
+4. Add audio processing code to AudioProcessor.cpp
+5. Add UI elements to Archein.cpp
 
-**Dependencies** included in the `eurorack` submodule (by Emilie Gillet) are licensed as follows:
+## License
+
+This project contains code adapted from Mutable Instruments Plaits, which is released under the MIT License.
 
 ```
 Copyright 2014-2019 Emilie Gillet.

@@ -15,6 +15,98 @@ using namespace daisysp;
 using namespace stmlib; 
 using namespace infrasonic;
 
+// Simple envelope for each polyphonic voice
+class VoiceEnvelope {
+public:
+    enum EnvState {
+        ENV_IDLE = 0,
+        ENV_ATTACK,
+        ENV_SUSTAIN,
+        ENV_RELEASE
+    };
+    
+    VoiceEnvelope() : state_(ENV_IDLE), value_(0.0f) {}
+    
+    void Init() {
+        state_ = ENV_IDLE;
+        value_ = 0.0f;
+    }
+    
+    void Trigger() {
+        if (state_ == ENV_RELEASE || state_ == ENV_IDLE) {
+            // Only reset value if not already active
+            // This allows legato transitions
+            if (value_ < 0.1f) {
+                value_ = 0.001f; // Small non-zero value to start attack
+            }
+        }
+        state_ = ENV_ATTACK;
+    }
+    
+    void Release() {
+        if (state_ != ENV_IDLE) {
+            state_ = ENV_RELEASE;
+        }
+    }
+    
+    float Process(float attack_time, float release_time) {
+        const float kMinTime = 0.0005f; // More extreme minimum (0.5ms)
+        
+        switch (state_) {
+            case ENV_ATTACK:
+                if (attack_time <= kMinTime) {
+                    value_ = 1.0f; // Immediate attack
+                } else {
+                    // Much more responsive attack with improved scaling
+                    float attack_coeff = 1.0f / (attack_time * 48.0f); // Scaled to sample rate
+                    if (attack_time > 1.0f) attack_coeff *= 0.5f; // Slower for very long attacks
+                    value_ += (1.0f - value_) * attack_coeff;
+                }
+                
+                if (value_ >= 0.999f) {
+                    value_ = 1.0f;
+                    state_ = ENV_SUSTAIN;
+                }
+                break;
+                
+            case ENV_SUSTAIN:
+                value_ = 1.0f; // Hold at maximum
+                break;
+                
+            case ENV_RELEASE:
+                if (release_time <= kMinTime) {
+                    value_ = 0.0f; // Immediate release
+                } else {
+                    // Much more responsive release with improved scaling
+                    float release_coeff = 1.0f / (release_time * 48.0f); // Scaled to sample rate
+                    if (release_time > 1.0f) release_coeff *= 0.5f; // Slower for very long releases
+                    value_ *= (1.0f - release_coeff);
+                }
+                
+                if (value_ < 0.001f) {
+                    value_ = 0.0f;
+                    state_ = ENV_IDLE;
+                }
+                break;
+                
+            case ENV_IDLE:
+            default:
+                value_ = 0.0f;
+                break;
+        }
+        
+        return value_;
+    }
+    
+    bool IsActive() const {
+        return state_ != ENV_IDLE;
+    }
+    
+private:
+    EnvState state_;
+    float value_;
+};
+
 // Simple stereo delay-based reverb 
 class SimpleReverb {
 public:
@@ -109,21 +201,27 @@ plaits::Modulations modulations[NUM_VOICES];
 // Increase buffer size for 4 voices (256KB)
 DSY_SDRAM_BSS char shared_buffer[262144]; 
 
-#define BLOCK_SIZE 32  // Standard block size
+#define BLOCK_SIZE 16  // Standard block size
 plaits::Voice::Frame output_buffers[NUM_VOICES][BLOCK_SIZE]; 
 
 bool voice_active[NUM_VOICES] = {false};
 float voice_note[NUM_VOICES] = {0.0f};
 uint16_t last_touch_state = 0;
+VoiceEnvelope voice_envelopes[NUM_VOICES]; // Add envelopes for each voice
 
-// Hardware controls
+// Hardware controls - Order matches new ADC mapping
 Switch button;
-AnalogControl pitch_knob; 
-AnalogControl harmonics_knob;
-AnalogControl timbre_knob; 
-AnalogControl decay_knob; 
-AnalogControl harmonics_input; // Used for Wet/Dry
-AnalogControl morph_input;     
+AnalogControl pitch_knob;          // ADC 0 (Pin 15) Plaits Pitch
+AnalogControl harmonics_knob;      // ADC 1 (Pin 16) Plaits Harmonics
+AnalogControl timbre_knob;         // ADC 2 (Pin 17) Plaits Timbre/Engine
+AnalogControl decay_knob;          // ADC 3 (Pin 18) Plaits Decay
+AnalogControl morph_knob;           // ADC 4 (Pin 20) Plaits Morph
+AnalogControl delay_feedback_knob; // ADC 5 (Pin 21) Delay Feedback
+AnalogControl delay_time_knob;     // ADC 6 (Pin 22) Delay Time
+AnalogControl delay_lag_knob;      // ADC 7 (Pin 23) Delay Lag
+AnalogControl delay_mix_knob;      // ADC 8 (Pin 19) Delay Wet/Dry Mix
+AnalogControl env_attack_knob;     // ADC 9 (Pin 24) Envelope Attack
+AnalogControl env_release_knob;    // ADC 10 (Pin 25) Envelope Release
 
 // Map touch pads (0-11) to MIDI notes (E Phrygian scale starting at E2)
 const float kTouchMidiNotes[12] = {
@@ -161,13 +259,13 @@ void AssignMonoNote(float note) {
     modulations[0].trigger = 1.0f; // Set trigger high for the new note
 }
 
-// Add a reverb downsampling factor to reduce CPU usage
-#define REVERB_DOWNSAMPLE 2  // Process reverb at half rate
 
 // CPU usage monitoring
 float sample_rate = 48000.0f; 
 volatile uint32_t avg_elapsed_us = 0; 
 volatile bool update_display = false; 
+// Output Level monitoring
+volatile float smoothed_output_level = 0.0f; 
 
 // Engine configuration
 // Allow all engines, polyphony determined dynamically
@@ -178,9 +276,6 @@ const uint32_t BOOTLOADER_HOLD_TIME_MS = 3000; // Hold button for 3 seconds
 uint32_t button_held_start_time = 0;
 bool button_was_pressed = false;
 
-// --- Shift Input Config ---
-const int SHIFT_ADC_CHANNEL = 6; // Use ADC 6 (Pin 22) for Shift
-
 // --- Max Delay Definition ---
 #define MAX_DELAY_SAMPLES 48000 // 1 second at 48kHz
 
@@ -188,39 +283,38 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
                   AudioHandle::InterleavingOutputBuffer out,
                   size_t size) {
     
-    // --- Static variables to hold Plaits params when shift is active ---
-    static float frozen_harmonics = 0.5f;
-    static float frozen_decay = 0.5f;
-    static float frozen_morph = 0.5f;
-    // Engine is always live from knob
-    // Pitch is always live from knob
-
     uint32_t start_time = System::GetUs();
 
-    // --- Read Sensors & Controls ---
-    button.Debounce();
-    pitch_knob.Process();
-    harmonics_knob.Process();
-    timbre_knob.Process();
-    decay_knob.Process();
-    harmonics_input.Process(); // Default Delay Feedback
-    morph_input.Process();     // Default Delay Lag
-
-    float shift_input_val = hw.adc.GetFloat(SHIFT_ADC_CHANNEL);
-    bool shift_active = (shift_input_val > 0.5f);
-
+    // --- Read Sensors & Process Controls ---
+	button.Debounce();
+    pitch_knob.Process();         // ADC 0
+    harmonics_knob.Process();     // ADC 1
+    timbre_knob.Process();        // ADC 2
+    decay_knob.Process();         // ADC 3
+    morph_knob.Process();         // ADC 4
+    delay_feedback_knob.Process(); // ADC 5
+    delay_time_knob.Process();    // ADC 6
+    delay_lag_knob.Process();     // ADC 7
+    delay_mix_knob.Process();     // ADC 8
+    env_attack_knob.Process();    // ADC 9
+    env_release_knob.Process();   // ADC 10
+    
     uint16_t current_touch_state = touch_sensor.Touched();
 
-    // Read knob values AFTER processing
-    float pitch_val = pitch_knob.Value();
-    float harm_knob_val = harmonics_knob.Value();
-    float timbre_knob_val = timbre_knob.Value();
-    float decay_knob_val = decay_knob.Value();
-    float harm_cv_val = harmonics_input.Value(); 
-    float morph_cv_val = morph_input.Value();     
+    // --- Read Knob Values (Matches new mapping) --- 
+    float pitch_val = pitch_knob.Value();           // ADC 0
+    float harm_knob_val = harmonics_knob.Value();     // ADC 1
+    float timbre_knob_val = timbre_knob.Value();      // ADC 2
+    float decay_knob_val = decay_knob.Value();        // ADC 3
+    float morph_knob_val = morph_knob.Value();        // ADC 4
+    float delay_feedback_val = delay_feedback_knob.Value(); // ADC 5
+    float delay_time_val = delay_time_knob.Value();     // ADC 6
+    float delay_lag_val = delay_lag_knob.Value();       // ADC 7
+    float delay_mix_val = delay_mix_knob.Value();       // ADC 8
+    float env_attack_val = env_attack_knob.Value();     // ADC 9
+    float env_release_val = env_release_knob.Value();   // ADC 10
 
     // --- Determine Dynamic Polyphony & Engine ---
-    // Engine is always live from knob
     int engineIndex = static_cast<int>(timbre_knob_val * (MAX_ENGINE_INDEX + 1));
     if (engineIndex > MAX_ENGINE_INDEX) engineIndex = MAX_ENGINE_INDEX;
     bool poly_mode = (engineIndex <= 3); 
@@ -239,7 +333,8 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
                 if (voice_idx != -1) {
                     voice_note[voice_idx] = note_for_pad;
                     voice_active[voice_idx] = true;
-                    modulations[voice_idx].trigger = 1.0f; // Set persistent trigger
+                    modulations[voice_idx].trigger = 1.0f; // For initial transient
+                    voice_envelopes[voice_idx].Trigger(); // Trigger envelope
                 }
             } else { // Mono Mode
                 AssignMonoNote(note_for_pad);
@@ -249,6 +344,7 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
                  int voice_idx = FindVoice(note_for_pad, effective_num_voices);
                  if (voice_idx != -1) {
                      voice_active[voice_idx] = false; // Mark inactive for release
+                     voice_envelopes[voice_idx].Release(); // Start release phase
                  }
             } else { // Mono Mode
                 if (voice_active[0] && fabsf(voice_note[0] - note_for_pad) < 0.1f) {
@@ -259,58 +355,29 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     }
     last_touch_state = current_touch_state; 
 
-    // --- Initialize Delay Parameters --- 
-    float current_delay_feedback;
-    float current_delay_time_s;
-    float current_delay_lag_s;
-    float current_delay_dry;
-    float current_delay_wet;
+    // --- Set Delay Parameters from Dedicated Knobs (New ADCs) --- 
+    delay.SetFeedback(delay_feedback_val * 0.98f); // ADC 5
+    float delay_time_s = 0.01f + delay_time_val * 0.99f; // ADC 6
+    delay.SetDelayTime(delay_time_s);
+    float lag_time_s = delay_lag_val * 0.2f; // ADC 7
+    delay.SetLagTime(lag_time_s);
 
-    // --- Apply Shift Logic --- 
-    if (shift_active) {
-        // SHIFT MODE: Knobs control Delay, Plaits params use frozen values
-        current_delay_wet = harm_knob_val;          // ADC 1 -> Wet Amount (0..1)
-        current_delay_dry = 1.0f - current_delay_wet;
-        current_delay_feedback = timbre_knob_val * 0.98f; // ADC 2 -> Feedback
-        current_delay_time_s = 0.01f + decay_knob_val * 0.99f; // ADC 3 -> Time
-        current_delay_lag_s = morph_cv_val * 0.2f;          // ADC 5 -> Lag
-
-        // Plaits parameters use static 'frozen' values (updated below in 'else')
-    } else {
-        // NORMAL MODE: Knobs control Plaits, Delay uses default assignments
-        
-        // Update frozen Plaits params for next time shift is active
-        frozen_harmonics = harm_knob_val;
-        frozen_decay = decay_knob_val;
-        frozen_morph = morph_cv_val;
-
-        // Assign default delay controls
-        current_delay_feedback = harm_cv_val * 0.98f;            // ADC 4 -> Feedback
-        current_delay_time_s = 0.01f + decay_knob_val * 0.99f;   // ADC 3 -> Time
-        current_delay_lag_s = morph_cv_val * 0.2f;            // ADC 5 -> Lag
-        current_delay_dry = 0.6f; // Fixed Wet/Dry
-        current_delay_wet = 0.4f;
-    }
-
-    // --- Set Delay Parameters --- 
-    delay.SetFeedback(current_delay_feedback);
-    delay.SetDelayTime(current_delay_time_s);
-    delay.SetLagTime(current_delay_lag_s);
-
-    // --- Prepare Global Pitch Offset --- 
-    float global_pitch_offset = pitch_val * 24.f - 12.f;
+    // --- Prepare Global Controls for Plaits (New ADC for Morph) --- 
+    float global_pitch_offset = pitch_val * 24.f - 12.f;     // ADC 0
+    float current_global_harmonics = harm_knob_val;          // ADC 1
+    float current_global_decay = decay_knob_val;            // ADC 3
+    float current_global_morph = morph_knob_val;            // ADC 4
 
     // --- Process Effective Voices --- 
     for (int v = 0; v <= max_voice_idx; ++v) { 
-        // Update Patch using current/frozen values
+        // Update Patch using dedicated knob values
         patches[v].note = voice_note[v] + global_pitch_offset;
-        patches[v].engine = engineIndex; // Engine always live
-        // Use frozen values if shift is active, otherwise use live knob values
-        patches[v].harmonics = shift_active ? frozen_harmonics : harm_knob_val;
+        patches[v].engine = engineIndex;                      // ADC 2
+        patches[v].harmonics = current_global_harmonics;    // ADC 1
         patches[v].timbre = 0.5f; 
-        patches[v].morph = shift_active ? frozen_morph : morph_cv_val;
+        patches[v].morph = current_global_morph;            // ADC 4
         patches[v].lpg_colour = 0.0f;
-        patches[v].decay = shift_active ? frozen_decay : decay_knob_val;
+        patches[v].decay = current_global_decay;            // ADC 3
         
         patches[v].frequency_modulation_amount = 0.f;
         patches[v].timbre_modulation_amount = 0.f;
@@ -324,8 +391,21 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
         modulations[v].timbre = 0.0f;
         modulations[v].morph = 0.0f; 
         modulations[v].level = 1.0f; 
-        modulations[v].trigger_patched = true; 
-        modulations[v].trigger = voice_active[v] ? 1.0f : 0.0f; 
+        
+        // CRITICAL FIX: Handle poly vs mono modes differently
+        // For poly engines (0-3), trigger should NOT be patched
+        // For mono engines (4+), trigger should be patched
+        if (poly_mode) {
+            // Poly mode: Let Plaits handle envelopes internally via level
+            modulations[v].trigger_patched = false;
+            
+            // Only set trigger on initial note-on or note-off  
+            // (handled in the touch input section, so don't modify here)
+        } else {
+            // Mono mode: Use direct trigger patching
+            modulations[v].trigger_patched = true;
+            modulations[v].trigger = voice_active[v] ? 1.0f : 0.0f;
+        }
         
         // Render 
         voices[v].Render(patches[v], modulations[v], output_buffers[v], BLOCK_SIZE);
@@ -339,18 +419,47 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     // --- Clear & Mix Output Buffers --- 
     float mix_buffer_out[BLOCK_SIZE] = {0.0f};
     float mix_buffer_aux[BLOCK_SIZE] = {0.0f};
-    for (int v = 0; v < NUM_VOICES; ++v) { // Mix all potential voices (inactive ones are silent)
+    
+    // Calculate envelope attack/release times from dedicated knobs
+    // MUCH more extreme ranges
+    float attack_val_cubed = env_attack_val * env_attack_val * env_attack_val; // Cubic response for finer control at short settings
+    float release_val_cubed = env_release_val * env_release_val * env_release_val;
+    
+    float attack_time = 0.0005f + attack_val_cubed * 5.0f;   // 0.5ms to 5000ms attack (super fast to very slow)
+    float release_time = 0.001f + release_val_cubed * 10.0f;  // 1ms to 10000ms release (instant to 10 second fade)
+    
+    // Debug output every 100 frames
+    static int debug_counter = 0;
+    if (++debug_counter >= 100) {
+        debug_counter = 0;
+        char debug_buf[64];
+        sprintf(debug_buf, "A: %.1f ms, R: %.1f ms", attack_time * 1000.0f, release_time * 1000.0f);
+        hw.PrintLine(debug_buf);
+    }
+    
+    for (int v = 0; v < NUM_VOICES; ++v) { // Mix all potential voices
+        // Process envelope for this voice
+        float env_value = 1.0f; // Default for non-poly engines
+        
+        if (poly_mode) {
+            // For poly engines, use our custom envelope system
+            env_value = voice_envelopes[v].Process(attack_time, release_time);
+        } else if (v > 0) {
+            // For mono engines, only use voice 0, silence others
+            continue;
+        }
+        
+        // Apply envelope value to the mix
         for (int i = 0; i < BLOCK_SIZE; ++i) {
-            mix_buffer_out[i] += output_buffers[v][i].out;
-            mix_buffer_aux[i] += output_buffers[v][i].aux;
+            mix_buffer_out[i] += output_buffers[v][i].out * env_value;
+            mix_buffer_aux[i] += output_buffers[v][i].aux * env_value;
         }
     }
 
-    // --- Process Echo Delay & Write Output --- 
-    // Use calculated Wet/Dry mix based on shift state
-    float dry_level = current_delay_dry;
-    float wet_level = current_delay_wet;
-    float norm_factor = (float)NUM_VOICES * 2.0f; 
+    // --- Process Echo Delay & Write Output ---
+    float dry_level = delay_mix_val; 
+    float wet_level = 1.0f - dry_level; 
+    float norm_factor = (float)NUM_VOICES * 1.0f; // Was 1.5f
     
     for (size_t i = 0; i < size; i += 2) {
         float dry_left  = mix_buffer_out[i/2] / 32768.f / norm_factor;
@@ -363,10 +472,19 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
         out[i+1] = (dry_right * dry_level) + (wet_right * wet_level);
     }
 
-    // --- Finish Timing & Update CPU Load --- 
+    // --- Finish Timing & Update Monitoring --- 
     uint32_t end_time = System::GetUs();
     uint32_t elapsed_us = end_time - start_time;
-    avg_elapsed_us = avg_elapsed_us * 0.99f + elapsed_us * 0.01f;
+    avg_elapsed_us = avg_elapsed_us * 0.99f + elapsed_us * 0.01f; // CPU Load
+    
+    // Calculate smoothed output level (using first sample L as proxy)
+    if (size > 0) { // Ensure block is not empty
+        float current_level = fabsf(out[0]); // Absolute level of first sample
+        // Apply smoothing (adjust 0.99f/0.01f factor for more/less smoothing)
+        smoothed_output_level = smoothed_output_level * 0.99f + current_level * 0.01f; 
+    }
+
+    // Signal display update periodically
     static uint32_t display_counter = 0;
     if (++display_counter >= 100) { 
         display_counter = 0;
@@ -384,7 +502,7 @@ int main(void) {
     sample_rate = hw.AudioSampleRate(); // Update sample_rate after setting it
 
     // Initialize the allocator with the SDRAM buffer
-    stmlib::BufferAllocator allocator(shared_buffer, sizeof(shared_buffer));
+	stmlib::BufferAllocator allocator(shared_buffer, sizeof(shared_buffer));
 
     // Initialize Plaits Voices 
     for (int i = 0; i < NUM_VOICES; ++i) { // Initialize all 4 voices
@@ -394,27 +512,37 @@ int main(void) {
         modulations[i].trigger = 0.0f;
         voice_active[i] = false;
         voice_note[i] = 0.0f;
+        voice_envelopes[i].Init(); // Initialize envelopes
     }
 
-	// --- Configure ADCs (Add Channel 6 for Shift) ---
-	AdcChannelConfig adc_config[7]; // Increased size to 7
-	adc_config[0].InitSingle(hw.GetPin(15)); // Pitch Knob
-	adc_config[1].InitSingle(hw.GetPin(16)); // Harmonics Knob
-	adc_config[2].InitSingle(hw.GetPin(17)); // Timbre Knob (Engine)
-	adc_config[3].InitSingle(hw.GetPin(18)); // Decay Knob
-	adc_config[4].InitSingle(hw.GetPin(20)); // Harmonics CV (Delay Feedback Default)
-	adc_config[5].InitSingle(hw.GetPin(21)); // Morph CV (Delay Lag Default)
-    adc_config[6].InitSingle(hw.GetPin(22)); // Shift Input (ADC6 -> Pin D21/22)
-	hw.adc.Init(adc_config, 7); // Initialize 7 channels
+	// --- Configure ADCs (11 Channels - New Mapping) ---
+	AdcChannelConfig adc_config[11]; 
+	adc_config[0].InitSingle(hw.GetPin(15)); // ADC 0: Plaits Pitch
+	adc_config[1].InitSingle(hw.GetPin(16)); // ADC 1: Plaits Harmonics
+	adc_config[2].InitSingle(hw.GetPin(17)); // ADC 2: Plaits Timbre/Engine
+	adc_config[3].InitSingle(hw.GetPin(18)); // ADC 3: Plaits Decay
+	adc_config[4].InitSingle(hw.GetPin(20)); // ADC 4: Plaits Morph
+	adc_config[5].InitSingle(hw.GetPin(21)); // ADC 5: Delay Feedback
+    adc_config[6].InitSingle(hw.GetPin(22)); // ADC 6: Delay Time
+    adc_config[7].InitSingle(hw.GetPin(23)); // ADC 7: Delay Lag
+    adc_config[8].InitSingle(hw.GetPin(19)); // ADC 8: Delay Wet/Dry Mix
+    adc_config[9].InitSingle(hw.GetPin(24)); // ADC 9: Envelope Attack
+    adc_config[10].InitSingle(hw.GetPin(25)); // ADC 10: Envelope Release
+	hw.adc.Init(adc_config, 11); // Initialize 11 channels
 	hw.adc.Start();
 
-	// --- Initialize Controls ---
-	pitch_knob.Init(hw.adc.GetPtr(0), sample_rate);
-	harmonics_knob.Init(hw.adc.GetPtr(1), sample_rate);
-	timbre_knob.Init(hw.adc.GetPtr(2), sample_rate);
-	decay_knob.Init(hw.adc.GetPtr(3), sample_rate);
-	harmonics_input.Init(hw.adc.GetPtr(4), sample_rate); // Default Delay Feedback
-	morph_input.Init(hw.adc.GetPtr(5), sample_rate);     // Default Delay Lag
+	// --- Initialize Controls (Matches new mapping) ---
+	pitch_knob.Init(hw.adc.GetPtr(0), sample_rate);          // ADC 0
+	harmonics_knob.Init(hw.adc.GetPtr(1), sample_rate);      // ADC 1
+	timbre_knob.Init(hw.adc.GetPtr(2), sample_rate);         // ADC 2
+	decay_knob.Init(hw.adc.GetPtr(3), sample_rate);          // ADC 3
+    morph_knob.Init(hw.adc.GetPtr(4), sample_rate);           // ADC 4
+	delay_feedback_knob.Init(hw.adc.GetPtr(5), sample_rate); // ADC 5
+	delay_time_knob.Init(hw.adc.GetPtr(6), sample_rate);     // ADC 6
+	delay_lag_knob.Init(hw.adc.GetPtr(7), sample_rate);      // ADC 7
+	delay_mix_knob.Init(hw.adc.GetPtr(8), sample_rate);       // ADC 8
+    env_attack_knob.Init(hw.adc.GetPtr(9), sample_rate);     // ADC 9
+    env_release_knob.Init(hw.adc.GetPtr(10), sample_rate);   // ADC 10
 
 	// --- Initialize Buttons ---
 	button.Init(hw.GetPin(27), sample_rate / 48.0f);
@@ -476,7 +604,7 @@ int main(void) {
         }
         hw.SetLed(led_on);
         
-        // --- Print CPU Load info ---
+        // --- Print CPU Load & Level info ---
         if (update_display) {
             float block_duration_us = (float)BLOCK_SIZE / (float)sample_rate * 1000000.0f; 
             int cpu_percent_int = 0;
@@ -495,6 +623,13 @@ int main(void) {
              if (current_engine_idx > MAX_ENGINE_INDEX) current_engine_idx = MAX_ENGINE_INDEX;
             sprintf(buffer, "Engine: %d (%s)", current_engine_idx, (current_engine_idx <=3) ? "Poly-4" : "Mono");
             hw.PrintLine(buffer);
+            
+            // Print Smoothed Output Level
+            int level_percent = static_cast<int>(smoothed_output_level * 100.0f);
+            level_percent = level_percent < 0 ? 0 : (level_percent > 100 ? 100 : level_percent); // Clamp 0-100
+            sprintf(buffer, "Level: %d%%", level_percent); 
+            hw.PrintLine(buffer);
+            
             hw.PrintLine("--------"); 
             
             update_display = false; 
