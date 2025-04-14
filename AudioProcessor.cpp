@@ -12,6 +12,7 @@ void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx);
 void ProcessVoiceEnvelopes(bool poly_mode);
 void ProcessAudioOutput(AudioHandle::InterleavingOutputBuffer out, size_t size, float dry_level);
 void UpdatePerformanceMonitors(uint32_t start_time, size_t size, AudioHandle::InterleavingOutputBuffer out);
+void ResetVoiceStates();
 
 // Global variables for data sharing between decomposed functions
 float pitch_val, harm_knob_val, timbre_knob_val, decay_knob_val, morph_knob_val;
@@ -92,6 +93,20 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     ProcessControls();
     ReadKnobValues();
     
+    // Add panic button check (long press but not bootloader long)
+    static uint32_t button_press_time = 0;
+    if (button.RisingEdge()) {
+        button_press_time = System::GetNow();
+    }
+    else if (button.Pressed() && button_press_time > 0) {
+        uint32_t held_time = System::GetNow() - button_press_time;
+        // If button held more than 1 second but less than bootloader time (3s)
+        if (held_time > 1000 && held_time < 3000) {
+            ResetVoiceStates();
+            button_press_time = 0; // Reset so it only triggers once
+        }
+    }
+    
     // Determine engine settings
     int engineIndex = DetermineEngineSettings();
     bool poly_mode = (engineIndex <= 3); // First 4 engines are poly
@@ -149,10 +164,43 @@ void ReadKnobValues() {
     env_release_val = env_release_knob.Value();   // ADC 10
 }
 
+void ResetVoiceStates() {
+    // Force reset all voice states to prevent stuck notes
+    for (int v = 0; v < NUM_VOICES; v++) {
+        // Reset the envelope to IDLE state
+        voice_envelopes[v].Reset();
+        
+        // Clear active flag
+        voice_active[v] = false;
+        
+        // Make sure triggers are off
+        modulations[v].trigger = 0.0f;
+    }
+}
+
 int DetermineEngineSettings() {
     // --- Determine Dynamic Polyphony & Engine ---
+    static int previous_engine_index = -1;
+    
+    // Calculate engine index from knob
     int engineIndex = static_cast<int>(timbre_knob_val * (MAX_ENGINE_INDEX + 1));
     if (engineIndex > MAX_ENGINE_INDEX) engineIndex = MAX_ENGINE_INDEX;
+    
+    // Only check when engine index changes
+    if (engineIndex != previous_engine_index) {
+        // Reset stuck voices only when changing engines
+        for (int v = 0; v < NUM_VOICES; v++) {
+            // If changing engine types (poly to mono or mono to poly)
+            if ((previous_engine_index <= 3 && engineIndex > 3) || 
+                (previous_engine_index > 3 && engineIndex <= 3)) {
+                // Only reset active flags, don't touch envelopes
+                voice_active[v] = false;
+            }
+        }
+        
+        previous_engine_index = engineIndex;
+    }
+    
     return engineIndex;
 }
 
@@ -231,22 +279,19 @@ void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx) 
         modulations[v].morph = 0.0f; 
         modulations[v].level = 1.0f; 
         
-        // CRITICAL FIX: Handle poly vs mono modes differently
-        // For poly engines (0-3), trigger should NOT be patched
-        // For mono engines (4+), trigger should be patched
+        // MODIFIED: Handle all engines consistently with trigger_patched
+        // This ensures envelopes are properly applied
+        modulations[v].trigger_patched = !poly_mode;  // Only patch trigger for non-poly engines
+        
         if (poly_mode) {
-            // Poly mode: Let Plaits handle envelopes internally via level
-            modulations[v].trigger_patched = false;
-            
-            // Only set trigger on initial note-on or note-off  
-            // (handled in the touch input section, so don't modify here)
+            // For poly engines, we'll handle triggering through voice envelopes
+            // Only set trigger on initial note-on
+            // Don't modify value - already set in HandleTouchInput
         } else {
-            // Mono mode: Use direct trigger patching
-            modulations[v].trigger_patched = true;
+            // For non-poly engines, use direct trigger patching
             modulations[v].trigger = voice_active[v] ? 1.0f : 0.0f;
         }
         
-       
         voices[v].Render(patches[v], modulations[v], output_buffers[v], BLOCK_SIZE);
     }
     
@@ -276,19 +321,16 @@ void ProcessVoiceEnvelopes(bool poly_mode) {
     // Normal cubic curve for release
     float release_value = env_release_val * env_release_val * env_release_val;
     
-    for (int v = 0; v < NUM_VOICES; ++v) {
-        float env_value = 1.0f;
+    // Determine how many voices to process based on mode
+    int voices_to_process = poly_mode ? NUM_VOICES : 1;
+    
+    for (int v = 0; v < voices_to_process; ++v) {
+        // Set separate attack and release times for all voice envelopes
+        voice_envelopes[v].SetAttackTime(attack_value);
+        voice_envelopes[v].SetReleaseTime(release_value);
         
-        if (poly_mode) {
-            // Set separate attack and release times
-            voice_envelopes[v].SetAttackTime(attack_value);
-            voice_envelopes[v].SetReleaseTime(release_value);
-            
-            // Process the envelope
-            env_value = voice_envelopes[v].Process();
-        } else if (v > 0) {
-            continue;
-        }
+        // Process the envelope
+        float env_value = voice_envelopes[v].Process();
         
         for (int i = 0; i < BLOCK_SIZE; ++i) {
             mix_buffer_out[i] += output_buffers[v][i].out * env_value;
