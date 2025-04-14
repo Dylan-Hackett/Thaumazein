@@ -1,4 +1,5 @@
-# ARCHEIN
+# ARCHEIN Prototype
+\
 
 ## Description  
 This project is a custom audio synthesizer for the **Daisy Seed** platform that utilizes physical modeling synthesis. It features touch-sensitive key input with support for note arpeggiation. The synthesizer uses a string voice model for sound generation, and an **arpeggiator** is activated when multiple keys are pressed.
