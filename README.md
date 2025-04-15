@@ -134,11 +134,13 @@ This project requires the following hardware:
 - Audio outputs connected to Daisy Seed's audio outputs.
 
 **Touch Functionality:**
-- The 12 touch pads on the MPR121 act as a keyboard, playing notes in an E Phrygian scale
-- Touch pads provide dual functionality: note triggering and continuous control
-- The rightmost touched pad and its pressure (capacitance deviation) act as a continuous controller for the Morph parameter
-- The exact mapping is defined in `kTouchMidiNotes` array in the code
-- Multiple pads can be touched simultaneously in poly mode (engines 0-3)
+- The 12 touch pads on the MPR121 act as a keyboard, playing notes in an E Phrygian scale.
+- Touch pads provide dual functionality: note triggering and continuous control.
+- The sensor is polled in the main loop at ~200Hz to read touch state and calculate a continuous control value.
+- The rightmost touched pad's position and its capacitance deviation (pressure) are combined and smoothed to generate a control signal.
+- This control signal currently modulates the Morph parameter.
+- The exact note mapping is defined in the `kTouchMidiNotes` array.
+- Multiple pads can be touched simultaneously in poly mode (engines 0-3).
 
 ## Building
 

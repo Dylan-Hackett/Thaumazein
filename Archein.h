@@ -30,6 +30,7 @@ void InitializeVoices();
 void InitializeSynth();
 void HandleButtonInput();
 void UpdateLED();
+void PollTouchSensor();
 
 
 extern DaisySeed hw;
@@ -77,4 +78,8 @@ extern uint32_t button_held_start_time;
 extern bool button_was_pressed;
 
 // Shared buffer
-extern char shared_buffer[262144]; 
+extern char shared_buffer[262144];
+
+// Shared touch sensor data (polled in main loop)
+extern volatile uint16_t current_touch_state; 
+extern volatile float touch_cv_value; 

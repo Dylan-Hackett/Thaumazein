@@ -21,33 +21,12 @@ float env_attack_val, env_release_val;
 float attack_time, release_time;
 float mix_buffer_out[BLOCK_SIZE];
 float mix_buffer_aux[BLOCK_SIZE];
-uint16_t current_touch_state;
-float touch_cv_value = 0.0f; // New variable to store the touch control voltage
 
 extern VoiceEnvelope voice_envelopes[NUM_VOICES];
 extern float voice_values[NUM_VOICES];
 extern bool voice_active[NUM_VOICES];
 extern Mpr121 touch_sensor;
 extern AnalogControl env_attack_knob;
-
-void ProcessTouchInput() {
-    // Read touch sensor data
-    uint16_t touched = touch_sensor.Touched();
-    
-    // Process each voice
-    for(int i = 0; i < NUM_VOICES; i++) {
-        bool was_active = voice_active[i];
-        voice_active[i] = touched & (1 << i);
-        
-        // Handle note on/off
-        if(voice_active[i] && !was_active) {
-            voice_envelopes[i].Trigger();
-        }
-        else if(!voice_active[i] && was_active) {
-            voice_envelopes[i].Release();
-        }
-    }
-}
 
 void ProcessVoices() {
     // Apply cubic response for better control at short settings
@@ -85,54 +64,6 @@ void ProcessVoice(int voice_idx, float envelope_value) {
     voice_values[voice_idx] = envelope_value;
 }
 
-// Get a control value from the currently touched pad
-float GetTouchControlValue() {
-    // Read current touch state
-    uint16_t touched = touch_sensor.Touched();
-    if (touched == 0) {
-        // No pads touched, use a default value or maintain previous value
-        return touch_cv_value * 0.95f; // Slight decay when not touching
-    }
-    
-    // Find the rightmost (highest) touched pad
-    int highest_pad = -1;
-    for (int i = 11; i >= 0; i--) {
-        if (touched & (1 << i)) {
-            highest_pad = i;
-            break;
-        }
-    }
-    
-    if (highest_pad == -1) return 0.0f; // Safety check
-    
-    // Get capacitance deviation for the touched pad
-    int16_t deviation = touch_sensor.GetBaselineDeviation(highest_pad);
-    
-    // Normalize to 0.0-1.0 range with adjustable sensitivity
-    // Lower divisor = more sensitive to pressure changes
-    float sensitivity = 50.0f; // Adjust this value based on your MPR121 calibration
-    float normalized_value = daisysp::fmax(0.0f, daisysp::fmin(1.0f, deviation / sensitivity));
-    
-    // Apply curve for better control response (squared curve feels more natural)
-    normalized_value = normalized_value * normalized_value;
-    
-    // Map pad position (0-11) to full range (0.0-1.0)
-    float position_value = highest_pad / 11.0f;
-    
-    // Combine both position and pressure for more expressive control
-    // We use a weighted combination based on the current engine type
-    float position_weight = 0.7f;
-    float combined_value = position_value * position_weight + normalized_value * (1.0f - position_weight);
-    
-    // Apply adaptive smoothing - more smoothing for small changes, less for big changes
-    float change = fabs(combined_value - touch_cv_value);
-    float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
-    
-    touch_cv_value = touch_cv_value * smoothing + combined_value * (1.0f - smoothing);
-    
-    return touch_cv_value;
-}
-
 void AudioCallback(AudioHandle::InterleavingInputBuffer in,
                  AudioHandle::InterleavingOutputBuffer out,
                  size_t size) {
@@ -142,9 +73,21 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     ProcessControls();
     ReadKnobValues();
     
-    // Get touch control value
-    float touch_control = GetTouchControlValue();
+    // Get touch control value from the shared volatile variable
+    float touch_control = touch_cv_value; 
     
+    // --- Apply Touch Control Modulation (Averaging knob + touch) ---
+    // Apply touch modulation to selected parameters by averaging knob and touch values
+    float intensity_factor = 0.5f; // 0.0 = knob only, 1.0 = touch only, 0.5 = average
+
+    harm_knob_val    = harm_knob_val    * (1.0f - intensity_factor) + touch_control * intensity_factor;
+    morph_knob_val   = morph_knob_val   * (1.0f - intensity_factor) + touch_control * intensity_factor;
+    decay_knob_val   = decay_knob_val   * (1.0f - intensity_factor) + touch_control * intensity_factor;
+    delay_feedback_val = delay_feedback_val * (1.0f - intensity_factor) + touch_control * intensity_factor;
+    delay_time_val   = delay_time_val   * (1.0f - intensity_factor) + touch_control * intensity_factor;
+
+    // --- End Touch Control Modulation ---
+
     // Add panic button check (long press but not bootloader long)
     static uint32_t button_press_time = 0;
     if (button.RisingEdge()) {
@@ -172,7 +115,7 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     
     // Process voice parameters and render audio
     // Apply the touch control to modify a parameter (for example, morph)
-    morph_knob_val = morph_knob_val * 0.6f + touch_control * 0.4f;
+    // morph_knob_val = morph_knob_val * 0.6f + touch_control * 0.4f; // OLD METHOD - REMOVED
 
     // Alternate options for applying touch control to different parameters:
     // Uncomment one of these to change which parameter the touch control affects
@@ -207,12 +150,9 @@ void ProcessControls() {
     delay_mix_knob.Process();     // ADC 8
     env_attack_knob.Process();    // ADC 9
     env_release_knob.Process();   // ADC 10
-    
-    current_touch_state = touch_sensor.Touched();
 }
 
 void ReadKnobValues() {
-    
     pitch_val = pitch_knob.Value();           // ADC 0
     harm_knob_val = harmonics_knob.Value();     // ADC 1
     timbre_knob_val = timbre_knob.Value();      // ADC 2
@@ -267,8 +207,11 @@ int DetermineEngineSettings() {
 }
 
 void HandleTouchInput(int engineIndex, bool poly_mode, int effective_num_voices) {
+    // Use the shared volatile variable for current touch state
+    uint16_t local_current_touch_state = current_touch_state;
+
     for (int i = 0; i < 12; ++i) { 
-        bool pad_currently_pressed = (current_touch_state >> i) & 1;
+        bool pad_currently_pressed = (local_current_touch_state >> i) & 1;
         bool pad_was_pressed = (last_touch_state >> i) & 1;
         float note_for_pad = kTouchMidiNotes[i];
 
@@ -298,11 +241,10 @@ void HandleTouchInput(int engineIndex, bool poly_mode, int effective_num_voices)
             }
         }
     }
-    last_touch_state = current_touch_state;
+    last_touch_state = local_current_touch_state; // Update last state with the value used in this callback
 }
 
 void ConfigureDelaySettings() {
-    
     delay.SetFeedback(delay_feedback_val * 0.98f); // ADC 5
     float delay_time_s = 0.01f + delay_time_val * 0.99f; // ADC 6
     delay.SetDelayTime(delay_time_s);
