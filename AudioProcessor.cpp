@@ -80,11 +80,11 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     // Apply touch modulation to selected parameters by averaging knob and touch values
     float intensity_factor = 0.5f; // 0.0 = knob only, 1.0 = touch only, 0.5 = average
 
-    harm_knob_val    = harm_knob_val    * (1.0f - intensity_factor) + touch_control * intensity_factor;
+    // harm_knob_val    = harm_knob_val    * (1.0f - intensity_factor) + touch_control * intensity_factor; // Commented out
     morph_knob_val   = morph_knob_val   * (1.0f - intensity_factor) + touch_control * intensity_factor;
-    decay_knob_val   = decay_knob_val   * (1.0f - intensity_factor) + touch_control * intensity_factor;
+    // decay_knob_val   = decay_knob_val   * (1.0f - intensity_factor) + touch_control * intensity_factor; // Commented out
     delay_feedback_val = delay_feedback_val * (1.0f - intensity_factor) + touch_control * intensity_factor;
-    delay_time_val   = delay_time_val   * (1.0f - intensity_factor) + touch_control * intensity_factor;
+    // delay_time_val   = delay_time_val   * (1.0f - intensity_factor) + touch_control * intensity_factor; // Commented out
 
     // --- End Touch Control Modulation ---
 

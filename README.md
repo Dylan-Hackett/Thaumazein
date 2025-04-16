@@ -137,8 +137,8 @@ This project requires the following hardware:
 - The 12 touch pads on the MPR121 act as a keyboard, playing notes in an E Phrygian scale.
 - Touch pads provide dual functionality: note triggering and continuous control.
 - The sensor is polled in the main loop at ~200Hz to read touch state and calculate a continuous control value.
-- The rightmost touched pad's position and its capacitance deviation (pressure) are combined and smoothed to generate a control signal.
-- This control signal currently modulates the Morph parameter.
+- The average capacitance deviation (pressure) across all currently touched pads is calculated, smoothed, and used to generate a control signal.
+- This control signal blends (50/50) with the knob values to modulate the Morph and Delay Feedback parameters.
 - The exact note mapping is defined in the `kTouchMidiNotes` array.
 - Multiple pads can be touched simultaneously in poly mode (engines 0-3).
 

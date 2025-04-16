@@ -39,48 +39,51 @@ void UpdateDisplay() {
 
 // Poll the touch sensor and update shared variables
 void PollTouchSensor() {
-    // Read current touch state
     uint16_t touched = touch_sensor.Touched();
-    current_touch_state = touched; // Update shared variable
+    current_touch_state = touched;
 
     if (touched == 0) {
-        // No pads touched, apply slight decay to control value
-        touch_cv_value *= 0.95f; 
-        return; // Exit early
+        // Optionally decay the control value smoothly to 0 when no pads are touched
+        touch_cv_value = touch_cv_value * 0.95f; 
+        return;
     }
-    
-    // Find the rightmost (highest) touched pad
-    int highest_pad = -1;
-    for (int i = 11; i >= 0; i--) {
+
+    float total_deviation = 0.0f;
+    int touched_count = 0;
+
+    // Iterate through all pads
+    for (int i = 0; i < 12; i++) {
         if (touched & (1 << i)) {
-            highest_pad = i;
-            break;
+            // Get capacitance deviation for this touched pad
+            int16_t deviation = touch_sensor.GetBaselineDeviation(i);
+            total_deviation += deviation;
+            touched_count++;
         }
     }
-    
-    if (highest_pad == -1) return; // Should not happen if touched != 0, but safety check
-    
-    // Get capacitance deviation for the touched pad
-    int16_t deviation = touch_sensor.GetBaselineDeviation(highest_pad);
-    
+
+    float average_deviation = 0.0f;
+    if (touched_count > 0) {
+        average_deviation = total_deviation / touched_count;
+    }
+
     // Normalize to 0.0-1.0 range with adjustable sensitivity
-    float sensitivity = 50.0f; // Adjust this value based on your MPR121 calibration
-    float normalized_value = daisysp::fmax(0.0f, daisysp::fmin(1.0f, deviation / sensitivity));
-    
+    // Consider recalibrating sensitivity if needed for average pressure
+    float sensitivity = 150.0f;
+    float normalized_value = daisysp::fmax(0.0f, daisysp::fmin(1.0f, average_deviation / sensitivity));
+
     // Apply curve for better control response (squared curve feels more natural)
     normalized_value = normalized_value * normalized_value;
-    
-    // Map pad position (0-11) to full range (0.0-1.0)
-    float position_value = highest_pad / 11.0f;
-    
-    // Combine both position and pressure for more expressive control
-    float position_weight = 0.7f;
-    float combined_value = position_value * position_weight + normalized_value * (1.0f - position_weight);
-    
+
+    // Remove the position component - control is now based purely on average pressure
+    // float position_value = highest_pad / 11.0f; // Removed
+    // float position_weight = 0.7f;              // Removed
+    // float combined_value = position_value * position_weight + normalized_value * (1.0f - position_weight); // Replaced
+    float combined_value = normalized_value; // Use normalized average pressure directly
+
     // Apply adaptive smoothing - more smoothing for small changes, less for big changes
     float change = fabsf(combined_value - touch_cv_value);
     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
-    
+
     // Update the shared volatile variable
     touch_cv_value = touch_cv_value * smoothing + combined_value * (1.0f - smoothing);
 }

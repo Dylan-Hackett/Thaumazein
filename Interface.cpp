@@ -38,7 +38,7 @@ void InitializeHardware() {
     hw.Init();
     hw.SetAudioBlockSize(BLOCK_SIZE);
     sample_rate = hw.AudioSampleRate();
-    hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ); // Using 48kHz now
+    hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_96KHZ); // Using 48kHz now
     sample_rate = hw.AudioSampleRate(); // Update sample_rate after setting it
 }
 
@@ -83,6 +83,8 @@ void InitializeTouchSensor() {
     if (!touch_sensor.Init(touch_config)) {
         while(1) { hw.SetLed(true); System::Delay(50); hw.SetLed(false); System::Delay(50); }
     }
+    // Override default thresholds for more sensitivity
+    touch_sensor.SetThresholds(6, 3); 
 }
 
 void InitializeDelay() {
