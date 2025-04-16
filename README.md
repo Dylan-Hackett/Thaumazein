@@ -7,8 +7,7 @@ Archein is a polyphonic and percussive synthesizer for the Daisy Seed platform, 
 - Polyphony (up to 4 voices) for Virtual Analog engines
 - Echo delay effect with feedback, time, lag, and mix controls
 - Touch-based interface using MPR121 capacitive touch sensor
-- Separate attack and release envelope controls with punchy response
-- Capacitive touch position and pressure sensing for continuous control of synth parameters
+- Capacitive "pressure sensing" for continuous control of synth parameters
 
 ## Project Structure
 
@@ -168,6 +167,18 @@ When adding features or making changes, follow the modular structure:
 3. Implement hardware interface code in Interface.cpp  
 4. Add audio processing code to AudioProcessor.cpp
 5. Add UI elements to Archein.cpp
+
+TO DO:
+
+1. Test with an analog filter powered off the microcontroller and if successful write code to have the dac influence analog filter. would likely have to use and input output audio pair on the daisy in the case that this works, meaning the final output would have to be mono.
+2. Implement an Arpeggiator preset mode, which stores each parameter per step, including the engine parameter and then cycles through them rhytmically. Monophonic implementation to save CPU
+3. Improve onboard effects with either reverb or more full delay network. Possibly port code from clouds instead of current delay/reverb from Audrey II.
+4. Improve and potentially redesign how the touch control for each keyboard key will work. Currently its one parameter for the whole keyboard being modulated by all keys being touched. Will definitely change which parameter is being modulated depending on engine. Potentially will change to modulate multiple params with different keys/parts of the keyboard as well.
+5. Bug/stress testing, look into voices getting stopped up with non poly modes freezing
+
+
+
+
 
 ## License
 
