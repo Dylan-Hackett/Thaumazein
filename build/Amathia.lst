@@ -1,0 +1,1517 @@
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 4
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"Amathia.cpp"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata._Z13UpdateDisplayv.str1.1,"aMS",%progbits,1
+  19              	.LC2:
+  20 0000 506F6C79 		.ascii	"Poly-4\000"
+  20      2D3400
+  21              	.LC3:
+  22 0007 4D6F6E6F 		.ascii	"Mono\000"
+  22      00
+  23              	.LC4:
+  24 000c 4350553A 		.ascii	"CPU: %d\000"
+  24      20256400 
+  25              	.LC5:
+  26 0014 456E6769 		.ascii	"Engine: %d (%s)\000"
+  26      6E653A20 
+  26      25642028 
+  26      25732900 
+  27              	.LC6:
+  28 0024 4C657665 		.ascii	"Level: %d%%\000"
+  28      6C3A2025 
+  28      64252500 
+  29              	.LC7:
+  30 0030 2D2D2D2D 		.ascii	"--------\000"
+  30      2D2D2D2D 
+  30      00
+  31              		.section	.text._Z13UpdateDisplayv,"ax",%progbits
+  32              		.align	1
+  33              		.global	_Z13UpdateDisplayv
+  34              		.syntax unified
+  35              		.thumb
+  36              		.thumb_func
+  38              	_Z13UpdateDisplayv:
+  39              	.LFB5057:
+  40              		.file 1 "Amathia.cpp"
+   1:Amathia.cpp   **** #include "Amathia.h"
+   2:Amathia.cpp   **** 
+   3:Amathia.cpp   **** // Define shared volatile variables
+   4:Amathia.cpp   **** volatile uint16_t current_touch_state = 0;
+   5:Amathia.cpp   **** volatile float touch_cv_value = 0.0f;
+   6:Amathia.cpp   **** 
+   7:Amathia.cpp   **** void UpdateDisplay() {
+  41              		.loc 1 7 22 view -0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 2
+
+
+  42              		.cfi_startproc
+  43              		@ args = 0, pretend = 0, frame = 32
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+   8:Amathia.cpp   ****     if (update_display) {
+  45              		.loc 1 8 5 view .LVU1
+   7:Amathia.cpp   ****     if (update_display) {
+  46              		.loc 1 7 22 is_stmt 0 view .LVU2
+  47 0000 10B5     		push	{r4, lr}
+  48              		.cfi_def_cfa_offset 8
+  49              		.cfi_offset 4, -8
+  50              		.cfi_offset 14, -4
+  51              	.LBB66:
+  52              		.loc 1 8 9 view .LVU3
+  53 0002 2D4C     		ldr	r4, .L8
+  54 0004 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+  55              	.LBE66:
+   7:Amathia.cpp   ****     if (update_display) {
+  56              		.loc 1 7 22 view .LVU4
+  57 0006 2DED028B 		vpush.64	{d8}
+  58              		.cfi_def_cfa_offset 16
+  59              		.cfi_offset 80, -16
+  60              		.cfi_offset 81, -12
+  61 000a 88B0     		sub	sp, sp, #32
+  62              		.cfi_def_cfa_offset 48
+  63              	.LBB67:
+  64              		.loc 1 8 5 view .LVU5
+  65 000c 002B     		cmp	r3, #0
+  66 000e 4FD0     		beq	.L1
+  67              	.LBE67:
+  68              	.LBB68:
+  69              	.LBI68:
+   7:Amathia.cpp   ****     if (update_display) {
+  70              		.loc 1 7 6 is_stmt 1 view .LVU6
+  71              	.LBB69:
+  72              	.LBB70:
+   9:Amathia.cpp   ****         // Get CPU Load from the CpuLoadMeter
+  10:Amathia.cpp   ****         float avg_cpu_load = cpu_meter.GetAvgCpuLoad();
+  73              		.loc 1 10 9 view .LVU7
+  74              	.LVL0:
+  75              	.LBB71:
+  76              	.LBI71:
+  77              		.file 2 "lib/libdaisy/src/util/CpuLoadMeter.h"
+   1:lib/libdaisy/src/util/CpuLoadMeter.h **** #pragma once
+   2:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+   3:lib/libdaisy/src/util/CpuLoadMeter.h **** #include "sys/system.h"
+   4:lib/libdaisy/src/util/CpuLoadMeter.h **** #include <cmath>
+   5:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+   6:lib/libdaisy/src/util/CpuLoadMeter.h **** namespace daisy
+   7:lib/libdaisy/src/util/CpuLoadMeter.h **** {
+   8:lib/libdaisy/src/util/CpuLoadMeter.h **** /** @brief CPU load metering
+   9:lib/libdaisy/src/util/CpuLoadMeter.h ****  *  @author jelliesen
+  10:lib/libdaisy/src/util/CpuLoadMeter.h ****  *  @addtogroup utility
+  11:lib/libdaisy/src/util/CpuLoadMeter.h ****  * 
+  12:lib/libdaisy/src/util/CpuLoadMeter.h ****  *  To measure the CPU load of your audio processing, create a CpuLoadMeter
+  13:lib/libdaisy/src/util/CpuLoadMeter.h ****  *  and initialize it with your block size and sample rate.
+  14:lib/libdaisy/src/util/CpuLoadMeter.h ****  *  Then at the beginning of the audio callback, call `OnBlockStart()`, 
+  15:lib/libdaisy/src/util/CpuLoadMeter.h ****  *  and at the end of the audio callback, call `OnBlockEnd()`.
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 3
+
+
+  16:lib/libdaisy/src/util/CpuLoadMeter.h ****  *  You can then read out the minimum, maximum and average CPU load.
+  17:lib/libdaisy/src/util/CpuLoadMeter.h ****  */
+  18:lib/libdaisy/src/util/CpuLoadMeter.h **** class CpuLoadMeter
+  19:lib/libdaisy/src/util/CpuLoadMeter.h **** {
+  20:lib/libdaisy/src/util/CpuLoadMeter.h ****   public:
+  21:lib/libdaisy/src/util/CpuLoadMeter.h ****     CpuLoadMeter(){};
+  22:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+  23:lib/libdaisy/src/util/CpuLoadMeter.h ****     /** Initializes the CpuLoadMeter for a particular sample rate and block size.
+  24:lib/libdaisy/src/util/CpuLoadMeter.h ****      *  @param sampleRateInHz           The sample rate in Hz
+  25:lib/libdaisy/src/util/CpuLoadMeter.h ****      *  @param blockSizeInSamples       The block size in samples
+  26:lib/libdaisy/src/util/CpuLoadMeter.h ****      *  @param smoothingFilterCutoffHz  The cutoff frequency of the smoothing filter that's used to
+  27:lib/libdaisy/src/util/CpuLoadMeter.h ****      *                                  create the average CPU load reading.
+  28:lib/libdaisy/src/util/CpuLoadMeter.h ****      */
+  29:lib/libdaisy/src/util/CpuLoadMeter.h ****     void Init(float sampleRateInHz,
+  30:lib/libdaisy/src/util/CpuLoadMeter.h ****               int   blockSizeInSamples,
+  31:lib/libdaisy/src/util/CpuLoadMeter.h ****               float smoothingFilterCutoffHz = 1.0f)
+  32:lib/libdaisy/src/util/CpuLoadMeter.h ****     {
+  33:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto secPerBlock = float(blockSizeInSamples) / sampleRateInHz;
+  34:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto ticksPerS   = float(System::GetTickFreq());
+  35:lib/libdaisy/src/util/CpuLoadMeter.h ****         ticksPerBlockInv_      = 1.0f / (ticksPerS * secPerBlock);
+  36:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+  37:lib/libdaisy/src/util/CpuLoadMeter.h ****         // update filter coefficient for smoothing filter (1pole lowpass)
+  38:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto blockRateInHz = sampleRateInHz / float(blockSizeInSamples);
+  39:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto cutoffNormalized
+  40:lib/libdaisy/src/util/CpuLoadMeter.h ****             = smoothingFilterCutoffHz * 2.0f * 3.141592653f / blockRateInHz;
+  41:lib/libdaisy/src/util/CpuLoadMeter.h ****         // according to
+  42:lib/libdaisy/src/util/CpuLoadMeter.h ****         // https://en.wikipedia.org/wiki/Low-pass_filter#Simple_infinite_impulse_response_filter
+  43:lib/libdaisy/src/util/CpuLoadMeter.h ****         smoothingConstant_ = cutoffNormalized / (cutoffNormalized + 1.0f);
+  44:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+  45:lib/libdaisy/src/util/CpuLoadMeter.h ****         Reset();
+  46:lib/libdaisy/src/util/CpuLoadMeter.h ****     }
+  47:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+  48:lib/libdaisy/src/util/CpuLoadMeter.h ****     /** Call this at the beginning of your audio callback */
+  49:lib/libdaisy/src/util/CpuLoadMeter.h ****     void OnBlockStart() { currentBlockStartTicks_ = System::GetTick(); }
+  50:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+  51:lib/libdaisy/src/util/CpuLoadMeter.h ****     /** Call this at the end of your audio callback */
+  52:lib/libdaisy/src/util/CpuLoadMeter.h ****     void OnBlockEnd()
+  53:lib/libdaisy/src/util/CpuLoadMeter.h ****     {
+  54:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto end         = System::GetTick();
+  55:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto ticksPassed = end - currentBlockStartTicks_;
+  56:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto currentBlockLoad
+  57:lib/libdaisy/src/util/CpuLoadMeter.h ****             = float(ticksPassed) * ticksPerBlockInv_; // usPassed / usPerBlock
+  58:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+  59:lib/libdaisy/src/util/CpuLoadMeter.h ****         if(firstCycle_)
+  60:lib/libdaisy/src/util/CpuLoadMeter.h ****         {
+  61:lib/libdaisy/src/util/CpuLoadMeter.h ****             max_ = min_ = avg_ = currentBlockLoad;
+  62:lib/libdaisy/src/util/CpuLoadMeter.h ****             firstCycle_        = false;
+  63:lib/libdaisy/src/util/CpuLoadMeter.h ****         }
+  64:lib/libdaisy/src/util/CpuLoadMeter.h ****         else
+  65:lib/libdaisy/src/util/CpuLoadMeter.h ****         {
+  66:lib/libdaisy/src/util/CpuLoadMeter.h ****             if(currentBlockLoad > max_)
+  67:lib/libdaisy/src/util/CpuLoadMeter.h ****                 max_ = currentBlockLoad;
+  68:lib/libdaisy/src/util/CpuLoadMeter.h ****             if(currentBlockLoad < min_)
+  69:lib/libdaisy/src/util/CpuLoadMeter.h ****                 min_ = currentBlockLoad;
+  70:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+  71:lib/libdaisy/src/util/CpuLoadMeter.h ****             avg_ = smoothingConstant_ * currentBlockLoad
+  72:lib/libdaisy/src/util/CpuLoadMeter.h ****                    + (1.0f - smoothingConstant_) * avg_;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 4
+
+
+  73:lib/libdaisy/src/util/CpuLoadMeter.h ****         }
+  74:lib/libdaisy/src/util/CpuLoadMeter.h ****     }
+  75:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+  76:lib/libdaisy/src/util/CpuLoadMeter.h ****     /** Returns the smoothed average CPU load in the range 0..1 */
+  77:lib/libdaisy/src/util/CpuLoadMeter.h ****     float GetAvgCpuLoad() const { return avg_; }
+  78              		.loc 2 77 11 view .LVU8
+  79              	.LBB72:
+  80              		.loc 2 77 35 view .LVU9
+  81              		.loc 2 77 35 is_stmt 0 view .LVU10
+  82              	.LBE72:
+  83              	.LBE71:
+  11:Amathia.cpp   ****         int cpu_percent_int = static_cast<int>(avg_cpu_load * 100.0f);
+  84              		.loc 1 11 9 is_stmt 1 view .LVU11
+  12:Amathia.cpp   ****         cpu_percent_int = cpu_percent_int < 0 ? 0 : (cpu_percent_int > 100 ? 100 : cpu_percent_int)
+  85              		.loc 1 12 9 view .LVU12
+  13:Amathia.cpp   **** 
+  14:Amathia.cpp   ****         char buffer[32]; 
+  86              		.loc 1 14 9 view .LVU13
+  15:Amathia.cpp   ****         sprintf(buffer, "CPU: %d", cpu_percent_int); 
+  87              		.loc 1 15 9 view .LVU14
+  88              	.LBB74:
+  89              	.LBB73:
+  90              		.loc 2 77 42 is_stmt 0 view .LVU15
+  91 0010 2A4B     		ldr	r3, .L8+4
+  92              	.LBE73:
+  93              	.LBE74:
+  94              		.loc 1 15 16 view .LVU16
+  95 0012 6846     		mov	r0, sp
+  11:Amathia.cpp   ****         cpu_percent_int = cpu_percent_int < 0 ? 0 : (cpu_percent_int > 100 ? 100 : cpu_percent_int)
+  96              		.loc 1 11 61 view .LVU17
+  97 0014 9FED2A8A 		vldr.32	s16, .L8+8
+  98 0018 93ED057A 		vldr.32	s14, [r3, #20]
+  99              		.loc 1 15 16 view .LVU18
+ 100 001c 2949     		ldr	r1, .L8+12
+  11:Amathia.cpp   ****         cpu_percent_int = cpu_percent_int < 0 ? 0 : (cpu_percent_int > 100 ? 100 : cpu_percent_int)
+ 101              		.loc 1 11 61 view .LVU19
+ 102 001e 27EE087A 		vmul.f32	s14, s14, s16
+  11:Amathia.cpp   ****         cpu_percent_int = cpu_percent_int < 0 ? 0 : (cpu_percent_int > 100 ? 100 : cpu_percent_int)
+ 103              		.loc 1 11 13 view .LVU20
+ 104 0022 FDEEC77A 		vcvt.s32.f32	s15, s14
+ 105 0026 17EE902A 		vmov	r2, s15	@ int
+  12:Amathia.cpp   **** 
+ 106              		.loc 1 12 47 view .LVU21
+ 107 002a 642A     		cmp	r2, #100
+ 108 002c A8BF     		it	ge
+ 109 002e 6422     		movge	r2, #100
+ 110              		.loc 1 15 16 view .LVU22
+ 111 0030 22EAE272 		bic	r2, r2, r2, asr #31
+ 112 0034 FFF7FEFF 		bl	sprintf
+ 113              	.LVL1:
+  16:Amathia.cpp   ****         hw.PrintLine(buffer);
+ 114              		.loc 1 16 9 is_stmt 1 view .LVU23
+ 115              	.LBB75:
+ 116              	.LBI75:
+ 117              		.file 3 "lib/libdaisy/src/daisy_seed.h"
+   1:lib/libdaisy/src/daisy_seed.h **** #pragma once
+   2:lib/libdaisy/src/daisy_seed.h **** #ifndef DSY_SEED_H
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 5
+
+
+   3:lib/libdaisy/src/daisy_seed.h **** #define DSY_SEED_H
+   4:lib/libdaisy/src/daisy_seed.h **** 
+   5:lib/libdaisy/src/daisy_seed.h **** #include "daisy.h"
+   6:lib/libdaisy/src/daisy_seed.h **** 
+   7:lib/libdaisy/src/daisy_seed.h **** //Uncomment this out if you're still using the rev2 hardware
+   8:lib/libdaisy/src/daisy_seed.h **** //#define SEED_REV2
+   9:lib/libdaisy/src/daisy_seed.h **** 
+  10:lib/libdaisy/src/daisy_seed.h **** namespace daisy
+  11:lib/libdaisy/src/daisy_seed.h **** {
+  12:lib/libdaisy/src/daisy_seed.h **** /**
+  13:lib/libdaisy/src/daisy_seed.h ****    @brief This is the higher-level interface for the Daisy board. \n 
+  14:lib/libdaisy/src/daisy_seed.h ****     All basic peripheral configuration/initialization is setup here. \n
+  15:lib/libdaisy/src/daisy_seed.h **** 
+  16:lib/libdaisy/src/daisy_seed.h ****    @ingroup boards
+  17:lib/libdaisy/src/daisy_seed.h **** */
+  18:lib/libdaisy/src/daisy_seed.h **** class DaisySeed
+  19:lib/libdaisy/src/daisy_seed.h **** {
+  20:lib/libdaisy/src/daisy_seed.h ****   public:
+  21:lib/libdaisy/src/daisy_seed.h ****     DaisySeed() {}
+  22:lib/libdaisy/src/daisy_seed.h ****     ~DaisySeed() {}
+  23:lib/libdaisy/src/daisy_seed.h **** 
+  24:lib/libdaisy/src/daisy_seed.h ****     /** This function used to provide a pre-initialization configuraiton 
+  25:lib/libdaisy/src/daisy_seed.h ****      *  it has since been deprecated, and does nothing.
+  26:lib/libdaisy/src/daisy_seed.h ****      */
+  27:lib/libdaisy/src/daisy_seed.h ****     void Configure();
+  28:lib/libdaisy/src/daisy_seed.h **** 
+  29:lib/libdaisy/src/daisy_seed.h ****     /** 
+  30:lib/libdaisy/src/daisy_seed.h ****     Initializes the Daisy Seed and the following peripherals:
+  31:lib/libdaisy/src/daisy_seed.h ****     SDRAM, QSPI, 24-bit 48kHz Audio via AK4556, Internal USB,
+  32:lib/libdaisy/src/daisy_seed.h ****     as well as the built-in LED and Testpoint.
+  33:lib/libdaisy/src/daisy_seed.h **** 
+  34:lib/libdaisy/src/daisy_seed.h ****     ADCs, DACs, and other special peripherals (such as I2C, SPI, etc.)
+  35:lib/libdaisy/src/daisy_seed.h ****     can be initialized using their specific initializers within libdaisy
+  36:lib/libdaisy/src/daisy_seed.h ****     for a specific application.
+  37:lib/libdaisy/src/daisy_seed.h ****     */
+  38:lib/libdaisy/src/daisy_seed.h ****     void Init(bool boost = false);
+  39:lib/libdaisy/src/daisy_seed.h **** 
+  40:lib/libdaisy/src/daisy_seed.h ****     /** 
+  41:lib/libdaisy/src/daisy_seed.h ****     Deinitializes all peripherals automatically handled by `Init`.
+  42:lib/libdaisy/src/daisy_seed.h ****     */
+  43:lib/libdaisy/src/daisy_seed.h ****     void DeInit();
+  44:lib/libdaisy/src/daisy_seed.h **** 
+  45:lib/libdaisy/src/daisy_seed.h ****     /** 
+  46:lib/libdaisy/src/daisy_seed.h ****     Wait some ms before going on.
+  47:lib/libdaisy/src/daisy_seed.h ****     \param del Delay time in ms.
+  48:lib/libdaisy/src/daisy_seed.h ****     */
+  49:lib/libdaisy/src/daisy_seed.h ****     void DelayMs(size_t del);
+  50:lib/libdaisy/src/daisy_seed.h **** 
+  51:lib/libdaisy/src/daisy_seed.h ****     /** 
+  52:lib/libdaisy/src/daisy_seed.h ****     Returns the gpio_pin corresponding to the index 0-31.
+  53:lib/libdaisy/src/daisy_seed.h ****     For the given GPIO on the Daisy Seed (labeled 1-32 in docs).
+  54:lib/libdaisy/src/daisy_seed.h ****     */
+  55:lib/libdaisy/src/daisy_seed.h ****     static dsy_gpio_pin GetPin(uint8_t pin_idx);
+  56:lib/libdaisy/src/daisy_seed.h **** 
+  57:lib/libdaisy/src/daisy_seed.h ****     /** Begins the audio for the seeds builtin audio.
+  58:lib/libdaisy/src/daisy_seed.h ****     the specified callback will get called whenever
+  59:lib/libdaisy/src/daisy_seed.h ****     new data is ready to be prepared.
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 6
+
+
+  60:lib/libdaisy/src/daisy_seed.h ****     */
+  61:lib/libdaisy/src/daisy_seed.h ****     void StartAudio(AudioHandle::InterleavingAudioCallback cb);
+  62:lib/libdaisy/src/daisy_seed.h **** 
+  63:lib/libdaisy/src/daisy_seed.h ****     /** Begins the audio for the seeds builtin audio.
+  64:lib/libdaisy/src/daisy_seed.h ****     the specified callback will get called whenever
+  65:lib/libdaisy/src/daisy_seed.h ****     new data is ready to be prepared.
+  66:lib/libdaisy/src/daisy_seed.h ****     This will use the newer non-interleaved callback.
+  67:lib/libdaisy/src/daisy_seed.h ****     */
+  68:lib/libdaisy/src/daisy_seed.h ****     void StartAudio(AudioHandle::AudioCallback cb);
+  69:lib/libdaisy/src/daisy_seed.h **** 
+  70:lib/libdaisy/src/daisy_seed.h ****     /** Changes to a new interleaved callback
+  71:lib/libdaisy/src/daisy_seed.h ****      */
+  72:lib/libdaisy/src/daisy_seed.h ****     void ChangeAudioCallback(AudioHandle::InterleavingAudioCallback cb);
+  73:lib/libdaisy/src/daisy_seed.h **** 
+  74:lib/libdaisy/src/daisy_seed.h ****     /** Changes to a new multichannel callback
+  75:lib/libdaisy/src/daisy_seed.h ****      */
+  76:lib/libdaisy/src/daisy_seed.h ****     void ChangeAudioCallback(AudioHandle::AudioCallback cb);
+  77:lib/libdaisy/src/daisy_seed.h **** 
+  78:lib/libdaisy/src/daisy_seed.h ****     /** Stops the audio if it is running. */
+  79:lib/libdaisy/src/daisy_seed.h ****     void StopAudio();
+  80:lib/libdaisy/src/daisy_seed.h **** 
+  81:lib/libdaisy/src/daisy_seed.h ****     /** Updates the Audio Sample Rate, and reinitializes.
+  82:lib/libdaisy/src/daisy_seed.h ****      ** Audio must be stopped for this to work.
+  83:lib/libdaisy/src/daisy_seed.h ****      */
+  84:lib/libdaisy/src/daisy_seed.h ****     void SetAudioSampleRate(SaiHandle::Config::SampleRate samplerate);
+  85:lib/libdaisy/src/daisy_seed.h **** 
+  86:lib/libdaisy/src/daisy_seed.h ****     /** Returns the audio sample rate in Hz as a floating point number.
+  87:lib/libdaisy/src/daisy_seed.h ****      */
+  88:lib/libdaisy/src/daisy_seed.h ****     float AudioSampleRate();
+  89:lib/libdaisy/src/daisy_seed.h **** 
+  90:lib/libdaisy/src/daisy_seed.h ****     /** Sets the number of samples processed per channel by the audio callback.
+  91:lib/libdaisy/src/daisy_seed.h ****      */
+  92:lib/libdaisy/src/daisy_seed.h ****     void SetAudioBlockSize(size_t blocksize);
+  93:lib/libdaisy/src/daisy_seed.h **** 
+  94:lib/libdaisy/src/daisy_seed.h ****     /** Returns the number of samples per channel in a block of audio. */
+  95:lib/libdaisy/src/daisy_seed.h ****     size_t AudioBlockSize();
+  96:lib/libdaisy/src/daisy_seed.h **** 
+  97:lib/libdaisy/src/daisy_seed.h ****     /** Returns the rate in Hz that the Audio callback is called */
+  98:lib/libdaisy/src/daisy_seed.h ****     float AudioCallbackRate() const;
+  99:lib/libdaisy/src/daisy_seed.h **** 
+ 100:lib/libdaisy/src/daisy_seed.h ****     /** Sets the state of the built in LED
+ 101:lib/libdaisy/src/daisy_seed.h ****      */
+ 102:lib/libdaisy/src/daisy_seed.h ****     void SetLed(bool state);
+ 103:lib/libdaisy/src/daisy_seed.h **** 
+ 104:lib/libdaisy/src/daisy_seed.h ****     /** Sets the state of the test point near pin 10
+ 105:lib/libdaisy/src/daisy_seed.h ****      */
+ 106:lib/libdaisy/src/daisy_seed.h ****     void SetTestPoint(bool state);
+ 107:lib/libdaisy/src/daisy_seed.h **** 
+ 108:lib/libdaisy/src/daisy_seed.h ****     /** Print formatted debug log message
+ 109:lib/libdaisy/src/daisy_seed.h ****      */
+ 110:lib/libdaisy/src/daisy_seed.h ****     template <typename... VA>
+ 111:lib/libdaisy/src/daisy_seed.h ****     static void Print(const char* format, VA... va)
+ 112:lib/libdaisy/src/daisy_seed.h ****     {
+ 113:lib/libdaisy/src/daisy_seed.h ****         Log::Print(format, va...);
+ 114:lib/libdaisy/src/daisy_seed.h ****     }
+ 115:lib/libdaisy/src/daisy_seed.h **** 
+ 116:lib/libdaisy/src/daisy_seed.h ****     /** Print formatted debug log message with automatic line termination
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 7
+
+
+ 117:lib/libdaisy/src/daisy_seed.h ****     */
+ 118:lib/libdaisy/src/daisy_seed.h ****     template <typename... VA>
+ 119:lib/libdaisy/src/daisy_seed.h ****     static void PrintLine(const char* format, VA... va)
+ 118              		.loc 3 119 17 view .LVU24
+ 119              	.LBB76:
+ 120:lib/libdaisy/src/daisy_seed.h ****     {
+ 121:lib/libdaisy/src/daisy_seed.h ****         Log::PrintLine(format, va...);
+ 120              		.loc 3 121 23 is_stmt 0 view .LVU25
+ 121 0038 6846     		mov	r0, sp
+ 122 003a FFF7FEFF 		bl	_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
+ 123              	.LVL2:
+ 124              		.loc 3 121 23 view .LVU26
+ 125              	.LBE76:
+ 126              	.LBE75:
+  17:Amathia.cpp   ****         
+  18:Amathia.cpp   ****         // Determine current effective engine index again for display
+  19:Amathia.cpp   ****         int current_engine_idx = static_cast<int>(timbre_knob.Value() * (MAX_ENGINE_INDEX + 1));
+ 127              		.loc 1 19 9 is_stmt 1 view .LVU27
+ 128              	.LBB77:
+ 129              	.LBI77:
+ 130              		.file 4 "lib/libdaisy/src/hid/ctrl.h"
+   1:lib/libdaisy/src/hid/ctrl.h **** #pragma once
+   2:lib/libdaisy/src/hid/ctrl.h **** #ifndef DSY_KNOB_H
+   3:lib/libdaisy/src/hid/ctrl.h **** #define DSY_KNOB_H /**< & */
+   4:lib/libdaisy/src/hid/ctrl.h **** #include <stdint.h>
+   5:lib/libdaisy/src/hid/ctrl.h **** 
+   6:lib/libdaisy/src/hid/ctrl.h **** #ifdef __cplusplus
+   7:lib/libdaisy/src/hid/ctrl.h **** namespace daisy
+   8:lib/libdaisy/src/hid/ctrl.h **** {
+   9:lib/libdaisy/src/hid/ctrl.h **** /**
+  10:lib/libdaisy/src/hid/ctrl.h ****     @brief Hardware Interface for control inputs \n 
+  11:lib/libdaisy/src/hid/ctrl.h ****     Primarily designed for ADC input controls such as \n 
+  12:lib/libdaisy/src/hid/ctrl.h ****     potentiometers, and control voltage. \n 
+  13:lib/libdaisy/src/hid/ctrl.h ****     @author Stephen Hensley
+  14:lib/libdaisy/src/hid/ctrl.h ****     @date November 2019
+  15:lib/libdaisy/src/hid/ctrl.h ****     @ingroup controls
+  16:lib/libdaisy/src/hid/ctrl.h **** */
+  17:lib/libdaisy/src/hid/ctrl.h **** class AnalogControl
+  18:lib/libdaisy/src/hid/ctrl.h **** {
+  19:lib/libdaisy/src/hid/ctrl.h ****   public:
+  20:lib/libdaisy/src/hid/ctrl.h ****     /** Constructor */
+  21:lib/libdaisy/src/hid/ctrl.h ****     AnalogControl() {}
+  22:lib/libdaisy/src/hid/ctrl.h ****     /** destructor */
+  23:lib/libdaisy/src/hid/ctrl.h ****     ~AnalogControl() {}
+  24:lib/libdaisy/src/hid/ctrl.h **** 
+  25:lib/libdaisy/src/hid/ctrl.h ****     /** 
+  26:lib/libdaisy/src/hid/ctrl.h ****     Initializes the control
+  27:lib/libdaisy/src/hid/ctrl.h ****     \param *adcptr is a pointer to the raw adc read value -- This can be acquired with dsy_adc_get_
+  28:lib/libdaisy/src/hid/ctrl.h ****     \param sr is the samplerate in Hz that the Process function will be called at.
+  29:lib/libdaisy/src/hid/ctrl.h ****     \param flip determines whether the input is flipped (i.e. 1.f - input) or not before being proc
+  30:lib/libdaisy/src/hid/ctrl.h ****     \param invert determines whether the input is inverted (i.e. -1.f * input) or note before being
+  31:lib/libdaisy/src/hid/ctrl.h ****     \param slew_seconds is the slew time in seconds that it takes for the control to change to a ne
+  32:lib/libdaisy/src/hid/ctrl.h ****     */
+  33:lib/libdaisy/src/hid/ctrl.h ****     void Init(uint16_t *adcptr,
+  34:lib/libdaisy/src/hid/ctrl.h ****               float     sr,
+  35:lib/libdaisy/src/hid/ctrl.h ****               bool      flip         = false,
+  36:lib/libdaisy/src/hid/ctrl.h ****               bool      invert       = false,
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 8
+
+
+  37:lib/libdaisy/src/hid/ctrl.h ****               float     slew_seconds = 0.002f);
+  38:lib/libdaisy/src/hid/ctrl.h **** 
+  39:lib/libdaisy/src/hid/ctrl.h ****     /** 
+  40:lib/libdaisy/src/hid/ctrl.h ****     This Initializes the AnalogControl for a -5V to 5V inverted input
+  41:lib/libdaisy/src/hid/ctrl.h ****     All of the Init details are the same otherwise
+  42:lib/libdaisy/src/hid/ctrl.h ****     \param *adcptr Pointer to analog digital converter
+  43:lib/libdaisy/src/hid/ctrl.h ****     \param sr Audio engine sample rate
+  44:lib/libdaisy/src/hid/ctrl.h ****     */
+  45:lib/libdaisy/src/hid/ctrl.h ****     void InitBipolarCv(uint16_t *adcptr, float sr);
+  46:lib/libdaisy/src/hid/ctrl.h **** 
+  47:lib/libdaisy/src/hid/ctrl.h ****     /** 
+  48:lib/libdaisy/src/hid/ctrl.h ****     Filters, and transforms a raw ADC read into a normalized range.
+  49:lib/libdaisy/src/hid/ctrl.h ****     this should be called at the rate of specified by samplerate at Init time.   
+  50:lib/libdaisy/src/hid/ctrl.h ****     Default Initializations will return 0.0 -> 1.0
+  51:lib/libdaisy/src/hid/ctrl.h ****     Bi-polar CV inputs will return -1.0 -> 1.0
+  52:lib/libdaisy/src/hid/ctrl.h ****     */
+  53:lib/libdaisy/src/hid/ctrl.h ****     float Process();
+  54:lib/libdaisy/src/hid/ctrl.h **** 
+  55:lib/libdaisy/src/hid/ctrl.h ****     /** Returns the current stored value, without reprocessing */
+  56:lib/libdaisy/src/hid/ctrl.h ****     inline float Value() const { return val_; }
+ 131              		.loc 4 56 18 view .LVU28
+ 132              	.LBB78:
+ 133              		.loc 4 56 34 view .LVU29
+ 134              		.loc 4 56 34 is_stmt 0 view .LVU30
+ 135              	.LBE78:
+ 136              	.LBE77:
+ 137              		.loc 1 19 74 view .LVU31
+ 138 003e 224B     		ldr	r3, .L8+16
+  20:Amathia.cpp   ****         if (current_engine_idx > MAX_ENGINE_INDEX) current_engine_idx = MAX_ENGINE_INDEX;
+  21:Amathia.cpp   ****         sprintf(buffer, "Engine: %d (%s)", current_engine_idx, (current_engine_idx <=3) ? "Poly-4" 
+ 139              		.loc 1 21 16 view .LVU32
+ 140 0040 2249     		ldr	r1, .L8+20
+ 141 0042 6846     		mov	r0, sp
+  19:Amathia.cpp   ****         if (current_engine_idx > MAX_ENGINE_INDEX) current_engine_idx = MAX_ENGINE_INDEX;
+ 142              		.loc 1 19 74 view .LVU33
+ 143 0044 1B68     		ldr	r3, [r3]
+  19:Amathia.cpp   ****         if (current_engine_idx > MAX_ENGINE_INDEX) current_engine_idx = MAX_ENGINE_INDEX;
+ 144              		.loc 1 19 91 view .LVU34
+ 145 0046 5A1C     		adds	r2, r3, #1
+ 146 0048 07EE102A 		vmov	s14, r2	@ int
+ 147              	.LBB80:
+ 148              	.LBB79:
+ 149              		.loc 4 56 41 view .LVU35
+ 150 004c 204A     		ldr	r2, .L8+24
+ 151              	.LBE79:
+ 152              	.LBE80:
+  19:Amathia.cpp   ****         if (current_engine_idx > MAX_ENGINE_INDEX) current_engine_idx = MAX_ENGINE_INDEX;
+ 153              		.loc 1 19 71 view .LVU36
+ 154 004e B8EEC77A 		vcvt.f32.s32	s14, s14
+ 155 0052 D2ED037A 		vldr.32	s15, [r2, #12]
+ 156 0056 27EE277A 		vmul.f32	s14, s14, s15
+  19:Amathia.cpp   ****         if (current_engine_idx > MAX_ENGINE_INDEX) current_engine_idx = MAX_ENGINE_INDEX;
+ 157              		.loc 1 19 95 view .LVU37
+ 158 005a FDEEC77A 		vcvt.s32.f32	s15, s14
+ 159 005e 17EE902A 		vmov	r2, s15	@ int
+ 160              	.LVL3:
+  20:Amathia.cpp   ****         if (current_engine_idx > MAX_ENGINE_INDEX) current_engine_idx = MAX_ENGINE_INDEX;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 9
+
+
+ 161              		.loc 1 20 9 is_stmt 1 view .LVU38
+ 162 0062 9A42     		cmp	r2, r3
+ 163 0064 A8BF     		it	ge
+ 164 0066 1A46     		movge	r2, r3
+ 165              	.LVL4:
+ 166              		.loc 1 21 9 view .LVU39
+ 167              		.loc 1 21 16 is_stmt 0 view .LVU40
+ 168 0068 1A4B     		ldr	r3, .L8+28
+ 169 006a 032A     		cmp	r2, #3
+ 170 006c D8BF     		it	le
+ 171 006e 0B46     		movle	r3, r1
+ 172 0070 1949     		ldr	r1, .L8+32
+ 173 0072 FFF7FEFF 		bl	sprintf
+ 174              	.LVL5:
+  22:Amathia.cpp   ****         hw.PrintLine(buffer);
+ 175              		.loc 1 22 9 is_stmt 1 view .LVU41
+ 176              	.LBB81:
+ 177              	.LBI81:
+ 119:lib/libdaisy/src/daisy_seed.h ****     {
+ 178              		.loc 3 119 17 view .LVU42
+ 179              	.LBB82:
+ 180              		.loc 3 121 23 is_stmt 0 view .LVU43
+ 181 0076 6846     		mov	r0, sp
+ 182 0078 FFF7FEFF 		bl	_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
+ 183              	.LVL6:
+ 184              		.loc 3 121 23 view .LVU44
+ 185              	.LBE82:
+ 186              	.LBE81:
+  23:Amathia.cpp   ****         
+  24:Amathia.cpp   ****         // Print Smoothed Output Level
+  25:Amathia.cpp   ****         int level_percent = static_cast<int>(smoothed_output_level * 100.0f);
+ 187              		.loc 1 25 9 is_stmt 1 view .LVU45
+ 188              		.loc 1 25 46 is_stmt 0 view .LVU46
+ 189 007c 174B     		ldr	r3, .L8+36
+  26:Amathia.cpp   ****         level_percent = level_percent < 0 ? 0 : (level_percent > 100 ? 100 : level_percent); // Cla
+  27:Amathia.cpp   ****         sprintf(buffer, "Level: %d%%", level_percent); 
+ 190              		.loc 1 27 16 view .LVU47
+ 191 007e 1849     		ldr	r1, .L8+40
+ 192 0080 6846     		mov	r0, sp
+  25:Amathia.cpp   ****         level_percent = level_percent < 0 ? 0 : (level_percent > 100 ? 100 : level_percent); // Cla
+ 193              		.loc 1 25 46 view .LVU48
+ 194 0082 D3ED007A 		vldr.32	s15, [r3]
+ 195              	.LVL7:
+  26:Amathia.cpp   ****         level_percent = level_percent < 0 ? 0 : (level_percent > 100 ? 100 : level_percent); // Cla
+ 196              		.loc 1 26 9 is_stmt 1 view .LVU49
+ 197              		.loc 1 27 9 view .LVU50
+  25:Amathia.cpp   ****         level_percent = level_percent < 0 ? 0 : (level_percent > 100 ? 100 : level_percent); // Cla
+ 198              		.loc 1 25 68 is_stmt 0 view .LVU51
+ 199 0086 67EE887A 		vmul.f32	s15, s15, s16
+ 200              	.LVL8:
+  25:Amathia.cpp   ****         level_percent = level_percent < 0 ? 0 : (level_percent > 100 ? 100 : level_percent); // Cla
+ 201              		.loc 1 25 76 view .LVU52
+ 202 008a FDEEE77A 		vcvt.s32.f32	s15, s15
+ 203 008e 17EE902A 		vmov	r2, s15	@ int
+  26:Amathia.cpp   ****         level_percent = level_percent < 0 ? 0 : (level_percent > 100 ? 100 : level_percent); // Cla
+ 204              		.loc 1 26 43 view .LVU53
+ 205 0092 642A     		cmp	r2, #100
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 10
+
+
+ 206 0094 A8BF     		it	ge
+ 207 0096 6422     		movge	r2, #100
+ 208              		.loc 1 27 16 view .LVU54
+ 209 0098 22EAE272 		bic	r2, r2, r2, asr #31
+ 210 009c FFF7FEFF 		bl	sprintf
+ 211              	.LVL9:
+  28:Amathia.cpp   ****         hw.PrintLine(buffer);
+ 212              		.loc 1 28 9 is_stmt 1 view .LVU55
+ 213              	.LBB83:
+ 214              	.LBI83:
+ 119:lib/libdaisy/src/daisy_seed.h ****     {
+ 215              		.loc 3 119 17 view .LVU56
+ 216              	.LBB84:
+ 217              		.loc 3 121 23 is_stmt 0 view .LVU57
+ 218 00a0 6846     		mov	r0, sp
+ 219 00a2 FFF7FEFF 		bl	_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
+ 220              	.LVL10:
+ 221              		.loc 3 121 23 view .LVU58
+ 222              	.LBE84:
+ 223              	.LBE83:
+  29:Amathia.cpp   ****         
+  30:Amathia.cpp   ****         hw.PrintLine("--------"); 
+ 224              		.loc 1 30 9 is_stmt 1 view .LVU59
+ 225              	.LBB85:
+ 226              	.LBI85:
+ 119:lib/libdaisy/src/daisy_seed.h ****     {
+ 227              		.loc 3 119 17 view .LVU60
+ 228              	.LBB86:
+ 229              		.loc 3 121 23 is_stmt 0 view .LVU61
+ 230 00a6 0F48     		ldr	r0, .L8+44
+ 231 00a8 FFF7FEFF 		bl	_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
+ 232              	.LVL11:
+ 233              		.loc 3 121 23 view .LVU62
+ 234              	.LBE86:
+ 235              	.LBE85:
+  31:Amathia.cpp   ****         
+  32:Amathia.cpp   ****         update_display = false; 
+ 236              		.loc 1 32 9 is_stmt 1 view .LVU63
+ 237              		.loc 1 32 24 is_stmt 0 view .LVU64
+ 238 00ac 0023     		movs	r3, #0
+ 239 00ae 2370     		strb	r3, [r4]
+ 240              	.L1:
+ 241              		.loc 1 32 24 view .LVU65
+ 242              	.LBE70:
+ 243              	.LBE69:
+ 244              	.LBE68:
+  33:Amathia.cpp   ****     }
+  34:Amathia.cpp   **** }
+ 245              		.loc 1 34 1 view .LVU66
+ 246 00b0 08B0     		add	sp, sp, #32
+ 247              		.cfi_def_cfa_offset 16
+ 248              		@ sp needed
+ 249 00b2 BDEC028B 		vldm	sp!, {d8}
+ 250              		.cfi_restore 80
+ 251              		.cfi_restore 81
+ 252              		.cfi_def_cfa_offset 8
+ 253 00b6 10BD     		pop	{r4, pc}
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 11
+
+
+ 254              	.L9:
+ 255              		.align	2
+ 256              	.L8:
+ 257 00b8 00000000 		.word	update_display
+ 258 00bc 00000000 		.word	cpu_meter
+ 259 00c0 0000C842 		.word	1120403456
+ 260 00c4 0C000000 		.word	.LC4
+ 261 00c8 00000000 		.word	MAX_ENGINE_INDEX
+ 262 00cc 00000000 		.word	.LC2
+ 263 00d0 00000000 		.word	timbre_knob
+ 264 00d4 07000000 		.word	.LC3
+ 265 00d8 14000000 		.word	.LC5
+ 266 00dc 00000000 		.word	smoothed_output_level
+ 267 00e0 24000000 		.word	.LC6
+ 268 00e4 30000000 		.word	.LC7
+ 269              		.cfi_endproc
+ 270              	.LFE5057:
+ 272              		.section	.text._Z15PollTouchSensorv,"ax",%progbits
+ 273              		.align	1
+ 274              		.global	_Z15PollTouchSensorv
+ 275              		.syntax unified
+ 276              		.thumb
+ 277              		.thumb_func
+ 279              	_Z15PollTouchSensorv:
+ 280              	.LFB5058:
+  35:Amathia.cpp   **** 
+  36:Amathia.cpp   **** // Poll the touch sensor and update shared variables
+  37:Amathia.cpp   **** void PollTouchSensor() {
+ 281              		.loc 1 37 24 is_stmt 1 view -0
+ 282              		.cfi_startproc
+ 283              		@ args = 0, pretend = 0, frame = 24
+ 284              		@ frame_needed = 0, uses_anonymous_args = 0
+  38:Amathia.cpp   ****     // Recover from any I2C errors on the touch sensor
+  39:Amathia.cpp   ****     if(touch_sensor.HasError()) {
+ 285              		.loc 1 39 5 view .LVU68
+  37:Amathia.cpp   ****     // Recover from any I2C errors on the touch sensor
+ 286              		.loc 1 37 24 is_stmt 0 view .LVU69
+ 287 0000 70B5     		push	{r4, r5, r6, lr}
+ 288              		.cfi_def_cfa_offset 16
+ 289              		.cfi_offset 4, -16
+ 290              		.cfi_offset 5, -12
+ 291              		.cfi_offset 6, -8
+ 292              		.cfi_offset 14, -4
+ 293              	.LBB103:
+ 294              		.loc 1 39 29 view .LVU70
+ 295 0002 4048     		ldr	r0, .L26
+ 296              	.LBE103:
+  37:Amathia.cpp   ****     // Recover from any I2C errors on the touch sensor
+ 297              		.loc 1 37 24 view .LVU71
+ 298 0004 2DED028B 		vpush.64	{d8}
+ 299              		.cfi_def_cfa_offset 24
+ 300              		.cfi_offset 80, -24
+ 301              		.cfi_offset 81, -20
+ 302 0008 86B0     		sub	sp, sp, #24
+ 303              		.cfi_def_cfa_offset 48
+ 304              	.LBB117:
+ 305              		.loc 1 39 29 view .LVU72
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 12
+
+
+ 306 000a FFF7FEFF 		bl	_ZNK6Mpr1218HasErrorEv
+ 307              	.LVL12:
+ 308              		.loc 1 39 5 view .LVU73
+ 309 000e E8B1     		cbz	r0, .L11
+ 310              	.LBB104:
+  40:Amathia.cpp   ****         touch_sensor.ClearError();
+ 311              		.loc 1 40 9 is_stmt 1 view .LVU74
+ 312              		.loc 1 40 32 is_stmt 0 view .LVU75
+ 313 0010 3C48     		ldr	r0, .L26
+ 314 0012 FFF7FEFF 		bl	_ZN6Mpr12110ClearErrorEv
+ 315              	.LVL13:
+  41:Amathia.cpp   ****         Mpr121::Config cfg;
+ 316              		.loc 1 41 9 is_stmt 1 view .LVU76
+ 317              	.LBB105:
+ 318              	.LBI105:
+ 319              		.file 5 "mpr121_daisy.h"
+   1:mpr121_daisy.h **** #pragma once
+   2:mpr121_daisy.h **** #ifndef MPR121_DAISY_H
+   3:mpr121_daisy.h **** #define MPR121_DAISY_H
+   4:mpr121_daisy.h **** 
+   5:mpr121_daisy.h **** #include "daisy_seed.h"
+   6:mpr121_daisy.h **** #include "per/i2c.h"
+   7:mpr121_daisy.h **** 
+   8:mpr121_daisy.h **** using namespace daisy;
+   9:mpr121_daisy.h **** 
+  10:mpr121_daisy.h **** /// mp
+  11:mpr121_daisy.h **** 
+  12:mpr121_daisy.h **** // Register map
+  13:mpr121_daisy.h **** #define MPR121_TOUCHSTATUS_L 0x00
+  14:mpr121_daisy.h **** #define MPR121_TOUCHSTATUS_H 0x01
+  15:mpr121_daisy.h **** #define MPR121_FILTDATA_0L 0x04
+  16:mpr121_daisy.h **** #define MPR121_FILTDATA_0H 0x05
+  17:mpr121_daisy.h **** #define MPR121_BASELINE_0 0x1E
+  18:mpr121_daisy.h **** #define MPR121_MHDR 0x2B
+  19:mpr121_daisy.h **** #define MPR121_NHDR 0x2C
+  20:mpr121_daisy.h **** #define MPR121_NCLR 0x2D
+  21:mpr121_daisy.h **** #define MPR121_FDLR 0x2E
+  22:mpr121_daisy.h **** #define MPR121_MHDF 0x2F
+  23:mpr121_daisy.h **** #define MPR121_NHDF 0x30
+  24:mpr121_daisy.h **** #define MPR121_NCLF 0x31
+  25:mpr121_daisy.h **** #define MPR121_FDLF 0x32
+  26:mpr121_daisy.h **** #define MPR121_NHDT 0x33
+  27:mpr121_daisy.h **** #define MPR121_NCLT 0x34
+  28:mpr121_daisy.h **** #define MPR121_FDLT 0x35
+  29:mpr121_daisy.h **** 
+  30:mpr121_daisy.h **** #define MPR121_TOUCHTH_0 0x41
+  31:mpr121_daisy.h **** #define MPR121_RELEASETH_0 0x42
+  32:mpr121_daisy.h **** #define MPR121_DEBOUNCE 0x5B
+  33:mpr121_daisy.h **** #define MPR121_CONFIG1 0x5C
+  34:mpr121_daisy.h **** #define MPR121_CONFIG2 0x5D
+  35:mpr121_daisy.h **** #define MPR121_CHARGECURR_0 0x5F
+  36:mpr121_daisy.h **** #define MPR121_CHARGETIME_1 0x6C
+  37:mpr121_daisy.h **** #define MPR121_ECR 0x5E
+  38:mpr121_daisy.h **** #define MPR121_AUTOCONFIG0 0x7B
+  39:mpr121_daisy.h **** #define MPR121_AUTOCONFIG1 0x7C
+  40:mpr121_daisy.h **** #define MPR121_UPLIMIT 0x7D
+  41:mpr121_daisy.h **** #define MPR121_LOWLIMIT 0x7E
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 13
+
+
+  42:mpr121_daisy.h **** #define MPR121_TARGETLIMIT 0x7F
+  43:mpr121_daisy.h **** 
+  44:mpr121_daisy.h **** #define MPR121_GPIODIR 0x76
+  45:mpr121_daisy.h **** #define MPR121_GPIOEN 0x77
+  46:mpr121_daisy.h **** #define MPR121_GPIOSET 0x78
+  47:mpr121_daisy.h **** #define MPR121_GPIOCLR 0x79
+  48:mpr121_daisy.h **** #define MPR121_GPIOTOGGLE 0x7A
+  49:mpr121_daisy.h **** 
+  50:mpr121_daisy.h **** #define MPR121_SOFTRESET 0x80
+  51:mpr121_daisy.h **** #define MPR121_I2CADDR_DEFAULT 0x5A
+  52:mpr121_daisy.h **** 
+  53:mpr121_daisy.h **** class Mpr121
+  54:mpr121_daisy.h **** {
+  55:mpr121_daisy.h ****   public:
+  56:mpr121_daisy.h ****     Mpr121() {}
+  57:mpr121_daisy.h ****     ~Mpr121() {}
+  58:mpr121_daisy.h **** 
+  59:mpr121_daisy.h ****     struct Config
+ 320              		.loc 5 59 12 view .LVU77
+ 321              	.LBB106:
+ 322              	.LBI106:
+ 323              		.file 6 "lib/libdaisy/src/per/i2c.h"
+   1:lib/libdaisy/src/per/i2c.h **** #pragma once
+   2:lib/libdaisy/src/per/i2c.h **** #include "daisy_core.h"
+   3:lib/libdaisy/src/per/i2c.h **** 
+   4:lib/libdaisy/src/per/i2c.h **** namespace daisy
+   5:lib/libdaisy/src/per/i2c.h **** {
+   6:lib/libdaisy/src/per/i2c.h **** /** A handle for interacting with an I2C peripheral. This is a dumb
+   7:lib/libdaisy/src/per/i2c.h ****  *  gateway that internally points to one of the four I2C peripherals
+   8:lib/libdaisy/src/per/i2c.h ****  *  after it was initialised. It can then be copied and passed around.
+   9:lib/libdaisy/src/per/i2c.h ****  *  Use an I2CHandle like this:
+  10:lib/libdaisy/src/per/i2c.h ****  *  
+  11:lib/libdaisy/src/per/i2c.h ****  *      // setup the configuration
+  12:lib/libdaisy/src/per/i2c.h ****  *      I2CHandle::Config i2c_conf;
+  13:lib/libdaisy/src/per/i2c.h ****  *      i2c_conf.periph = I2CHandle::Config::Peripheral::I2C_1;
+  14:lib/libdaisy/src/per/i2c.h ****  *      i2c_conf.speed  = I2CHandle::Config::Speed::I2C_400KHZ;
+  15:lib/libdaisy/src/per/i2c.h ****  *      i2c_conf.mode   = I2CHandle::Config::Mode::Master;
+  16:lib/libdaisy/src/per/i2c.h ****  *      i2c_conf.pin_config.scl  = {DSY_GPIOB, 8};
+  17:lib/libdaisy/src/per/i2c.h ****  *      i2c_conf.pin_config.sda  = {DSY_GPIOB, 9};
+  18:lib/libdaisy/src/per/i2c.h ****  *      // initialise the peripheral
+  19:lib/libdaisy/src/per/i2c.h ****  *      I2CHandle i2c;
+  20:lib/libdaisy/src/per/i2c.h ****  *      i2c.Init(i2c_conf);
+  21:lib/libdaisy/src/per/i2c.h ****  *      // now i2c points to the corresponding peripheral and can be used.
+  22:lib/libdaisy/src/per/i2c.h ****  *      i2c.TransmitBlocking( ... );
+  23:lib/libdaisy/src/per/i2c.h ****  */
+  24:lib/libdaisy/src/per/i2c.h **** class I2CHandle
+  25:lib/libdaisy/src/per/i2c.h **** {
+  26:lib/libdaisy/src/per/i2c.h ****   public:
+  27:lib/libdaisy/src/per/i2c.h ****     /** Contains settings for initialising an I2C interface. */
+  28:lib/libdaisy/src/per/i2c.h ****     struct Config
+ 324              		.loc 6 28 12 view .LVU78
+ 325              	.LBB107:
+ 326 0016 1023     		movs	r3, #16
+ 327              	.LBE107:
+ 328              	.LBE106:
+ 329              	.LBE105:
+ 330              	.LBB110:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 14
+
+
+ 331              	.LBB111:
+  60:mpr121_daisy.h ****     {
+  61:mpr121_daisy.h ****         I2CHandle::Config i2c_config;
+  62:mpr121_daisy.h ****         uint8_t          i2c_address;
+  63:mpr121_daisy.h **** 
+  64:mpr121_daisy.h ****         void Defaults()
+  65:mpr121_daisy.h ****         {
+  66:mpr121_daisy.h ****             i2c_config.periph = I2CHandle::Config::Peripheral::I2C_1;
+  67:mpr121_daisy.h ****             i2c_config.speed  = I2CHandle::Config::Speed::I2C_400KHZ;
+ 332              		.loc 5 67 31 is_stmt 0 view .LVU79
+ 333 0018 0122     		movs	r2, #1
+ 334              	.LBE111:
+ 335              	.LBE110:
+  42:Amathia.cpp   ****         cfg.Defaults();
+  43:Amathia.cpp   ****         touch_sensor.Init(cfg);
+ 336              		.loc 1 43 26 view .LVU80
+ 337 001a 6946     		mov	r1, sp
+ 338              	.LBB114:
+ 339              	.LBB109:
+ 340              	.LBB108:
+ 341              		.loc 6 28 12 view .LVU81
+ 342 001c 8DF81030 		strb	r3, [sp, #16]
+ 343              	.LVL14:
+ 344              		.loc 6 28 12 view .LVU82
+ 345              	.LBE108:
+ 346              	.LBE109:
+ 347              	.LBE114:
+  42:Amathia.cpp   ****         cfg.Defaults();
+ 348              		.loc 1 42 9 is_stmt 1 view .LVU83
+ 349              	.LBB115:
+ 350              	.LBI110:
+  64:mpr121_daisy.h ****         {
+ 351              		.loc 5 64 14 view .LVU84
+ 352              	.LBB112:
+  66:mpr121_daisy.h ****             i2c_config.speed  = I2CHandle::Config::Speed::I2C_400KHZ;
+ 353              		.loc 5 66 13 view .LVU85
+  66:mpr121_daisy.h ****             i2c_config.speed  = I2CHandle::Config::Speed::I2C_400KHZ;
+ 354              		.loc 5 66 31 is_stmt 0 view .LVU86
+ 355 0020 0023     		movs	r3, #0
+ 356              	.LBE112:
+ 357              	.LBE115:
+ 358              		.loc 1 43 26 view .LVU87
+ 359 0022 3848     		ldr	r0, .L26
+ 360              	.LBB116:
+ 361              	.LBB113:
+  66:mpr121_daisy.h ****             i2c_config.speed  = I2CHandle::Config::Speed::I2C_400KHZ;
+ 362              		.loc 5 66 31 view .LVU88
+ 363 0024 0093     		str	r3, [sp]
+ 364              		.loc 5 67 13 is_stmt 1 view .LVU89
+  68:mpr121_daisy.h ****             i2c_config.mode   = I2CHandle::Config::Mode::I2C_MASTER;
+ 365              		.loc 5 68 31 is_stmt 0 view .LVU90
+ 366 0026 CDE90223 		strd	r2, r3, [sp, #8]
+  69:mpr121_daisy.h ****             i2c_config.pin_config.scl = {DSY_GPIOB, 8};
+ 367              		.loc 5 69 13 is_stmt 1 view .LVU91
+ 368              		.loc 5 69 39 is_stmt 0 view .LVU92
+ 369 002a 374B     		ldr	r3, .L26+4
+ 370 002c 1A88     		ldrh	r2, [r3]	@ unaligned
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 15
+
+
+  70:mpr121_daisy.h ****             i2c_config.pin_config.sda = {DSY_GPIOB, 9};
+ 371              		.loc 5 70 39 view .LVU93
+ 372 002e 5B88     		ldrh	r3, [r3, #2]	@ unaligned
+  69:mpr121_daisy.h ****             i2c_config.pin_config.scl = {DSY_GPIOB, 8};
+ 373              		.loc 5 69 39 view .LVU94
+ 374 0030 ADF80420 		strh	r2, [sp, #4]	@ unaligned
+ 375              		.loc 5 70 13 is_stmt 1 view .LVU95
+ 376              		.loc 5 70 39 is_stmt 0 view .LVU96
+ 377 0034 ADF80630 		strh	r3, [sp, #6]	@ unaligned
+  71:mpr121_daisy.h ****             i2c_address               = MPR121_I2CADDR_DEFAULT;
+ 378              		.loc 5 71 13 is_stmt 1 view .LVU97
+ 379              		.loc 5 71 39 is_stmt 0 view .LVU98
+ 380 0038 5A23     		movs	r3, #90
+ 381 003a 8DF81430 		strb	r3, [sp, #20]
+ 382              	.LVL15:
+ 383              		.loc 5 71 39 view .LVU99
+ 384              	.LBE113:
+ 385              	.LBE116:
+ 386              		.loc 1 43 9 is_stmt 1 view .LVU100
+ 387              		.loc 1 43 26 is_stmt 0 view .LVU101
+ 388 003e FFF7FEFF 		bl	_ZN6Mpr1214InitERKNS_6ConfigE
+ 389              	.LVL16:
+  44:Amathia.cpp   ****         touch_sensor.SetThresholds(6, 3);
+ 390              		.loc 1 44 9 is_stmt 1 view .LVU102
+ 391              		.loc 1 44 35 is_stmt 0 view .LVU103
+ 392 0042 0322     		movs	r2, #3
+ 393 0044 0621     		movs	r1, #6
+ 394 0046 2F48     		ldr	r0, .L26
+ 395 0048 FFF7FEFF 		bl	_ZN6Mpr12113SetThresholdsEhh
+ 396              	.LVL17:
+ 397              	.L11:
+ 398              	.LBE104:
+ 399              	.LBE117:
+  45:Amathia.cpp   ****     }
+  46:Amathia.cpp   ****     uint16_t touched = touch_sensor.Touched();
+ 400              		.loc 1 46 5 is_stmt 1 view .LVU104
+ 401              		.loc 1 46 44 is_stmt 0 view .LVU105
+ 402 004c 2D48     		ldr	r0, .L26
+ 403 004e FFF7FEFF 		bl	_ZN6Mpr1217TouchedEv
+ 404              	.LVL18:
+  47:Amathia.cpp   ****     current_touch_state = touched;
+ 405              		.loc 1 47 25 view .LVU106
+ 406 0052 2E4B     		ldr	r3, .L26+8
+  46:Amathia.cpp   ****     current_touch_state = touched;
+ 407              		.loc 1 46 44 view .LVU107
+ 408 0054 0646     		mov	r6, r0
+ 409              	.LVL19:
+ 410              		.loc 1 47 5 is_stmt 1 view .LVU108
+ 411              		.loc 1 47 25 is_stmt 0 view .LVU109
+ 412 0056 1880     		strh	r0, [r3]	@ movhi
+  48:Amathia.cpp   **** 
+  49:Amathia.cpp   ****     if (touched == 0) {
+ 413              		.loc 1 49 5 is_stmt 1 view .LVU110
+ 414 0058 60B9     		cbnz	r0, .L16
+  50:Amathia.cpp   ****         // Optionally decay the control value smoothly to 0 when no pads are touched
+  51:Amathia.cpp   ****         touch_cv_value = touch_cv_value * 0.95f; 
+ 415              		.loc 1 51 9 view .LVU111
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 16
+
+
+ 416              		.loc 1 51 26 is_stmt 0 view .LVU112
+ 417 005a 2D4B     		ldr	r3, .L26+12
+ 418              		.loc 1 51 41 view .LVU113
+ 419 005c 9FED2D7A 		vldr.32	s14, .L26+16
+ 420              		.loc 1 51 26 view .LVU114
+ 421 0060 D3ED007A 		vldr.32	s15, [r3]
+ 422              		.loc 1 51 41 view .LVU115
+ 423 0064 67EE877A 		vmul.f32	s15, s15, s14
+ 424              	.LVL20:
+ 425              	.L25:
+  52:Amathia.cpp   ****         return;
+  53:Amathia.cpp   ****     }
+  54:Amathia.cpp   **** 
+  55:Amathia.cpp   ****     float total_deviation = 0.0f;
+  56:Amathia.cpp   ****     int touched_count = 0;
+  57:Amathia.cpp   **** 
+  58:Amathia.cpp   ****     // Iterate through all pads
+  59:Amathia.cpp   ****     for (int i = 0; i < 12; i++) {
+  60:Amathia.cpp   ****         if (touched & (1 << i)) {
+  61:Amathia.cpp   ****             // Get capacitance deviation for this touched pad
+  62:Amathia.cpp   ****             int16_t deviation = touch_sensor.GetBaselineDeviation(i);
+  63:Amathia.cpp   ****             total_deviation += deviation;
+  64:Amathia.cpp   ****             touched_count++;
+  65:Amathia.cpp   ****         }
+  66:Amathia.cpp   ****     }
+  67:Amathia.cpp   **** 
+  68:Amathia.cpp   ****     float average_deviation = 0.0f;
+  69:Amathia.cpp   ****     if (touched_count > 0) {
+  70:Amathia.cpp   ****         average_deviation = total_deviation / touched_count;
+  71:Amathia.cpp   ****     }
+  72:Amathia.cpp   **** 
+  73:Amathia.cpp   ****     // Normalize to 0.0-1.0 range with adjustable sensitivity
+  74:Amathia.cpp   ****     // Consider recalibrating sensitivity if needed for average pressure
+  75:Amathia.cpp   ****     float sensitivity = 150.0f;
+  76:Amathia.cpp   ****     float normalized_value = daisysp::fmax(0.0f, daisysp::fmin(1.0f, average_deviation / sensitivit
+  77:Amathia.cpp   **** 
+  78:Amathia.cpp   ****     // Apply curve for better control response (squared curve feels more natural)
+  79:Amathia.cpp   ****     normalized_value = normalized_value * normalized_value;
+  80:Amathia.cpp   **** 
+  81:Amathia.cpp   ****     // Remove the position component - control is now based purely on average pressure
+  82:Amathia.cpp   ****     // float position_value = highest_pad / 11.0f; // Removed
+  83:Amathia.cpp   ****     // float position_weight = 0.7f;              // Removed
+  84:Amathia.cpp   ****     // float combined_value = position_value * position_weight + normalized_value * (1.0f - positio
+  85:Amathia.cpp   ****     float combined_value = normalized_value; // Use normalized average pressure directly
+  86:Amathia.cpp   **** 
+  87:Amathia.cpp   ****     // Apply adaptive smoothing - more smoothing for small changes, less for big changes
+  88:Amathia.cpp   ****     float change = fabsf(combined_value - touch_cv_value);
+  89:Amathia.cpp   ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+  90:Amathia.cpp   **** 
+  91:Amathia.cpp   ****     // Update the shared volatile variable
+  92:Amathia.cpp   ****     touch_cv_value = touch_cv_value * smoothing + combined_value * (1.0f - smoothing);
+ 426              		.loc 1 92 20 view .LVU116
+ 427 0068 C3ED007A 		vstr.32	s15, [r3]
+  93:Amathia.cpp   **** }
+ 428              		.loc 1 93 1 view .LVU117
+ 429 006c 06B0     		add	sp, sp, #24
+ 430              		.cfi_remember_state
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 17
+
+
+ 431              		.cfi_def_cfa_offset 24
+ 432              		@ sp needed
+ 433 006e BDEC028B 		vldm	sp!, {d8}
+ 434              		.cfi_restore 80
+ 435              		.cfi_restore 81
+ 436              		.cfi_def_cfa_offset 16
+ 437 0072 70BD     		pop	{r4, r5, r6, pc}
+ 438              	.LVL21:
+ 439              	.L16:
+ 440              		.cfi_restore_state
+  55:Amathia.cpp   ****     int touched_count = 0;
+ 441              		.loc 1 55 11 view .LVU118
+ 442 0074 DFED288A 		vldr.32	s17, .L26+20
+ 443              	.LBB118:
+  59:Amathia.cpp   ****         if (touched & (1 << i)) {
+ 444              		.loc 1 59 14 view .LVU119
+ 445 0078 0025     		movs	r5, #0
+ 446 007a B0EE688A 		vmov.f32	s16, s17
+ 447              	.LBE118:
+  56:Amathia.cpp   **** 
+ 448              		.loc 1 56 9 view .LVU120
+ 449 007e 2C46     		mov	r4, r5
+ 450              	.LVL22:
+ 451              	.L12:
+  60:Amathia.cpp   ****             // Get capacitance deviation for this touched pad
+ 452              		.loc 1 60 9 is_stmt 1 view .LVU121
+ 453              	.LBB121:
+ 454              	.LBB119:
+  60:Amathia.cpp   ****             // Get capacitance deviation for this touched pad
+ 455              		.loc 1 60 21 is_stmt 0 view .LVU122
+ 456 0080 46FA05F3 		asr	r3, r6, r5
+  60:Amathia.cpp   ****             // Get capacitance deviation for this touched pad
+ 457              		.loc 1 60 9 view .LVU123
+ 458 0084 DB07     		lsls	r3, r3, #31
+ 459 0086 0AD5     		bpl	.L14
+ 460              	.LBB120:
+  62:Amathia.cpp   ****             total_deviation += deviation;
+ 461              		.loc 1 62 13 is_stmt 1 view .LVU124
+  62:Amathia.cpp   ****             total_deviation += deviation;
+ 462              		.loc 1 62 66 is_stmt 0 view .LVU125
+ 463 0088 E9B2     		uxtb	r1, r5
+ 464 008a 1E48     		ldr	r0, .L26
+ 465 008c FFF7FEFF 		bl	_ZN6Mpr12120GetBaselineDeviationEh
+ 466              	.LVL23:
+  63:Amathia.cpp   ****             touched_count++;
+ 467              		.loc 1 63 13 is_stmt 1 view .LVU126
+  63:Amathia.cpp   ****             touched_count++;
+ 468              		.loc 1 63 29 is_stmt 0 view .LVU127
+ 469 0090 07EE900A 		vmov	s15, r0	@ int
+  64:Amathia.cpp   ****         }
+ 470              		.loc 1 64 26 view .LVU128
+ 471 0094 0134     		adds	r4, r4, #1
+ 472              	.LVL24:
+  63:Amathia.cpp   ****             touched_count++;
+ 473              		.loc 1 63 29 view .LVU129
+ 474 0096 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 475 009a 78EEA78A 		vadd.f32	s17, s17, s15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 18
+
+
+ 476              	.LVL25:
+  64:Amathia.cpp   ****         }
+ 477              		.loc 1 64 13 is_stmt 1 view .LVU130
+ 478              	.L14:
+  64:Amathia.cpp   ****         }
+ 479              		.loc 1 64 13 is_stmt 0 view .LVU131
+ 480              	.LBE120:
+ 481              	.LBE119:
+  59:Amathia.cpp   ****         if (touched & (1 << i)) {
+ 482              		.loc 1 59 5 is_stmt 1 discriminator 2 view .LVU132
+ 483 009e 0135     		adds	r5, r5, #1
+ 484              	.LVL26:
+  59:Amathia.cpp   ****         if (touched & (1 << i)) {
+ 485              		.loc 1 59 23 discriminator 2 view .LVU133
+ 486 00a0 0C2D     		cmp	r5, #12
+ 487 00a2 EDD1     		bne	.L12
+  59:Amathia.cpp   ****         if (touched & (1 << i)) {
+ 488              		.loc 1 59 23 is_stmt 0 discriminator 2 view .LVU134
+ 489              	.LBE121:
+  68:Amathia.cpp   ****     if (touched_count > 0) {
+ 490              		.loc 1 68 5 is_stmt 1 view .LVU135
+ 491              	.LVL27:
+  69:Amathia.cpp   ****         average_deviation = total_deviation / touched_count;
+ 492              		.loc 1 69 5 view .LVU136
+ 493 00a4 5CB3     		cbz	r4, .L17
+  70:Amathia.cpp   ****     }
+ 494              		.loc 1 70 9 view .LVU137
+  70:Amathia.cpp   ****     }
+ 495              		.loc 1 70 45 is_stmt 0 view .LVU138
+ 496 00a6 07EE904A 		vmov	s15, r4	@ int
+ 497 00aa F8EEE77A 		vcvt.f32.s32	s15, s15
+  70:Amathia.cpp   ****     }
+ 498              		.loc 1 70 27 view .LVU139
+ 499 00ae C8EEA76A 		vdiv.f32	s13, s17, s15
+ 500              	.LVL28:
+ 501              	.L15:
+  75:Amathia.cpp   ****     float normalized_value = daisysp::fmax(0.0f, daisysp::fmin(1.0f, average_deviation / sensitivit
+ 502              		.loc 1 75 5 is_stmt 1 view .LVU140
+  76:Amathia.cpp   **** 
+ 503              		.loc 1 76 5 view .LVU141
+ 504              	.LBB122:
+ 505              	.LBI122:
+ 506              		.file 7 "lib/DaisySP/Source/Utility/dsp.h"
+   1:lib/DaisySP/Source/Utility/dsp.h **** /*
+   2:lib/DaisySP/Source/Utility/dsp.h **** Copyright (c) 2020 Electrosmith, Corp, Emilie Gillet
+   3:lib/DaisySP/Source/Utility/dsp.h **** 
+   4:lib/DaisySP/Source/Utility/dsp.h **** Use of this source code is governed by an MIT-style
+   5:lib/DaisySP/Source/Utility/dsp.h **** license that can be found in the LICENSE file or at
+   6:lib/DaisySP/Source/Utility/dsp.h **** https://opensource.org/licenses/MIT.
+   7:lib/DaisySP/Source/Utility/dsp.h **** */
+   8:lib/DaisySP/Source/Utility/dsp.h **** 
+   9:lib/DaisySP/Source/Utility/dsp.h **** /** Helpful defines, functions, and other utilities for use in/with daisysp modules.
+  10:lib/DaisySP/Source/Utility/dsp.h **** */
+  11:lib/DaisySP/Source/Utility/dsp.h **** #pragma once
+  12:lib/DaisySP/Source/Utility/dsp.h **** #ifndef DSY_CORE_DSP
+  13:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_CORE_DSP
+  14:lib/DaisySP/Source/Utility/dsp.h **** #include <cassert>
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 19
+
+
+  15:lib/DaisySP/Source/Utility/dsp.h **** #include <cstdint>
+  16:lib/DaisySP/Source/Utility/dsp.h **** #include <random>
+  17:lib/DaisySP/Source/Utility/dsp.h **** #include <cmath>
+  18:lib/DaisySP/Source/Utility/dsp.h **** 
+  19:lib/DaisySP/Source/Utility/dsp.h **** /** PIs
+  20:lib/DaisySP/Source/Utility/dsp.h **** */
+  21:lib/DaisySP/Source/Utility/dsp.h **** #define PI_F 3.1415927410125732421875f
+  22:lib/DaisySP/Source/Utility/dsp.h **** #define TWOPI_F (2.0f * PI_F)
+  23:lib/DaisySP/Source/Utility/dsp.h **** #define HALFPI_F (PI_F * 0.5f)
+  24:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_MIN(in, mn) (in < mn ? in : mn)
+  25:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_MAX(in, mx) (in > mx ? in : mx)
+  26:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_CLAMP(in, mn, mx) (DSY_MIN(DSY_MAX(in, mn), mx))
+  27:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_COUNTOF(_arr) (sizeof(_arr) / sizeof(_arr[0]))
+  28:lib/DaisySP/Source/Utility/dsp.h **** 
+  29:lib/DaisySP/Source/Utility/dsp.h **** namespace daisysp
+  30:lib/DaisySP/Source/Utility/dsp.h **** {
+  31:lib/DaisySP/Source/Utility/dsp.h **** //Avoids division for random floats. e.g. rand() * kRandFrac
+  32:lib/DaisySP/Source/Utility/dsp.h **** static constexpr float kRandFrac = 1.f / (float)RAND_MAX;
+  33:lib/DaisySP/Source/Utility/dsp.h **** 
+  34:lib/DaisySP/Source/Utility/dsp.h **** //Convert from semitones to other units. e.g. 2 ^ (kOneTwelfth * x)
+  35:lib/DaisySP/Source/Utility/dsp.h **** static constexpr float kOneTwelfth = 1.f / 12.f;
+  36:lib/DaisySP/Source/Utility/dsp.h **** 
+  37:lib/DaisySP/Source/Utility/dsp.h **** /** efficient floating point min/max
+  38:lib/DaisySP/Source/Utility/dsp.h **** c/o stephen mccaul
+  39:lib/DaisySP/Source/Utility/dsp.h **** */
+  40:lib/DaisySP/Source/Utility/dsp.h **** inline float fmax(float a, float b)
+  41:lib/DaisySP/Source/Utility/dsp.h **** {
+  42:lib/DaisySP/Source/Utility/dsp.h ****     float r;
+  43:lib/DaisySP/Source/Utility/dsp.h **** #ifdef __arm__
+  44:lib/DaisySP/Source/Utility/dsp.h ****     asm("vmaxnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
+  45:lib/DaisySP/Source/Utility/dsp.h **** #else
+  46:lib/DaisySP/Source/Utility/dsp.h ****     r = (a > b) ? a : b;
+  47:lib/DaisySP/Source/Utility/dsp.h **** #endif // __arm__
+  48:lib/DaisySP/Source/Utility/dsp.h ****     return r;
+  49:lib/DaisySP/Source/Utility/dsp.h **** }
+  50:lib/DaisySP/Source/Utility/dsp.h **** 
+  51:lib/DaisySP/Source/Utility/dsp.h **** inline float fmin(float a, float b)
+ 507              		.loc 7 51 14 view .LVU142
+ 508              	.LBB123:
+  52:lib/DaisySP/Source/Utility/dsp.h **** {
+  53:lib/DaisySP/Source/Utility/dsp.h ****     float r;
+ 509              		.loc 7 53 5 view .LVU143
+  54:lib/DaisySP/Source/Utility/dsp.h **** #ifdef __arm__
+  55:lib/DaisySP/Source/Utility/dsp.h ****     asm("vminnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
+ 510              		.loc 7 55 5 view .LVU144
+ 511              	.LBE123:
+ 512              	.LBE122:
+  76:Amathia.cpp   **** 
+ 513              		.loc 1 76 43 is_stmt 0 view .LVU145
+ 514 00b2 9FED1A6A 		vldr.32	s12, .L26+24
+  88:Amathia.cpp   ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ 515              		.loc 1 88 43 view .LVU146
+ 516 00b6 164B     		ldr	r3, .L26+12
+  76:Amathia.cpp   **** 
+ 517              		.loc 1 76 43 view .LVU147
+ 518 00b8 86EE867A 		vdiv.f32	s14, s13, s12
+ 519              	.LVL29:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 20
+
+
+  88:Amathia.cpp   ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ 520              		.loc 1 88 43 view .LVU148
+ 521 00bc D3ED006A 		vldr.32	s13, [r3]
+ 522              	.LVL30:
+  89:Amathia.cpp   **** 
+ 523              		.loc 1 89 36 view .LVU149
+ 524 00c0 9FED146A 		vldr.32	s12, .L26+16
+ 525              	.LBB125:
+ 526              	.LBB124:
+ 527              		.loc 7 55 5 view .LVU150
+ 528 00c4 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 529              		.syntax unified
+ 530              	@ 55 "lib/DaisySP/Source/Utility/dsp.h" 1
+ 531 00c8 87FEC77A 		vminnm.f32 s14, s15, s14
+ 532              	@ 0 "" 2
+ 533              	.LVL31:
+  56:lib/DaisySP/Source/Utility/dsp.h **** #else
+  57:lib/DaisySP/Source/Utility/dsp.h ****     r = (a < b) ? a : b;
+  58:lib/DaisySP/Source/Utility/dsp.h **** #endif // __arm__
+  59:lib/DaisySP/Source/Utility/dsp.h ****     return r;
+ 534              		.loc 7 59 5 is_stmt 1 view .LVU151
+ 535              		.loc 7 59 5 is_stmt 0 view .LVU152
+ 536              		.thumb
+ 537              		.syntax unified
+ 538              	.LBE124:
+ 539              	.LBE125:
+ 540              	.LBB126:
+ 541              	.LBI126:
+  40:lib/DaisySP/Source/Utility/dsp.h **** {
+ 542              		.loc 7 40 14 is_stmt 1 view .LVU153
+ 543              	.LBB127:
+  42:lib/DaisySP/Source/Utility/dsp.h **** #ifdef __arm__
+ 544              		.loc 7 42 5 view .LVU154
+  44:lib/DaisySP/Source/Utility/dsp.h **** #else
+ 545              		.loc 7 44 5 view .LVU155
+ 546              		.syntax unified
+ 547              	@ 44 "lib/DaisySP/Source/Utility/dsp.h" 1
+ 548 00cc 88FE077A 		vmaxnm.f32 s14, s16, s14
+ 549              	@ 0 "" 2
+ 550              	.LVL32:
+  48:lib/DaisySP/Source/Utility/dsp.h **** }
+ 551              		.loc 7 48 5 view .LVU156
+  48:lib/DaisySP/Source/Utility/dsp.h **** }
+ 552              		.loc 7 48 5 is_stmt 0 view .LVU157
+ 553              		.thumb
+ 554              		.syntax unified
+ 555              	.LBE127:
+ 556              	.LBE126:
+  79:Amathia.cpp   **** 
+ 557              		.loc 1 79 5 is_stmt 1 view .LVU158
+  79:Amathia.cpp   **** 
+ 558              		.loc 1 79 22 is_stmt 0 view .LVU159
+ 559 00d0 27EE077A 		vmul.f32	s14, s14, s14
+ 560              	.LVL33:
+  85:Amathia.cpp   **** 
+ 561              		.loc 1 85 5 is_stmt 1 view .LVU160
+  88:Amathia.cpp   ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 21
+
+
+ 562              		.loc 1 88 5 view .LVU161
+  89:Amathia.cpp   **** 
+ 563              		.loc 1 89 5 view .LVU162
+  89:Amathia.cpp   **** 
+ 564              		.loc 1 89 36 is_stmt 0 view .LVU163
+ 565 00d4 F0EE005A 		vmov.f32	s11, #2.0e+0
+  88:Amathia.cpp   ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ 566              		.loc 1 88 41 view .LVU164
+ 567 00d8 77EE666A 		vsub.f32	s13, s14, s13
+ 568              	.LVL34:
+  88:Amathia.cpp   ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ 569              		.loc 1 88 57 view .LVU165
+ 570 00dc F0EEE66A 		vabs.f32	s13, s13
+ 571              	.LVL35:
+  89:Amathia.cpp   **** 
+ 572              		.loc 1 89 36 view .LVU166
+ 573 00e0 A6EEE56A 		vfms.f32	s12, s13, s11
+ 574              	.LVL36:
+ 575              	.LBB128:
+ 576              	.LBI128:
+  40:lib/DaisySP/Source/Utility/dsp.h **** {
+ 577              		.loc 7 40 14 is_stmt 1 view .LVU167
+ 578              	.LBB129:
+  42:lib/DaisySP/Source/Utility/dsp.h **** #ifdef __arm__
+ 579              		.loc 7 42 5 view .LVU168
+  44:lib/DaisySP/Source/Utility/dsp.h **** #else
+ 580              		.loc 7 44 5 view .LVU169
+ 581 00e4 F6EE006A 		vmov.f32	s13, #5.0e-1
+ 582              	.LVL37:
+  44:lib/DaisySP/Source/Utility/dsp.h **** #else
+ 583              		.loc 7 44 5 is_stmt 0 view .LVU170
+ 584              		.syntax unified
+ 585              	@ 44 "lib/DaisySP/Source/Utility/dsp.h" 1
+ 586 00e8 C6FE866A 		vmaxnm.f32 s13, s13, s12
+ 587              	@ 0 "" 2
+ 588              	.LVL38:
+  48:lib/DaisySP/Source/Utility/dsp.h **** }
+ 589              		.loc 7 48 5 is_stmt 1 view .LVU171
+  48:lib/DaisySP/Source/Utility/dsp.h **** }
+ 590              		.loc 7 48 5 is_stmt 0 view .LVU172
+ 591              		.thumb
+ 592              		.syntax unified
+ 593              	.LBE129:
+ 594              	.LBE128:
+  92:Amathia.cpp   **** }
+ 595              		.loc 1 92 5 is_stmt 1 view .LVU173
+  92:Amathia.cpp   **** }
+ 596              		.loc 1 92 74 is_stmt 0 view .LVU174
+ 597 00ec 77EEE67A 		vsub.f32	s15, s15, s13
+  92:Amathia.cpp   **** }
+ 598              		.loc 1 92 22 view .LVU175
+ 599 00f0 93ED006A 		vldr.32	s12, [r3]
+  92:Amathia.cpp   **** }
+ 600              		.loc 1 92 66 view .LVU176
+ 601 00f4 67EE877A 		vmul.f32	s15, s15, s14
+  92:Amathia.cpp   **** }
+ 602              		.loc 1 92 49 view .LVU177
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 22
+
+
+ 603 00f8 E6EE267A 		vfma.f32	s15, s12, s13
+ 604 00fc B4E7     		b	.L25
+ 605              	.LVL39:
+ 606              	.L17:
+  68:Amathia.cpp   ****     if (touched_count > 0) {
+ 607              		.loc 1 68 11 view .LVU178
+ 608 00fe DFED066A 		vldr.32	s13, .L26+20
+ 609 0102 D6E7     		b	.L15
+ 610              	.L27:
+ 611              		.align	2
+ 612              	.L26:
+ 613 0104 00000000 		.word	touch_sensor
+ 614 0108 00000000 		.word	.LANCHOR0
+ 615 010c 00000000 		.word	.LANCHOR1
+ 616 0110 00000000 		.word	.LANCHOR2
+ 617 0114 3333733F 		.word	1064514355
+ 618 0118 00000000 		.word	0
+ 619 011c 00001643 		.word	1125515264
+ 620              		.cfi_endproc
+ 621              	.LFE5058:
+ 623              		.section	.text.startup.main,"ax",%progbits
+ 624              		.align	1
+ 625              		.global	main
+ 626              		.syntax unified
+ 627              		.thumb
+ 628              		.thumb_func
+ 630              	main:
+ 631              	.LFB5062:
+  94:Amathia.cpp   **** 
+  95:Amathia.cpp   **** int main(void) {
+ 632              		.loc 1 95 16 is_stmt 1 view -0
+ 633              		.cfi_startproc
+ 634              		@ args = 0, pretend = 0, frame = 0
+ 635              		@ frame_needed = 0, uses_anonymous_args = 0
+  96:Amathia.cpp   ****     
+  97:Amathia.cpp   ****     InitializeSynth();
+ 636              		.loc 1 97 5 view .LVU180
+  95:Amathia.cpp   ****     
+ 637              		.loc 1 95 16 is_stmt 0 view .LVU181
+ 638 0000 10B5     		push	{r4, lr}
+ 639              		.cfi_def_cfa_offset 8
+ 640              		.cfi_offset 4, -8
+ 641              		.cfi_offset 14, -4
+ 642              		.loc 1 97 20 view .LVU182
+ 643 0002 FFF7FEFF 		bl	_Z15InitializeSynthv
+ 644              	.LVL40:
+  98:Amathia.cpp   ****     
+  99:Amathia.cpp   ****     uint32_t lastPoll = hw.system.GetNow();  // Track last poll time
+ 645              		.loc 1 99 5 is_stmt 1 view .LVU183
+ 646              		.loc 1 99 41 is_stmt 0 view .LVU184
+ 647 0006 FFF7FEFF 		bl	_ZN5daisy6System6GetNowEv
+ 648              	.LVL41:
+ 649 000a 0446     		mov	r4, r0
+ 650              	.LVL42:
+ 651              	.L30:
+ 100:Amathia.cpp   ****     
+ 101:Amathia.cpp   ****     // Main Loop 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 23
+
+
+ 102:Amathia.cpp   ****     while (1) {
+ 652              		.loc 1 102 5 is_stmt 1 view .LVU185
+ 103:Amathia.cpp   **** 
+ 104:Amathia.cpp   ****         HandleButtonInput();
+ 653              		.loc 1 104 9 view .LVU186
+ 654              		.loc 1 104 26 is_stmt 0 view .LVU187
+ 655 000c FFF7FEFF 		bl	_Z17HandleButtonInputv
+ 656              	.LVL43:
+ 105:Amathia.cpp   ****         
+ 106:Amathia.cpp   ****         UpdateLED();
+ 657              		.loc 1 106 9 is_stmt 1 view .LVU188
+ 658              		.loc 1 106 18 is_stmt 0 view .LVU189
+ 659 0010 FFF7FEFF 		bl	_Z9UpdateLEDv
+ 660              	.LVL44:
+ 107:Amathia.cpp   ****         
+ 108:Amathia.cpp   ****         UpdateDisplay();
+ 661              		.loc 1 108 9 is_stmt 1 view .LVU190
+ 662              		.loc 1 108 22 is_stmt 0 view .LVU191
+ 663 0014 FFF7FEFF 		bl	_Z13UpdateDisplayv
+ 664              	.LVL45:
+ 109:Amathia.cpp   ****         
+ 110:Amathia.cpp   ****         // Poll touch sensor every 5 ms (200 Hz)
+ 111:Amathia.cpp   ****         if (hw.system.GetNow() - lastPoll >= 5) {
+ 665              		.loc 1 111 9 is_stmt 1 view .LVU192
+ 666              		.loc 1 111 29 is_stmt 0 view .LVU193
+ 667 0018 FFF7FEFF 		bl	_ZN5daisy6System6GetNowEv
+ 668              	.LVL46:
+ 669              		.loc 1 111 32 view .LVU194
+ 670 001c 001B     		subs	r0, r0, r4
+ 671              		.loc 1 111 9 view .LVU195
+ 672 001e 0428     		cmp	r0, #4
+ 673 0020 04D9     		bls	.L29
+ 112:Amathia.cpp   ****             lastPoll = hw.system.GetNow();
+ 674              		.loc 1 112 13 is_stmt 1 view .LVU196
+ 675              		.loc 1 112 40 is_stmt 0 view .LVU197
+ 676 0022 FFF7FEFF 		bl	_ZN5daisy6System6GetNowEv
+ 677              	.LVL47:
+ 678 0026 0446     		mov	r4, r0
+ 679              	.LVL48:
+ 113:Amathia.cpp   ****             PollTouchSensor(); 
+ 680              		.loc 1 113 13 is_stmt 1 view .LVU198
+ 681              		.loc 1 113 28 is_stmt 0 view .LVU199
+ 682 0028 FFF7FEFF 		bl	_Z15PollTouchSensorv
+ 683              	.LVL49:
+ 684              	.L29:
+ 114:Amathia.cpp   ****         }
+ 115:Amathia.cpp   ****         
+ 116:Amathia.cpp   ****         // Yield for system tasks, adjusted for polling interval
+ 117:Amathia.cpp   ****         System::Delay(1); // Shorter delay to allow more frequent polling checks
+ 685              		.loc 1 117 9 is_stmt 1 view .LVU200
+ 686              		.loc 1 117 22 is_stmt 0 view .LVU201
+ 687 002c 0120     		movs	r0, #1
+ 688 002e FFF7FEFF 		bl	_ZN5daisy6System5DelayEm
+ 689              	.LVL50:
+ 102:Amathia.cpp   **** 
+ 690              		.loc 1 102 5 is_stmt 1 view .LVU202
+ 104:Amathia.cpp   ****         
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 24
+
+
+ 691              		.loc 1 104 26 is_stmt 0 view .LVU203
+ 692 0032 EBE7     		b	.L30
+ 693              		.cfi_endproc
+ 694              	.LFE5062:
+ 696              		.global	touch_cv_value
+ 697              		.global	current_touch_state
+ 698              		.section	.rodata
+ 699              		.set	.LANCHOR0,. + 0
+ 700              	.LC0:
+ 701 0000 01       		.byte	1
+ 702 0001 08       		.byte	8
+ 703              	.LC1:
+ 704 0002 01       		.byte	1
+ 705 0003 09       		.byte	9
+ 706              		.section	.bss.current_touch_state,"aw",%nobits
+ 707              		.align	1
+ 708              		.set	.LANCHOR1,. + 0
+ 711              	current_touch_state:
+ 712 0000 0000     		.space	2
+ 713              		.section	.bss.touch_cv_value,"aw",%nobits
+ 714              		.align	2
+ 715              		.set	.LANCHOR2,. + 0
+ 718              	touch_cv_value:
+ 719 0000 00000000 		.space	4
+ 720              		.text
+ 721              	.Letext0:
+ 722              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 723              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 724              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
+ 725              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 726              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 727              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 728              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 729              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
+ 730              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 731              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 732              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/cpp_type_traits.
+ 733              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 734              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 735              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 736              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 737              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
+ 738              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
+ 739              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
+ 740              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
+ 741              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
+ 742              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
+ 743              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
+ 744              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/array"
+ 745              		.file 31 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 746              		.file 32 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
+ 747              		.file 33 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
+ 748              		.file 34 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
+ 749              		.file 35 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 750              		.file 36 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 751              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 752              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 25
+
+
+ 753              		.file 39 "lib/libdaisy/src/daisy_core.h"
+ 754              		.file 40 "lib/libdaisy/src/per/tim.h"
+ 755              		.file 41 "lib/libdaisy/src/sys/system.h"
+ 756              		.file 42 "lib/libdaisy/src/per/qspi.h"
+ 757              		.file 43 "lib/libdaisy/src/per/dac.h"
+ 758              		.file 44 "lib/libdaisy/src/per/sai.h"
+ 759              		.file 45 "lib/libdaisy/src/hid/audio.h"
+ 760              		.file 46 "lib/libdaisy/src/per/adc.h"
+ 761              		.file 47 "lib/libdaisy/src/hid/usb.h"
+ 762              		.file 48 "lib/libdaisy/src/hid/logger_impl.h"
+ 763              		.file 49 "lib/libdaisy/src/util/wav_format.h"
+ 764              		.file 50 "lib/libdaisy/src/hid/logger.h"
+ 765              		.file 51 "lib/libdaisy/src/per/gpio.h"
+ 766              		.file 52 "lib/libdaisy/src/dev/sdram.h"
+ 767              		.file 53 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 768              		.file 54 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
+ 769              		.file 55 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
+ 770              		.file 56 "lib/DaisySP/Source/Control/adenv.h"
+ 771              		.file 57 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
+ 772              		.file 58 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
+ 773              		.file 59 "eurorack/stmlib/stmlib.h"
+ 774              		.file 60 "eurorack/plaits/dsp/dsp.h"
+ 775              		.file 61 "eurorack/plaits/dsp/engine/additive_engine.h"
+ 776              		.file 62 "eurorack/plaits/dsp/oscillator/oscillator.h"
+ 777              		.file 63 "eurorack/plaits/dsp/engine/chord_engine.h"
+ 778              		.file 64 "eurorack/plaits/dsp/physical_modelling/resonator.h"
+ 779              		.file 65 "eurorack/plaits/dsp/engine/particle_engine.h"
+ 780              		.file 66 "eurorack/plaits/dsp/physical_modelling/string.h"
+ 781              		.file 67 "eurorack/plaits/dsp/engine/string_engine.h"
+ 782              		.file 68 "eurorack/plaits/dsp/engine/swarm_engine.h"
+ 783              		.file 69 "eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h"
+ 784              		.file 70 "eurorack/plaits/dsp/voice.h"
+ 785              		.file 71 "Effects/BiquadFilters.h"
+ 786              		.file 72 "Amathia.h"
+ 787              		.file 73 "<built-in>"
+ 788              		.file 74 "lib/libdaisy/src/dev/sr_595.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s 			page 26
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 Amathia.cpp
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:32     .text._Z13UpdateDisplayv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:38     .text._Z13UpdateDisplayv:0000000000000000 _Z13UpdateDisplayv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:257    .text._Z13UpdateDisplayv:00000000000000b8 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:273    .text._Z15PollTouchSensorv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:279    .text._Z15PollTouchSensorv:0000000000000000 _Z15PollTouchSensorv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:613    .text._Z15PollTouchSensorv:0000000000000104 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:624    .text.startup.main:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:630    .text.startup.main:0000000000000000 main
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:718    .bss.touch_cv_value:0000000000000000 touch_cv_value
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:711    .bss.current_touch_state:0000000000000000 current_touch_state
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:707    .bss.current_touch_state:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccLrwKco.s:714    .bss.touch_cv_value:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+sprintf
+_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
+update_display
+cpu_meter
+MAX_ENGINE_INDEX
+timbre_knob
+smoothed_output_level
+_ZNK6Mpr1218HasErrorEv
+_ZN6Mpr12110ClearErrorEv
+_ZN6Mpr1214InitERKNS_6ConfigE
+_ZN6Mpr12113SetThresholdsEhh
+_ZN6Mpr1217TouchedEv
+_ZN6Mpr12120GetBaselineDeviationEh
+touch_sensor
+_Z15InitializeSynthv
+_ZN5daisy6System6GetNowEv
+_Z17HandleButtonInputv
+_Z9UpdateLEDv
+_ZN5daisy6System5DelayEm

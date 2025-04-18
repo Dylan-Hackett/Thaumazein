@@ -1,20 +1,21 @@
-# Archein
+# Amathia
 
 ## Description
 
-Archein is a polyphonic and percussive synthesizer for the Daisy Seed platform, based on Mutable Instruments Plaits. The project extends the original Plaits source code with:
+Amathia is a polyphonic and percussive synthesizer for the Daisy Seed platform, based on Mutable Instruments Plaits. The project extends the original Plaits source code with:
 
 - Polyphony (up to 4 voices) for Virtual Analog engines
 - Echo delay effect with feedback, time, lag, and mix controls
 - Touch-based interface using MPR121 capacitive touch sensor
-- Capacitive "pressure sensing" for continuous control of synth parameters
+- Separate attack and release envelope controls with punchy response
+- Capacitive touch position and pressure sensing for continuous control of synth parameters
 
 ## Project Structure
 
 The codebase has been refactored from a single monolithic file to a more modular design:
 
-* **Archein.h**: Main header defining project constants, external variables, and function declarations
-* **Archein.cpp**: Main program entry point and UI handling
+* **Amathia.h**: Main header defining project constants, external variables, and function declarations
+* **Amathia.cpp**: Main program entry point and UI handling
 * **Polyphony.cpp**: Handles voice allocation, polyphony management, and voice initialization
 * **Interface.cpp**: Manages hardware interface, controls, and system initialization
 * **AudioProcessor.cpp**: Implements the audio processing callback and voice rendering
@@ -34,7 +35,7 @@ The codebase has been refactored from a single monolithic file to a more modular
              │
              ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                               Archein.h                                 │
+│                               Amathia.h                                 │
 │                                                                         │
 │ - Constants (NUM_VOICES, BLOCK_SIZE)                                    │
 │ - External declarations (variables, functions)                          │
@@ -43,7 +44,7 @@ The codebase has been refactored from a single monolithic file to a more modular
             │              │                │                │
             ▼              ▼                ▼                ▼
 ┌────────────────┐ ┌──────────────┐ ┌────────────────┐ ┌──────────────────┐
-│  Archein.cpp   │ │ Interface.cpp│ │ Polyphony.cpp  │ │AudioProcessor.cpp│
+│  Amathia.cpp   │ │ Interface.cpp│ │ Polyphony.cpp  │ │AudioProcessor.cpp│
 │                │ │              │ │                │ │                  │
 │ - Main()       │ │ - Hardware   │ │ - Voice data   │ │ - AudioCallback()│
 │ - Display      │ │   setup      │ │ - Voice alloc  │ │ - Real-time      │
@@ -66,7 +67,7 @@ The codebase has been refactored from a single monolithic file to a more modular
 ```
 
 **Data Flow:**
-1. **Archein.cpp** contains `main()` - the entry point that initializes everything via `InitializeSynth()` and handles display updates
+1. **Amathia.cpp** contains `main()` - the entry point that initializes everything via `InitializeSynth()` and handles display updates
 2. **Interface.cpp** manages hardware setup, ADC mapping, button handling, LED control, and peripherals
 3. **Polyphony.cpp** handles voice allocation and initialization
 4. **AudioProcessor.cpp** contains the real-time audio callback that runs continuously
@@ -166,19 +167,25 @@ When adding features or making changes, follow the modular structure:
 2. Implement voice-related code in Polyphony.cpp
 3. Implement hardware interface code in Interface.cpp  
 4. Add audio processing code to AudioProcessor.cpp
-5. Add UI elements to Archein.cpp
+5. Add UI elements to Amathia.cpp
 
-TO DO:
+## TO DO:
 
-1. Test with an analog filter powered off the microcontroller and if successful write code to have the dac influence analog filter. would likely have to use and input output audio pair on the daisy in the case that this works, meaning the final output would have to be mono.
-2. Implement an Arpeggiator preset mode, which stores each parameter per step, including the engine parameter and then cycles through them rhytmically. Monophonic implementation to save CPU
-3. Improve onboard effects with either reverb or more full delay network. Possibly port code from clouds instead of current delay/reverb from Audrey II.
-4. Improve and potentially redesign how the touch control for each keyboard key will work. Currently its one parameter for the whole keyboard being modulated by all keys being touched. Will definitely change which parameter is being modulated depending on engine. Potentially will change to modulate multiple params with different keys/parts of the keyboard as well.
-5. Bug/stress testing, look into voices getting stopped up with non poly modes freezing
+- Test with an analog filter powered off the microcontroller. If successful, write code to have the dac influence analog filter. would likely have to use and input output audio pair on the daisy in the case that this works, meaning the final output would have to be mono.
 
+- Implement an Arpeggiator preset mode, which stores each parameter per step, including the engine parameter and then cycles through them rhytmically. Monophonic implementation to save CPU
 
+- Improve onboard effects with either reverb or more full delay network. Possibly port code from clouds instead of current delay/reverb
 
+- Figure out a shift function that changes the knobs to control the effects and freezes the unshifted main osc params. 
 
+- Improve and potentially redesign how the touch control for each keyboard key will work. Currently its one parameter for the whole keyboard being modulated by all keys being touched. Will definitely change which parameter is being modulated depending on engine. Potentially will change to modulate multiple params with different keys/parts of the keyboard as well.
+
+- Improve Attack/Release response
+
+- Finetune Touch Sensitivty 
+
+- Bug/stress testing, look into voices getting stopped up with non poly modes freezing
 
 ## License
 

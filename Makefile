@@ -1,5 +1,5 @@
 # Project Name
-TARGET = archein
+TARGET = amathia
 
 # Library Locations
 LIBDAISY_DIR = lib/libdaisy
@@ -9,12 +9,12 @@ MPR121_DIR = .
 EFFECTS_DIR = Effects
 
 # Sources
-CPP_SOURCES = mpr121_daisy.cpp \
-              Archein.cpp \
+CPP_SOURCES = Amathia.cpp \
               AudioProcessor.cpp \
               Polyphony.cpp \
               Interface.cpp \
               VoiceEnvelope.cpp \
+              mpr121_daisy.cpp \
               Effects/reverbsc.cpp \
               Effects/BiquadFilters.cpp
 

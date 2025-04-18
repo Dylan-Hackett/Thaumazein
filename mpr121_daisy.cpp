@@ -2,149 +2,139 @@
 #include "sys/system.h"
 #include "daisysp.h"
 
-bool Mpr121::Init(const Config& config) {
-    i2c_address_ = config.i2c_address << 1; // Shift address for HAL library
+bool Mpr121::Init(const Config& config)
+{
+    i2c_address_ = config.i2c_address << 1;
     i2c_handle_.Init(config.i2c_config);
 
-    // Soft reset
     WriteRegister(MPR121_SOFTRESET, 0x63);
-    System::Delay(1); // Allow time for reset
+    System::Delay(1);
 
-    // Check if reset was successful by reading a register that should have a default value
-    if (ReadRegister8(MPR121_CONFIG2) != 0x24) {
-        return false; 
+    if(ReadRegister8(MPR121_CONFIG2) != 0x24)
+    {
+        return false;
     }
 
-    // Stop mode to configure
     WriteRegister(MPR121_ECR, 0x00);
+    SetThresholds(8, 4);
 
-    // More sensitive touch/release thresholds
-    SetThresholds(8, 4); // Lower thresholds (was 12,6)
+    WriteRegister(MPR121_MHDR, 0x01);
+    WriteRegister(MPR121_NHDR, 0x03);
+    WriteRegister(MPR121_NCLR, 0x10);
+    WriteRegister(MPR121_FDLR, 0x20);
 
-    // First Filter (Rising)
-    WriteRegister(MPR121_MHDR, 0x01);  // Maximum half delta
-    WriteRegister(MPR121_NHDR, 0x03);  // Noise half delta (increased)
-    WriteRegister(MPR121_NCLR, 0x10);  // Noise count limit (increased)
-    WriteRegister(MPR121_FDLR, 0x20);  // Filter delay count limit (increased)
+    WriteRegister(MPR121_MHDF, 0x01);
+    WriteRegister(MPR121_NHDF, 0x03);
+    WriteRegister(MPR121_NCLF, 0x10);
+    WriteRegister(MPR121_FDLF, 0x20);
 
-    // Second Filter (Falling)
-    WriteRegister(MPR121_MHDF, 0x01);  // Maximum half delta
-    WriteRegister(MPR121_NHDF, 0x03);  // Noise half delta (increased)
-    WriteRegister(MPR121_NCLF, 0x10);  // Noise count limit (increased)
-    WriteRegister(MPR121_FDLF, 0x20);  // Filter delay count limit (increased)
+    WriteRegister(MPR121_NHDT, 0x01);
+    WriteRegister(MPR121_NCLT, 0x05);
+    WriteRegister(MPR121_FDLT, 0x00);
 
-    // Touch Filter
-    WriteRegister(MPR121_NHDT, 0x01);  // Noise half delta for touch
-    WriteRegister(MPR121_NCLT, 0x05);  // Noise count limit for touch
-    WriteRegister(MPR121_FDLT, 0x00);  // Filter delay for touch
+    WriteRegister(MPR121_DEBOUNCE, (2 << 4) | 2);
+    WriteRegister(MPR121_CONFIG1, 0x3F);
+    WriteRegister(MPR121_CONFIG2, 0x00);
 
-    // Debounce settings
-    WriteRegister(MPR121_DEBOUNCE, (2 << 4) | 2); // 2 samples for both touch and release
-
-    // Charge current and timing settings
-    WriteRegister(MPR121_CONFIG1, 0x3F); // 63uA charge current (increased from 16uA)
-    WriteRegister(MPR121_CONFIG2, 0x00); // 0.5ms sample period (fastest)
-
-    // Enable all 12 electrodes with baseline tracking
     WriteRegister(MPR121_ECR, 0x8F);
 
     return true;
 }
 
-uint16_t Mpr121::Touched(void) {
+uint16_t Mpr121::Touched(void)
+{
     return ReadRegister16(MPR121_TOUCHSTATUS_L);
 }
 
-uint16_t Mpr121::FilteredData(uint8_t channel) {
-    if (channel > 11) return 0;
+uint16_t Mpr121::FilteredData(uint8_t channel)
+{
+    if(channel > 11)
+        return 0;
     return ReadRegister16(MPR121_FILTDATA_0L + channel * 2);
 }
 
-uint8_t Mpr121::BaselineData(uint8_t channel) {
-    if (channel > 11) return 0;
+uint8_t Mpr121::BaselineData(uint8_t channel)
+{
+    if(channel > 11)
+        return 0;
     uint8_t bl = ReadRegister8(MPR121_BASELINE_0 + channel);
-    return (bl << 2); // Datasheet says baseline is high 8 bits of 10-bit value
+    return (bl << 2);
 }
 
-int16_t Mpr121::GetBaselineDeviation(uint8_t channel) {
-    if (channel > 11) return 0;
-    
-    // Get baseline data (scaled to match filtered data range)
+int16_t Mpr121::GetBaselineDeviation(uint8_t channel)
+{
+    if(channel > 11)
+        return 0;
+
     uint16_t baseline = BaselineData(channel);
-    
-    // Get current filtered data
     uint16_t filtered = FilteredData(channel);
-    
-    // Deviation is baseline - filtered (higher value = closer proximity)
-    // When something approaches the sensor, filtered value decreases
-    return (int16_t)(baseline - filtered);
+    return static_cast<int16_t>(baseline - filtered);
 }
 
-float Mpr121::GetProximityValue(const uint16_t channelMask, float sensitivity) {
+float Mpr121::GetProximityValue(const uint16_t channelMask, float sensitivity)
+{
     int32_t totalDeviation = 0;
-    int numChannels = 0;
-    int16_t maxDeviation = 0;
-    
-    // Iterate through all channels in the mask
-    for (uint8_t i = 0; i < 12; i++) {
-        if (channelMask & (1 << i)) {
+    int     numChannels    = 0;
+    int16_t maxDeviation   = 0;
+
+    for(uint8_t i = 0; i < 12; i++)
+    {
+        if(channelMask & (1 << i))
+        {
             int16_t dev = GetBaselineDeviation(i);
-            
-            // Track maximum deviation for any single channel
-            if (dev > maxDeviation) {
+            if(dev > maxDeviation)
                 maxDeviation = dev;
-            }
-            
             totalDeviation += dev;
             numChannels++;
         }
     }
-    
-    // Avoid division by zero
-    if (numChannels == 0) return 0.0f;
-    
-    // Use max deviation as the value (better for single-pad hover)
-    float proximityValue = (float)maxDeviation;
-    
-    // Apply sensitivity factor (higher = more responsive)
-    proximityValue *= sensitivity;
-    
-    // Clamp to 0.0-1.0 range (with 0.01 as typical threshold for light touch)
-    proximityValue = daisysp::fmax(0.0f, daisysp::fmin(1.0f, proximityValue / 100.0f));
-    
+
+    if(numChannels == 0)
+        return 0.0f;
+
+    float proximityValue = static_cast<float>(maxDeviation) * sensitivity;
+    proximityValue = daisysp::fmax(0.0f,
+                                   daisysp::fmin(1.0f, proximityValue / 100.0f));
     return proximityValue;
 }
 
-void Mpr121::SetThresholds(uint8_t touch, uint8_t release) {
-    WriteRegister(MPR121_ECR, 0x00); // Stop mode
-    for (uint8_t i = 0; i < 12; i++) {
-        WriteRegister(MPR121_TOUCHTH_0 + 2 * i, touch);   // TOUCH THRESHOLD
-        WriteRegister(MPR121_RELEASETH_0 + 2 * i, release); // RELEASE THRESHOLD
+void Mpr121::SetThresholds(uint8_t touch, uint8_t release)
+{
+    WriteRegister(MPR121_ECR, 0x00);
+    for(uint8_t i = 0; i < 12; i++)
+    {
+        WriteRegister(MPR121_TOUCHTH_0 + 2 * i, touch);
+        WriteRegister(MPR121_RELEASETH_0 + 2 * i, release);
     }
-    WriteRegister(MPR121_ECR, 0x8F); // Restart
+    WriteRegister(MPR121_ECR, 0x8F);
 }
 
-// --- Private I2C Helper Functions ---
-
-uint8_t Mpr121::ReadRegister8(uint8_t reg) {
+uint8_t Mpr121::ReadRegister8(uint8_t reg)
+{
     uint8_t value = 0;
-    i2c_handle_.ReadDataAtAddress(i2c_address_, reg, 1, &value, 1, kTimeout);
-    // Add error handling based on return value if needed
+    auto res = i2c_handle_.ReadDataAtAddress(i2c_address_, reg, 1, &value, 1, kTimeout);
+    SetTransportErr(res != I2CHandle::Result::OK);
     return value;
 }
 
-uint16_t Mpr121::ReadRegister16(uint8_t reg) {
-    uint8_t buffer[2];
-    i2c_handle_.ReadDataAtAddress(i2c_address_, reg, 1, buffer, 2, kTimeout);
-    // Add error handling based on return value if needed
-    uint16_t value = buffer[1]; // High byte first
+uint16_t Mpr121::ReadRegister16(uint8_t reg)
+{
+    uint8_t buffer[2] = {0, 0};
+    auto res = i2c_handle_.ReadDataAtAddress(i2c_address_, reg, 1, buffer, 2, kTimeout);
+    SetTransportErr(res != I2CHandle::Result::OK);
+    uint16_t value = buffer[1];
     value <<= 8;
-    value |= buffer[0]; // Low byte second
+    value |= buffer[0];
     return value;
 }
 
-void Mpr121::WriteRegister(uint8_t reg, uint8_t value) {
+void Mpr121::WriteRegister(uint8_t reg, uint8_t value)
+{
     uint8_t buffer[1] = {value};
-    i2c_handle_.WriteDataAtAddress(i2c_address_, reg, 1, buffer, 1, kTimeout);
-    // Add error handling based on return value if needed
-} 
+    auto res = i2c_handle_.WriteDataAtAddress(i2c_address_, reg, 1, buffer, 1, kTimeout);
+    SetTransportErr(res != I2CHandle::Result::OK);
+}
+
+bool Mpr121::HasError() const { return transport_error_; }
+
+void Mpr121::ClearError() { transport_error_ = false; } 

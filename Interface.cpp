@@ -1,4 +1,4 @@
-#include "Archein.h"
+#include "Amathia.h"
 
 // --- Global hardware variables ---
 DaisySeed hw;
@@ -38,7 +38,7 @@ void InitializeHardware() {
     hw.Init();
     hw.SetAudioBlockSize(BLOCK_SIZE);
     sample_rate = hw.AudioSampleRate();
-    hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_96KHZ); // Using 48kHz now
+    hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ); // Using 48kHz now
     sample_rate = hw.AudioSampleRate(); // Update sample_rate after setting it
 }
 
@@ -101,6 +101,7 @@ void InitializeSynth() {
     InitializeControls();
     InitializeTouchSensor();
     InitializeDelay();
+    cpu_meter.Init(sample_rate, BLOCK_SIZE); // Initialize the CPU Load Meter
     
     // --- Start Audio ---
     hw.StartAudio(AudioCallback);

@@ -1,7 +1,9 @@
-#include "Archein.h"
+#include "Amathia.h"
 #include "mpr121_daisy.h"
 #include <cmath>
 #include <algorithm>
+
+const float MASTER_VOLUME = 0.7f; // Master output level scaler
 
 void ProcessControls();
 void ReadKnobValues();
@@ -11,7 +13,7 @@ void ConfigureDelaySettings();
 void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx);
 void ProcessVoiceEnvelopes(bool poly_mode);
 void ProcessAudioOutput(AudioHandle::InterleavingOutputBuffer out, size_t size, float dry_level);
-void UpdatePerformanceMonitors(uint32_t start_time, size_t size, AudioHandle::InterleavingOutputBuffer out);
+void UpdatePerformanceMonitors(size_t size, AudioHandle::InterleavingOutputBuffer out);
 void ResetVoiceStates();
 
 // Global variables for data sharing between decomposed functions
@@ -27,6 +29,9 @@ extern float voice_values[NUM_VOICES];
 extern bool voice_active[NUM_VOICES];
 extern Mpr121 touch_sensor;
 extern AnalogControl env_attack_knob;
+
+// Define the CpuLoadMeter instance
+CpuLoadMeter cpu_meter;
 
 void ProcessVoices() {
     // Apply cubic response for better control at short settings
@@ -67,7 +72,7 @@ void ProcessVoice(int voice_idx, float envelope_value) {
 void AudioCallback(AudioHandle::InterleavingInputBuffer in,
                  AudioHandle::InterleavingOutputBuffer out,
                  size_t size) {
-    uint32_t start_time = System::GetUs(); // Start timing
+    cpu_meter.OnBlockStart(); // Mark the beginning of the audio block
     
     // Process controls & read values
     ProcessControls();
@@ -133,8 +138,11 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     float dry_level = 1.0f - delay_mix_val;
     ProcessAudioOutput(out, size, dry_level);
     
-    // Update performance monitors
-    UpdatePerformanceMonitors(start_time, size, out);
+    // Mark the end of the audio block
+    cpu_meter.OnBlockEnd();
+    
+    // Update other performance monitors (like output level)
+    UpdatePerformanceMonitors(size, out);
 }
 
 void ProcessControls() {
@@ -355,18 +363,14 @@ void ProcessAudioOutput(AudioHandle::InterleavingOutputBuffer out, size_t size, 
         float wet_left = delay.Process(dry_left); 
         float wet_right = delay.Process(dry_right); 
                 
-        out[i]   = (dry_left * dry_level) + (wet_left * wet_level);
-        out[i+1] = (dry_right * dry_level) + (wet_right * wet_level);
+        // Apply master volume scaling
+        out[i]   = ((dry_left * dry_level) + (wet_left * wet_level)) * MASTER_VOLUME;
+        out[i+1] = ((dry_right * dry_level) + (wet_right * wet_level)) * MASTER_VOLUME;
     }
 }
 
-void UpdatePerformanceMonitors(uint32_t start_time, size_t size, AudioHandle::InterleavingOutputBuffer out) {
-    // --- Finish Timing & Update Monitoring --- 
-    uint32_t end_time = System::GetUs();
-    uint32_t elapsed_us = end_time - start_time;
-    avg_elapsed_us = avg_elapsed_us * 0.99f + elapsed_us * 0.01f; // CPU Load
-    
-    // Calculate smoothed output level (using first sample L as proxy)
+void UpdatePerformanceMonitors(size_t size, AudioHandle::InterleavingOutputBuffer out) {
+    // --- Update Output Level Monitoring --- 
     if (size > 0) { // Ensure block is not empty
         float current_level = fabsf(out[0]); // Absolute level of first sample
         // Apply smoothing (adjust 0.99f/0.01f factor for more/less smoothing)

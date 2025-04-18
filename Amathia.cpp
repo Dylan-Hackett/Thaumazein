@@ -1,4 +1,4 @@
-#include "Archein.h"
+#include "Amathia.h"
 
 // Define shared volatile variables
 volatile uint16_t current_touch_state = 0;
@@ -6,17 +6,13 @@ volatile float touch_cv_value = 0.0f;
 
 void UpdateDisplay() {
     if (update_display) {
-        float block_duration_us = (float)BLOCK_SIZE / (float)sample_rate * 1000000.0f; 
-        int cpu_percent_int = 0;
-        if (block_duration_us > 1.0f) { 
-             cpu_percent_int = static_cast<int>(( (float)avg_elapsed_us / block_duration_us ) * 100.0f);
-        }
-        cpu_percent_int = cpu_percent_int < 0 ? 0 : (cpu_percent_int > 100 ? 100 : cpu_percent_int);
+        // Get CPU Load from the CpuLoadMeter
+        float avg_cpu_load = cpu_meter.GetAvgCpuLoad();
+        int cpu_percent_int = static_cast<int>(avg_cpu_load * 100.0f);
+        cpu_percent_int = cpu_percent_int < 0 ? 0 : (cpu_percent_int > 100 ? 100 : cpu_percent_int); // Clamp 0-100
 
         char buffer[32]; 
         sprintf(buffer, "CPU: %d", cpu_percent_int); 
-        hw.PrintLine(buffer);
-        sprintf(buffer, "Avg Time: %lu us", (unsigned long)avg_elapsed_us); 
         hw.PrintLine(buffer);
         
         // Determine current effective engine index again for display
@@ -39,6 +35,14 @@ void UpdateDisplay() {
 
 // Poll the touch sensor and update shared variables
 void PollTouchSensor() {
+    // Recover from any I2C errors on the touch sensor
+    if(touch_sensor.HasError()) {
+        touch_sensor.ClearError();
+        Mpr121::Config cfg;
+        cfg.Defaults();
+        touch_sensor.Init(cfg);
+        touch_sensor.SetThresholds(6, 3);
+    }
     uint16_t touched = touch_sensor.Touched();
     current_touch_state = touched;
 

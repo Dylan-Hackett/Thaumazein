@@ -6,6 +6,9 @@
 #include "mpr121_daisy.h"
 #include "Effects/EchoDelay.h"
 #include "VoiceEnvelope.h"
+#include "Effects/reverbsc.h"
+#include "Effects/BiquadFilters.h"
+#include "util/CpuLoadMeter.h"
 #include <cmath>
 
 using namespace daisy;
@@ -20,9 +23,7 @@ using namespace infrasonic;
 #define SAMPLE_RATE 48000  // Adding sample rate definition
 
 
-void AudioCallback(AudioHandle::InterleavingInputBuffer in,
-                 AudioHandle::InterleavingOutputBuffer out,
-                 size_t size);
+void AudioCallback(AudioHandle::InterleavingInputBuffer in, AudioHandle::InterleavingOutputBuffer out, size_t size);
 int FindVoice(float note, int max_voices);
 int FindAvailableVoice(int max_voices);
 void AssignMonoNote(float note);
@@ -36,6 +37,7 @@ void PollTouchSensor();
 extern DaisySeed hw;
 extern Mpr121 touch_sensor;
 extern EchoDelay<48000> delay;
+extern CpuLoadMeter cpu_meter;
 
 
 extern plaits::Voice voices[NUM_VOICES];
@@ -67,7 +69,6 @@ extern const float kTouchMidiNotes[12];
 
 
 extern float sample_rate;
-extern volatile uint32_t avg_elapsed_us;
 extern volatile bool update_display;
 extern volatile float smoothed_output_level;
 extern const int MAX_ENGINE_INDEX;

@@ -1,0 +1,1566 @@
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 4
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"mpr121_daisy.cpp"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text._ZN6Mpr12113ReadRegister8Eh,"ax",%progbits
+  19              		.align	1
+  20              		.global	_ZN6Mpr12113ReadRegister8Eh
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	_ZN6Mpr12113ReadRegister8Eh:
+  26              	.LVL0:
+  27              	.LFB4330:
+  28              		.file 1 "mpr121_daisy.cpp"
+   1:mpr121_daisy.cpp **** #include "mpr121_daisy.h"
+   2:mpr121_daisy.cpp **** #include "sys/system.h"
+   3:mpr121_daisy.cpp **** #include "daisysp.h"
+   4:mpr121_daisy.cpp **** 
+   5:mpr121_daisy.cpp **** bool Mpr121::Init(const Config& config)
+   6:mpr121_daisy.cpp **** {
+   7:mpr121_daisy.cpp ****     i2c_address_ = config.i2c_address << 1;
+   8:mpr121_daisy.cpp ****     i2c_handle_.Init(config.i2c_config);
+   9:mpr121_daisy.cpp **** 
+  10:mpr121_daisy.cpp ****     WriteRegister(MPR121_SOFTRESET, 0x63);
+  11:mpr121_daisy.cpp ****     System::Delay(1);
+  12:mpr121_daisy.cpp **** 
+  13:mpr121_daisy.cpp ****     if(ReadRegister8(MPR121_CONFIG2) != 0x24)
+  14:mpr121_daisy.cpp ****     {
+  15:mpr121_daisy.cpp ****         return false;
+  16:mpr121_daisy.cpp ****     }
+  17:mpr121_daisy.cpp **** 
+  18:mpr121_daisy.cpp ****     WriteRegister(MPR121_ECR, 0x00);
+  19:mpr121_daisy.cpp ****     SetThresholds(8, 4);
+  20:mpr121_daisy.cpp **** 
+  21:mpr121_daisy.cpp ****     WriteRegister(MPR121_MHDR, 0x01);
+  22:mpr121_daisy.cpp ****     WriteRegister(MPR121_NHDR, 0x03);
+  23:mpr121_daisy.cpp ****     WriteRegister(MPR121_NCLR, 0x10);
+  24:mpr121_daisy.cpp ****     WriteRegister(MPR121_FDLR, 0x20);
+  25:mpr121_daisy.cpp **** 
+  26:mpr121_daisy.cpp ****     WriteRegister(MPR121_MHDF, 0x01);
+  27:mpr121_daisy.cpp ****     WriteRegister(MPR121_NHDF, 0x03);
+  28:mpr121_daisy.cpp ****     WriteRegister(MPR121_NCLF, 0x10);
+  29:mpr121_daisy.cpp ****     WriteRegister(MPR121_FDLF, 0x20);
+  30:mpr121_daisy.cpp **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 2
+
+
+  31:mpr121_daisy.cpp ****     WriteRegister(MPR121_NHDT, 0x01);
+  32:mpr121_daisy.cpp ****     WriteRegister(MPR121_NCLT, 0x05);
+  33:mpr121_daisy.cpp ****     WriteRegister(MPR121_FDLT, 0x00);
+  34:mpr121_daisy.cpp **** 
+  35:mpr121_daisy.cpp ****     WriteRegister(MPR121_DEBOUNCE, (2 << 4) | 2);
+  36:mpr121_daisy.cpp ****     WriteRegister(MPR121_CONFIG1, 0x3F);
+  37:mpr121_daisy.cpp ****     WriteRegister(MPR121_CONFIG2, 0x00);
+  38:mpr121_daisy.cpp **** 
+  39:mpr121_daisy.cpp ****     WriteRegister(MPR121_ECR, 0x8F);
+  40:mpr121_daisy.cpp **** 
+  41:mpr121_daisy.cpp ****     return true;
+  42:mpr121_daisy.cpp **** }
+  43:mpr121_daisy.cpp **** 
+  44:mpr121_daisy.cpp **** uint16_t Mpr121::Touched(void)
+  45:mpr121_daisy.cpp **** {
+  46:mpr121_daisy.cpp ****     return ReadRegister16(MPR121_TOUCHSTATUS_L);
+  47:mpr121_daisy.cpp **** }
+  48:mpr121_daisy.cpp **** 
+  49:mpr121_daisy.cpp **** uint16_t Mpr121::FilteredData(uint8_t channel)
+  50:mpr121_daisy.cpp **** {
+  51:mpr121_daisy.cpp ****     if(channel > 11)
+  52:mpr121_daisy.cpp ****         return 0;
+  53:mpr121_daisy.cpp ****     return ReadRegister16(MPR121_FILTDATA_0L + channel * 2);
+  54:mpr121_daisy.cpp **** }
+  55:mpr121_daisy.cpp **** 
+  56:mpr121_daisy.cpp **** uint8_t Mpr121::BaselineData(uint8_t channel)
+  57:mpr121_daisy.cpp **** {
+  58:mpr121_daisy.cpp ****     if(channel > 11)
+  59:mpr121_daisy.cpp ****         return 0;
+  60:mpr121_daisy.cpp ****     uint8_t bl = ReadRegister8(MPR121_BASELINE_0 + channel);
+  61:mpr121_daisy.cpp ****     return (bl << 2);
+  62:mpr121_daisy.cpp **** }
+  63:mpr121_daisy.cpp **** 
+  64:mpr121_daisy.cpp **** int16_t Mpr121::GetBaselineDeviation(uint8_t channel)
+  65:mpr121_daisy.cpp **** {
+  66:mpr121_daisy.cpp ****     if(channel > 11)
+  67:mpr121_daisy.cpp ****         return 0;
+  68:mpr121_daisy.cpp **** 
+  69:mpr121_daisy.cpp ****     uint16_t baseline = BaselineData(channel);
+  70:mpr121_daisy.cpp ****     uint16_t filtered = FilteredData(channel);
+  71:mpr121_daisy.cpp ****     return static_cast<int16_t>(baseline - filtered);
+  72:mpr121_daisy.cpp **** }
+  73:mpr121_daisy.cpp **** 
+  74:mpr121_daisy.cpp **** float Mpr121::GetProximityValue(const uint16_t channelMask, float sensitivity)
+  75:mpr121_daisy.cpp **** {
+  76:mpr121_daisy.cpp ****     int32_t totalDeviation = 0;
+  77:mpr121_daisy.cpp ****     int     numChannels    = 0;
+  78:mpr121_daisy.cpp ****     int16_t maxDeviation   = 0;
+  79:mpr121_daisy.cpp **** 
+  80:mpr121_daisy.cpp ****     for(uint8_t i = 0; i < 12; i++)
+  81:mpr121_daisy.cpp ****     {
+  82:mpr121_daisy.cpp ****         if(channelMask & (1 << i))
+  83:mpr121_daisy.cpp ****         {
+  84:mpr121_daisy.cpp ****             int16_t dev = GetBaselineDeviation(i);
+  85:mpr121_daisy.cpp ****             if(dev > maxDeviation)
+  86:mpr121_daisy.cpp ****                 maxDeviation = dev;
+  87:mpr121_daisy.cpp ****             totalDeviation += dev;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 3
+
+
+  88:mpr121_daisy.cpp ****             numChannels++;
+  89:mpr121_daisy.cpp ****         }
+  90:mpr121_daisy.cpp ****     }
+  91:mpr121_daisy.cpp **** 
+  92:mpr121_daisy.cpp ****     if(numChannels == 0)
+  93:mpr121_daisy.cpp ****         return 0.0f;
+  94:mpr121_daisy.cpp **** 
+  95:mpr121_daisy.cpp ****     float proximityValue = static_cast<float>(maxDeviation) * sensitivity;
+  96:mpr121_daisy.cpp ****     proximityValue = daisysp::fmax(0.0f,
+  97:mpr121_daisy.cpp ****                                    daisysp::fmin(1.0f, proximityValue / 100.0f));
+  98:mpr121_daisy.cpp ****     return proximityValue;
+  99:mpr121_daisy.cpp **** }
+ 100:mpr121_daisy.cpp **** 
+ 101:mpr121_daisy.cpp **** void Mpr121::SetThresholds(uint8_t touch, uint8_t release)
+ 102:mpr121_daisy.cpp **** {
+ 103:mpr121_daisy.cpp ****     WriteRegister(MPR121_ECR, 0x00);
+ 104:mpr121_daisy.cpp ****     for(uint8_t i = 0; i < 12; i++)
+ 105:mpr121_daisy.cpp ****     {
+ 106:mpr121_daisy.cpp ****         WriteRegister(MPR121_TOUCHTH_0 + 2 * i, touch);
+ 107:mpr121_daisy.cpp ****         WriteRegister(MPR121_RELEASETH_0 + 2 * i, release);
+ 108:mpr121_daisy.cpp ****     }
+ 109:mpr121_daisy.cpp ****     WriteRegister(MPR121_ECR, 0x8F);
+ 110:mpr121_daisy.cpp **** }
+ 111:mpr121_daisy.cpp **** 
+ 112:mpr121_daisy.cpp **** uint8_t Mpr121::ReadRegister8(uint8_t reg)
+ 113:mpr121_daisy.cpp **** {
+  29              		.loc 1 113 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 8
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+ 114:mpr121_daisy.cpp ****     uint8_t value = 0;
+  33              		.loc 1 114 5 view .LVU1
+ 113:mpr121_daisy.cpp ****     uint8_t value = 0;
+  34              		.loc 1 113 1 is_stmt 0 view .LVU2
+  35 0000 10B5     		push	{r4, lr}
+  36              		.cfi_def_cfa_offset 8
+  37              		.cfi_offset 4, -8
+  38              		.cfi_offset 14, -4
+  39              		.loc 1 114 13 view .LVU3
+  40 0002 0023     		movs	r3, #0
+ 113:mpr121_daisy.cpp ****     uint8_t value = 0;
+  41              		.loc 1 113 1 view .LVU4
+  42 0004 86B0     		sub	sp, sp, #24
+  43              		.cfi_def_cfa_offset 32
+ 113:mpr121_daisy.cpp ****     uint8_t value = 0;
+  44              		.loc 1 113 1 view .LVU5
+  45 0006 0A46     		mov	r2, r1
+ 115:mpr121_daisy.cpp ****     auto res = i2c_handle_.ReadDataAtAddress(i2c_address_, reg, 1, &value, 1, kTimeout);
+  46              		.loc 1 115 45 view .LVU6
+  47 0008 6421     		movs	r1, #100
+  48              	.LVL1:
+ 114:mpr121_daisy.cpp ****     uint8_t value = 0;
+  49              		.loc 1 114 13 view .LVU7
+  50 000a 8DF81730 		strb	r3, [sp, #23]
+  51              		.loc 1 115 5 is_stmt 1 view .LVU8
+  52              		.loc 1 115 45 is_stmt 0 view .LVU9
+  53 000e 0123     		movs	r3, #1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 4
+
+
+ 113:mpr121_daisy.cpp ****     uint8_t value = 0;
+  54              		.loc 1 113 1 view .LVU10
+  55 0010 0446     		mov	r4, r0
+  56              		.loc 1 115 45 view .LVU11
+  57 0012 CDE90131 		strd	r3, r1, [sp, #4]
+  58 0016 0DF11701 		add	r1, sp, #23
+  59 001a 0091     		str	r1, [sp]
+  60 001c 0179     		ldrb	r1, [r0, #4]	@ zero_extendqisi2
+  61 001e FFF7FEFF 		bl	_ZN5daisy9I2CHandle17ReadDataAtAddressEtttPhtm
+  62              	.LVL2:
+ 116:mpr121_daisy.cpp ****     SetTransportErr(res != I2CHandle::Result::OK);
+  63              		.loc 1 116 5 is_stmt 1 view .LVU12
+  64              	.LBB15:
+  65              	.LBI15:
+  66              		.file 2 "mpr121_daisy.h"
+   1:mpr121_daisy.h **** #pragma once
+   2:mpr121_daisy.h **** #ifndef MPR121_DAISY_H
+   3:mpr121_daisy.h **** #define MPR121_DAISY_H
+   4:mpr121_daisy.h **** 
+   5:mpr121_daisy.h **** #include "daisy_seed.h"
+   6:mpr121_daisy.h **** #include "per/i2c.h"
+   7:mpr121_daisy.h **** 
+   8:mpr121_daisy.h **** using namespace daisy;
+   9:mpr121_daisy.h **** 
+  10:mpr121_daisy.h **** /// mp
+  11:mpr121_daisy.h **** 
+  12:mpr121_daisy.h **** // Register map
+  13:mpr121_daisy.h **** #define MPR121_TOUCHSTATUS_L 0x00
+  14:mpr121_daisy.h **** #define MPR121_TOUCHSTATUS_H 0x01
+  15:mpr121_daisy.h **** #define MPR121_FILTDATA_0L 0x04
+  16:mpr121_daisy.h **** #define MPR121_FILTDATA_0H 0x05
+  17:mpr121_daisy.h **** #define MPR121_BASELINE_0 0x1E
+  18:mpr121_daisy.h **** #define MPR121_MHDR 0x2B
+  19:mpr121_daisy.h **** #define MPR121_NHDR 0x2C
+  20:mpr121_daisy.h **** #define MPR121_NCLR 0x2D
+  21:mpr121_daisy.h **** #define MPR121_FDLR 0x2E
+  22:mpr121_daisy.h **** #define MPR121_MHDF 0x2F
+  23:mpr121_daisy.h **** #define MPR121_NHDF 0x30
+  24:mpr121_daisy.h **** #define MPR121_NCLF 0x31
+  25:mpr121_daisy.h **** #define MPR121_FDLF 0x32
+  26:mpr121_daisy.h **** #define MPR121_NHDT 0x33
+  27:mpr121_daisy.h **** #define MPR121_NCLT 0x34
+  28:mpr121_daisy.h **** #define MPR121_FDLT 0x35
+  29:mpr121_daisy.h **** 
+  30:mpr121_daisy.h **** #define MPR121_TOUCHTH_0 0x41
+  31:mpr121_daisy.h **** #define MPR121_RELEASETH_0 0x42
+  32:mpr121_daisy.h **** #define MPR121_DEBOUNCE 0x5B
+  33:mpr121_daisy.h **** #define MPR121_CONFIG1 0x5C
+  34:mpr121_daisy.h **** #define MPR121_CONFIG2 0x5D
+  35:mpr121_daisy.h **** #define MPR121_CHARGECURR_0 0x5F
+  36:mpr121_daisy.h **** #define MPR121_CHARGETIME_1 0x6C
+  37:mpr121_daisy.h **** #define MPR121_ECR 0x5E
+  38:mpr121_daisy.h **** #define MPR121_AUTOCONFIG0 0x7B
+  39:mpr121_daisy.h **** #define MPR121_AUTOCONFIG1 0x7C
+  40:mpr121_daisy.h **** #define MPR121_UPLIMIT 0x7D
+  41:mpr121_daisy.h **** #define MPR121_LOWLIMIT 0x7E
+  42:mpr121_daisy.h **** #define MPR121_TARGETLIMIT 0x7F
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 5
+
+
+  43:mpr121_daisy.h **** 
+  44:mpr121_daisy.h **** #define MPR121_GPIODIR 0x76
+  45:mpr121_daisy.h **** #define MPR121_GPIOEN 0x77
+  46:mpr121_daisy.h **** #define MPR121_GPIOSET 0x78
+  47:mpr121_daisy.h **** #define MPR121_GPIOCLR 0x79
+  48:mpr121_daisy.h **** #define MPR121_GPIOTOGGLE 0x7A
+  49:mpr121_daisy.h **** 
+  50:mpr121_daisy.h **** #define MPR121_SOFTRESET 0x80
+  51:mpr121_daisy.h **** #define MPR121_I2CADDR_DEFAULT 0x5A
+  52:mpr121_daisy.h **** 
+  53:mpr121_daisy.h **** class Mpr121
+  54:mpr121_daisy.h **** {
+  55:mpr121_daisy.h ****   public:
+  56:mpr121_daisy.h ****     Mpr121() {}
+  57:mpr121_daisy.h ****     ~Mpr121() {}
+  58:mpr121_daisy.h **** 
+  59:mpr121_daisy.h ****     struct Config
+  60:mpr121_daisy.h ****     {
+  61:mpr121_daisy.h ****         I2CHandle::Config i2c_config;
+  62:mpr121_daisy.h ****         uint8_t          i2c_address;
+  63:mpr121_daisy.h **** 
+  64:mpr121_daisy.h ****         void Defaults()
+  65:mpr121_daisy.h ****         {
+  66:mpr121_daisy.h ****             i2c_config.periph = I2CHandle::Config::Peripheral::I2C_1;
+  67:mpr121_daisy.h ****             i2c_config.speed  = I2CHandle::Config::Speed::I2C_400KHZ;
+  68:mpr121_daisy.h ****             i2c_config.mode   = I2CHandle::Config::Mode::I2C_MASTER;
+  69:mpr121_daisy.h ****             i2c_config.pin_config.scl = {DSY_GPIOB, 8};
+  70:mpr121_daisy.h ****             i2c_config.pin_config.sda = {DSY_GPIOB, 9};
+  71:mpr121_daisy.h ****             i2c_address               = MPR121_I2CADDR_DEFAULT;
+  72:mpr121_daisy.h ****         }
+  73:mpr121_daisy.h ****     };
+  74:mpr121_daisy.h **** 
+  75:mpr121_daisy.h ****     bool     Init(const Config& config);
+  76:mpr121_daisy.h ****     uint16_t Touched();
+  77:mpr121_daisy.h ****     uint16_t FilteredData(uint8_t channel);
+  78:mpr121_daisy.h ****     uint8_t  BaselineData(uint8_t channel);
+  79:mpr121_daisy.h ****     int16_t  GetBaselineDeviation(uint8_t channel);
+  80:mpr121_daisy.h ****     float    GetProximityValue(uint16_t channelMask = 0x0FFF,
+  81:mpr121_daisy.h ****                                float     sensitivity  = 1.0f);
+  82:mpr121_daisy.h ****     void     SetThresholds(uint8_t touch, uint8_t release);
+  83:mpr121_daisy.h **** 
+  84:mpr121_daisy.h ****     // Add error handling accessors
+  85:mpr121_daisy.h ****     bool HasError() const;     // true if any I2C transaction failed since last ClearError()
+  86:mpr121_daisy.h ****     void ClearError();         // reset internal error flag
+  87:mpr121_daisy.h **** 
+  88:mpr121_daisy.h ****   private:
+  89:mpr121_daisy.h ****     I2CHandle              i2c_handle_;
+  90:mpr121_daisy.h ****     uint8_t                i2c_address_;
+  91:mpr121_daisy.h ****     bool transport_error_ = false; // accumulates I2C errors
+  92:mpr121_daisy.h ****     void SetTransportErr(bool err) { transport_error_ |= err; }
+  67              		.loc 2 92 10 view .LVU13
+  68              	.LBB16:
+  69              		.loc 2 92 38 view .LVU14
+  70              		.loc 2 92 55 is_stmt 0 view .LVU15
+  71 0022 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+  72 0024 0028     		cmp	r0, #0
+  73 0026 18BF     		it	ne
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 6
+
+
+  74 0028 43F00103 		orrne	r3, r3, #1
+  75              	.LBE16:
+  76              	.LBE15:
+ 117:mpr121_daisy.cpp ****     return value;
+ 118:mpr121_daisy.cpp **** }
+  77              		.loc 1 118 1 view .LVU16
+  78 002c 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
+  79              	.LVL3:
+  80              	.LBB18:
+  81              	.LBB17:
+  82              		.loc 2 92 55 view .LVU17
+  83 0030 6371     		strb	r3, [r4, #5]
+  84              	.LVL4:
+  85              		.loc 2 92 55 view .LVU18
+  86              	.LBE17:
+  87              	.LBE18:
+ 117:mpr121_daisy.cpp ****     return value;
+  88              		.loc 1 117 5 is_stmt 1 view .LVU19
+  89              		.loc 1 118 1 is_stmt 0 view .LVU20
+  90 0032 06B0     		add	sp, sp, #24
+  91              		.cfi_def_cfa_offset 8
+  92              		@ sp needed
+  93 0034 10BD     		pop	{r4, pc}
+  94              		.loc 1 118 1 view .LVU21
+  95              		.cfi_endproc
+  96              	.LFE4330:
+  98              		.section	.text._ZN6Mpr12112BaselineDataEh,"ax",%progbits
+  99              		.align	1
+ 100              		.global	_ZN6Mpr12112BaselineDataEh
+ 101              		.syntax unified
+ 102              		.thumb
+ 103              		.thumb_func
+ 105              	_ZN6Mpr12112BaselineDataEh:
+ 106              	.LVL5:
+ 107              	.LFB4326:
+  57:mpr121_daisy.cpp ****     if(channel > 11)
+ 108              		.loc 1 57 1 is_stmt 1 view -0
+ 109              		.cfi_startproc
+ 110              		@ args = 0, pretend = 0, frame = 0
+ 111              		@ frame_needed = 0, uses_anonymous_args = 0
+  58:mpr121_daisy.cpp ****         return 0;
+ 112              		.loc 1 58 5 view .LVU23
+ 113 0000 0B29     		cmp	r1, #11
+  57:mpr121_daisy.cpp ****     if(channel > 11)
+ 114              		.loc 1 57 1 is_stmt 0 view .LVU24
+ 115 0002 08B5     		push	{r3, lr}
+ 116              		.cfi_def_cfa_offset 8
+ 117              		.cfi_offset 3, -8
+ 118              		.cfi_offset 14, -4
+  58:mpr121_daisy.cpp ****         return 0;
+ 119              		.loc 1 58 5 view .LVU25
+ 120 0004 06D8     		bhi	.L4
+ 121              	.LVL6:
+ 122              	.LBB21:
+ 123              	.LBI21:
+  56:mpr121_daisy.cpp **** {
+ 124              		.loc 1 56 9 is_stmt 1 view .LVU26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 7
+
+
+ 125              	.LBB22:
+  60:mpr121_daisy.cpp ****     return (bl << 2);
+ 126              		.loc 1 60 5 view .LVU27
+  60:mpr121_daisy.cpp ****     return (bl << 2);
+ 127              		.loc 1 60 31 is_stmt 0 view .LVU28
+ 128 0006 1E31     		adds	r1, r1, #30
+ 129              	.LVL7:
+  60:mpr121_daisy.cpp ****     return (bl << 2);
+ 130              		.loc 1 60 31 view .LVU29
+ 131 0008 C9B2     		uxtb	r1, r1
+ 132 000a FFF7FEFF 		bl	_ZN6Mpr12113ReadRegister8Eh
+ 133              	.LVL8:
+  61:mpr121_daisy.cpp **** }
+ 134              		.loc 1 61 5 is_stmt 1 view .LVU30
+  61:mpr121_daisy.cpp **** }
+ 135              		.loc 1 61 20 is_stmt 0 view .LVU31
+ 136 000e 8000     		lsls	r0, r0, #2
+ 137              	.LVL9:
+  61:mpr121_daisy.cpp **** }
+ 138              		.loc 1 61 20 view .LVU32
+ 139 0010 C0B2     		uxtb	r0, r0
+ 140              	.LVL10:
+ 141              	.L3:
+  61:mpr121_daisy.cpp **** }
+ 142              		.loc 1 61 20 view .LVU33
+ 143              	.LBE22:
+ 144              	.LBE21:
+  62:mpr121_daisy.cpp **** 
+ 145              		.loc 1 62 1 view .LVU34
+ 146 0012 08BD     		pop	{r3, pc}
+ 147              	.LVL11:
+ 148              	.L4:
+  59:mpr121_daisy.cpp ****     uint8_t bl = ReadRegister8(MPR121_BASELINE_0 + channel);
+ 149              		.loc 1 59 16 view .LVU35
+ 150 0014 0020     		movs	r0, #0
+ 151              	.LVL12:
+  59:mpr121_daisy.cpp ****     uint8_t bl = ReadRegister8(MPR121_BASELINE_0 + channel);
+ 152              		.loc 1 59 16 view .LVU36
+ 153 0016 FCE7     		b	.L3
+ 154              		.cfi_endproc
+ 155              	.LFE4326:
+ 157              		.section	.text._ZN6Mpr12114ReadRegister16Eh,"ax",%progbits
+ 158              		.align	1
+ 159              		.global	_ZN6Mpr12114ReadRegister16Eh
+ 160              		.syntax unified
+ 161              		.thumb
+ 162              		.thumb_func
+ 164              	_ZN6Mpr12114ReadRegister16Eh:
+ 165              	.LVL13:
+ 166              	.LFB4331:
+ 119:mpr121_daisy.cpp **** 
+ 120:mpr121_daisy.cpp **** uint16_t Mpr121::ReadRegister16(uint8_t reg)
+ 121:mpr121_daisy.cpp **** {
+ 167              		.loc 1 121 1 is_stmt 1 view -0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 8
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 8
+
+
+ 122:mpr121_daisy.cpp ****     uint8_t buffer[2] = {0, 0};
+ 171              		.loc 1 122 5 view .LVU38
+ 121:mpr121_daisy.cpp ****     uint8_t buffer[2] = {0, 0};
+ 172              		.loc 1 121 1 is_stmt 0 view .LVU39
+ 173 0000 10B5     		push	{r4, lr}
+ 174              		.cfi_def_cfa_offset 8
+ 175              		.cfi_offset 4, -8
+ 176              		.cfi_offset 14, -4
+ 177              		.loc 1 122 13 view .LVU40
+ 178 0002 0023     		movs	r3, #0
+ 121:mpr121_daisy.cpp ****     uint8_t buffer[2] = {0, 0};
+ 179              		.loc 1 121 1 view .LVU41
+ 180 0004 86B0     		sub	sp, sp, #24
+ 181              		.cfi_def_cfa_offset 32
+ 121:mpr121_daisy.cpp ****     uint8_t buffer[2] = {0, 0};
+ 182              		.loc 1 121 1 view .LVU42
+ 183 0006 0A46     		mov	r2, r1
+ 123:mpr121_daisy.cpp ****     auto res = i2c_handle_.ReadDataAtAddress(i2c_address_, reg, 1, buffer, 2, kTimeout);
+ 184              		.loc 1 123 45 view .LVU43
+ 185 0008 6421     		movs	r1, #100
+ 186              	.LVL14:
+ 122:mpr121_daisy.cpp ****     uint8_t buffer[2] = {0, 0};
+ 187              		.loc 1 122 13 view .LVU44
+ 188 000a ADF81430 		strh	r3, [sp, #20]	@ movhi
+ 189              		.loc 1 123 5 is_stmt 1 view .LVU45
+ 190              		.loc 1 123 45 is_stmt 0 view .LVU46
+ 191 000e 0223     		movs	r3, #2
+ 121:mpr121_daisy.cpp ****     uint8_t buffer[2] = {0, 0};
+ 192              		.loc 1 121 1 view .LVU47
+ 193 0010 0446     		mov	r4, r0
+ 194              		.loc 1 123 45 view .LVU48
+ 195 0012 CDE90131 		strd	r3, r1, [sp, #4]
+ 196 0016 05AB     		add	r3, sp, #20
+ 197 0018 0093     		str	r3, [sp]
+ 198 001a 0123     		movs	r3, #1
+ 199 001c 0179     		ldrb	r1, [r0, #4]	@ zero_extendqisi2
+ 200 001e FFF7FEFF 		bl	_ZN5daisy9I2CHandle17ReadDataAtAddressEtttPhtm
+ 201              	.LVL15:
+ 124:mpr121_daisy.cpp ****     SetTransportErr(res != I2CHandle::Result::OK);
+ 202              		.loc 1 124 5 is_stmt 1 view .LVU49
+ 203              	.LBB23:
+ 204              	.LBI23:
+ 205              		.loc 2 92 10 view .LVU50
+ 206              	.LBB24:
+ 207              		.loc 2 92 38 view .LVU51
+ 208              		.loc 2 92 55 is_stmt 0 view .LVU52
+ 209 0022 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 210 0024 0028     		cmp	r0, #0
+ 211 0026 18BF     		it	ne
+ 212 0028 43F00103 		orrne	r3, r3, #1
+ 213              	.LBE24:
+ 214              	.LBE23:
+ 125:mpr121_daisy.cpp ****     uint16_t value = buffer[1];
+ 126:mpr121_daisy.cpp ****     value <<= 8;
+ 127:mpr121_daisy.cpp ****     value |= buffer[0];
+ 128:mpr121_daisy.cpp ****     return value;
+ 129:mpr121_daisy.cpp **** }
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 9
+
+
+ 215              		.loc 1 129 1 view .LVU53
+ 216 002c BDF81400 		ldrh	r0, [sp, #20]
+ 217              	.LVL16:
+ 218              	.LBB26:
+ 219              	.LBB25:
+ 220              		.loc 2 92 55 view .LVU54
+ 221 0030 6371     		strb	r3, [r4, #5]
+ 222              	.LVL17:
+ 223              		.loc 2 92 55 view .LVU55
+ 224              	.LBE25:
+ 225              	.LBE26:
+ 125:mpr121_daisy.cpp ****     uint16_t value = buffer[1];
+ 226              		.loc 1 125 5 is_stmt 1 view .LVU56
+ 126:mpr121_daisy.cpp ****     value |= buffer[0];
+ 227              		.loc 1 126 5 view .LVU57
+ 127:mpr121_daisy.cpp ****     return value;
+ 228              		.loc 1 127 5 view .LVU58
+ 128:mpr121_daisy.cpp **** }
+ 229              		.loc 1 128 5 view .LVU59
+ 230              		.loc 1 129 1 is_stmt 0 view .LVU60
+ 231 0032 06B0     		add	sp, sp, #24
+ 232              		.cfi_def_cfa_offset 8
+ 233              		@ sp needed
+ 234 0034 10BD     		pop	{r4, pc}
+ 235              		.loc 1 129 1 view .LVU61
+ 236              		.cfi_endproc
+ 237              	.LFE4331:
+ 239              		.section	.text._ZN6Mpr1217TouchedEv,"ax",%progbits
+ 240              		.align	1
+ 241              		.global	_ZN6Mpr1217TouchedEv
+ 242              		.syntax unified
+ 243              		.thumb
+ 244              		.thumb_func
+ 246              	_ZN6Mpr1217TouchedEv:
+ 247              	.LVL18:
+ 248              	.LFB4324:
+  45:mpr121_daisy.cpp ****     return ReadRegister16(MPR121_TOUCHSTATUS_L);
+ 249              		.loc 1 45 1 is_stmt 1 view -0
+ 250              		.cfi_startproc
+ 251              		@ args = 0, pretend = 0, frame = 0
+ 252              		@ frame_needed = 0, uses_anonymous_args = 0
+ 253              		@ link register save eliminated.
+  46:mpr121_daisy.cpp **** }
+ 254              		.loc 1 46 5 view .LVU63
+  46:mpr121_daisy.cpp **** }
+ 255              		.loc 1 46 26 is_stmt 0 view .LVU64
+ 256 0000 0021     		movs	r1, #0
+ 257 0002 FFF7FEBF 		b	_ZN6Mpr12114ReadRegister16Eh
+ 258              	.LVL19:
+  46:mpr121_daisy.cpp **** }
+ 259              		.loc 1 46 26 view .LVU65
+ 260              		.cfi_endproc
+ 261              	.LFE4324:
+ 263              		.section	.text._ZN6Mpr12112FilteredDataEh,"ax",%progbits
+ 264              		.align	1
+ 265              		.global	_ZN6Mpr12112FilteredDataEh
+ 266              		.syntax unified
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 10
+
+
+ 267              		.thumb
+ 268              		.thumb_func
+ 270              	_ZN6Mpr12112FilteredDataEh:
+ 271              	.LVL20:
+ 272              	.LFB4325:
+  50:mpr121_daisy.cpp ****     if(channel > 11)
+ 273              		.loc 1 50 1 is_stmt 1 view -0
+ 274              		.cfi_startproc
+ 275              		@ args = 0, pretend = 0, frame = 0
+ 276              		@ frame_needed = 0, uses_anonymous_args = 0
+ 277              		@ link register save eliminated.
+  51:mpr121_daisy.cpp ****         return 0;
+ 278              		.loc 1 51 5 view .LVU67
+ 279 0000 0B29     		cmp	r1, #11
+ 280 0002 05D8     		bhi	.L8
+ 281              	.LVL21:
+ 282              	.LBB29:
+ 283              	.LBI29:
+  49:mpr121_daisy.cpp **** {
+ 284              		.loc 1 49 10 view .LVU68
+ 285              	.LBB30:
+  53:mpr121_daisy.cpp **** }
+ 286              		.loc 1 53 5 view .LVU69
+  53:mpr121_daisy.cpp **** }
+ 287              		.loc 1 53 26 is_stmt 0 view .LVU70
+ 288 0004 0231     		adds	r1, r1, #2
+ 289              	.LVL22:
+  53:mpr121_daisy.cpp **** }
+ 290              		.loc 1 53 26 view .LVU71
+ 291 0006 4900     		lsls	r1, r1, #1
+ 292 0008 01F0FE01 		and	r1, r1, #254
+ 293 000c FFF7FEBF 		b	_ZN6Mpr12114ReadRegister16Eh
+ 294              	.LVL23:
+ 295              	.L8:
+  53:mpr121_daisy.cpp **** }
+ 296              		.loc 1 53 26 view .LVU72
+ 297              	.LBE30:
+ 298              	.LBE29:
+  54:mpr121_daisy.cpp **** 
+ 299              		.loc 1 54 1 view .LVU73
+ 300 0010 0020     		movs	r0, #0
+ 301              	.LVL24:
+  54:mpr121_daisy.cpp **** 
+ 302              		.loc 1 54 1 view .LVU74
+ 303 0012 7047     		bx	lr
+ 304              		.cfi_endproc
+ 305              	.LFE4325:
+ 307              		.section	.text._ZN6Mpr12120GetBaselineDeviationEh,"ax",%progbits
+ 308              		.align	1
+ 309              		.global	_ZN6Mpr12120GetBaselineDeviationEh
+ 310              		.syntax unified
+ 311              		.thumb
+ 312              		.thumb_func
+ 314              	_ZN6Mpr12120GetBaselineDeviationEh:
+ 315              	.LVL25:
+ 316              	.LFB4327:
+  65:mpr121_daisy.cpp ****     if(channel > 11)
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 11
+
+
+ 317              		.loc 1 65 1 is_stmt 1 view -0
+ 318              		.cfi_startproc
+ 319              		@ args = 0, pretend = 0, frame = 0
+ 320              		@ frame_needed = 0, uses_anonymous_args = 0
+  66:mpr121_daisy.cpp ****         return 0;
+ 321              		.loc 1 66 5 view .LVU76
+ 322 0000 0B29     		cmp	r1, #11
+  65:mpr121_daisy.cpp ****     if(channel > 11)
+ 323              		.loc 1 65 1 is_stmt 0 view .LVU77
+ 324 0002 70B5     		push	{r4, r5, r6, lr}
+ 325              		.cfi_def_cfa_offset 16
+ 326              		.cfi_offset 4, -16
+ 327              		.cfi_offset 5, -12
+ 328              		.cfi_offset 6, -8
+ 329              		.cfi_offset 14, -4
+  65:mpr121_daisy.cpp ****     if(channel > 11)
+ 330              		.loc 1 65 1 view .LVU78
+ 331 0004 0646     		mov	r6, r0
+ 332 0006 0D46     		mov	r5, r1
+  66:mpr121_daisy.cpp ****         return 0;
+ 333              		.loc 1 66 5 view .LVU79
+ 334 0008 09D8     		bhi	.L11
+ 335              	.LVL26:
+ 336              	.LBB33:
+ 337              	.LBI33:
+  64:mpr121_daisy.cpp **** {
+ 338              		.loc 1 64 9 is_stmt 1 view .LVU80
+ 339              	.LBB34:
+  69:mpr121_daisy.cpp ****     uint16_t filtered = FilteredData(channel);
+ 340              		.loc 1 69 5 view .LVU81
+  69:mpr121_daisy.cpp ****     uint16_t filtered = FilteredData(channel);
+ 341              		.loc 1 69 37 is_stmt 0 view .LVU82
+ 342 000a FFF7FEFF 		bl	_ZN6Mpr12112BaselineDataEh
+ 343              	.LVL27:
+  69:mpr121_daisy.cpp ****     uint16_t filtered = FilteredData(channel);
+ 344              		.loc 1 69 37 view .LVU83
+ 345 000e 0446     		mov	r4, r0
+ 346              	.LVL28:
+  70:mpr121_daisy.cpp ****     return static_cast<int16_t>(baseline - filtered);
+ 347              		.loc 1 70 5 is_stmt 1 view .LVU84
+  70:mpr121_daisy.cpp ****     return static_cast<int16_t>(baseline - filtered);
+ 348              		.loc 1 70 37 is_stmt 0 view .LVU85
+ 349 0010 2946     		mov	r1, r5
+ 350 0012 3046     		mov	r0, r6
+ 351 0014 FFF7FEFF 		bl	_ZN6Mpr12112FilteredDataEh
+ 352              	.LVL29:
+  71:mpr121_daisy.cpp **** }
+ 353              		.loc 1 71 5 is_stmt 1 view .LVU86
+  71:mpr121_daisy.cpp **** }
+ 354              		.loc 1 71 42 is_stmt 0 view .LVU87
+ 355 0018 201A     		subs	r0, r4, r0
+ 356              	.LVL30:
+  71:mpr121_daisy.cpp **** }
+ 357              		.loc 1 71 52 view .LVU88
+ 358 001a 00B2     		sxth	r0, r0
+ 359              	.LVL31:
+ 360              	.L10:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 12
+
+
+  71:mpr121_daisy.cpp **** }
+ 361              		.loc 1 71 52 view .LVU89
+ 362              	.LBE34:
+ 363              	.LBE33:
+  72:mpr121_daisy.cpp **** 
+ 364              		.loc 1 72 1 view .LVU90
+ 365 001c 70BD     		pop	{r4, r5, r6, pc}
+ 366              	.LVL32:
+ 367              	.L11:
+  67:mpr121_daisy.cpp **** 
+ 368              		.loc 1 67 16 view .LVU91
+ 369 001e 0020     		movs	r0, #0
+ 370              	.LVL33:
+  67:mpr121_daisy.cpp **** 
+ 371              		.loc 1 67 16 view .LVU92
+ 372 0020 FCE7     		b	.L10
+ 373              		.cfi_endproc
+ 374              	.LFE4327:
+ 376              		.section	.text._ZN6Mpr12117GetProximityValueEtf,"ax",%progbits
+ 377              		.align	1
+ 378              		.global	_ZN6Mpr12117GetProximityValueEtf
+ 379              		.syntax unified
+ 380              		.thumb
+ 381              		.thumb_func
+ 383              	_ZN6Mpr12117GetProximityValueEtf:
+ 384              	.LVL34:
+ 385              	.LFB4328:
+  75:mpr121_daisy.cpp ****     int32_t totalDeviation = 0;
+ 386              		.loc 1 75 1 is_stmt 1 view -0
+ 387              		.cfi_startproc
+ 388              		@ args = 0, pretend = 0, frame = 0
+ 389              		@ frame_needed = 0, uses_anonymous_args = 0
+  76:mpr121_daisy.cpp ****     int     numChannels    = 0;
+ 390              		.loc 1 76 5 view .LVU94
+  77:mpr121_daisy.cpp ****     int16_t maxDeviation   = 0;
+ 391              		.loc 1 77 5 view .LVU95
+  78:mpr121_daisy.cpp **** 
+ 392              		.loc 1 78 5 view .LVU96
+  80:mpr121_daisy.cpp ****     {
+ 393              		.loc 1 80 5 view .LVU97
+ 394              	.LBB35:
+  80:mpr121_daisy.cpp ****     {
+ 395              		.loc 1 80 26 view .LVU98
+ 396              	.LBE35:
+  75:mpr121_daisy.cpp ****     int32_t totalDeviation = 0;
+ 397              		.loc 1 75 1 is_stmt 0 view .LVU99
+ 398 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 399              		.cfi_def_cfa_offset 24
+ 400              		.cfi_offset 4, -24
+ 401              		.cfi_offset 5, -20
+ 402              		.cfi_offset 6, -16
+ 403              		.cfi_offset 7, -12
+ 404              		.cfi_offset 8, -8
+ 405              		.cfi_offset 14, -4
+ 406 0004 0025     		movs	r5, #0
+ 407 0006 0746     		mov	r7, r0
+ 408 0008 8846     		mov	r8, r1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 13
+
+
+  78:mpr121_daisy.cpp **** 
+ 409              		.loc 1 78 13 view .LVU100
+ 410 000a 2C46     		mov	r4, r5
+  77:mpr121_daisy.cpp ****     int16_t maxDeviation   = 0;
+ 411              		.loc 1 77 13 view .LVU101
+ 412 000c 2E46     		mov	r6, r5
+  75:mpr121_daisy.cpp ****     int32_t totalDeviation = 0;
+ 413              		.loc 1 75 1 view .LVU102
+ 414 000e 2DED028B 		vpush.64	{d8}
+ 415              		.cfi_def_cfa_offset 32
+ 416              		.cfi_offset 80, -32
+ 417              		.cfi_offset 81, -28
+  75:mpr121_daisy.cpp ****     int32_t totalDeviation = 0;
+ 418              		.loc 1 75 1 view .LVU103
+ 419 0012 B0EE408A 		vmov.f32	s16, s0
+ 420              	.LVL35:
+ 421              	.L14:
+ 422              	.LBB39:
+ 423              	.LBB36:
+  82:mpr121_daisy.cpp ****         {
+ 424              		.loc 1 82 24 view .LVU104
+ 425 0016 48FA05F3 		asr	r3, r8, r5
+ 426 001a E9B2     		uxtb	r1, r5
+ 427              	.LVL36:
+  82:mpr121_daisy.cpp ****         {
+ 428              		.loc 1 82 24 view .LVU105
+ 429              	.LBE36:
+ 430              	.LBE39:
+  82:mpr121_daisy.cpp ****         {
+ 431              		.loc 1 82 9 is_stmt 1 view .LVU106
+ 432              	.LBB40:
+ 433              	.LBB38:
+ 434 001c DB07     		lsls	r3, r3, #31
+ 435 001e 07D5     		bpl	.L13
+ 436              	.LBB37:
+  84:mpr121_daisy.cpp ****             if(dev > maxDeviation)
+ 437              		.loc 1 84 13 view .LVU107
+  84:mpr121_daisy.cpp ****             if(dev > maxDeviation)
+ 438              		.loc 1 84 47 is_stmt 0 view .LVU108
+ 439 0020 3846     		mov	r0, r7
+  88:mpr121_daisy.cpp ****         }
+ 440              		.loc 1 88 24 view .LVU109
+ 441 0022 0136     		adds	r6, r6, #1
+ 442              	.LVL37:
+  84:mpr121_daisy.cpp ****             if(dev > maxDeviation)
+ 443              		.loc 1 84 47 view .LVU110
+ 444 0024 FFF7FEFF 		bl	_ZN6Mpr12120GetBaselineDeviationEh
+ 445              	.LVL38:
+  85:mpr121_daisy.cpp ****                 maxDeviation = dev;
+ 446              		.loc 1 85 13 is_stmt 1 view .LVU111
+ 447 0028 8442     		cmp	r4, r0
+ 448 002a B8BF     		it	lt
+ 449 002c 0446     		movlt	r4, r0
+ 450              	.LVL39:
+  85:mpr121_daisy.cpp ****                 maxDeviation = dev;
+ 451              		.loc 1 85 13 is_stmt 0 view .LVU112
+ 452 002e 24B2     		sxth	r4, r4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 14
+
+
+ 453              	.LVL40:
+  87:mpr121_daisy.cpp ****             numChannels++;
+ 454              		.loc 1 87 13 is_stmt 1 view .LVU113
+  88:mpr121_daisy.cpp ****         }
+ 455              		.loc 1 88 13 view .LVU114
+ 456              	.L13:
+  88:mpr121_daisy.cpp ****         }
+ 457              		.loc 1 88 13 is_stmt 0 view .LVU115
+ 458              	.LBE37:
+ 459              	.LBE38:
+  80:mpr121_daisy.cpp ****     {
+ 460              		.loc 1 80 5 is_stmt 1 discriminator 2 view .LVU116
+  80:mpr121_daisy.cpp ****     {
+ 461              		.loc 1 80 26 discriminator 2 view .LVU117
+ 462 0030 0135     		adds	r5, r5, #1
+ 463              	.LVL41:
+  80:mpr121_daisy.cpp ****     {
+ 464              		.loc 1 80 26 is_stmt 0 discriminator 2 view .LVU118
+ 465 0032 0C2D     		cmp	r5, #12
+ 466 0034 EFD1     		bne	.L14
+  80:mpr121_daisy.cpp ****     {
+ 467              		.loc 1 80 26 discriminator 2 view .LVU119
+ 468              	.LBE40:
+  92:mpr121_daisy.cpp ****         return 0.0f;
+ 469              		.loc 1 92 5 is_stmt 1 view .LVU120
+ 470 0036 DFED0D6A 		vldr.32	s13, .L21
+ 471 003a 9EB1     		cbz	r6, .L16
+  95:mpr121_daisy.cpp ****     proximityValue = daisysp::fmax(0.0f,
+ 472              		.loc 1 95 5 view .LVU121
+ 473              	.LVL42:
+  96:mpr121_daisy.cpp ****                                    daisysp::fmin(1.0f, proximityValue / 100.0f));
+ 474              		.loc 1 96 5 view .LVU122
+ 475              	.LBB41:
+ 476              	.LBI41:
+ 477              		.file 3 "lib/DaisySP/Source/Utility/dsp.h"
+   1:lib/DaisySP/Source/Utility/dsp.h **** /*
+   2:lib/DaisySP/Source/Utility/dsp.h **** Copyright (c) 2020 Electrosmith, Corp, Emilie Gillet
+   3:lib/DaisySP/Source/Utility/dsp.h **** 
+   4:lib/DaisySP/Source/Utility/dsp.h **** Use of this source code is governed by an MIT-style
+   5:lib/DaisySP/Source/Utility/dsp.h **** license that can be found in the LICENSE file or at
+   6:lib/DaisySP/Source/Utility/dsp.h **** https://opensource.org/licenses/MIT.
+   7:lib/DaisySP/Source/Utility/dsp.h **** */
+   8:lib/DaisySP/Source/Utility/dsp.h **** 
+   9:lib/DaisySP/Source/Utility/dsp.h **** /** Helpful defines, functions, and other utilities for use in/with daisysp modules.
+  10:lib/DaisySP/Source/Utility/dsp.h **** */
+  11:lib/DaisySP/Source/Utility/dsp.h **** #pragma once
+  12:lib/DaisySP/Source/Utility/dsp.h **** #ifndef DSY_CORE_DSP
+  13:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_CORE_DSP
+  14:lib/DaisySP/Source/Utility/dsp.h **** #include <cassert>
+  15:lib/DaisySP/Source/Utility/dsp.h **** #include <cstdint>
+  16:lib/DaisySP/Source/Utility/dsp.h **** #include <random>
+  17:lib/DaisySP/Source/Utility/dsp.h **** #include <cmath>
+  18:lib/DaisySP/Source/Utility/dsp.h **** 
+  19:lib/DaisySP/Source/Utility/dsp.h **** /** PIs
+  20:lib/DaisySP/Source/Utility/dsp.h **** */
+  21:lib/DaisySP/Source/Utility/dsp.h **** #define PI_F 3.1415927410125732421875f
+  22:lib/DaisySP/Source/Utility/dsp.h **** #define TWOPI_F (2.0f * PI_F)
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 15
+
+
+  23:lib/DaisySP/Source/Utility/dsp.h **** #define HALFPI_F (PI_F * 0.5f)
+  24:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_MIN(in, mn) (in < mn ? in : mn)
+  25:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_MAX(in, mx) (in > mx ? in : mx)
+  26:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_CLAMP(in, mn, mx) (DSY_MIN(DSY_MAX(in, mn), mx))
+  27:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_COUNTOF(_arr) (sizeof(_arr) / sizeof(_arr[0]))
+  28:lib/DaisySP/Source/Utility/dsp.h **** 
+  29:lib/DaisySP/Source/Utility/dsp.h **** namespace daisysp
+  30:lib/DaisySP/Source/Utility/dsp.h **** {
+  31:lib/DaisySP/Source/Utility/dsp.h **** //Avoids division for random floats. e.g. rand() * kRandFrac
+  32:lib/DaisySP/Source/Utility/dsp.h **** static constexpr float kRandFrac = 1.f / (float)RAND_MAX;
+  33:lib/DaisySP/Source/Utility/dsp.h **** 
+  34:lib/DaisySP/Source/Utility/dsp.h **** //Convert from semitones to other units. e.g. 2 ^ (kOneTwelfth * x)
+  35:lib/DaisySP/Source/Utility/dsp.h **** static constexpr float kOneTwelfth = 1.f / 12.f;
+  36:lib/DaisySP/Source/Utility/dsp.h **** 
+  37:lib/DaisySP/Source/Utility/dsp.h **** /** efficient floating point min/max
+  38:lib/DaisySP/Source/Utility/dsp.h **** c/o stephen mccaul
+  39:lib/DaisySP/Source/Utility/dsp.h **** */
+  40:lib/DaisySP/Source/Utility/dsp.h **** inline float fmax(float a, float b)
+  41:lib/DaisySP/Source/Utility/dsp.h **** {
+  42:lib/DaisySP/Source/Utility/dsp.h ****     float r;
+  43:lib/DaisySP/Source/Utility/dsp.h **** #ifdef __arm__
+  44:lib/DaisySP/Source/Utility/dsp.h ****     asm("vmaxnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
+  45:lib/DaisySP/Source/Utility/dsp.h **** #else
+  46:lib/DaisySP/Source/Utility/dsp.h ****     r = (a > b) ? a : b;
+  47:lib/DaisySP/Source/Utility/dsp.h **** #endif // __arm__
+  48:lib/DaisySP/Source/Utility/dsp.h ****     return r;
+  49:lib/DaisySP/Source/Utility/dsp.h **** }
+  50:lib/DaisySP/Source/Utility/dsp.h **** 
+  51:lib/DaisySP/Source/Utility/dsp.h **** inline float fmin(float a, float b)
+ 478              		.loc 3 51 14 view .LVU123
+ 479              	.LBB42:
+  52:lib/DaisySP/Source/Utility/dsp.h **** {
+  53:lib/DaisySP/Source/Utility/dsp.h ****     float r;
+ 480              		.loc 3 53 5 view .LVU124
+  54:lib/DaisySP/Source/Utility/dsp.h **** #ifdef __arm__
+  55:lib/DaisySP/Source/Utility/dsp.h ****     asm("vminnm.f32 %[d], %[n], %[m]" : [d] "=t"(r) : [n] "t"(a), [m] "t"(b) :);
+ 481              		.loc 3 55 5 view .LVU125
+ 482              	.LBE42:
+ 483              	.LBE41:
+  95:mpr121_daisy.cpp ****     proximityValue = daisysp::fmax(0.0f,
+ 484              		.loc 1 95 28 is_stmt 0 view .LVU126
+ 485 003c 07EE904A 		vmov	s15, r4	@ int
+  96:mpr121_daisy.cpp ****                                    daisysp::fmin(1.0f, proximityValue / 100.0f));
+ 486              		.loc 1 96 35 view .LVU127
+ 487 0040 9FED0B6A 		vldr.32	s12, .L21+4
+ 488              	.LBB45:
+ 489              	.LBB43:
+ 490              		.loc 3 55 5 view .LVU128
+ 491 0044 B7EE000A 		vmov.f32	s0, #1.0e+0
+ 492              	.LBE43:
+ 493              	.LBE45:
+  95:mpr121_daisy.cpp ****     proximityValue = daisysp::fmax(0.0f,
+ 494              		.loc 1 95 28 view .LVU129
+ 495 0048 B8EEE77A 		vcvt.f32.s32	s14, s15
+  95:mpr121_daisy.cpp ****     proximityValue = daisysp::fmax(0.0f,
+ 496              		.loc 1 95 11 view .LVU130
+ 497 004c 67EE087A 		vmul.f32	s15, s14, s16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 16
+
+
+  96:mpr121_daisy.cpp ****                                    daisysp::fmin(1.0f, proximityValue / 100.0f));
+ 498              		.loc 1 96 35 view .LVU131
+ 499 0050 87EE867A 		vdiv.f32	s14, s15, s12
+ 500              	.LBB46:
+ 501              	.LBB44:
+ 502              		.loc 3 55 5 view .LVU132
+ 503              		.syntax unified
+ 504              	@ 55 "lib/DaisySP/Source/Utility/dsp.h" 1
+ 505 0054 80FE470A 		vminnm.f32 s0, s0, s14
+ 506              	@ 0 "" 2
+ 507              	.LVL43:
+  56:lib/DaisySP/Source/Utility/dsp.h **** #else
+  57:lib/DaisySP/Source/Utility/dsp.h ****     r = (a < b) ? a : b;
+  58:lib/DaisySP/Source/Utility/dsp.h **** #endif // __arm__
+  59:lib/DaisySP/Source/Utility/dsp.h ****     return r;
+ 508              		.loc 3 59 5 is_stmt 1 view .LVU133
+ 509              		.loc 3 59 5 is_stmt 0 view .LVU134
+ 510              		.thumb
+ 511              		.syntax unified
+ 512              	.LBE44:
+ 513              	.LBE46:
+ 514              	.LBB47:
+ 515              	.LBI47:
+  40:lib/DaisySP/Source/Utility/dsp.h **** {
+ 516              		.loc 3 40 14 is_stmt 1 view .LVU135
+ 517              	.LBB48:
+  42:lib/DaisySP/Source/Utility/dsp.h **** #ifdef __arm__
+ 518              		.loc 3 42 5 view .LVU136
+  44:lib/DaisySP/Source/Utility/dsp.h **** #else
+ 519              		.loc 3 44 5 view .LVU137
+ 520              		.syntax unified
+ 521              	@ 44 "lib/DaisySP/Source/Utility/dsp.h" 1
+ 522 0058 86FE800A 		vmaxnm.f32 s0, s13, s0
+ 523              	@ 0 "" 2
+ 524              	.LVL44:
+  48:lib/DaisySP/Source/Utility/dsp.h **** }
+ 525              		.loc 3 48 5 view .LVU138
+  48:lib/DaisySP/Source/Utility/dsp.h **** }
+ 526              		.loc 3 48 5 is_stmt 0 view .LVU139
+ 527              		.thumb
+ 528              		.syntax unified
+ 529              	.LBE48:
+ 530              	.LBE47:
+  98:mpr121_daisy.cpp **** }
+ 531              		.loc 1 98 5 is_stmt 1 view .LVU140
+ 532              	.L12:
+  99:mpr121_daisy.cpp **** 
+ 533              		.loc 1 99 1 is_stmt 0 view .LVU141
+ 534 005c BDEC028B 		vldm	sp!, {d8}
+ 535              		.cfi_remember_state
+ 536              		.cfi_restore 80
+ 537              		.cfi_restore 81
+ 538              		.cfi_def_cfa_offset 24
+ 539              	.LVL45:
+  99:mpr121_daisy.cpp **** 
+ 540              		.loc 1 99 1 view .LVU142
+ 541 0060 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 17
+
+
+ 542              	.LVL46:
+ 543              	.L16:
+ 544              		.cfi_restore_state
+  93:mpr121_daisy.cpp **** 
+ 545              		.loc 1 93 16 view .LVU143
+ 546 0064 B0EE660A 		vmov.f32	s0, s13
+ 547 0068 F8E7     		b	.L12
+ 548              	.L22:
+ 549 006a 00BF     		.align	2
+ 550              	.L21:
+ 551 006c 00000000 		.word	0
+ 552 0070 0000C842 		.word	1120403456
+ 553              		.cfi_endproc
+ 554              	.LFE4328:
+ 556              		.section	.text._ZN6Mpr12113WriteRegisterEhh,"ax",%progbits
+ 557              		.align	1
+ 558              		.global	_ZN6Mpr12113WriteRegisterEhh
+ 559              		.syntax unified
+ 560              		.thumb
+ 561              		.thumb_func
+ 563              	_ZN6Mpr12113WriteRegisterEhh:
+ 564              	.LVL47:
+ 565              	.LFB4332:
+ 130:mpr121_daisy.cpp **** 
+ 131:mpr121_daisy.cpp **** void Mpr121::WriteRegister(uint8_t reg, uint8_t value)
+ 132:mpr121_daisy.cpp **** {
+ 566              		.loc 1 132 1 is_stmt 1 view -0
+ 567              		.cfi_startproc
+ 568              		@ args = 0, pretend = 0, frame = 8
+ 569              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133:mpr121_daisy.cpp ****     uint8_t buffer[1] = {value};
+ 570              		.loc 1 133 5 view .LVU145
+ 132:mpr121_daisy.cpp ****     uint8_t buffer[1] = {value};
+ 571              		.loc 1 132 1 is_stmt 0 view .LVU146
+ 572 0000 10B5     		push	{r4, lr}
+ 573              		.cfi_def_cfa_offset 8
+ 574              		.cfi_offset 4, -8
+ 575              		.cfi_offset 14, -4
+ 576 0002 86B0     		sub	sp, sp, #24
+ 577              		.cfi_def_cfa_offset 32
+ 134:mpr121_daisy.cpp ****     auto res = i2c_handle_.WriteDataAtAddress(i2c_address_, reg, 1, buffer, 1, kTimeout);
+ 578              		.loc 1 134 46 view .LVU147
+ 579 0004 0123     		movs	r3, #1
+ 132:mpr121_daisy.cpp ****     uint8_t buffer[1] = {value};
+ 580              		.loc 1 132 1 view .LVU148
+ 581 0006 0446     		mov	r4, r0
+ 133:mpr121_daisy.cpp ****     uint8_t buffer[1] = {value};
+ 582              		.loc 1 133 31 view .LVU149
+ 583 0008 8DF81420 		strb	r2, [sp, #20]
+ 584              		.loc 1 134 5 is_stmt 1 view .LVU150
+ 585              		.loc 1 134 46 is_stmt 0 view .LVU151
+ 586 000c 6422     		movs	r2, #100
+ 587              	.LVL48:
+ 588              		.loc 1 134 46 view .LVU152
+ 589 000e CDE90132 		strd	r3, r2, [sp, #4]
+ 590 0012 05AA     		add	r2, sp, #20
+ 591              	.LVL49:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 18
+
+
+ 592              		.loc 1 134 46 view .LVU153
+ 593 0014 0092     		str	r2, [sp]
+ 594 0016 0A46     		mov	r2, r1
+ 595              	.LVL50:
+ 596              		.loc 1 134 46 view .LVU154
+ 597 0018 0179     		ldrb	r1, [r0, #4]	@ zero_extendqisi2
+ 598              	.LVL51:
+ 599              		.loc 1 134 46 view .LVU155
+ 600 001a FFF7FEFF 		bl	_ZN5daisy9I2CHandle18WriteDataAtAddressEtttPhtm
+ 601              	.LVL52:
+ 135:mpr121_daisy.cpp ****     SetTransportErr(res != I2CHandle::Result::OK);
+ 602              		.loc 1 135 5 is_stmt 1 view .LVU156
+ 603              	.LBB49:
+ 604              	.LBI49:
+ 605              		.loc 2 92 10 view .LVU157
+ 606              	.LBB50:
+ 607              		.loc 2 92 38 view .LVU158
+ 608              		.loc 2 92 55 is_stmt 0 view .LVU159
+ 609 001e 6379     		ldrb	r3, [r4, #5]	@ zero_extendqisi2
+ 610 0020 0028     		cmp	r0, #0
+ 611 0022 18BF     		it	ne
+ 612 0024 43F00103 		orrne	r3, r3, #1
+ 613 0028 6371     		strb	r3, [r4, #5]
+ 614              	.LVL53:
+ 615              		.loc 2 92 55 view .LVU160
+ 616              	.LBE50:
+ 617              	.LBE49:
+ 136:mpr121_daisy.cpp **** }
+ 618              		.loc 1 136 1 view .LVU161
+ 619 002a 06B0     		add	sp, sp, #24
+ 620              		.cfi_def_cfa_offset 8
+ 621              		@ sp needed
+ 622 002c 10BD     		pop	{r4, pc}
+ 623              		.loc 1 136 1 view .LVU162
+ 624              		.cfi_endproc
+ 625              	.LFE4332:
+ 627              		.section	.text._ZN6Mpr12113SetThresholdsEhh,"ax",%progbits
+ 628              		.align	1
+ 629              		.global	_ZN6Mpr12113SetThresholdsEhh
+ 630              		.syntax unified
+ 631              		.thumb
+ 632              		.thumb_func
+ 634              	_ZN6Mpr12113SetThresholdsEhh:
+ 635              	.LVL54:
+ 636              	.LFB4329:
+ 102:mpr121_daisy.cpp ****     WriteRegister(MPR121_ECR, 0x00);
+ 637              		.loc 1 102 1 is_stmt 1 view -0
+ 638              		.cfi_startproc
+ 639              		@ args = 0, pretend = 0, frame = 0
+ 640              		@ frame_needed = 0, uses_anonymous_args = 0
+ 103:mpr121_daisy.cpp ****     for(uint8_t i = 0; i < 12; i++)
+ 641              		.loc 1 103 5 view .LVU164
+ 102:mpr121_daisy.cpp ****     WriteRegister(MPR121_ECR, 0x00);
+ 642              		.loc 1 102 1 is_stmt 0 view .LVU165
+ 643 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 644              		.cfi_def_cfa_offset 24
+ 645              		.cfi_offset 3, -24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 19
+
+
+ 646              		.cfi_offset 4, -20
+ 647              		.cfi_offset 5, -16
+ 648              		.cfi_offset 6, -12
+ 649              		.cfi_offset 7, -8
+ 650              		.cfi_offset 14, -4
+ 103:mpr121_daisy.cpp ****     for(uint8_t i = 0; i < 12; i++)
+ 651              		.loc 1 103 18 view .LVU166
+ 652 0002 4124     		movs	r4, #65
+ 102:mpr121_daisy.cpp ****     WriteRegister(MPR121_ECR, 0x00);
+ 653              		.loc 1 102 1 view .LVU167
+ 654 0004 0F46     		mov	r7, r1
+ 655 0006 1646     		mov	r6, r2
+ 103:mpr121_daisy.cpp ****     for(uint8_t i = 0; i < 12; i++)
+ 656              		.loc 1 103 18 view .LVU168
+ 657 0008 5E21     		movs	r1, #94
+ 658              	.LVL55:
+ 103:mpr121_daisy.cpp ****     for(uint8_t i = 0; i < 12; i++)
+ 659              		.loc 1 103 18 view .LVU169
+ 660 000a 0022     		movs	r2, #0
+ 661              	.LVL56:
+ 102:mpr121_daisy.cpp ****     WriteRegister(MPR121_ECR, 0x00);
+ 662              		.loc 1 102 1 view .LVU170
+ 663 000c 0546     		mov	r5, r0
+ 103:mpr121_daisy.cpp ****     for(uint8_t i = 0; i < 12; i++)
+ 664              		.loc 1 103 18 view .LVU171
+ 665 000e FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 666              	.LVL57:
+ 104:mpr121_daisy.cpp ****     {
+ 667              		.loc 1 104 5 is_stmt 1 view .LVU172
+ 668              	.LBB51:
+ 104:mpr121_daisy.cpp ****     {
+ 669              		.loc 1 104 26 view .LVU173
+ 670              	.L25:
+ 106:mpr121_daisy.cpp ****         WriteRegister(MPR121_RELEASETH_0 + 2 * i, release);
+ 671              		.loc 1 106 9 discriminator 2 view .LVU174
+ 106:mpr121_daisy.cpp ****         WriteRegister(MPR121_RELEASETH_0 + 2 * i, release);
+ 672              		.loc 1 106 22 is_stmt 0 discriminator 2 view .LVU175
+ 673 0012 2146     		mov	r1, r4
+ 674 0014 3A46     		mov	r2, r7
+ 675 0016 2846     		mov	r0, r5
+ 676 0018 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 677              	.LVL58:
+ 107:mpr121_daisy.cpp ****     }
+ 678              		.loc 1 107 9 is_stmt 1 discriminator 2 view .LVU176
+ 107:mpr121_daisy.cpp ****     }
+ 679              		.loc 1 107 22 is_stmt 0 discriminator 2 view .LVU177
+ 680 001c 611C     		adds	r1, r4, #1
+ 104:mpr121_daisy.cpp ****     {
+ 681              		.loc 1 104 26 discriminator 2 view .LVU178
+ 682 001e 0234     		adds	r4, r4, #2
+ 107:mpr121_daisy.cpp ****     }
+ 683              		.loc 1 107 22 discriminator 2 view .LVU179
+ 684 0020 3246     		mov	r2, r6
+ 685 0022 C9B2     		uxtb	r1, r1
+ 686 0024 2846     		mov	r0, r5
+ 104:mpr121_daisy.cpp ****     {
+ 687              		.loc 1 104 26 discriminator 2 view .LVU180
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 20
+
+
+ 688 0026 E4B2     		uxtb	r4, r4
+ 107:mpr121_daisy.cpp ****     }
+ 689              		.loc 1 107 22 discriminator 2 view .LVU181
+ 690 0028 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 691              	.LVL59:
+ 104:mpr121_daisy.cpp ****     {
+ 692              		.loc 1 104 5 is_stmt 1 discriminator 2 view .LVU182
+ 104:mpr121_daisy.cpp ****     {
+ 693              		.loc 1 104 26 discriminator 2 view .LVU183
+ 694 002c 592C     		cmp	r4, #89
+ 695 002e F0D1     		bne	.L25
+ 696              	.LBE51:
+ 109:mpr121_daisy.cpp **** }
+ 697              		.loc 1 109 5 view .LVU184
+ 109:mpr121_daisy.cpp **** }
+ 698              		.loc 1 109 18 is_stmt 0 view .LVU185
+ 699 0030 2846     		mov	r0, r5
+ 700 0032 8F22     		movs	r2, #143
+ 701 0034 5E21     		movs	r1, #94
+ 110:mpr121_daisy.cpp **** 
+ 702              		.loc 1 110 1 view .LVU186
+ 703 0036 BDE8F840 		pop	{r3, r4, r5, r6, r7, lr}
+ 704              		.cfi_restore 14
+ 705              		.cfi_restore 7
+ 706              		.cfi_restore 6
+ 707              		.cfi_restore 5
+ 708              		.cfi_restore 4
+ 709              		.cfi_restore 3
+ 710              		.cfi_def_cfa_offset 0
+ 711              	.LVL60:
+ 109:mpr121_daisy.cpp **** }
+ 712              		.loc 1 109 18 view .LVU187
+ 713 003a FFF7FEBF 		b	_ZN6Mpr12113WriteRegisterEhh
+ 714              	.LVL61:
+ 109:mpr121_daisy.cpp **** }
+ 715              		.loc 1 109 18 view .LVU188
+ 716              		.cfi_endproc
+ 717              	.LFE4329:
+ 719              		.section	.text._ZN6Mpr1214InitERKNS_6ConfigE,"ax",%progbits
+ 720              		.align	1
+ 721              		.global	_ZN6Mpr1214InitERKNS_6ConfigE
+ 722              		.syntax unified
+ 723              		.thumb
+ 724              		.thumb_func
+ 726              	_ZN6Mpr1214InitERKNS_6ConfigE:
+ 727              	.LVL62:
+ 728              	.LFB4323:
+   6:mpr121_daisy.cpp ****     i2c_address_ = config.i2c_address << 1;
+ 729              		.loc 1 6 1 is_stmt 1 view -0
+ 730              		.cfi_startproc
+ 731              		@ args = 0, pretend = 0, frame = 0
+ 732              		@ frame_needed = 0, uses_anonymous_args = 0
+   7:mpr121_daisy.cpp ****     i2c_handle_.Init(config.i2c_config);
+ 733              		.loc 1 7 5 view .LVU190
+   6:mpr121_daisy.cpp ****     i2c_address_ = config.i2c_address << 1;
+ 734              		.loc 1 6 1 is_stmt 0 view .LVU191
+ 735 0000 10B5     		push	{r4, lr}
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 21
+
+
+ 736              		.cfi_def_cfa_offset 8
+ 737              		.cfi_offset 4, -8
+ 738              		.cfi_offset 14, -4
+   7:mpr121_daisy.cpp ****     i2c_handle_.Init(config.i2c_config);
+ 739              		.loc 1 7 39 view .LVU192
+ 740 0002 0B7D     		ldrb	r3, [r1, #20]	@ zero_extendqisi2
+   6:mpr121_daisy.cpp ****     i2c_address_ = config.i2c_address << 1;
+ 741              		.loc 1 6 1 view .LVU193
+ 742 0004 0446     		mov	r4, r0
+   7:mpr121_daisy.cpp ****     i2c_handle_.Init(config.i2c_config);
+ 743              		.loc 1 7 39 view .LVU194
+ 744 0006 5B00     		lsls	r3, r3, #1
+   7:mpr121_daisy.cpp ****     i2c_handle_.Init(config.i2c_config);
+ 745              		.loc 1 7 18 view .LVU195
+ 746 0008 0371     		strb	r3, [r0, #4]
+   8:mpr121_daisy.cpp **** 
+ 747              		.loc 1 8 5 is_stmt 1 view .LVU196
+   8:mpr121_daisy.cpp **** 
+ 748              		.loc 1 8 21 is_stmt 0 view .LVU197
+ 749 000a FFF7FEFF 		bl	_ZN5daisy9I2CHandle4InitERKNS0_6ConfigE
+ 750              	.LVL63:
+  10:mpr121_daisy.cpp ****     System::Delay(1);
+ 751              		.loc 1 10 5 is_stmt 1 view .LVU198
+  10:mpr121_daisy.cpp ****     System::Delay(1);
+ 752              		.loc 1 10 18 is_stmt 0 view .LVU199
+ 753 000e 6322     		movs	r2, #99
+ 754 0010 8021     		movs	r1, #128
+ 755 0012 2046     		mov	r0, r4
+ 756 0014 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 757              	.LVL64:
+  11:mpr121_daisy.cpp **** 
+ 758              		.loc 1 11 5 is_stmt 1 view .LVU200
+  11:mpr121_daisy.cpp **** 
+ 759              		.loc 1 11 18 is_stmt 0 view .LVU201
+ 760 0018 0120     		movs	r0, #1
+ 761 001a FFF7FEFF 		bl	_ZN5daisy6System5DelayEm
+ 762              	.LVL65:
+  13:mpr121_daisy.cpp ****     {
+ 763              		.loc 1 13 5 is_stmt 1 view .LVU202
+  13:mpr121_daisy.cpp ****     {
+ 764              		.loc 1 13 21 is_stmt 0 view .LVU203
+ 765 001e 5D21     		movs	r1, #93
+ 766 0020 2046     		mov	r0, r4
+ 767 0022 FFF7FEFF 		bl	_ZN6Mpr12113ReadRegister8Eh
+ 768              	.LVL66:
+  13:mpr121_daisy.cpp ****     {
+ 769              		.loc 1 13 5 view .LVU204
+ 770 0026 2428     		cmp	r0, #36
+ 771 0028 56D1     		bne	.L29
+  18:mpr121_daisy.cpp ****     SetThresholds(8, 4);
+ 772              		.loc 1 18 5 is_stmt 1 view .LVU205
+  18:mpr121_daisy.cpp ****     SetThresholds(8, 4);
+ 773              		.loc 1 18 18 is_stmt 0 view .LVU206
+ 774 002a 0022     		movs	r2, #0
+ 775 002c 5E21     		movs	r1, #94
+ 776 002e 2046     		mov	r0, r4
+ 777 0030 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 22
+
+
+ 778              	.LVL67:
+  19:mpr121_daisy.cpp **** 
+ 779              		.loc 1 19 5 is_stmt 1 view .LVU207
+  19:mpr121_daisy.cpp **** 
+ 780              		.loc 1 19 18 is_stmt 0 view .LVU208
+ 781 0034 0422     		movs	r2, #4
+ 782 0036 0821     		movs	r1, #8
+ 783 0038 2046     		mov	r0, r4
+ 784 003a FFF7FEFF 		bl	_ZN6Mpr12113SetThresholdsEhh
+ 785              	.LVL68:
+  21:mpr121_daisy.cpp ****     WriteRegister(MPR121_NHDR, 0x03);
+ 786              		.loc 1 21 5 is_stmt 1 view .LVU209
+  21:mpr121_daisy.cpp ****     WriteRegister(MPR121_NHDR, 0x03);
+ 787              		.loc 1 21 18 is_stmt 0 view .LVU210
+ 788 003e 0122     		movs	r2, #1
+ 789 0040 2B21     		movs	r1, #43
+ 790 0042 2046     		mov	r0, r4
+ 791 0044 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 792              	.LVL69:
+  22:mpr121_daisy.cpp ****     WriteRegister(MPR121_NCLR, 0x10);
+ 793              		.loc 1 22 5 is_stmt 1 view .LVU211
+  22:mpr121_daisy.cpp ****     WriteRegister(MPR121_NCLR, 0x10);
+ 794              		.loc 1 22 18 is_stmt 0 view .LVU212
+ 795 0048 0322     		movs	r2, #3
+ 796 004a 2C21     		movs	r1, #44
+ 797 004c 2046     		mov	r0, r4
+ 798 004e FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 799              	.LVL70:
+  23:mpr121_daisy.cpp ****     WriteRegister(MPR121_FDLR, 0x20);
+ 800              		.loc 1 23 5 is_stmt 1 view .LVU213
+  23:mpr121_daisy.cpp ****     WriteRegister(MPR121_FDLR, 0x20);
+ 801              		.loc 1 23 18 is_stmt 0 view .LVU214
+ 802 0052 1022     		movs	r2, #16
+ 803 0054 2D21     		movs	r1, #45
+ 804 0056 2046     		mov	r0, r4
+ 805 0058 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 806              	.LVL71:
+  24:mpr121_daisy.cpp **** 
+ 807              		.loc 1 24 5 is_stmt 1 view .LVU215
+  24:mpr121_daisy.cpp **** 
+ 808              		.loc 1 24 18 is_stmt 0 view .LVU216
+ 809 005c 2022     		movs	r2, #32
+ 810 005e 2E21     		movs	r1, #46
+ 811 0060 2046     		mov	r0, r4
+ 812 0062 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 813              	.LVL72:
+  26:mpr121_daisy.cpp ****     WriteRegister(MPR121_NHDF, 0x03);
+ 814              		.loc 1 26 5 is_stmt 1 view .LVU217
+  26:mpr121_daisy.cpp ****     WriteRegister(MPR121_NHDF, 0x03);
+ 815              		.loc 1 26 18 is_stmt 0 view .LVU218
+ 816 0066 0122     		movs	r2, #1
+ 817 0068 2F21     		movs	r1, #47
+ 818 006a 2046     		mov	r0, r4
+ 819 006c FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 820              	.LVL73:
+  27:mpr121_daisy.cpp ****     WriteRegister(MPR121_NCLF, 0x10);
+ 821              		.loc 1 27 5 is_stmt 1 view .LVU219
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 23
+
+
+  27:mpr121_daisy.cpp ****     WriteRegister(MPR121_NCLF, 0x10);
+ 822              		.loc 1 27 18 is_stmt 0 view .LVU220
+ 823 0070 0322     		movs	r2, #3
+ 824 0072 3021     		movs	r1, #48
+ 825 0074 2046     		mov	r0, r4
+ 826 0076 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 827              	.LVL74:
+  28:mpr121_daisy.cpp ****     WriteRegister(MPR121_FDLF, 0x20);
+ 828              		.loc 1 28 5 is_stmt 1 view .LVU221
+  28:mpr121_daisy.cpp ****     WriteRegister(MPR121_FDLF, 0x20);
+ 829              		.loc 1 28 18 is_stmt 0 view .LVU222
+ 830 007a 1022     		movs	r2, #16
+ 831 007c 3121     		movs	r1, #49
+ 832 007e 2046     		mov	r0, r4
+ 833 0080 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 834              	.LVL75:
+  29:mpr121_daisy.cpp **** 
+ 835              		.loc 1 29 5 is_stmt 1 view .LVU223
+  29:mpr121_daisy.cpp **** 
+ 836              		.loc 1 29 18 is_stmt 0 view .LVU224
+ 837 0084 2022     		movs	r2, #32
+ 838 0086 3221     		movs	r1, #50
+ 839 0088 2046     		mov	r0, r4
+ 840 008a FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 841              	.LVL76:
+  31:mpr121_daisy.cpp ****     WriteRegister(MPR121_NCLT, 0x05);
+ 842              		.loc 1 31 5 is_stmt 1 view .LVU225
+  31:mpr121_daisy.cpp ****     WriteRegister(MPR121_NCLT, 0x05);
+ 843              		.loc 1 31 18 is_stmt 0 view .LVU226
+ 844 008e 0122     		movs	r2, #1
+ 845 0090 3321     		movs	r1, #51
+ 846 0092 2046     		mov	r0, r4
+ 847 0094 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 848              	.LVL77:
+  32:mpr121_daisy.cpp ****     WriteRegister(MPR121_FDLT, 0x00);
+ 849              		.loc 1 32 5 is_stmt 1 view .LVU227
+  32:mpr121_daisy.cpp ****     WriteRegister(MPR121_FDLT, 0x00);
+ 850              		.loc 1 32 18 is_stmt 0 view .LVU228
+ 851 0098 0522     		movs	r2, #5
+ 852 009a 3421     		movs	r1, #52
+ 853 009c 2046     		mov	r0, r4
+ 854 009e FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 855              	.LVL78:
+  33:mpr121_daisy.cpp **** 
+ 856              		.loc 1 33 5 is_stmt 1 view .LVU229
+  33:mpr121_daisy.cpp **** 
+ 857              		.loc 1 33 18 is_stmt 0 view .LVU230
+ 858 00a2 0022     		movs	r2, #0
+ 859 00a4 3521     		movs	r1, #53
+ 860 00a6 2046     		mov	r0, r4
+ 861 00a8 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 862              	.LVL79:
+  35:mpr121_daisy.cpp ****     WriteRegister(MPR121_CONFIG1, 0x3F);
+ 863              		.loc 1 35 5 is_stmt 1 view .LVU231
+  35:mpr121_daisy.cpp ****     WriteRegister(MPR121_CONFIG1, 0x3F);
+ 864              		.loc 1 35 18 is_stmt 0 view .LVU232
+ 865 00ac 2222     		movs	r2, #34
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 24
+
+
+ 866 00ae 5B21     		movs	r1, #91
+ 867 00b0 2046     		mov	r0, r4
+ 868 00b2 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 869              	.LVL80:
+  36:mpr121_daisy.cpp ****     WriteRegister(MPR121_CONFIG2, 0x00);
+ 870              		.loc 1 36 5 is_stmt 1 view .LVU233
+  36:mpr121_daisy.cpp ****     WriteRegister(MPR121_CONFIG2, 0x00);
+ 871              		.loc 1 36 18 is_stmt 0 view .LVU234
+ 872 00b6 3F22     		movs	r2, #63
+ 873 00b8 5C21     		movs	r1, #92
+ 874 00ba 2046     		mov	r0, r4
+ 875 00bc FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 876              	.LVL81:
+  37:mpr121_daisy.cpp **** 
+ 877              		.loc 1 37 5 is_stmt 1 view .LVU235
+  37:mpr121_daisy.cpp **** 
+ 878              		.loc 1 37 18 is_stmt 0 view .LVU236
+ 879 00c0 0022     		movs	r2, #0
+ 880 00c2 5D21     		movs	r1, #93
+ 881 00c4 2046     		mov	r0, r4
+ 882 00c6 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 883              	.LVL82:
+  39:mpr121_daisy.cpp **** 
+ 884              		.loc 1 39 5 is_stmt 1 view .LVU237
+  39:mpr121_daisy.cpp **** 
+ 885              		.loc 1 39 18 is_stmt 0 view .LVU238
+ 886 00ca 2046     		mov	r0, r4
+ 887 00cc 8F22     		movs	r2, #143
+ 888 00ce 5E21     		movs	r1, #94
+ 889 00d0 FFF7FEFF 		bl	_ZN6Mpr12113WriteRegisterEhh
+ 890              	.LVL83:
+  41:mpr121_daisy.cpp **** }
+ 891              		.loc 1 41 5 is_stmt 1 view .LVU239
+  41:mpr121_daisy.cpp **** }
+ 892              		.loc 1 41 12 is_stmt 0 view .LVU240
+ 893 00d4 0120     		movs	r0, #1
+ 894              	.L28:
+  42:mpr121_daisy.cpp **** 
+ 895              		.loc 1 42 1 view .LVU241
+ 896 00d6 10BD     		pop	{r4, pc}
+ 897              	.LVL84:
+ 898              	.L29:
+  15:mpr121_daisy.cpp ****     }
+ 899              		.loc 1 15 16 view .LVU242
+ 900 00d8 0020     		movs	r0, #0
+ 901 00da FCE7     		b	.L28
+ 902              		.cfi_endproc
+ 903              	.LFE4323:
+ 905              		.section	.text._ZNK6Mpr1218HasErrorEv,"ax",%progbits
+ 906              		.align	1
+ 907              		.global	_ZNK6Mpr1218HasErrorEv
+ 908              		.syntax unified
+ 909              		.thumb
+ 910              		.thumb_func
+ 912              	_ZNK6Mpr1218HasErrorEv:
+ 913              	.LVL85:
+ 914              	.LFB4333:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 25
+
+
+ 137:mpr121_daisy.cpp **** 
+ 138:mpr121_daisy.cpp **** bool Mpr121::HasError() const { return transport_error_; }
+ 915              		.loc 1 138 31 is_stmt 1 view -0
+ 916              		.cfi_startproc
+ 917              		@ args = 0, pretend = 0, frame = 0
+ 918              		@ frame_needed = 0, uses_anonymous_args = 0
+ 919              		@ link register save eliminated.
+ 920              		.loc 1 138 33 view .LVU244
+ 921              		.loc 1 138 58 is_stmt 0 view .LVU245
+ 922 0000 4079     		ldrb	r0, [r0, #5]	@ zero_extendqisi2
+ 923              	.LVL86:
+ 924              		.loc 1 138 58 view .LVU246
+ 925 0002 7047     		bx	lr
+ 926              		.cfi_endproc
+ 927              	.LFE4333:
+ 929              		.section	.text._ZN6Mpr12110ClearErrorEv,"ax",%progbits
+ 930              		.align	1
+ 931              		.global	_ZN6Mpr12110ClearErrorEv
+ 932              		.syntax unified
+ 933              		.thumb
+ 934              		.thumb_func
+ 936              	_ZN6Mpr12110ClearErrorEv:
+ 937              	.LVL87:
+ 938              	.LFB4334:
+ 139:mpr121_daisy.cpp **** 
+ 140:mpr121_daisy.cpp **** void Mpr121::ClearError() { transport_error_ = false; } ...
+ 939              		.loc 1 140 27 is_stmt 1 view -0
+ 940              		.cfi_startproc
+ 941              		@ args = 0, pretend = 0, frame = 0
+ 942              		@ frame_needed = 0, uses_anonymous_args = 0
+ 943              		@ link register save eliminated.
+ 944              		.loc 1 140 29 view .LVU248
+ 945              		.loc 1 140 46 is_stmt 0 view .LVU249
+ 946 0000 0023     		movs	r3, #0
+ 947 0002 4371     		strb	r3, [r0, #5]
+ 948              		.loc 1 140 55 view .LVU250
+ 949 0004 7047     		bx	lr
+ 950              		.cfi_endproc
+ 951              	.LFE4334:
+ 953              		.text
+ 954              	.Letext0:
+ 955              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 956              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 957              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
+ 958              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 959              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 960              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 961              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 962              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
+ 963              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 964              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 965              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 966              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 967              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 968              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 969              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
+ 970              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 26
+
+
+ 971              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
+ 972              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
+ 973              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
+ 974              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
+ 975              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
+ 976              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 977              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
+ 978              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
+ 979              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
+ 980              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 981              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 982              		.file 31 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 983              		.file 32 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
+ 984              		.file 33 "lib/libdaisy/src/daisy_core.h"
+ 985              		.file 34 "lib/libdaisy/src/per/tim.h"
+ 986              		.file 35 "lib/libdaisy/src/sys/system.h"
+ 987              		.file 36 "lib/libdaisy/src/per/i2c.h"
+ 988              		.file 37 "lib/libdaisy/src/util/wav_format.h"
+ 989              		.file 38 "lib/libdaisy/src/daisy_seed.h"
+ 990              		.file 39 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 991              		.file 40 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
+ 992              		.file 41 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
+ 993              		.file 42 "lib/DaisySP/Source/Control/adenv.h"
+ 994              		.file 43 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
+ 995              		.file 44 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
+ 996              		.file 45 "lib/libdaisy/src/dev/sr_595.h"
+ 997              		.file 46 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s 			page 27
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 mpr121_daisy.cpp
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:19     .text._ZN6Mpr12113ReadRegister8Eh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:25     .text._ZN6Mpr12113ReadRegister8Eh:0000000000000000 _ZN6Mpr12113ReadRegister8Eh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:99     .text._ZN6Mpr12112BaselineDataEh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:105    .text._ZN6Mpr12112BaselineDataEh:0000000000000000 _ZN6Mpr12112BaselineDataEh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:158    .text._ZN6Mpr12114ReadRegister16Eh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:164    .text._ZN6Mpr12114ReadRegister16Eh:0000000000000000 _ZN6Mpr12114ReadRegister16Eh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:240    .text._ZN6Mpr1217TouchedEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:246    .text._ZN6Mpr1217TouchedEv:0000000000000000 _ZN6Mpr1217TouchedEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:264    .text._ZN6Mpr12112FilteredDataEh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:270    .text._ZN6Mpr12112FilteredDataEh:0000000000000000 _ZN6Mpr12112FilteredDataEh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:308    .text._ZN6Mpr12120GetBaselineDeviationEh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:314    .text._ZN6Mpr12120GetBaselineDeviationEh:0000000000000000 _ZN6Mpr12120GetBaselineDeviationEh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:377    .text._ZN6Mpr12117GetProximityValueEtf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:383    .text._ZN6Mpr12117GetProximityValueEtf:0000000000000000 _ZN6Mpr12117GetProximityValueEtf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:551    .text._ZN6Mpr12117GetProximityValueEtf:000000000000006c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:557    .text._ZN6Mpr12113WriteRegisterEhh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:563    .text._ZN6Mpr12113WriteRegisterEhh:0000000000000000 _ZN6Mpr12113WriteRegisterEhh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:628    .text._ZN6Mpr12113SetThresholdsEhh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:634    .text._ZN6Mpr12113SetThresholdsEhh:0000000000000000 _ZN6Mpr12113SetThresholdsEhh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:720    .text._ZN6Mpr1214InitERKNS_6ConfigE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:726    .text._ZN6Mpr1214InitERKNS_6ConfigE:0000000000000000 _ZN6Mpr1214InitERKNS_6ConfigE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:906    .text._ZNK6Mpr1218HasErrorEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:912    .text._ZNK6Mpr1218HasErrorEv:0000000000000000 _ZNK6Mpr1218HasErrorEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:930    .text._ZN6Mpr12110ClearErrorEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cclhM95H.s:936    .text._ZN6Mpr12110ClearErrorEv:0000000000000000 _ZN6Mpr12110ClearErrorEv
+
+UNDEFINED SYMBOLS
+_ZN5daisy9I2CHandle17ReadDataAtAddressEtttPhtm
+_ZN5daisy9I2CHandle18WriteDataAtAddressEtttPhtm
+_ZN5daisy9I2CHandle4InitERKNS0_6ConfigE
+_ZN5daisy6System5DelayEm

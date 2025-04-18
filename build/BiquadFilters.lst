@@ -1,0 +1,925 @@
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 4
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"BiquadFilters.cpp"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text._ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff,"ax",%pr
+  19              		.align	1
+  20              		.global	_ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	_ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff:
+  26              	.LVL0:
+  27              	.LFB3610:
+  28              		.file 1 "Effects/BiquadFilters.cpp"
+   1:Effects/BiquadFilters.cpp **** #include "BiquadFilters.h"
+   2:Effects/BiquadFilters.cpp **** #include <cmath>
+   3:Effects/BiquadFilters.cpp **** #include "DSPUtils.h"
+   4:Effects/BiquadFilters.cpp **** 
+   5:Effects/BiquadFilters.cpp **** using namespace infrasonic;
+   6:Effects/BiquadFilters.cpp **** 
+   7:Effects/BiquadFilters.cpp **** const BiquadSection::Coefficients BiquadSection::CalculateCoefficients(const FilterType type, 
+   8:Effects/BiquadFilters.cpp ****                                                                        const float sample_rate,
+   9:Effects/BiquadFilters.cpp ****                                                                        const float cutoff_hz,
+  10:Effects/BiquadFilters.cpp ****                                                                        const float q)
+  11:Effects/BiquadFilters.cpp **** {
+  29              		.loc 1 11 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  12:Effects/BiquadFilters.cpp ****    Coefficients coefs; 
+  33              		.loc 1 12 4 view .LVU1
+  13:Effects/BiquadFilters.cpp ****     float norm;
+  34              		.loc 1 13 5 view .LVU2
+  14:Effects/BiquadFilters.cpp ****     const float K = infrasonic::tanf(PI_F * cutoff_hz * (1.0f / sample_rate));
+  35              		.loc 1 14 5 view .LVU3
+  36              	.LBB30:
+  37              	.LBI30:
+  38              		.file 2 "Effects/DSPUtils.h"
+   1:Effects/DSPUtils.h **** #pragma once
+   2:Effects/DSPUtils.h **** #ifndef INFS_DSPUTILS_H
+   3:Effects/DSPUtils.h **** #define INFS_DSPUTILS_H
+   4:Effects/DSPUtils.h **** 
+   5:Effects/DSPUtils.h **** #include <cmath>
+   6:Effects/DSPUtils.h **** #include <Utility/dsp.h>
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 2
+
+
+   7:Effects/DSPUtils.h **** #ifdef __arm__
+   8:Effects/DSPUtils.h **** #include <arm_math.h>
+   9:Effects/DSPUtils.h **** #endif
+  10:Effects/DSPUtils.h **** 
+  11:Effects/DSPUtils.h **** namespace infrasonic {
+  12:Effects/DSPUtils.h **** 
+  13:Effects/DSPUtils.h **** inline float dbfs2lin(float dbfs) {
+  14:Effects/DSPUtils.h ****     return daisysp::pow10f(dbfs * 0.05f);
+  15:Effects/DSPUtils.h **** }
+  16:Effects/DSPUtils.h **** 
+  17:Effects/DSPUtils.h **** inline float lin2dbfs(float lin) {
+  18:Effects/DSPUtils.h ****     return daisysp::fastlog10f(lin) * 20.0f;
+  19:Effects/DSPUtils.h **** }
+  20:Effects/DSPUtils.h **** 
+  21:Effects/DSPUtils.h **** // Coefficient for one pole smoothing filter based on Tau time constant for `time_s`
+  22:Effects/DSPUtils.h **** inline float onepole_coef(float time_s, float sample_rate) {
+  23:Effects/DSPUtils.h ****     if (time_s <= 0.0f || sample_rate <= 0.0f) { return 1.0f; }
+  24:Effects/DSPUtils.h ****     return daisysp::fmin(1.0f / (time_s * sample_rate), 1.0f);
+  25:Effects/DSPUtils.h **** }
+  26:Effects/DSPUtils.h **** 
+  27:Effects/DSPUtils.h **** inline float onepole_coef_t60(float time_s, float sample_rate)
+  28:Effects/DSPUtils.h **** {
+  29:Effects/DSPUtils.h **** 	return onepole_coef(time_s * 0.1447597f, sample_rate);
+  30:Effects/DSPUtils.h **** }
+  31:Effects/DSPUtils.h **** 
+  32:Effects/DSPUtils.h **** inline float ftension(const float in, const float factor)
+  33:Effects/DSPUtils.h **** {
+  34:Effects/DSPUtils.h ****     if (factor == 0.0f) return in;
+  35:Effects/DSPUtils.h ****     const float denom = expm1f(factor);
+  36:Effects/DSPUtils.h ****     return expm1f(in * factor) / denom;
+  37:Effects/DSPUtils.h **** }
+  38:Effects/DSPUtils.h **** 
+  39:Effects/DSPUtils.h **** inline float tanf(const float x)
+  39              		.loc 2 39 14 view .LVU4
+  40              	.LBE30:
+  40:Effects/DSPUtils.h **** {
+  41:Effects/DSPUtils.h **** #ifdef __arm__
+  42:Effects/DSPUtils.h ****     return std::tan(x);
+  41              		.loc 2 42 5 view .LVU5
+  42              	.LBB35:
+  43              	.LBB31:
+  44              	.LBI31:
+  45              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+   1:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // -*- C++ -*- C forwarding header.
+   2:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+   3:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // Copyright (C) 1997-2020 Free Software Foundation, Inc.
+   4:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** //
+   5:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // This file is part of the GNU ISO C++ Library.  This library is free
+   6:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // software; you can redistribute it and/or modify it under the
+   7:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // terms of the GNU General Public License as published by the
+   8:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // Free Software Foundation; either version 3, or (at your option)
+   9:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // any later version.
+  10:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  11:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // This library is distributed in the hope that it will be useful,
+  12:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // GNU General Public License for more details.
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 3
+
+
+  15:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  16:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // Under Section 7 of GPL version 3, you are granted additional
+  17:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // permissions described in the GCC Runtime Library Exception, version
+  18:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // 3.1, as published by the Free Software Foundation.
+  19:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  20:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // You should have received a copy of the GNU General Public License and
+  21:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // a copy of the GCC Runtime Library Exception along with this program;
+  22:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  23:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // <http://www.gnu.org/licenses/>.
+  24:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  25:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** /** @file include/cmath
+  26:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****  *  This is a Standard C++ Library file.  You should @c \#include this file
+  27:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****  *  in your programs, rather than any of the @a *.h implementation files.
+  28:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****  *
+  29:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****  *  This is the C++ version of the Standard C Library header @c math.h,
+  30:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****  *  and its contents are (mostly) the same as that header, but are all
+  31:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****  *  contained in the namespace @c std (except for names which are defined
+  32:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****  *  as macros in C).
+  33:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****  */
+  34:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  35:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** //
+  36:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // ISO C++ 14882: 26.5  C library
+  37:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** //
+  38:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  39:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #pragma GCC system_header
+  40:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  41:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #include <bits/c++config.h>
+  42:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #include <bits/cpp_type_traits.h>
+  43:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #include <ext/type_traits.h>
+  44:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #define _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+  45:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #include_next <math.h>
+  46:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef _GLIBCXX_INCLUDE_NEXT_C_HEADERS
+  47:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #include <bits/std_abs.h>
+  48:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  49:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef _GLIBCXX_CMATH
+  50:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #define _GLIBCXX_CMATH 1
+  51:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  52:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // Get rid of those macros defined in <math.h> in lieu of real functions.
+  53:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef div
+  54:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef acos
+  55:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef asin
+  56:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef atan
+  57:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef atan2
+  58:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef ceil
+  59:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef cos
+  60:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef cosh
+  61:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef exp
+  62:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef fabs
+  63:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef floor
+  64:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef fmod
+  65:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef frexp
+  66:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef ldexp
+  67:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef log
+  68:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef log10
+  69:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef modf
+  70:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef pow
+  71:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef sin
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 4
+
+
+  72:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef sinh
+  73:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef sqrt
+  74:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef tan
+  75:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef tanh
+  76:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  77:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** extern "C++"
+  78:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** {
+  79:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** namespace std _GLIBCXX_VISIBILITY(default)
+  80:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** {
+  81:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
+  82:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  83:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::acos;
+  84:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  85:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+  86:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+  87:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   acos(float __x)
+  88:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_acosf(__x); }
+  89:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  90:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+  91:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   acos(long double __x)
+  92:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_acosl(__x); }
+  93:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+  94:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+  95:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+  96:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+  97:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+  98:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+  99:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     acos(_Tp __x)
+ 100:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_acos(__x); }
+ 101:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 102:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::asin;
+ 103:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 104:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 105:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 106:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   asin(float __x)
+ 107:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_asinf(__x); }
+ 108:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 109:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 110:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   asin(long double __x)
+ 111:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_asinl(__x); }
+ 112:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 113:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 114:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 115:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 116:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 117:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 118:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     asin(_Tp __x)
+ 119:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_asin(__x); }
+ 120:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 121:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::atan;
+ 122:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 123:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 124:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 125:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   atan(float __x)
+ 126:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_atanf(__x); }
+ 127:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 128:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 5
+
+
+ 129:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   atan(long double __x)
+ 130:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_atanl(__x); }
+ 131:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 132:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 133:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 134:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 135:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 136:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 137:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     atan(_Tp __x)
+ 138:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_atan(__x); }
+ 139:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 140:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::atan2;
+ 141:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 142:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 143:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 144:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   atan2(float __y, float __x)
+ 145:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_atan2f(__y, __x); }
+ 146:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 147:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 148:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   atan2(long double __y, long double __x)
+ 149:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_atan2l(__y, __x); }
+ 150:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 151:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 152:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp, typename _Up>
+ 153:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 154:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+ 155:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     atan2(_Tp __y, _Up __x)
+ 156:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     {
+ 157:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+ 158:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****       return atan2(__type(__y), __type(__x));
+ 159:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     }
+ 160:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 161:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::ceil;
+ 162:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 163:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 164:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 165:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   ceil(float __x)
+ 166:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_ceilf(__x); }
+ 167:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 168:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 169:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   ceil(long double __x)
+ 170:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_ceill(__x); }
+ 171:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 172:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 173:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 174:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 175:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 176:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 177:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     ceil(_Tp __x)
+ 178:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_ceil(__x); }
+ 179:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 180:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::cos;
+ 181:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 182:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 183:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 184:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   cos(float __x)
+ 185:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_cosf(__x); }
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 6
+
+
+ 186:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 187:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 188:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   cos(long double __x)
+ 189:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_cosl(__x); }
+ 190:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 191:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 192:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 193:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 194:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 195:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 196:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     cos(_Tp __x)
+ 197:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_cos(__x); }
+ 198:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 199:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::cosh;
+ 200:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 201:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 202:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 203:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   cosh(float __x)
+ 204:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_coshf(__x); }
+ 205:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 206:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 207:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   cosh(long double __x)
+ 208:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_coshl(__x); }
+ 209:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 210:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 211:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 212:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 213:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 214:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 215:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     cosh(_Tp __x)
+ 216:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_cosh(__x); }
+ 217:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 218:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::exp;
+ 219:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 220:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 221:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 222:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   exp(float __x)
+ 223:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_expf(__x); }
+ 224:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 225:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 226:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   exp(long double __x)
+ 227:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_expl(__x); }
+ 228:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 229:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 230:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 231:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 232:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 233:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 234:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     exp(_Tp __x)
+ 235:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_exp(__x); }
+ 236:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 237:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::fabs;
+ 238:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 239:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 240:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 241:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   fabs(float __x)
+ 242:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_fabsf(__x); }
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 7
+
+
+ 243:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 244:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 245:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   fabs(long double __x)
+ 246:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_fabsl(__x); }
+ 247:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 249:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 250:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 251:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 252:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 253:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     fabs(_Tp __x)
+ 254:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_fabs(__x); }
+ 255:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 256:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::floor;
+ 257:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 258:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 259:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 260:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   floor(float __x)
+ 261:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_floorf(__x); }
+ 262:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 263:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 264:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   floor(long double __x)
+ 265:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_floorl(__x); }
+ 266:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 267:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 268:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 269:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 270:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 271:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 272:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     floor(_Tp __x)
+ 273:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_floor(__x); }
+ 274:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 275:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::fmod;
+ 276:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 277:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 278:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 279:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   fmod(float __x, float __y)
+ 280:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_fmodf(__x, __y); }
+ 281:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 282:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 283:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   fmod(long double __x, long double __y)
+ 284:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_fmodl(__x, __y); }
+ 285:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 286:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 287:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp, typename _Up>
+ 288:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 289:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+ 290:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     fmod(_Tp __x, _Up __y)
+ 291:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     {
+ 292:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+ 293:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****       return fmod(__type(__x), __type(__y));
+ 294:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     }
+ 295:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 296:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::frexp;
+ 297:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 298:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 299:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline float
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 8
+
+
+ 300:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   frexp(float __x, int* __exp)
+ 301:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_frexpf(__x, __exp); }
+ 302:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 303:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline long double
+ 304:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   frexp(long double __x, int* __exp)
+ 305:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_frexpl(__x, __exp); }
+ 306:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 307:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 308:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 309:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 310:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 311:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 312:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     frexp(_Tp __x, int* __exp)
+ 313:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_frexp(__x, __exp); }
+ 314:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 315:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::ldexp;
+ 316:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 317:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 318:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 319:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   ldexp(float __x, int __exp)
+ 320:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_ldexpf(__x, __exp); }
+ 321:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 322:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 323:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   ldexp(long double __x, int __exp)
+ 324:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_ldexpl(__x, __exp); }
+ 325:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 326:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 327:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 328:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 329:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 330:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 331:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     ldexp(_Tp __x, int __exp)
+ 332:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_ldexp(__x, __exp); }
+ 333:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 334:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::log;
+ 335:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 336:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 337:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 338:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   log(float __x)
+ 339:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_logf(__x); }
+ 340:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 341:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 342:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   log(long double __x)
+ 343:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_logl(__x); }
+ 344:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 345:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 346:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 347:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 348:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 349:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 350:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     log(_Tp __x)
+ 351:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_log(__x); }
+ 352:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 353:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::log10;
+ 354:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 355:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 356:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 9
+
+
+ 357:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   log10(float __x)
+ 358:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_log10f(__x); }
+ 359:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 360:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 361:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   log10(long double __x)
+ 362:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_log10l(__x); }
+ 363:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 364:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 365:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 366:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 367:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value,
+ 368:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 369:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     log10(_Tp __x)
+ 370:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_log10(__x); }
+ 371:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 372:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::modf;
+ 373:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 374:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 375:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline float
+ 376:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   modf(float __x, float* __iptr)
+ 377:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_modff(__x, __iptr); }
+ 378:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 379:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline long double
+ 380:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   modf(long double __x, long double* __iptr)
+ 381:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_modfl(__x, __iptr); }
+ 382:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 383:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 384:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::pow;
+ 385:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 386:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 387:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 388:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   pow(float __x, float __y)
+ 389:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_powf(__x, __y); }
+ 390:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 391:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 392:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   pow(long double __x, long double __y)
+ 393:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_powl(__x, __y); }
+ 394:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 395:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #if __cplusplus < 201103L
+ 396:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   // _GLIBCXX_RESOLVE_LIB_DEFECTS
+ 397:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   // DR 550. What should the return type of pow(float,int) be?
+ 398:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline double
+ 399:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   pow(double __x, int __i)
+ 400:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_powi(__x, __i); }
+ 401:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 402:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline float
+ 403:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   pow(float __x, int __n)
+ 404:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_powif(__x, __n); }
+ 405:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 406:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline long double
+ 407:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   pow(long double __x, int __n)
+ 408:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_powil(__x, __n); }
+ 409:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 410:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 411:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 412:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp, typename _Up>
+ 413:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 10
+
+
+ 414:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
+ 415:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     pow(_Tp __x, _Up __y)
+ 416:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     {
+ 417:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****       typedef typename __gnu_cxx::__promote_2<_Tp, _Up>::__type __type;
+ 418:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****       return pow(__type(__x), __type(__y));
+ 419:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     }
+ 420:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 421:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::sin;
+ 422:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 423:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 424:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 425:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   sin(float __x)
+ 426:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_sinf(__x); }
+ 427:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 428:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 429:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   sin(long double __x)
+ 430:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_sinl(__x); }
+ 431:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 432:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 433:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 434:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 435:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 436:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 437:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     sin(_Tp __x)
+ 438:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_sin(__x); }
+ 439:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 440:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::sinh;
+ 441:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 442:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 443:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 444:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   sinh(float __x)
+ 445:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_sinhf(__x); }
+ 446:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 447:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 448:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   sinh(long double __x)
+ 449:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_sinhl(__x); }
+ 450:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 451:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 452:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 453:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 454:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 455:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 456:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     sinh(_Tp __x)
+ 457:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_sinh(__x); }
+ 458:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 459:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::sqrt;
+ 460:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 461:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 462:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 463:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   sqrt(float __x)
+ 464:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_sqrtf(__x); }
+ 465:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 466:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
+ 467:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   sqrt(long double __x)
+ 468:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_sqrtl(__x); }
+ 469:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
+ 470:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 11
+
+
+ 471:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
+ 472:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
+ 473:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__enable_if<__is_integer<_Tp>::__value, 
+ 474:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****                                     double>::__type
+ 475:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     sqrt(_Tp __x)
+ 476:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     { return __builtin_sqrt(__x); }
+ 477:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 478:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   using ::tan;
+ 479:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
+ 480:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
+ 481:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
+ 482:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   tan(float __x)
+  46              		.loc 3 482 3 view .LVU6
+  47              	.LBB32:
+ 483:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_tanf(__x); }
+  48              		.loc 3 483 5 view .LVU7
+  49              	.LBE32:
+  50              	.LBE31:
+  51              	.LBE35:
+  11:Effects/BiquadFilters.cpp ****    Coefficients coefs; 
+  52              		.loc 1 11 1 is_stmt 0 view .LVU8
+  53 0000 38B5     		push	{r3, r4, r5, lr}
+  54              		.cfi_def_cfa_offset 16
+  55              		.cfi_offset 3, -16
+  56              		.cfi_offset 4, -12
+  57              		.cfi_offset 5, -8
+  58              		.cfi_offset 14, -4
+  59 0002 2DED028B 		vpush.64	{d8}
+  60              		.cfi_def_cfa_offset 24
+  61              		.cfi_offset 80, -24
+  62              		.cfi_offset 81, -20
+  63              		.loc 1 14 63 view .LVU9
+  64 0006 B7EE008A 		vmov.f32	s16, #1.0e+0
+  65              		.loc 1 14 43 view .LVU10
+  66 000a DFED287A 		vldr.32	s15, .L8
+  11:Effects/BiquadFilters.cpp ****    Coefficients coefs; 
+  67              		.loc 1 11 1 view .LVU11
+  68 000e F0EE418A 		vmov.f32	s17, s2
+  69 0012 0D46     		mov	r5, r1
+  70              		.loc 1 14 43 view .LVU12
+  71 0014 60EEA70A 		vmul.f32	s1, s1, s15
+  72              	.LVL1:
+  11:Effects/BiquadFilters.cpp ****    Coefficients coefs; 
+  73              		.loc 1 11 1 view .LVU13
+  74 0018 0446     		mov	r4, r0
+  75              		.loc 1 14 63 view .LVU14
+  76 001a C8EE007A 		vdiv.f32	s15, s16, s0
+  77              	.LBB36:
+  78              	.LBB34:
+  79              	.LBB33:
+  80              		.loc 3 483 26 view .LVU15
+  81 001e 20EEA70A 		vmul.f32	s0, s1, s15
+  82              	.LVL2:
+  83              		.loc 3 483 26 view .LVU16
+  84 0022 FFF7FEFF 		bl	tanf
+  85              	.LVL3:
+  86              		.loc 3 483 26 view .LVU17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 12
+
+
+  87              	.LBE33:
+  88              	.LBE34:
+  89              	.LBE36:
+  15:Effects/BiquadFilters.cpp ****     const float Ksq = K * K;
+  90              		.loc 1 15 5 is_stmt 1 view .LVU18
+  16:Effects/BiquadFilters.cpp **** 
+  17:Effects/BiquadFilters.cpp ****     float &b0 = coefs[0];
+  18:Effects/BiquadFilters.cpp ****     float &b1 = coefs[1];
+  19:Effects/BiquadFilters.cpp ****     float &b2 = coefs[2];
+  20:Effects/BiquadFilters.cpp ****     float &a1 = coefs[3];
+  21:Effects/BiquadFilters.cpp ****     float &a2 = coefs[4];
+  22:Effects/BiquadFilters.cpp **** 
+  23:Effects/BiquadFilters.cpp ****     switch (type) {
+  24:Effects/BiquadFilters.cpp ****         case FilterType::HighPass:
+  25:Effects/BiquadFilters.cpp ****             norm = 1.0f / (1.0f + (K / q) + Ksq);
+  91              		.loc 1 25 38 is_stmt 0 view .LVU19
+  92 0026 C0EE286A 		vdiv.f32	s13, s0, s17
+  23:Effects/BiquadFilters.cpp ****         case FilterType::HighPass:
+  93              		.loc 1 23 5 view .LVU20
+  94 002a 012D     		cmp	r5, #1
+  15:Effects/BiquadFilters.cpp ****     const float Ksq = K * K;
+  95              		.loc 1 15 17 view .LVU21
+  96 002c 60EE007A 		vmul.f32	s15, s0, s0
+  97              	.LVL4:
+  17:Effects/BiquadFilters.cpp ****     float &b1 = coefs[1];
+  98              		.loc 1 17 5 is_stmt 1 view .LVU22
+  18:Effects/BiquadFilters.cpp ****     float &b2 = coefs[2];
+  99              		.loc 1 18 5 view .LVU23
+  19:Effects/BiquadFilters.cpp ****     float &a1 = coefs[3];
+ 100              		.loc 1 19 5 view .LVU24
+  20:Effects/BiquadFilters.cpp ****     float &a2 = coefs[4];
+ 101              		.loc 1 20 5 view .LVU25
+  21:Effects/BiquadFilters.cpp **** 
+ 102              		.loc 1 21 5 view .LVU26
+  23:Effects/BiquadFilters.cpp ****         case FilterType::HighPass:
+ 103              		.loc 1 23 5 view .LVU27
+ 104              		.loc 1 25 33 is_stmt 0 view .LVU28
+ 105 0030 36EE887A 		vadd.f32	s14, s13, s16
+ 106              		.loc 1 25 43 view .LVU29
+ 107 0034 37EE277A 		vadd.f32	s14, s14, s15
+ 108              		.loc 1 25 18 view .LVU30
+ 109 0038 88EE076A 		vdiv.f32	s12, s16, s14
+  26:Effects/BiquadFilters.cpp ****             b0 = norm;
+  27:Effects/BiquadFilters.cpp ****             b1 = -2.0f * b0;
+  28:Effects/BiquadFilters.cpp ****             b2 = b0;
+  29:Effects/BiquadFilters.cpp ****             a1 = 2.0f * (Ksq - 1.0f) * norm;
+ 110              		.loc 1 29 30 view .LVU31
+ 111 003c 37EEC87A 		vsub.f32	s14, s15, s16
+  30:Effects/BiquadFilters.cpp ****             a2 = (1.0f - (K / q) + Ksq) * norm; 
+ 112              		.loc 1 30 24 view .LVU32
+ 113 0040 38EE668A 		vsub.f32	s16, s16, s13
+  29:Effects/BiquadFilters.cpp ****             a2 = (1.0f - (K / q) + Ksq) * norm; 
+ 114              		.loc 1 29 23 view .LVU33
+ 115 0044 37EE077A 		vadd.f32	s14, s14, s14
+ 116              		.loc 1 30 34 view .LVU34
+ 117 0048 38EE278A 		vadd.f32	s16, s16, s15
+  29:Effects/BiquadFilters.cpp ****             a2 = (1.0f - (K / q) + Ksq) * norm; 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 13
+
+
+ 118              		.loc 1 29 38 view .LVU35
+ 119 004c 27EE067A 		vmul.f32	s14, s14, s12
+ 120              		.loc 1 30 41 view .LVU36
+ 121 0050 28EE068A 		vmul.f32	s16, s16, s12
+  23:Effects/BiquadFilters.cpp ****         case FilterType::HighPass:
+ 122              		.loc 1 23 5 view .LVU37
+ 123 0054 0CD0     		beq	.L2
+ 124 0056 022D     		cmp	r5, #2
+ 125 0058 1CD0     		beq	.L3
+  31:Effects/BiquadFilters.cpp ****             break;
+  32:Effects/BiquadFilters.cpp **** 
+  33:Effects/BiquadFilters.cpp ****         case FilterType::BandPass:
+  34:Effects/BiquadFilters.cpp ****             norm = 1.0f / (1.0f + (K / q) + Ksq);
+  35:Effects/BiquadFilters.cpp ****             b0 = (K / q) * norm;
+  36:Effects/BiquadFilters.cpp ****             b1 = 0.0f;
+  37:Effects/BiquadFilters.cpp ****             b2 = -b0;
+  38:Effects/BiquadFilters.cpp ****             a1 = 2.0f * (Ksq - 1) * norm;
+  39:Effects/BiquadFilters.cpp ****             a2 = (1.0f - (K / q) + Ksq) * norm;
+  40:Effects/BiquadFilters.cpp ****             break;
+  41:Effects/BiquadFilters.cpp **** 
+  42:Effects/BiquadFilters.cpp ****         default: // lowpass
+ 126              		.loc 1 42 9 is_stmt 1 view .LVU38
+  43:Effects/BiquadFilters.cpp ****             norm = 1.0f / (1.0f + (K / q) + Ksq);
+ 127              		.loc 1 43 13 view .LVU39
+ 128              	.LVL5:
+  44:Effects/BiquadFilters.cpp ****             b0 = Ksq * norm;
+ 129              		.loc 1 44 13 view .LVU40
+ 130              		.loc 1 44 22 is_stmt 0 view .LVU41
+ 131 005a 67EE867A 		vmul.f32	s15, s15, s12
+ 132              	.LVL6:
+  45:Effects/BiquadFilters.cpp ****             b1 = 2.0f * b0;
+ 133              		.loc 1 45 23 view .LVU42
+ 134 005e 77EEA76A 		vadd.f32	s13, s15, s15
+  44:Effects/BiquadFilters.cpp ****             b0 = Ksq * norm;
+ 135              		.loc 1 44 16 view .LVU43
+ 136 0062 C4ED007A 		vstr.32	s15, [r4]
+ 137              		.loc 1 45 13 is_stmt 1 view .LVU44
+  46:Effects/BiquadFilters.cpp ****             b2 = b0;
+ 138              		.loc 1 46 16 is_stmt 0 view .LVU45
+ 139 0066 C4ED027A 		vstr.32	s15, [r4, #8]
+  45:Effects/BiquadFilters.cpp ****             b1 = 2.0f * b0;
+ 140              		.loc 1 45 16 view .LVU46
+ 141 006a C4ED016A 		vstr.32	s13, [r4, #4]
+ 142              		.loc 1 46 13 is_stmt 1 view .LVU47
+ 143 006e 09E0     		b	.L7
+ 144              	.LVL7:
+ 145              	.L2:
+  24:Effects/BiquadFilters.cpp ****             norm = 1.0f / (1.0f + (K / q) + Ksq);
+ 146              		.loc 1 24 9 view .LVU48
+  25:Effects/BiquadFilters.cpp ****             b0 = norm;
+ 147              		.loc 1 25 13 view .LVU49
+  26:Effects/BiquadFilters.cpp ****             b1 = -2.0f * b0;
+ 148              		.loc 1 26 13 view .LVU50
+  27:Effects/BiquadFilters.cpp ****             b2 = b0;
+ 149              		.loc 1 27 24 is_stmt 0 view .LVU51
+ 150 0070 F8EE007A 		vmov.f32	s15, #-2.0e+0
+ 151              	.LVL8:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 14
+
+
+  26:Effects/BiquadFilters.cpp ****             b1 = -2.0f * b0;
+ 152              		.loc 1 26 16 view .LVU52
+ 153 0074 84ED006A 		vstr.32	s12, [r4]
+  27:Effects/BiquadFilters.cpp ****             b2 = b0;
+ 154              		.loc 1 27 13 is_stmt 1 view .LVU53
+  28:Effects/BiquadFilters.cpp ****             a1 = 2.0f * (Ksq - 1.0f) * norm;
+ 155              		.loc 1 28 16 is_stmt 0 view .LVU54
+ 156 0078 84ED026A 		vstr.32	s12, [r4, #8]
+  27:Effects/BiquadFilters.cpp ****             b2 = b0;
+ 157              		.loc 1 27 24 view .LVU55
+ 158 007c 66EE277A 		vmul.f32	s15, s12, s15
+  27:Effects/BiquadFilters.cpp ****             b2 = b0;
+ 159              		.loc 1 27 16 view .LVU56
+ 160 0080 C4ED017A 		vstr.32	s15, [r4, #4]
+  28:Effects/BiquadFilters.cpp ****             a1 = 2.0f * (Ksq - 1.0f) * norm;
+ 161              		.loc 1 28 13 is_stmt 1 view .LVU57
+  29:Effects/BiquadFilters.cpp ****             a2 = (1.0f - (K / q) + Ksq) * norm; 
+ 162              		.loc 1 29 13 view .LVU58
+ 163              	.LVL9:
+ 164              	.L7:
+  47:Effects/BiquadFilters.cpp ****             a1 = 2.0f * (Ksq - 1.0f) * norm;
+ 165              		.loc 1 47 13 view .LVU59
+  48:Effects/BiquadFilters.cpp ****             a2 = (1.0f - (K / q) + Ksq) * norm;
+ 166              		.loc 1 48 16 is_stmt 0 view .LVU60
+ 167 0084 84ED048A 		vstr.32	s16, [r4, #16]
+  49:Effects/BiquadFilters.cpp ****             break;
+  50:Effects/BiquadFilters.cpp ****     }
+  51:Effects/BiquadFilters.cpp **** 
+  52:Effects/BiquadFilters.cpp ****    return coefs;
+  53:Effects/BiquadFilters.cpp **** }
+ 168              		.loc 1 53 1 view .LVU61
+ 169 0088 2046     		mov	r0, r4
+  47:Effects/BiquadFilters.cpp ****             a2 = (1.0f - (K / q) + Ksq) * norm;
+ 170              		.loc 1 47 16 view .LVU62
+ 171 008a 84ED037A 		vstr.32	s14, [r4, #12]
+  48:Effects/BiquadFilters.cpp ****             a2 = (1.0f - (K / q) + Ksq) * norm;
+ 172              		.loc 1 48 13 is_stmt 1 view .LVU63
+  49:Effects/BiquadFilters.cpp ****             break;
+ 173              		.loc 1 49 13 view .LVU64
+  52:Effects/BiquadFilters.cpp **** }
+ 174              		.loc 1 52 4 view .LVU65
+ 175              		.loc 1 53 1 is_stmt 0 view .LVU66
+ 176 008e BDEC028B 		vldm	sp!, {d8}
+ 177              		.cfi_remember_state
+ 178              		.cfi_restore 80
+ 179              		.cfi_restore 81
+ 180              		.cfi_def_cfa_offset 16
+ 181 0092 38BD     		pop	{r3, r4, r5, pc}
+ 182              	.LVL10:
+ 183              	.L3:
+ 184              		.cfi_restore_state
+  33:Effects/BiquadFilters.cpp ****             norm = 1.0f / (1.0f + (K / q) + Ksq);
+ 185              		.loc 1 33 9 is_stmt 1 view .LVU67
+  34:Effects/BiquadFilters.cpp ****             b0 = (K / q) * norm;
+ 186              		.loc 1 34 13 view .LVU68
+  35:Effects/BiquadFilters.cpp ****             b1 = 0.0f;
+ 187              		.loc 1 35 13 view .LVU69
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 15
+
+
+  35:Effects/BiquadFilters.cpp ****             b1 = 0.0f;
+ 188              		.loc 1 35 26 is_stmt 0 view .LVU70
+ 189 0094 66EE866A 		vmul.f32	s13, s13, s12
+  36:Effects/BiquadFilters.cpp ****             b2 = -b0;
+ 190              		.loc 1 36 16 view .LVU71
+ 191 0098 0023     		movs	r3, #0
+ 192 009a 6360     		str	r3, [r4, #4]	@ float
+  35:Effects/BiquadFilters.cpp ****             b1 = 0.0f;
+ 193              		.loc 1 35 16 view .LVU72
+ 194 009c C4ED006A 		vstr.32	s13, [r4]
+  36:Effects/BiquadFilters.cpp ****             b2 = -b0;
+ 195              		.loc 1 36 13 is_stmt 1 view .LVU73
+  37:Effects/BiquadFilters.cpp ****             a1 = 2.0f * (Ksq - 1) * norm;
+ 196              		.loc 1 37 13 view .LVU74
+  37:Effects/BiquadFilters.cpp ****             a1 = 2.0f * (Ksq - 1) * norm;
+ 197              		.loc 1 37 18 is_stmt 0 view .LVU75
+ 198 00a0 F1EE666A 		vneg.f32	s13, s13
+  37:Effects/BiquadFilters.cpp ****             a1 = 2.0f * (Ksq - 1) * norm;
+ 199              		.loc 1 37 16 view .LVU76
+ 200 00a4 C4ED026A 		vstr.32	s13, [r4, #8]
+  38:Effects/BiquadFilters.cpp ****             a2 = (1.0f - (K / q) + Ksq) * norm;
+ 201              		.loc 1 38 13 is_stmt 1 view .LVU77
+ 202 00a8 ECE7     		b	.L7
+ 203              	.L9:
+ 204 00aa 00BF     		.align	2
+ 205              	.L8:
+ 206 00ac DB0F4940 		.word	1078530011
+ 207              		.cfi_endproc
+ 208              	.LFE3610:
+ 210              		.text
+ 211              	.Letext0:
+ 212              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 213              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 214              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
+ 215              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 216              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 217              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v7
+ 218              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 219              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 220              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
+ 221              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 222              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
+ 223              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 224              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 225              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
+ 226              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
+ 227              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
+ 228              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
+ 229              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/array"
+ 230              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 231              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
+ 232              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 233              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
+ 234              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
+ 235              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
+ 236              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 237              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 16
+
+
+ 238              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 239              		.file 31 "lib/DaisySP/Source/Control/adenv.h"
+ 240              		.file 32 "lib/DaisySP/Source/Utility/dsp.h"
+ 241              		.file 33 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 242              		.file 34 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
+ 243              		.file 35 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
+ 244              		.file 36 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
+ 245              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
+ 246              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
+ 247              		.file 39 "Effects/BiquadFilters.h"
+ 248              		.file 40 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s 			page 17
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 BiquadFilters.cpp
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s:19     .text._ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s:25     .text._ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff:0000000000000000 _ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVyAKzJ.s:206    .text._ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff:00000000000000ac $d
+
+UNDEFINED SYMBOLS
+tanf
