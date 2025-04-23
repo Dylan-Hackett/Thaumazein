@@ -1,8 +1,8 @@
-# Amathia
+# Thaumazein
 
 ## Description
 
-Amathia is a polyphonic and percussive synthesizer for the Daisy Seed platform, based on Mutable Instruments Plaits. The project extends the original Plaits source code with:
+Thaumazein is a polyphonic and percussive synthesizer for the Daisy Seed platform, based on Mutable Instruments Plaits. The project extends the original Plaits source code with:
 
 - Polyphony (up to 4 voices) for Virtual Analog engines
 - Echo delay effect with feedback, time, lag, and mix controls
@@ -14,8 +14,8 @@ Amathia is a polyphonic and percussive synthesizer for the Daisy Seed platform, 
 
 The codebase has been refactored from a single monolithic file to a more modular design:
 
-* **Amathia.h**: Main header defining project constants, external variables, and function declarations
-* **Amathia.cpp**: Main program entry point and UI handling
+* **Thaumazein.h**: Main header defining project constants, external variables, and function declarations
+* **Thaumazein.cpp**: Main program entry point and UI handling
 * **Polyphony.cpp**: Handles voice allocation, polyphony management, and voice initialization
 * **Interface.cpp**: Manages hardware interface, controls, and system initialization
 * **AudioProcessor.cpp**: Implements the audio processing callback and voice rendering
@@ -35,16 +35,16 @@ The codebase has been refactored from a single monolithic file to a more modular
              │
              ▼
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                               Amathia.h                                 │
+│                               Thaumazein.h                                │
 │                                                                         │
 │ - Constants (NUM_VOICES, BLOCK_SIZE)                                    │
 │ - External declarations (variables, functions)                          │
 │ - Forward declarations                                                  │
-└───────────┬──────────────┬────────────────┬────────────────┬───────────-┘
+└───────────┬──────────────┬────────────────┬────────────────┬────────────┘
             │              │                │                │
             ▼              ▼                ▼                ▼
 ┌────────────────┐ ┌──────────────┐ ┌────────────────┐ ┌──────────────────┐
-│  Amathia.cpp   │ │ Interface.cpp│ │ Polyphony.cpp  │ │AudioProcessor.cpp│
+│ Thaumazein.cpp │ │ Interface.cpp│ │ Polyphony.cpp  │ │AudioProcessor.cpp│
 │                │ │              │ │                │ │                  │
 │ - Main()       │ │ - Hardware   │ │ - Voice data   │ │ - AudioCallback()│
 │ - Display      │ │   setup      │ │ - Voice alloc  │ │ - Real-time      │
@@ -54,20 +54,20 @@ The codebase has been refactored from a single monolithic file to a more modular
 │                │ │ - LED control│ │                │ │                  │
 └────────────────┘ └──────────────┘ └────────────────┘ └──────────────────┘
         │                 │                                     │
-        └───────────────--┼────────────────  ───────────────────┘
+        └─────────────────┼─────────────────────────────────────┘
                           │                
                           ▼                
-                      ┌──────────────────┐
-                      │ VoiceEnvelope.h  │
-                      │ VoiceEnvelope.cpp│
-                      │                  │
-                      │ - Envelope       │
-                      │   processing     │
-                      └──────────────────┘
+                 ┌──────────────────┐
+                 │ VoiceEnvelope.h  │
+                 │ VoiceEnvelope.cpp│
+                 │                  │
+                 │ - Envelope       │
+                 │   processing     │
+                 └──────────────────┘
 ```
 
 **Data Flow:**
-1. **Amathia.cpp** contains `main()` - the entry point that initializes everything via `InitializeSynth()` and handles display updates
+1. **Thaumazein.cpp** contains `main()` - the entry point that initializes everything via `InitializeSynth()` and handles display updates
 2. **Interface.cpp** manages hardware setup, ADC mapping, button handling, LED control, and peripherals
 3. **Polyphony.cpp** handles voice allocation and initialization
 4. **AudioProcessor.cpp** contains the real-time audio callback that runs continuously
@@ -81,11 +81,11 @@ The synthesizer has 11 knobs/analog inputs:
 - D16 / A1 (Pin 31): Plaits Harmonics
 - D17 / A2 (Pin 32): Plaits Timbre (Engine Select)
 - D18 / A3 (Pin 33): Plaits Decay
+- D19 / A4 (Pin 34): Delay Wet/Dry Mix
 - D20 / A5 (Pin 35): Plaits Morph
 - D21 / A6 (Pin 36): Delay Feedback
 - D22 / A7 (Pin 37): Delay Time
 - D23 / A8 (Pin 38): Delay Lag
-- D19 / A4 (Pin 34): Delay Wet/Dry Mix
 - D24 / A9 (Pin 39): Envelope Attack
 - D25 / A10 (Pin 40): Envelope Release
 
@@ -167,25 +167,31 @@ When adding features or making changes, follow the modular structure:
 2. Implement voice-related code in Polyphony.cpp
 3. Implement hardware interface code in Interface.cpp  
 4. Add audio processing code to AudioProcessor.cpp
-5. Add UI elements to Amathia.cpp
+5. Add UI elements to Thaumazein.cpp
 
 ## TO DO:
-
-- Test with an analog filter powered off the microcontroller. If successful, write code to have the dac influence analog filter. would likely have to use and input output audio pair on the daisy in the case that this works, meaning the final output would have to be mono.
 
 - Implement an Arpeggiator preset mode, which stores each parameter per step, including the engine parameter and then cycles through them rhytmically. Monophonic implementation to save CPU
 
 - Improve onboard effects with either reverb or more full delay network. Possibly port code from clouds instead of current delay/reverb
 
-- Figure out a shift function that changes the knobs to control the effects and freezes the unshifted main osc params. 
+- Figure out a shift function that changes the knobs to control the effects and freezes the unshifted main osc params. "In normal mode (Shift up), the pot directly controls parameter A; in Shift mode (Shift down), it controls parameter B. On entering either mode, capture r0 = raw and v0 = the last stored value for that parameter. Then map raw → mapped value using a piecewise linear stretch: if raw ≥ r0, map [r0…1] → [v0…1]; otherwise map [0…r0] → [0…v0]. Clamp results to [0,1]. Additionally, if the knob ever physically hits 0 or 1 (raw == 0 or 1) outside of a mode switch, reset r0 and v0 both to that endpoint so the pot returns to normal direct mapping until the next shift."
 
 - Improve and potentially redesign how the touch control for each keyboard key will work. Currently its one parameter for the whole keyboard being modulated by all keys being touched. Will definitely change which parameter is being modulated depending on engine. Potentially will change to modulate multiple params with different keys/parts of the keyboard as well.
+
+- Some "magic numbers" (sensitivity = 150.0f, smoothing bounds) could be pulled into named constants or config
+
+- Unit/integration tests are largely absent—consider adding automated tests for the core DSP and polyphony logic
+
+- Build system could automate the multi‑library build steps via a top‑level Makefile or CMake wrapper
 
 - Improve Attack/Release response
 
 - Finetune Touch Sensitivty 
 
 - Bug/stress testing, look into voices getting stopped up with non poly modes freezing
+
+- Implement a random assignment of Voice assignments for polymode
 
 ## License
 

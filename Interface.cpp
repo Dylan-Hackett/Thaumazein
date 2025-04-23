@@ -1,23 +1,20 @@
-#include "Amathia.h"
+#include "Thaumazein.h"
 
 // --- Global hardware variables ---
 DaisySeed hw;
 Mpr121 touch_sensor;
 EchoDelay<48000> delay;
 
-// Hardware controls - Order matches new ADC mapping
+// Hardware controls - Remapped to use ADCs 0-7
 Switch button;
-AnalogControl pitch_knob;          // ADC 0 (Pin 15) Plaits Pitch
-AnalogControl harmonics_knob;      // ADC 1 (Pin 16) Plaits Harmonics
-AnalogControl timbre_knob;         // ADC 2 (Pin 17) Plaits Timbre/Engine
-AnalogControl decay_knob;          // ADC 3 (Pin 18) Plaits Decay
-AnalogControl morph_knob;           // ADC 4 (Pin 20) Plaits Morph
-AnalogControl delay_feedback_knob;  // ADC 5 (Pin 21) Delay Feedback
-AnalogControl delay_time_knob;      // ADC 6 (Pin 22) Delay Time
-AnalogControl delay_lag_knob;       // ADC 7 (Pin 23) Delay Lag
-AnalogControl delay_mix_knob;       // ADC 8 (Pin 19) Delay Wet/Dry Mix
-AnalogControl env_attack_knob;      // ADC 9 (Pin 24) Envelope Attack
-AnalogControl env_release_knob;     // ADC 10 (Pin 25) Envelope Release
+AnalogControl delay_time_knob;        // ADC 0 (Pin 15) Delay Time (was Pitch)
+AnalogControl delay_mix_feedback_knob; // ADC 1 (Pin 16) Delay Mix & Feedback (was Harmonics)
+AnalogControl env_release_knob;       // ADC 2 (Pin 17) Envelope Release (was Timbre)
+AnalogControl env_attack_knob;        // ADC 3 (Pin 18) Envelope Attack (was Decay)
+AnalogControl timbre_knob;            // ADC 4 (Pin 19) Plaits Timbre/Engine (was Morph)
+AnalogControl harmonics_knob;         // ADC 5 (Pin 20) Plaits Harmonics (was Delay Feedback)
+AnalogControl morph_knob;             // ADC 6 (Pin 21) Plaits Morph (was Delay Time)
+AnalogControl pitch_knob;             // ADC 7 (Pin 22) Plaits Pitch (was Delay Lag)
 
 // CPU usage monitoring
 float sample_rate = 48000.0f; 
@@ -43,34 +40,28 @@ void InitializeHardware() {
 }
 
 void InitializeControls() {
-    // --- Configure ADCs (11 Channels - New Mapping) ---
-    AdcChannelConfig adc_config[11]; 
-    adc_config[0].InitSingle(hw.GetPin(15)); // ADC 0: Plaits Pitch
-    adc_config[1].InitSingle(hw.GetPin(16)); // ADC 1: Plaits Harmonics
-    adc_config[2].InitSingle(hw.GetPin(17)); // ADC 2: Plaits Timbre/Engine
-    adc_config[3].InitSingle(hw.GetPin(18)); // ADC 3: Plaits Decay
-    adc_config[4].InitSingle(hw.GetPin(20)); // ADC 4: Plaits Morph
-    adc_config[5].InitSingle(hw.GetPin(21)); // ADC 5: Delay Feedback
-    adc_config[6].InitSingle(hw.GetPin(22)); // ADC 6: Delay Time
-    adc_config[7].InitSingle(hw.GetPin(23)); // ADC 7: Delay Lag
-    adc_config[8].InitSingle(hw.GetPin(19)); // ADC 8: Delay Wet/Dry Mix
-    adc_config[9].InitSingle(hw.GetPin(24)); // ADC 9: Envelope Attack
-    adc_config[10].InitSingle(hw.GetPin(25)); // ADC 10: Envelope Release
-    hw.adc.Init(adc_config, 11); // Initialize 11 channels
+    // --- Configure ADCs (8 Channels - New Mapping) ---
+    AdcChannelConfig adc_config[8]; 
+    adc_config[0].InitSingle(hw.GetPin(15)); // ADC 0: Delay Time
+    adc_config[1].InitSingle(hw.GetPin(16)); // ADC 1: Delay Mix & Feedback
+    adc_config[2].InitSingle(hw.GetPin(17)); // ADC 2: Envelope Release
+    adc_config[3].InitSingle(hw.GetPin(18)); // ADC 3: Envelope Attack
+    adc_config[4].InitSingle(hw.GetPin(19)); // ADC 4: Plaits Timbre/Engine
+    adc_config[5].InitSingle(hw.GetPin(20)); // ADC 5: Plaits Harmonics
+    adc_config[6].InitSingle(hw.GetPin(21)); // ADC 6: Plaits Morph
+    adc_config[7].InitSingle(hw.GetPin(22)); // ADC 7: Plaits Pitch
+    hw.adc.Init(adc_config, 8); // Initialize 8 channels
     hw.adc.Start();
 
     // --- Initialize Controls (Matches new mapping) ---
-    pitch_knob.Init(hw.adc.GetPtr(0), sample_rate);          // ADC 0
-    harmonics_knob.Init(hw.adc.GetPtr(1), sample_rate);      // ADC 1
-    timbre_knob.Init(hw.adc.GetPtr(2), sample_rate);         // ADC 2
-    decay_knob.Init(hw.adc.GetPtr(3), sample_rate);          // ADC 3
-    morph_knob.Init(hw.adc.GetPtr(4), sample_rate);           // ADC 4
-    delay_feedback_knob.Init(hw.adc.GetPtr(5), sample_rate); // ADC 5
-    delay_time_knob.Init(hw.adc.GetPtr(6), sample_rate);     // ADC 6
-    delay_lag_knob.Init(hw.adc.GetPtr(7), sample_rate);      // ADC 7
-    delay_mix_knob.Init(hw.adc.GetPtr(8), sample_rate);       // ADC 8
-    env_attack_knob.Init(hw.adc.GetPtr(9), sample_rate);     // ADC 9
-    env_release_knob.Init(hw.adc.GetPtr(10), sample_rate);   // ADC 10
+    delay_time_knob.Init(hw.adc.GetPtr(0), sample_rate);        // ADC 0
+    delay_mix_feedback_knob.Init(hw.adc.GetPtr(1), sample_rate); // ADC 1
+    env_release_knob.Init(hw.adc.GetPtr(2), sample_rate);       // ADC 2
+    env_attack_knob.Init(hw.adc.GetPtr(3), sample_rate);        // ADC 3
+    timbre_knob.Init(hw.adc.GetPtr(4), sample_rate);            // ADC 4
+    harmonics_knob.Init(hw.adc.GetPtr(5), sample_rate);         // ADC 5
+    morph_knob.Init(hw.adc.GetPtr(6), sample_rate);             // ADC 6
+    pitch_knob.Init(hw.adc.GetPtr(7), sample_rate);             // ADC 7
 
     // --- Initialize Buttons ---
     button.Init(hw.GetPin(27), sample_rate / 48.0f);
