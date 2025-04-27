@@ -1,4 +1,4 @@
-build/Amathia.o: Amathia.cpp \
+build/Thaumazein.o: Thaumazein.cpp \
  lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
  lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
  lib/libdaisy/Drivers/CMSIS/Include/core_cm7.h \
@@ -93,7 +93,7 @@ build/Amathia.o: Amathia.cpp \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h \
- Amathia.h lib/libdaisy/src/daisy_seed.h lib/libdaisy/src/daisy.h \
+ Thaumazein.h lib/libdaisy/src/daisy_seed.h lib/libdaisy/src/daisy.h \
  lib/libdaisy/src/daisy_core.h lib/libdaisy/src/version.h \
  lib/libdaisy/src/sys/system.h lib/libdaisy/src/per/tim.h \
  lib/libdaisy/src/per/qspi.h lib/libdaisy/src/per/dac.h \
@@ -329,7 +329,7 @@ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h:
-Amathia.h:
+Thaumazein.h:
 lib/libdaisy/src/daisy_seed.h:
 lib/libdaisy/src/daisy.h:
 lib/libdaisy/src/daisy_core.h:

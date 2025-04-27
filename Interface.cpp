@@ -5,16 +5,20 @@ DaisySeed hw;
 Mpr121 touch_sensor;
 EchoDelay<48000> delay;
 
-// Hardware controls - Remapped to use ADCs 0-7
+// Hardware controls - Remapped to use ADCs 0-9
 Switch button;
-AnalogControl delay_time_knob;        // ADC 0 (Pin 15) Delay Time (was Pitch)
-AnalogControl delay_mix_feedback_knob; // ADC 1 (Pin 16) Delay Mix & Feedback (was Harmonics)
-AnalogControl env_release_knob;       // ADC 2 (Pin 17) Envelope Release (was Timbre)
-AnalogControl env_attack_knob;        // ADC 3 (Pin 18) Envelope Attack (was Decay)
-AnalogControl timbre_knob;            // ADC 4 (Pin 19) Plaits Timbre/Engine (was Morph)
-AnalogControl harmonics_knob;         // ADC 5 (Pin 20) Plaits Harmonics (was Delay Feedback)
-AnalogControl morph_knob;             // ADC 6 (Pin 21) Plaits Morph (was Delay Time)
-AnalogControl pitch_knob;             // ADC 7 (Pin 22) Plaits Pitch (was Delay Lag)
+AnalogControl delay_time_knob;        // ADC 0 (Pin 15) Delay Time
+AnalogControl delay_mix_feedback_knob; // ADC 1 (Pin 16) Delay Mix & Feedback
+AnalogControl env_release_knob;       // ADC 2 (Pin 17) Envelope Release
+AnalogControl env_attack_knob;        // ADC 3 (Pin 18) Envelope Attack
+AnalogControl timbre_knob;            // ADC 4 (Pin 19) Plaits Timbre
+AnalogControl harmonics_knob;         // ADC 5 (Pin 20) Plaits Harmonics
+AnalogControl morph_knob;             // ADC 6 (Pin 21) Plaits Morph
+AnalogControl pitch_knob;             // ADC 7 (Pin 22) Plaits Pitch
+AnalogControl arp_pad;               // ADC 8 (Pin 23) Arpeggiator Toggle Pad
+AnalogControl model_prev_pad;        // ADC 9 (Pin 24) Model Select Previous Pad
+AnalogControl model_next_pad;        // ADC 10 (Pin 25) Model Select Next Pad
+AnalogControl mod_wheel;             // ADC 11 (Pin 28) Mod Wheel Control
 
 // CPU usage monitoring
 float sample_rate = 48000.0f; 
@@ -40,17 +44,21 @@ void InitializeHardware() {
 }
 
 void InitializeControls() {
-    // --- Configure ADCs (8 Channels - New Mapping) ---
-    AdcChannelConfig adc_config[8]; 
+    // --- Configure ADCs (12 Channels) ---
+    AdcChannelConfig adc_config[12];
     adc_config[0].InitSingle(hw.GetPin(15)); // ADC 0: Delay Time
     adc_config[1].InitSingle(hw.GetPin(16)); // ADC 1: Delay Mix & Feedback
     adc_config[2].InitSingle(hw.GetPin(17)); // ADC 2: Envelope Release
     adc_config[3].InitSingle(hw.GetPin(18)); // ADC 3: Envelope Attack
-    adc_config[4].InitSingle(hw.GetPin(19)); // ADC 4: Plaits Timbre/Engine
+    adc_config[4].InitSingle(hw.GetPin(19)); // ADC 4: Plaits Timbre
     adc_config[5].InitSingle(hw.GetPin(20)); // ADC 5: Plaits Harmonics
     adc_config[6].InitSingle(hw.GetPin(21)); // ADC 6: Plaits Morph
     adc_config[7].InitSingle(hw.GetPin(22)); // ADC 7: Plaits Pitch
-    hw.adc.Init(adc_config, 8); // Initialize 8 channels
+    adc_config[8].InitSingle(hw.GetPin(23)); // ADC 8: Arpeggiator Toggle Pad
+    adc_config[9].InitSingle(hw.GetPin(24)); // ADC 9: Model Select Previous Pad
+    adc_config[10].InitSingle(hw.GetPin(25)); // ADC 10: Model Select Next Pad
+    adc_config[11].InitSingle(hw.GetPin(28)); // ADC 11: Mod Wheel Control
+    hw.adc.Init(adc_config, 12); // Initialize 12 channels
     hw.adc.Start();
 
     // --- Initialize Controls (Matches new mapping) ---
@@ -62,6 +70,10 @@ void InitializeControls() {
     harmonics_knob.Init(hw.adc.GetPtr(5), sample_rate);         // ADC 5
     morph_knob.Init(hw.adc.GetPtr(6), sample_rate);             // ADC 6
     pitch_knob.Init(hw.adc.GetPtr(7), sample_rate);             // ADC 7
+    arp_pad.Init(hw.adc.GetPtr(8), sample_rate);               // ADC 8
+    model_prev_pad.Init(hw.adc.GetPtr(9), sample_rate);        // ADC 9
+    model_next_pad.Init(hw.adc.GetPtr(10), sample_rate);       // ADC 10
+    mod_wheel.Init(hw.adc.GetPtr(11), sample_rate);            // ADC 11
 
     // --- Initialize Buttons ---
     button.Init(hw.GetPin(27), sample_rate / 48.0f);
@@ -98,7 +110,7 @@ void InitializeSynth() {
     hw.StartAudio(AudioCallback);
     
     // --- Serial Log (Needs to be started for USB reading) ---
-    hw.StartLog(false); // Start log without waiting (important!)
+    hw.StartLog(false); // Start log immediately (non-blocking)
     
     hw.PrintLine("Plaits Synth Started - Ready for Bootloader CMD");
     char settings[64];
@@ -113,21 +125,15 @@ void InitializeSynth() {
 }
 
 // --- User Interface Functions ---
-void HandleButtonInput() {
-    bool button_pressed_now = button.RawState(); 
-    if (button_pressed_now && !button_was_pressed) {
-        button_held_start_time = System::GetNow();
-    } else if (button_pressed_now && button_was_pressed) {
-        uint32_t held_duration = System::GetNow() - button_held_start_time;
-        if (held_duration > BOOTLOADER_HOLD_TIME_MS) { 
-            hw.PrintLine("Resetting to bootloader (Button Hold)..."); 
-            System::Delay(100); 
-            System::ResetToBootloader();
-        }
-    } else if (!button_pressed_now && button_was_pressed) {
-        button_held_start_time = 0;
+void Bootload() {
+    // Bootloader via ADC: pads on ADC 8, 9, and 10 pressed simultaneously at any time
+    if (arp_pad.GetRawFloat() > 0.5f &&
+        model_prev_pad.GetRawFloat() > 0.5f &&
+        model_next_pad.GetRawFloat() > 0.5f) {
+        hw.PrintLine("Entering bootloader (ADC combo)...");
+        System::Delay(100);
+        System::ResetToBootloader();
     }
-    button_was_pressed = button_pressed_now;
 }
 
 void UpdateLED() {

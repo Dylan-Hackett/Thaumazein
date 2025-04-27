@@ -1,5 +1,5 @@
 # Project Name
-TARGET = amathia
+TARGET = thaumazein
 
 # Library Locations
 LIBDAISY_DIR = lib/libdaisy
@@ -9,10 +9,10 @@ MPR121_DIR = .
 EFFECTS_DIR = Effects
 
 # Sources
-CPP_SOURCES = Amathia.cpp \
-              AudioProcessor.cpp \
-              Polyphony.cpp \
+CPP_SOURCES = Thaumazein.cpp \
               Interface.cpp \
+              Polyphony.cpp \
+              AudioProcessor.cpp \
               VoiceEnvelope.cpp \
               mpr121_daisy.cpp \
               Effects/reverbsc.cpp \

@@ -1,0 +1,42 @@
+Hardware and software timelines are concurrent.
+
+
+       	 HARDWARE 
+
+
+1. Figure out screw situation, source proper screw anchors — 1 week at least
+
+2. Finalize resin material based on dimensional stability — Two weeks for more 2 more prototypes
+
+3.  Figure out a good method for aligning USB and 1/4 inch jacks - 3 days
+
+4.  Source appropriate LEDs - 1 week
+
+5.  Fine tune touch sensitivity - Tricky to say, may take multiple people testing which could take time.
+
+6. Potentially utilize a eurorack 16 pin header to connect faceplate to PCB instead of manual wiring - 1 week
+
+
+ 		 SOFTWARE
+
+
+1. Implement an Arpeggiator/preset mode - 1 week
+
+2. Try to port code from clouds instead of current delay/reverb - 1 week
+
+3.  Figure out a shift function that changes the knobs to control the effects and freezes the unshifted main OSC params. - 2-3 days
+
+4. Improve and potentially redesign how the touch control for each keyboard key will work. Currently it’s one parameter for the whole keyboard being modulated by all keys being touched. Will definitely change which parameter is being modulated depending on engine. Potentially will change to modulate multiple params with different keys/parts of the keyboard as well. - 2-3 days
+
+5.  Unit tests are largely absent—consider adding automated tests for the core DSP and polyphony logic - 2 days
+
+6. Improve Attack/Release response - 1 day
+
+7.  Implement a random assignment of engines for polymode - 1-2 days
+
+8.  Bug/stress testing, look into voices getting stopped up with non poly modes freezing - 2 weeks at least of programming a lot to measure/prevent those
+
+9. Write LED routine for keyboard, adding LEDS to PCB for shift and arp - 3-4 days
+
+
+TOTAL 1 month and a halfish

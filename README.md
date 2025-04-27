@@ -75,22 +75,23 @@ The codebase has been refactored from a single monolithic file to a more modular
 
 ## Controls
 
-The synthesizer has 11 knobs/analog inputs:
+The synthesizer uses the following knobs and touch pads connected to the Daisy Seed ADC pins:
 
-- D15 / A0 (Pin 30): Plaits Pitch Offset
-- D16 / A1 (Pin 31): Plaits Harmonics
-- D17 / A2 (Pin 32): Plaits Timbre (Engine Select)
-- D18 / A3 (Pin 33): Plaits Decay
-- D19 / A4 (Pin 34): Delay Wet/Dry Mix
-- D20 / A5 (Pin 35): Plaits Morph
-- D21 / A6 (Pin 36): Delay Feedback
-- D22 / A7 (Pin 37): Delay Time
-- D23 / A8 (Pin 38): Delay Lag
-- D24 / A9 (Pin 39): Envelope Attack
-- D25 / A10 (Pin 40): Envelope Release
+- D15 / A0 (Pin 30): Delay Time
+- D16 / A1 (Pin 31): Delay Mix & Feedback
+- D17 / A2 (Pin 32): Envelope Release
+- D18 / A3 (Pin 33): Envelope Attack
+- D19 / A4 (Pin 34): Plaits Timbre
+- D20 / A5 (Pin 35): Plaits Harmonics
+- D21 / A6 (Pin 36): Plaits Morph
+- D22 / A7 (Pin 37): Plaits Pitch Offset
+- D23 / A8 (Pin 38): Engine Select Decrement Pad (Touch)
+- D24 / A9 (Pin 39): Engine Select Increment Pad (Touch)
+
+(ADC pins A10/A11 remain currently unused and are available for future expansion.)
 
 Additional controls:
-- D27 (Pin 42): Reset to bootloader when held for 3 seconds
+- ADC 8 (Arpeggiator Toggle Pad), ADC 9 (Model Select Previous Pad), and ADC 10 (Model Select Next Pad): Press all three pads simultaneously to enter bootloader at any time during operation
 - LED: Indicates active voices, blinks when idle
 
 ## Engine Behavior
@@ -175,8 +176,6 @@ When adding features or making changes, follow the modular structure:
 
 - Improve onboard effects with either reverb or more full delay network. Possibly port code from clouds instead of current delay/reverb
 
-- Figure out a shift function that changes the knobs to control the effects and freezes the unshifted main osc params. "In normal mode (Shift up), the pot directly controls parameter A; in Shift mode (Shift down), it controls parameter B. On entering either mode, capture r0 = raw and v0 = the last stored value for that parameter. Then map raw → mapped value using a piecewise linear stretch: if raw ≥ r0, map [r0…1] → [v0…1]; otherwise map [0…r0] → [0…v0]. Clamp results to [0,1]. Additionally, if the knob ever physically hits 0 or 1 (raw == 0 or 1) outside of a mode switch, reset r0 and v0 both to that endpoint so the pot returns to normal direct mapping until the next shift."
-
 - Improve and potentially redesign how the touch control for each keyboard key will work. Currently its one parameter for the whole keyboard being modulated by all keys being touched. Will definitely change which parameter is being modulated depending on engine. Potentially will change to modulate multiple params with different keys/parts of the keyboard as well.
 
 - Some "magic numbers" (sensitivity = 150.0f, smoothing bounds) could be pulled into named constants or config
@@ -185,11 +184,11 @@ When adding features or making changes, follow the modular structure:
 
 - Build system could automate the multi‑library build steps via a top‑level Makefile or CMake wrapper
 
+- Scale Mode chosen with the button combo and keyboard. pick 12 scales.
+
 - Improve Attack/Release response
 
 - Finetune Touch Sensitivty 
-
-- Bug/stress testing, look into voices getting stopped up with non poly modes freezing
 
 - Implement a random assignment of Voice assignments for polymode
 

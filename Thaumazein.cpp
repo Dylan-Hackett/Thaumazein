@@ -1,4 +1,4 @@
-#include "Amathia.h"
+#include "Thaumazein.h"
 
 // Define shared volatile variables
 volatile uint16_t current_touch_state = 0;
@@ -16,8 +16,7 @@ void UpdateDisplay() {
         hw.PrintLine(buffer);
         
         // Determine current effective engine index again for display
-        int current_engine_idx = static_cast<int>(timbre_knob.Value() * (MAX_ENGINE_INDEX + 1));
-        if (current_engine_idx > MAX_ENGINE_INDEX) current_engine_idx = MAX_ENGINE_INDEX;
+        int current_engine_idx = current_engine_index;
         sprintf(buffer, "Engine: %d (%s)", current_engine_idx, (current_engine_idx <=3) ? "Poly-4" : "Mono");
         hw.PrintLine(buffer);
         
@@ -26,6 +25,13 @@ void UpdateDisplay() {
         level_percent = level_percent < 0 ? 0 : (level_percent > 100 ? 100 : level_percent); // Clamp 0-100
         sprintf(buffer, "Level: %d%%", level_percent); 
         hw.PrintLine(buffer);
+        
+        // Print all ADC raw values
+        for (int i = 0; i < 12; ++i) {
+            // Print ADC values as integers (multiplied by 1000 for precision)
+            sprintf(buffer, "ADC[%d]: %d", i, static_cast<int>(adc_raw_values[i] * 1000));
+            hw.PrintLine(buffer);
+        }
         
         hw.PrintLine("--------"); 
         
@@ -93,17 +99,25 @@ void PollTouchSensor() {
 }
 
 int main(void) {
-    
     InitializeSynth();
+    // Check bootloader condition once at startup
+    Bootload();
     
     uint32_t lastPoll = hw.system.GetNow();  // Track last poll time
     
     // Main Loop 
     while (1) {
-
-        HandleButtonInput();
-        
         UpdateLED();
+        
+        // Check bootloader condition anytime during operation
+        Bootload();
+        
+        // Heartbeat log every ~500 ms
+        static int hb_counter = 0;
+        if (++hb_counter >= 500) {
+            hb_counter = 0;
+            hw.PrintLine("HB");
+        }
         
         UpdateDisplay();
         

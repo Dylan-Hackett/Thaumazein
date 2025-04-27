@@ -1,4 +1,4 @@
-#include "Amathia.h"
+#include "Thaumazein.h"
 
 // --- Polyphony Setup ---
 plaits::Voice voices[NUM_VOICES];
@@ -25,7 +25,8 @@ const float kTouchMidiNotes[12] = {
 
 // Engine configuration
 // Allow all engines, polyphony determined dynamically
-const int MAX_ENGINE_INDEX = 15; 
+// Total registered engines in plaits::Voice (see Voice::Init)
+const int MAX_ENGINE_INDEX = 12; // Valid indices: 0-12
 
 // --- Voice management functions ---
 int FindVoice(float note, int max_voices) {

@@ -1,3 +1,6 @@
+#ifndef THAUMAZEIN_H_
+#define THAUMAZEIN_H_
+
 #pragma once
 
 #include "daisy_seed.h"
@@ -29,7 +32,7 @@ int FindAvailableVoice(int max_voices);
 void AssignMonoNote(float note);
 void InitializeVoices();
 void InitializeSynth();
-void HandleButtonInput();
+void Bootload();
 void UpdateLED();
 void PollTouchSensor();
 
@@ -52,17 +55,18 @@ extern VoiceEnvelope voice_envelopes[NUM_VOICES];
 extern uint16_t last_touch_state;
 
 extern Switch button;
-extern AnalogControl pitch_knob;          // ADC 0 (Pin 15) Plaits Pitch
-extern AnalogControl harmonics_knob;      // ADC 1 (Pin 16) Plaits Harmonics
-extern AnalogControl timbre_knob;         // ADC 2 (Pin 17) Plaits Timbre/Engine
-extern AnalogControl decay_knob;          // ADC 3 (Pin 18) Plaits Decay
-extern AnalogControl morph_knob;          // ADC 4 (Pin 20) Plaits Morph
-extern AnalogControl delay_feedback_knob; // ADC 5 (Pin 21) Delay Feedback
-extern AnalogControl delay_time_knob;     // ADC 6 (Pin 22) Delay Time
-extern AnalogControl delay_lag_knob;      // ADC 7 (Pin 23) Delay Lag
-extern AnalogControl delay_mix_knob;      // ADC 8 (Pin 19) Delay Wet/Dry Mix
-extern AnalogControl env_attack_knob;     // ADC 9 (Pin 24) Envelope Attack
-extern AnalogControl env_release_knob;    // ADC 10 (Pin 25) Envelope Release
+extern AnalogControl delay_time_knob;        // ADC 0 (Pin 15) Delay Time
+extern AnalogControl delay_mix_feedback_knob; // ADC 1 (Pin 16) Delay Mix & Feedback
+extern AnalogControl env_release_knob;       // ADC 2 (Pin 17) Envelope Release
+extern AnalogControl env_attack_knob;        // ADC 3 (Pin 18) Envelope Attack
+extern AnalogControl timbre_knob;            // ADC 4 (Pin 20) Plaits Timbre/Engine
+extern AnalogControl harmonics_knob;         // ADC 5 (Pin 21) Plaits Harmonics
+extern AnalogControl morph_knob;             // ADC 6 (Pin 22) Plaits Morph
+extern AnalogControl pitch_knob;             // ADC 7 (Pin 23) Plaits Pitch
+extern AnalogControl arp_pad;               // ADC 8 (Pin 23) Arpeggiator Toggle Pad
+extern AnalogControl model_prev_pad;        // ADC 9 (Pin 24) Model Select Previous Pad
+extern AnalogControl model_next_pad;        // ADC 10 (Pin 25) Model Select Next Pad
+extern AnalogControl mod_wheel;             // ADC 11 (Pin 28) Mod Wheel Control
 
 
 extern const float kTouchMidiNotes[12];
@@ -84,3 +88,9 @@ extern char shared_buffer[262144];
 // Shared touch sensor data (polled in main loop)
 extern volatile uint16_t current_touch_state; 
 extern volatile float touch_cv_value; 
+
+extern volatile int current_engine_index;
+
+extern volatile float adc_raw_values[12]; // Array to hold raw values for all 12 ADCs
+
+#endif // THAUMAZEIN_H_ 
