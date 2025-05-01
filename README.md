@@ -172,6 +172,7 @@ When adding features or making changes, follow the modular structure:
 
 ## TO DO:
 
+- Integrate basic Arpeggiator: use ADC8 to toggle on/off, map held touch pads to notes, tempo mapped to ADC0, triggers Plaits voices.
 - Implement an Arpeggiator preset mode, which stores each parameter per step, including the engine parameter and then cycles through them rhytmically. Monophonic implementation to save CPU
 
 - Improve onboard effects with either reverb or more full delay network. Possibly port code from clouds instead of current delay/reverb

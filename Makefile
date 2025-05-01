@@ -11,6 +11,7 @@ EFFECTS_DIR = Effects
 # Sources
 CPP_SOURCES = Thaumazein.cpp \
               Interface.cpp \
+              Arpeggiator.cpp \
               Polyphony.cpp \
               AudioProcessor.cpp \
               VoiceEnvelope.cpp \

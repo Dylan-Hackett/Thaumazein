@@ -10,7 +10,7 @@ void ReadKnobValues();
 int  DetermineEngineSettings();
 void HandleTouchInput(int engineIndex, bool poly_mode, int effective_num_voices);
 void ConfigureDelaySettings();
-void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx);
+void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx, bool arp_on);
 void ProcessVoiceEnvelopes(bool poly_mode);
 void ProcessAudioOutput(AudioHandle::InterleavingOutputBuffer out, size_t size, float dry_level);
 void UpdatePerformanceMonitors(size_t size, AudioHandle::InterleavingOutputBuffer out);
@@ -119,25 +119,95 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     int engineIndex = DetermineEngineSettings();
     bool poly_mode = (engineIndex <= 3); // First 4 engines are poly
     int effective_num_voices = poly_mode ? NUM_VOICES : 1;
-    
-    // Process touch input for note handling
-    HandleTouchInput(engineIndex, poly_mode, effective_num_voices);
+
+    // Integrate Arpeggiator: hold ADC8 pad to run arp, release to stop
+    // Tap-to-toggle behaviour on pad 8
+    // --- Arpeggiator toggle pad with hysteresis to avoid double-toggles ---
+    static bool arp_enabled = false;
+    constexpr float kOnThreshold  = 0.30f;   // more sensitive press detection
+    constexpr float kOffThreshold = 0.20f;   // lower release threshold for fast reset
+
+    static bool pad_pressed = false;          // debounced pad pressed state
+    float pad_read = arp_pad.Value();
+
+    // Detect state transitions with hysteresis
+    if(!pad_pressed && pad_read > kOnThreshold)
+    {
+        pad_pressed = true;
+        // Rising edge detected -> toggle arp
+        arp_enabled = !arp_enabled;
+        hw.PrintLine(arp_enabled ? "[DEBUG] ARP ON" : "[DEBUG] ARP OFF");
+        if(arp_enabled)
+        {
+            arp.Init(sample_rate);          // restart timing
+        }
+    }
+    else if(pad_pressed && pad_read < kOffThreshold)
+    {
+        // Consider pad released only when it falls well below off threshold
+        pad_pressed = false;
+    }
+    bool arp_on = arp_enabled;
+    static bool was_arp_on = false;
+    if (!arp_on && was_arp_on) {
+        // ARP just turned off: clear all voices and modulation gates
+        ResetVoiceStates();
+        for (int v = 0; v < NUM_VOICES; ++v) {
+            modulations[v].trigger = 0.0f;
+            modulations[v].trigger_patched = false;
+        }
+        // Reset touch history so that any keys still held will register as new touches
+        // when we exit ARP mode. This allows immediate playback in non-ARP mode while
+        // pads are kept pressed.
+        last_touch_state = 0;
+    }
+    was_arp_on = arp_on;
+
+    if (arp_on) {
+        // Collect held pads from touch sensor
+        uint16_t st = current_touch_state;
+        int key_idxs[12];
+        int num_keys = 0;
+        // Collect any MPR121 pads currently held
+        for (int i = 0; i < 12; ++i) {
+            if (st & (1 << i)) {
+                key_idxs[num_keys++] = i;
+            }
+        }
+        arp.SetNotes(key_idxs, num_keys);
+        // Map ADC0 (delay_time_val) to tempo range 1-15 Hz
+        // Exponential tempo mapping for full knob response: 1 Hz to 30 Hz
+        float min_tempo = 1.0f;
+        float max_tempo = 30.0f;
+        float ratio     = max_tempo / min_tempo;
+        float tempo     = min_tempo * powf(ratio, delay_time_val);
+        arp.SetMainTempo(tempo);
+        // Map mod wheel (ADC 11) to polyrhythm ratio 0.5x to 2.0x
+        {
+            float min_ratio = 0.5f, max_ratio = 2.0f;
+            float mw = mod_wheel.Value();
+            float ratio = min_ratio + mw * (max_ratio - min_ratio);
+            arp.SetPolyrhythmRatio(ratio);
+        }
+        // Process arpeggiator for this block (frames = size/2)
+        arp.Process(size / 2);
+    } else {
+        // Default touch-driven note handling
+        HandleTouchInput(engineIndex, poly_mode, effective_num_voices);
+    }
     
     // Configure delay settings
     ConfigureDelaySettings();
     
     // Process voice parameters and render audio
-    // Apply the touch control to modify a parameter (for example, morph)
-    // morph_knob_val = morph_knob_val * 0.6f + touch_control * 0.4f; // OLD METHOD - REMOVED
-
-    // Alternate options for applying touch control to different parameters:
-    // Uncomment one of these to change which parameter the touch control affects
-    // harm_knob_val = harm_knob_val * 0.6f + touch_control * 0.4f;   // Touch controls harmonics
-    // decay_knob_val = decay_knob_val * 0.6f + touch_control * 0.4f; // Touch controls decay
-    // delay_feedback_val = delay_feedback_val * 0.6f + touch_control * 0.4f; // Touch controls delay feedback
-    // delay_time_val = delay_time_val * 0.6f + touch_control * 0.4f; // Touch controls delay time
-
-    PrepareVoiceParameters(engineIndex, poly_mode, effective_num_voices - 1);
+    // Prepare voice rendering: skip trigger reset in ARP mode
+    if (arp_on) {
+        // Mono ARP: only voice 0, preserve trigger_patched set by callback
+        PrepareVoiceParameters(engineIndex, false, 0, true);
+    } else {
+        // Normal mode: reset triggers per engine
+        PrepareVoiceParameters(engineIndex, poly_mode, effective_num_voices - 1, false);
+    }
     
     // Process envelopes and mix audio
     ProcessVoiceEnvelopes(poly_mode);
@@ -146,6 +216,12 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     float dry_level = 1.0f - delay_mix_val;
     ProcessAudioOutput(out, size, dry_level);
     
+    // After rendering the ARP pulse, clear triggers so next block can retrigger
+    if (arp_on) {
+        modulations[0].trigger = 0.0f;
+        modulations[0].trigger_patched = 0.0f;
+    }
+
     // Mark the end of the audio block
     cpu_meter.OnBlockEnd();
     
@@ -269,10 +345,10 @@ int DetermineEngineSettings() {
 }
 
 void HandleTouchInput(int engineIndex, bool poly_mode, int effective_num_voices) {
-    // Use the shared volatile variable for current touch state
+    // Determine if the selected engine is percussive (uses internal envelope)
+    bool percussiveEngine = engineIndex > 7;
     uint16_t local_current_touch_state = current_touch_state;
-
-    for (int i = 0; i < 12; ++i) { 
+    for (int i = 0; i < 12; ++i) {
         bool pad_currently_pressed = (local_current_touch_state >> i) & 1;
         bool pad_was_pressed = (last_touch_state >> i) & 1;
         float note_for_pad = kTouchMidiNotes[i];
@@ -284,12 +360,16 @@ void HandleTouchInput(int engineIndex, bool poly_mode, int effective_num_voices)
                     voice_note[voice_idx] = note_for_pad;
                     voice_active[voice_idx] = true;
                     modulations[voice_idx].trigger = 1.0f; // For initial transient
+                    // Patch the trigger if this is a percussive engine
+                    if (percussiveEngine) modulations[voice_idx].trigger_patched = true;
                     voice_envelopes[voice_idx].Trigger(); 
                 }
             } else { 
                 AssignMonoNote(note_for_pad);
                 // NEW: Trigger the mono voice envelope to ensure audio playback
                 voice_envelopes[0].Trigger();
+                // Patch the trigger for percussive engines
+                if (percussiveEngine) modulations[0].trigger_patched = true;
             }
         } else if (!pad_currently_pressed && pad_was_pressed) { 
             if (poly_mode) {
@@ -321,13 +401,36 @@ void ConfigureDelaySettings() {
     // delay.SetLagTime(lag_time_s);
 }
 
-void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx) {
-    
-    // Update global parameter sources based on new ADC mapping
-    float global_pitch_offset = pitch_val * 24.f - 12.f;     // Pitch is now ADC 7
-    float current_global_harmonics = harm_knob_val;          // Harmonics is now ADC 5
-    // float current_global_decay = decay_knob_val;            // Removed (Decay knob removed)
-    float current_global_morph = morph_knob_val;            // Morph is now ADC 6
+void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx, bool arp_on) {
+    // Compute global parameter sources
+    float global_pitch_offset = pitch_val * 24.f - 12.f;     // Pitch follows ADC 7
+    float current_global_harmonics = harm_knob_val;          // Harmonics ADC 5
+    float current_global_morph = morph_knob_val;             // Morph ADC 6
+
+    // Percussive ARP mode: render voice 0 only with patched trigger
+    if (arp_on && engineIndex > 7) {
+        // Update patch for voice 0
+        patches[0].note = voice_note[0] + global_pitch_offset;
+        patches[0].engine = engineIndex;
+        patches[0].harmonics = current_global_harmonics;
+        patches[0].timbre = timbre_knob_val;
+        patches[0].morph = current_global_morph;
+        patches[0].lpg_colour = 0.0f;
+        patches[0].decay = env_release_val; // use release knob as decay
+        patches[0].frequency_modulation_amount = 0.0f;
+        patches[0].timbre_modulation_amount = 0.0f;
+        patches[0].morph_modulation_amount = 0.0f;
+        // Render with ARP callback trigger
+        voices[0].Render(patches[0], modulations[0], output_buffers[0], BLOCK_SIZE);
+        // Silence other voices
+        for (int v = 1; v < NUM_VOICES; ++v) {
+            memset(output_buffers[v], 0, sizeof(plaits::Voice::Frame) * BLOCK_SIZE);
+        }
+        // Clear triggers for next block
+        modulations[0].trigger = 0.0f;
+        modulations[0].trigger_patched = false;
+        return;
+    }
 
     // --- Process Effective Voices --- 
     for (int v = 0; v <= max_voice_idx; ++v) { 
@@ -338,10 +441,13 @@ void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx) 
         patches[v].timbre = timbre_knob_val;                  // ADC 4 (Reconnected)
         patches[v].morph = current_global_morph;            // ADC 6
         patches[v].lpg_colour = 0.0f;
-        // patches[v].decay = current_global_decay;            // Removed (Decay knob removed)
-        // Ensure decay uses a default or is handled correctly by the engine if needed
-        // Setting a default moderate decay:
-        patches[v].decay = 0.5f; // Default decay value since knob is gone
+        // Map decay: use release knob when in ARP mode, otherwise a moderate default
+        if (arp_on) {
+            // Map Plaits internal decay envelope to release knob for smoother release
+            patches[v].decay = env_release_val;
+        } else {
+            patches[v].decay = 0.5f; // moderate default
+        }
         
         patches[v].frequency_modulation_amount = 0.f;
         patches[v].timbre_modulation_amount = 0.f;
@@ -356,22 +462,27 @@ void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx) 
         modulations[v].morph = 0.0f; 
         modulations[v].level = 1.0f; 
         
-        // MODIFIED: Handle all engines consistently with trigger_patched
-        // This ensures envelopes are properly applied
-        modulations[v].trigger_patched = !poly_mode;  // Only patch trigger for non-poly engines
+        // Only reset trigger_patched when not in ARP mode
+        if (!arp_on) {
+            if(engine_changed_flag && voice_active[v]) {
+                modulations[v].trigger = 0.0f; // falling edge on change
+            } else {
+                modulations[v].trigger = voice_active[v] ? 1.0f : 0.0f;
+            }
+        }
         
         if (poly_mode) {
             // For poly engines, we'll handle triggering through voice envelopes
             // Only set trigger on initial note-on
             // Don't modify value - already set in HandleTouchInput
         } else {
-            // For non-poly engines, use direct trigger patching.
-            // When the engine just changed while a note is held, force a low trigger for one block
-            // to generate a fresh rising edge on the next block so percussive engines retrigger.
-            if(engine_changed_flag && voice_active[v]) {
-                modulations[v].trigger = 0.0f; // create falling edge this block
-            } else {
-                modulations[v].trigger = voice_active[v] ? 1.0f : 0.0f;
+            // In non-poly mode and ARP active, leave trigger from callback; otherwise override
+            if (!arp_on) {
+                if (engine_changed_flag && voice_active[v]) {
+                    modulations[v].trigger = 0.0f;
+                } else {
+                    modulations[v].trigger = voice_active[v] ? 1.0f : 0.0f;
+                }
             }
         }
         
@@ -399,6 +510,9 @@ void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx) 
 }
 
 void ProcessVoiceEnvelopes(bool poly_mode) {
+    // Bypass custom envelope for percussive Plaits engines
+    bool percussiveEngine = (current_engine_index > 7);
+
     memset(mix_buffer_out, 0, sizeof(mix_buffer_out));
     memset(mix_buffer_aux, 0, sizeof(mix_buffer_aux));
     
@@ -420,12 +534,15 @@ void ProcessVoiceEnvelopes(bool poly_mode) {
     int voices_to_process = poly_mode ? NUM_VOICES : 1;
     
     for (int v = 0; v < voices_to_process; ++v) {
-        // Set separate attack and release times for all voice envelopes
-        voice_envelopes[v].SetAttackTime(attack_value);
-        voice_envelopes[v].SetReleaseTime(release_value);
-        
-        // Process the envelope
-        float env_value = voice_envelopes[v].Process();
+        // Choose envelope value: either custom AR envelope or flat for percussive modes
+        float env_value;
+        if (!percussiveEngine) {
+            voice_envelopes[v].SetAttackTime(attack_value);
+            voice_envelopes[v].SetReleaseTime(release_value);
+            env_value = voice_envelopes[v].Process();
+        } else {
+            env_value = 1.0f;
+        }
         
         for (int i = 0; i < BLOCK_SIZE; ++i) {
             mix_buffer_out[i] += output_buffers[v][i].out * env_value;

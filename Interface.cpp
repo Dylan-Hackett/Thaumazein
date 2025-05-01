@@ -1,9 +1,12 @@
 #include "Thaumazein.h"
+#include "Arpeggiator.h"
 
 // --- Global hardware variables ---
 DaisySeed hw;
 Mpr121 touch_sensor;
 EchoDelay<48000> delay;
+// Arpeggiator instance
+Arpeggiator arp;
 
 // Hardware controls - Remapped to use ADCs 0-9
 Switch button;
@@ -105,6 +108,27 @@ void InitializeSynth() {
     InitializeTouchSensor();
     InitializeDelay();
     cpu_meter.Init(sample_rate, BLOCK_SIZE); // Initialize the CPU Load Meter
+    
+    // --- Initialize Arpeggiator ---
+    arp.Init(sample_rate);
+    // Default arp tempo for audible stepping
+    arp.SetMainTempo(8.0f);
+    // Route arpeggiator triggers into Plaits voices
+    arp.SetNoteTriggerCallback([](int pad_idx) {
+        // Monophonic ARP: set AR mode and retrigger envelope without full reset
+        voice_envelopes[0].SetMode(VoiceEnvelope::MODE_AR);
+        // Assign the new note to voice 0
+        float note = kTouchMidiNotes[pad_idx];
+        voice_note[0] = note;
+        voice_active[0] = true;
+        // Start the envelope attack; release phase follows based on knob
+        voice_envelopes[0].Trigger();
+        // Send patched trigger to Plaits engine only for percussive modes
+        if (current_engine_index > 7) {
+            modulations[0].trigger = 1.0f;
+            modulations[0].trigger_patched = true;
+        }
+    });
     
     // --- Start Audio ---
     hw.StartAudio(AudioCallback);

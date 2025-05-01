@@ -13,6 +13,7 @@
 #include "Effects/BiquadFilters.h"
 #include "util/CpuLoadMeter.h"
 #include <cmath>
+#include "Arpeggiator.h"
 
 using namespace daisy;
 using namespace daisysp;
@@ -21,7 +22,7 @@ using namespace infrasonic;
 
 
 #define NUM_VOICES 4 
-#define BLOCK_SIZE 16  
+#define BLOCK_SIZE 16
 #define MAX_DELAY_SAMPLES 48000 
 #define SAMPLE_RATE 48000  // Adding sample rate definition
 
@@ -70,6 +71,7 @@ extern AnalogControl mod_wheel;             // ADC 11 (Pin 28) Mod Wheel Control
 
 
 extern const float kTouchMidiNotes[12];
+extern Arpeggiator arp;
 
 
 extern float sample_rate;
@@ -92,5 +94,8 @@ extern volatile float touch_cv_value;
 extern volatile int current_engine_index;
 
 extern volatile float adc_raw_values[12]; // Array to hold raw values for all 12 ADCs
+
+extern volatile int engine_retrigger_phase;
+extern volatile int arp_patch_phase;
 
 #endif // THAUMAZEIN_H_ 

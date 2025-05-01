@@ -1,0 +1,2451 @@
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 4
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"Arpeggiator.cpp"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text._ZN11ArpeggiatorC2Ev,"ax",%progbits
+  19              		.align	1
+  20              		.global	_ZN11ArpeggiatorC2Ev
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	_ZN11ArpeggiatorC2Ev:
+  26              	.LVL0:
+  27              	.LFB4605:
+  28              		.file 1 "Arpeggiator.cpp"
+   1:Arpeggiator.cpp **** #include "Arpeggiator.h"
+   2:Arpeggiator.cpp **** 
+   3:Arpeggiator.cpp **** Arpeggiator::Arpeggiator()
+  29              		.loc 1 3 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              	.LBB82:
+  34              	.LBB83:
+  35              	.LBI83:
+  36              		.file 2 "lib/DaisySP/Source/Utility/metro.h"
+   1:lib/DaisySP/Source/Utility/metro.h **** /*
+   2:lib/DaisySP/Source/Utility/metro.h **** Copyright (c) 2020 Electrosmith, Corp
+   3:lib/DaisySP/Source/Utility/metro.h **** 
+   4:lib/DaisySP/Source/Utility/metro.h **** Use of this source code is governed by an MIT-style
+   5:lib/DaisySP/Source/Utility/metro.h **** license that can be found in the LICENSE file or at
+   6:lib/DaisySP/Source/Utility/metro.h **** https://opensource.org/licenses/MIT.
+   7:lib/DaisySP/Source/Utility/metro.h **** */
+   8:lib/DaisySP/Source/Utility/metro.h **** 
+   9:lib/DaisySP/Source/Utility/metro.h **** #pragma once
+  10:lib/DaisySP/Source/Utility/metro.h **** #ifndef DSY_METRO_H
+  11:lib/DaisySP/Source/Utility/metro.h **** #define DSY_METRO_H
+  12:lib/DaisySP/Source/Utility/metro.h **** #include <stdint.h>
+  13:lib/DaisySP/Source/Utility/metro.h **** #ifdef __cplusplus
+  14:lib/DaisySP/Source/Utility/metro.h **** 
+  15:lib/DaisySP/Source/Utility/metro.h **** namespace daisysp
+  16:lib/DaisySP/Source/Utility/metro.h **** {
+  17:lib/DaisySP/Source/Utility/metro.h **** /** Creates a clock signal at a specific frequency.
+  18:lib/DaisySP/Source/Utility/metro.h **** */
+  19:lib/DaisySP/Source/Utility/metro.h **** class Metro
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 2
+
+
+  20:lib/DaisySP/Source/Utility/metro.h **** {
+  21:lib/DaisySP/Source/Utility/metro.h ****   public:
+  22:lib/DaisySP/Source/Utility/metro.h ****     Metro() {}
+  37              		.loc 2 22 5 view .LVU1
+  38              		.loc 2 22 5 is_stmt 0 view .LVU2
+  39              	.LBE83:
+   4:Arpeggiator.cpp ****     : rng_state_(0x12345678),
+   5:Arpeggiator.cpp ****       notes_(nullptr),
+   6:Arpeggiator.cpp ****       num_notes_(0),
+   7:Arpeggiator.cpp ****       scale_(nullptr),
+   8:Arpeggiator.cpp ****       scale_size_(0),
+   9:Arpeggiator.cpp ****       octave_jump_prob_(0.0f),
+  10:Arpeggiator.cpp ****       note_callback_(nullptr),
+  11:Arpeggiator.cpp ****       polyrhythm_ratio_(1.0f),
+  12:Arpeggiator.cpp ****       next_trigger_time_(0.0f),
+  13:Arpeggiator.cpp ****       current_time_(0.0f),
+  14:Arpeggiator.cpp ****       sample_rate_(48000.0f),
+  15:Arpeggiator.cpp ****       current_interval_(1.0f),
+  16:Arpeggiator.cpp ****       step_index_(0),
+  17:Arpeggiator.cpp ****       direction_(Forward)
+  40              		.loc 1 17 25 view .LVU3
+  41 0000 0022     		movs	r2, #0
+  42 0002 0B49     		ldr	r1, .L2
+  43 0004 C0E90412 		strd	r1, r2, [r0, #16]
+  44 0008 0021     		movs	r1, #0
+  45 000a 0262     		str	r2, [r0, #32]
+  46              	.LBB84:
+  47              	.LBB85:
+  48              	.LBB86:
+  49              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h"
+   1:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // Implementation of std::function -*- C++ -*-
+   2:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+   3:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // Copyright (C) 2004-2020 Free Software Foundation, Inc.
+   4:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** //
+   5:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // This file is part of the GNU ISO C++ Library.  This library is free
+   6:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // software; you can redistribute it and/or modify it under the
+   7:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // terms of the GNU General Public License as published by the
+   8:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // Free Software Foundation; either version 3, or (at your option)
+   9:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // any later version.
+  10:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  11:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // This library is distributed in the hope that it will be useful,
+  12:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // GNU General Public License for more details.
+  15:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  16:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // Under Section 7 of GPL version 3, you are granted additional
+  17:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // permissions described in the GCC Runtime Library Exception, version
+  18:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // 3.1, as published by the Free Software Foundation.
+  19:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  20:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // You should have received a copy of the GNU General Public License and
+  21:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // a copy of the GCC Runtime Library Exception along with this program;
+  22:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  23:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** // <http://www.gnu.org/licenses/>.
+  24:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  25:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** /** @file include/bits/std_function.h
+  26:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****  *  This is an internal header file, included by other library headers.
+  27:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****  *  Do not attempt to use it directly. @headername{functional}
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 3
+
+
+  28:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****  */
+  29:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  30:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #ifndef _GLIBCXX_STD_FUNCTION_H
+  31:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #define _GLIBCXX_STD_FUNCTION_H 1
+  32:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  33:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #pragma GCC system_header
+  34:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  35:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #if __cplusplus < 201103L
+  36:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** # include <bits/c++0x_warning.h>
+  37:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #else
+  38:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  39:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #if __cpp_rtti
+  40:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** # include <typeinfo>
+  41:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #endif
+  42:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #include <bits/stl_function.h>
+  43:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #include <bits/invoke.h>
+  44:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #include <bits/refwrap.h>
+  45:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #include <bits/functexcept.h>
+  46:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  47:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** namespace std _GLIBCXX_VISIBILITY(default)
+  48:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** {
+  49:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
+  50:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  51:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   /**
+  52:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  @brief Exception class thrown when class template function's
+  53:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  operator() is called with an empty target.
+  54:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  @ingroup exceptions
+  55:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    */
+  56:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   class bad_function_call : public std::exception
+  57:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   {
+  58:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   public:
+  59:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     virtual ~bad_function_call() noexcept;
+  60:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  61:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     const char* what() const noexcept;
+  62:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   };
+  63:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  64:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   /**
+  65:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  Trait identifying "location-invariant" types, meaning that the
+  66:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  address of the object (or any of its members) will not escape.
+  67:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  Trivially copyable types are location-invariant and users can
+  68:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  specialize this trait for other types.
+  69:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    */
+  70:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Tp>
+  71:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     struct __is_location_invariant
+  72:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     : is_trivially_copyable<_Tp>::type
+  73:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     { };
+  74:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  75:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   class _Undefined_class;
+  76:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  77:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   union _Nocopy_types
+  78:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   {
+  79:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     void*       _M_object;
+  80:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     const void* _M_const_object;
+  81:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     void (*_M_function_pointer)();
+  82:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     void (_Undefined_class::*_M_member_pointer)();
+  83:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   };
+  84:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 4
+
+
+  85:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   union [[gnu::may_alias]] _Any_data
+  86:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   {
+  87:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     void*       _M_access()       { return &_M_pod_data[0]; }
+  88:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     const void* _M_access() const { return &_M_pod_data[0]; }
+  89:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  90:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     template<typename _Tp>
+  91:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _Tp&
+  92:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _M_access()
+  93:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       { return *static_cast<_Tp*>(_M_access()); }
+  94:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  95:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     template<typename _Tp>
+  96:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       const _Tp&
+  97:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _M_access() const
+  98:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       { return *static_cast<const _Tp*>(_M_access()); }
+  99:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 100:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     _Nocopy_types _M_unused;
+ 101:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     char _M_pod_data[sizeof(_Nocopy_types)];
+ 102:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   };
+ 103:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 104:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   enum _Manager_operation
+ 105:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   {
+ 106:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     __get_type_info,
+ 107:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     __get_functor_ptr,
+ 108:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     __clone_functor,
+ 109:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     __destroy_functor
+ 110:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   };
+ 111:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 112:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Signature>
+ 113:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     class function;
+ 114:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 115:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   /// Base class of all polymorphic function object wrappers.
+ 116:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   class _Function_base
+ 117:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   {
+ 118:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   public:
+ 119:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     static const size_t _M_max_size = sizeof(_Nocopy_types);
+ 120:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     static const size_t _M_max_align = __alignof__(_Nocopy_types);
+ 121:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 122:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     template<typename _Functor>
+ 123:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       class _Base_manager
+ 124:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
+ 125:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       protected:
+ 126:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	static const bool __stored_locally =
+ 127:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	(__is_location_invariant<_Functor>::value
+ 128:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	 && sizeof(_Functor) <= _M_max_size
+ 129:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	 && __alignof__(_Functor) <= _M_max_align
+ 130:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	 && (_M_max_align % __alignof__(_Functor) == 0));
+ 131:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 132:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	typedef integral_constant<bool, __stored_locally> _Local_storage;
+ 133:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 134:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	// Retrieve a pointer to the function object
+ 135:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	static _Functor*
+ 136:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_get_pointer(const _Any_data& __source)
+ 137:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{
+ 138:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  if _GLIBCXX17_CONSTEXPR (__stored_locally)
+ 139:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    {
+ 140:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      const _Functor& __f = __source._M_access<_Functor>();
+ 141:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      return const_cast<_Functor*>(std::__addressof(__f));
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 5
+
+
+ 142:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    }
+ 143:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  else // have stored a pointer
+ 144:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    return __source._M_access<_Functor*>();
+ 145:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	}
+ 146:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 147:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	// Clone a location-invariant function object that fits within
+ 148:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	// an _Any_data structure.
+ 149:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	static void
+ 150:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_clone(_Any_data& __dest, const _Any_data& __source, true_type)
+ 151:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{
+ 152:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  ::new (__dest._M_access()) _Functor(__source._M_access<_Functor>());
+ 153:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	}
+ 154:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 155:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	// Clone a function object that is not location-invariant or
+ 156:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	// that cannot fit into an _Any_data structure.
+ 157:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	static void
+ 158:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_clone(_Any_data& __dest, const _Any_data& __source, false_type)
+ 159:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{
+ 160:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  __dest._M_access<_Functor*>() =
+ 161:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    new _Functor(*__source._M_access<const _Functor*>());
+ 162:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	}
+ 163:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 164:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	// Destroying a location-invariant object may still require
+ 165:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	// destruction.
+ 166:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	static void
+ 167:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_destroy(_Any_data& __victim, true_type)
+ 168:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{
+ 169:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  __victim._M_access<_Functor>().~_Functor();
+ 170:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	}
+ 171:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 172:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	// Destroying an object located on the heap.
+ 173:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	static void
+ 174:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_destroy(_Any_data& __victim, false_type)
+ 175:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{
+ 176:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  delete __victim._M_access<_Functor*>();
+ 177:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	}
+ 178:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 179:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       public:
+ 180:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	static bool
+ 181:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_manager(_Any_data& __dest, const _Any_data& __source,
+ 182:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 		   _Manager_operation __op)
+ 183:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{
+ 184:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  switch (__op)
+ 185:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    {
+ 186:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #if __cpp_rtti
+ 187:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    case __get_type_info:
+ 188:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      __dest._M_access<const type_info*>() = &typeid(_Functor);
+ 189:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      break;
+ 190:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #endif
+ 191:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    case __get_functor_ptr:
+ 192:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      __dest._M_access<_Functor*>() = _M_get_pointer(__source);
+ 193:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      break;
+ 194:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 195:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    case __clone_functor:
+ 196:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      _M_clone(__dest, __source, _Local_storage());
+ 197:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      break;
+ 198:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 6
+
+
+ 199:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    case __destroy_functor:
+ 200:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      _M_destroy(__dest, _Local_storage());
+ 201:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      break;
+ 202:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    }
+ 203:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  return false;
+ 204:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	}
+ 205:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 206:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	static void
+ 207:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_init_functor(_Any_data& __functor, _Functor&& __f)
+ 208:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{ _M_init_functor(__functor, std::move(__f), _Local_storage()); }
+ 209:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 210:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	template<typename _Signature>
+ 211:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  static bool
+ 212:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  _M_not_empty_function(const function<_Signature>& __f)
+ 213:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  { return static_cast<bool>(__f); }
+ 214:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 215:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	template<typename _Tp>
+ 216:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  static bool
+ 217:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  _M_not_empty_function(_Tp* __fp)
+ 218:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  { return __fp != nullptr; }
+ 219:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 220:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	template<typename _Class, typename _Tp>
+ 221:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  static bool
+ 222:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  _M_not_empty_function(_Tp _Class::* __mp)
+ 223:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  { return __mp != nullptr; }
+ 224:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 225:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	template<typename _Tp>
+ 226:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  static bool
+ 227:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  _M_not_empty_function(const _Tp&)
+ 228:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  { return true; }
+ 229:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 230:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       private:
+ 231:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	static void
+ 232:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_init_functor(_Any_data& __functor, _Functor&& __f, true_type)
+ 233:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{ ::new (__functor._M_access()) _Functor(std::move(__f)); }
+ 234:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 235:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	static void
+ 236:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_init_functor(_Any_data& __functor, _Functor&& __f, false_type)
+ 237:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{ __functor._M_access<_Functor*>() = new _Functor(std::move(__f)); }
+ 238:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       };
+ 239:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 240:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     _Function_base() : _M_manager(nullptr) { }
+  50              		.loc 3 240 42 view .LVU4
+  51 000c 0263     		str	r2, [r0, #48]
+  52              	.LBE86:
+  53              	.LBE85:
+  54              	.LBE84:
+  55              		.loc 1 17 25 view .LVU5
+  56 000e 4162     		str	r1, [r0, #36]	@ float
+  57              	.LVL1:
+  58              	.LBB88:
+  59              	.LBI84:
+ 241:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 242:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     ~_Function_base()
+ 243:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     {
+ 244:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       if (_M_manager)
+ 245:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_manager(_M_functor, _M_functor, __destroy_functor);
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 7
+
+
+ 246:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     }
+ 247:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     bool _M_empty() const { return !_M_manager; }
+ 249:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 250:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     typedef bool (*_Manager_type)(_Any_data&, const _Any_data&,
+ 251:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 				  _Manager_operation);
+ 252:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 253:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     _Any_data     _M_functor;
+ 254:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     _Manager_type _M_manager;
+ 255:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   };
+ 256:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 257:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Signature, typename _Functor>
+ 258:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     class _Function_handler;
+ 259:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 260:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename _Functor, typename... _ArgTypes>
+ 261:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     class _Function_handler<_Res(_ArgTypes...), _Functor>
+ 262:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     : public _Function_base::_Base_manager<_Functor>
+ 263:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     {
+ 264:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       typedef _Function_base::_Base_manager<_Functor> _Base;
+ 265:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 266:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     public:
+ 267:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       static bool
+ 268:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _M_manager(_Any_data& __dest, const _Any_data& __source,
+ 269:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 		 _Manager_operation __op)
+ 270:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
+ 271:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	switch (__op)
+ 272:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  {
+ 273:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #if __cpp_rtti
+ 274:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  case __get_type_info:
+ 275:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    __dest._M_access<const type_info*>() = &typeid(_Functor);
+ 276:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    break;
+ 277:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #endif
+ 278:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  case __get_functor_ptr:
+ 279:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    __dest._M_access<_Functor*>() = _Base::_M_get_pointer(__source);
+ 280:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    break;
+ 281:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 282:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  default:
+ 283:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    _Base::_M_manager(__dest, __source, __op);
+ 284:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  }
+ 285:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	return false;
+ 286:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       }
+ 287:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 288:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       static _Res
+ 289:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _M_invoke(const _Any_data& __functor, _ArgTypes&&... __args)
+ 290:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
+ 291:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	return std::__invoke_r<_Res>(*_Base::_M_get_pointer(__functor),
+ 292:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 				     std::forward<_ArgTypes>(__args)...);
+ 293:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       }
+ 294:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     };
+ 295:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 296:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   /**
+ 297:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  @brief Primary class template for std::function.
+ 298:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  @ingroup functors
+ 299:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *
+ 300:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  Polymorphic function wrapper.
+ 301:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    */
+ 302:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename... _ArgTypes>
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 8
+
+
+ 303:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     class function<_Res(_ArgTypes...)>
+ 304:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     : public _Maybe_unary_or_binary_function<_Res, _ArgTypes...>,
+ 305:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       private _Function_base
+ 306:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     {
+ 307:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       template<typename _Func,
+ 308:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	       typename _Res2 = __invoke_result<_Func&, _ArgTypes...>>
+ 309:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	struct _Callable
+ 310:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	: __is_invocable_impl<_Res2, _Res>::type
+ 311:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{ };
+ 312:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 313:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       // Used so the return type convertibility checks aren't done when
+ 314:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       // performing overload resolution for copy construction/assignment.
+ 315:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       template<typename _Tp>
+ 316:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	struct _Callable<function, _Tp> : false_type { };
+ 317:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 318:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       template<typename _Cond, typename _Tp>
+ 319:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	using _Requires = typename enable_if<_Cond::value, _Tp>::type;
+ 320:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 321:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     public:
+ 322:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       typedef _Res result_type;
+ 323:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 324:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       // [3.7.2.1] construct/copy/destroy
+ 325:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 326:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 327:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief Default construct creates an empty function call wrapper.
+ 328:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @post @c !(bool)*this
+ 329:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 330:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function() noexcept
+ 331:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       : _Function_base() { }
+ 332:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 333:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 334:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief Creates an empty function call wrapper.
+ 335:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @post @c !(bool)*this
+ 336:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 337:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function(nullptr_t) noexcept
+  60              		.loc 3 337 7 is_stmt 1 view .LVU6
+  61              	.LBB87:
+  62              	.LBI85:
+ 240:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  63              		.loc 3 240 5 view .LVU7
+ 240:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+  64              		.loc 3 240 5 is_stmt 0 view .LVU8
+  65              	.LBE87:
+  66              	.LBE88:
+  67              		.loc 1 17 25 view .LVU9
+  68 0010 C163     		str	r1, [r0, #60]	@ float
+  69 0012 0164     		str	r1, [r0, #64]	@ float
+  70 0014 0749     		ldr	r1, .L2+4
+  71 0016 C264     		str	r2, [r0, #76]
+  72 0018 4164     		str	r1, [r0, #68]	@ float
+  73 001a 80F85020 		strb	r2, [r0, #80]
+  74              	.LBE82:
+   3:Arpeggiator.cpp ****     : rng_state_(0x12345678),
+  75              		.loc 1 3 1 view .LVU10
+  76 001e 10B5     		push	{r4, lr}
+  77              		.cfi_def_cfa_offset 8
+  78              		.cfi_offset 4, -8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 9
+
+
+  79              		.cfi_offset 14, -4
+  80              	.LBB89:
+  81              		.loc 1 17 25 view .LVU11
+  82 0020 4FF07E54 		mov	r4, #1065353216
+  83 0024 C0E90622 		strd	r2, r2, [r0, #24]
+  84 0028 8463     		str	r4, [r0, #56]	@ float
+  85 002a 8464     		str	r4, [r0, #72]	@ float
+  86              	.LBE89:
+  18:Arpeggiator.cpp **** {}
+  87              		.loc 1 18 2 view .LVU12
+  88 002c 10BD     		pop	{r4, pc}
+  89              	.L3:
+  90 002e 00BF     		.align	2
+  91              	.L2:
+  92 0030 78563412 		.word	305419896
+  93 0034 00803B47 		.word	1195081728
+  94              		.cfi_endproc
+  95              	.LFE4605:
+  97              		.global	_ZN11ArpeggiatorC1Ev
+  98              		.thumb_set _ZN11ArpeggiatorC1Ev,_ZN11ArpeggiatorC2Ev
+  99              		.section	.text._ZN11Arpeggiator8SetNotesEPii,"ax",%progbits
+ 100              		.align	1
+ 101              		.global	_ZN11Arpeggiator8SetNotesEPii
+ 102              		.syntax unified
+ 103              		.thumb
+ 104              		.thumb_func
+ 106              	_ZN11Arpeggiator8SetNotesEPii:
+ 107              	.LVL2:
+ 108              	.LFB4608:
+  19:Arpeggiator.cpp **** 
+  20:Arpeggiator.cpp **** void Arpeggiator::Init(float samplerate) {
+  21:Arpeggiator.cpp ****     sample_rate_ = samplerate;
+  22:Arpeggiator.cpp ****     metro_.Init(1.0f, samplerate);
+  23:Arpeggiator.cpp ****     next_trigger_time_ = 0.0f;
+  24:Arpeggiator.cpp ****     current_time_ = 0.0f;
+  25:Arpeggiator.cpp ****     UpdateInterval();
+  26:Arpeggiator.cpp **** }
+  27:Arpeggiator.cpp **** 
+  28:Arpeggiator.cpp **** void Arpeggiator::SetNotes(int* notes, int num_notes) {
+ 109              		.loc 1 28 55 is_stmt 1 view -0
+ 110              		.cfi_startproc
+ 111              		@ args = 0, pretend = 0, frame = 0
+ 112              		@ frame_needed = 0, uses_anonymous_args = 0
+ 113              		@ link register save eliminated.
+  29:Arpeggiator.cpp ****     notes_ = notes;
+ 114              		.loc 1 29 5 view .LVU14
+  30:Arpeggiator.cpp ****     num_notes_ = num_notes;
+ 115              		.loc 1 30 16 is_stmt 0 view .LVU15
+ 116 0000 C0E90512 		strd	r1, r2, [r0, #20]
+  31:Arpeggiator.cpp **** }
+ 117              		.loc 1 31 1 view .LVU16
+ 118 0004 7047     		bx	lr
+ 119              		.cfi_endproc
+ 120              	.LFE4608:
+ 122              		.section	.text._ZN11Arpeggiator8SetScaleEPfi,"ax",%progbits
+ 123              		.align	1
+ 124              		.global	_ZN11Arpeggiator8SetScaleEPfi
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 10
+
+
+ 125              		.syntax unified
+ 126              		.thumb
+ 127              		.thumb_func
+ 129              	_ZN11Arpeggiator8SetScaleEPfi:
+ 130              	.LVL3:
+ 131              	.LFB4609:
+  32:Arpeggiator.cpp **** 
+  33:Arpeggiator.cpp **** void Arpeggiator::SetScale(float* scale, int scale_size) {
+ 132              		.loc 1 33 58 is_stmt 1 view -0
+ 133              		.cfi_startproc
+ 134              		@ args = 0, pretend = 0, frame = 0
+ 135              		@ frame_needed = 0, uses_anonymous_args = 0
+ 136              		@ link register save eliminated.
+  34:Arpeggiator.cpp ****     scale_ = scale;
+ 137              		.loc 1 34 5 view .LVU18
+  35:Arpeggiator.cpp ****     scale_size_ = scale_size;
+ 138              		.loc 1 35 17 is_stmt 0 view .LVU19
+ 139 0000 C0E90712 		strd	r1, r2, [r0, #28]
+  36:Arpeggiator.cpp **** }
+ 140              		.loc 1 36 1 view .LVU20
+ 141 0004 7047     		bx	lr
+ 142              		.cfi_endproc
+ 143              	.LFE4609:
+ 145              		.section	.text._ZN11Arpeggiator24SetOctaveJumpProbabilityEf,"ax",%progbits
+ 146              		.align	1
+ 147              		.global	_ZN11Arpeggiator24SetOctaveJumpProbabilityEf
+ 148              		.syntax unified
+ 149              		.thumb
+ 150              		.thumb_func
+ 152              	_ZN11Arpeggiator24SetOctaveJumpProbabilityEf:
+ 153              	.LVL4:
+ 154              	.LFB4612:
+  37:Arpeggiator.cpp **** 
+  38:Arpeggiator.cpp **** void Arpeggiator::SetMainTempo(float tempo) {
+  39:Arpeggiator.cpp ****     if (tempo < 0.1f) tempo = 0.1f;
+  40:Arpeggiator.cpp ****     metro_.SetFreq(tempo);
+  41:Arpeggiator.cpp ****     UpdateInterval();
+  42:Arpeggiator.cpp **** }
+  43:Arpeggiator.cpp **** 
+  44:Arpeggiator.cpp **** void Arpeggiator::SetPolyrhythmRatio(float ratio) {
+  45:Arpeggiator.cpp ****     if (ratio <= 0.0f) ratio = 1.0f;
+  46:Arpeggiator.cpp ****     polyrhythm_ratio_ = ratio;
+  47:Arpeggiator.cpp ****     UpdateInterval();
+  48:Arpeggiator.cpp **** }
+  49:Arpeggiator.cpp **** 
+  50:Arpeggiator.cpp **** void Arpeggiator::SetOctaveJumpProbability(float probability) {
+ 155              		.loc 1 50 63 is_stmt 1 view -0
+ 156              		.cfi_startproc
+ 157              		@ args = 0, pretend = 0, frame = 0
+ 158              		@ frame_needed = 0, uses_anonymous_args = 0
+ 159              		@ link register save eliminated.
+  51:Arpeggiator.cpp ****     octave_jump_prob_ = probability;
+ 160              		.loc 1 51 5 view .LVU22
+ 161              		.loc 1 51 23 is_stmt 0 view .LVU23
+ 162 0000 80ED090A 		vstr.32	s0, [r0, #36]
+  52:Arpeggiator.cpp **** }
+ 163              		.loc 1 52 1 view .LVU24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 11
+
+
+ 164 0004 7047     		bx	lr
+ 165              		.cfi_endproc
+ 166              	.LFE4612:
+ 168              		.section	.text._ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE,"ax",%progbits
+ 169              		.align	1
+ 170              		.global	_ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE
+ 171              		.syntax unified
+ 172              		.thumb
+ 173              		.thumb_func
+ 175              	_ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE:
+ 176              	.LVL5:
+ 177              	.LFB4613:
+  53:Arpeggiator.cpp **** 
+  54:Arpeggiator.cpp **** void Arpeggiator::SetNoteTriggerCallback(std::function<void(int)> cb) {
+ 178              		.loc 1 54 71 is_stmt 1 view -0
+ 179              		.cfi_startproc
+ 180              		@ args = 0, pretend = 0, frame = 24
+ 181              		@ frame_needed = 0, uses_anonymous_args = 0
+  55:Arpeggiator.cpp ****     note_callback_ = cb;
+ 182              		.loc 1 55 5 view .LVU26
+  54:Arpeggiator.cpp ****     note_callback_ = cb;
+ 183              		.loc 1 54 71 is_stmt 0 view .LVU27
+ 184 0000 70B5     		push	{r4, r5, r6, lr}
+ 185              		.cfi_def_cfa_offset 16
+ 186              		.cfi_offset 4, -16
+ 187              		.cfi_offset 5, -12
+ 188              		.cfi_offset 6, -8
+ 189              		.cfi_offset 14, -4
+ 190              	.LBB114:
+ 191              	.LBB115:
+ 192              	.LBB116:
+ 193              	.LBB117:
+ 194              	.LBB118:
+ 195              	.LBB119:
+ 196              	.LBB120:
+ 197              	.LBB121:
+ 240:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 198              		.loc 3 240 42 view .LVU28
+ 199 0002 0023     		movs	r3, #0
+ 200              	.LBE121:
+ 201              	.LBE120:
+ 202              	.LBE119:
+ 203              	.LBE118:
+ 204              	.LBE117:
+ 205              	.LBE116:
+ 206              	.LBE115:
+ 207              	.LBE114:
+  54:Arpeggiator.cpp ****     note_callback_ = cb;
+ 208              		.loc 1 54 71 view .LVU29
+ 209 0004 86B0     		sub	sp, sp, #24
+ 210              		.cfi_def_cfa_offset 40
+  54:Arpeggiator.cpp ****     note_callback_ = cb;
+ 211              		.loc 1 54 71 view .LVU30
+ 212 0006 0446     		mov	r4, r0
+ 213              	.LVL6:
+ 214              	.LBB160:
+ 215              	.LBI114:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 12
+
+
+ 338:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       : _Function_base() { }
+ 339:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 340:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 341:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief %Function copy constructor.
+ 342:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @param __x A %function object with identical call signature.
+ 343:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @post @c bool(*this) == bool(__x)
+ 344:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 345:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  The newly-created %function contains a copy of the target of @a
+ 346:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  __x (if it has one).
+ 347:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 348:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function(const function& __x);
+ 349:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 350:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 351:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief %Function move constructor.
+ 352:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @param __x A %function object rvalue with identical call signature.
+ 353:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 354:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  The newly-created %function contains the target of @a __x
+ 355:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  (if it has one).
+ 356:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 357:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function(function&& __x) noexcept : _Function_base()
+ 358:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
+ 359:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	__x.swap(*this);
+ 360:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       }
+ 361:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 362:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 363:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief Builds a %function that targets a copy of the incoming
+ 364:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  function object.
+ 365:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @param __f A %function object that is callable with parameters of
+ 366:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  type @c T1, @c T2, ..., @c TN and returns a value convertible
+ 367:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  to @c Res.
+ 368:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 369:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  The newly-created %function object will target a copy of
+ 370:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @a __f. If @a __f is @c reference_wrapper<F>, then this function
+ 371:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  object will contain a reference to the function object @c
+ 372:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  __f.get(). If @a __f is a NULL function pointer or NULL
+ 373:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  pointer-to-member, the newly-created object will be empty.
+ 374:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 375:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  If @a __f is a non-NULL function pointer or an object of type @c
+ 376:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  reference_wrapper<F>, this function will not throw.
+ 377:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 378:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       template<typename _Functor,
+ 379:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	       typename = _Requires<__not_<is_same<_Functor, function>>, void>,
+ 380:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	       typename = _Requires<_Callable<_Functor>, void>>
+ 381:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	function(_Functor);
+ 382:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 383:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 384:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief %Function assignment operator.
+ 385:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @param __x A %function with identical call signature.
+ 386:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @post @c (bool)*this == (bool)x
+ 387:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @returns @c *this
+ 388:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 389:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  The target of @a __x is copied to @c *this. If @a __x has no
+ 390:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  target, then @c *this will be empty.
+ 391:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 392:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  If @a __x targets a function pointer or a reference to a function
+ 393:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  object, then this operation will not throw an %exception.
+ 394:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 13
+
+
+ 395:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function&
+ 396:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       operator=(const function& __x)
+ 216              		.loc 3 396 7 is_stmt 1 view .LVU31
+ 217              	.LBB158:
+ 218              	.LBB133:
+ 219              	.LBI116:
+ 397:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
+ 398:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	function(__x).swap(*this);
+ 399:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	return *this;
+ 400:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       }
+ 401:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 402:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 403:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief %Function move-assignment operator.
+ 404:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @param __x A %function rvalue with identical call signature.
+ 405:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @returns @c *this
+ 406:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 407:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  The target of @a __x is moved to @c *this. If @a __x has no
+ 408:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  target, then @c *this will be empty.
+ 409:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 410:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  If @a __x targets a function pointer or a reference to a function
+ 411:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  object, then this operation will not throw an %exception.
+ 412:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 413:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function&
+ 414:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       operator=(function&& __x) noexcept
+ 415:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
+ 416:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	function(std::move(__x)).swap(*this);
+ 417:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	return *this;
+ 418:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       }
+ 419:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 420:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 421:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief %Function assignment to zero.
+ 422:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @post @c !(bool)*this
+ 423:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @returns @c *this
+ 424:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 425:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  The target of @c *this is deallocated, leaving it empty.
+ 426:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 427:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function&
+ 428:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       operator=(nullptr_t) noexcept
+ 429:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
+ 430:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	if (_M_manager)
+ 431:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  {
+ 432:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    _M_manager(_M_functor, _M_functor, __destroy_functor);
+ 433:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    _M_manager = nullptr;
+ 434:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    _M_invoker = nullptr;
+ 435:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  }
+ 436:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	return *this;
+ 437:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       }
+ 438:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 439:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 440:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief %Function assignment to a new target.
+ 441:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @param __f A %function object that is callable with parameters of
+ 442:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  type @c T1, @c T2, ..., @c TN and returns a value convertible
+ 443:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  to @c Res.
+ 444:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @return @c *this
+ 445:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 446:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  This  %function object wrapper will target a copy of @a
+ 447:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  __f. If @a __f is @c reference_wrapper<F>, then this function
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 14
+
+
+ 448:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  object will contain a reference to the function object @c
+ 449:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  __f.get(). If @a __f is a NULL function pointer or NULL
+ 450:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  pointer-to-member, @c this object will be empty.
+ 451:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 452:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  If @a __f is a non-NULL function pointer or an object of type @c
+ 453:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  reference_wrapper<F>, this function will not throw.
+ 454:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 455:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       template<typename _Functor>
+ 456:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_Requires<_Callable<typename decay<_Functor>::type>, function&>
+ 457:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	operator=(_Functor&& __f)
+ 458:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{
+ 459:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  function(std::forward<_Functor>(__f)).swap(*this);
+ 460:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  return *this;
+ 461:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	}
+ 462:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 463:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /// @overload
+ 464:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       template<typename _Functor>
+ 465:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	function&
+ 466:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	operator=(reference_wrapper<_Functor> __f) noexcept
+ 467:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{
+ 468:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  function(__f).swap(*this);
+ 469:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  return *this;
+ 470:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	}
+ 471:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 472:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       // [3.7.2.2] function modifiers
+ 473:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 474:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 475:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief Swap the targets of two %function objects.
+ 476:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @param __x A %function with identical call signature.
+ 477:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 478:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  Swap the targets of @c this function object and @a __f. This
+ 479:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  function will not throw an %exception.
+ 480:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 481:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       void swap(function& __x) noexcept
+ 482:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
+ 483:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	std::swap(_M_functor, __x._M_functor);
+ 484:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	std::swap(_M_manager, __x._M_manager);
+ 485:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	std::swap(_M_invoker, __x._M_invoker);
+ 486:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       }
+ 487:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 488:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       // [3.7.2.3] function capacity
+ 489:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 490:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 491:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief Determine if the %function wrapper has a target.
+ 492:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 493:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @return @c true when this %function object contains a target,
+ 494:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  or @c false when it is empty.
+ 495:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 496:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  This function will not throw an %exception.
+ 497:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 498:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       explicit operator bool() const noexcept
+ 499:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       { return !_M_empty(); }
+ 500:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 501:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       // [3.7.2.4] function invocation
+ 502:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 503:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 504:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief Invokes the function targeted by @c *this.
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 15
+
+
+ 505:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @returns the result of the target.
+ 506:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @throws bad_function_call when @c !(bool)*this
+ 507:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 508:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  The function call operator invokes the target function object
+ 509:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  stored by @c this.
+ 510:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 511:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _Res operator()(_ArgTypes... __args) const;
+ 512:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 513:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #if __cpp_rtti
+ 514:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       // [3.7.2.5] function target access
+ 515:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 516:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief Determine the type of the target of this function object
+ 517:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  wrapper.
+ 518:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 519:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @returns the type identifier of the target function object, or
+ 520:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @c typeid(void) if @c !(bool)*this.
+ 521:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 522:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  This function will not throw an %exception.
+ 523:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 524:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       const type_info& target_type() const noexcept;
+ 525:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 526:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
+ 527:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief Access the stored target function object.
+ 528:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 529:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @return Returns a pointer to the stored target function object,
+ 530:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  if @c typeid(_Functor).equals(target_type()); otherwise, a NULL
+ 531:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  pointer.
+ 532:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 533:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        * This function does not throw exceptions.
+ 534:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
+ 535:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        * @{
+ 536:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
+ 537:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       template<typename _Functor>       _Functor* target() noexcept;
+ 538:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 539:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       template<typename _Functor> const _Functor* target() const noexcept;
+ 540:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /// @}
+ 541:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #endif
+ 542:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 543:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     private:
+ 544:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       using _Invoker_type = _Res (*)(const _Any_data&, _ArgTypes&&...);
+ 545:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _Invoker_type _M_invoker;
+ 546:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   };
+ 547:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 548:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #if __cpp_deduction_guides >= 201606
+ 549:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename>
+ 550:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     struct __function_guide_helper
+ 551:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     { };
+ 552:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 553:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename _Tp, bool _Nx, typename... _Args>
+ 554:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     struct __function_guide_helper<
+ 555:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _Res (_Tp::*) (_Args...) noexcept(_Nx)
+ 556:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     >
+ 557:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     { using type = _Res(_Args...); };
+ 558:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 559:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename _Tp, bool _Nx, typename... _Args>
+ 560:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     struct __function_guide_helper<
+ 561:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _Res (_Tp::*) (_Args...) & noexcept(_Nx)
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 16
+
+
+ 562:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     >
+ 563:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     { using type = _Res(_Args...); };
+ 564:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 565:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename _Tp, bool _Nx, typename... _Args>
+ 566:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     struct __function_guide_helper<
+ 567:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _Res (_Tp::*) (_Args...) const noexcept(_Nx)
+ 568:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     >
+ 569:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     { using type = _Res(_Args...); };
+ 570:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 571:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename _Tp, bool _Nx, typename... _Args>
+ 572:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     struct __function_guide_helper<
+ 573:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _Res (_Tp::*) (_Args...) const & noexcept(_Nx)
+ 574:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     >
+ 575:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     { using type = _Res(_Args...); };
+ 576:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 577:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename... _ArgTypes>
+ 578:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     function(_Res(*)(_ArgTypes...)) -> function<_Res(_ArgTypes...)>;
+ 579:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 580:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Functor, typename _Signature = typename
+ 581:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	   __function_guide_helper<decltype(&_Functor::operator())>::type>
+ 582:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     function(_Functor) -> function<_Signature>;
+ 583:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** #endif
+ 584:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 585:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   // Out-of-line member definitions.
+ 586:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename... _ArgTypes>
+ 587:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     function<_Res(_ArgTypes...)>::
+ 220              		.loc 3 587 5 view .LVU32
+ 221              	.LBB131:
+ 222              	.LBB129:
+ 223              	.LBB124:
+ 224              	.LBI119:
+ 240:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 225              		.loc 3 240 5 view .LVU33
+ 226              	.LBE124:
+ 227              	.LBE129:
+ 228              	.LBE131:
+ 229              	.LBE133:
+ 230              	.LBE158:
+ 231              	.LBE160:
+  54:Arpeggiator.cpp ****     note_callback_ = cb;
+ 232              		.loc 1 54 71 is_stmt 0 view .LVU34
+ 233 0008 0E46     		mov	r6, r1
+ 234              	.LBB161:
+ 235              	.LBB159:
+ 236              	.LBB134:
+ 237              	.LBB132:
+ 238              	.LBB130:
+ 239              	.LBB125:
+ 240              	.LBB123:
+ 241              	.LBB122:
+ 240:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 242              		.loc 3 240 42 view .LVU35
+ 243 000a 0493     		str	r3, [sp, #16]
+ 244              	.LVL7:
+ 240:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 245              		.loc 3 240 42 view .LVU36
+ 246              	.LBE122:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 17
+
+
+ 247              	.LBE123:
+ 248              	.LBE125:
+ 249              	.LBB126:
+ 250              	.LBI126:
+ 498:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       { return !_M_empty(); }
+ 251              		.loc 3 498 16 is_stmt 1 view .LVU37
+ 252              	.LBB127:
+ 253              	.LBI127:
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 254              		.loc 3 248 10 view .LVU38
+ 255              	.LBB128:
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 256              		.loc 3 248 29 view .LVU39
+ 257 000c 02AD     		add	r5, sp, #8
+ 258              	.LVL8:
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 259              		.loc 3 248 37 is_stmt 0 view .LVU40
+ 260 000e 8B68     		ldr	r3, [r1, #8]
+ 261              	.LVL9:
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 262              		.loc 3 248 37 view .LVU41
+ 263              	.LBE128:
+ 264              	.LBE127:
+ 265              	.LBE126:
+ 588:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     function(const function& __x)
+ 589:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     : _Function_base()
+ 590:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     {
+ 591:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       if (static_cast<bool>(__x))
+ 266              		.loc 3 591 7 view .LVU42
+ 267 0010 33B1     		cbz	r3, .L8
+ 592:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	{
+ 593:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  __x._M_manager(_M_functor, __x._M_functor, __clone_functor);
+ 268              		.loc 3 593 8 view .LVU43
+ 269 0012 0222     		movs	r2, #2
+ 270 0014 2846     		mov	r0, r5
+ 271              	.LVL10:
+ 272              		.loc 3 593 8 view .LVU44
+ 273 0016 9847     		blx	r3
+ 274              	.LVL11:
+ 594:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  _M_invoker = __x._M_invoker;
+ 275              		.loc 3 594 15 view .LVU45
+ 276 0018 F368     		ldr	r3, [r6, #12]
+ 277 001a 0593     		str	r3, [sp, #20]
+ 595:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  _M_manager = __x._M_manager;
+ 278              		.loc 3 595 15 view .LVU46
+ 279 001c B368     		ldr	r3, [r6, #8]
+ 280 001e 0493     		str	r3, [sp, #16]
+ 281              	.L8:
+ 282              	.LVL12:
+ 283              		.loc 3 595 15 view .LVU47
+ 284              	.LBE130:
+ 285              	.LBE132:
+ 286              	.LBE134:
+ 287              	.LBB135:
+ 288              	.LBI135:
+ 481:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
+ 289              		.loc 3 481 12 is_stmt 1 view .LVU48
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 18
+
+
+ 290              	.LBB136:
+ 291              	.LBI136:
+ 292              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h"
+   1:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // Move, forward and identity for C++11 + swap -*- C++ -*-
+   2:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+   3:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // Copyright (C) 2007-2020 Free Software Foundation, Inc.
+   4:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** //
+   5:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // This file is part of the GNU ISO C++ Library.  This library is free
+   6:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // software; you can redistribute it and/or modify it under the
+   7:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // terms of the GNU General Public License as published by the
+   8:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // Free Software Foundation; either version 3, or (at your option)
+   9:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // any later version.
+  10:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  11:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // This library is distributed in the hope that it will be useful,
+  12:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
+  13:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  14:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // GNU General Public License for more details.
+  15:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  16:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // Under Section 7 of GPL version 3, you are granted additional
+  17:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // permissions described in the GCC Runtime Library Exception, version
+  18:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // 3.1, as published by the Free Software Foundation.
+  19:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  20:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // You should have received a copy of the GNU General Public License and
+  21:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // a copy of the GCC Runtime Library Exception along with this program;
+  22:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+  23:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** // <http://www.gnu.org/licenses/>.
+  24:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  25:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** /** @file bits/move.h
+  26:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****  *  This is an internal header file, included by other library headers.
+  27:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****  *  Do not attempt to use it directly. @headername{utility}
+  28:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****  */
+  29:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  30:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #ifndef _MOVE_H
+  31:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #define _MOVE_H 1
+  32:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  33:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #include <bits/c++config.h>
+  34:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #if __cplusplus < 201103L
+  35:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** # include <bits/concept_check.h>
+  36:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #endif
+  37:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  38:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** namespace std _GLIBCXX_VISIBILITY(default)
+  39:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** {
+  40:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
+  41:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  42:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   // Used, in C++03 mode too, by allocators, etc.
+  43:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
+  44:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @brief Same as C++11 std::addressof
+  45:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @ingroup utilities
+  46:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    */
+  47:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   template<typename _Tp>
+  48:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     inline _GLIBCXX_CONSTEXPR _Tp*
+  49:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     __addressof(_Tp& __r) _GLIBCXX_NOEXCEPT
+  50:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     { return __builtin_addressof(__r); }
+  51:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  52:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #if __cplusplus >= 201103L
+  53:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  54:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** _GLIBCXX_END_NAMESPACE_VERSION
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 19
+
+
+  55:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** } // namespace
+  56:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  57:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #include <type_traits> // Brings in std::declval too.
+  58:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  59:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** namespace std _GLIBCXX_VISIBILITY(default)
+  60:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** {
+  61:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
+  62:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  63:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
+  64:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @addtogroup utilities
+  65:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @{
+  66:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    */
+  67:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  68:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
+  69:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @brief  Forward an lvalue.
+  70:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @return The parameter cast to the specified type.
+  71:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *
+  72:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  This function is used to implement "perfect forwarding".
+  73:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    */
+  74:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   template<typename _Tp>
+  75:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     constexpr _Tp&&
+  76:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     forward(typename std::remove_reference<_Tp>::type& __t) noexcept
+  77:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     { return static_cast<_Tp&&>(__t); }
+  78:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  79:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
+  80:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @brief  Forward an rvalue.
+  81:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @return The parameter cast to the specified type.
+  82:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *
+  83:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  This function is used to implement "perfect forwarding".
+  84:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    */
+  85:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   template<typename _Tp>
+  86:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     constexpr _Tp&&
+  87:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     forward(typename std::remove_reference<_Tp>::type&& __t) noexcept
+  88:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     {
+  89:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       static_assert(!std::is_lvalue_reference<_Tp>::value, "template argument"
+  90:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 		    " substituting _Tp is an lvalue reference type");
+  91:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       return static_cast<_Tp&&>(__t);
+  92:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     }
+  93:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+  94:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
+  95:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @brief  Convert a value to an rvalue.
+  96:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @param  __t  A thing of arbitrary type.
+  97:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @return The parameter cast to an rvalue-reference to allow moving it.
+  98:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   */
+  99:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   template<typename _Tp>
+ 100:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     constexpr typename std::remove_reference<_Tp>::type&&
+ 101:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     move(_Tp&& __t) noexcept
+ 102:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     { return static_cast<typename std::remove_reference<_Tp>::type&&>(__t); }
+ 103:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 104:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 105:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   template<typename _Tp>
+ 106:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     struct __move_if_noexcept_cond
+ 107:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     : public __and_<__not_<is_nothrow_move_constructible<_Tp>>,
+ 108:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****                     is_copy_constructible<_Tp>>::type { };
+ 109:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 110:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
+ 111:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @brief  Conditionally convert a value to an rvalue.
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 20
+
+
+ 112:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @param  __x  A thing of arbitrary type.
+ 113:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @return The parameter, possibly cast to an rvalue-reference.
+ 114:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *
+ 115:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  Same as std::move unless the type's move constructor could throw and the
+ 116:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  type is copyable, in which case an lvalue-reference is returned instead.
+ 117:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    */
+ 118:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   template<typename _Tp>
+ 119:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     constexpr typename
+ 120:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     conditional<__move_if_noexcept_cond<_Tp>::value, const _Tp&, _Tp&&>::type
+ 121:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     move_if_noexcept(_Tp& __x) noexcept
+ 122:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     { return std::move(__x); }
+ 123:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 124:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   // declval, from type_traits.
+ 125:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 126:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #if __cplusplus > 201402L
+ 127:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   // _GLIBCXX_RESOLVE_LIB_DEFECTS
+ 128:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   // 2296. std::addressof should be constexpr
+ 129:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** # define __cpp_lib_addressof_constexpr 201603
+ 130:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #endif
+ 131:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
+ 132:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @brief Returns the actual address of the object or function
+ 133:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *         referenced by r, even in the presence of an overloaded
+ 134:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *         operator&.
+ 135:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @param  __r  Reference to an object or function.
+ 136:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @return   The actual address.
+ 137:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   */
+ 138:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   template<typename _Tp>
+ 139:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     inline _GLIBCXX17_CONSTEXPR _Tp*
+ 140:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     addressof(_Tp& __r) noexcept
+ 141:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     { return std::__addressof(__r); }
+ 142:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 143:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   // _GLIBCXX_RESOLVE_LIB_DEFECTS
+ 144:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   // 2598. addressof works on temporaries
+ 145:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   template<typename _Tp>
+ 146:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     const _Tp* addressof(const _Tp&&) = delete;
+ 147:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 148:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   // C++11 version of std::exchange for internal use.
+ 149:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   template <typename _Tp, typename _Up = _Tp>
+ 150:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     _GLIBCXX20_CONSTEXPR
+ 151:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     inline _Tp
+ 152:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     __exchange(_Tp& __obj, _Up&& __new_val)
+ 153:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     {
+ 154:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       _Tp __old_val = std::move(__obj);
+ 155:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __obj = std::forward<_Up>(__new_val);
+ 156:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       return __old_val;
+ 157:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     }
+ 158:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 159:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /// @} group utilities
+ 160:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 161:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #define _GLIBCXX_MOVE(__val) std::move(__val)
+ 162:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #define _GLIBCXX_FORWARD(_Tp, __val) std::forward<_Tp>(__val)
+ 163:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #else
+ 164:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #define _GLIBCXX_MOVE(__val) (__val)
+ 165:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #define _GLIBCXX_FORWARD(_Tp, __val) (__val)
+ 166:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #endif
+ 167:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 168:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 21
+
+
+ 169:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @addtogroup utilities
+ 170:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @{
+ 171:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    */
+ 172:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
+ 173:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
+ 174:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @brief Swaps two values.
+ 175:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @param  __a  A thing of arbitrary type.
+ 176:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @param  __b  Another thing of arbitrary type.
+ 177:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @return   Nothing.
+ 178:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   */
+ 179:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   template<typename _Tp>
+ 180:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     _GLIBCXX20_CONSTEXPR
+ 181:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     inline
+ 182:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #if __cplusplus >= 201103L
+ 183:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     typename enable_if<__and_<__not_<__is_tuple_like<_Tp>>,
+ 184:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 			      is_move_constructible<_Tp>,
+ 185:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 			      is_move_assignable<_Tp>>::value>::type
+ 186:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #else
+ 187:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     void
+ 188:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #endif
+ 189:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     swap(_Tp& __a, _Tp& __b)
+ 293              		.loc 4 189 5 view .LVU49
+ 294              	.LBB137:
+ 190:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     _GLIBCXX_NOEXCEPT_IF(__and_<is_nothrow_move_constructible<_Tp>,
+ 191:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 				is_nothrow_move_assignable<_Tp>>::value)
+ 192:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     {
+ 193:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #if __cplusplus < 201103L
+ 194:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       // concept requirements
+ 195:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __glibcxx_function_requires(_SGIAssignableConcept<_Tp>)
+ 196:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #endif
+ 197:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       _Tp __tmp = _GLIBCXX_MOVE(__a);
+ 295              		.loc 4 197 11 is_stmt 0 view .LVU50
+ 296 0020 6A46     		mov	r2, sp
+ 198:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __a = _GLIBCXX_MOVE(__b);
+ 297              		.loc 4 198 7 view .LVU51
+ 298 0022 04F12803 		add	r3, r4, #40
+ 197:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __a = _GLIBCXX_MOVE(__b);
+ 299              		.loc 4 197 11 view .LVU52
+ 300 0026 95E80300 		ldm	r5, {r0, r1}
+ 301 002a 82E80300 		stm	r2, {r0, r1}
+ 302              		.loc 4 198 7 view .LVU53
+ 303 002e 93E80300 		ldm	r3, {r0, r1}
+ 304 0032 85E80300 		stm	r5, {r0, r1}
+ 199:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __b = _GLIBCXX_MOVE(__tmp);
+ 305              		.loc 4 199 7 view .LVU54
+ 306 0036 92E80300 		ldm	r2, {r0, r1}
+ 307              	.LBE137:
+ 308              	.LBE136:
+ 309              	.LBB139:
+ 310              	.LBB140:
+ 197:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __a = _GLIBCXX_MOVE(__b);
+ 311              		.loc 4 197 11 view .LVU55
+ 312 003a 049A     		ldr	r2, [sp, #16]
+ 313              	.LBE140:
+ 314              	.LBE139:
+ 315              	.LBB144:
+ 316              	.LBB138:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 22
+
+
+ 317              		.loc 4 199 7 view .LVU56
+ 318 003c 83E80300 		stm	r3, {r0, r1}
+ 319              	.LVL13:
+ 320              		.loc 4 199 7 view .LVU57
+ 321              	.LBE138:
+ 322              	.LBE144:
+ 323              	.LBB145:
+ 324              	.LBI139:
+ 189:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     _GLIBCXX_NOEXCEPT_IF(__and_<is_nothrow_move_constructible<_Tp>,
+ 325              		.loc 4 189 5 is_stmt 1 view .LVU58
+ 326              	.LBB141:
+ 198:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __b = _GLIBCXX_MOVE(__tmp);
+ 327              		.loc 4 198 11 is_stmt 0 view .LVU59
+ 328 0040 236B     		ldr	r3, [r4, #48]
+ 329              	.LBE141:
+ 330              	.LBE145:
+ 331              	.LBB146:
+ 332              	.LBB147:
+ 333 0042 616B     		ldr	r1, [r4, #52]
+ 334              	.LBE147:
+ 335              	.LBE146:
+ 336              	.LBB150:
+ 337              	.LBB142:
+ 338              		.loc 4 199 11 view .LVU60
+ 339 0044 2263     		str	r2, [r4, #48]
+ 340              	.LBE142:
+ 341              	.LBE150:
+ 342              	.LBB151:
+ 343              	.LBB148:
+ 197:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __a = _GLIBCXX_MOVE(__b);
+ 344              		.loc 4 197 11 view .LVU61
+ 345 0046 059A     		ldr	r2, [sp, #20]
+ 346              	.LVL14:
+ 197:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __a = _GLIBCXX_MOVE(__b);
+ 347              		.loc 4 197 11 view .LVU62
+ 348              	.LBE148:
+ 349              	.LBE151:
+ 350              	.LBB152:
+ 351              	.LBB143:
+ 198:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __b = _GLIBCXX_MOVE(__tmp);
+ 352              		.loc 4 198 11 view .LVU63
+ 353 0048 0493     		str	r3, [sp, #16]
+ 354              	.LVL15:
+ 198:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __b = _GLIBCXX_MOVE(__tmp);
+ 355              		.loc 4 198 11 view .LVU64
+ 356              	.LBE143:
+ 357              	.LBE152:
+ 358              	.LBB153:
+ 359              	.LBI146:
+ 189:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****     _GLIBCXX_NOEXCEPT_IF(__and_<is_nothrow_move_constructible<_Tp>,
+ 360              		.loc 4 189 5 is_stmt 1 view .LVU65
+ 361              	.LBB149:
+ 198:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****       __b = _GLIBCXX_MOVE(__tmp);
+ 362              		.loc 4 198 11 is_stmt 0 view .LVU66
+ 363 004a 0591     		str	r1, [sp, #20]
+ 364              		.loc 4 199 11 view .LVU67
+ 365 004c 6263     		str	r2, [r4, #52]
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 23
+
+
+ 366              	.LVL16:
+ 367              		.loc 4 199 11 view .LVU68
+ 368              	.LBE149:
+ 369              	.LBE153:
+ 370              	.LBE135:
+ 371              	.LBB154:
+ 372              	.LBI154:
+ 303:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     : public _Maybe_unary_or_binary_function<_Res, _ArgTypes...>,
+ 373              		.loc 3 303 11 is_stmt 1 view .LVU69
+ 374              	.LBB155:
+ 375              	.LBB156:
+ 376              	.LBI156:
+ 242:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     {
+ 377              		.loc 3 242 5 view .LVU70
+ 378              	.LBB157:
+ 244:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_manager(_M_functor, _M_functor, __destroy_functor);
+ 379              		.loc 3 244 7 view .LVU71
+ 380 004e 1BB1     		cbz	r3, .L7
+ 245:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     }
+ 381              		.loc 3 245 2 view .LVU72
+ 245:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     }
+ 382              		.loc 3 245 12 is_stmt 0 view .LVU73
+ 383 0050 0322     		movs	r2, #3
+ 384 0052 2946     		mov	r1, r5
+ 385 0054 2846     		mov	r0, r5
+ 386 0056 9847     		blx	r3
+ 387              	.LVL17:
+ 388              	.L7:
+ 245:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     }
+ 389              		.loc 3 245 12 view .LVU74
+ 390              	.LBE157:
+ 391              	.LBE156:
+ 392              	.LBE155:
+ 393              	.LBE154:
+ 394              	.LBE159:
+ 395              	.LBE161:
+  56:Arpeggiator.cpp **** }
+ 396              		.loc 1 56 1 view .LVU75
+ 397 0058 06B0     		add	sp, sp, #24
+ 398              		.cfi_def_cfa_offset 16
+ 399              		@ sp needed
+ 400 005a 70BD     		pop	{r4, r5, r6, pc}
+ 401              		.loc 1 56 1 view .LVU76
+ 402              		.cfi_endproc
+ 403              	.LFE4613:
+ 405              		.section	.text._ZN11Arpeggiator12SetDirectionENS_9DirectionE,"ax",%progbits
+ 406              		.align	1
+ 407              		.global	_ZN11Arpeggiator12SetDirectionENS_9DirectionE
+ 408              		.syntax unified
+ 409              		.thumb
+ 410              		.thumb_func
+ 412              	_ZN11Arpeggiator12SetDirectionENS_9DirectionE:
+ 413              	.LVL18:
+ 414              	.LFB4614:
+  57:Arpeggiator.cpp **** 
+  58:Arpeggiator.cpp **** void Arpeggiator::SetDirection(Direction dir) {
+ 415              		.loc 1 58 47 is_stmt 1 view -0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 24
+
+
+ 416              		.cfi_startproc
+ 417              		@ args = 0, pretend = 0, frame = 0
+ 418              		@ frame_needed = 0, uses_anonymous_args = 0
+ 419              		@ link register save eliminated.
+  59:Arpeggiator.cpp ****     direction_ = dir;
+ 420              		.loc 1 59 5 view .LVU78
+ 421              		.loc 1 59 16 is_stmt 0 view .LVU79
+ 422 0000 80F85010 		strb	r1, [r0, #80]
+  60:Arpeggiator.cpp **** }
+ 423              		.loc 1 60 1 view .LVU80
+ 424 0004 7047     		bx	lr
+ 425              		.cfi_endproc
+ 426              	.LFE4614:
+ 428              		.section	.text._ZNK11Arpeggiator8IsActiveEv,"ax",%progbits
+ 429              		.align	1
+ 430              		.global	_ZNK11Arpeggiator8IsActiveEv
+ 431              		.syntax unified
+ 432              		.thumb
+ 433              		.thumb_func
+ 435              	_ZNK11Arpeggiator8IsActiveEv:
+ 436              	.LVL19:
+ 437              	.LFB4615:
+  61:Arpeggiator.cpp **** 
+  62:Arpeggiator.cpp **** bool Arpeggiator::IsActive() const {
+ 438              		.loc 1 62 36 is_stmt 1 view -0
+ 439              		.cfi_startproc
+ 440              		@ args = 0, pretend = 0, frame = 0
+ 441              		@ frame_needed = 0, uses_anonymous_args = 0
+ 442              		@ link register save eliminated.
+  63:Arpeggiator.cpp ****     return num_notes_ >= 1;
+ 443              		.loc 1 63 5 view .LVU82
+ 444              		.loc 1 63 26 is_stmt 0 view .LVU83
+ 445 0000 8069     		ldr	r0, [r0, #24]
+ 446              	.LVL20:
+  64:Arpeggiator.cpp **** }
+ 447              		.loc 1 64 1 view .LVU84
+ 448 0002 0028     		cmp	r0, #0
+ 449 0004 D4BF     		ite	le
+ 450 0006 0020     		movle	r0, #0
+ 451 0008 0120     		movgt	r0, #1
+ 452 000a 7047     		bx	lr
+ 453              		.cfi_endproc
+ 454              	.LFE4615:
+ 456              		.section	.text._ZN11Arpeggiator12GetMetroRateEv,"ax",%progbits
+ 457              		.align	1
+ 458              		.global	_ZN11Arpeggiator12GetMetroRateEv
+ 459              		.syntax unified
+ 460              		.thumb
+ 461              		.thumb_func
+ 463              	_ZN11Arpeggiator12GetMetroRateEv:
+ 464              	.LVL21:
+ 465              	.LFB4616:
+  65:Arpeggiator.cpp **** 
+  66:Arpeggiator.cpp **** float Arpeggiator::GetMetroRate() {
+ 466              		.loc 1 66 35 is_stmt 1 view -0
+ 467              		.cfi_startproc
+ 468              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 25
+
+
+ 469              		@ frame_needed = 0, uses_anonymous_args = 0
+ 470              		@ link register save eliminated.
+  67:Arpeggiator.cpp ****     return metro_.GetFreq();
+ 471              		.loc 1 67 5 view .LVU86
+ 472              	.LBB162:
+ 473              	.LBI162:
+  23:lib/DaisySP/Source/Utility/metro.h ****     ~Metro() {}
+  24:lib/DaisySP/Source/Utility/metro.h ****     /** Initializes Metro module.
+  25:lib/DaisySP/Source/Utility/metro.h ****         Arguments:
+  26:lib/DaisySP/Source/Utility/metro.h ****         - freq: frequency at which new clock signals will be generated
+  27:lib/DaisySP/Source/Utility/metro.h ****             Input Range: 
+  28:lib/DaisySP/Source/Utility/metro.h ****         - sample_rate: sample rate of audio engine
+  29:lib/DaisySP/Source/Utility/metro.h ****             Input range: 
+  30:lib/DaisySP/Source/Utility/metro.h ****     */
+  31:lib/DaisySP/Source/Utility/metro.h ****     void Init(float freq, float sample_rate);
+  32:lib/DaisySP/Source/Utility/metro.h **** 
+  33:lib/DaisySP/Source/Utility/metro.h ****     /** checks current state of Metro object and updates state if necesary.
+  34:lib/DaisySP/Source/Utility/metro.h ****     */
+  35:lib/DaisySP/Source/Utility/metro.h ****     uint8_t Process();
+  36:lib/DaisySP/Source/Utility/metro.h **** 
+  37:lib/DaisySP/Source/Utility/metro.h ****     /** resets phase to 0
+  38:lib/DaisySP/Source/Utility/metro.h ****     */
+  39:lib/DaisySP/Source/Utility/metro.h ****     inline void Reset() { phs_ = 0.0f; }
+  40:lib/DaisySP/Source/Utility/metro.h ****     /** Sets frequency at which Metro module will run at.
+  41:lib/DaisySP/Source/Utility/metro.h ****     */
+  42:lib/DaisySP/Source/Utility/metro.h ****     void SetFreq(float freq);
+  43:lib/DaisySP/Source/Utility/metro.h **** 
+  44:lib/DaisySP/Source/Utility/metro.h ****     /** Returns current value for frequency.
+  45:lib/DaisySP/Source/Utility/metro.h ****     */
+  46:lib/DaisySP/Source/Utility/metro.h ****     inline float GetFreq() { return freq_; }
+ 474              		.loc 2 46 18 view .LVU87
+ 475              	.LBB163:
+ 476              		.loc 2 46 30 view .LVU88
+ 477              		.loc 2 46 30 is_stmt 0 view .LVU89
+ 478              	.LBE163:
+ 479              	.LBE162:
+  68:Arpeggiator.cpp **** }
+ 480              		.loc 1 68 1 view .LVU90
+ 481 0000 90ED000A 		vldr.32	s0, [r0]
+ 482 0004 7047     		bx	lr
+ 483              		.cfi_endproc
+ 484              	.LFE4616:
+ 486              		.section	.text._ZNK11Arpeggiator18GetCurrentIntervalEv,"ax",%progbits
+ 487              		.align	1
+ 488              		.global	_ZNK11Arpeggiator18GetCurrentIntervalEv
+ 489              		.syntax unified
+ 490              		.thumb
+ 491              		.thumb_func
+ 493              	_ZNK11Arpeggiator18GetCurrentIntervalEv:
+ 494              	.LVL22:
+ 495              	.LFB4617:
+  69:Arpeggiator.cpp **** 
+  70:Arpeggiator.cpp **** float Arpeggiator::GetCurrentInterval() const {
+ 496              		.loc 1 70 47 is_stmt 1 view -0
+ 497              		.cfi_startproc
+ 498              		@ args = 0, pretend = 0, frame = 0
+ 499              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 26
+
+
+ 500              		@ link register save eliminated.
+  71:Arpeggiator.cpp ****     return current_interval_;
+ 501              		.loc 1 71 5 view .LVU92
+  72:Arpeggiator.cpp **** }
+ 502              		.loc 1 72 1 is_stmt 0 view .LVU93
+ 503 0000 90ED120A 		vldr.32	s0, [r0, #72]
+ 504 0004 7047     		bx	lr
+ 505              		.cfi_endproc
+ 506              	.LFE4617:
+ 508              		.section	.text._ZN11Arpeggiator14UpdateIntervalEv,"ax",%progbits
+ 509              		.align	1
+ 510              		.global	_ZN11Arpeggiator14UpdateIntervalEv
+ 511              		.syntax unified
+ 512              		.thumb
+ 513              		.thumb_func
+ 515              	_ZN11Arpeggiator14UpdateIntervalEv:
+ 516              	.LVL23:
+ 517              	.LFB4620:
+  73:Arpeggiator.cpp **** 
+  74:Arpeggiator.cpp **** void Arpeggiator::Process(size_t frames) {
+  75:Arpeggiator.cpp ****     if (num_notes_ < 1 || !note_callback_) return;
+  76:Arpeggiator.cpp ****     for (size_t i = 0; i < frames; ++i) {
+  77:Arpeggiator.cpp ****         current_time_ += 1.0f / sample_rate_;
+  78:Arpeggiator.cpp ****         if (current_time_ >= next_trigger_time_) {
+  79:Arpeggiator.cpp ****             TriggerNote();
+  80:Arpeggiator.cpp ****             next_trigger_time_ += current_interval_;
+  81:Arpeggiator.cpp ****         }
+  82:Arpeggiator.cpp ****     }
+  83:Arpeggiator.cpp **** }
+  84:Arpeggiator.cpp **** 
+  85:Arpeggiator.cpp **** void Arpeggiator::TriggerNote() {
+  86:Arpeggiator.cpp ****     if (num_notes_ == 0) return;
+  87:Arpeggiator.cpp ****     // Debug: confirm ARP TriggerNote call
+  88:Arpeggiator.cpp ****     {
+  89:Arpeggiator.cpp ****         extern DaisySeed hw; // global hardware
+  90:Arpeggiator.cpp ****         char buf[32];
+  91:Arpeggiator.cpp ****         sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
+  92:Arpeggiator.cpp ****         hw.PrintLine(buf);
+  93:Arpeggiator.cpp ****     }
+  94:Arpeggiator.cpp ****     int idx;
+  95:Arpeggiator.cpp ****     if (direction_ == Random) {
+  96:Arpeggiator.cpp ****         uint32_t rnd = Xorshift32();
+  97:Arpeggiator.cpp ****         idx = rnd % num_notes_;
+  98:Arpeggiator.cpp ****     } else { // Forward sequential
+  99:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
+ 100:Arpeggiator.cpp ****         ++step_index_;
+ 101:Arpeggiator.cpp ****     }
+ 102:Arpeggiator.cpp ****     if (note_callback_) {
+ 103:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
+ 104:Arpeggiator.cpp ****     }
+ 105:Arpeggiator.cpp **** }
+ 106:Arpeggiator.cpp **** 
+ 107:Arpeggiator.cpp **** void Arpeggiator::UpdateInterval() {
+ 518              		.loc 1 107 36 is_stmt 1 view -0
+ 519              		.cfi_startproc
+ 520              		@ args = 0, pretend = 0, frame = 0
+ 521              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 27
+
+
+ 522              		@ link register save eliminated.
+ 108:Arpeggiator.cpp ****     float main_interval = 1.0f / metro_.GetFreq();
+ 523              		.loc 1 108 5 view .LVU95
+ 524              	.LBB164:
+ 525              	.LBI164:
+ 526              		.loc 2 46 18 view .LVU96
+ 527              	.LBB165:
+ 528              		.loc 2 46 30 view .LVU97
+ 529              		.loc 2 46 30 is_stmt 0 view .LVU98
+ 530              	.LBE165:
+ 531              	.LBE164:
+ 109:Arpeggiator.cpp ****     current_interval_ = main_interval / polyrhythm_ratio_;
+ 532              		.loc 1 109 5 is_stmt 1 view .LVU99
+ 108:Arpeggiator.cpp ****     float main_interval = 1.0f / metro_.GetFreq();
+ 533              		.loc 1 108 49 is_stmt 0 view .LVU100
+ 534 0000 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 535 0004 D0ED007A 		vldr.32	s15, [r0]
+ 536 0008 C7EE276A 		vdiv.f32	s13, s14, s15
+ 537              	.LVL24:
+ 538              		.loc 1 109 39 view .LVU101
+ 539 000c 90ED0E7A 		vldr.32	s14, [r0, #56]
+ 540 0010 C6EE877A 		vdiv.f32	s15, s13, s14
+ 541              		.loc 1 109 23 view .LVU102
+ 542 0014 C0ED127A 		vstr.32	s15, [r0, #72]
+ 110:Arpeggiator.cpp **** }
+ 543              		.loc 1 110 1 view .LVU103
+ 544 0018 7047     		bx	lr
+ 545              		.cfi_endproc
+ 546              	.LFE4620:
+ 548              		.section	.text._ZN11Arpeggiator4InitEf,"ax",%progbits
+ 549              		.align	1
+ 550              		.global	_ZN11Arpeggiator4InitEf
+ 551              		.syntax unified
+ 552              		.thumb
+ 553              		.thumb_func
+ 555              	_ZN11Arpeggiator4InitEf:
+ 556              	.LVL25:
+ 557              	.LFB4607:
+  20:Arpeggiator.cpp ****     sample_rate_ = samplerate;
+ 558              		.loc 1 20 42 is_stmt 1 view -0
+ 559              		.cfi_startproc
+ 560              		@ args = 0, pretend = 0, frame = 0
+ 561              		@ frame_needed = 0, uses_anonymous_args = 0
+  21:Arpeggiator.cpp ****     metro_.Init(1.0f, samplerate);
+ 562              		.loc 1 21 5 view .LVU105
+  20:Arpeggiator.cpp ****     sample_rate_ = samplerate;
+ 563              		.loc 1 20 42 is_stmt 0 view .LVU106
+ 564 0000 10B5     		push	{r4, lr}
+ 565              		.cfi_def_cfa_offset 8
+ 566              		.cfi_offset 4, -8
+ 567              		.cfi_offset 14, -4
+  20:Arpeggiator.cpp ****     sample_rate_ = samplerate;
+ 568              		.loc 1 20 42 view .LVU107
+ 569 0002 F0EE400A 		vmov.f32	s1, s0
+  21:Arpeggiator.cpp ****     metro_.Init(1.0f, samplerate);
+ 570              		.loc 1 21 18 view .LVU108
+ 571 0006 80ED110A 		vstr.32	s0, [r0, #68]
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 28
+
+
+  22:Arpeggiator.cpp ****     next_trigger_time_ = 0.0f;
+ 572              		.loc 1 22 5 is_stmt 1 view .LVU109
+  22:Arpeggiator.cpp ****     next_trigger_time_ = 0.0f;
+ 573              		.loc 1 22 16 is_stmt 0 view .LVU110
+ 574 000a B7EE000A 		vmov.f32	s0, #1.0e+0
+ 575              	.LVL26:
+  20:Arpeggiator.cpp ****     sample_rate_ = samplerate;
+ 576              		.loc 1 20 42 view .LVU111
+ 577 000e 0446     		mov	r4, r0
+  22:Arpeggiator.cpp ****     next_trigger_time_ = 0.0f;
+ 578              		.loc 1 22 16 view .LVU112
+ 579 0010 FFF7FEFF 		bl	_ZN7daisysp5Metro4InitEff
+ 580              	.LVL27:
+  23:Arpeggiator.cpp ****     current_time_ = 0.0f;
+ 581              		.loc 1 23 5 is_stmt 1 view .LVU113
+  23:Arpeggiator.cpp ****     current_time_ = 0.0f;
+ 582              		.loc 1 23 24 is_stmt 0 view .LVU114
+ 583 0014 0023     		movs	r3, #0
+  25:Arpeggiator.cpp **** }
+ 584              		.loc 1 25 19 view .LVU115
+ 585 0016 2046     		mov	r0, r4
+  23:Arpeggiator.cpp ****     current_time_ = 0.0f;
+ 586              		.loc 1 23 24 view .LVU116
+ 587 0018 E363     		str	r3, [r4, #60]	@ float
+  24:Arpeggiator.cpp ****     UpdateInterval();
+ 588              		.loc 1 24 5 is_stmt 1 view .LVU117
+  24:Arpeggiator.cpp ****     UpdateInterval();
+ 589              		.loc 1 24 19 is_stmt 0 view .LVU118
+ 590 001a 2364     		str	r3, [r4, #64]	@ float
+  25:Arpeggiator.cpp **** }
+ 591              		.loc 1 25 5 is_stmt 1 view .LVU119
+  26:Arpeggiator.cpp **** 
+ 592              		.loc 1 26 1 is_stmt 0 view .LVU120
+ 593 001c BDE81040 		pop	{r4, lr}
+ 594              		.cfi_restore 14
+ 595              		.cfi_restore 4
+ 596              		.cfi_def_cfa_offset 0
+ 597              	.LVL28:
+  25:Arpeggiator.cpp **** }
+ 598              		.loc 1 25 19 view .LVU121
+ 599 0020 FFF7FEBF 		b	_ZN11Arpeggiator14UpdateIntervalEv
+ 600              	.LVL29:
+ 601              		.cfi_endproc
+ 602              	.LFE4607:
+ 604              		.section	.text._ZN11Arpeggiator12SetMainTempoEf,"ax",%progbits
+ 605              		.align	1
+ 606              		.global	_ZN11Arpeggiator12SetMainTempoEf
+ 607              		.syntax unified
+ 608              		.thumb
+ 609              		.thumb_func
+ 611              	_ZN11Arpeggiator12SetMainTempoEf:
+ 612              	.LVL30:
+ 613              	.LFB4610:
+  38:Arpeggiator.cpp ****     if (tempo < 0.1f) tempo = 0.1f;
+ 614              		.loc 1 38 45 is_stmt 1 view -0
+ 615              		.cfi_startproc
+ 616              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 29
+
+
+ 617              		@ frame_needed = 0, uses_anonymous_args = 0
+  39:Arpeggiator.cpp ****     metro_.SetFreq(tempo);
+ 618              		.loc 1 39 5 view .LVU123
+ 619 0000 DFED087A 		vldr.32	s15, .L26
+  39:Arpeggiator.cpp ****     metro_.SetFreq(tempo);
+ 620              		.loc 1 39 29 is_stmt 0 view .LVU124
+ 621 0004 B4EE670A 		vcmp.f32	s0, s15
+  38:Arpeggiator.cpp ****     if (tempo < 0.1f) tempo = 0.1f;
+ 622              		.loc 1 38 45 view .LVU125
+ 623 0008 10B5     		push	{r4, lr}
+ 624              		.cfi_def_cfa_offset 8
+ 625              		.cfi_offset 4, -8
+ 626              		.cfi_offset 14, -4
+  39:Arpeggiator.cpp ****     metro_.SetFreq(tempo);
+ 627              		.loc 1 39 29 view .LVU126
+ 628 000a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 629              	.LVL31:
+  40:Arpeggiator.cpp ****     UpdateInterval();
+ 630              		.loc 1 40 5 is_stmt 1 view .LVU127
+  38:Arpeggiator.cpp ****     if (tempo < 0.1f) tempo = 0.1f;
+ 631              		.loc 1 38 45 is_stmt 0 view .LVU128
+ 632 000e 0446     		mov	r4, r0
+  40:Arpeggiator.cpp ****     UpdateInterval();
+ 633              		.loc 1 40 19 view .LVU129
+ 634 0010 48BF     		it	mi
+ 635 0012 B0EE670A 		vmovmi.f32	s0, s15
+ 636              	.LVL32:
+  40:Arpeggiator.cpp ****     UpdateInterval();
+ 637              		.loc 1 40 19 view .LVU130
+ 638 0016 FFF7FEFF 		bl	_ZN7daisysp5Metro7SetFreqEf
+ 639              	.LVL33:
+  41:Arpeggiator.cpp **** }
+ 640              		.loc 1 41 5 is_stmt 1 view .LVU131
+  41:Arpeggiator.cpp **** }
+ 641              		.loc 1 41 19 is_stmt 0 view .LVU132
+ 642 001a 2046     		mov	r0, r4
+  42:Arpeggiator.cpp **** 
+ 643              		.loc 1 42 1 view .LVU133
+ 644 001c BDE81040 		pop	{r4, lr}
+ 645              		.cfi_restore 14
+ 646              		.cfi_restore 4
+ 647              		.cfi_def_cfa_offset 0
+ 648              	.LVL34:
+  41:Arpeggiator.cpp **** }
+ 649              		.loc 1 41 19 view .LVU134
+ 650 0020 FFF7FEBF 		b	_ZN11Arpeggiator14UpdateIntervalEv
+ 651              	.LVL35:
+ 652              	.L27:
+ 653              		.align	2
+ 654              	.L26:
+ 655 0024 CDCCCC3D 		.word	1036831949
+ 656              		.cfi_endproc
+ 657              	.LFE4610:
+ 659              		.section	.text._ZN11Arpeggiator18SetPolyrhythmRatioEf,"ax",%progbits
+ 660              		.align	1
+ 661              		.global	_ZN11Arpeggiator18SetPolyrhythmRatioEf
+ 662              		.syntax unified
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 30
+
+
+ 663              		.thumb
+ 664              		.thumb_func
+ 666              	_ZN11Arpeggiator18SetPolyrhythmRatioEf:
+ 667              	.LVL36:
+ 668              	.LFB4611:
+  44:Arpeggiator.cpp ****     if (ratio <= 0.0f) ratio = 1.0f;
+ 669              		.loc 1 44 51 is_stmt 1 view -0
+ 670              		.cfi_startproc
+ 671              		@ args = 0, pretend = 0, frame = 0
+ 672              		@ frame_needed = 0, uses_anonymous_args = 0
+ 673              		@ link register save eliminated.
+  45:Arpeggiator.cpp ****     polyrhythm_ratio_ = ratio;
+ 674              		.loc 1 45 5 view .LVU136
+ 675 0000 B5EEC00A 		vcmpe.f32	s0, #0
+ 676 0004 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  45:Arpeggiator.cpp ****     polyrhythm_ratio_ = ratio;
+ 677              		.loc 1 45 30 is_stmt 0 view .LVU137
+ 678 0008 98BF     		it	ls
+ 679 000a B7EE000A 		vmovls.f32	s0, #1.0e+0
+ 680              	.LVL37:
+  46:Arpeggiator.cpp ****     UpdateInterval();
+ 681              		.loc 1 46 5 is_stmt 1 view .LVU138
+  46:Arpeggiator.cpp ****     UpdateInterval();
+ 682              		.loc 1 46 23 is_stmt 0 view .LVU139
+ 683 000e 80ED0E0A 		vstr.32	s0, [r0, #56]
+  47:Arpeggiator.cpp **** }
+ 684              		.loc 1 47 5 is_stmt 1 view .LVU140
+  47:Arpeggiator.cpp **** }
+ 685              		.loc 1 47 19 is_stmt 0 view .LVU141
+ 686 0012 FFF7FEBF 		b	_ZN11Arpeggiator14UpdateIntervalEv
+ 687              	.LVL38:
+ 688              		.cfi_endproc
+ 689              	.LFE4611:
+ 691              		.section	.text._ZN11Arpeggiator10Xorshift32Ev,"ax",%progbits
+ 692              		.align	1
+ 693              		.global	_ZN11Arpeggiator10Xorshift32Ev
+ 694              		.syntax unified
+ 695              		.thumb
+ 696              		.thumb_func
+ 698              	_ZN11Arpeggiator10Xorshift32Ev:
+ 699              	.LVL39:
+ 700              	.LFB4621:
+ 111:Arpeggiator.cpp **** 
+ 112:Arpeggiator.cpp **** uint32_t Arpeggiator::Xorshift32() {
+ 701              		.loc 1 112 36 is_stmt 1 view -0
+ 702              		.cfi_startproc
+ 703              		@ args = 0, pretend = 0, frame = 0
+ 704              		@ frame_needed = 0, uses_anonymous_args = 0
+ 705              		@ link register save eliminated.
+ 113:Arpeggiator.cpp ****     uint32_t x = rng_state_;
+ 706              		.loc 1 113 5 view .LVU143
+ 707              		.loc 1 113 14 is_stmt 0 view .LVU144
+ 708 0000 0369     		ldr	r3, [r0, #16]
+ 709              	.LVL40:
+ 114:Arpeggiator.cpp ****     x ^= x << 13;
+ 710              		.loc 1 114 5 is_stmt 1 view .LVU145
+ 112:Arpeggiator.cpp ****     uint32_t x = rng_state_;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 31
+
+
+ 711              		.loc 1 112 36 is_stmt 0 view .LVU146
+ 712 0002 0246     		mov	r2, r0
+ 713              		.loc 1 114 7 view .LVU147
+ 714 0004 83EA4333 		eor	r3, r3, r3, lsl #13
+ 715              	.LVL41:
+ 115:Arpeggiator.cpp ****     x ^= x >> 17;
+ 716              		.loc 1 115 5 is_stmt 1 view .LVU148
+ 717              		.loc 1 115 7 is_stmt 0 view .LVU149
+ 718 0008 83EA5343 		eor	r3, r3, r3, lsr #17
+ 719              	.LVL42:
+ 116:Arpeggiator.cpp ****     x ^= x << 5;
+ 720              		.loc 1 116 5 is_stmt 1 view .LVU150
+ 721              		.loc 1 116 7 is_stmt 0 view .LVU151
+ 722 000c 83EA4310 		eor	r0, r3, r3, lsl #5
+ 723              	.LVL43:
+ 117:Arpeggiator.cpp ****     rng_state_ = x;
+ 724              		.loc 1 117 5 is_stmt 1 view .LVU152
+ 725              		.loc 1 117 16 is_stmt 0 view .LVU153
+ 726 0010 1061     		str	r0, [r2, #16]
+ 118:Arpeggiator.cpp ****     return x;
+ 727              		.loc 1 118 5 is_stmt 1 view .LVU154
+ 119:Arpeggiator.cpp **** } ...
+ 728              		.loc 1 119 1 is_stmt 0 view .LVU155
+ 729 0012 7047     		bx	lr
+ 730              		.cfi_endproc
+ 731              	.LFE4621:
+ 733              		.section	.rodata._ZN11Arpeggiator11TriggerNoteEv.str1.1,"aMS",%progbits,1
+ 734              	.LC0:
+ 735 0000 5B444542 		.ascii	"[DEBUG] ARP idx %d\000"
+ 735      55475D20 
+ 735      41525020 
+ 735      69647820 
+ 735      256400
+ 736              		.section	.text._ZN11Arpeggiator11TriggerNoteEv,"ax",%progbits
+ 737              		.align	1
+ 738              		.global	_ZN11Arpeggiator11TriggerNoteEv
+ 739              		.syntax unified
+ 740              		.thumb
+ 741              		.thumb_func
+ 743              	_ZN11Arpeggiator11TriggerNoteEv:
+ 744              	.LVL44:
+ 745              	.LFB4619:
+  85:Arpeggiator.cpp **** void Arpeggiator::TriggerNote() {
+ 746              		.loc 1 85 33 is_stmt 1 view -0
+ 747              		.cfi_startproc
+ 748              		@ args = 0, pretend = 0, frame = 32
+ 749              		@ frame_needed = 0, uses_anonymous_args = 0
+  86:Arpeggiator.cpp ****     if (num_notes_ == 0) return;
+ 750              		.loc 1 86 5 view .LVU157
+ 751 0000 8369     		ldr	r3, [r0, #24]
+  85:Arpeggiator.cpp **** void Arpeggiator::TriggerNote() {
+ 752              		.loc 1 85 33 is_stmt 0 view .LVU158
+ 753 0002 10B5     		push	{r4, lr}
+ 754              		.cfi_def_cfa_offset 8
+ 755              		.cfi_offset 4, -8
+ 756              		.cfi_offset 14, -4
+ 757 0004 0446     		mov	r4, r0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 32
+
+
+ 758 0006 88B0     		sub	sp, sp, #32
+ 759              		.cfi_def_cfa_offset 40
+  86:Arpeggiator.cpp ****     if (num_notes_ == 0) return;
+ 760              		.loc 1 86 5 view .LVU159
+ 761 0008 F3B1     		cbz	r3, .L33
+ 762              	.LVL45:
+ 763              	.LBB181:
+ 764              	.LBI181:
+  85:Arpeggiator.cpp **** void Arpeggiator::TriggerNote() {
+ 765              		.loc 1 85 6 is_stmt 1 view .LVU160
+ 766              	.LBB182:
+  88:Arpeggiator.cpp ****     {
+ 767              		.loc 1 88 5 view .LVU161
+ 768              	.LBB183:
+  89:Arpeggiator.cpp ****         extern DaisySeed hw; // global hardware
+ 769              		.loc 1 89 9 view .LVU162
+  90:Arpeggiator.cpp ****         char buf[32];
+ 770              		.loc 1 90 9 view .LVU163
+  91:Arpeggiator.cpp ****         sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
+ 771              		.loc 1 91 9 view .LVU164
+  91:Arpeggiator.cpp ****         sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
+ 772              		.loc 1 91 16 is_stmt 0 view .LVU165
+ 773 000a C26C     		ldr	r2, [r0, #76]
+ 774 000c 6846     		mov	r0, sp
+ 775              	.LVL46:
+  91:Arpeggiator.cpp ****         sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
+ 776              		.loc 1 91 16 view .LVU166
+ 777 000e 1449     		ldr	r1, .L42
+ 778 0010 FFF7FEFF 		bl	sprintf
+ 779              	.LVL47:
+  92:Arpeggiator.cpp ****         hw.PrintLine(buf);
+ 780              		.loc 1 92 9 is_stmt 1 view .LVU167
+ 781              	.LBB184:
+ 782              	.LBI184:
+ 783              		.file 5 "lib/libdaisy/src/daisy_seed.h"
+   1:lib/libdaisy/src/daisy_seed.h **** #pragma once
+   2:lib/libdaisy/src/daisy_seed.h **** #ifndef DSY_SEED_H
+   3:lib/libdaisy/src/daisy_seed.h **** #define DSY_SEED_H
+   4:lib/libdaisy/src/daisy_seed.h **** 
+   5:lib/libdaisy/src/daisy_seed.h **** #include "daisy.h"
+   6:lib/libdaisy/src/daisy_seed.h **** 
+   7:lib/libdaisy/src/daisy_seed.h **** //Uncomment this out if you're still using the rev2 hardware
+   8:lib/libdaisy/src/daisy_seed.h **** //#define SEED_REV2
+   9:lib/libdaisy/src/daisy_seed.h **** 
+  10:lib/libdaisy/src/daisy_seed.h **** namespace daisy
+  11:lib/libdaisy/src/daisy_seed.h **** {
+  12:lib/libdaisy/src/daisy_seed.h **** /**
+  13:lib/libdaisy/src/daisy_seed.h ****    @brief This is the higher-level interface for the Daisy board. \n 
+  14:lib/libdaisy/src/daisy_seed.h ****     All basic peripheral configuration/initialization is setup here. \n
+  15:lib/libdaisy/src/daisy_seed.h **** 
+  16:lib/libdaisy/src/daisy_seed.h ****    @ingroup boards
+  17:lib/libdaisy/src/daisy_seed.h **** */
+  18:lib/libdaisy/src/daisy_seed.h **** class DaisySeed
+  19:lib/libdaisy/src/daisy_seed.h **** {
+  20:lib/libdaisy/src/daisy_seed.h ****   public:
+  21:lib/libdaisy/src/daisy_seed.h ****     DaisySeed() {}
+  22:lib/libdaisy/src/daisy_seed.h ****     ~DaisySeed() {}
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 33
+
+
+  23:lib/libdaisy/src/daisy_seed.h **** 
+  24:lib/libdaisy/src/daisy_seed.h ****     /** This function used to provide a pre-initialization configuraiton 
+  25:lib/libdaisy/src/daisy_seed.h ****      *  it has since been deprecated, and does nothing.
+  26:lib/libdaisy/src/daisy_seed.h ****      */
+  27:lib/libdaisy/src/daisy_seed.h ****     void Configure();
+  28:lib/libdaisy/src/daisy_seed.h **** 
+  29:lib/libdaisy/src/daisy_seed.h ****     /** 
+  30:lib/libdaisy/src/daisy_seed.h ****     Initializes the Daisy Seed and the following peripherals:
+  31:lib/libdaisy/src/daisy_seed.h ****     SDRAM, QSPI, 24-bit 48kHz Audio via AK4556, Internal USB,
+  32:lib/libdaisy/src/daisy_seed.h ****     as well as the built-in LED and Testpoint.
+  33:lib/libdaisy/src/daisy_seed.h **** 
+  34:lib/libdaisy/src/daisy_seed.h ****     ADCs, DACs, and other special peripherals (such as I2C, SPI, etc.)
+  35:lib/libdaisy/src/daisy_seed.h ****     can be initialized using their specific initializers within libdaisy
+  36:lib/libdaisy/src/daisy_seed.h ****     for a specific application.
+  37:lib/libdaisy/src/daisy_seed.h ****     */
+  38:lib/libdaisy/src/daisy_seed.h ****     void Init(bool boost = false);
+  39:lib/libdaisy/src/daisy_seed.h **** 
+  40:lib/libdaisy/src/daisy_seed.h ****     /** 
+  41:lib/libdaisy/src/daisy_seed.h ****     Deinitializes all peripherals automatically handled by `Init`.
+  42:lib/libdaisy/src/daisy_seed.h ****     */
+  43:lib/libdaisy/src/daisy_seed.h ****     void DeInit();
+  44:lib/libdaisy/src/daisy_seed.h **** 
+  45:lib/libdaisy/src/daisy_seed.h ****     /** 
+  46:lib/libdaisy/src/daisy_seed.h ****     Wait some ms before going on.
+  47:lib/libdaisy/src/daisy_seed.h ****     \param del Delay time in ms.
+  48:lib/libdaisy/src/daisy_seed.h ****     */
+  49:lib/libdaisy/src/daisy_seed.h ****     void DelayMs(size_t del);
+  50:lib/libdaisy/src/daisy_seed.h **** 
+  51:lib/libdaisy/src/daisy_seed.h ****     /** 
+  52:lib/libdaisy/src/daisy_seed.h ****     Returns the gpio_pin corresponding to the index 0-31.
+  53:lib/libdaisy/src/daisy_seed.h ****     For the given GPIO on the Daisy Seed (labeled 1-32 in docs).
+  54:lib/libdaisy/src/daisy_seed.h ****     */
+  55:lib/libdaisy/src/daisy_seed.h ****     static dsy_gpio_pin GetPin(uint8_t pin_idx);
+  56:lib/libdaisy/src/daisy_seed.h **** 
+  57:lib/libdaisy/src/daisy_seed.h ****     /** Begins the audio for the seeds builtin audio.
+  58:lib/libdaisy/src/daisy_seed.h ****     the specified callback will get called whenever
+  59:lib/libdaisy/src/daisy_seed.h ****     new data is ready to be prepared.
+  60:lib/libdaisy/src/daisy_seed.h ****     */
+  61:lib/libdaisy/src/daisy_seed.h ****     void StartAudio(AudioHandle::InterleavingAudioCallback cb);
+  62:lib/libdaisy/src/daisy_seed.h **** 
+  63:lib/libdaisy/src/daisy_seed.h ****     /** Begins the audio for the seeds builtin audio.
+  64:lib/libdaisy/src/daisy_seed.h ****     the specified callback will get called whenever
+  65:lib/libdaisy/src/daisy_seed.h ****     new data is ready to be prepared.
+  66:lib/libdaisy/src/daisy_seed.h ****     This will use the newer non-interleaved callback.
+  67:lib/libdaisy/src/daisy_seed.h ****     */
+  68:lib/libdaisy/src/daisy_seed.h ****     void StartAudio(AudioHandle::AudioCallback cb);
+  69:lib/libdaisy/src/daisy_seed.h **** 
+  70:lib/libdaisy/src/daisy_seed.h ****     /** Changes to a new interleaved callback
+  71:lib/libdaisy/src/daisy_seed.h ****      */
+  72:lib/libdaisy/src/daisy_seed.h ****     void ChangeAudioCallback(AudioHandle::InterleavingAudioCallback cb);
+  73:lib/libdaisy/src/daisy_seed.h **** 
+  74:lib/libdaisy/src/daisy_seed.h ****     /** Changes to a new multichannel callback
+  75:lib/libdaisy/src/daisy_seed.h ****      */
+  76:lib/libdaisy/src/daisy_seed.h ****     void ChangeAudioCallback(AudioHandle::AudioCallback cb);
+  77:lib/libdaisy/src/daisy_seed.h **** 
+  78:lib/libdaisy/src/daisy_seed.h ****     /** Stops the audio if it is running. */
+  79:lib/libdaisy/src/daisy_seed.h ****     void StopAudio();
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 34
+
+
+  80:lib/libdaisy/src/daisy_seed.h **** 
+  81:lib/libdaisy/src/daisy_seed.h ****     /** Updates the Audio Sample Rate, and reinitializes.
+  82:lib/libdaisy/src/daisy_seed.h ****      ** Audio must be stopped for this to work.
+  83:lib/libdaisy/src/daisy_seed.h ****      */
+  84:lib/libdaisy/src/daisy_seed.h ****     void SetAudioSampleRate(SaiHandle::Config::SampleRate samplerate);
+  85:lib/libdaisy/src/daisy_seed.h **** 
+  86:lib/libdaisy/src/daisy_seed.h ****     /** Returns the audio sample rate in Hz as a floating point number.
+  87:lib/libdaisy/src/daisy_seed.h ****      */
+  88:lib/libdaisy/src/daisy_seed.h ****     float AudioSampleRate();
+  89:lib/libdaisy/src/daisy_seed.h **** 
+  90:lib/libdaisy/src/daisy_seed.h ****     /** Sets the number of samples processed per channel by the audio callback.
+  91:lib/libdaisy/src/daisy_seed.h ****      */
+  92:lib/libdaisy/src/daisy_seed.h ****     void SetAudioBlockSize(size_t blocksize);
+  93:lib/libdaisy/src/daisy_seed.h **** 
+  94:lib/libdaisy/src/daisy_seed.h ****     /** Returns the number of samples per channel in a block of audio. */
+  95:lib/libdaisy/src/daisy_seed.h ****     size_t AudioBlockSize();
+  96:lib/libdaisy/src/daisy_seed.h **** 
+  97:lib/libdaisy/src/daisy_seed.h ****     /** Returns the rate in Hz that the Audio callback is called */
+  98:lib/libdaisy/src/daisy_seed.h ****     float AudioCallbackRate() const;
+  99:lib/libdaisy/src/daisy_seed.h **** 
+ 100:lib/libdaisy/src/daisy_seed.h ****     /** Sets the state of the built in LED
+ 101:lib/libdaisy/src/daisy_seed.h ****      */
+ 102:lib/libdaisy/src/daisy_seed.h ****     void SetLed(bool state);
+ 103:lib/libdaisy/src/daisy_seed.h **** 
+ 104:lib/libdaisy/src/daisy_seed.h ****     /** Sets the state of the test point near pin 10
+ 105:lib/libdaisy/src/daisy_seed.h ****      */
+ 106:lib/libdaisy/src/daisy_seed.h ****     void SetTestPoint(bool state);
+ 107:lib/libdaisy/src/daisy_seed.h **** 
+ 108:lib/libdaisy/src/daisy_seed.h ****     /** Print formatted debug log message
+ 109:lib/libdaisy/src/daisy_seed.h ****      */
+ 110:lib/libdaisy/src/daisy_seed.h ****     template <typename... VA>
+ 111:lib/libdaisy/src/daisy_seed.h ****     static void Print(const char* format, VA... va)
+ 112:lib/libdaisy/src/daisy_seed.h ****     {
+ 113:lib/libdaisy/src/daisy_seed.h ****         Log::Print(format, va...);
+ 114:lib/libdaisy/src/daisy_seed.h ****     }
+ 115:lib/libdaisy/src/daisy_seed.h **** 
+ 116:lib/libdaisy/src/daisy_seed.h ****     /** Print formatted debug log message with automatic line termination
+ 117:lib/libdaisy/src/daisy_seed.h ****     */
+ 118:lib/libdaisy/src/daisy_seed.h ****     template <typename... VA>
+ 119:lib/libdaisy/src/daisy_seed.h ****     static void PrintLine(const char* format, VA... va)
+ 784              		.loc 5 119 17 view .LVU168
+ 785              	.LBB185:
+ 120:lib/libdaisy/src/daisy_seed.h ****     {
+ 121:lib/libdaisy/src/daisy_seed.h ****         Log::PrintLine(format, va...);
+ 786              		.loc 5 121 23 is_stmt 0 view .LVU169
+ 787 0014 6846     		mov	r0, sp
+ 788 0016 FFF7FEFF 		bl	_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
+ 789              	.LVL48:
+ 790              		.loc 5 121 23 view .LVU170
+ 791              	.LBE185:
+ 792              	.LBE184:
+ 793              	.LBE183:
+  94:Arpeggiator.cpp ****     int idx;
+ 794              		.loc 1 94 5 is_stmt 1 view .LVU171
+  95:Arpeggiator.cpp ****     if (direction_ == Random) {
+ 795              		.loc 1 95 5 view .LVU172
+ 796              	.LBB186:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 35
+
+
+ 797 001a 94F85030 		ldrb	r3, [r4, #80]	@ zero_extendqisi2
+ 798 001e 012B     		cmp	r3, #1
+ 799 0020 14D1     		bne	.L36
+ 800              	.LBB187:
+  96:Arpeggiator.cpp ****         uint32_t rnd = Xorshift32();
+ 801              		.loc 1 96 9 view .LVU173
+  96:Arpeggiator.cpp ****         uint32_t rnd = Xorshift32();
+ 802              		.loc 1 96 34 is_stmt 0 view .LVU174
+ 803 0022 2046     		mov	r0, r4
+ 804 0024 FFF7FEFF 		bl	_ZN11Arpeggiator10Xorshift32Ev
+ 805              	.LVL49:
+  97:Arpeggiator.cpp ****         idx = rnd % num_notes_;
+ 806              		.loc 1 97 9 is_stmt 1 view .LVU175
+  97:Arpeggiator.cpp ****         idx = rnd % num_notes_;
+ 807              		.loc 1 97 19 is_stmt 0 view .LVU176
+ 808 0028 A369     		ldr	r3, [r4, #24]
+ 809 002a B0FBF3F2 		udiv	r2, r0, r3
+ 810 002e 02FB1300 		mls	r0, r2, r3, r0
+ 811              	.LVL50:
+ 812              	.L37:
+  97:Arpeggiator.cpp ****         idx = rnd % num_notes_;
+ 813              		.loc 1 97 19 view .LVU177
+ 814              	.LBE187:
+ 815              	.LBE186:
+ 102:Arpeggiator.cpp ****     if (note_callback_) {
+ 816              		.loc 1 102 5 is_stmt 1 view .LVU178
+ 817              	.LBB188:
+ 818              	.LBI188:
+ 498:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       { return !_M_empty(); }
+ 819              		.loc 3 498 16 view .LVU179
+ 820              	.LBB189:
+ 821              	.LBI189:
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 822              		.loc 3 248 10 view .LVU180
+ 823              	.LBB190:
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 824              		.loc 3 248 29 view .LVU181
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 825              		.loc 3 248 29 is_stmt 0 view .LVU182
+ 826              	.LBE190:
+ 827              	.LBE189:
+ 828              	.LBE188:
+ 102:Arpeggiator.cpp ****     if (note_callback_) {
+ 829              		.loc 1 102 5 view .LVU183
+ 830 0032 236B     		ldr	r3, [r4, #48]
+ 831 0034 43B1     		cbz	r3, .L33
+ 103:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
+ 832              		.loc 1 103 9 is_stmt 1 view .LVU184
+ 103:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
+ 833              		.loc 1 103 23 is_stmt 0 view .LVU185
+ 834 0036 6369     		ldr	r3, [r4, #20]
+ 835              	.LBB191:
+ 836              	.LBB192:
+ 596:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	}
+ 597:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     }
+ 598:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 599:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename... _ArgTypes>
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 36
+
+
+ 600:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     template<typename _Functor, typename, typename>
+ 601:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function<_Res(_ArgTypes...)>::
+ 602:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function(_Functor __f)
+ 603:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       : _Function_base()
+ 604:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
+ 605:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	typedef _Function_handler<_Res(_ArgTypes...), _Functor> _My_handler;
+ 606:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 607:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	if (_My_handler::_M_not_empty_function(__f))
+ 608:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  {
+ 609:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    _My_handler::_M_init_functor(_M_functor, std::move(__f));
+ 610:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    _M_invoker = &_My_handler::_M_invoke;
+ 611:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    _M_manager = &_My_handler::_M_manager;
+ 612:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	  }
+ 613:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       }
+ 614:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 615:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename... _ArgTypes>
+ 616:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     _Res
+ 617:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     function<_Res(_ArgTypes...)>::
+ 618:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     operator()(_ArgTypes... __args) const
+ 619:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     {
+ 620:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       if (_M_empty())
+ 621:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	__throw_bad_function_call();
+ 622:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       return _M_invoker(_M_functor, std::forward<_ArgTypes>(__args)...);
+ 837              		.loc 3 622 14 view .LVU186
+ 838 0038 6946     		mov	r1, sp
+ 839              	.LBE192:
+ 840              	.LBE191:
+ 103:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
+ 841              		.loc 1 103 23 view .LVU187
+ 842 003a 53F82030 		ldr	r3, [r3, r0, lsl #2]
+ 843              	.LVL51:
+ 844              	.LBB195:
+ 845              	.LBB193:
+ 846              		.loc 3 622 14 view .LVU188
+ 847 003e 04F12800 		add	r0, r4, #40
+ 848              	.LVL52:
+ 849              		.loc 3 622 14 view .LVU189
+ 850 0042 0093     		str	r3, [sp]
+ 851              	.LVL53:
+ 852              		.loc 3 622 14 view .LVU190
+ 853              	.LBE193:
+ 854              	.LBI191:
+ 617:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     operator()(_ArgTypes... __args) const
+ 855              		.loc 3 617 5 is_stmt 1 view .LVU191
+ 617:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     operator()(_ArgTypes... __args) const
+ 856              		.loc 3 617 5 is_stmt 0 view .LVU192
+ 857              	.LBE195:
+ 858              	.LBE182:
+ 859              	.LBE181:
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 860              		.loc 3 248 29 is_stmt 1 view .LVU193
+ 861              	.LBB200:
+ 862              	.LBB198:
+ 863              	.LBB196:
+ 864              	.LBB194:
+ 865              		.loc 3 622 14 is_stmt 0 view .LVU194
+ 866 0044 636B     		ldr	r3, [r4, #52]
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 37
+
+
+ 867              	.LVL54:
+ 868              		.loc 3 622 14 view .LVU195
+ 869 0046 9847     		blx	r3
+ 870              	.LVL55:
+ 871              	.L33:
+ 872              		.loc 3 622 14 view .LVU196
+ 873              	.LBE194:
+ 874              	.LBE196:
+ 875              	.LBE198:
+ 876              	.LBE200:
+ 105:Arpeggiator.cpp **** }
+ 877              		.loc 1 105 1 view .LVU197
+ 878 0048 08B0     		add	sp, sp, #32
+ 879              		.cfi_remember_state
+ 880              		.cfi_def_cfa_offset 8
+ 881              		@ sp needed
+ 882 004a 10BD     		pop	{r4, pc}
+ 883              	.LVL56:
+ 884              	.L36:
+ 885              		.cfi_restore_state
+ 886              	.LBB201:
+ 887              	.LBB199:
+ 888              	.LBB197:
+  99:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
+ 889              		.loc 1 99 9 is_stmt 1 view .LVU198
+  99:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
+ 890              		.loc 1 99 15 is_stmt 0 view .LVU199
+ 891 004c E36C     		ldr	r3, [r4, #76]
+  99:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
+ 892              		.loc 1 99 13 view .LVU200
+ 893 004e A269     		ldr	r2, [r4, #24]
+ 894 0050 93FBF2F0 		sdiv	r0, r3, r2
+ 895 0054 02FB1030 		mls	r0, r2, r0, r3
+ 896              	.LVL57:
+ 100:Arpeggiator.cpp ****         ++step_index_;
+ 897              		.loc 1 100 9 is_stmt 1 view .LVU201
+ 898 0058 0133     		adds	r3, r3, #1
+ 899 005a E364     		str	r3, [r4, #76]
+ 900 005c E9E7     		b	.L37
+ 901              	.L43:
+ 902 005e 00BF     		.align	2
+ 903              	.L42:
+ 904 0060 00000000 		.word	.LC0
+ 905              	.LBE197:
+ 906              	.LBE199:
+ 907              	.LBE201:
+ 908              		.cfi_endproc
+ 909              	.LFE4619:
+ 911              		.section	.text._ZN11Arpeggiator7ProcessEj,"ax",%progbits
+ 912              		.align	1
+ 913              		.global	_ZN11Arpeggiator7ProcessEj
+ 914              		.syntax unified
+ 915              		.thumb
+ 916              		.thumb_func
+ 918              	_ZN11Arpeggiator7ProcessEj:
+ 919              	.LVL58:
+ 920              	.LFB4618:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 38
+
+
+  74:Arpeggiator.cpp **** void Arpeggiator::Process(size_t frames) {
+ 921              		.loc 1 74 42 view -0
+ 922              		.cfi_startproc
+ 923              		@ args = 0, pretend = 0, frame = 0
+ 924              		@ frame_needed = 0, uses_anonymous_args = 0
+  75:Arpeggiator.cpp ****     if (num_notes_ < 1 || !note_callback_) return;
+ 925              		.loc 1 75 5 view .LVU203
+  75:Arpeggiator.cpp ****     if (num_notes_ < 1 || !note_callback_) return;
+ 926              		.loc 1 75 24 is_stmt 0 view .LVU204
+ 927 0000 8369     		ldr	r3, [r0, #24]
+ 928 0002 002B     		cmp	r3, #0
+  74:Arpeggiator.cpp **** void Arpeggiator::Process(size_t frames) {
+ 929              		.loc 1 74 42 view .LVU205
+ 930 0004 70B5     		push	{r4, r5, r6, lr}
+ 931              		.cfi_def_cfa_offset 16
+ 932              		.cfi_offset 4, -16
+ 933              		.cfi_offset 5, -12
+ 934              		.cfi_offset 6, -8
+ 935              		.cfi_offset 14, -4
+  74:Arpeggiator.cpp **** void Arpeggiator::Process(size_t frames) {
+ 936              		.loc 1 74 42 view .LVU206
+ 937 0006 0446     		mov	r4, r0
+ 938 0008 0E46     		mov	r6, r1
+  75:Arpeggiator.cpp ****     if (num_notes_ < 1 || !note_callback_) return;
+ 939              		.loc 1 75 24 view .LVU207
+ 940 000a 24DD     		ble	.L44
+ 941              	.LVL59:
+ 942              	.LBB202:
+ 943              	.LBI202:
+ 498:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       { return !_M_empty(); }
+ 944              		.loc 3 498 16 is_stmt 1 discriminator 2 view .LVU208
+ 945              	.LBB203:
+ 946              	.LBI203:
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 947              		.loc 3 248 10 discriminator 2 view .LVU209
+ 948              	.LBB204:
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 949              		.loc 3 248 29 discriminator 2 view .LVU210
+ 248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
+ 950              		.loc 3 248 29 is_stmt 0 discriminator 2 view .LVU211
+ 951              	.LBE204:
+ 952              	.LBE203:
+ 953              	.LBE202:
+  75:Arpeggiator.cpp ****     if (num_notes_ < 1 || !note_callback_) return;
+ 954              		.loc 1 75 24 discriminator 2 view .LVU212
+ 955 000c 036B     		ldr	r3, [r0, #48]
+ 956 000e 13B3     		cbz	r3, .L44
+ 957 0010 0025     		movs	r5, #0
+ 958              	.LVL60:
+ 959              	.L48:
+ 960              	.LBB205:
+  76:Arpeggiator.cpp ****     for (size_t i = 0; i < frames; ++i) {
+ 961              		.loc 1 76 26 is_stmt 1 discriminator 1 view .LVU213
+ 962 0012 B542     		cmp	r5, r6
+ 963 0014 1FD0     		beq	.L44
+  77:Arpeggiator.cpp ****         current_time_ += 1.0f / sample_rate_;
+ 964              		.loc 1 77 9 view .LVU214
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 39
+
+
+  77:Arpeggiator.cpp ****         current_time_ += 1.0f / sample_rate_;
+ 965              		.loc 1 77 31 is_stmt 0 view .LVU215
+ 966 0016 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 967 001a 94ED117A 		vldr.32	s14, [r4, #68]
+ 968 001e C6EE877A 		vdiv.f32	s15, s13, s14
+  77:Arpeggiator.cpp ****         current_time_ += 1.0f / sample_rate_;
+ 969              		.loc 1 77 23 view .LVU216
+ 970 0022 94ED107A 		vldr.32	s14, [r4, #64]
+ 971 0026 77EE877A 		vadd.f32	s15, s15, s14
+  78:Arpeggiator.cpp ****         if (current_time_ >= next_trigger_time_) {
+ 972              		.loc 1 78 9 view .LVU217
+ 973 002a 94ED0F7A 		vldr.32	s14, [r4, #60]
+ 974 002e F4EEC77A 		vcmpe.f32	s15, s14
+  77:Arpeggiator.cpp ****         current_time_ += 1.0f / sample_rate_;
+ 975              		.loc 1 77 23 view .LVU218
+ 976 0032 C4ED107A 		vstr.32	s15, [r4, #64]
+  78:Arpeggiator.cpp ****         if (current_time_ >= next_trigger_time_) {
+ 977              		.loc 1 78 9 is_stmt 1 view .LVU219
+ 978 0036 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 979 003a 0ADB     		blt	.L46
+  79:Arpeggiator.cpp ****             TriggerNote();
+ 980              		.loc 1 79 13 view .LVU220
+  79:Arpeggiator.cpp ****             TriggerNote();
+ 981              		.loc 1 79 24 is_stmt 0 view .LVU221
+ 982 003c 2046     		mov	r0, r4
+ 983 003e FFF7FEFF 		bl	_ZN11Arpeggiator11TriggerNoteEv
+ 984              	.LVL61:
+  80:Arpeggiator.cpp ****             next_trigger_time_ += current_interval_;
+ 985              		.loc 1 80 13 is_stmt 1 view .LVU222
+  80:Arpeggiator.cpp ****             next_trigger_time_ += current_interval_;
+ 986              		.loc 1 80 32 is_stmt 0 view .LVU223
+ 987 0042 D4ED0F7A 		vldr.32	s15, [r4, #60]
+ 988 0046 94ED127A 		vldr.32	s14, [r4, #72]
+ 989 004a 77EE877A 		vadd.f32	s15, s15, s14
+ 990 004e C4ED0F7A 		vstr.32	s15, [r4, #60]
+ 991              	.L46:
+  76:Arpeggiator.cpp ****     for (size_t i = 0; i < frames; ++i) {
+ 992              		.loc 1 76 5 is_stmt 1 discriminator 2 view .LVU224
+ 993 0052 0135     		adds	r5, r5, #1
+ 994              	.LVL62:
+  76:Arpeggiator.cpp ****     for (size_t i = 0; i < frames; ++i) {
+ 995              		.loc 1 76 5 is_stmt 0 discriminator 2 view .LVU225
+ 996 0054 DDE7     		b	.L48
+ 997              	.LVL63:
+ 998              	.L44:
+  76:Arpeggiator.cpp ****     for (size_t i = 0; i < frames; ++i) {
+ 999              		.loc 1 76 5 discriminator 2 view .LVU226
+ 1000              	.LBE205:
+  83:Arpeggiator.cpp **** }
+ 1001              		.loc 1 83 1 view .LVU227
+ 1002 0056 70BD     		pop	{r4, r5, r6, pc}
+  83:Arpeggiator.cpp **** }
+ 1003              		.loc 1 83 1 view .LVU228
+ 1004              		.cfi_endproc
+ 1005              	.LFE4618:
+ 1007              		.text
+ 1008              	.Letext0:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 40
+
+
+ 1009              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 1010              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 1011              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
+ 1012              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1013              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 1014              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 1015              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 1016              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
+ 1017              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 1018              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 1019              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 1020              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 1021              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 1022              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 1023              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
+ 1024              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
+ 1025              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
+ 1026              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
+ 1027              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
+ 1028              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
+ 1029              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
+ 1030              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/uses_allocator.h
+ 1031              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/tuple"
+ 1032              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/functional"
+ 1033              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_function.h"
+ 1034              		.file 31 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/refwrap.h"
+ 1035              		.file 32 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 1036              		.file 33 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
+ 1037              		.file 34 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
+ 1038              		.file 35 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
+ 1039              		.file 36 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 1040              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 1041              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 1042              		.file 39 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
+ 1043              		.file 40 "lib/libdaisy/src/daisy_core.h"
+ 1044              		.file 41 "lib/libdaisy/src/per/tim.h"
+ 1045              		.file 42 "lib/libdaisy/src/sys/system.h"
+ 1046              		.file 43 "lib/libdaisy/src/per/qspi.h"
+ 1047              		.file 44 "lib/libdaisy/src/per/dac.h"
+ 1048              		.file 45 "lib/libdaisy/src/per/sai.h"
+ 1049              		.file 46 "lib/libdaisy/src/hid/audio.h"
+ 1050              		.file 47 "lib/libdaisy/src/per/adc.h"
+ 1051              		.file 48 "lib/libdaisy/src/hid/usb.h"
+ 1052              		.file 49 "lib/libdaisy/src/hid/logger_impl.h"
+ 1053              		.file 50 "lib/libdaisy/src/util/wav_format.h"
+ 1054              		.file 51 "lib/libdaisy/src/hid/logger.h"
+ 1055              		.file 52 "lib/libdaisy/src/per/gpio.h"
+ 1056              		.file 53 "lib/libdaisy/src/dev/sdram.h"
+ 1057              		.file 54 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 1058              		.file 55 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
+ 1059              		.file 56 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
+ 1060              		.file 57 "lib/DaisySP/Source/Control/adenv.h"
+ 1061              		.file 58 "lib/DaisySP/Source/Utility/dsp.h"
+ 1062              		.file 59 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
+ 1063              		.file 60 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
+ 1064              		.file 61 "Arpeggiator.h"
+ 1065              		.file 62 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 41
+
+
+ 1066              		.file 63 "lib/libdaisy/src/dev/sr_595.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 42
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 Arpeggiator.cpp
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:19     .text._ZN11ArpeggiatorC2Ev:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:25     .text._ZN11ArpeggiatorC2Ev:0000000000000000 _ZN11ArpeggiatorC2Ev
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:92     .text._ZN11ArpeggiatorC2Ev:0000000000000030 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:25     .text._ZN11ArpeggiatorC2Ev:0000000000000000 _ZN11ArpeggiatorC1Ev
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:100    .text._ZN11Arpeggiator8SetNotesEPii:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:106    .text._ZN11Arpeggiator8SetNotesEPii:0000000000000000 _ZN11Arpeggiator8SetNotesEPii
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:123    .text._ZN11Arpeggiator8SetScaleEPfi:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:129    .text._ZN11Arpeggiator8SetScaleEPfi:0000000000000000 _ZN11Arpeggiator8SetScaleEPfi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:146    .text._ZN11Arpeggiator24SetOctaveJumpProbabilityEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:152    .text._ZN11Arpeggiator24SetOctaveJumpProbabilityEf:0000000000000000 _ZN11Arpeggiator24SetOctaveJumpProbabilityEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:169    .text._ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:175    .text._ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE:0000000000000000 _ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:406    .text._ZN11Arpeggiator12SetDirectionENS_9DirectionE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:412    .text._ZN11Arpeggiator12SetDirectionENS_9DirectionE:0000000000000000 _ZN11Arpeggiator12SetDirectionENS_9DirectionE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:429    .text._ZNK11Arpeggiator8IsActiveEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:435    .text._ZNK11Arpeggiator8IsActiveEv:0000000000000000 _ZNK11Arpeggiator8IsActiveEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:457    .text._ZN11Arpeggiator12GetMetroRateEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:463    .text._ZN11Arpeggiator12GetMetroRateEv:0000000000000000 _ZN11Arpeggiator12GetMetroRateEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:487    .text._ZNK11Arpeggiator18GetCurrentIntervalEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:493    .text._ZNK11Arpeggiator18GetCurrentIntervalEv:0000000000000000 _ZNK11Arpeggiator18GetCurrentIntervalEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:509    .text._ZN11Arpeggiator14UpdateIntervalEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:515    .text._ZN11Arpeggiator14UpdateIntervalEv:0000000000000000 _ZN11Arpeggiator14UpdateIntervalEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:549    .text._ZN11Arpeggiator4InitEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:555    .text._ZN11Arpeggiator4InitEf:0000000000000000 _ZN11Arpeggiator4InitEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:605    .text._ZN11Arpeggiator12SetMainTempoEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:611    .text._ZN11Arpeggiator12SetMainTempoEf:0000000000000000 _ZN11Arpeggiator12SetMainTempoEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:655    .text._ZN11Arpeggiator12SetMainTempoEf:0000000000000024 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:660    .text._ZN11Arpeggiator18SetPolyrhythmRatioEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:666    .text._ZN11Arpeggiator18SetPolyrhythmRatioEf:0000000000000000 _ZN11Arpeggiator18SetPolyrhythmRatioEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:692    .text._ZN11Arpeggiator10Xorshift32Ev:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:698    .text._ZN11Arpeggiator10Xorshift32Ev:0000000000000000 _ZN11Arpeggiator10Xorshift32Ev
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:737    .text._ZN11Arpeggiator11TriggerNoteEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:743    .text._ZN11Arpeggiator11TriggerNoteEv:0000000000000000 _ZN11Arpeggiator11TriggerNoteEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:904    .text._ZN11Arpeggiator11TriggerNoteEv:0000000000000060 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:912    .text._ZN11Arpeggiator7ProcessEj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:918    .text._ZN11Arpeggiator7ProcessEj:0000000000000000 _ZN11Arpeggiator7ProcessEj
+
+UNDEFINED SYMBOLS
+_ZN7daisysp5Metro4InitEff
+_ZN7daisysp5Metro7SetFreqEf
+sprintf
+_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
