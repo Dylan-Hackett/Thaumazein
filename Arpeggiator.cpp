@@ -84,12 +84,16 @@ void Arpeggiator::Process(size_t frames) {
 
 void Arpeggiator::TriggerNote() {
     if (num_notes_ == 0) return;
-    // Debug: confirm ARP TriggerNote call
+    // Debug: confirm ARP TriggerNote call (throttled to once every 3 seconds)
     {
         extern DaisySeed hw; // global hardware
         char buf[32];
-        sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
-        hw.PrintLine(buf);
+        static float last_print_time = -3.0f;
+        if (current_time_ - last_print_time >= 3.0f) {
+            sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
+            hw.PrintLine(buf);
+            last_print_time = current_time_;
+        }
     }
     int idx;
     if (direction_ == Random) {
