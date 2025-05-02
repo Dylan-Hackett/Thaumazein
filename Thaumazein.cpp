@@ -52,6 +52,17 @@ void PollTouchSensor() {
     uint16_t touched = touch_sensor.Touched();
     current_touch_state = touched;
 
+    // Update touch pad LEDs with touch and ARP blink
+    uint32_t now = hw.system.GetNow();
+    bool arp_on = arp.IsActive();
+    for(int i = 0; i < 12; ++i) {
+        int ledIdx = 11 - i;  // pad i maps to LED[11-i]
+        bool padTouched = (touched & (1 << i)) != 0;
+        bool blink     = (now - arp_led_timestamps[ledIdx]) < ARP_LED_DURATION_MS;
+        bool ledState  = arp_on ? blink : (padTouched || blink);
+        touch_leds[ledIdx].Write(ledState);
+    }
+
     if (touched == 0) {
         // Optionally decay the control value smoothly to 0 when no pads are touched
         touch_cv_value = touch_cv_value * 0.95f; 
@@ -112,10 +123,11 @@ int main(void) {
         // Check bootloader condition anytime during operation
         Bootload();
         
-        // Heartbeat log every ~500 ms
-        static int hb_counter = 0;
-        if (++hb_counter >= 500) {
-            hb_counter = 0;
+        // Heartbeat log every ~3 seconds
+        static uint32_t last_hb_time = 0;
+        uint32_t now = hw.system.GetNow();
+        if ((now - last_hb_time) >= 3000) {
+            last_hb_time = now;
             hw.PrintLine("HB");
         }
         

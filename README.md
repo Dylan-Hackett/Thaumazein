@@ -93,6 +93,8 @@ The synthesizer uses the following knobs and touch pads connected to the Daisy S
 Additional controls:
 - ADC 8 (Arpeggiator Toggle Pad), ADC 9 (Model Select Previous Pad), and ADC 10 (Model Select Next Pad): Press all three pads simultaneously to enter bootloader at any time during operation
 - LED: Indicates active voices, blinks when idle
+- Twelve GPIO-controlled touch LEDs on pins D14–D1, mapped pad 11→D14 … pad 0→D1; light while pads are touched
+- When the arpeggiator is active, LEDs blink in time with their corresponding sequenced notes
 
 ## Engine Behavior
 

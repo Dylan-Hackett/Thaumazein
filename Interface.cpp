@@ -7,6 +7,12 @@ Mpr121 touch_sensor;
 EchoDelay<48000> delay;
 // Arpeggiator instance
 Arpeggiator arp;
+// Global array for touch pad LEDs
+GPIO touch_leds[12];
+// Timestamp for each LED when an ARP note triggers (ms)
+volatile uint32_t arp_led_timestamps[12] = {0};
+// Duration in milliseconds for each LED blink on ARP trigger
+const uint32_t ARP_LED_DURATION_MS = 100;
 
 // Hardware controls - Remapped to use ADCs 0-9
 Switch button;
@@ -101,12 +107,33 @@ void InitializeDelay() {
     delay.SetFeedback(0.5f);         // 50% feedback
 }
 
+// Initialize GPIO and light up all touch pad LEDs
+void InitializeTouchLEDs() {
+    GPIO::Config led_cfg;
+    led_cfg.mode  = GPIO::Mode::OUTPUT;
+    led_cfg.pull  = GPIO::Pull::NOPULL;
+    led_cfg.speed = GPIO::Speed::LOW;
+
+    Pin led_pins[12] = {
+        seed::D14, seed::D13, seed::D10, seed::D9,
+        seed::D8,  seed::D7,  seed::D6,  seed::D5,
+        seed::D4,  seed::D3,  seed::D2,  seed::D1
+    };
+
+    for(int i = 0; i < 12; ++i) {
+        led_cfg.pin = led_pins[i];
+        touch_leds[i].Init(led_cfg);
+        touch_leds[i].Write(true);
+    }
+}
+
 void InitializeSynth() {
     InitializeHardware();
     InitializeVoices(); // Call function from Polyphony.cpp
     InitializeControls();
     InitializeTouchSensor();
     InitializeDelay();
+    InitializeTouchLEDs();
     cpu_meter.Init(sample_rate, BLOCK_SIZE); // Initialize the CPU Load Meter
     
     // --- Initialize Arpeggiator ---
@@ -128,6 +155,8 @@ void InitializeSynth() {
             modulations[0].trigger = 1.0f;
             modulations[0].trigger_patched = true;
         }
+        // Record the timestamp for ARP LED blink (pad 11→led[0], etc.)
+        arp_led_timestamps[11 - pad_idx] = hw.system.GetNow();
     });
     
     // --- Start Audio ---

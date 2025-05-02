@@ -98,4 +98,11 @@ extern volatile float adc_raw_values[12]; // Array to hold raw values for all 12
 extern volatile int engine_retrigger_phase;
 extern volatile int arp_patch_phase;
 
+// Add extern declaration for touch pad LED GPIOs
+extern daisy::GPIO touch_leds[12];
+
+// Add extern declarations for ARP LED blink timestamps and duration
+extern volatile uint32_t arp_led_timestamps[12];
+extern const uint32_t ARP_LED_DURATION_MS;
+
 #endif // THAUMAZEIN_H_ 

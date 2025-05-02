@@ -576,7 +576,8 @@ void UpdatePerformanceMonitors(size_t size, AudioHandle::InterleavingOutputBuffe
 
     // Signal display update periodically
     static uint32_t display_counter = 0;
-    if (++display_counter >= 100) { 
+    static const uint32_t display_interval_blocks = (uint32_t)(sample_rate / BLOCK_SIZE * 3.0f);
+    if (++display_counter >= display_interval_blocks) {
         display_counter = 0;
         update_display = true;
     }

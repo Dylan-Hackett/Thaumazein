@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
   17:lib/DaisySP/Source/Utility/metro.h **** /** Creates a clock signal at a specific frequency.
   18:lib/DaisySP/Source/Utility/metro.h **** */
   19:lib/DaisySP/Source/Utility/metro.h **** class Metro
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 2
 
 
   20:lib/DaisySP/Source/Utility/metro.h **** {
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
   25:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** /** @file include/bits/std_function.h
   26:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****  *  This is an internal header file, included by other library headers.
   27:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****  *  Do not attempt to use it directly. @headername{functional}
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 3
 
 
   28:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****  */
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
   82:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     void (_Undefined_class::*_M_member_pointer)();
   83:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   };
   84:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 4
 
 
   85:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   union [[gnu::may_alias]] _Any_data
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  139:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    {
  140:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      const _Functor& __f = __source._M_access<_Functor>();
  141:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      return const_cast<_Functor*>(std::__addressof(__f));
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 5
 
 
  142:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    }
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  196:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      _M_clone(__dest, __source, _Local_storage());
  197:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	      break;
  198:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 6
 
 
  199:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	    case __destroy_functor:
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  243:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     {
  244:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       if (_M_manager)
  245:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	_M_manager(_M_functor, _M_functor, __destroy_functor);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 7
 
 
  246:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     }
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  300:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    *  Polymorphic function wrapper.
  301:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****    */
  302:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename... _ArgTypes>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 8
 
 
  303:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     class function<_Res(_ArgTypes...)>
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
   76 001e 10B5     		push	{r4, lr}
   77              		.cfi_def_cfa_offset 8
   78              		.cfi_offset 4, -8
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 9
 
 
   79              		.cfi_offset 14, -4
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  122              		.section	.text._ZN11Arpeggiator8SetScaleEPfi,"ax",%progbits
  123              		.align	1
  124              		.global	_ZN11Arpeggiator8SetScaleEPfi
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 10
 
 
  125              		.syntax unified
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  162 0000 80ED090A 		vstr.32	s0, [r0, #36]
   52:Arpeggiator.cpp **** }
  163              		.loc 1 52 1 view .LVU24
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 11
 
 
  164 0004 7047     		bx	lr
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  213              	.LVL6:
  214              	.LBB160:
  215              	.LBI114:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 12
 
 
  338:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       : _Function_base() { }
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  392:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  If @a __x targets a function pointer or a reference to a function
  393:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  object, then this operation will not throw an %exception.
  394:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        */
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 13
 
 
  395:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function&
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  445:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *
  446:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  This  %function object wrapper will target a copy of @a
  447:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  __f. If @a __f is @c reference_wrapper<F>, then this function
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 14
 
 
  448:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  object will contain a reference to the function object @c
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  502:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
  503:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       /**
  504:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @brief Invokes the function targeted by @c *this.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 15
 
 
  505:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****        *  @returns the result of the target.
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  559:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename _Tp, bool _Nx, typename... _Args>
  560:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     struct __function_guide_helper<
  561:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       _Res (_Tp::*) (_Args...) & noexcept(_Nx)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 16
 
 
  562:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     >
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  240:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
  245              		.loc 3 240 42 view .LVU36
  246              	.LBE122:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 17
 
 
  247              	.LBE123:
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  288              	.LBI135:
  481:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       {
  289              		.loc 3 481 12 is_stmt 1 view .LVU48
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 18
 
 
  290              	.LBB136:
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
   52:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #if __cplusplus >= 201103L
   53:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
   54:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** _GLIBCXX_END_NAMESPACE_VERSION
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 19
 
 
   55:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** } // namespace
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  109:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
  110:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
  111:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @brief  Conditionally convert a value to an rvalue.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 20
 
 
  112:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @param  __x  A thing of arbitrary type.
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  166:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** #endif
  167:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h **** 
  168:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****   /**
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 21
 
 
  169:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/move.h ****    *  @addtogroup utilities
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  314              	.LBE139:
  315              	.LBB144:
  316              	.LBB138:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 22
 
 
  317              		.loc 4 199 7 view .LVU56
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  363 004a 0591     		str	r1, [sp, #20]
  364              		.loc 4 199 11 view .LVU67
  365 004c 6263     		str	r2, [r4, #52]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 23
 
 
  366              	.LVL16:
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
   57:Arpeggiator.cpp **** 
   58:Arpeggiator.cpp **** void Arpeggiator::SetDirection(Direction dir) {
  415              		.loc 1 58 47 is_stmt 1 view -0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 24
 
 
  416              		.cfi_startproc
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  466              		.loc 1 66 35 is_stmt 1 view -0
  467              		.cfi_startproc
  468              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 25
 
 
  469              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  497              		.cfi_startproc
  498              		@ args = 0, pretend = 0, frame = 0
  499              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 26
 
 
  500              		@ link register save eliminated.
@@ -1533,37 +1533,41 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
   84:Arpeggiator.cpp **** 
   85:Arpeggiator.cpp **** void Arpeggiator::TriggerNote() {
   86:Arpeggiator.cpp ****     if (num_notes_ == 0) return;
-  87:Arpeggiator.cpp ****     // Debug: confirm ARP TriggerNote call
+  87:Arpeggiator.cpp ****     // Debug: confirm ARP TriggerNote call (throttled to once every 3 seconds)
   88:Arpeggiator.cpp ****     {
   89:Arpeggiator.cpp ****         extern DaisySeed hw; // global hardware
   90:Arpeggiator.cpp ****         char buf[32];
-  91:Arpeggiator.cpp ****         sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
-  92:Arpeggiator.cpp ****         hw.PrintLine(buf);
-  93:Arpeggiator.cpp ****     }
-  94:Arpeggiator.cpp ****     int idx;
-  95:Arpeggiator.cpp ****     if (direction_ == Random) {
-  96:Arpeggiator.cpp ****         uint32_t rnd = Xorshift32();
-  97:Arpeggiator.cpp ****         idx = rnd % num_notes_;
-  98:Arpeggiator.cpp ****     } else { // Forward sequential
-  99:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
- 100:Arpeggiator.cpp ****         ++step_index_;
- 101:Arpeggiator.cpp ****     }
- 102:Arpeggiator.cpp ****     if (note_callback_) {
- 103:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
- 104:Arpeggiator.cpp ****     }
- 105:Arpeggiator.cpp **** }
- 106:Arpeggiator.cpp **** 
- 107:Arpeggiator.cpp **** void Arpeggiator::UpdateInterval() {
- 518              		.loc 1 107 36 is_stmt 1 view -0
+  91:Arpeggiator.cpp ****         static float last_print_time = -3.0f;
+  92:Arpeggiator.cpp ****         if (current_time_ - last_print_time >= 3.0f) {
+  93:Arpeggiator.cpp ****             sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
+  94:Arpeggiator.cpp ****             hw.PrintLine(buf);
+  95:Arpeggiator.cpp ****             last_print_time = current_time_;
+  96:Arpeggiator.cpp ****         }
+  97:Arpeggiator.cpp ****     }
+  98:Arpeggiator.cpp ****     int idx;
+  99:Arpeggiator.cpp ****     if (direction_ == Random) {
+ 100:Arpeggiator.cpp ****         uint32_t rnd = Xorshift32();
+ 101:Arpeggiator.cpp ****         idx = rnd % num_notes_;
+ 102:Arpeggiator.cpp ****     } else { // Forward sequential
+ 103:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
+ 104:Arpeggiator.cpp ****         ++step_index_;
+ 105:Arpeggiator.cpp ****     }
+ 106:Arpeggiator.cpp ****     if (note_callback_) {
+ 107:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
+ 108:Arpeggiator.cpp ****     }
+ 109:Arpeggiator.cpp **** }
+ 110:Arpeggiator.cpp **** 
+ 111:Arpeggiator.cpp **** void Arpeggiator::UpdateInterval() {
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 27
+
+
+ 518              		.loc 1 111 36 is_stmt 1 view -0
  519              		.cfi_startproc
  520              		@ args = 0, pretend = 0, frame = 0
  521              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 27
-
-
  522              		@ link register save eliminated.
- 108:Arpeggiator.cpp ****     float main_interval = 1.0f / metro_.GetFreq();
- 523              		.loc 1 108 5 view .LVU95
+ 112:Arpeggiator.cpp ****     float main_interval = 1.0f / metro_.GetFreq();
+ 523              		.loc 1 112 5 view .LVU95
  524              	.LBB164:
  525              	.LBI164:
  526              		.loc 2 46 18 view .LVU96
@@ -1572,21 +1576,21 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  529              		.loc 2 46 30 is_stmt 0 view .LVU98
  530              	.LBE165:
  531              	.LBE164:
- 109:Arpeggiator.cpp ****     current_interval_ = main_interval / polyrhythm_ratio_;
- 532              		.loc 1 109 5 is_stmt 1 view .LVU99
- 108:Arpeggiator.cpp ****     float main_interval = 1.0f / metro_.GetFreq();
- 533              		.loc 1 108 49 is_stmt 0 view .LVU100
+ 113:Arpeggiator.cpp ****     current_interval_ = main_interval / polyrhythm_ratio_;
+ 532              		.loc 1 113 5 is_stmt 1 view .LVU99
+ 112:Arpeggiator.cpp ****     float main_interval = 1.0f / metro_.GetFreq();
+ 533              		.loc 1 112 49 is_stmt 0 view .LVU100
  534 0000 B7EE007A 		vmov.f32	s14, #1.0e+0
  535 0004 D0ED007A 		vldr.32	s15, [r0]
  536 0008 C7EE276A 		vdiv.f32	s13, s14, s15
  537              	.LVL24:
- 538              		.loc 1 109 39 view .LVU101
+ 538              		.loc 1 113 39 view .LVU101
  539 000c 90ED0E7A 		vldr.32	s14, [r0, #56]
  540 0010 C6EE877A 		vdiv.f32	s15, s13, s14
- 541              		.loc 1 109 23 view .LVU102
+ 541              		.loc 1 113 23 view .LVU102
  542 0014 C0ED127A 		vstr.32	s15, [r0, #72]
- 110:Arpeggiator.cpp **** }
- 543              		.loc 1 110 1 view .LVU103
+ 114:Arpeggiator.cpp **** }
+ 543              		.loc 1 114 1 view .LVU103
  544 0018 7047     		bx	lr
  545              		.cfi_endproc
  546              	.LFE4620:
@@ -1614,13 +1618,13 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  567              		.cfi_offset 14, -4
   20:Arpeggiator.cpp ****     sample_rate_ = samplerate;
  568              		.loc 1 20 42 view .LVU107
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 28
+
+
  569 0002 F0EE400A 		vmov.f32	s1, s0
   21:Arpeggiator.cpp ****     metro_.Init(1.0f, samplerate);
  570              		.loc 1 21 18 view .LVU108
  571 0006 80ED110A 		vstr.32	s0, [r0, #68]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 28
-
-
   22:Arpeggiator.cpp ****     next_trigger_time_ = 0.0f;
  572              		.loc 1 22 5 is_stmt 1 view .LVU109
   22:Arpeggiator.cpp ****     next_trigger_time_ = 0.0f;
@@ -1674,13 +1678,13 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  611              	_ZN11Arpeggiator12SetMainTempoEf:
  612              	.LVL30:
  613              	.LFB4610:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 29
+
+
   38:Arpeggiator.cpp ****     if (tempo < 0.1f) tempo = 0.1f;
  614              		.loc 1 38 45 is_stmt 1 view -0
  615              		.cfi_startproc
  616              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 29
-
-
  617              		@ frame_needed = 0, uses_anonymous_args = 0
   39:Arpeggiator.cpp ****     metro_.SetFreq(tempo);
  618              		.loc 1 39 5 view .LVU123
@@ -1734,13 +1738,13 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  655 0024 CDCCCC3D 		.word	1036831949
  656              		.cfi_endproc
  657              	.LFE4610:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 30
+
+
  659              		.section	.text._ZN11Arpeggiator18SetPolyrhythmRatioEf,"ax",%progbits
  660              		.align	1
  661              		.global	_ZN11Arpeggiator18SetPolyrhythmRatioEf
  662              		.syntax unified
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 30
-
-
  663              		.thumb
  664              		.thumb_func
  666              	_ZN11Arpeggiator18SetPolyrhythmRatioEf:
@@ -1783,47 +1787,47 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  698              	_ZN11Arpeggiator10Xorshift32Ev:
  699              	.LVL39:
  700              	.LFB4621:
- 111:Arpeggiator.cpp **** 
- 112:Arpeggiator.cpp **** uint32_t Arpeggiator::Xorshift32() {
- 701              		.loc 1 112 36 is_stmt 1 view -0
+ 115:Arpeggiator.cpp **** 
+ 116:Arpeggiator.cpp **** uint32_t Arpeggiator::Xorshift32() {
+ 701              		.loc 1 116 36 is_stmt 1 view -0
  702              		.cfi_startproc
  703              		@ args = 0, pretend = 0, frame = 0
  704              		@ frame_needed = 0, uses_anonymous_args = 0
  705              		@ link register save eliminated.
- 113:Arpeggiator.cpp ****     uint32_t x = rng_state_;
- 706              		.loc 1 113 5 view .LVU143
- 707              		.loc 1 113 14 is_stmt 0 view .LVU144
+ 117:Arpeggiator.cpp ****     uint32_t x = rng_state_;
+ 706              		.loc 1 117 5 view .LVU143
+ 707              		.loc 1 117 14 is_stmt 0 view .LVU144
  708 0000 0369     		ldr	r3, [r0, #16]
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 31
+
+
  709              	.LVL40:
- 114:Arpeggiator.cpp ****     x ^= x << 13;
- 710              		.loc 1 114 5 is_stmt 1 view .LVU145
- 112:Arpeggiator.cpp ****     uint32_t x = rng_state_;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 31
-
-
- 711              		.loc 1 112 36 is_stmt 0 view .LVU146
+ 118:Arpeggiator.cpp ****     x ^= x << 13;
+ 710              		.loc 1 118 5 is_stmt 1 view .LVU145
+ 116:Arpeggiator.cpp ****     uint32_t x = rng_state_;
+ 711              		.loc 1 116 36 is_stmt 0 view .LVU146
  712 0002 0246     		mov	r2, r0
- 713              		.loc 1 114 7 view .LVU147
+ 713              		.loc 1 118 7 view .LVU147
  714 0004 83EA4333 		eor	r3, r3, r3, lsl #13
  715              	.LVL41:
- 115:Arpeggiator.cpp ****     x ^= x >> 17;
- 716              		.loc 1 115 5 is_stmt 1 view .LVU148
- 717              		.loc 1 115 7 is_stmt 0 view .LVU149
+ 119:Arpeggiator.cpp ****     x ^= x >> 17;
+ 716              		.loc 1 119 5 is_stmt 1 view .LVU148
+ 717              		.loc 1 119 7 is_stmt 0 view .LVU149
  718 0008 83EA5343 		eor	r3, r3, r3, lsr #17
  719              	.LVL42:
- 116:Arpeggiator.cpp ****     x ^= x << 5;
- 720              		.loc 1 116 5 is_stmt 1 view .LVU150
- 721              		.loc 1 116 7 is_stmt 0 view .LVU151
+ 120:Arpeggiator.cpp ****     x ^= x << 5;
+ 720              		.loc 1 120 5 is_stmt 1 view .LVU150
+ 721              		.loc 1 120 7 is_stmt 0 view .LVU151
  722 000c 83EA4310 		eor	r0, r3, r3, lsl #5
  723              	.LVL43:
- 117:Arpeggiator.cpp ****     rng_state_ = x;
- 724              		.loc 1 117 5 is_stmt 1 view .LVU152
- 725              		.loc 1 117 16 is_stmt 0 view .LVU153
+ 121:Arpeggiator.cpp ****     rng_state_ = x;
+ 724              		.loc 1 121 5 is_stmt 1 view .LVU152
+ 725              		.loc 1 121 16 is_stmt 0 view .LVU153
  726 0010 1061     		str	r0, [r2, #16]
- 118:Arpeggiator.cpp ****     return x;
- 727              		.loc 1 118 5 is_stmt 1 view .LVU154
- 119:Arpeggiator.cpp **** } ...
- 728              		.loc 1 119 1 is_stmt 0 view .LVU155
+ 122:Arpeggiator.cpp ****     return x;
+ 727              		.loc 1 122 5 is_stmt 1 view .LVU154
+ 123:Arpeggiator.cpp **** } ...
+ 728              		.loc 1 123 1 is_stmt 0 view .LVU155
  729 0012 7047     		bx	lr
  730              		.cfi_endproc
  731              	.LFE4621:
@@ -1853,50 +1857,70 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  751 0000 8369     		ldr	r3, [r0, #24]
   85:Arpeggiator.cpp **** void Arpeggiator::TriggerNote() {
  752              		.loc 1 85 33 is_stmt 0 view .LVU158
- 753 0002 10B5     		push	{r4, lr}
- 754              		.cfi_def_cfa_offset 8
- 755              		.cfi_offset 4, -8
- 756              		.cfi_offset 14, -4
- 757 0004 0446     		mov	r4, r0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 32
+ 753 0002 30B5     		push	{r4, r5, lr}
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 32
 
 
- 758 0006 88B0     		sub	sp, sp, #32
- 759              		.cfi_def_cfa_offset 40
+ 754              		.cfi_def_cfa_offset 12
+ 755              		.cfi_offset 4, -12
+ 756              		.cfi_offset 5, -8
+ 757              		.cfi_offset 14, -4
+ 758 0004 0446     		mov	r4, r0
+ 759 0006 89B0     		sub	sp, sp, #36
+ 760              		.cfi_def_cfa_offset 48
   86:Arpeggiator.cpp ****     if (num_notes_ == 0) return;
- 760              		.loc 1 86 5 view .LVU159
- 761 0008 F3B1     		cbz	r3, .L33
- 762              	.LVL45:
- 763              	.LBB181:
- 764              	.LBI181:
+ 761              		.loc 1 86 5 view .LVU159
+ 762 0008 73B3     		cbz	r3, .L33
+ 763              	.LVL45:
+ 764              	.LBB181:
+ 765              	.LBI181:
   85:Arpeggiator.cpp **** void Arpeggiator::TriggerNote() {
- 765              		.loc 1 85 6 is_stmt 1 view .LVU160
- 766              	.LBB182:
+ 766              		.loc 1 85 6 is_stmt 1 view .LVU160
+ 767              	.LBB182:
   88:Arpeggiator.cpp ****     {
- 767              		.loc 1 88 5 view .LVU161
- 768              	.LBB183:
+ 768              		.loc 1 88 5 view .LVU161
+ 769              	.LBB183:
   89:Arpeggiator.cpp ****         extern DaisySeed hw; // global hardware
- 769              		.loc 1 89 9 view .LVU162
+ 770              		.loc 1 89 9 view .LVU162
   90:Arpeggiator.cpp ****         char buf[32];
- 770              		.loc 1 90 9 view .LVU163
-  91:Arpeggiator.cpp ****         sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
- 771              		.loc 1 91 9 view .LVU164
-  91:Arpeggiator.cpp ****         sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
- 772              		.loc 1 91 16 is_stmt 0 view .LVU165
- 773 000a C26C     		ldr	r2, [r0, #76]
- 774 000c 6846     		mov	r0, sp
- 775              	.LVL46:
-  91:Arpeggiator.cpp ****         sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
- 776              		.loc 1 91 16 view .LVU166
- 777 000e 1449     		ldr	r1, .L42
- 778 0010 FFF7FEFF 		bl	sprintf
- 779              	.LVL47:
-  92:Arpeggiator.cpp ****         hw.PrintLine(buf);
- 780              		.loc 1 92 9 is_stmt 1 view .LVU167
- 781              	.LBB184:
- 782              	.LBI184:
- 783              		.file 5 "lib/libdaisy/src/daisy_seed.h"
+ 771              		.loc 1 90 9 view .LVU163
+  91:Arpeggiator.cpp ****         static float last_print_time = -3.0f;
+ 772              		.loc 1 91 9 view .LVU164
+  92:Arpeggiator.cpp ****         if (current_time_ - last_print_time >= 3.0f) {
+ 773              		.loc 1 92 9 view .LVU165
+  92:Arpeggiator.cpp ****         if (current_time_ - last_print_time >= 3.0f) {
+ 774              		.loc 1 92 27 is_stmt 0 view .LVU166
+ 775 000a 1D4D     		ldr	r5, .L45
+ 776 000c D0ED107A 		vldr.32	s15, [r0, #64]
+ 777 0010 95ED007A 		vldr.32	s14, [r5]
+ 778 0014 77EEC77A 		vsub.f32	s15, s15, s14
+  92:Arpeggiator.cpp ****         if (current_time_ - last_print_time >= 3.0f) {
+ 779              		.loc 1 92 9 view .LVU167
+ 780 0018 B0EE087A 		vmov.f32	s14, #3.0e+0
+ 781 001c F4EEC77A 		vcmpe.f32	s15, s14
+ 782 0020 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 783 0024 09DB     		blt	.L36
+  93:Arpeggiator.cpp ****             sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
+ 784              		.loc 1 93 13 is_stmt 1 view .LVU168
+  93:Arpeggiator.cpp ****             sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
+ 785              		.loc 1 93 20 is_stmt 0 view .LVU169
+ 786 0026 C26C     		ldr	r2, [r0, #76]
+ 787 0028 6846     		mov	r0, sp
+ 788              	.LVL46:
+  93:Arpeggiator.cpp ****             sprintf(buf, "[DEBUG] ARP idx %d", step_index_);
+ 789              		.loc 1 93 20 view .LVU170
+ 790 002a 1649     		ldr	r1, .L45+4
+ 791 002c FFF7FEFF 		bl	sprintf
+ 792              	.LVL47:
+  94:Arpeggiator.cpp ****             hw.PrintLine(buf);
+ 793              		.loc 1 94 13 is_stmt 1 view .LVU171
+ 794              	.LBB184:
+ 795              	.LBI184:
+ 796              		.file 5 "lib/libdaisy/src/daisy_seed.h"
    1:lib/libdaisy/src/daisy_seed.h **** #pragma once
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 33
+
+
    2:lib/libdaisy/src/daisy_seed.h **** #ifndef DSY_SEED_H
    3:lib/libdaisy/src/daisy_seed.h **** #define DSY_SEED_H
    4:lib/libdaisy/src/daisy_seed.h **** 
@@ -1918,9 +1942,6 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
   20:lib/libdaisy/src/daisy_seed.h ****   public:
   21:lib/libdaisy/src/daisy_seed.h ****     DaisySeed() {}
   22:lib/libdaisy/src/daisy_seed.h ****     ~DaisySeed() {}
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 33
-
-
   23:lib/libdaisy/src/daisy_seed.h **** 
   24:lib/libdaisy/src/daisy_seed.h ****     /** This function used to provide a pre-initialization configuraiton 
   25:lib/libdaisy/src/daisy_seed.h ****      *  it has since been deprecated, and does nothing.
@@ -1957,6 +1978,9 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
   56:lib/libdaisy/src/daisy_seed.h **** 
   57:lib/libdaisy/src/daisy_seed.h ****     /** Begins the audio for the seeds builtin audio.
   58:lib/libdaisy/src/daisy_seed.h ****     the specified callback will get called whenever
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 34
+
+
   59:lib/libdaisy/src/daisy_seed.h ****     new data is ready to be prepared.
   60:lib/libdaisy/src/daisy_seed.h ****     */
   61:lib/libdaisy/src/daisy_seed.h ****     void StartAudio(AudioHandle::InterleavingAudioCallback cb);
@@ -1978,9 +2002,6 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
   77:lib/libdaisy/src/daisy_seed.h **** 
   78:lib/libdaisy/src/daisy_seed.h ****     /** Stops the audio if it is running. */
   79:lib/libdaisy/src/daisy_seed.h ****     void StopAudio();
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 34
-
-
   80:lib/libdaisy/src/daisy_seed.h **** 
   81:lib/libdaisy/src/daisy_seed.h ****     /** Updates the Audio Sample Rate, and reinitializes.
   82:lib/libdaisy/src/daisy_seed.h ****      ** Audio must be stopped for this to work.
@@ -2017,90 +2038,97 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  113:lib/libdaisy/src/daisy_seed.h ****         Log::Print(format, va...);
  114:lib/libdaisy/src/daisy_seed.h ****     }
  115:lib/libdaisy/src/daisy_seed.h **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 35
+
+
  116:lib/libdaisy/src/daisy_seed.h ****     /** Print formatted debug log message with automatic line termination
  117:lib/libdaisy/src/daisy_seed.h ****     */
  118:lib/libdaisy/src/daisy_seed.h ****     template <typename... VA>
  119:lib/libdaisy/src/daisy_seed.h ****     static void PrintLine(const char* format, VA... va)
- 784              		.loc 5 119 17 view .LVU168
- 785              	.LBB185:
+ 797              		.loc 5 119 17 view .LVU172
+ 798              	.LBB185:
  120:lib/libdaisy/src/daisy_seed.h ****     {
  121:lib/libdaisy/src/daisy_seed.h ****         Log::PrintLine(format, va...);
- 786              		.loc 5 121 23 is_stmt 0 view .LVU169
- 787 0014 6846     		mov	r0, sp
- 788 0016 FFF7FEFF 		bl	_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
- 789              	.LVL48:
- 790              		.loc 5 121 23 view .LVU170
- 791              	.LBE185:
- 792              	.LBE184:
- 793              	.LBE183:
-  94:Arpeggiator.cpp ****     int idx;
- 794              		.loc 1 94 5 is_stmt 1 view .LVU171
-  95:Arpeggiator.cpp ****     if (direction_ == Random) {
- 795              		.loc 1 95 5 view .LVU172
- 796              	.LBB186:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 35
-
-
- 797 001a 94F85030 		ldrb	r3, [r4, #80]	@ zero_extendqisi2
- 798 001e 012B     		cmp	r3, #1
- 799 0020 14D1     		bne	.L36
- 800              	.LBB187:
-  96:Arpeggiator.cpp ****         uint32_t rnd = Xorshift32();
- 801              		.loc 1 96 9 view .LVU173
-  96:Arpeggiator.cpp ****         uint32_t rnd = Xorshift32();
- 802              		.loc 1 96 34 is_stmt 0 view .LVU174
- 803 0022 2046     		mov	r0, r4
- 804 0024 FFF7FEFF 		bl	_ZN11Arpeggiator10Xorshift32Ev
- 805              	.LVL49:
-  97:Arpeggiator.cpp ****         idx = rnd % num_notes_;
- 806              		.loc 1 97 9 is_stmt 1 view .LVU175
-  97:Arpeggiator.cpp ****         idx = rnd % num_notes_;
- 807              		.loc 1 97 19 is_stmt 0 view .LVU176
- 808 0028 A369     		ldr	r3, [r4, #24]
- 809 002a B0FBF3F2 		udiv	r2, r0, r3
- 810 002e 02FB1300 		mls	r0, r2, r3, r0
- 811              	.LVL50:
- 812              	.L37:
-  97:Arpeggiator.cpp ****         idx = rnd % num_notes_;
- 813              		.loc 1 97 19 view .LVU177
- 814              	.LBE187:
- 815              	.LBE186:
- 102:Arpeggiator.cpp ****     if (note_callback_) {
- 816              		.loc 1 102 5 is_stmt 1 view .LVU178
- 817              	.LBB188:
- 818              	.LBI188:
+ 799              		.loc 5 121 23 is_stmt 0 view .LVU173
+ 800 0030 6846     		mov	r0, sp
+ 801 0032 FFF7FEFF 		bl	_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
+ 802              	.LVL48:
+ 803              		.loc 5 121 23 view .LVU174
+ 804              	.LBE185:
+ 805              	.LBE184:
+  95:Arpeggiator.cpp ****             last_print_time = current_time_;
+ 806              		.loc 1 95 13 is_stmt 1 view .LVU175
+  95:Arpeggiator.cpp ****             last_print_time = current_time_;
+ 807              		.loc 1 95 29 is_stmt 0 view .LVU176
+ 808 0036 236C     		ldr	r3, [r4, #64]	@ float
+ 809 0038 2B60     		str	r3, [r5]	@ float
+ 810              	.L36:
+ 811              	.LBE183:
+  98:Arpeggiator.cpp ****     int idx;
+ 812              		.loc 1 98 5 is_stmt 1 view .LVU177
+  99:Arpeggiator.cpp ****     if (direction_ == Random) {
+ 813              		.loc 1 99 5 view .LVU178
+ 814              	.LBB186:
+ 815 003a 94F85030 		ldrb	r3, [r4, #80]	@ zero_extendqisi2
+ 816 003e 012B     		cmp	r3, #1
+ 817 0040 14D1     		bne	.L38
+ 818              	.LBB187:
+ 100:Arpeggiator.cpp ****         uint32_t rnd = Xorshift32();
+ 819              		.loc 1 100 9 view .LVU179
+ 100:Arpeggiator.cpp ****         uint32_t rnd = Xorshift32();
+ 820              		.loc 1 100 34 is_stmt 0 view .LVU180
+ 821 0042 2046     		mov	r0, r4
+ 822 0044 FFF7FEFF 		bl	_ZN11Arpeggiator10Xorshift32Ev
+ 823              	.LVL49:
+ 101:Arpeggiator.cpp ****         idx = rnd % num_notes_;
+ 824              		.loc 1 101 9 is_stmt 1 view .LVU181
+ 101:Arpeggiator.cpp ****         idx = rnd % num_notes_;
+ 825              		.loc 1 101 19 is_stmt 0 view .LVU182
+ 826 0048 A369     		ldr	r3, [r4, #24]
+ 827 004a B0FBF3F2 		udiv	r2, r0, r3
+ 828 004e 02FB1300 		mls	r0, r2, r3, r0
+ 829              	.LVL50:
+ 830              	.L39:
+ 101:Arpeggiator.cpp ****         idx = rnd % num_notes_;
+ 831              		.loc 1 101 19 view .LVU183
+ 832              	.LBE187:
+ 833              	.LBE186:
+ 106:Arpeggiator.cpp ****     if (note_callback_) {
+ 834              		.loc 1 106 5 is_stmt 1 view .LVU184
+ 835              	.LBB188:
+ 836              	.LBI188:
  498:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       { return !_M_empty(); }
- 819              		.loc 3 498 16 view .LVU179
- 820              	.LBB189:
- 821              	.LBI189:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 36
+
+
+ 837              		.loc 3 498 16 view .LVU185
+ 838              	.LBB189:
+ 839              	.LBI189:
  248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
- 822              		.loc 3 248 10 view .LVU180
- 823              	.LBB190:
+ 840              		.loc 3 248 10 view .LVU186
+ 841              	.LBB190:
  248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
- 824              		.loc 3 248 29 view .LVU181
+ 842              		.loc 3 248 29 view .LVU187
  248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
- 825              		.loc 3 248 29 is_stmt 0 view .LVU182
- 826              	.LBE190:
- 827              	.LBE189:
- 828              	.LBE188:
- 102:Arpeggiator.cpp ****     if (note_callback_) {
- 829              		.loc 1 102 5 view .LVU183
- 830 0032 236B     		ldr	r3, [r4, #48]
- 831 0034 43B1     		cbz	r3, .L33
- 103:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
- 832              		.loc 1 103 9 is_stmt 1 view .LVU184
- 103:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
- 833              		.loc 1 103 23 is_stmt 0 view .LVU185
- 834 0036 6369     		ldr	r3, [r4, #20]
- 835              	.LBB191:
- 836              	.LBB192:
+ 843              		.loc 3 248 29 is_stmt 0 view .LVU188
+ 844              	.LBE190:
+ 845              	.LBE189:
+ 846              	.LBE188:
+ 106:Arpeggiator.cpp ****     if (note_callback_) {
+ 847              		.loc 1 106 5 view .LVU189
+ 848 0052 236B     		ldr	r3, [r4, #48]
+ 849 0054 43B1     		cbz	r3, .L33
+ 107:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
+ 850              		.loc 1 107 9 is_stmt 1 view .LVU190
+ 107:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
+ 851              		.loc 1 107 23 is_stmt 0 view .LVU191
+ 852 0056 6369     		ldr	r3, [r4, #20]
+ 853              	.LBB191:
+ 854              	.LBB192:
  596:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	}
  597:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     }
  598:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
  599:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****   template<typename _Res, typename... _ArgTypes>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 36
-
-
  600:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     template<typename _Functor, typename, typename>
  601:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function<_Res(_ArgTypes...)>::
  602:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       function(_Functor __f)
@@ -2124,325 +2152,333 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 1
  620:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       if (_M_empty())
  621:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 	__throw_bad_function_call();
  622:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       return _M_invoker(_M_functor, std::forward<_ArgTypes>(__args)...);
- 837              		.loc 3 622 14 view .LVU186
- 838 0038 6946     		mov	r1, sp
- 839              	.LBE192:
- 840              	.LBE191:
- 103:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
- 841              		.loc 1 103 23 view .LVU187
- 842 003a 53F82030 		ldr	r3, [r3, r0, lsl #2]
- 843              	.LVL51:
- 844              	.LBB195:
- 845              	.LBB193:
- 846              		.loc 3 622 14 view .LVU188
- 847 003e 04F12800 		add	r0, r4, #40
- 848              	.LVL52:
- 849              		.loc 3 622 14 view .LVU189
- 850 0042 0093     		str	r3, [sp]
- 851              	.LVL53:
- 852              		.loc 3 622 14 view .LVU190
- 853              	.LBE193:
- 854              	.LBI191:
+ 855              		.loc 3 622 14 view .LVU192
+ 856 0058 6946     		mov	r1, sp
+ 857              	.LBE192:
+ 858              	.LBE191:
+ 107:Arpeggiator.cpp ****         note_callback_(notes_[idx]);
+ 859              		.loc 1 107 23 view .LVU193
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 37
+
+
+ 860 005a 53F82030 		ldr	r3, [r3, r0, lsl #2]
+ 861              	.LVL51:
+ 862              	.LBB195:
+ 863              	.LBB193:
+ 864              		.loc 3 622 14 view .LVU194
+ 865 005e 04F12800 		add	r0, r4, #40
+ 866              	.LVL52:
+ 867              		.loc 3 622 14 view .LVU195
+ 868 0062 0093     		str	r3, [sp]
+ 869              	.LVL53:
+ 870              		.loc 3 622 14 view .LVU196
+ 871              	.LBE193:
+ 872              	.LBI191:
  617:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     operator()(_ArgTypes... __args) const
- 855              		.loc 3 617 5 is_stmt 1 view .LVU191
+ 873              		.loc 3 617 5 is_stmt 1 view .LVU197
  617:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****     operator()(_ArgTypes... __args) const
- 856              		.loc 3 617 5 is_stmt 0 view .LVU192
- 857              	.LBE195:
- 858              	.LBE182:
- 859              	.LBE181:
+ 874              		.loc 3 617 5 is_stmt 0 view .LVU198
+ 875              	.LBE195:
+ 876              	.LBE182:
+ 877              	.LBE181:
  248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
- 860              		.loc 3 248 29 is_stmt 1 view .LVU193
- 861              	.LBB200:
- 862              	.LBB198:
- 863              	.LBB196:
- 864              	.LBB194:
- 865              		.loc 3 622 14 is_stmt 0 view .LVU194
- 866 0044 636B     		ldr	r3, [r4, #52]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 37
+ 878              		.loc 3 248 29 is_stmt 1 view .LVU199
+ 879              	.LBB200:
+ 880              	.LBB198:
+ 881              	.LBB196:
+ 882              	.LBB194:
+ 883              		.loc 3 622 14 is_stmt 0 view .LVU200
+ 884 0064 636B     		ldr	r3, [r4, #52]
+ 885              	.LVL54:
+ 886              		.loc 3 622 14 view .LVU201
+ 887 0066 9847     		blx	r3
+ 888              	.LVL55:
+ 889              	.L33:
+ 890              		.loc 3 622 14 view .LVU202
+ 891              	.LBE194:
+ 892              	.LBE196:
+ 893              	.LBE198:
+ 894              	.LBE200:
+ 109:Arpeggiator.cpp **** }
+ 895              		.loc 1 109 1 view .LVU203
+ 896 0068 09B0     		add	sp, sp, #36
+ 897              		.cfi_remember_state
+ 898              		.cfi_def_cfa_offset 12
+ 899              		@ sp needed
+ 900 006a 30BD     		pop	{r4, r5, pc}
+ 901              	.LVL56:
+ 902              	.L38:
+ 903              		.cfi_restore_state
+ 904              	.LBB201:
+ 905              	.LBB199:
+ 906              	.LBB197:
+ 103:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
+ 907              		.loc 1 103 9 is_stmt 1 view .LVU204
+ 103:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
+ 908              		.loc 1 103 15 is_stmt 0 view .LVU205
+ 909 006c E36C     		ldr	r3, [r4, #76]
+ 103:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 38
 
 
- 867              	.LVL54:
- 868              		.loc 3 622 14 view .LVU195
- 869 0046 9847     		blx	r3
- 870              	.LVL55:
- 871              	.L33:
- 872              		.loc 3 622 14 view .LVU196
- 873              	.LBE194:
- 874              	.LBE196:
- 875              	.LBE198:
- 876              	.LBE200:
- 105:Arpeggiator.cpp **** }
- 877              		.loc 1 105 1 view .LVU197
- 878 0048 08B0     		add	sp, sp, #32
- 879              		.cfi_remember_state
- 880              		.cfi_def_cfa_offset 8
- 881              		@ sp needed
- 882 004a 10BD     		pop	{r4, pc}
- 883              	.LVL56:
- 884              	.L36:
- 885              		.cfi_restore_state
- 886              	.LBB201:
- 887              	.LBB199:
- 888              	.LBB197:
-  99:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
- 889              		.loc 1 99 9 is_stmt 1 view .LVU198
-  99:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
- 890              		.loc 1 99 15 is_stmt 0 view .LVU199
- 891 004c E36C     		ldr	r3, [r4, #76]
-  99:Arpeggiator.cpp ****         idx = step_index_ % num_notes_;
- 892              		.loc 1 99 13 view .LVU200
- 893 004e A269     		ldr	r2, [r4, #24]
- 894 0050 93FBF2F0 		sdiv	r0, r3, r2
- 895 0054 02FB1030 		mls	r0, r2, r0, r3
- 896              	.LVL57:
- 100:Arpeggiator.cpp ****         ++step_index_;
- 897              		.loc 1 100 9 is_stmt 1 view .LVU201
- 898 0058 0133     		adds	r3, r3, #1
- 899 005a E364     		str	r3, [r4, #76]
- 900 005c E9E7     		b	.L37
- 901              	.L43:
- 902 005e 00BF     		.align	2
- 903              	.L42:
- 904 0060 00000000 		.word	.LC0
- 905              	.LBE197:
- 906              	.LBE199:
- 907              	.LBE201:
- 908              		.cfi_endproc
- 909              	.LFE4619:
- 911              		.section	.text._ZN11Arpeggiator7ProcessEj,"ax",%progbits
- 912              		.align	1
- 913              		.global	_ZN11Arpeggiator7ProcessEj
- 914              		.syntax unified
- 915              		.thumb
- 916              		.thumb_func
- 918              	_ZN11Arpeggiator7ProcessEj:
- 919              	.LVL58:
- 920              	.LFB4618:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 38
-
-
+ 910              		.loc 1 103 13 view .LVU206
+ 911 006e A269     		ldr	r2, [r4, #24]
+ 912 0070 93FBF2F0 		sdiv	r0, r3, r2
+ 913 0074 02FB1030 		mls	r0, r2, r0, r3
+ 914              	.LVL57:
+ 104:Arpeggiator.cpp ****         ++step_index_;
+ 915              		.loc 1 104 9 is_stmt 1 view .LVU207
+ 916 0078 0133     		adds	r3, r3, #1
+ 917 007a E364     		str	r3, [r4, #76]
+ 918 007c E9E7     		b	.L39
+ 919              	.L46:
+ 920 007e 00BF     		.align	2
+ 921              	.L45:
+ 922 0080 00000000 		.word	.LANCHOR0
+ 923 0084 00000000 		.word	.LC0
+ 924              	.LBE197:
+ 925              	.LBE199:
+ 926              	.LBE201:
+ 927              		.cfi_endproc
+ 928              	.LFE4619:
+ 930              		.section	.text._ZN11Arpeggiator7ProcessEj,"ax",%progbits
+ 931              		.align	1
+ 932              		.global	_ZN11Arpeggiator7ProcessEj
+ 933              		.syntax unified
+ 934              		.thumb
+ 935              		.thumb_func
+ 937              	_ZN11Arpeggiator7ProcessEj:
+ 938              	.LVL58:
+ 939              	.LFB4618:
   74:Arpeggiator.cpp **** void Arpeggiator::Process(size_t frames) {
- 921              		.loc 1 74 42 view -0
- 922              		.cfi_startproc
- 923              		@ args = 0, pretend = 0, frame = 0
- 924              		@ frame_needed = 0, uses_anonymous_args = 0
+ 940              		.loc 1 74 42 view -0
+ 941              		.cfi_startproc
+ 942              		@ args = 0, pretend = 0, frame = 0
+ 943              		@ frame_needed = 0, uses_anonymous_args = 0
   75:Arpeggiator.cpp ****     if (num_notes_ < 1 || !note_callback_) return;
- 925              		.loc 1 75 5 view .LVU203
+ 944              		.loc 1 75 5 view .LVU209
   75:Arpeggiator.cpp ****     if (num_notes_ < 1 || !note_callback_) return;
- 926              		.loc 1 75 24 is_stmt 0 view .LVU204
- 927 0000 8369     		ldr	r3, [r0, #24]
- 928 0002 002B     		cmp	r3, #0
+ 945              		.loc 1 75 24 is_stmt 0 view .LVU210
+ 946 0000 8369     		ldr	r3, [r0, #24]
+ 947 0002 002B     		cmp	r3, #0
   74:Arpeggiator.cpp **** void Arpeggiator::Process(size_t frames) {
- 929              		.loc 1 74 42 view .LVU205
- 930 0004 70B5     		push	{r4, r5, r6, lr}
- 931              		.cfi_def_cfa_offset 16
- 932              		.cfi_offset 4, -16
- 933              		.cfi_offset 5, -12
- 934              		.cfi_offset 6, -8
- 935              		.cfi_offset 14, -4
+ 948              		.loc 1 74 42 view .LVU211
+ 949 0004 70B5     		push	{r4, r5, r6, lr}
+ 950              		.cfi_def_cfa_offset 16
+ 951              		.cfi_offset 4, -16
+ 952              		.cfi_offset 5, -12
+ 953              		.cfi_offset 6, -8
+ 954              		.cfi_offset 14, -4
   74:Arpeggiator.cpp **** void Arpeggiator::Process(size_t frames) {
- 936              		.loc 1 74 42 view .LVU206
- 937 0006 0446     		mov	r4, r0
- 938 0008 0E46     		mov	r6, r1
+ 955              		.loc 1 74 42 view .LVU212
+ 956 0006 0446     		mov	r4, r0
+ 957 0008 0E46     		mov	r6, r1
   75:Arpeggiator.cpp ****     if (num_notes_ < 1 || !note_callback_) return;
- 939              		.loc 1 75 24 view .LVU207
- 940 000a 24DD     		ble	.L44
- 941              	.LVL59:
- 942              	.LBB202:
- 943              	.LBI202:
+ 958              		.loc 1 75 24 view .LVU213
+ 959 000a 24DD     		ble	.L47
+ 960              	.LVL59:
+ 961              	.LBB202:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 39
+
+
+ 962              	.LBI202:
  498:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h ****       { return !_M_empty(); }
- 944              		.loc 3 498 16 is_stmt 1 discriminator 2 view .LVU208
- 945              	.LBB203:
- 946              	.LBI203:
+ 963              		.loc 3 498 16 is_stmt 1 discriminator 2 view .LVU214
+ 964              	.LBB203:
+ 965              	.LBI203:
  248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
- 947              		.loc 3 248 10 discriminator 2 view .LVU209
- 948              	.LBB204:
+ 966              		.loc 3 248 10 discriminator 2 view .LVU215
+ 967              	.LBB204:
  248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
- 949              		.loc 3 248 29 discriminator 2 view .LVU210
+ 968              		.loc 3 248 29 discriminator 2 view .LVU216
  248:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h **** 
- 950              		.loc 3 248 29 is_stmt 0 discriminator 2 view .LVU211
- 951              	.LBE204:
- 952              	.LBE203:
- 953              	.LBE202:
+ 969              		.loc 3 248 29 is_stmt 0 discriminator 2 view .LVU217
+ 970              	.LBE204:
+ 971              	.LBE203:
+ 972              	.LBE202:
   75:Arpeggiator.cpp ****     if (num_notes_ < 1 || !note_callback_) return;
- 954              		.loc 1 75 24 discriminator 2 view .LVU212
- 955 000c 036B     		ldr	r3, [r0, #48]
- 956 000e 13B3     		cbz	r3, .L44
- 957 0010 0025     		movs	r5, #0
- 958              	.LVL60:
- 959              	.L48:
- 960              	.LBB205:
+ 973              		.loc 1 75 24 discriminator 2 view .LVU218
+ 974 000c 036B     		ldr	r3, [r0, #48]
+ 975 000e 13B3     		cbz	r3, .L47
+ 976 0010 0025     		movs	r5, #0
+ 977              	.LVL60:
+ 978              	.L51:
+ 979              	.LBB205:
   76:Arpeggiator.cpp ****     for (size_t i = 0; i < frames; ++i) {
- 961              		.loc 1 76 26 is_stmt 1 discriminator 1 view .LVU213
- 962 0012 B542     		cmp	r5, r6
- 963 0014 1FD0     		beq	.L44
+ 980              		.loc 1 76 26 is_stmt 1 discriminator 1 view .LVU219
+ 981 0012 B542     		cmp	r5, r6
+ 982 0014 1FD0     		beq	.L47
   77:Arpeggiator.cpp ****         current_time_ += 1.0f / sample_rate_;
- 964              		.loc 1 77 9 view .LVU214
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 39
-
-
+ 983              		.loc 1 77 9 view .LVU220
   77:Arpeggiator.cpp ****         current_time_ += 1.0f / sample_rate_;
- 965              		.loc 1 77 31 is_stmt 0 view .LVU215
- 966 0016 F7EE006A 		vmov.f32	s13, #1.0e+0
- 967 001a 94ED117A 		vldr.32	s14, [r4, #68]
- 968 001e C6EE877A 		vdiv.f32	s15, s13, s14
+ 984              		.loc 1 77 31 is_stmt 0 view .LVU221
+ 985 0016 F7EE006A 		vmov.f32	s13, #1.0e+0
+ 986 001a 94ED117A 		vldr.32	s14, [r4, #68]
+ 987 001e C6EE877A 		vdiv.f32	s15, s13, s14
   77:Arpeggiator.cpp ****         current_time_ += 1.0f / sample_rate_;
- 969              		.loc 1 77 23 view .LVU216
- 970 0022 94ED107A 		vldr.32	s14, [r4, #64]
- 971 0026 77EE877A 		vadd.f32	s15, s15, s14
+ 988              		.loc 1 77 23 view .LVU222
+ 989 0022 94ED107A 		vldr.32	s14, [r4, #64]
+ 990 0026 77EE877A 		vadd.f32	s15, s15, s14
   78:Arpeggiator.cpp ****         if (current_time_ >= next_trigger_time_) {
- 972              		.loc 1 78 9 view .LVU217
- 973 002a 94ED0F7A 		vldr.32	s14, [r4, #60]
- 974 002e F4EEC77A 		vcmpe.f32	s15, s14
+ 991              		.loc 1 78 9 view .LVU223
+ 992 002a 94ED0F7A 		vldr.32	s14, [r4, #60]
+ 993 002e F4EEC77A 		vcmpe.f32	s15, s14
   77:Arpeggiator.cpp ****         current_time_ += 1.0f / sample_rate_;
- 975              		.loc 1 77 23 view .LVU218
- 976 0032 C4ED107A 		vstr.32	s15, [r4, #64]
+ 994              		.loc 1 77 23 view .LVU224
+ 995 0032 C4ED107A 		vstr.32	s15, [r4, #64]
   78:Arpeggiator.cpp ****         if (current_time_ >= next_trigger_time_) {
- 977              		.loc 1 78 9 is_stmt 1 view .LVU219
- 978 0036 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 979 003a 0ADB     		blt	.L46
+ 996              		.loc 1 78 9 is_stmt 1 view .LVU225
+ 997 0036 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 998 003a 0ADB     		blt	.L49
   79:Arpeggiator.cpp ****             TriggerNote();
- 980              		.loc 1 79 13 view .LVU220
+ 999              		.loc 1 79 13 view .LVU226
   79:Arpeggiator.cpp ****             TriggerNote();
- 981              		.loc 1 79 24 is_stmt 0 view .LVU221
- 982 003c 2046     		mov	r0, r4
- 983 003e FFF7FEFF 		bl	_ZN11Arpeggiator11TriggerNoteEv
- 984              	.LVL61:
+ 1000              		.loc 1 79 24 is_stmt 0 view .LVU227
+ 1001 003c 2046     		mov	r0, r4
+ 1002 003e FFF7FEFF 		bl	_ZN11Arpeggiator11TriggerNoteEv
+ 1003              	.LVL61:
   80:Arpeggiator.cpp ****             next_trigger_time_ += current_interval_;
- 985              		.loc 1 80 13 is_stmt 1 view .LVU222
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 40
+
+
+ 1004              		.loc 1 80 13 is_stmt 1 view .LVU228
   80:Arpeggiator.cpp ****             next_trigger_time_ += current_interval_;
- 986              		.loc 1 80 32 is_stmt 0 view .LVU223
- 987 0042 D4ED0F7A 		vldr.32	s15, [r4, #60]
- 988 0046 94ED127A 		vldr.32	s14, [r4, #72]
- 989 004a 77EE877A 		vadd.f32	s15, s15, s14
- 990 004e C4ED0F7A 		vstr.32	s15, [r4, #60]
- 991              	.L46:
+ 1005              		.loc 1 80 32 is_stmt 0 view .LVU229
+ 1006 0042 D4ED0F7A 		vldr.32	s15, [r4, #60]
+ 1007 0046 94ED127A 		vldr.32	s14, [r4, #72]
+ 1008 004a 77EE877A 		vadd.f32	s15, s15, s14
+ 1009 004e C4ED0F7A 		vstr.32	s15, [r4, #60]
+ 1010              	.L49:
   76:Arpeggiator.cpp ****     for (size_t i = 0; i < frames; ++i) {
- 992              		.loc 1 76 5 is_stmt 1 discriminator 2 view .LVU224
- 993 0052 0135     		adds	r5, r5, #1
- 994              	.LVL62:
+ 1011              		.loc 1 76 5 is_stmt 1 discriminator 2 view .LVU230
+ 1012 0052 0135     		adds	r5, r5, #1
+ 1013              	.LVL62:
   76:Arpeggiator.cpp ****     for (size_t i = 0; i < frames; ++i) {
- 995              		.loc 1 76 5 is_stmt 0 discriminator 2 view .LVU225
- 996 0054 DDE7     		b	.L48
- 997              	.LVL63:
- 998              	.L44:
+ 1014              		.loc 1 76 5 is_stmt 0 discriminator 2 view .LVU231
+ 1015 0054 DDE7     		b	.L51
+ 1016              	.LVL63:
+ 1017              	.L47:
   76:Arpeggiator.cpp ****     for (size_t i = 0; i < frames; ++i) {
- 999              		.loc 1 76 5 discriminator 2 view .LVU226
- 1000              	.LBE205:
+ 1018              		.loc 1 76 5 discriminator 2 view .LVU232
+ 1019              	.LBE205:
   83:Arpeggiator.cpp **** }
- 1001              		.loc 1 83 1 view .LVU227
- 1002 0056 70BD     		pop	{r4, r5, r6, pc}
+ 1020              		.loc 1 83 1 view .LVU233
+ 1021 0056 70BD     		pop	{r4, r5, r6, pc}
   83:Arpeggiator.cpp **** }
- 1003              		.loc 1 83 1 view .LVU228
- 1004              		.cfi_endproc
- 1005              	.LFE4618:
- 1007              		.text
- 1008              	.Letext0:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 40
+ 1022              		.loc 1 83 1 view .LVU234
+ 1023              		.cfi_endproc
+ 1024              	.LFE4618:
+ 1026              		.section	.data._ZZN11Arpeggiator11TriggerNoteEvE15last_print_time,"aw"
+ 1027              		.align	2
+ 1028              		.set	.LANCHOR0,. + 0
+ 1031              	_ZZN11Arpeggiator11TriggerNoteEvE15last_print_time:
+ 1032 0000 000040C0 		.word	-1069547520
+ 1033              		.text
+ 1034              	.Letext0:
+ 1035              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 1036              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 1037              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
+ 1038              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1039              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 1040              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 1041              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 1042              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
+ 1043              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 1044              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 1045              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 1046              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 1047              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 1048              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 1049              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
+ 1050              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
+ 1051              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
+ 1052              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
+ 1053              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
+ 1054              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
+ 1055              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
+ 1056              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/uses_allocator.h
+ 1057              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/tuple"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 41
 
 
- 1009              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
- 1010              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
- 1011              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
- 1012              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 1013              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
- 1014              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
- 1015              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
- 1016              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
- 1017              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
- 1018              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
- 1019              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
- 1020              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
- 1021              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
- 1022              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
- 1023              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
- 1024              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
- 1025              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
- 1026              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
- 1027              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
- 1028              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
- 1029              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
- 1030              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/uses_allocator.h
- 1031              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/tuple"
- 1032              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/functional"
- 1033              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_function.h"
- 1034              		.file 31 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/refwrap.h"
- 1035              		.file 32 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
- 1036              		.file 33 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
- 1037              		.file 34 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
- 1038              		.file 35 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
- 1039              		.file 36 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
- 1040              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
- 1041              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
- 1042              		.file 39 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
- 1043              		.file 40 "lib/libdaisy/src/daisy_core.h"
- 1044              		.file 41 "lib/libdaisy/src/per/tim.h"
- 1045              		.file 42 "lib/libdaisy/src/sys/system.h"
- 1046              		.file 43 "lib/libdaisy/src/per/qspi.h"
- 1047              		.file 44 "lib/libdaisy/src/per/dac.h"
- 1048              		.file 45 "lib/libdaisy/src/per/sai.h"
- 1049              		.file 46 "lib/libdaisy/src/hid/audio.h"
- 1050              		.file 47 "lib/libdaisy/src/per/adc.h"
- 1051              		.file 48 "lib/libdaisy/src/hid/usb.h"
- 1052              		.file 49 "lib/libdaisy/src/hid/logger_impl.h"
- 1053              		.file 50 "lib/libdaisy/src/util/wav_format.h"
- 1054              		.file 51 "lib/libdaisy/src/hid/logger.h"
- 1055              		.file 52 "lib/libdaisy/src/per/gpio.h"
- 1056              		.file 53 "lib/libdaisy/src/dev/sdram.h"
- 1057              		.file 54 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
- 1058              		.file 55 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
- 1059              		.file 56 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
- 1060              		.file 57 "lib/DaisySP/Source/Control/adenv.h"
- 1061              		.file 58 "lib/DaisySP/Source/Utility/dsp.h"
- 1062              		.file 59 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
- 1063              		.file 60 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
- 1064              		.file 61 "Arpeggiator.h"
- 1065              		.file 62 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 41
-
-
- 1066              		.file 63 "lib/libdaisy/src/dev/sr_595.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s 			page 42
+ 1058              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/functional"
+ 1059              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_function.h"
+ 1060              		.file 31 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/refwrap.h"
+ 1061              		.file 32 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 1062              		.file 33 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
+ 1063              		.file 34 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
+ 1064              		.file 35 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
+ 1065              		.file 36 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 1066              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 1067              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 1068              		.file 39 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
+ 1069              		.file 40 "lib/libdaisy/src/daisy_core.h"
+ 1070              		.file 41 "lib/libdaisy/src/per/tim.h"
+ 1071              		.file 42 "lib/libdaisy/src/sys/system.h"
+ 1072              		.file 43 "lib/libdaisy/src/per/qspi.h"
+ 1073              		.file 44 "lib/libdaisy/src/per/dac.h"
+ 1074              		.file 45 "lib/libdaisy/src/per/sai.h"
+ 1075              		.file 46 "lib/libdaisy/src/hid/audio.h"
+ 1076              		.file 47 "lib/libdaisy/src/per/adc.h"
+ 1077              		.file 48 "lib/libdaisy/src/hid/usb.h"
+ 1078              		.file 49 "lib/libdaisy/src/hid/logger_impl.h"
+ 1079              		.file 50 "lib/libdaisy/src/util/wav_format.h"
+ 1080              		.file 51 "lib/libdaisy/src/hid/logger.h"
+ 1081              		.file 52 "lib/libdaisy/src/per/gpio.h"
+ 1082              		.file 53 "lib/libdaisy/src/dev/sdram.h"
+ 1083              		.file 54 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 1084              		.file 55 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
+ 1085              		.file 56 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
+ 1086              		.file 57 "lib/DaisySP/Source/Control/adenv.h"
+ 1087              		.file 58 "lib/DaisySP/Source/Utility/dsp.h"
+ 1088              		.file 59 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
+ 1089              		.file 60 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
+ 1090              		.file 61 "Arpeggiator.h"
+ 1091              		.file 62 "lib/libdaisy/src/dev/sr_595.h"
+ 1092              		.file 63 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s 			page 42
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Arpeggiator.cpp
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:19     .text._ZN11ArpeggiatorC2Ev:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:25     .text._ZN11ArpeggiatorC2Ev:0000000000000000 _ZN11ArpeggiatorC2Ev
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:92     .text._ZN11ArpeggiatorC2Ev:0000000000000030 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:25     .text._ZN11ArpeggiatorC2Ev:0000000000000000 _ZN11ArpeggiatorC1Ev
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:100    .text._ZN11Arpeggiator8SetNotesEPii:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:106    .text._ZN11Arpeggiator8SetNotesEPii:0000000000000000 _ZN11Arpeggiator8SetNotesEPii
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:123    .text._ZN11Arpeggiator8SetScaleEPfi:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:129    .text._ZN11Arpeggiator8SetScaleEPfi:0000000000000000 _ZN11Arpeggiator8SetScaleEPfi
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:146    .text._ZN11Arpeggiator24SetOctaveJumpProbabilityEf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:152    .text._ZN11Arpeggiator24SetOctaveJumpProbabilityEf:0000000000000000 _ZN11Arpeggiator24SetOctaveJumpProbabilityEf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:169    .text._ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:175    .text._ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE:0000000000000000 _ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:406    .text._ZN11Arpeggiator12SetDirectionENS_9DirectionE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:412    .text._ZN11Arpeggiator12SetDirectionENS_9DirectionE:0000000000000000 _ZN11Arpeggiator12SetDirectionENS_9DirectionE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:429    .text._ZNK11Arpeggiator8IsActiveEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:435    .text._ZNK11Arpeggiator8IsActiveEv:0000000000000000 _ZNK11Arpeggiator8IsActiveEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:457    .text._ZN11Arpeggiator12GetMetroRateEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:463    .text._ZN11Arpeggiator12GetMetroRateEv:0000000000000000 _ZN11Arpeggiator12GetMetroRateEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:487    .text._ZNK11Arpeggiator18GetCurrentIntervalEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:493    .text._ZNK11Arpeggiator18GetCurrentIntervalEv:0000000000000000 _ZNK11Arpeggiator18GetCurrentIntervalEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:509    .text._ZN11Arpeggiator14UpdateIntervalEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:515    .text._ZN11Arpeggiator14UpdateIntervalEv:0000000000000000 _ZN11Arpeggiator14UpdateIntervalEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:549    .text._ZN11Arpeggiator4InitEf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:555    .text._ZN11Arpeggiator4InitEf:0000000000000000 _ZN11Arpeggiator4InitEf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:605    .text._ZN11Arpeggiator12SetMainTempoEf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:611    .text._ZN11Arpeggiator12SetMainTempoEf:0000000000000000 _ZN11Arpeggiator12SetMainTempoEf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:655    .text._ZN11Arpeggiator12SetMainTempoEf:0000000000000024 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:660    .text._ZN11Arpeggiator18SetPolyrhythmRatioEf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:666    .text._ZN11Arpeggiator18SetPolyrhythmRatioEf:0000000000000000 _ZN11Arpeggiator18SetPolyrhythmRatioEf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:692    .text._ZN11Arpeggiator10Xorshift32Ev:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:698    .text._ZN11Arpeggiator10Xorshift32Ev:0000000000000000 _ZN11Arpeggiator10Xorshift32Ev
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:737    .text._ZN11Arpeggiator11TriggerNoteEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:743    .text._ZN11Arpeggiator11TriggerNoteEv:0000000000000000 _ZN11Arpeggiator11TriggerNoteEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:904    .text._ZN11Arpeggiator11TriggerNoteEv:0000000000000060 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:912    .text._ZN11Arpeggiator7ProcessEj:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgAFvWK.s:918    .text._ZN11Arpeggiator7ProcessEj:0000000000000000 _ZN11Arpeggiator7ProcessEj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:19     .text._ZN11ArpeggiatorC2Ev:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:25     .text._ZN11ArpeggiatorC2Ev:0000000000000000 _ZN11ArpeggiatorC2Ev
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:92     .text._ZN11ArpeggiatorC2Ev:0000000000000030 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:25     .text._ZN11ArpeggiatorC2Ev:0000000000000000 _ZN11ArpeggiatorC1Ev
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:100    .text._ZN11Arpeggiator8SetNotesEPii:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:106    .text._ZN11Arpeggiator8SetNotesEPii:0000000000000000 _ZN11Arpeggiator8SetNotesEPii
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:123    .text._ZN11Arpeggiator8SetScaleEPfi:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:129    .text._ZN11Arpeggiator8SetScaleEPfi:0000000000000000 _ZN11Arpeggiator8SetScaleEPfi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:146    .text._ZN11Arpeggiator24SetOctaveJumpProbabilityEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:152    .text._ZN11Arpeggiator24SetOctaveJumpProbabilityEf:0000000000000000 _ZN11Arpeggiator24SetOctaveJumpProbabilityEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:169    .text._ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:175    .text._ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE:0000000000000000 _ZN11Arpeggiator22SetNoteTriggerCallbackESt8functionIFviEE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:406    .text._ZN11Arpeggiator12SetDirectionENS_9DirectionE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:412    .text._ZN11Arpeggiator12SetDirectionENS_9DirectionE:0000000000000000 _ZN11Arpeggiator12SetDirectionENS_9DirectionE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:429    .text._ZNK11Arpeggiator8IsActiveEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:435    .text._ZNK11Arpeggiator8IsActiveEv:0000000000000000 _ZNK11Arpeggiator8IsActiveEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:457    .text._ZN11Arpeggiator12GetMetroRateEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:463    .text._ZN11Arpeggiator12GetMetroRateEv:0000000000000000 _ZN11Arpeggiator12GetMetroRateEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:487    .text._ZNK11Arpeggiator18GetCurrentIntervalEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:493    .text._ZNK11Arpeggiator18GetCurrentIntervalEv:0000000000000000 _ZNK11Arpeggiator18GetCurrentIntervalEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:509    .text._ZN11Arpeggiator14UpdateIntervalEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:515    .text._ZN11Arpeggiator14UpdateIntervalEv:0000000000000000 _ZN11Arpeggiator14UpdateIntervalEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:549    .text._ZN11Arpeggiator4InitEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:555    .text._ZN11Arpeggiator4InitEf:0000000000000000 _ZN11Arpeggiator4InitEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:605    .text._ZN11Arpeggiator12SetMainTempoEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:611    .text._ZN11Arpeggiator12SetMainTempoEf:0000000000000000 _ZN11Arpeggiator12SetMainTempoEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:655    .text._ZN11Arpeggiator12SetMainTempoEf:0000000000000024 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:660    .text._ZN11Arpeggiator18SetPolyrhythmRatioEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:666    .text._ZN11Arpeggiator18SetPolyrhythmRatioEf:0000000000000000 _ZN11Arpeggiator18SetPolyrhythmRatioEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:692    .text._ZN11Arpeggiator10Xorshift32Ev:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:698    .text._ZN11Arpeggiator10Xorshift32Ev:0000000000000000 _ZN11Arpeggiator10Xorshift32Ev
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:737    .text._ZN11Arpeggiator11TriggerNoteEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:743    .text._ZN11Arpeggiator11TriggerNoteEv:0000000000000000 _ZN11Arpeggiator11TriggerNoteEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:922    .text._ZN11Arpeggiator11TriggerNoteEv:0000000000000080 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:931    .text._ZN11Arpeggiator7ProcessEj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:937    .text._ZN11Arpeggiator7ProcessEj:0000000000000000 _ZN11Arpeggiator7ProcessEj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:1027   .data._ZZN11Arpeggiator11TriggerNoteEvE15last_print_time:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQ7NhND.s:1031   .data._ZZN11Arpeggiator11TriggerNoteEvE15last_print_time:0000000000000000 _ZZN11Arpeggiator11TriggerNoteEvE15last_print_time
 
 UNDEFINED SYMBOLS
 _ZN7daisysp5Metro4InitEff
