@@ -66,7 +66,6 @@ void InitializeVoices() {
         patches[i].engine = 0;      
         modulations[i].engine = 0; 
         modulations[i].trigger = 0.0f;
-        modulations[i].level_patched = false; // Initialize level patched flag
         voice_active[i] = false;
         voice_note[i] = 0.0f;
         

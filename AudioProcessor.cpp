@@ -461,25 +461,6 @@ void ConfigureDelaySettings() {
 }
 
 void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx, bool arp_on) {
-    // Determine if the selected engine is percussive (uses internal envelope)
-    bool percussiveEngine = (engineIndex > 7);
-
-    // Pre-compute envelope timing coefficients once per block (non-percussive engines)
-    float attack_value = 0.0f;
-    float release_value = 0.0f;
-    if(!percussiveEngine) {
-        float attack_raw = env_attack_val;
-        // Apply the same punchier attack response
-        if (attack_raw < 0.2f) {
-            attack_value = attack_raw * (attack_raw * 0.5f);
-        } else {
-            attack_value = attack_raw * attack_raw * attack_raw;
-        }
-
-        // Normal cubic curve for release
-        release_value = env_release_val * env_release_val * env_release_val;
-    }
-
     // Compute global parameter sources
     float global_pitch_offset = pitch_val * 24.f - 12.f;     // Pitch follows ADC 7
     float current_global_harmonics = harm_knob_val;          // Harmonics ADC 5
@@ -538,18 +519,15 @@ void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx, 
         modulations[v].harmonics = 0.0f; 
         modulations[v].timbre = 0.0f;
         modulations[v].morph = 0.0f; 
-        // --- External VCA via modulations.level ---
-        if(!percussiveEngine) {
-            // Update envelope parameters and retrieve current value
-            voice_envelopes[v].SetAttackTime(attack_value);
-            voice_envelopes[v].SetReleaseTime(release_value);
-            float env_value = voice_envelopes[v].Process();
-
-            modulations[v].level = env_value;
-            modulations[v].level_patched = true;
-        } else {
-            modulations[v].level = 1.0f;
-            modulations[v].level_patched = false;
+        modulations[v].level = 1.0f; 
+        
+        // Only reset trigger_patched when not in ARP mode
+        if (!arp_on) {
+            if(engine_changed_flag && voice_active[v]) {
+                modulations[v].trigger = 0.0f; // falling edge on change
+            } else {
+                modulations[v].trigger = voice_active[v] ? 1.0f : 0.0f;
+            }
         }
         
         if (poly_mode) {
@@ -591,15 +569,43 @@ void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx, 
 }
 
 void ProcessVoiceEnvelopes(bool poly_mode) {
-    // Simply mix rendered voice buffers – amplitude now handled by modulations.level inside Plaits.
+    // Bypass custom envelope for percussive Plaits engines
+    bool percussiveEngine = (current_engine_index > 7);
+
     memset(mix_buffer_out, 0, sizeof(mix_buffer_out));
     memset(mix_buffer_aux, 0, sizeof(mix_buffer_aux));
-
+    
+    // Apply the same punchier attack response
+    float attack_raw = env_attack_val;
+    float attack_value;
+    if (attack_raw < 0.2f) {
+        // More exaggerated curve for very short attacks (extra punchy)
+        attack_value = attack_raw * (attack_raw * 0.5f);
+    } else {
+        // Regular cubic response for longer attacks
+        attack_value = attack_raw * attack_raw * attack_raw;
+    }
+    
+    // Normal cubic curve for release
+    float release_value = env_release_val * env_release_val * env_release_val;
+    
+    // Determine how many voices to process based on mode
     int voices_to_process = poly_mode ? NUM_VOICES : 1;
+    
     for (int v = 0; v < voices_to_process; ++v) {
+        // Choose envelope value: either custom AR envelope or flat for percussive modes
+        float env_value;
+        if (!percussiveEngine) {
+            voice_envelopes[v].SetAttackTime(attack_value);
+            voice_envelopes[v].SetReleaseTime(release_value);
+            env_value = voice_envelopes[v].Process();
+        } else {
+            env_value = 1.0f;
+        }
+        
         for (int i = 0; i < BLOCK_SIZE; ++i) {
-            mix_buffer_out[i] += output_buffers[v][i].out;
-            mix_buffer_aux[i] += output_buffers[v][i].aux;
+            mix_buffer_out[i] += output_buffers[v][i].out * env_value;
+            mix_buffer_aux[i] += output_buffers[v][i].aux * env_value;
         }
     }
 }
