@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
    4:Effects/DSPUtils.h **** 
    5:Effects/DSPUtils.h **** #include <cmath>
    6:Effects/DSPUtils.h **** #include <Utility/dsp.h>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 2
 
 
    7:Effects/DSPUtils.h **** #ifdef __arm__
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
   12:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // but WITHOUT ANY WARRANTY; without even the implied warranty of
   13:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   14:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** // GNU General Public License for more details.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 3
 
 
   15:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
   69:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef modf
   70:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef pow
   71:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef sin
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 4
 
 
   72:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #undef sinh
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  126:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_atanf(__x); }
  127:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
  128:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR long double
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 5
 
 
  129:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   atan(long double __x)
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  183:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
  184:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   cos(float __x)
  185:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_cosf(__x); }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 6
 
 
  186:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  240:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
  241:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   fabs(float __x)
  242:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_fabsf(__x); }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 7
 
 
  243:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  297:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
  298:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
  299:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline float
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 8
 
 
  300:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   frexp(float __x, int* __exp)
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  354:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
  355:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #ifndef __CORRECT_ISO_CPP_MATH_H_PROTO
  356:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   inline _GLIBCXX_CONSTEXPR float
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 9
 
 
  357:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   log10(float __x)
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  411:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
  412:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp, typename _Up>
  413:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     inline _GLIBCXX_CONSTEXPR
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 10
 
 
  414:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****     typename __gnu_cxx::__promote_2<_Tp, _Up>::__type
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  468:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   { return __builtin_sqrtl(__x); }
  469:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** #endif
  470:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 11
 
 
  471:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath ****   template<typename _Tp>
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
   84 0022 FFF7FEFF 		bl	tanf
   85              	.LVL3:
   86              		.loc 3 483 26 view .LVU17
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 12
 
 
   87              	.LBE33:
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  116              		.loc 1 30 34 view .LVU34
  117 0048 38EE278A 		vadd.f32	s16, s16, s15
   29:Effects/BiquadFilters.cpp ****             a2 = (1.0f - (K / q) + Ksq) * norm; 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 13
 
 
  118              		.loc 1 29 38 view .LVU35
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  149              		.loc 1 27 24 is_stmt 0 view .LVU51
  150 0070 F8EE007A 		vmov.f32	s15, #-2.0e+0
  151              	.LVL8:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 14
 
 
   26:Effects/BiquadFilters.cpp ****             b1 = -2.0f * b0;
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  186              		.loc 1 34 13 view .LVU68
   35:Effects/BiquadFilters.cpp ****             b1 = 0.0f;
  187              		.loc 1 35 13 view .LVU69
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 15
 
 
   35:Effects/BiquadFilters.cpp ****             b1 = 0.0f;
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  235              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
  236              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
  237              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 16
 
 
  238              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
@@ -912,14 +912,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 1
  246              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
  247              		.file 39 "Effects/BiquadFilters.h"
  248              		.file 40 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s 			page 17
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 BiquadFilters.cpp
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s:19     .text._ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s:25     .text._ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff:0000000000000000 _ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccJD0GHp.s:206    .text._ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff:00000000000000ac $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s:19     .text._ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s:25     .text._ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff:0000000000000000 _ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgthKTn.s:206    .text._ZN10infrasonic13BiquadSection21CalculateCoefficientsENS0_10FilterTypeEfff:00000000000000ac $d
 
 UNDEFINED SYMBOLS
 tanf

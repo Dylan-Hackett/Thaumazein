@@ -25,7 +25,7 @@ public:
     float GetMetroRate();
     float GetCurrentInterval() const;
 
-    enum Direction { Forward, Random };
+    enum Direction { Forward, Random, AsPlayed };
     void SetDirection(Direction dir);
 
 private:

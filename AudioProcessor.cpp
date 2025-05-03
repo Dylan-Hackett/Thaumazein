@@ -2,6 +2,7 @@
 #include "mpr121_daisy.h"
 #include <cmath>
 #include <algorithm>
+#include <vector> // Add vector for dynamic list
 
 const float MASTER_VOLUME = 0.7f; // Master output level scaler
 
@@ -32,6 +33,10 @@ extern AnalogControl env_attack_knob;
 
 // Define the CpuLoadMeter instance
 CpuLoadMeter cpu_meter;
+
+// Global list to store arpeggiator notes in the order they were pressed
+std::vector<int> arp_notes_ordered;
+int arp_note_indices[12]; // For passing to Arpeggiator class if needed
 
 volatile int current_engine_index = 0; // Global engine index controlled by touch pads
 
@@ -80,6 +85,11 @@ void ProcessVoice(int voice_idx, float envelope_value) {
 void AudioCallback(AudioHandle::InterleavingInputBuffer in,
                  AudioHandle::InterleavingOutputBuffer out,
                  size_t size) {
+    static bool audio_cb_started = false;
+    if(!audio_cb_started) {
+        hw.PrintLine("[AudioCallback] Enter");
+        audio_cb_started = true;
+    }
     cpu_meter.OnBlockStart(); // Mark the beginning of the audio block
     
     // Process controls & read values
@@ -136,10 +146,11 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
         pad_pressed = true;
         // Rising edge detected -> toggle arp
         arp_enabled = !arp_enabled;
-        hw.PrintLine(arp_enabled ? "[DEBUG] ARP ON" : "[DEBUG] ARP OFF");
+        // hw.PrintLine(arp_enabled ? "[DEBUG] ARP ON" : "[DEBUG] ARP OFF"); // Removed debug print
         if(arp_enabled)
         {
             arp.Init(sample_rate);          // restart timing
+            arp.SetDirection(Arpeggiator::AsPlayed); // Set default direction to AsPlayed
         }
     }
     else if(pad_pressed && pad_read < kOffThreshold)
@@ -164,17 +175,53 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     was_arp_on = arp_on;
 
     if (arp_on) {
-        // Collect held pads from touch sensor
+        // --- Update Arp Notes based on Touch Changes ---
         uint16_t st = current_touch_state;
-        int key_idxs[12];
-        int num_keys = 0;
-        // Collect any MPR121 pads currently held
-        for (int i = 0; i < 12; ++i) {
-            if (st & (1 << i)) {
-                key_idxs[num_keys++] = i;
+        uint16_t changed_pads = st ^ last_touch_state; // Detect changed pads
+
+        if (changed_pads != 0) {
+            for (int i = 0; i < 12; ++i) {
+                uint16_t mask = 1 << i;
+                if (changed_pads & mask) { // If this pad changed state
+                    if (st & mask) { // Pad was pressed
+                        // Add to list only if not already present (safety check)
+                        bool found = false;
+                        for(int note_idx : arp_notes_ordered) {
+                            if (note_idx == i) {
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                           arp_notes_ordered.push_back(i);
+                        }
+                    } else { // Pad was released
+                        // Remove from list
+                        arp_notes_ordered.erase(
+                            std::remove(arp_notes_ordered.begin(), arp_notes_ordered.end(), i),
+                            arp_notes_ordered.end()
+                        );
+                    }
+                }
             }
         }
-        arp.SetNotes(key_idxs, num_keys);
+
+        // Copy the ordered notes to a C-style array for the Arpeggiator class
+        // (Arpeggiator::SetNotes expects int*)
+        int num_keys = arp_notes_ordered.size();
+        for(size_t i=0; i < num_keys; ++i) {
+            arp_note_indices[i] = arp_notes_ordered[i];
+        }
+
+        // If notes are present, send them to the arpeggiator
+        if (num_keys > 0) {
+             arp.SetNotes(arp_note_indices, num_keys);
+        } else {
+             // Ensure arp knows no notes are held if vector is empty
+             arp.SetNotes(nullptr, 0);
+        }
+        // --- End Update Arp Notes ---
+
         // Map ADC0 (delay_time_val) to tempo range 1-15 Hz
         // Exponential tempo mapping for full knob response: 1 Hz to 30 Hz
         float min_tempo = 1.0f;
@@ -192,10 +239,18 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
         // Process arpeggiator for this block (frames = size/2)
         arp.Process(size / 2);
     } else {
+        // Arp is off, clear the ordered notes list
+        if (!arp_notes_ordered.empty()) {
+            arp_notes_ordered.clear();
+            arp.SetNotes(nullptr, 0); // Tell arp no notes are held
+        }
         // Default touch-driven note handling
         HandleTouchInput(engineIndex, poly_mode, effective_num_voices);
     }
     
+    // Update last_touch_state *after* using it to detect changes for ARP
+    last_touch_state = current_touch_state;
+
     // Configure delay settings
     ConfigureDelaySettings();
     
@@ -348,9 +403,13 @@ void HandleTouchInput(int engineIndex, bool poly_mode, int effective_num_voices)
     // Determine if the selected engine is percussive (uses internal envelope)
     bool percussiveEngine = engineIndex > 7;
     uint16_t local_current_touch_state = current_touch_state;
+    // Don't update last_touch_state here anymore, it's done globally after arp check
+    // uint16_t local_last_touch_state = last_touch_state; // Use a snapshot
+
     for (int i = 0; i < 12; ++i) {
         bool pad_currently_pressed = (local_current_touch_state >> i) & 1;
-        bool pad_was_pressed = (last_touch_state >> i) & 1;
+        // Use the *actual* last_touch_state from the previous block for comparison
+        bool pad_was_pressed = (last_touch_state >> i) & 1; 
         float note_for_pad = kTouchMidiNotes[i];
 
         if (pad_currently_pressed && !pad_was_pressed) { 
@@ -387,7 +446,7 @@ void HandleTouchInput(int engineIndex, bool poly_mode, int effective_num_voices)
             }
         }
     }
-    last_touch_state = local_current_touch_state; // Update last state with the value used in this callback
+    // last_touch_state = local_current_touch_state; // Update removed from here
 }
 
 void ConfigureDelaySettings() {
@@ -402,6 +461,25 @@ void ConfigureDelaySettings() {
 }
 
 void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx, bool arp_on) {
+    // Determine if the selected engine is percussive (uses internal envelope)
+    bool percussiveEngine = (engineIndex > 7);
+
+    // Pre-compute envelope timing coefficients once per block (non-percussive engines)
+    float attack_value = 0.0f;
+    float release_value = 0.0f;
+    if(!percussiveEngine) {
+        float attack_raw = env_attack_val;
+        // Apply the same punchier attack response
+        if (attack_raw < 0.2f) {
+            attack_value = attack_raw * (attack_raw * 0.5f);
+        } else {
+            attack_value = attack_raw * attack_raw * attack_raw;
+        }
+
+        // Normal cubic curve for release
+        release_value = env_release_val * env_release_val * env_release_val;
+    }
+
     // Compute global parameter sources
     float global_pitch_offset = pitch_val * 24.f - 12.f;     // Pitch follows ADC 7
     float current_global_harmonics = harm_knob_val;          // Harmonics ADC 5
@@ -460,15 +538,18 @@ void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx, 
         modulations[v].harmonics = 0.0f; 
         modulations[v].timbre = 0.0f;
         modulations[v].morph = 0.0f; 
-        modulations[v].level = 1.0f; 
-        
-        // Only reset trigger_patched when not in ARP mode
-        if (!arp_on) {
-            if(engine_changed_flag && voice_active[v]) {
-                modulations[v].trigger = 0.0f; // falling edge on change
-            } else {
-                modulations[v].trigger = voice_active[v] ? 1.0f : 0.0f;
-            }
+        // --- External VCA via modulations.level ---
+        if(!percussiveEngine) {
+            // Update envelope parameters and retrieve current value
+            voice_envelopes[v].SetAttackTime(attack_value);
+            voice_envelopes[v].SetReleaseTime(release_value);
+            float env_value = voice_envelopes[v].Process();
+
+            modulations[v].level = env_value;
+            modulations[v].level_patched = true;
+        } else {
+            modulations[v].level = 1.0f;
+            modulations[v].level_patched = false;
         }
         
         if (poly_mode) {
@@ -510,43 +591,15 @@ void PrepareVoiceParameters(int engineIndex, bool poly_mode, int max_voice_idx, 
 }
 
 void ProcessVoiceEnvelopes(bool poly_mode) {
-    // Bypass custom envelope for percussive Plaits engines
-    bool percussiveEngine = (current_engine_index > 7);
-
+    // Simply mix rendered voice buffers – amplitude now handled by modulations.level inside Plaits.
     memset(mix_buffer_out, 0, sizeof(mix_buffer_out));
     memset(mix_buffer_aux, 0, sizeof(mix_buffer_aux));
-    
-    // Apply the same punchier attack response
-    float attack_raw = env_attack_val;
-    float attack_value;
-    if (attack_raw < 0.2f) {
-        // More exaggerated curve for very short attacks (extra punchy)
-        attack_value = attack_raw * (attack_raw * 0.5f);
-    } else {
-        // Regular cubic response for longer attacks
-        attack_value = attack_raw * attack_raw * attack_raw;
-    }
-    
-    // Normal cubic curve for release
-    float release_value = env_release_val * env_release_val * env_release_val;
-    
-    // Determine how many voices to process based on mode
+
     int voices_to_process = poly_mode ? NUM_VOICES : 1;
-    
     for (int v = 0; v < voices_to_process; ++v) {
-        // Choose envelope value: either custom AR envelope or flat for percussive modes
-        float env_value;
-        if (!percussiveEngine) {
-            voice_envelopes[v].SetAttackTime(attack_value);
-            voice_envelopes[v].SetReleaseTime(release_value);
-            env_value = voice_envelopes[v].Process();
-        } else {
-            env_value = 1.0f;
-        }
-        
         for (int i = 0; i < BLOCK_SIZE; ++i) {
-            mix_buffer_out[i] += output_buffers[v][i].out * env_value;
-            mix_buffer_aux[i] += output_buffers[v][i].aux * env_value;
+            mix_buffer_out[i] += output_buffers[v][i].out;
+            mix_buffer_aux[i] += output_buffers[v][i].aux;
         }
     }
 }
@@ -567,14 +620,12 @@ void ProcessAudioOutput(AudioHandle::InterleavingOutputBuffer out, size_t size, 
 }
 
 void UpdatePerformanceMonitors(size_t size, AudioHandle::InterleavingOutputBuffer out) {
-    // --- Update Output Level Monitoring --- 
-    if (size > 0) { // Ensure block is not empty
-        float current_level = fabsf(out[0]); // Absolute level of first sample
-        // Apply smoothing (adjust 0.99f/0.01f factor for more/less smoothing)
-        smoothed_output_level = smoothed_output_level * 0.99f + current_level * 0.01f; 
+    if (size > 0) {
+        float current_level = fabsf(out[0]);
+        smoothed_output_level = smoothed_output_level * 0.99f + current_level * 0.01f;
     }
 
-    // Signal display update periodically
+    // Signal display update every 1 second
     static uint32_t display_counter = 0;
     static const uint32_t display_interval_blocks = (uint32_t)(sample_rate / BLOCK_SIZE * 3.0f);
     if (++display_counter >= display_interval_blocks) {

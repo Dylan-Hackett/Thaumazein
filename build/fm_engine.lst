@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   28:eurorack/plaits/dsp/engine/fm_engine.cc **** 
   29:eurorack/plaits/dsp/engine/fm_engine.cc **** #include "plaits/dsp/engine/fm_engine.h"
   30:eurorack/plaits/dsp/engine/fm_engine.cc **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 2
 
 
   31:eurorack/plaits/dsp/engine/fm_engine.cc **** #include "stmlib/dsp/parameter_interpolator.h"
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   64 0018 5196963A 		.word	982947409
   65              		.cfi_endproc
   66              	.LFE607:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 3
 
 
   68              		.section	.text._ZN6plaits8FMEngine5ResetEv,"ax",%progbits
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   23:eurorack/plaits/dsp/engine/engine.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
   24:eurorack/plaits/dsp/engine/engine.h **** //
   25:eurorack/plaits/dsp/engine/engine.h **** // -----------------------------------------------------------------------------
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 4
 
 
   26:eurorack/plaits/dsp/engine/engine.h **** //
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   11:eurorack/stmlib/dsp/units.h **** // 
   12:eurorack/stmlib/dsp/units.h **** // The above copyright notice and this permission notice shall be included in
   13:eurorack/stmlib/dsp/units.h **** // all copies or substantial portions of the Software.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 5
 
 
   14:eurorack/stmlib/dsp/units.h **** // 
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   44:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
  143              		.loc 3 44 45 discriminator 6 view .LVU35
  144 0038 17EE901A 		vmov	r1, s15	@ int
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 6
 
 
   42:eurorack/stmlib/dsp/units.h ****   MAKE_INTEGRAL_FRACTIONAL(pitch)
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  194              		.loc 1 55 63 is_stmt 1 view -0
  195              		.cfi_startproc
  196              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 7
 
 
  197              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  236              		.loc 1 61 17 view .LVU63
  237 0032 90ED017A 		vldr.32	s14, [r0, #4]
   58:eurorack/plaits/dsp/engine/fm_engine.cc ****   float a = lut_sine[integral];
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 8
 
 
  238              		.loc 1 58 22 view .LVU64
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  273              		@ link register save eliminated.
   82:eurorack/plaits/dsp/engine/fm_engine.cc ****     head_ += sample * fir_coefficient[3 - (i & 3)];
  274              		.loc 1 82 5 view .LVU70
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 9
 
 
  275              		.loc 1 82 41 is_stmt 0 view .LVU71
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   88:eurorack/plaits/dsp/engine/fm_engine.cc ****     head_ = tail_;
   89:eurorack/plaits/dsp/engine/fm_engine.cc ****     tail_ = 0.0f;
   90:eurorack/plaits/dsp/engine/fm_engine.cc ****     return value;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 10
 
 
   91:eurorack/plaits/dsp/engine/fm_engine.cc ****   }
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   27:eurorack/stmlib/dsp/dsp.h **** // DSP utility routines.
   28:eurorack/stmlib/dsp/dsp.h **** 
   29:eurorack/stmlib/dsp/dsp.h **** #ifndef STMLIB_UTILS_DSP_DSP_H_
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 11
 
 
   30:eurorack/stmlib/dsp/dsp.h **** #define STMLIB_UTILS_DSP_DSP_H_
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  369 0014 9046     		mov	r8, r2
  370 0016 1F46     		mov	r7, r3
  371              	.LBB118:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 12
 
 
  372              	.LBB114:
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   45:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
  414              		.loc 4 45 3 is_stmt 1 view .LVU103
  415              		.loc 4 46 3 view .LVU104
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 13
 
 
   45:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  118:eurorack/plaits/dsp/engine/fm_engine.cc **** 
  119:eurorack/plaits/dsp/engine/fm_engine.cc ****   // Reduce the maximum FM index for high pitched notes, to prevent aliasing.
  120:eurorack/plaits/dsp/engine/fm_engine.cc ****   float hf_taming = 1.0f - (modulator_note - 72.0f) * 0.025f;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 14
 
 
  459              		.loc 1 120 3 discriminator 6 view .LVU121
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   10:eurorack/stmlib/dsp/parameter_interpolator.h **** // furnished to do so, subject to the following conditions:
   11:eurorack/stmlib/dsp/parameter_interpolator.h **** // 
   12:eurorack/stmlib/dsp/parameter_interpolator.h **** // The above copyright notice and this permission notice shall be included in
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 15
 
 
   13:eurorack/stmlib/dsp/parameter_interpolator.h **** // all copies or substantial portions of the Software.
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  508              	.LBE123:
  509              	.LBE135:
  126:eurorack/plaits/dsp/engine/fm_engine.cc ****   ParameterInterpolator modulator_frequency(
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 16
 
 
  127:eurorack/plaits/dsp/engine/fm_engine.cc ****       &previous_modulator_frequency_, target_modulator_frequency, size);
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
  553              		.loc 5 55 14 discriminator 6 view .LVU148
  554 00d4 D4ED08AA 		vldr.32	s21, [r4, #32]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 17
 
 
  555              	.LBE164:
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   76:eurorack/plaits/dsp/engine/fm_engine.cc ****   }
  606              		.loc 1 76 12 discriminator 6 view .LVU156
  607 00f0 0293     		str	r3, [sp, #8]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 18
 
 
  608              	.LBE153:
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  659 0106 C8EE27EA 		vdiv.f32	s29, s16, s15
  660              	.LBE166:
  661              	.LBE169:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 19
 
 
  662              	.LBE190:
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  709              	.LBB200:
  710              	.LBB170:
  711              	.LBI163:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 20
 
 
   53:eurorack/stmlib/dsp/parameter_interpolator.h ****     state_ = state;
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   54:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
  753              		.loc 5 54 5 discriminator 6 view .LVU194
   55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 21
 
 
  754              		.loc 5 55 5 discriminator 6 view .LVU195
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  793              		.loc 1 138 3 is_stmt 1 view .LVU212
  794              		.loc 1 138 14 view .LVU213
  795              		.loc 1 138 14 is_stmt 0 view .LVU214
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 22
 
 
  796 012e 002E     		cmp	r6, #0
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  837 0146 B5EEC08A 		vcmpe.f32	s16, #0
  143:eurorack/plaits/dsp/engine/fm_engine.cc ****     float _modulator_frequency = modulator_frequency.Next();
  838              		.loc 1 143 23 view .LVU225
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 23
 
 
  839 014a 6AEE27CA 		vmul.f32	s25, s20, s15
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  880              	.LBE229:
  141:eurorack/plaits/dsp/engine/fm_engine.cc ****     const uint32_t carrier_increment = static_cast<uint32_t>(
  881              		.loc 1 141 51 view .LVU241
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 24
 
 
  882 016c 48BF     		it	mi
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  151:eurorack/plaits/dsp/engine/fm_engine.cc ****       float modulator_fb = feedback > 0.0f ? 0.25f * feedback * feedback : 0.0f;
  924              		.loc 1 151 44 view .LVU259
  925 0184 B5EEC08A 		vcmpe.f32	s16, #0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 25
 
 
  147:eurorack/plaits/dsp/engine/fm_engine.cc ****            _modulator_frequency * (1.0f + previous_sample_ * phase_feedback));
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  963              		.loc 1 150 18 is_stmt 0 view .LVU277
  964 01c8 0AEB0309 		add	r9, r10, r3
  149:eurorack/plaits/dsp/engine/fm_engine.cc ****       sub_phase_ += carrier_increment >> 1;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 26
 
 
  965              		.loc 1 149 22 view .LVU278
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  1009              		.loc 1 157 37 view .LVU295
  1010 020e 6846     		mov	r0, sp
  156:eurorack/plaits/dsp/engine/fm_engine.cc ****       ONE_POLE(previous_sample_, carrier, 0.05f);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 27
 
 
  1011              		.loc 1 156 7 view .LVU296
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  1052 022e 019A     		ldr	r2, [sp, #4]	@ float
  1053              	.LBE235:
  1054              	.LBE234:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 28
 
 
  1055              		.loc 1 161 12 view .LVU313
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
   90:eurorack/plaits/dsp/engine/fm_engine.cc ****   }
  1095              		.loc 1 90 5 is_stmt 1 view .LVU328
  1096              	.LVL68:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 29
 
 
   90:eurorack/plaits/dsp/engine/fm_engine.cc ****   }
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  1139              		.loc 1 79 13 is_stmt 0 view .LVU342
  1140 025c 009A     		ldr	r2, [sp]	@ float
  1141 025e 029B     		ldr	r3, [sp, #8]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 30
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 30
 
 
  1142 0260 1A60     		str	r2, [r3]	@ float
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  1182              		.loc 5 49 3 is_stmt 1 view .LVU356
  1183              	.LBB255:
   50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 31
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 31
 
 
  1184              		.loc 5 50 5 view .LVU357
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  1236      61697473 
  1236      36456E67 
  1236      696E6545 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 32
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 32
 
 
  1236      00
@@ -1916,38 +1916,38 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 1
  1294              		.file 17 "eurorack/plaits/resources.h"
  1295              		.file 18 "eurorack/plaits/dsp/engine/fm_engine.h"
  1296              		.file 19 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s 			page 33
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s 			page 33
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 fm_engine.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:19     .text._ZN6plaits8FMEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:25     .text._ZN6plaits8FMEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits8FMEngine4InitEPN6stmlib15BufferAllocatorE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:64     .text._ZN6plaits8FMEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000018 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:69     .text._ZN6plaits8FMEngine5ResetEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:75     .text._ZN6plaits8FMEngine5ResetEv:0000000000000000 _ZN6plaits8FMEngine5ResetEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:89     .text._ZN6plaits15NoteToFrequencyEf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:95     .text._ZN6plaits15NoteToFrequencyEf:0000000000000000 _ZN6plaits15NoteToFrequencyEf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:175    .text._ZN6plaits15NoteToFrequencyEf:0000000000000070 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:185    .text._ZNK6plaits8FMEngine6SinePMEmf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:191    .text._ZNK6plaits8FMEngine6SinePMEmf:0000000000000000 _ZNK6plaits8FMEngine6SinePMEmf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:253    .text._ZNK6plaits8FMEngine6SinePMEmf:0000000000000048 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:260    .text._ZN6plaits11Downsampler10AccumulateEif:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:266    .text._ZN6plaits11Downsampler10AccumulateEif:0000000000000000 _ZN6plaits11Downsampler10AccumulateEif
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:308    .text._ZN6plaits11Downsampler10AccumulateEif:0000000000000038 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:313    .text._ZN6plaits8FMEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:319    .text._ZN6plaits8FMEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits8FMEngine6RenderERKNS_16EngineParametersEPfS4_jPb
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1221   .text._ZN6plaits8FMEngine6RenderERKNS_16EngineParametersEPfS4_jPb:000000000000027c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1235   .rodata._ZTSN6plaits6EngineE:0000000000000000 _ZTSN6plaits6EngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1242   .rodata._ZTIN6plaits6EngineE:0000000000000000 _ZTIN6plaits6EngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1239   .rodata._ZTIN6plaits6EngineE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1269   .rodata._ZTSN6plaits8FMEngineE:0000000000000000 _ZTSN6plaits8FMEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1262   .rodata._ZTIN6plaits8FMEngineE:0000000000000000 _ZTIN6plaits8FMEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1275   .rodata._ZTVN6plaits8FMEngineE:0000000000000000 _ZTVN6plaits8FMEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1249   .rodata._ZN6plaitsL15fir_coefficientE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1253   .rodata._ZN6plaitsL15fir_coefficientE:0000000000000000 _ZN6plaitsL15fir_coefficientE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1259   .rodata._ZTIN6plaits8FMEngineE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHYXsvz.s:1272   .rodata._ZTVN6plaits8FMEngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:19     .text._ZN6plaits8FMEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:25     .text._ZN6plaits8FMEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits8FMEngine4InitEPN6stmlib15BufferAllocatorE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:64     .text._ZN6plaits8FMEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000018 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:69     .text._ZN6plaits8FMEngine5ResetEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:75     .text._ZN6plaits8FMEngine5ResetEv:0000000000000000 _ZN6plaits8FMEngine5ResetEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:89     .text._ZN6plaits15NoteToFrequencyEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:95     .text._ZN6plaits15NoteToFrequencyEf:0000000000000000 _ZN6plaits15NoteToFrequencyEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:175    .text._ZN6plaits15NoteToFrequencyEf:0000000000000070 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:185    .text._ZNK6plaits8FMEngine6SinePMEmf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:191    .text._ZNK6plaits8FMEngine6SinePMEmf:0000000000000000 _ZNK6plaits8FMEngine6SinePMEmf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:253    .text._ZNK6plaits8FMEngine6SinePMEmf:0000000000000048 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:260    .text._ZN6plaits11Downsampler10AccumulateEif:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:266    .text._ZN6plaits11Downsampler10AccumulateEif:0000000000000000 _ZN6plaits11Downsampler10AccumulateEif
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:308    .text._ZN6plaits11Downsampler10AccumulateEif:0000000000000038 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:313    .text._ZN6plaits8FMEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:319    .text._ZN6plaits8FMEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits8FMEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1221   .text._ZN6plaits8FMEngine6RenderERKNS_16EngineParametersEPfS4_jPb:000000000000027c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1235   .rodata._ZTSN6plaits6EngineE:0000000000000000 _ZTSN6plaits6EngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1242   .rodata._ZTIN6plaits6EngineE:0000000000000000 _ZTIN6plaits6EngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1239   .rodata._ZTIN6plaits6EngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1269   .rodata._ZTSN6plaits8FMEngineE:0000000000000000 _ZTSN6plaits8FMEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1262   .rodata._ZTIN6plaits8FMEngineE:0000000000000000 _ZTIN6plaits8FMEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1275   .rodata._ZTVN6plaits8FMEngineE:0000000000000000 _ZTVN6plaits8FMEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1249   .rodata._ZN6plaitsL15fir_coefficientE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1253   .rodata._ZN6plaitsL15fir_coefficientE:0000000000000000 _ZN6plaitsL15fir_coefficientE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1259   .rodata._ZTIN6plaits8FMEngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMeOUSW.s:1272   .rodata._ZTVN6plaits8FMEngineE:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 _ZN6stmlib19lut_pitch_ratio_lowE

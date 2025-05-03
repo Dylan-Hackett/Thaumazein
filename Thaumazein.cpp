@@ -6,35 +6,33 @@ volatile float touch_cv_value = 0.0f;
 
 void UpdateDisplay() {
     if (update_display) {
-        // Get CPU Load from the CpuLoadMeter
+        // Build stats message in a smaller buffer
+        char msg[512];
+        int pos = 0;
+
+        // CPU Load
         float avg_cpu_load = cpu_meter.GetAvgCpuLoad();
         int cpu_percent_int = static_cast<int>(avg_cpu_load * 100.0f);
-        cpu_percent_int = cpu_percent_int < 0 ? 0 : (cpu_percent_int > 100 ? 100 : cpu_percent_int); // Clamp 0-100
+        cpu_percent_int = cpu_percent_int < 0 ? 0 : (cpu_percent_int > 100 ? 100 : cpu_percent_int);
+        pos += snprintf(msg + pos, sizeof(msg) - pos, "CPU: %d\n", cpu_percent_int);
 
-        char buffer[32]; 
-        sprintf(buffer, "CPU: %d", cpu_percent_int); 
-        hw.PrintLine(buffer);
-        
-        // Determine current effective engine index again for display
+        // Engine Info
         int current_engine_idx = current_engine_index;
-        sprintf(buffer, "Engine: %d (%s)", current_engine_idx, (current_engine_idx <=3) ? "Poly-4" : "Mono");
-        hw.PrintLine(buffer);
-        
-        // Print Smoothed Output Level
-        int level_percent = static_cast<int>(smoothed_output_level * 100.0f);
-        level_percent = level_percent < 0 ? 0 : (level_percent > 100 ? 100 : level_percent); // Clamp 0-100
-        sprintf(buffer, "Level: %d%%", level_percent); 
-        hw.PrintLine(buffer);
-        
-        // Print all ADC raw values
-        for (int i = 0; i < 12; ++i) {
-            // Print ADC values as integers (multiplied by 1000 for precision)
-            sprintf(buffer, "ADC[%d]: %d", i, static_cast<int>(adc_raw_values[i] * 1000));
-            hw.PrintLine(buffer);
+        pos += snprintf(msg + pos, sizeof(msg) - pos, "Engine: %d (%s)\n", current_engine_idx, (current_engine_idx <= 3) ? "Poly-4" : "Mono");
+
+        // Only show ADC values 8-11
+        pos += snprintf(msg + pos, sizeof(msg) - pos, "ADC Values (8-11):\n");
+        for (int i = 8; i < 12; ++i) {
+            pos += snprintf(msg + pos, sizeof(msg) - pos, "[%d]: %d\n", i, static_cast<int>(adc_raw_values[i] * 1000));
+            if(pos >= (int)sizeof(msg) - 20) break; // safety margin
         }
-        
-        hw.PrintLine("--------"); 
-        
+
+        // Separator
+        pos += snprintf(msg + pos, sizeof(msg) - pos, "--------");
+
+        // Print once with a single call to avoid throttling
+        hw.PrintLine("%s", msg);
+
         update_display = false; 
     }
 }
@@ -122,14 +120,6 @@ int main(void) {
         
         // Check bootloader condition anytime during operation
         Bootload();
-        
-        // Heartbeat log every ~3 seconds
-        static uint32_t last_hb_time = 0;
-        uint32_t now = hw.system.GetNow();
-        if ((now - last_hb_time) >= 3000) {
-            last_hb_time = now;
-            hw.PrintLine("HB");
-        }
         
         UpdateDisplay();
         

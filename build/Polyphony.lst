@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   12:Polyphony.cpp **** plaits::Voice::Frame output_buffers[NUM_VOICES][BLOCK_SIZE]; 
   13:Polyphony.cpp **** 
   14:Polyphony.cpp **** bool voice_active[NUM_VOICES] = {false};
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 2
 
 
   15:Polyphony.cpp **** float voice_note[NUM_VOICES] = {0.0f};
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   79 0014 D3ED007A 		vldr.32	s15, [r3]
   80              		.loc 1 34 29 discriminator 1 view .LVU13
   81 0018 9FED0A7A 		vldr.32	s14, .L11+8
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 3
 
 
   82              		.loc 1 34 52 discriminator 1 view .LVU14
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  128              		@ frame_needed = 0, uses_anonymous_args = 0
  129              		@ link register save eliminated.
   42:Polyphony.cpp ****     for (int v = 0; v < max_voices; ++v) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 4
 
 
  130              		.loc 1 42 5 view .LVU23
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  176              	.LVL9:
  177              	.LFB5345:
   49:Polyphony.cpp **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 5
 
 
   50:Polyphony.cpp **** void AssignMonoNote(float note) {
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  223              		@ frame_needed = 0, uses_anonymous_args = 0
   60:Polyphony.cpp ****     // Initialize the allocator with the SDRAM buffer
   61:Polyphony.cpp ****     stmlib::BufferAllocator allocator(shared_buffer, sizeof(shared_buffer));
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 6
 
 
  224              		.loc 1 61 5 view .LVU47
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   38:eurorack/stmlib/utils/buffer_allocator.h ****   BufferAllocator() { }
   39:eurorack/stmlib/utils/buffer_allocator.h ****   ~BufferAllocator() { }
   40:eurorack/stmlib/utils/buffer_allocator.h ****   
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 7
 
 
   41:eurorack/stmlib/utils/buffer_allocator.h ****   BufferAllocator(void* buffer, size_t size) {
@@ -378,11 +378,11 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   46:eurorack/stmlib/utils/buffer_allocator.h ****     buffer_ = static_cast<uint8_t*>(buffer);
  249              		.loc 2 46 5 view .LVU52
  250              		.loc 2 46 13 is_stmt 0 view .LVU53
- 251 0004 264A     		ldr	r2, .L29
+ 251 0004 274A     		ldr	r2, .L29
   47:eurorack/stmlib/utils/buffer_allocator.h ****     size_ = size;
  252              		.loc 2 47 11 view .LVU54
  253 0006 4FF48023 		mov	r3, #262144
- 254 000a 264F     		ldr	r7, .L29+4
+ 254 000a 274F     		ldr	r7, .L29+4
  255              	.LBE1060:
  256              	.LBE1059:
  257              	.LBE1058:
@@ -392,12 +392,12 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   63:Polyphony.cpp ****     // Initialize Plaits Voices 
   64:Polyphony.cpp ****     for (int i = 0; i < NUM_VOICES; ++i) { // Initialize all 4 voices
  260              		.loc 1 64 14 view .LVU55
- 261 000c 0025     		movs	r5, #0
- 262 000e 264E     		ldr	r6, .L29+8
- 263 0010 DFF8C4A0 		ldr	r10, .L29+56
- 264 0014 DFF8C490 		ldr	r9, .L29+60
- 265 0018 244C     		ldr	r4, .L29+12
- 266 001a DFF8C480 		ldr	r8, .L29+64
+ 261 000c 0026     		movs	r6, #0
+ 262 000e 274D     		ldr	r5, .L29+8
+ 263 0010 DFF8C8A0 		ldr	r10, .L29+56
+ 264 0014 DFF8C890 		ldr	r9, .L29+60
+ 265 0018 254C     		ldr	r4, .L29+12
+ 266 001a DFF8C880 		ldr	r8, .L29+64
  267              	.LBE1067:
  268              	.LBB1098:
  269              	.LBB1065:
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   50:eurorack/stmlib/utils/buffer_allocator.h **** 
   51:eurorack/stmlib/utils/buffer_allocator.h ****   template<typename T>
   52:eurorack/stmlib/utils/buffer_allocator.h ****   inline T* Allocate() {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 8
 
 
   53:eurorack/stmlib/utils/buffer_allocator.h ****     return Allocate<T>(1);
@@ -463,22 +463,22 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   65:Polyphony.cpp ****         voices[i].Init(&allocator);
  301              		.loc 1 65 9 discriminator 2 view .LVU68
  302              		.loc 1 65 23 is_stmt 0 discriminator 2 view .LVU69
- 303 0026 224B     		ldr	r3, .L29+16
+ 303 0026 234B     		ldr	r3, .L29+16
  304 0028 4FF45B60 		mov	r0, #3504
  305 002c 6946     		mov	r1, sp
   64:Polyphony.cpp ****         voices[i].Init(&allocator);
  306              		.loc 1 64 23 discriminator 2 view .LVU70
  307 002e 2837     		adds	r7, r7, #40
  308              		.loc 1 65 23 discriminator 2 view .LVU71
- 309 0030 00FB0530 		mla	r0, r0, r5, r3
+ 309 0030 00FB0630 		mla	r0, r0, r6, r3
   64:Polyphony.cpp ****         voices[i].Init(&allocator);
  310              		.loc 1 64 5 discriminator 2 view .LVU72
- 311 0034 0135     		adds	r5, r5, #1
+ 311 0034 0136     		adds	r6, r6, #1
  312              	.LVL13:
  313              		.loc 1 65 23 discriminator 2 view .LVU73
  314 0036 FFF7FEFF 		bl	_ZN6plaits5Voice4InitEPN6stmlib15BufferAllocatorE
  315              	.LVL14:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 9
 
 
   66:Polyphony.cpp ****         patches[i].engine = 0;      
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   47:VoiceEnvelope.h ****     // Original combined shape method for backward compatibility
   48:VoiceEnvelope.h ****     void SetShape(float value) {
   49:VoiceEnvelope.h ****         float curve;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 10
 
 
   50:VoiceEnvelope.h ****         if (value < 0.5f) {
@@ -557,27 +557,31 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   67:Polyphony.cpp ****         modulations[i].engine = 0; 
  328              		.loc 1 67 31 discriminator 2 view .LVU77
  329 003e 0023     		movs	r3, #0
-  66:Polyphony.cpp ****         patches[i].engine = 0;      
- 330              		.loc 1 66 27 discriminator 2 view .LVU78
- 331 0040 47F80C2C 		str	r2, [r7, #-12]
- 332              		.loc 1 67 9 is_stmt 1 discriminator 2 view .LVU79
-  64:Polyphony.cpp ****         voices[i].Init(&allocator);
- 333              		.loc 1 64 23 is_stmt 0 discriminator 2 view .LVU80
- 334 0044 042D     		cmp	r5, #4
   68:Polyphony.cpp ****         modulations[i].trigger = 0.0f;
-  69:Polyphony.cpp ****         voice_active[i] = false;
- 335              		.loc 1 69 25 discriminator 2 view .LVU81
- 336 0046 0AF8012B 		strb	r2, [r10], #1
+  69:Polyphony.cpp ****         modulations[i].level_patched = false; // Initialize level patched flag
+ 330              		.loc 1 69 38 discriminator 2 view .LVU78
+ 331 0040 85F82420 		strb	r2, [r5, #36]
   64:Polyphony.cpp ****         voices[i].Init(&allocator);
- 337              		.loc 1 64 23 discriminator 2 view .LVU82
- 338 004a 06F12806 		add	r6, r6, #40
- 339              	.LBB1075:
- 340              	.LBB1076:
+ 332              		.loc 1 64 23 discriminator 2 view .LVU79
+ 333 0044 042E     		cmp	r6, #4
+  66:Polyphony.cpp ****         modulations[i].engine = 0; 
+ 334              		.loc 1 66 27 discriminator 2 view .LVU80
+ 335 0046 47F80C2C 		str	r2, [r7, #-12]
+  67:Polyphony.cpp ****         modulations[i].trigger = 0.0f;
+ 336              		.loc 1 67 9 is_stmt 1 discriminator 2 view .LVU81
+  64:Polyphony.cpp ****         voices[i].Init(&allocator);
+ 337              		.loc 1 64 23 is_stmt 0 discriminator 2 view .LVU82
+ 338 004a 05F12805 		add	r5, r5, #40
+  70:Polyphony.cpp ****         voice_active[i] = false;
+ 339              		.loc 1 70 25 discriminator 2 view .LVU83
+ 340 004e 0AF8012B 		strb	r2, [r10], #1
+ 341              	.LBB1075:
+ 342              	.LBB1076:
   31:VoiceEnvelope.h ****         min_attack_time = 0.0002f * sample_rate;    // 0.2ms min attack (much faster for punchiness
- 341              		.loc 3 31 23 discriminator 2 view .LVU83
- 342 004e 194A     		ldr	r2, .L29+20
- 343              	.LBB1077:
- 344              	.LBB1078:
+ 343              		.loc 3 31 23 discriminator 2 view .LVU84
+ 344 0052 194A     		ldr	r2, .L29+20
+ 345              	.LBB1077:
+ 346              	.LBB1078:
   58:VoiceEnvelope.h ****             curve = 0.5f;
   59:VoiceEnvelope.h ****         }
   60:VoiceEnvelope.h ****         attack_coefficient = 1.0f / attack_time;
@@ -594,13 +598,13 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   71:VoiceEnvelope.h ****         
   72:VoiceEnvelope.h ****         // Special handling for super punchy attacks at low values
   73:VoiceEnvelope.h ****         if (value < 0.1f) {
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 11
+
+
   74:VoiceEnvelope.h ****             // Extra fast attacks at the beginning of the range
   75:VoiceEnvelope.h ****             attack_time = static_cast<size_t>(min_attack_time + 
   76:VoiceEnvelope.h ****                                            (min_attack_time * 9.0f * value / 0.1f));
   77:VoiceEnvelope.h ****         } else {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 11
-
-
   78:VoiceEnvelope.h ****             // Normal range from 2ms to 4 seconds
   79:VoiceEnvelope.h ****             attack_time = static_cast<size_t>(0.002f * time_range_2x/8.0f + 
   80:VoiceEnvelope.h ****                                            (time_range_2x * 0.5f * value_cubed));
@@ -635,332 +639,334 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  109:VoiceEnvelope.h ****     void SetAttackCurve(float value) {
  110:VoiceEnvelope.h ****         float cu = value - 0.5f;
  111:VoiceEnvelope.h ****         attack_curve_coefficient = 128.0f * cu * cu;
- 345              		.loc 3 111 34 discriminator 2 view .LVU84
- 346 0050 A360     		str	r3, [r4, #8]	@ float
- 347              	.LBE1078:
- 348              	.LBE1077:
+ 347              		.loc 3 111 34 discriminator 2 view .LVU85
+ 348 0054 A360     		str	r3, [r4, #8]	@ float
+ 349              	.LBE1078:
+ 350              	.LBE1077:
   31:VoiceEnvelope.h ****         min_attack_time = 0.0002f * sample_rate;    // 0.2ms min attack (much faster for punchiness
- 349              		.loc 3 31 23 discriminator 2 view .LVU85
- 350 0052 2261     		str	r2, [r4, #16]	@ float
+ 351              		.loc 3 31 23 discriminator 2 view .LVU86
+ 352 0056 2261     		str	r2, [r4, #16]	@ float
   32:VoiceEnvelope.h ****         min_decay_time_a = 0.4f * sample_rate;      // 400ms min decay A
- 351              		.loc 3 32 25 discriminator 2 view .LVU86
- 352 0054 184A     		ldr	r2, .L29+24
- 353              	.LBB1080:
- 354              	.LBB1081:
+ 353              		.loc 3 32 25 discriminator 2 view .LVU87
+ 354 0058 184A     		ldr	r2, .L29+24
+ 355              	.LBB1080:
+ 356              	.LBB1081:
  112:VoiceEnvelope.h ****     }
  113:VoiceEnvelope.h ****     
  114:VoiceEnvelope.h ****     void SetReleaseCurve(float value) {
  115:VoiceEnvelope.h ****         float cu = value - 0.5f;
  116:VoiceEnvelope.h ****         release_curve_coefficient = 128.0f * cu * cu;
- 355              		.loc 3 116 35 discriminator 2 view .LVU87
- 356 0056 E360     		str	r3, [r4, #12]	@ float
- 357              	.LBE1081:
- 358              	.LBE1080:
+ 357              		.loc 3 116 35 discriminator 2 view .LVU88
+ 358 005a E360     		str	r3, [r4, #12]	@ float
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 12
+
+
+ 359              	.LBE1081:
+ 360              	.LBE1080:
   32:VoiceEnvelope.h ****         min_decay_time_a = 0.4f * sample_rate;      // 400ms min decay A
- 359              		.loc 3 32 25 discriminator 2 view .LVU88
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 12
-
-
- 360 0058 6261     		str	r2, [r4, #20]	@ float
+ 361              		.loc 3 32 25 discriminator 2 view .LVU89
+ 362 005c 6261     		str	r2, [r4, #20]	@ float
   33:VoiceEnvelope.h ****         min_decay_time_b = 0.01f * sample_rate;     // 10ms min decay B
- 361              		.loc 3 33 26 discriminator 2 view .LVU89
- 362 005a 184A     		ldr	r2, .L29+28
- 363              	.LBE1076:
- 364              	.LBE1075:
+ 363              		.loc 3 33 26 discriminator 2 view .LVU90
+ 364 005e 184A     		ldr	r2, .L29+28
+ 365              	.LBE1076:
+ 366              	.LBE1075:
   67:Polyphony.cpp ****         modulations[i].trigger = 0.0f;
- 365              		.loc 1 67 31 discriminator 2 view .LVU90
- 366 005c 46F8283C 		str	r3, [r6, #-40]	@ float
-  68:Polyphony.cpp ****         voice_active[i] = false;
- 367              		.loc 1 68 9 is_stmt 1 discriminator 2 view .LVU91
- 368              	.LBB1089:
- 369              	.LBB1085:
+ 367              		.loc 1 67 31 discriminator 2 view .LVU91
+ 368 0060 45F8283C 		str	r3, [r5, #-40]	@ float
+  68:Polyphony.cpp ****         modulations[i].level_patched = false; // Initialize level patched flag
+ 369              		.loc 1 68 9 is_stmt 1 discriminator 2 view .LVU92
+ 370              	.LBB1089:
+ 371              	.LBB1085:
   33:VoiceEnvelope.h ****         min_decay_time_b = 0.01f * sample_rate;     // 10ms min decay B
- 370              		.loc 3 33 26 is_stmt 0 discriminator 2 view .LVU92
- 371 0060 A261     		str	r2, [r4, #24]	@ float
+ 372              		.loc 3 33 26 is_stmt 0 discriminator 2 view .LVU93
+ 373 0064 A261     		str	r2, [r4, #24]	@ float
   34:VoiceEnvelope.h ****         reset_time = 0.008f * sample_rate;          // 8ms reset time
- 372              		.loc 3 34 26 discriminator 2 view .LVU93
- 373 0062 174A     		ldr	r2, .L29+32
- 374              	.LBE1085:
- 375              	.LBE1089:
-  68:Polyphony.cpp ****         voice_active[i] = false;
- 376              		.loc 1 68 32 discriminator 2 view .LVU94
- 377 0064 46F8103C 		str	r3, [r6, #-16]	@ float
- 378              		.loc 1 69 9 is_stmt 1 discriminator 2 view .LVU95
-  70:Polyphony.cpp ****         voice_note[i] = 0.0f;
- 379              		.loc 1 70 9 discriminator 2 view .LVU96
- 380              	.LBB1090:
- 381              	.LBB1086:
+ 374              		.loc 3 34 26 discriminator 2 view .LVU94
+ 375 0066 174A     		ldr	r2, .L29+32
+ 376              	.LBE1085:
+ 377              	.LBE1089:
+  68:Polyphony.cpp ****         modulations[i].level_patched = false; // Initialize level patched flag
+ 378              		.loc 1 68 32 discriminator 2 view .LVU95
+ 379 0068 45F8103C 		str	r3, [r5, #-16]	@ float
+  69:Polyphony.cpp ****         voice_active[i] = false;
+ 380              		.loc 1 69 9 is_stmt 1 discriminator 2 view .LVU96
+ 381              		.loc 1 70 9 discriminator 2 view .LVU97
+  71:Polyphony.cpp ****         voice_note[i] = 0.0f;
+ 382              		.loc 1 71 9 discriminator 2 view .LVU98
+ 383              	.LBB1090:
+ 384              	.LBB1086:
   34:VoiceEnvelope.h ****         reset_time = 0.008f * sample_rate;          // 8ms reset time
- 382              		.loc 3 34 26 is_stmt 0 discriminator 2 view .LVU97
- 383 0068 E261     		str	r2, [r4, #28]	@ float
+ 385              		.loc 3 34 26 is_stmt 0 discriminator 2 view .LVU99
+ 386 006c E261     		str	r2, [r4, #28]	@ float
   35:VoiceEnvelope.h ****         reset_coefficient = 1.0f / reset_time;
- 384              		.loc 3 35 20 discriminator 2 view .LVU98
- 385 006a 164A     		ldr	r2, .L29+36
- 386              	.LBE1086:
- 387              	.LBE1090:
- 388              		.loc 1 70 23 discriminator 2 view .LVU99
- 389 006c 49F8043B 		str	r3, [r9], #4	@ float
-  71:Polyphony.cpp ****         
-  72:Polyphony.cpp ****         // Initialize envelopes with proper settings
-  73:Polyphony.cpp ****         voice_envelopes[i].Init(SAMPLE_RATE);
- 390              		.loc 1 73 9 is_stmt 1 discriminator 2 view .LVU100
- 391              	.LVL15:
- 392              	.LBB1091:
- 393              	.LBI1075:
+ 387              		.loc 3 35 20 discriminator 2 view .LVU100
+ 388 006e 164A     		ldr	r2, .L29+36
+ 389              	.LBE1086:
+ 390              	.LBE1090:
+ 391              		.loc 1 71 23 discriminator 2 view .LVU101
+ 392 0070 49F8043B 		str	r3, [r9], #4	@ float
+  72:Polyphony.cpp ****         
+  73:Polyphony.cpp ****         // Initialize envelopes with proper settings
+  74:Polyphony.cpp ****         voice_envelopes[i].Init(SAMPLE_RATE);
+ 393              		.loc 1 74 9 is_stmt 1 discriminator 2 view .LVU102
+ 394              	.LVL15:
+ 395              	.LBB1091:
+ 396              	.LBI1075:
   30:VoiceEnvelope.h ****         time_range_2x = 2.0f * 4.0f * sample_rate;  // 4s max time
- 394              		.loc 3 30 10 discriminator 2 view .LVU101
- 395              	.LBB1087:
+ 397              		.loc 3 30 10 discriminator 2 view .LVU103
+ 398              	.LBB1087:
   31:VoiceEnvelope.h ****         min_attack_time = 0.0002f * sample_rate;    // 0.2ms min attack (much faster for punchiness
- 396              		.loc 3 31 9 discriminator 2 view .LVU102
+ 399              		.loc 3 31 9 discriminator 2 view .LVU104
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 13
+
+
   32:VoiceEnvelope.h ****         min_decay_time_a = 0.4f * sample_rate;      // 400ms min decay A
- 397              		.loc 3 32 9 discriminator 2 view .LVU103
+ 400              		.loc 3 32 9 discriminator 2 view .LVU105
   33:VoiceEnvelope.h ****         min_decay_time_b = 0.01f * sample_rate;     // 10ms min decay B
- 398              		.loc 3 33 9 discriminator 2 view .LVU104
+ 401              		.loc 3 33 9 discriminator 2 view .LVU106
   34:VoiceEnvelope.h ****         reset_time = 0.008f * sample_rate;          // 8ms reset time
- 399              		.loc 3 34 9 discriminator 2 view .LVU105
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 13
-
-
+ 402              		.loc 3 34 9 discriminator 2 view .LVU107
   35:VoiceEnvelope.h ****         reset_coefficient = 1.0f / reset_time;
- 400              		.loc 3 35 9 discriminator 2 view .LVU106
+ 403              		.loc 3 35 9 discriminator 2 view .LVU108
   35:VoiceEnvelope.h ****         reset_coefficient = 1.0f / reset_time;
- 401              		.loc 3 35 20 is_stmt 0 discriminator 2 view .LVU107
- 402 0070 2262     		str	r2, [r4, #32]	@ float
+ 404              		.loc 3 35 20 is_stmt 0 discriminator 2 view .LVU109
+ 405 0074 2262     		str	r2, [r4, #32]	@ float
   36:VoiceEnvelope.h ****         
- 403              		.loc 3 36 9 is_stmt 1 discriminator 2 view .LVU108
+ 406              		.loc 3 36 9 is_stmt 1 discriminator 2 view .LVU110
   36:VoiceEnvelope.h ****         
- 404              		.loc 3 36 27 is_stmt 0 discriminator 2 view .LVU109
- 405 0072 154A     		ldr	r2, .L29+40
- 406              	.LBE1087:
- 407              	.LBE1091:
-  74:Polyphony.cpp ****         voice_envelopes[i].SetMode(VoiceEnvelope::MODE_ASR); // Use ASR mode by default
-  75:Polyphony.cpp ****         voice_envelopes[i].SetShape(0.5f); // Start with middle curve
-  76:Polyphony.cpp ****         voice_values[i] = 0.0f;
- 408              		.loc 1 76 25 discriminator 2 view .LVU110
- 409 0074 48F8043B 		str	r3, [r8], #4	@ float
- 410              	.LBB1092:
- 411              	.LBB1088:
+ 407              		.loc 3 36 27 is_stmt 0 discriminator 2 view .LVU111
+ 408 0076 154A     		ldr	r2, .L29+40
+ 409              	.LBE1087:
+ 410              	.LBE1091:
+  75:Polyphony.cpp ****         voice_envelopes[i].SetMode(VoiceEnvelope::MODE_ASR); // Use ASR mode by default
+  76:Polyphony.cpp ****         voice_envelopes[i].SetShape(0.5f); // Start with middle curve
+  77:Polyphony.cpp ****         voice_values[i] = 0.0f;
+ 411              		.loc 1 77 25 discriminator 2 view .LVU112
+ 412 0078 48F8043B 		str	r3, [r8], #4	@ float
+ 413              	.LBB1092:
+ 414              	.LBB1088:
   36:VoiceEnvelope.h ****         
- 412              		.loc 3 36 27 discriminator 2 view .LVU111
- 413 0078 6262     		str	r2, [r4, #36]	@ float
+ 415              		.loc 3 36 27 discriminator 2 view .LVU113
+ 416 007c 6262     		str	r2, [r4, #36]	@ float
   39:VoiceEnvelope.h ****         SetReleaseCurve(0.5f);
- 414              		.loc 3 39 9 is_stmt 1 discriminator 2 view .LVU112
- 415              	.LVL16:
- 416              	.LBB1083:
- 417              	.LBI1077:
+ 417              		.loc 3 39 9 is_stmt 1 discriminator 2 view .LVU114
+ 418              	.LVL16:
+ 419              	.LBB1083:
+ 420              	.LBI1077:
  109:VoiceEnvelope.h ****         float cu = value - 0.5f;
- 418              		.loc 3 109 10 discriminator 2 view .LVU113
- 419              	.LBB1079:
+ 421              		.loc 3 109 10 discriminator 2 view .LVU115
+ 422              	.LBB1079:
  110:VoiceEnvelope.h ****         attack_curve_coefficient = 128.0f * cu * cu;
- 420              		.loc 3 110 9 discriminator 2 view .LVU114
+ 423              		.loc 3 110 9 discriminator 2 view .LVU116
  111:VoiceEnvelope.h ****     }
- 421              		.loc 3 111 9 discriminator 2 view .LVU115
+ 424              		.loc 3 111 9 discriminator 2 view .LVU117
  111:VoiceEnvelope.h ****     }
- 422              		.loc 3 111 9 is_stmt 0 discriminator 2 view .LVU116
- 423              	.LBE1079:
- 424              	.LBE1083:
+ 425              		.loc 3 111 9 is_stmt 0 discriminator 2 view .LVU118
+ 426              	.LBE1079:
+ 427              	.LBE1083:
   40:VoiceEnvelope.h ****     }
- 425              		.loc 3 40 9 is_stmt 1 discriminator 2 view .LVU117
- 426              	.LBB1084:
- 427              	.LBI1080:
+ 428              		.loc 3 40 9 is_stmt 1 discriminator 2 view .LVU119
+ 429              	.LBB1084:
+ 430              	.LBI1080:
  114:VoiceEnvelope.h ****         float cu = value - 0.5f;
- 428              		.loc 3 114 10 discriminator 2 view .LVU118
- 429              	.LBB1082:
+ 431              		.loc 3 114 10 discriminator 2 view .LVU120
+ 432              	.LBB1082:
  115:VoiceEnvelope.h ****         release_curve_coefficient = 128.0f * cu * cu;
- 430              		.loc 3 115 9 discriminator 2 view .LVU119
- 431              		.loc 3 116 9 discriminator 2 view .LVU120
- 432              		.loc 3 116 9 is_stmt 0 discriminator 2 view .LVU121
- 433              	.LBE1082:
- 434              	.LBE1084:
- 435              	.LBE1088:
- 436              	.LBE1092:
-  74:Polyphony.cpp ****         voice_envelopes[i].SetShape(0.5f); // Start with middle curve
- 437              		.loc 1 74 9 is_stmt 1 discriminator 2 view .LVU122
- 438              	.LBB1093:
- 439              	.LBI1093:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 14
+ 433              		.loc 3 115 9 discriminator 2 view .LVU121
+ 434              		.loc 3 116 9 discriminator 2 view .LVU122
+ 435              		.loc 3 116 9 is_stmt 0 discriminator 2 view .LVU123
+ 436              	.LBE1082:
+ 437              	.LBE1084:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 14
 
 
+ 438              	.LBE1088:
+ 439              	.LBE1092:
+  75:Polyphony.cpp ****         voice_envelopes[i].SetShape(0.5f); // Start with middle curve
+ 440              		.loc 1 75 9 is_stmt 1 discriminator 2 view .LVU124
+ 441              	.LBB1093:
+ 442              	.LBI1093:
   43:VoiceEnvelope.h ****         mode = new_mode;
- 440              		.loc 3 43 10 discriminator 2 view .LVU123
- 441              	.LBB1094:
+ 443              		.loc 3 43 10 discriminator 2 view .LVU125
+ 444              	.LBB1094:
   44:VoiceEnvelope.h ****     }
- 442              		.loc 3 44 9 discriminator 2 view .LVU124
+ 445              		.loc 3 44 9 discriminator 2 view .LVU126
   44:VoiceEnvelope.h ****     }
- 443              		.loc 3 44 14 is_stmt 0 discriminator 2 view .LVU125
- 444 007a 4FF00102 		mov	r2, #1
- 445 007e 6270     		strb	r2, [r4, #1]
- 446              	.LVL17:
+ 446              		.loc 3 44 14 is_stmt 0 discriminator 2 view .LVU127
+ 447 007e 4FF00102 		mov	r2, #1
+ 448 0082 6270     		strb	r2, [r4, #1]
+ 449              	.LVL17:
   44:VoiceEnvelope.h ****     }
- 447              		.loc 3 44 14 discriminator 2 view .LVU126
- 448              	.LBE1094:
- 449              	.LBE1093:
-  75:Polyphony.cpp ****         voice_values[i] = 0.0f;
- 450              		.loc 1 75 9 is_stmt 1 discriminator 2 view .LVU127
- 451              	.LBB1095:
- 452              	.LBI1068:
+ 450              		.loc 3 44 14 discriminator 2 view .LVU128
+ 451              	.LBE1094:
+ 452              	.LBE1093:
+  76:Polyphony.cpp ****         voice_values[i] = 0.0f;
+ 453              		.loc 1 76 9 is_stmt 1 discriminator 2 view .LVU129
+ 454              	.LBB1095:
+ 455              	.LBI1068:
   48:VoiceEnvelope.h ****         float curve;
- 453              		.loc 3 48 10 discriminator 2 view .LVU128
- 454              	.LBB1072:
+ 456              		.loc 3 48 10 discriminator 2 view .LVU130
+ 457              	.LBB1072:
   49:VoiceEnvelope.h ****         if (value < 0.5f) {
- 455              		.loc 3 49 9 discriminator 2 view .LVU129
+ 458              		.loc 3 49 9 discriminator 2 view .LVU131
   50:VoiceEnvelope.h ****             attack_time = min_attack_time;
- 456              		.loc 3 50 9 discriminator 2 view .LVU130
- 457              	.LBB1071:
+ 459              		.loc 3 50 9 discriminator 2 view .LVU132
+ 460              	.LBB1071:
   55:VoiceEnvelope.h ****             attack_time = static_cast<size_t>(time_range_2x * norm_val * norm_val) + min_attack_tim
- 458              		.loc 3 55 13 discriminator 2 view .LVU131
+ 461              		.loc 3 55 13 discriminator 2 view .LVU133
   56:VoiceEnvelope.h ****             decay_time = static_cast<size_t>(time_range_2x * (1.0f - value * value)) + min_decay_ti
- 459              		.loc 3 56 13 discriminator 2 view .LVU132
+ 462              		.loc 3 56 13 discriminator 2 view .LVU134
   57:VoiceEnvelope.h ****             curve = 0.5f;
- 460              		.loc 3 57 24 is_stmt 0 discriminator 2 view .LVU133
- 461 0080 124A     		ldr	r2, .L29+44
- 462 0082 C4E90D12 		strd	r1, r2, [r4, #52]
+ 463              		.loc 3 57 24 is_stmt 0 discriminator 2 view .LVU135
+ 464 0084 124A     		ldr	r2, .L29+44
+ 465 0086 C4E90D12 		strd	r1, r2, [r4, #52]
   58:VoiceEnvelope.h ****         }
- 463              		.loc 3 58 13 is_stmt 1 discriminator 2 view .LVU134
- 464              	.LVL18:
+ 466              		.loc 3 58 13 is_stmt 1 discriminator 2 view .LVU136
+ 467              	.LVL18:
   58:VoiceEnvelope.h ****         }
- 465              		.loc 3 58 13 is_stmt 0 discriminator 2 view .LVU135
- 466              	.LBE1071:
+ 468              		.loc 3 58 13 is_stmt 0 discriminator 2 view .LVU137
+ 469              	.LBE1071:
   60:VoiceEnvelope.h ****         decay_coefficient = 1.0f / decay_time;
- 467              		.loc 3 60 9 is_stmt 1 discriminator 2 view .LVU136
+ 470              		.loc 3 60 9 is_stmt 1 discriminator 2 view .LVU138
   60:VoiceEnvelope.h ****         decay_coefficient = 1.0f / decay_time;
- 468              		.loc 3 60 28 is_stmt 0 discriminator 2 view .LVU137
- 469 0086 124A     		ldr	r2, .L29+48
- 470              	.LBE1072:
- 471              	.LBE1095:
+ 471              		.loc 3 60 28 is_stmt 0 discriminator 2 view .LVU139
+ 472 008a 124A     		ldr	r2, .L29+48
+ 473              	.LBE1072:
+ 474              	.LBE1095:
   64:Polyphony.cpp ****         voices[i].Init(&allocator);
- 472              		.loc 1 64 23 discriminator 2 view .LVU138
- 473 0088 04F14404 		add	r4, r4, #68
- 474              	.LBB1096:
- 475              	.LBB1073:
+ 475              		.loc 1 64 23 discriminator 2 view .LVU140
+ 476 008c 04F14404 		add	r4, r4, #68
+ 477              	.LBB1096:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 15
+
+
+ 478              	.LBB1073:
   60:VoiceEnvelope.h ****         decay_coefficient = 1.0f / decay_time;
- 476              		.loc 3 60 28 discriminator 2 view .LVU139
- 477 008c 44F8182C 		str	r2, [r4, #-24]	@ float
+ 479              		.loc 3 60 28 discriminator 2 view .LVU141
+ 480 0090 44F8182C 		str	r2, [r4, #-24]	@ float
   61:VoiceEnvelope.h ****         SetAttackCurve(curve);
- 478              		.loc 3 61 9 is_stmt 1 discriminator 2 view .LVU140
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 15
-
-
+ 481              		.loc 3 61 9 is_stmt 1 discriminator 2 view .LVU142
   61:VoiceEnvelope.h ****         SetAttackCurve(curve);
- 479              		.loc 3 61 27 is_stmt 0 discriminator 2 view .LVU141
- 480 0090 104A     		ldr	r2, .L29+52
- 481 0092 44F8142C 		str	r2, [r4, #-20]	@ float
+ 482              		.loc 3 61 27 is_stmt 0 discriminator 2 view .LVU143
+ 483 0094 104A     		ldr	r2, .L29+52
+ 484 0096 44F8142C 		str	r2, [r4, #-20]	@ float
   62:VoiceEnvelope.h ****         SetReleaseCurve(curve);
- 482              		.loc 3 62 9 is_stmt 1 discriminator 2 view .LVU142
- 483              	.LVL19:
+ 485              		.loc 3 62 9 is_stmt 1 discriminator 2 view .LVU144
+ 486              	.LVL19:
   62:VoiceEnvelope.h ****         SetReleaseCurve(curve);
- 484              		.loc 3 62 9 is_stmt 0 discriminator 2 view .LVU143
- 485              	.LBE1073:
- 486              	.LBE1096:
- 487              	.LBE1099:
+ 487              		.loc 3 62 9 is_stmt 0 discriminator 2 view .LVU145
+ 488              	.LBE1073:
+ 489              	.LBE1096:
+ 490              	.LBE1099:
  110:VoiceEnvelope.h ****         attack_curve_coefficient = 128.0f * cu * cu;
- 488              		.loc 3 110 9 is_stmt 1 discriminator 2 view .LVU144
+ 491              		.loc 3 110 9 is_stmt 1 discriminator 2 view .LVU146
  111:VoiceEnvelope.h ****     }
- 489              		.loc 3 111 9 discriminator 2 view .LVU145
- 490              	.LBB1100:
- 491              	.LBB1097:
- 492              	.LBB1074:
+ 492              		.loc 3 111 9 discriminator 2 view .LVU147
+ 493              	.LBB1100:
+ 494              	.LBB1097:
+ 495              	.LBB1074:
   63:VoiceEnvelope.h ****     }
- 493              		.loc 3 63 9 discriminator 2 view .LVU146
+ 496              		.loc 3 63 9 discriminator 2 view .LVU148
   63:VoiceEnvelope.h ****     }
- 494              		.loc 3 63 9 is_stmt 0 discriminator 2 view .LVU147
- 495              	.LBE1074:
- 496              	.LBE1097:
- 497              	.LBE1100:
+ 497              		.loc 3 63 9 is_stmt 0 discriminator 2 view .LVU149
+ 498              	.LBE1074:
+ 499              	.LBE1097:
+ 500              	.LBE1100:
  115:VoiceEnvelope.h ****         release_curve_coefficient = 128.0f * cu * cu;
- 498              		.loc 3 115 9 is_stmt 1 discriminator 2 view .LVU148
- 499              		.loc 3 116 9 discriminator 2 view .LVU149
- 500              	.LBB1101:
- 501              		.loc 1 76 9 discriminator 2 view .LVU150
+ 501              		.loc 3 115 9 is_stmt 1 discriminator 2 view .LVU150
+ 502              		.loc 3 116 9 discriminator 2 view .LVU151
+ 503              	.LBB1101:
+ 504              		.loc 1 77 9 discriminator 2 view .LVU152
   64:Polyphony.cpp ****         voices[i].Init(&allocator);
- 502              		.loc 1 64 5 discriminator 2 view .LVU151
+ 505              		.loc 1 64 5 discriminator 2 view .LVU153
   64:Polyphony.cpp ****         voices[i].Init(&allocator);
- 503              		.loc 1 64 23 discriminator 2 view .LVU152
- 504 0096 C6D1     		bne	.L27
- 505              	.LBE1101:
-  77:Polyphony.cpp ****     }
-  78:Polyphony.cpp **** } ...
- 506              		.loc 1 78 1 is_stmt 0 view .LVU153
- 507 0098 04B0     		add	sp, sp, #16
- 508              		.cfi_def_cfa_offset 32
- 509              		@ sp needed
- 510 009a BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
- 511              	.LVL20:
- 512              	.L30:
- 513              		.loc 1 78 1 view .LVU154
- 514 009e 00BF     		.align	2
- 515              	.L29:
- 516 00a0 00000000 		.word	shared_buffer
- 517 00a4 00000000 		.word	.LANCHOR3
- 518 00a8 00000000 		.word	.LANCHOR2
- 519 00ac 00000000 		.word	.LANCHOR4
- 520 00b0 00000000 		.word	voices
- 521 00b4 0080BB48 		.word	1220247552
- 522 00b8 99991941 		.word	1092196761
- 523 00bc 00009646 		.word	1184235520
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 16
+ 506              		.loc 1 64 23 discriminator 2 view .LVU154
+ 507 009a C4D1     		bne	.L27
+ 508              	.LBE1101:
+  78:Polyphony.cpp ****     }
+  79:Polyphony.cpp **** } ...
+ 509              		.loc 1 79 1 is_stmt 0 view .LVU155
+ 510 009c 04B0     		add	sp, sp, #16
+ 511              		.cfi_def_cfa_offset 32
+ 512              		@ sp needed
+ 513 009e BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 514              	.LVL20:
+ 515              	.L30:
+ 516              		.loc 1 79 1 view .LVU156
+ 517 00a2 00BF     		.align	2
+ 518              	.L29:
+ 519 00a4 00000000 		.word	shared_buffer
+ 520 00a8 00000000 		.word	.LANCHOR3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 16
 
 
- 524 00c0 0000F043 		.word	1139802112
- 525 00c4 0100C043 		.word	1136656385
- 526 00c8 AAAA2A3B 		.word	992651946
- 527 00cc E0660400 		.word	288480
- 528 00d0 398EE33D 		.word	1038323257
- 529 00d4 12A16836 		.word	912826642
- 530 00d8 00000000 		.word	.LANCHOR1
- 531 00dc 00000000 		.word	.LANCHOR0
- 532 00e0 00000000 		.word	.LANCHOR5
- 533              		.cfi_endproc
- 534              	.LFE5346:
- 536              		.section	.text.startup._GLOBAL__sub_I_voices,"ax",%progbits
- 537              		.align	1
- 538              		.syntax unified
- 539              		.thumb
- 540              		.thumb_func
- 542              	_GLOBAL__sub_I_voices:
- 543              	.LFB6066:
- 544              		.loc 1 78 1 is_stmt 1 view -0
- 545              		.cfi_startproc
- 546              		@ args = 0, pretend = 0, frame = 0
- 547              		@ frame_needed = 0, uses_anonymous_args = 0
- 548              	.LBB1297:
- 549              	.LBI1297:
- 550              		.loc 1 78 1 view .LVU156
- 551              	.LVL21:
- 552              	.LBB1298:
+ 521 00ac 00000000 		.word	.LANCHOR2
+ 522 00b0 00000000 		.word	.LANCHOR4
+ 523 00b4 00000000 		.word	voices
+ 524 00b8 0080BB48 		.word	1220247552
+ 525 00bc 99991941 		.word	1092196761
+ 526 00c0 00009646 		.word	1184235520
+ 527 00c4 0000F043 		.word	1139802112
+ 528 00c8 0100C043 		.word	1136656385
+ 529 00cc AAAA2A3B 		.word	992651946
+ 530 00d0 E0660400 		.word	288480
+ 531 00d4 398EE33D 		.word	1038323257
+ 532 00d8 12A16836 		.word	912826642
+ 533 00dc 00000000 		.word	.LANCHOR1
+ 534 00e0 00000000 		.word	.LANCHOR0
+ 535 00e4 00000000 		.word	.LANCHOR5
+ 536              		.cfi_endproc
+ 537              	.LFE5346:
+ 539              		.section	.text.startup._GLOBAL__sub_I_voices,"ax",%progbits
+ 540              		.align	1
+ 541              		.syntax unified
+ 542              		.thumb
+ 543              		.thumb_func
+ 545              	_GLOBAL__sub_I_voices:
+ 546              	.LFB6066:
+ 547              		.loc 1 79 1 is_stmt 1 view -0
+ 548              		.cfi_startproc
+ 549              		@ args = 0, pretend = 0, frame = 0
+ 550              		@ frame_needed = 0, uses_anonymous_args = 0
+ 551              	.LBB1297:
+ 552              	.LBI1297:
+ 553              		.loc 1 79 1 view .LVU158
+ 554              	.LVL21:
+ 555              	.LBB1298:
    4:Polyphony.cpp **** plaits::Voice voices[NUM_VOICES];
- 553              		.loc 1 4 32 view .LVU157
- 554 0000 244B     		ldr	r3, .L36
- 555              	.LBE1298:
- 556              	.LBE1297:
- 557              		.loc 1 78 1 is_stmt 0 view .LVU158
- 558 0002 0420     		movs	r0, #4
- 559 0004 10B5     		push	{r4, lr}
- 560              		.cfi_def_cfa_offset 8
- 561              		.cfi_offset 4, -8
- 562              		.cfi_offset 14, -4
- 563              	.L32:
- 564              	.LVL22:
- 565              	.LBB1419:
- 566              	.LBB1413:
- 567              	.LBB1299:
- 568              	.LBI1299:
- 569              		.file 4 "eurorack/plaits/dsp/voice.h"
+ 556              		.loc 1 4 32 view .LVU159
+ 557 0000 244B     		ldr	r3, .L36
+ 558              	.LBE1298:
+ 559              	.LBE1297:
+ 560              		.loc 1 79 1 is_stmt 0 view .LVU160
+ 561 0002 0420     		movs	r0, #4
+ 562 0004 10B5     		push	{r4, lr}
+ 563              		.cfi_def_cfa_offset 8
+ 564              		.cfi_offset 4, -8
+ 565              		.cfi_offset 14, -4
+ 566              	.L32:
+ 567              	.LVL22:
+ 568              	.LBB1419:
+ 569              	.LBB1413:
+ 570              	.LBB1299:
+ 571              	.LBI1299:
+ 572              		.file 4 "eurorack/plaits/dsp/voice.h"
    1:eurorack/plaits/dsp/voice.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/voice.h **** //
    3:eurorack/plaits/dsp/voice.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
    4:eurorack/plaits/dsp/voice.h **** //
    5:eurorack/plaits/dsp/voice.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
    6:eurorack/plaits/dsp/voice.h **** // of this software and associated documentation files (the "Software"), to deal
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 17
+
+
    7:eurorack/plaits/dsp/voice.h **** // in the Software without restriction, including without limitation the rights
    8:eurorack/plaits/dsp/voice.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/voice.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/voice.h **** // furnished to do so, subject to the following conditions:
   11:eurorack/plaits/dsp/voice.h **** // 
   12:eurorack/plaits/dsp/voice.h **** // The above copyright notice and this permission notice shall be included in
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 17
-
-
   13:eurorack/plaits/dsp/voice.h **** // all copies or substantial portions of the Software.
   14:eurorack/plaits/dsp/voice.h **** // 
   15:eurorack/plaits/dsp/voice.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -1012,15 +1018,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   61:eurorack/plaits/dsp/voice.h **** 
   62:eurorack/plaits/dsp/voice.h **** const int kMaxEngines = 16;
   63:eurorack/plaits/dsp/voice.h **** const int kMaxTriggerDelay = 8;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 18
+
+
   64:eurorack/plaits/dsp/voice.h **** const int kTriggerDelay = 5;
   65:eurorack/plaits/dsp/voice.h **** 
   66:eurorack/plaits/dsp/voice.h **** class ChannelPostProcessor {
   67:eurorack/plaits/dsp/voice.h ****  public:
   68:eurorack/plaits/dsp/voice.h ****   ChannelPostProcessor() { }
   69:eurorack/plaits/dsp/voice.h ****   ~ChannelPostProcessor() { }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 18
-
-
   70:eurorack/plaits/dsp/voice.h ****   
   71:eurorack/plaits/dsp/voice.h ****   void Init() {
   72:eurorack/plaits/dsp/voice.h ****     lpg_.Init();
@@ -1072,15 +1078,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  118:eurorack/plaits/dsp/voice.h **** struct Patch {
  119:eurorack/plaits/dsp/voice.h ****   float note;
  120:eurorack/plaits/dsp/voice.h ****   float harmonics;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 19
+
+
  121:eurorack/plaits/dsp/voice.h ****   float timbre;
  122:eurorack/plaits/dsp/voice.h ****   float morph;
  123:eurorack/plaits/dsp/voice.h ****   float frequency_modulation_amount;
  124:eurorack/plaits/dsp/voice.h ****   float timbre_modulation_amount;
  125:eurorack/plaits/dsp/voice.h ****   float morph_modulation_amount;
  126:eurorack/plaits/dsp/voice.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 19
-
-
  127:eurorack/plaits/dsp/voice.h ****   int engine;
  128:eurorack/plaits/dsp/voice.h ****   float decay;
  129:eurorack/plaits/dsp/voice.h ****   float lpg_colour;
@@ -1106,10 +1112,10 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  149:eurorack/plaits/dsp/voice.h **** class Voice {
  150:eurorack/plaits/dsp/voice.h ****  public:
  151:eurorack/plaits/dsp/voice.h ****   Voice() { }
- 570              		.loc 4 151 3 is_stmt 1 view .LVU159
- 571              	.LBB1300:
- 572              	.LBI1300:
- 573              		.file 5 "eurorack/plaits/dsp/engine/additive_engine.h"
+ 573              		.loc 4 151 3 is_stmt 1 view .LVU161
+ 574              	.LBB1300:
+ 575              	.LBI1300:
+ 576              		.file 5 "eurorack/plaits/dsp/engine/additive_engine.h"
    1:eurorack/plaits/dsp/engine/additive_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/additive_engine.h **** //
    3:eurorack/plaits/dsp/engine/additive_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1132,15 +1138,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   20:eurorack/plaits/dsp/engine/additive_engine.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   21:eurorack/plaits/dsp/engine/additive_engine.h **** // THE SOFTWARE.
   22:eurorack/plaits/dsp/engine/additive_engine.h **** // 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 20
+
+
   23:eurorack/plaits/dsp/engine/additive_engine.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
   24:eurorack/plaits/dsp/engine/additive_engine.h **** //
   25:eurorack/plaits/dsp/engine/additive_engine.h **** // -----------------------------------------------------------------------------
   26:eurorack/plaits/dsp/engine/additive_engine.h **** //
   27:eurorack/plaits/dsp/engine/additive_engine.h **** // Additive synthesis with 24+8 partials.
   28:eurorack/plaits/dsp/engine/additive_engine.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 20
-
-
   29:eurorack/plaits/dsp/engine/additive_engine.h **** #ifndef PLAITS_DSP_ENGINE_ADDITIVE_ENGINE_H_
   30:eurorack/plaits/dsp/engine/additive_engine.h **** #define PLAITS_DSP_ENGINE_ADDITIVE_ENGINE_H_
   31:eurorack/plaits/dsp/engine/additive_engine.h **** 
@@ -1156,11 +1162,11 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   41:eurorack/plaits/dsp/engine/additive_engine.h **** class AdditiveEngine : public Engine {
   42:eurorack/plaits/dsp/engine/additive_engine.h ****  public:
   43:eurorack/plaits/dsp/engine/additive_engine.h ****   AdditiveEngine() { }
- 574              		.loc 5 43 3 view .LVU160
- 575              	.LBB1301:
- 576              	.LBB1302:
- 577              	.LBI1302:
- 578              		.file 6 "eurorack/plaits/dsp/engine/engine.h"
+ 577              		.loc 5 43 3 view .LVU162
+ 578              	.LBB1301:
+ 579              	.LBB1302:
+ 580              	.LBI1302:
+ 581              		.file 6 "eurorack/plaits/dsp/engine/engine.h"
    1:eurorack/plaits/dsp/engine/engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/engine.h **** //
    3:eurorack/plaits/dsp/engine/engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1192,15 +1198,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   29:eurorack/plaits/dsp/engine/engine.h **** #ifndef PLAITS_DSP_ENGINE_ENGINE_H_
   30:eurorack/plaits/dsp/engine/engine.h **** #define PLAITS_DSP_ENGINE_ENGINE_H_
   31:eurorack/plaits/dsp/engine/engine.h **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 21
+
+
   32:eurorack/plaits/dsp/engine/engine.h **** #include "plaits/dsp/dsp.h"
   33:eurorack/plaits/dsp/engine/engine.h **** 
   34:eurorack/plaits/dsp/engine/engine.h **** #include "stmlib/dsp/units.h"
   35:eurorack/plaits/dsp/engine/engine.h **** #include "stmlib/utils/buffer_allocator.h"
   36:eurorack/plaits/dsp/engine/engine.h **** 
   37:eurorack/plaits/dsp/engine/engine.h **** namespace plaits {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 21
-
-
   38:eurorack/plaits/dsp/engine/engine.h **** 
   39:eurorack/plaits/dsp/engine/engine.h **** inline float NoteToFrequency(float midi_note) {
   40:eurorack/plaits/dsp/engine/engine.h ****   midi_note -= 9.0f;
@@ -1244,33 +1250,33 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   78:eurorack/plaits/dsp/engine/engine.h **** class Engine {
   79:eurorack/plaits/dsp/engine/engine.h ****  public:
   80:eurorack/plaits/dsp/engine/engine.h ****   Engine() { }
- 579              		.loc 6 80 3 view .LVU161
- 580              		.loc 6 80 3 is_stmt 0 view .LVU162
- 581              	.LBE1302:
- 582              		.loc 5 43 20 view .LVU163
- 583 0006 244A     		ldr	r2, .L36+4
- 584              	.LBE1301:
- 585              	.LBE1300:
- 586              	.LBE1299:
+ 582              		.loc 6 80 3 view .LVU163
+ 583              		.loc 6 80 3 is_stmt 0 view .LVU164
+ 584              	.LBE1302:
+ 585              		.loc 5 43 20 view .LVU165
+ 586 0006 244A     		ldr	r2, .L36+4
+ 587              	.LBE1301:
+ 588              	.LBE1300:
+ 589              	.LBE1299:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 22
+
+
    4:Polyphony.cpp **** plaits::Voice voices[NUM_VOICES];
- 587              		.loc 1 4 32 view .LVU164
- 588 0008 0138     		subs	r0, r0, #1
- 589              	.LBB1401:
- 590              	.LBB1304:
- 591              	.LBB1303:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 22
-
-
- 592              		.loc 5 43 20 view .LVU165
- 593 000a 1A60     		str	r2, [r3]
- 594              		.loc 5 43 20 is_stmt 1 view .LVU166
- 595              	.LVL23:
- 596              		.loc 5 43 20 is_stmt 0 view .LVU167
- 597              	.LBE1303:
- 598              	.LBE1304:
- 599              	.LBB1305:
- 600              	.LBI1305:
- 601              		.file 7 "eurorack/plaits/dsp/engine/bass_drum_engine.h"
+ 590              		.loc 1 4 32 view .LVU166
+ 591 0008 0138     		subs	r0, r0, #1
+ 592              	.LBB1401:
+ 593              	.LBB1304:
+ 594              	.LBB1303:
+ 595              		.loc 5 43 20 view .LVU167
+ 596 000a 1A60     		str	r2, [r3]
+ 597              		.loc 5 43 20 is_stmt 1 view .LVU168
+ 598              	.LVL23:
+ 599              		.loc 5 43 20 is_stmt 0 view .LVU169
+ 600              	.LBE1303:
+ 601              	.LBE1304:
+ 602              	.LBB1305:
+ 603              	.LBI1305:
+ 604              		.file 7 "eurorack/plaits/dsp/engine/bass_drum_engine.h"
    1:eurorack/plaits/dsp/engine/bass_drum_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/bass_drum_engine.h **** //
    3:eurorack/plaits/dsp/engine/bass_drum_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1312,24 +1318,24 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   39:eurorack/plaits/dsp/engine/bass_drum_engine.h ****   
   40:eurorack/plaits/dsp/engine/bass_drum_engine.h **** class BassDrumEngine : public Engine {
   41:eurorack/plaits/dsp/engine/bass_drum_engine.h ****  public:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 23
+
+
   42:eurorack/plaits/dsp/engine/bass_drum_engine.h ****   BassDrumEngine() { }
- 602              		.loc 7 42 3 is_stmt 1 view .LVU168
- 603              	.LBB1306:
- 604              	.LBB1307:
- 605              	.LBI1307:
- 606              		.loc 6 80 3 view .LVU169
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 23
-
-
- 607              		.loc 6 80 3 is_stmt 0 view .LVU170
- 608              	.LBE1307:
- 609              		.loc 7 42 20 view .LVU171
- 610 000c 234A     		ldr	r2, .L36+8
- 611 000e C3F84821 		str	r2, [r3, #328]
- 612              	.LVL24:
- 613              	.LBB1308:
- 614              	.LBI1308:
- 615              		.file 8 "eurorack/plaits/dsp/drums/analog_bass_drum.h"
+ 605              		.loc 7 42 3 is_stmt 1 view .LVU170
+ 606              	.LBB1306:
+ 607              	.LBB1307:
+ 608              	.LBI1307:
+ 609              		.loc 6 80 3 view .LVU171
+ 610              		.loc 6 80 3 is_stmt 0 view .LVU172
+ 611              	.LBE1307:
+ 612              		.loc 7 42 20 view .LVU173
+ 613 000c 234A     		ldr	r2, .L36+8
+ 614 000e C3F84821 		str	r2, [r3, #328]
+ 615              	.LVL24:
+ 616              	.LBB1308:
+ 617              	.LBI1308:
+ 618              		.file 8 "eurorack/plaits/dsp/drums/analog_bass_drum.h"
    1:eurorack/plaits/dsp/drums/analog_bass_drum.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/drums/analog_bass_drum.h **** //
    3:eurorack/plaits/dsp/drums/analog_bass_drum.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1372,17 +1378,17 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   40:eurorack/plaits/dsp/drums/analog_bass_drum.h **** #include "plaits/dsp/oscillator/sine_oscillator.h"
   41:eurorack/plaits/dsp/drums/analog_bass_drum.h **** 
   42:eurorack/plaits/dsp/drums/analog_bass_drum.h **** namespace plaits {
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 24
+
+
   43:eurorack/plaits/dsp/drums/analog_bass_drum.h **** 
   44:eurorack/plaits/dsp/drums/analog_bass_drum.h **** class AnalogBassDrum {
   45:eurorack/plaits/dsp/drums/analog_bass_drum.h ****  public:
   46:eurorack/plaits/dsp/drums/analog_bass_drum.h ****   AnalogBassDrum() { }
- 616              		.loc 8 46 3 is_stmt 1 view .LVU172
- 617              	.LBB1309:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 24
-
-
- 618              	.LBI1309:
- 619              		.file 9 "eurorack/stmlib/dsp/filter.h"
+ 619              		.loc 8 46 3 is_stmt 1 view .LVU174
+ 620              	.LBB1309:
+ 621              	.LBI1309:
+ 622              		.file 9 "eurorack/stmlib/dsp/filter.h"
    1:eurorack/stmlib/dsp/filter.h **** // Copyright 2014 Emilie Gillet.
    2:eurorack/stmlib/dsp/filter.h **** //
    3:eurorack/stmlib/dsp/filter.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1432,15 +1438,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   47:eurorack/stmlib/dsp/filter.h **** enum FrequencyApproximation {
   48:eurorack/stmlib/dsp/filter.h ****   FREQUENCY_EXACT,
   49:eurorack/stmlib/dsp/filter.h ****   FREQUENCY_ACCURATE,
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 25
+
+
   50:eurorack/stmlib/dsp/filter.h ****   FREQUENCY_FAST,
   51:eurorack/stmlib/dsp/filter.h ****   FREQUENCY_DIRTY
   52:eurorack/stmlib/dsp/filter.h **** };
   53:eurorack/stmlib/dsp/filter.h **** 
   54:eurorack/stmlib/dsp/filter.h **** #define M_PI_F float(M_PI)
   55:eurorack/stmlib/dsp/filter.h **** #define M_PI_POW_2 M_PI * M_PI
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 25
-
-
   56:eurorack/stmlib/dsp/filter.h **** #define M_PI_POW_3 M_PI_POW_2 * M_PI
   57:eurorack/stmlib/dsp/filter.h **** #define M_PI_POW_5 M_PI_POW_3 * M_PI_POW_2
   58:eurorack/stmlib/dsp/filter.h **** #define M_PI_POW_7 M_PI_POW_5 * M_PI_POW_2
@@ -1492,15 +1498,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  104:eurorack/stmlib/dsp/filter.h ****   }
  105:eurorack/stmlib/dsp/filter.h ****   
  106:eurorack/stmlib/dsp/filter.h ****   template<FrequencyApproximation approximation>
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 26
+
+
  107:eurorack/stmlib/dsp/filter.h ****   static inline float tan(float f) {
  108:eurorack/stmlib/dsp/filter.h ****     if (approximation == FREQUENCY_EXACT) {
  109:eurorack/stmlib/dsp/filter.h ****       // Clip coefficient to about 100.
  110:eurorack/stmlib/dsp/filter.h ****       f = f < 0.497f ? f : 0.497f;
  111:eurorack/stmlib/dsp/filter.h ****       return tanf(M_PI_F * f);
  112:eurorack/stmlib/dsp/filter.h ****     } else if (approximation == FREQUENCY_DIRTY) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 26
-
-
  113:eurorack/stmlib/dsp/filter.h ****       // Optimized for frequencies below 8kHz.
  114:eurorack/stmlib/dsp/filter.h ****       const float a = 3.736e-01f * M_PI_POW_3;
  115:eurorack/stmlib/dsp/filter.h ****       return f * (M_PI_F + a * f * f);
@@ -1552,15 +1558,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  161:eurorack/stmlib/dsp/filter.h ****     while (size--) {
  162:eurorack/stmlib/dsp/filter.h ****       *in_out = Process<mode>(*in_out);
  163:eurorack/stmlib/dsp/filter.h ****       ++in_out;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 27
+
+
  164:eurorack/stmlib/dsp/filter.h ****     }
  165:eurorack/stmlib/dsp/filter.h ****   }
  166:eurorack/stmlib/dsp/filter.h ****   
  167:eurorack/stmlib/dsp/filter.h ****  private:
  168:eurorack/stmlib/dsp/filter.h ****   float g_;
  169:eurorack/stmlib/dsp/filter.h ****   float gi_;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 27
-
-
  170:eurorack/stmlib/dsp/filter.h ****   float state_;
  171:eurorack/stmlib/dsp/filter.h ****   
  172:eurorack/stmlib/dsp/filter.h ****   DISALLOW_COPY_AND_ASSIGN(OnePole);
@@ -1571,12 +1577,12 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  177:eurorack/stmlib/dsp/filter.h **** class Svf {
  178:eurorack/stmlib/dsp/filter.h ****  public:
  179:eurorack/stmlib/dsp/filter.h ****   Svf() { }
- 620              		.loc 9 179 3 view .LVU173
- 621              		.loc 9 179 3 is_stmt 0 view .LVU174
- 622              	.LBE1309:
- 623              	.LBB1310:
- 624              	.LBI1310:
- 625              		.file 10 "eurorack/plaits/dsp/oscillator/sine_oscillator.h"
+ 623              		.loc 9 179 3 view .LVU175
+ 624              		.loc 9 179 3 is_stmt 0 view .LVU176
+ 625              	.LBE1309:
+ 626              	.LBB1310:
+ 627              	.LBI1310:
+ 628              		.file 10 "eurorack/plaits/dsp/oscillator/sine_oscillator.h"
    1:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** //
    3:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1612,26 +1618,26 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   33:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** #define PLAITS_DSP_OSCILLATOR_SINE_OSCILLATOR_H_
   34:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** 
   35:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** #include "stmlib/dsp/dsp.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 28
+
+
   36:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** #include "stmlib/dsp/parameter_interpolator.h"
   37:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** #include "stmlib/dsp/rsqrt.h"
   38:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** 
   39:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** #include "plaits/resources.h"
   40:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** 
   41:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** namespace plaits {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 28
-
-
   42:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** 
   43:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** class SineOscillator {
   44:eurorack/plaits/dsp/oscillator/sine_oscillator.h ****  public:
   45:eurorack/plaits/dsp/oscillator/sine_oscillator.h ****   SineOscillator() { }
- 626              		.loc 10 45 3 is_stmt 1 view .LVU175
- 627              		.loc 10 45 3 is_stmt 0 view .LVU176
- 628              	.LBE1310:
- 629              	.LBE1308:
- 630              	.LBB1311:
- 631              	.LBI1311:
- 632              		.file 11 "eurorack/plaits/dsp/drums/synthetic_bass_drum.h"
+ 629              		.loc 10 45 3 is_stmt 1 view .LVU177
+ 630              		.loc 10 45 3 is_stmt 0 view .LVU178
+ 631              	.LBE1310:
+ 632              	.LBE1308:
+ 633              	.LBB1311:
+ 634              	.LBI1311:
+ 635              		.file 11 "eurorack/plaits/dsp/drums/synthetic_bass_drum.h"
    1:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** //
    3:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1672,15 +1678,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   38:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** #include "plaits/resources.h"
   39:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** 
   40:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** namespace plaits {
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 29
+
+
   41:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** 
   42:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** class SyntheticBassDrumClick {
   43:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****  public:
   44:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   SyntheticBassDrumClick() { }
   45:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   ~SyntheticBassDrumClick() { }
   46:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 29
-
-
   47:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   void Init() {
   48:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     lp_ = 0.0f;
   49:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     hp_ = 0.0f;
@@ -1729,31 +1735,31 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   92:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** class SyntheticBassDrum {
   93:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****  public:
   94:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   SyntheticBassDrum() { }
- 633              		.loc 11 94 3 is_stmt 1 view .LVU177
- 634              	.LBB1312:
- 635              	.LBI1312:
+ 636              		.loc 11 94 3 is_stmt 1 view .LVU179
+ 637              	.LBB1312:
+ 638              	.LBI1312:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 30
+
+
   44:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   ~SyntheticBassDrumClick() { }
- 636              		.loc 11 44 3 view .LVU178
- 637              	.LBB1313:
- 638              	.LBI1313:
- 639              		.loc 9 179 3 view .LVU179
- 640              		.loc 9 179 3 is_stmt 0 view .LVU180
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 30
-
-
- 641              	.LBE1313:
- 642              	.LBE1312:
- 643              	.LBB1314:
- 644              	.LBI1314:
+ 639              		.loc 11 44 3 view .LVU180
+ 640              	.LBB1313:
+ 641              	.LBI1313:
+ 642              		.loc 9 179 3 view .LVU181
+ 643              		.loc 9 179 3 is_stmt 0 view .LVU182
+ 644              	.LBE1313:
+ 645              	.LBE1312:
+ 646              	.LBB1314:
+ 647              	.LBI1314:
   70:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   ~SyntheticBassDrumAttackNoise() { }
- 645              		.loc 11 70 3 is_stmt 1 view .LVU181
+ 648              		.loc 11 70 3 is_stmt 1 view .LVU183
   70:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   ~SyntheticBassDrumAttackNoise() { }
- 646              		.loc 11 70 3 is_stmt 0 view .LVU182
- 647              	.LBE1314:
- 648              	.LBE1311:
- 649              	.LBB1315:
- 650              	.LBI1315:
- 651              		.file 12 "eurorack/plaits/dsp/fx/overdrive.h"
+ 649              		.loc 11 70 3 is_stmt 0 view .LVU184
+ 650              	.LBE1314:
+ 651              	.LBE1311:
+ 652              	.LBB1315:
+ 653              	.LBI1315:
+ 654              		.file 12 "eurorack/plaits/dsp/fx/overdrive.h"
    1:eurorack/plaits/dsp/fx/overdrive.h **** // Copyright 2014 Emilie Gillet.
    2:eurorack/plaits/dsp/fx/overdrive.h **** //
    3:eurorack/plaits/dsp/fx/overdrive.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1792,20 +1798,20 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   36:eurorack/plaits/dsp/fx/overdrive.h **** 
   37:eurorack/plaits/dsp/fx/overdrive.h **** namespace plaits {
   38:eurorack/plaits/dsp/fx/overdrive.h ****   
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 31
+
+
   39:eurorack/plaits/dsp/fx/overdrive.h **** class Overdrive {
   40:eurorack/plaits/dsp/fx/overdrive.h ****  public:
   41:eurorack/plaits/dsp/fx/overdrive.h ****   Overdrive() { }
- 652              		.loc 12 41 3 is_stmt 1 view .LVU183
- 653              		.loc 12 41 3 is_stmt 0 view .LVU184
- 654              	.LBE1315:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 31
-
-
- 655              	.LBE1306:
- 656              	.LBE1305:
- 657              	.LBB1316:
- 658              	.LBI1316:
- 659              		.file 13 "eurorack/plaits/dsp/engine/fm_engine.h"
+ 655              		.loc 12 41 3 is_stmt 1 view .LVU185
+ 656              		.loc 12 41 3 is_stmt 0 view .LVU186
+ 657              	.LBE1315:
+ 658              	.LBE1306:
+ 659              	.LBE1305:
+ 660              	.LBB1316:
+ 661              	.LBI1316:
+ 662              		.file 13 "eurorack/plaits/dsp/engine/fm_engine.h"
    1:eurorack/plaits/dsp/engine/fm_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/fm_engine.h **** //
    3:eurorack/plaits/dsp/engine/fm_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1844,26 +1850,26 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   36:eurorack/plaits/dsp/engine/fm_engine.h **** class FMEngine : public Engine {
   37:eurorack/plaits/dsp/engine/fm_engine.h ****  public:
   38:eurorack/plaits/dsp/engine/fm_engine.h ****   FMEngine() { }
- 660              		.loc 13 38 3 is_stmt 1 view .LVU185
- 661              	.LBB1317:
- 662              	.LBB1318:
- 663              	.LBI1318:
- 664              		.loc 6 80 3 view .LVU186
- 665              		.loc 6 80 3 is_stmt 0 view .LVU187
- 666              	.LBE1318:
- 667              		.loc 13 38 14 view .LVU188
- 668 0012 234A     		ldr	r2, .L36+12
- 669 0014 C3F80022 		str	r2, [r3, #512]
- 670              	.LVL25:
- 671              		.loc 13 38 14 view .LVU189
- 672              	.LBE1317:
- 673              	.LBE1316:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 32
+ 663              		.loc 13 38 3 is_stmt 1 view .LVU187
+ 664              	.LBB1317:
+ 665              	.LBB1318:
+ 666              	.LBI1318:
+ 667              		.loc 6 80 3 view .LVU188
+ 668              		.loc 6 80 3 is_stmt 0 view .LVU189
+ 669              	.LBE1318:
+ 670              		.loc 13 38 14 view .LVU190
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 32
 
 
- 674              	.LBB1319:
- 675              	.LBI1319:
- 676              		.file 14 "eurorack/plaits/dsp/engine/grain_engine.h"
+ 671 0012 234A     		ldr	r2, .L36+12
+ 672 0014 C3F80022 		str	r2, [r3, #512]
+ 673              	.LVL25:
+ 674              		.loc 13 38 14 view .LVU191
+ 675              	.LBE1317:
+ 676              	.LBE1316:
+ 677              	.LBB1319:
+ 678              	.LBI1319:
+ 679              		.file 14 "eurorack/plaits/dsp/engine/grain_engine.h"
    1:eurorack/plaits/dsp/engine/grain_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/grain_engine.h **** //
    3:eurorack/plaits/dsp/engine/grain_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1907,24 +1913,24 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   41:eurorack/plaits/dsp/engine/grain_engine.h **** class GrainEngine : public Engine {
   42:eurorack/plaits/dsp/engine/grain_engine.h ****  public:
   43:eurorack/plaits/dsp/engine/grain_engine.h ****   GrainEngine() { }
- 677              		.loc 14 43 3 is_stmt 1 view .LVU190
- 678              	.LBB1320:
- 679              	.LBB1321:
- 680              	.LBI1321:
- 681              		.loc 6 80 3 view .LVU191
- 682              		.loc 6 80 3 is_stmt 0 view .LVU192
- 683              	.LBE1321:
- 684              		.loc 14 43 17 view .LVU193
- 685 0018 224A     		ldr	r2, .L36+16
- 686 001a C3F83822 		str	r2, [r3, #568]
- 687              		.loc 14 43 17 is_stmt 1 view .LVU194
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 33
+ 680              		.loc 14 43 3 is_stmt 1 view .LVU192
+ 681              	.LBB1320:
+ 682              	.LBB1321:
+ 683              	.LBI1321:
+ 684              		.loc 6 80 3 view .LVU193
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 33
 
 
- 688              	.LVL26:
- 689              	.LBB1322:
- 690              	.LBI1322:
- 691              		.file 15 "eurorack/plaits/dsp/oscillator/z_oscillator.h"
+ 685              		.loc 6 80 3 is_stmt 0 view .LVU194
+ 686              	.LBE1321:
+ 687              		.loc 14 43 17 view .LVU195
+ 688 0018 224A     		ldr	r2, .L36+16
+ 689 001a C3F83822 		str	r2, [r3, #568]
+ 690              		.loc 14 43 17 is_stmt 1 view .LVU196
+ 691              	.LVL26:
+ 692              	.LBB1322:
+ 693              	.LBI1322:
+ 694              		.file 15 "eurorack/plaits/dsp/oscillator/z_oscillator.h"
    1:eurorack/plaits/dsp/oscillator/z_oscillator.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/oscillator/z_oscillator.h **** //
    3:eurorack/plaits/dsp/oscillator/z_oscillator.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1969,19 +1975,19 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   42:eurorack/plaits/dsp/oscillator/z_oscillator.h **** class ZOscillator {
   43:eurorack/plaits/dsp/oscillator/z_oscillator.h ****  public:
   44:eurorack/plaits/dsp/oscillator/z_oscillator.h ****   ZOscillator() { }
- 692              		.loc 15 44 3 view .LVU195
- 693              		.loc 15 44 3 is_stmt 0 view .LVU196
- 694              	.LBE1322:
- 695              		.loc 14 43 17 is_stmt 1 view .LVU197
- 696              		.loc 14 43 17 is_stmt 0 view .LVU198
- 697              	.LBE1320:
- 698              	.LBE1319:
- 699              	.LBB1323:
- 700              	.LBI1323:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 34
+ 695              		.loc 15 44 3 view .LVU197
+ 696              		.loc 15 44 3 is_stmt 0 view .LVU198
+ 697              	.LBE1322:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 34
 
 
- 701              		.file 16 "eurorack/plaits/dsp/engine/hi_hat_engine.h"
+ 698              		.loc 14 43 17 is_stmt 1 view .LVU199
+ 699              		.loc 14 43 17 is_stmt 0 view .LVU200
+ 700              	.LBE1320:
+ 701              	.LBE1319:
+ 702              	.LBB1323:
+ 703              	.LBI1323:
+ 704              		.file 16 "eurorack/plaits/dsp/engine/hi_hat_engine.h"
    1:eurorack/plaits/dsp/engine/hi_hat_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/hi_hat_engine.h **** //
    3:eurorack/plaits/dsp/engine/hi_hat_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -2022,25 +2028,25 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   38:eurorack/plaits/dsp/engine/hi_hat_engine.h **** class HiHatEngine : public Engine {
   39:eurorack/plaits/dsp/engine/hi_hat_engine.h ****  public:
   40:eurorack/plaits/dsp/engine/hi_hat_engine.h ****   HiHatEngine() { }
- 702              		.loc 16 40 3 is_stmt 1 view .LVU199
- 703              	.LBB1324:
- 704              	.LBB1325:
- 705              	.LBI1325:
- 706              		.loc 6 80 3 view .LVU200
- 707              		.loc 6 80 3 is_stmt 0 view .LVU201
- 708              	.LBE1325:
- 709              		.loc 16 40 17 view .LVU202
- 710 001e 224A     		ldr	r2, .L36+20
- 711 0020 C3F8BC22 		str	r2, [r3, #700]
- 712              	.LVL27:
- 713              	.LBB1326:
- 714              	.LBI1326:
- 715              		.file 17 "eurorack/plaits/dsp/drums/hi_hat.h"
+ 705              		.loc 16 40 3 is_stmt 1 view .LVU201
+ 706              	.LBB1324:
+ 707              	.LBB1325:
+ 708              	.LBI1325:
+ 709              		.loc 6 80 3 view .LVU202
+ 710              		.loc 6 80 3 is_stmt 0 view .LVU203
+ 711              	.LBE1325:
+ 712              		.loc 16 40 17 view .LVU204
+ 713 001e 224A     		ldr	r2, .L36+20
+ 714 0020 C3F8BC22 		str	r2, [r3, #700]
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 35
+
+
+ 715              	.LVL27:
+ 716              	.LBB1326:
+ 717              	.LBI1326:
+ 718              		.file 17 "eurorack/plaits/dsp/drums/hi_hat.h"
    1:eurorack/plaits/dsp/drums/hi_hat.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/drums/hi_hat.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 35
-
-
    3:eurorack/plaits/dsp/drums/hi_hat.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
    4:eurorack/plaits/dsp/drums/hi_hat.h **** //
    5:eurorack/plaits/dsp/drums/hi_hat.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -2092,15 +2098,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   51:eurorack/plaits/dsp/drums/hi_hat.h ****   ~SquareNoise() { }
   52:eurorack/plaits/dsp/drums/hi_hat.h **** 
   53:eurorack/plaits/dsp/drums/hi_hat.h ****   void Init() {
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 36
+
+
   54:eurorack/plaits/dsp/drums/hi_hat.h ****     std::fill(&phase_[0], &phase_[6], 0);
   55:eurorack/plaits/dsp/drums/hi_hat.h ****   }
   56:eurorack/plaits/dsp/drums/hi_hat.h ****     
   57:eurorack/plaits/dsp/drums/hi_hat.h ****   void Render(float f0, float* temp_1, float* temp_2, float* out, size_t size) {
   58:eurorack/plaits/dsp/drums/hi_hat.h ****     const float ratios[6] = {
   59:eurorack/plaits/dsp/drums/hi_hat.h ****         // Nominal f0: 414 Hz
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 36
-
-
   60:eurorack/plaits/dsp/drums/hi_hat.h ****         1.0f, 1.304f, 1.466f, 1.787f, 1.932f, 2.536f
   61:eurorack/plaits/dsp/drums/hi_hat.h ****     };
   62:eurorack/plaits/dsp/drums/hi_hat.h ****   
@@ -2152,15 +2158,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  108:eurorack/plaits/dsp/drums/hi_hat.h ****     }
  109:eurorack/plaits/dsp/drums/hi_hat.h ****   }
  110:eurorack/plaits/dsp/drums/hi_hat.h ****   
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 37
+
+
  111:eurorack/plaits/dsp/drums/hi_hat.h ****   void Render(float f0, float* temp_1, float* temp_2, float* out, size_t size) {
  112:eurorack/plaits/dsp/drums/hi_hat.h ****     const float ratio = f0 / (0.01f + f0);
  113:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f1a = 200.0f / kSampleRate * ratio;
  114:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f1b = 7530.0f / kSampleRate * ratio;
  115:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f2a = 510.0f / kSampleRate * ratio;
  116:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f2b = 8075.0f / kSampleRate * ratio;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 37
-
-
  117:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f3a = 730.0f / kSampleRate * ratio;
  118:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f3b = 10500.0f / kSampleRate * ratio;
  119:eurorack/plaits/dsp/drums/hi_hat.h ****     
@@ -2211,76 +2217,76 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  164:eurorack/plaits/dsp/drums/hi_hat.h **** class HiHat {
  165:eurorack/plaits/dsp/drums/hi_hat.h ****  public:
  166:eurorack/plaits/dsp/drums/hi_hat.h ****   HiHat() { }
- 716              		.loc 17 166 3 is_stmt 1 view .LVU203
- 717              	.LBB1327:
- 718              	.LBI1327:
-  50:eurorack/plaits/dsp/drums/hi_hat.h ****   ~SquareNoise() { }
- 719              		.loc 17 50 3 view .LVU204
-  50:eurorack/plaits/dsp/drums/hi_hat.h ****   ~SquareNoise() { }
- 720              		.loc 17 50 3 is_stmt 0 view .LVU205
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 38
+ 719              		.loc 17 166 3 is_stmt 1 view .LVU205
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 38
 
 
- 721              	.LBE1327:
- 722              	.LBB1328:
- 723              	.LBI1328:
- 724              		.loc 9 179 3 is_stmt 1 view .LVU206
- 725              		.loc 9 179 3 is_stmt 0 view .LVU207
- 726              	.LBE1328:
- 727              	.LBB1329:
- 728              	.LBI1329:
- 729              		.loc 9 179 3 is_stmt 1 view .LVU208
- 730              		.loc 9 179 3 is_stmt 0 view .LVU209
- 731              	.LBE1329:
- 732              	.LBE1326:
- 733              	.LBB1330:
- 734              	.LBI1330:
- 735              		.loc 17 166 3 is_stmt 1 view .LVU210
- 736              	.LBB1331:
- 737              	.LBI1331:
+ 720              	.LBB1327:
+ 721              	.LBI1327:
+  50:eurorack/plaits/dsp/drums/hi_hat.h ****   ~SquareNoise() { }
+ 722              		.loc 17 50 3 view .LVU206
+  50:eurorack/plaits/dsp/drums/hi_hat.h ****   ~SquareNoise() { }
+ 723              		.loc 17 50 3 is_stmt 0 view .LVU207
+ 724              	.LBE1327:
+ 725              	.LBB1328:
+ 726              	.LBI1328:
+ 727              		.loc 9 179 3 is_stmt 1 view .LVU208
+ 728              		.loc 9 179 3 is_stmt 0 view .LVU209
+ 729              	.LBE1328:
+ 730              	.LBB1329:
+ 731              	.LBI1329:
+ 732              		.loc 9 179 3 is_stmt 1 view .LVU210
+ 733              		.loc 9 179 3 is_stmt 0 view .LVU211
+ 734              	.LBE1329:
+ 735              	.LBE1326:
+ 736              	.LBB1330:
+ 737              	.LBI1330:
+ 738              		.loc 17 166 3 is_stmt 1 view .LVU212
+ 739              	.LBB1331:
+ 740              	.LBI1331:
  102:eurorack/plaits/dsp/drums/hi_hat.h ****   ~RingModNoise() { }
- 738              		.loc 17 102 3 view .LVU211
- 739              	.LBE1331:
- 740              	.LBE1330:
- 741              	.LBE1324:
- 742              	.LBE1323:
- 743              	.LBE1401:
- 744              	.LBE1413:
- 745              	.LBE1419:
+ 741              		.loc 17 102 3 view .LVU213
+ 742              	.LBE1331:
+ 743              	.LBE1330:
+ 744              	.LBE1324:
+ 745              	.LBE1323:
+ 746              	.LBE1401:
+ 747              	.LBE1413:
+ 748              	.LBE1419:
  102:eurorack/plaits/dsp/drums/hi_hat.h ****   ~RingModNoise() { }
- 746              		.loc 17 102 18 view .LVU212
- 747              	.LBB1420:
- 748              	.LBB1414:
- 749              	.LBB1402:
- 750              	.LBB1336:
- 751              	.LBB1335:
- 752              	.LBB1334:
- 753              	.LBB1332:
- 754              	.LBI1332:
- 755              		.loc 9 179 3 view .LVU213
- 756              		.loc 9 179 3 is_stmt 0 view .LVU214
- 757              	.LBE1332:
- 758              	.LBB1333:
- 759              	.LBI1333:
- 760              		.loc 9 179 3 is_stmt 1 view .LVU215
- 761              		.loc 9 179 3 is_stmt 0 view .LVU216
- 762              	.LBE1333:
- 763              	.LBE1334:
- 764              	.LBE1335:
- 765              	.LBE1336:
- 766              	.LBB1337:
- 767              	.LBI1337:
- 768              		.file 18 "eurorack/plaits/dsp/engine/modal_engine.h"
+ 749              		.loc 17 102 18 view .LVU214
+ 750              	.LBB1420:
+ 751              	.LBB1414:
+ 752              	.LBB1402:
+ 753              	.LBB1336:
+ 754              	.LBB1335:
+ 755              	.LBB1334:
+ 756              	.LBB1332:
+ 757              	.LBI1332:
+ 758              		.loc 9 179 3 view .LVU215
+ 759              		.loc 9 179 3 is_stmt 0 view .LVU216
+ 760              	.LBE1332:
+ 761              	.LBB1333:
+ 762              	.LBI1333:
+ 763              		.loc 9 179 3 is_stmt 1 view .LVU217
+ 764              		.loc 9 179 3 is_stmt 0 view .LVU218
+ 765              	.LBE1333:
+ 766              	.LBE1334:
+ 767              	.LBE1335:
+ 768              	.LBE1336:
+ 769              	.LBB1337:
+ 770              	.LBI1337:
+ 771              		.file 18 "eurorack/plaits/dsp/engine/modal_engine.h"
    1:eurorack/plaits/dsp/engine/modal_engine.h **** // Copyright 2016 Emilie Gillet.
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 39
+
+
    2:eurorack/plaits/dsp/engine/modal_engine.h **** //
    3:eurorack/plaits/dsp/engine/modal_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
    4:eurorack/plaits/dsp/engine/modal_engine.h **** //
    5:eurorack/plaits/dsp/engine/modal_engine.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
    6:eurorack/plaits/dsp/engine/modal_engine.h **** // of this software and associated documentation files (the "Software"), to deal
    7:eurorack/plaits/dsp/engine/modal_engine.h **** // in the Software without restriction, including without limitation the rights
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 39
-
-
    8:eurorack/plaits/dsp/engine/modal_engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/engine/modal_engine.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/engine/modal_engine.h **** // furnished to do so, subject to the following conditions:
@@ -2313,34 +2319,34 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   37:eurorack/plaits/dsp/engine/modal_engine.h **** class ModalEngine : public Engine {
   38:eurorack/plaits/dsp/engine/modal_engine.h ****  public:
   39:eurorack/plaits/dsp/engine/modal_engine.h ****   ModalEngine() { }
- 769              		.loc 18 39 3 is_stmt 1 view .LVU217
- 770              	.LBB1338:
- 771              	.LBB1339:
- 772              	.LBI1339:
- 773              		.loc 6 80 3 view .LVU218
- 774              		.loc 6 80 3 is_stmt 0 view .LVU219
- 775              	.LBE1339:
- 776              		.loc 18 39 17 view .LVU220
- 777 0024 214A     		ldr	r2, .L36+24
- 778 0026 C3F80424 		str	r2, [r3, #1028]
- 779              	.LVL28:
- 780              	.LBB1340:
- 781              	.LBI1340:
- 782              		.file 19 "eurorack/plaits/dsp/physical_modelling/modal_voice.h"
+ 772              		.loc 18 39 3 is_stmt 1 view .LVU219
+ 773              	.LBB1338:
+ 774              	.LBB1339:
+ 775              	.LBI1339:
+ 776              		.loc 6 80 3 view .LVU220
+ 777              		.loc 6 80 3 is_stmt 0 view .LVU221
+ 778              	.LBE1339:
+ 779              		.loc 18 39 17 view .LVU222
+ 780 0024 214A     		ldr	r2, .L36+24
+ 781 0026 C3F80424 		str	r2, [r3, #1028]
+ 782              	.LVL28:
+ 783              	.LBB1340:
+ 784              	.LBI1340:
+ 785              		.file 19 "eurorack/plaits/dsp/physical_modelling/modal_voice.h"
    1:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** //
    3:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
    4:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** //
    5:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 40
+
+
    6:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // of this software and associated documentation files (the "Software"), to deal
    7:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // in the Software without restriction, including without limitation the rights
    8:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // furnished to do so, subject to the following conditions:
   11:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 40
-
-
   12:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // The above copyright notice and this permission notice shall be included in
   13:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // all copies or substantial portions of the Software.
   14:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // 
@@ -2372,10 +2378,10 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   40:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** class ModalVoice {
   41:eurorack/plaits/dsp/physical_modelling/modal_voice.h ****  public:
   42:eurorack/plaits/dsp/physical_modelling/modal_voice.h ****   ModalVoice() { }
- 783              		.loc 19 42 3 is_stmt 1 view .LVU221
- 784              	.LBB1341:
- 785              	.LBI1341:
- 786              		.file 20 "eurorack/plaits/dsp/physical_modelling/resonator.h"
+ 786              		.loc 19 42 3 is_stmt 1 view .LVU223
+ 787              	.LBB1341:
+ 788              	.LBI1341:
+ 789              		.file 20 "eurorack/plaits/dsp/physical_modelling/resonator.h"
    1:eurorack/plaits/dsp/physical_modelling/resonator.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/physical_modelling/resonator.h **** //
    3:eurorack/plaits/dsp/physical_modelling/resonator.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -2392,15 +2398,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   14:eurorack/plaits/dsp/physical_modelling/resonator.h **** // 
   15:eurorack/plaits/dsp/physical_modelling/resonator.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   16:eurorack/plaits/dsp/physical_modelling/resonator.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 41
+
+
   17:eurorack/plaits/dsp/physical_modelling/resonator.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
   18:eurorack/plaits/dsp/physical_modelling/resonator.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   19:eurorack/plaits/dsp/physical_modelling/resonator.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   20:eurorack/plaits/dsp/physical_modelling/resonator.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   21:eurorack/plaits/dsp/physical_modelling/resonator.h **** // THE SOFTWARE.
   22:eurorack/plaits/dsp/physical_modelling/resonator.h **** // 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 41
-
-
   23:eurorack/plaits/dsp/physical_modelling/resonator.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
   24:eurorack/plaits/dsp/physical_modelling/resonator.h **** //
   25:eurorack/plaits/dsp/physical_modelling/resonator.h **** // -----------------------------------------------------------------------------
@@ -2423,11 +2429,11 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   42:eurorack/plaits/dsp/physical_modelling/resonator.h **** class ResonatorSvf {
   43:eurorack/plaits/dsp/physical_modelling/resonator.h ****  public:
   44:eurorack/plaits/dsp/physical_modelling/resonator.h ****   ResonatorSvf() { }
- 787              		.loc 20 44 3 view .LVU222
- 788              		.loc 20 44 3 is_stmt 0 view .LVU223
- 789              	.LBE1341:
- 790              	.LBB1342:
- 791              	.LBI1342:
+ 790              		.loc 20 44 3 view .LVU224
+ 791              		.loc 20 44 3 is_stmt 0 view .LVU225
+ 792              	.LBE1341:
+ 793              	.LBB1342:
+ 794              	.LBI1342:
   45:eurorack/plaits/dsp/physical_modelling/resonator.h ****   ~ResonatorSvf() { }
   46:eurorack/plaits/dsp/physical_modelling/resonator.h ****   
   47:eurorack/plaits/dsp/physical_modelling/resonator.h ****   void Init() {
@@ -2452,15 +2458,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   66:eurorack/plaits/dsp/physical_modelling/resonator.h ****     float state_2[batch_size];
   67:eurorack/plaits/dsp/physical_modelling/resonator.h ****     float gains[batch_size];
   68:eurorack/plaits/dsp/physical_modelling/resonator.h ****     for (int i = 0; i < batch_size; ++i) {
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 42
+
+
   69:eurorack/plaits/dsp/physical_modelling/resonator.h ****       g[i] = stmlib::OnePole::tan<stmlib::FREQUENCY_FAST>(f[i]);
   70:eurorack/plaits/dsp/physical_modelling/resonator.h ****       r[i] = 1.0f / q[i];
   71:eurorack/plaits/dsp/physical_modelling/resonator.h ****       h[i] = 1.0f / (1.0f + r[i] * g[i] + g[i] * g[i]);
   72:eurorack/plaits/dsp/physical_modelling/resonator.h ****       r_plus_g[i] = r[i] + g[i];
   73:eurorack/plaits/dsp/physical_modelling/resonator.h ****       state_1[i] = state_1_[i];
   74:eurorack/plaits/dsp/physical_modelling/resonator.h ****       state_2[i] = state_2_[i];
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 42
-
-
   75:eurorack/plaits/dsp/physical_modelling/resonator.h ****       gains[i] = gain[i];
   76:eurorack/plaits/dsp/physical_modelling/resonator.h ****     }
   77:eurorack/plaits/dsp/physical_modelling/resonator.h ****     
@@ -2497,30 +2503,30 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  108:eurorack/plaits/dsp/physical_modelling/resonator.h **** class Resonator {
  109:eurorack/plaits/dsp/physical_modelling/resonator.h ****  public:
  110:eurorack/plaits/dsp/physical_modelling/resonator.h ****   Resonator() { }
- 792              		.loc 20 110 3 is_stmt 1 view .LVU224
- 793              	.LBE1342:
- 794              	.LBE1340:
- 795              	.LBE1338:
- 796              	.LBE1337:
- 797              	.LBE1402:
- 798              	.LBE1414:
- 799              	.LBE1420:
- 800              		.loc 20 110 15 view .LVU225
- 801              	.LBB1421:
- 802              	.LBB1415:
- 803              	.LBB1403:
- 804              	.LBB1343:
- 805              	.LBI1343:
- 806              		.file 21 "eurorack/plaits/dsp/engine/noise_engine.h"
+ 795              		.loc 20 110 3 is_stmt 1 view .LVU226
+ 796              	.LBE1342:
+ 797              	.LBE1340:
+ 798              	.LBE1338:
+ 799              	.LBE1337:
+ 800              	.LBE1402:
+ 801              	.LBE1414:
+ 802              	.LBE1420:
+ 803              		.loc 20 110 15 view .LVU227
+ 804              	.LBB1421:
+ 805              	.LBB1415:
+ 806              	.LBB1403:
+ 807              	.LBB1343:
+ 808              	.LBI1343:
+ 809              		.file 21 "eurorack/plaits/dsp/engine/noise_engine.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 43
+
+
    1:eurorack/plaits/dsp/engine/noise_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/noise_engine.h **** //
    3:eurorack/plaits/dsp/engine/noise_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
    4:eurorack/plaits/dsp/engine/noise_engine.h **** //
    5:eurorack/plaits/dsp/engine/noise_engine.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
    6:eurorack/plaits/dsp/engine/noise_engine.h **** // of this software and associated documentation files (the "Software"), to deal
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 43
-
-
    7:eurorack/plaits/dsp/engine/noise_engine.h **** // in the Software without restriction, including without limitation the rights
    8:eurorack/plaits/dsp/engine/noise_engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/engine/noise_engine.h **** // copies of the Software, and to permit persons to whom the Software is
@@ -2556,33 +2562,33 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   39:eurorack/plaits/dsp/engine/noise_engine.h **** class NoiseEngine : public Engine {
   40:eurorack/plaits/dsp/engine/noise_engine.h ****  public:
   41:eurorack/plaits/dsp/engine/noise_engine.h ****   NoiseEngine() { }
- 807              		.loc 21 41 3 view .LVU226
- 808              	.LBB1344:
- 809              	.LBB1345:
- 810              	.LBI1345:
- 811              		.loc 6 80 3 view .LVU227
- 812              		.loc 6 80 3 is_stmt 0 view .LVU228
- 813              	.LBE1345:
- 814              		.loc 21 41 17 view .LVU229
- 815 002a 214A     		ldr	r2, .L36+28
- 816 002c C3F84825 		str	r2, [r3, #1352]
- 817              		.loc 21 41 17 is_stmt 1 view .LVU230
- 818              	.LVL29:
- 819              	.LBB1346:
- 820              	.LBI1346:
- 821              		.loc 9 179 3 view .LVU231
- 822              		.loc 9 179 3 is_stmt 0 view .LVU232
- 823              	.LBE1346:
- 824              		.loc 21 41 17 is_stmt 1 view .LVU233
- 825              		.loc 21 41 17 is_stmt 0 view .LVU234
- 826              	.LBE1344:
- 827              	.LBE1343:
- 828              	.LBB1347:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 44
+ 810              		.loc 21 41 3 view .LVU228
+ 811              	.LBB1344:
+ 812              	.LBB1345:
+ 813              	.LBI1345:
+ 814              		.loc 6 80 3 view .LVU229
+ 815              		.loc 6 80 3 is_stmt 0 view .LVU230
+ 816              	.LBE1345:
+ 817              		.loc 21 41 17 view .LVU231
+ 818 002a 214A     		ldr	r2, .L36+28
+ 819 002c C3F84825 		str	r2, [r3, #1352]
+ 820              		.loc 21 41 17 is_stmt 1 view .LVU232
+ 821              	.LVL29:
+ 822              	.LBB1346:
+ 823              	.LBI1346:
+ 824              		.loc 9 179 3 view .LVU233
+ 825              		.loc 9 179 3 is_stmt 0 view .LVU234
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 44
 
 
- 829              	.LBI1347:
- 830              		.file 22 "eurorack/plaits/dsp/engine/particle_engine.h"
+ 826              	.LBE1346:
+ 827              		.loc 21 41 17 is_stmt 1 view .LVU235
+ 828              		.loc 21 41 17 is_stmt 0 view .LVU236
+ 829              	.LBE1344:
+ 830              	.LBE1343:
+ 831              	.LBB1347:
+ 832              	.LBI1347:
+ 833              		.file 22 "eurorack/plaits/dsp/engine/particle_engine.h"
    1:eurorack/plaits/dsp/engine/particle_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/particle_engine.h **** //
    3:eurorack/plaits/dsp/engine/particle_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -2625,24 +2631,24 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   40:eurorack/plaits/dsp/engine/particle_engine.h **** class ParticleEngine : public Engine {
   41:eurorack/plaits/dsp/engine/particle_engine.h ****  public:
   42:eurorack/plaits/dsp/engine/particle_engine.h ****   ParticleEngine() { }
- 831              		.loc 22 42 3 is_stmt 1 view .LVU235
- 832              	.LBB1348:
- 833              	.LBB1349:
- 834              	.LBI1349:
- 835              		.loc 6 80 3 view .LVU236
- 836              		.loc 6 80 3 is_stmt 0 view .LVU237
- 837              	.LBE1349:
- 838              		.loc 22 42 20 view .LVU238
- 839 0030 204A     		ldr	r2, .L36+32
- 840 0032 C3F8C825 		str	r2, [r3, #1480]
- 841              		.loc 22 42 20 is_stmt 1 view .LVU239
- 842              	.LVL30:
- 843              	.LBB1350:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 45
+ 834              		.loc 22 42 3 is_stmt 1 view .LVU237
+ 835              	.LBB1348:
+ 836              	.LBB1349:
+ 837              	.LBI1349:
+ 838              		.loc 6 80 3 view .LVU238
+ 839              		.loc 6 80 3 is_stmt 0 view .LVU239
+ 840              	.LBE1349:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 45
 
 
- 844              	.LBI1350:
- 845              		.file 23 "eurorack/plaits/dsp/fx/diffuser.h"
+ 841              		.loc 22 42 20 view .LVU240
+ 842 0030 204A     		ldr	r2, .L36+32
+ 843 0032 C3F8C825 		str	r2, [r3, #1480]
+ 844              		.loc 22 42 20 is_stmt 1 view .LVU241
+ 845              	.LVL30:
+ 846              	.LBB1350:
+ 847              	.LBI1350:
+ 848              		.file 23 "eurorack/plaits/dsp/fx/diffuser.h"
    1:eurorack/plaits/dsp/fx/diffuser.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/fx/diffuser.h **** //
    3:eurorack/plaits/dsp/fx/diffuser.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -2683,24 +2689,24 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   38:eurorack/plaits/dsp/fx/diffuser.h **** class Diffuser {
   39:eurorack/plaits/dsp/fx/diffuser.h ****  public:
   40:eurorack/plaits/dsp/fx/diffuser.h ****   Diffuser() { }
- 846              		.loc 23 40 3 view .LVU240
- 847              	.LBB1351:
- 848              	.LBI1351:
- 849              		.file 24 "eurorack/plaits/dsp/fx/fx_engine.h"
+ 849              		.loc 23 40 3 view .LVU242
+ 850              	.LBB1351:
+ 851              	.LBI1351:
+ 852              		.file 24 "eurorack/plaits/dsp/fx/fx_engine.h"
    1:eurorack/plaits/dsp/fx/fx_engine.h **** // Copyright 2014 Emilie Gillet.
    2:eurorack/plaits/dsp/fx/fx_engine.h **** //
    3:eurorack/plaits/dsp/fx/fx_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
    4:eurorack/plaits/dsp/fx/fx_engine.h **** //
    5:eurorack/plaits/dsp/fx/fx_engine.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 46
+
+
    6:eurorack/plaits/dsp/fx/fx_engine.h **** // of this software and associated documentation files (the "Software"), to deal
    7:eurorack/plaits/dsp/fx/fx_engine.h **** // in the Software without restriction, including without limitation the rights
    8:eurorack/plaits/dsp/fx/fx_engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/fx/fx_engine.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/fx/fx_engine.h **** // furnished to do so, subject to the following conditions:
   11:eurorack/plaits/dsp/fx/fx_engine.h **** // 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 46
-
-
   12:eurorack/plaits/dsp/fx/fx_engine.h **** // The above copyright notice and this permission notice shall be included in
   13:eurorack/plaits/dsp/fx/fx_engine.h **** // all copies or substantial portions of the Software.
   14:eurorack/plaits/dsp/fx/fx_engine.h **** // 
@@ -2752,15 +2758,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   60:eurorack/plaits/dsp/fx/fx_engine.h ****   
   61:eurorack/plaits/dsp/fx/fx_engine.h ****   static inline float Decompress(T value) {
   62:eurorack/plaits/dsp/fx/fx_engine.h ****     return static_cast<float>(static_cast<int16_t>(value)) / 4096.0f;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 47
+
+
   63:eurorack/plaits/dsp/fx/fx_engine.h ****   }
   64:eurorack/plaits/dsp/fx/fx_engine.h ****   
   65:eurorack/plaits/dsp/fx/fx_engine.h ****   static inline T Compress(float value) {
   66:eurorack/plaits/dsp/fx/fx_engine.h ****     return static_cast<uint16_t>(
   67:eurorack/plaits/dsp/fx/fx_engine.h ****         stmlib::Clip16(static_cast<int32_t>(value * 4096.0f)));
   68:eurorack/plaits/dsp/fx/fx_engine.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 47
-
-
   69:eurorack/plaits/dsp/fx/fx_engine.h **** };
   70:eurorack/plaits/dsp/fx/fx_engine.h **** 
   71:eurorack/plaits/dsp/fx/fx_engine.h **** template<>
@@ -2797,33 +2803,33 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  102:eurorack/plaits/dsp/fx/fx_engine.h ****  public:
  103:eurorack/plaits/dsp/fx/fx_engine.h ****   typedef typename DataType<format>::T T;
  104:eurorack/plaits/dsp/fx/fx_engine.h ****   FxEngine() { }
- 850              		.loc 24 104 3 view .LVU241
- 851              	.LBE1351:
- 852              	.LBE1350:
- 853              	.LBE1348:
- 854              	.LBE1347:
- 855              	.LBE1403:
- 856              	.LBE1415:
- 857              	.LBE1421:
- 858              		.loc 24 104 14 view .LVU242
- 859              	.LBB1422:
- 860              	.LBB1416:
- 861              	.LBB1404:
- 862              	.LBB1354:
- 863              	.LBB1353:
- 864              	.LBB1352:
- 865              	.LBI1352:
- 866              		.loc 9 179 3 view .LVU243
- 867              		.loc 9 179 3 is_stmt 0 view .LVU244
- 868              	.LBE1352:
- 869              	.LBE1353:
- 870              	.LBE1354:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 48
+ 853              		.loc 24 104 3 view .LVU243
+ 854              	.LBE1351:
+ 855              	.LBE1350:
+ 856              	.LBE1348:
+ 857              	.LBE1347:
+ 858              	.LBE1403:
+ 859              	.LBE1415:
+ 860              	.LBE1421:
+ 861              		.loc 24 104 14 view .LVU244
+ 862              	.LBB1422:
+ 863              	.LBB1416:
+ 864              	.LBB1404:
+ 865              	.LBB1354:
+ 866              	.LBB1353:
+ 867              	.LBB1352:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 48
 
 
- 871              	.LBB1355:
- 872              	.LBI1355:
- 873              		.file 25 "eurorack/plaits/dsp/engine/snare_drum_engine.h"
+ 868              	.LBI1352:
+ 869              		.loc 9 179 3 view .LVU245
+ 870              		.loc 9 179 3 is_stmt 0 view .LVU246
+ 871              	.LBE1352:
+ 872              	.LBE1353:
+ 873              	.LBE1354:
+ 874              	.LBB1355:
+ 875              	.LBI1355:
+ 876              		.file 25 "eurorack/plaits/dsp/engine/snare_drum_engine.h"
    1:eurorack/plaits/dsp/engine/snare_drum_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/snare_drum_engine.h **** //
    3:eurorack/plaits/dsp/engine/snare_drum_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -2864,23 +2870,23 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   38:eurorack/plaits/dsp/engine/snare_drum_engine.h **** class SnareDrumEngine : public Engine {
   39:eurorack/plaits/dsp/engine/snare_drum_engine.h ****  public:
   40:eurorack/plaits/dsp/engine/snare_drum_engine.h ****   SnareDrumEngine() { }
- 874              		.loc 25 40 3 is_stmt 1 view .LVU245
- 875              	.LBB1356:
- 876              	.LBB1357:
- 877              	.LBI1357:
- 878              		.loc 6 80 3 view .LVU246
- 879              		.loc 6 80 3 is_stmt 0 view .LVU247
- 880              	.LBE1357:
- 881              		.loc 25 40 21 view .LVU248
- 882 0036 204A     		ldr	r2, .L36+36
- 883 0038 C3F8A826 		str	r2, [r3, #1704]
- 884              	.LVL31:
- 885              	.LBB1358:
- 886              	.LBI1358:
- 887              		.file 26 "eurorack/plaits/dsp/drums/analog_snare_drum.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 49
+ 877              		.loc 25 40 3 is_stmt 1 view .LVU247
+ 878              	.LBB1356:
+ 879              	.LBB1357:
+ 880              	.LBI1357:
+ 881              		.loc 6 80 3 view .LVU248
+ 882              		.loc 6 80 3 is_stmt 0 view .LVU249
+ 883              	.LBE1357:
+ 884              		.loc 25 40 21 view .LVU250
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 49
 
 
+ 885 0036 204A     		ldr	r2, .L36+36
+ 886 0038 C3F8A826 		str	r2, [r3, #1704]
+ 887              	.LVL31:
+ 888              	.LBB1358:
+ 889              	.LBI1358:
+ 890              		.file 26 "eurorack/plaits/dsp/drums/analog_snare_drum.h"
    1:eurorack/plaits/dsp/drums/analog_snare_drum.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/drums/analog_snare_drum.h **** //
    3:eurorack/plaits/dsp/drums/analog_snare_drum.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -2928,43 +2934,43 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   45:eurorack/plaits/dsp/drums/analog_snare_drum.h **** class AnalogSnareDrum {
   46:eurorack/plaits/dsp/drums/analog_snare_drum.h ****  public:
   47:eurorack/plaits/dsp/drums/analog_snare_drum.h ****   AnalogSnareDrum() { }
- 888              		.loc 26 47 3 is_stmt 1 view .LVU249
- 889              	.LBE1358:
- 890              	.LBE1356:
- 891              	.LBE1355:
- 892              	.LBE1404:
- 893              	.LBE1416:
- 894              	.LBE1422:
- 895              		.loc 26 47 21 view .LVU250
- 896              	.LBB1423:
- 897              	.LBB1417:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 50
+ 891              		.loc 26 47 3 is_stmt 1 view .LVU251
+ 892              	.LBE1358:
+ 893              	.LBE1356:
+ 894              	.LBE1355:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 50
 
 
- 898              	.LBB1405:
- 899              	.LBB1367:
- 900              	.LBB1365:
- 901              	.LBB1360:
- 902              	.LBB1359:
- 903              	.LBI1359:
- 904              		.loc 9 179 3 view .LVU251
- 905              		.loc 9 179 3 is_stmt 0 view .LVU252
- 906              	.LBE1359:
- 907              	.LBE1360:
- 908              	.LBE1365:
- 909              	.LBE1367:
- 910              	.LBE1405:
- 911              	.LBE1417:
- 912              	.LBE1423:
- 913              		.loc 26 47 21 is_stmt 1 view .LVU253
- 914              	.LBB1424:
- 915              	.LBB1418:
- 916              	.LBB1406:
- 917              	.LBB1368:
- 918              	.LBB1366:
- 919              	.LBB1361:
- 920              	.LBI1361:
- 921              		.file 27 "eurorack/plaits/dsp/drums/synthetic_snare_drum.h"
+ 895              	.LBE1404:
+ 896              	.LBE1416:
+ 897              	.LBE1422:
+ 898              		.loc 26 47 21 view .LVU252
+ 899              	.LBB1423:
+ 900              	.LBB1417:
+ 901              	.LBB1405:
+ 902              	.LBB1367:
+ 903              	.LBB1365:
+ 904              	.LBB1360:
+ 905              	.LBB1359:
+ 906              	.LBI1359:
+ 907              		.loc 9 179 3 view .LVU253
+ 908              		.loc 9 179 3 is_stmt 0 view .LVU254
+ 909              	.LBE1359:
+ 910              	.LBE1360:
+ 911              	.LBE1365:
+ 912              	.LBE1367:
+ 913              	.LBE1405:
+ 914              	.LBE1417:
+ 915              	.LBE1423:
+ 916              		.loc 26 47 21 is_stmt 1 view .LVU255
+ 917              	.LBB1424:
+ 918              	.LBB1418:
+ 919              	.LBB1406:
+ 920              	.LBB1368:
+ 921              	.LBB1366:
+ 922              	.LBB1361:
+ 923              	.LBI1361:
+ 924              		.file 27 "eurorack/plaits/dsp/drums/synthetic_snare_drum.h"
    1:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** //
    3:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -2992,15 +2998,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   25:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** // -----------------------------------------------------------------------------
   26:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** //
   27:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** // Naive snare drum model (two modulated oscillators + filtered noise).
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 51
+
+
   28:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** // Uses a few magic numbers taken from the 909 schematics:
   29:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** // - Ratio between the two modes of the drum set to 1.47.
   30:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** // - Funky coupling between the two modes.
   31:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** // - Noise coloration filters and envelope shapes for the snare.
   32:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** 
   33:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** #ifndef PLAITS_DSP_DRUMS_SYNTHETIC_SNARE_DRUM_H_
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 51
-
-
   34:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** #define PLAITS_DSP_DRUMS_SYNTHETIC_SNARE_DRUM_H_
   35:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** 
   36:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** #include <algorithm>
@@ -3016,32 +3022,32 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   46:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** class SyntheticSnareDrum {
   47:eurorack/plaits/dsp/drums/synthetic_snare_drum.h ****  public:
   48:eurorack/plaits/dsp/drums/synthetic_snare_drum.h ****   SyntheticSnareDrum() { }
- 922              		.loc 27 48 3 view .LVU254
- 923              	.LBB1362:
- 924              	.LBI1362:
+ 925              		.loc 27 48 3 view .LVU256
+ 926              	.LBB1362:
+ 927              	.LBI1362:
   94:eurorack/stmlib/dsp/filter.h ****   ~OnePole() { }
- 925              		.loc 9 94 3 view .LVU255
+ 928              		.loc 9 94 3 view .LVU257
   94:eurorack/stmlib/dsp/filter.h ****   ~OnePole() { }
- 926              		.loc 9 94 3 is_stmt 0 view .LVU256
- 927              	.LBE1362:
- 928              	.LBB1363:
- 929              	.LBI1363:
+ 929              		.loc 9 94 3 is_stmt 0 view .LVU258
+ 930              	.LBE1362:
+ 931              	.LBB1363:
+ 932              	.LBI1363:
   94:eurorack/stmlib/dsp/filter.h ****   ~OnePole() { }
- 930              		.loc 9 94 3 is_stmt 1 view .LVU257
+ 933              		.loc 9 94 3 is_stmt 1 view .LVU259
   94:eurorack/stmlib/dsp/filter.h ****   ~OnePole() { }
- 931              		.loc 9 94 3 is_stmt 0 view .LVU258
- 932              	.LBE1363:
- 933              	.LBB1364:
- 934              	.LBI1364:
- 935              		.loc 9 179 3 is_stmt 1 view .LVU259
- 936              		.loc 9 179 3 is_stmt 0 view .LVU260
- 937              	.LBE1364:
- 938              	.LBE1361:
- 939              	.LBE1366:
- 940              	.LBE1368:
- 941              	.LBB1369:
- 942              	.LBI1369:
- 943              		.file 28 "eurorack/plaits/dsp/engine/string_engine.h"
+ 934              		.loc 9 94 3 is_stmt 0 view .LVU260
+ 935              	.LBE1363:
+ 936              	.LBB1364:
+ 937              	.LBI1364:
+ 938              		.loc 9 179 3 is_stmt 1 view .LVU261
+ 939              		.loc 9 179 3 is_stmt 0 view .LVU262
+ 940              	.LBE1364:
+ 941              	.LBE1361:
+ 942              	.LBE1366:
+ 943              	.LBE1368:
+ 944              	.LBB1369:
+ 945              	.LBI1369:
+ 946              		.file 28 "eurorack/plaits/dsp/engine/string_engine.h"
    1:eurorack/plaits/dsp/engine/string_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/string_engine.h **** //
    3:eurorack/plaits/dsp/engine/string_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -3052,15 +3058,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
    8:eurorack/plaits/dsp/engine/string_engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/engine/string_engine.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/engine/string_engine.h **** // furnished to do so, subject to the following conditions:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 52
+
+
   11:eurorack/plaits/dsp/engine/string_engine.h **** // 
   12:eurorack/plaits/dsp/engine/string_engine.h **** // The above copyright notice and this permission notice shall be included in
   13:eurorack/plaits/dsp/engine/string_engine.h **** // all copies or substantial portions of the Software.
   14:eurorack/plaits/dsp/engine/string_engine.h **** // 
   15:eurorack/plaits/dsp/engine/string_engine.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   16:eurorack/plaits/dsp/engine/string_engine.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 52
-
-
   17:eurorack/plaits/dsp/engine/string_engine.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
   18:eurorack/plaits/dsp/engine/string_engine.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   19:eurorack/plaits/dsp/engine/string_engine.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
@@ -3086,21 +3092,21 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   39:eurorack/plaits/dsp/engine/string_engine.h **** class StringEngine : public Engine {
   40:eurorack/plaits/dsp/engine/string_engine.h ****  public:
   41:eurorack/plaits/dsp/engine/string_engine.h ****   StringEngine() { }
- 944              		.loc 28 41 3 is_stmt 1 view .LVU261
- 945              	.LBB1370:
- 946              	.LBB1371:
- 947              	.LBI1371:
- 948              		.loc 6 80 3 view .LVU262
- 949              		.loc 6 80 3 is_stmt 0 view .LVU263
- 950              	.LBE1371:
- 951              		.loc 28 41 18 view .LVU264
- 952 003c 1F4A     		ldr	r2, .L36+40
- 953 003e C3F8CC27 		str	r2, [r3, #1996]
- 954              		.loc 28 41 18 is_stmt 1 view .LVU265
- 955              	.LVL32:
- 956              	.LBB1372:
- 957              	.LBI1372:
- 958              		.file 29 "eurorack/plaits/dsp/physical_modelling/delay_line.h"
+ 947              		.loc 28 41 3 is_stmt 1 view .LVU263
+ 948              	.LBB1370:
+ 949              	.LBB1371:
+ 950              	.LBI1371:
+ 951              		.loc 6 80 3 view .LVU264
+ 952              		.loc 6 80 3 is_stmt 0 view .LVU265
+ 953              	.LBE1371:
+ 954              		.loc 28 41 18 view .LVU266
+ 955 003c 1F4A     		ldr	r2, .L36+40
+ 956 003e C3F8CC27 		str	r2, [r3, #1996]
+ 957              		.loc 28 41 18 is_stmt 1 view .LVU267
+ 958              	.LVL32:
+ 959              	.LBB1372:
+ 960              	.LBI1372:
+ 961              		.file 29 "eurorack/plaits/dsp/physical_modelling/delay_line.h"
    1:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // Copyright 2014 Emilie Gillet.
    2:eurorack/plaits/dsp/physical_modelling/delay_line.h **** //
    3:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -3112,15 +3118,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
    9:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // furnished to do so, subject to the following conditions:
   11:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 53
+
+
   12:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // The above copyright notice and this permission notice shall be included in
   13:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // all copies or substantial portions of the Software.
   14:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // 
   15:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   16:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   17:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 53
-
-
   18:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   19:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   20:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
@@ -3145,14 +3151,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   39:eurorack/plaits/dsp/physical_modelling/delay_line.h **** class DelayLine {
   40:eurorack/plaits/dsp/physical_modelling/delay_line.h ****  public:
   41:eurorack/plaits/dsp/physical_modelling/delay_line.h ****   DelayLine() { }
- 959              		.loc 29 41 3 view .LVU266
- 960              		.loc 29 41 3 is_stmt 0 view .LVU267
- 961              	.LBE1372:
- 962              	.LBE1370:
- 963              	.LBE1369:
- 964              	.LBB1373:
- 965              	.LBI1373:
- 966              		.file 30 "eurorack/plaits/dsp/engine/swarm_engine.h"
+ 962              		.loc 29 41 3 view .LVU268
+ 963              		.loc 29 41 3 is_stmt 0 view .LVU269
+ 964              	.LBE1372:
+ 965              	.LBE1370:
+ 966              	.LBE1369:
+ 967              	.LBB1373:
+ 968              	.LBI1373:
+ 969              		.file 30 "eurorack/plaits/dsp/engine/swarm_engine.h"
    1:eurorack/plaits/dsp/engine/swarm_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/swarm_engine.h **** //
    3:eurorack/plaits/dsp/engine/swarm_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -3172,15 +3178,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   17:eurorack/plaits/dsp/engine/swarm_engine.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
   18:eurorack/plaits/dsp/engine/swarm_engine.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   19:eurorack/plaits/dsp/engine/swarm_engine.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 54
+
+
   20:eurorack/plaits/dsp/engine/swarm_engine.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   21:eurorack/plaits/dsp/engine/swarm_engine.h **** // THE SOFTWARE.
   22:eurorack/plaits/dsp/engine/swarm_engine.h **** // 
   23:eurorack/plaits/dsp/engine/swarm_engine.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
   24:eurorack/plaits/dsp/engine/swarm_engine.h **** //
   25:eurorack/plaits/dsp/engine/swarm_engine.h **** // -----------------------------------------------------------------------------
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 54
-
-
   26:eurorack/plaits/dsp/engine/swarm_engine.h **** //
   27:eurorack/plaits/dsp/engine/swarm_engine.h **** // Swarm of sawtooths and sines.
   28:eurorack/plaits/dsp/engine/swarm_engine.h **** 
@@ -3232,15 +3238,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   74:eurorack/plaits/dsp/engine/swarm_engine.h ****     if (randomize) {
   75:eurorack/plaits/dsp/engine/swarm_engine.h ****       from_ += interval_;
   76:eurorack/plaits/dsp/engine/swarm_engine.h ****       interval_ = stmlib::Random::GetFloat() - from_;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 55
+
+
   77:eurorack/plaits/dsp/engine/swarm_engine.h ****       // Randomize the duration of the grain.
   78:eurorack/plaits/dsp/engine/swarm_engine.h ****       if (burst_mode) {
   79:eurorack/plaits/dsp/engine/swarm_engine.h ****         fm_ *= 0.8f + 0.2f * stmlib::Random::GetFloat();
   80:eurorack/plaits/dsp/engine/swarm_engine.h ****       } else {
   81:eurorack/plaits/dsp/engine/swarm_engine.h ****         fm_ = 0.5f + 1.5f * stmlib::Random::GetFloat();
   82:eurorack/plaits/dsp/engine/swarm_engine.h ****       }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 55
-
-
   83:eurorack/plaits/dsp/engine/swarm_engine.h ****     }
   84:eurorack/plaits/dsp/engine/swarm_engine.h ****   }
   85:eurorack/plaits/dsp/engine/swarm_engine.h ****   
@@ -3292,15 +3298,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  131:eurorack/plaits/dsp/engine/swarm_engine.h ****   AdditiveSawOscillator() { }
  132:eurorack/plaits/dsp/engine/swarm_engine.h ****   ~AdditiveSawOscillator() { }
  133:eurorack/plaits/dsp/engine/swarm_engine.h **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 56
+
+
  134:eurorack/plaits/dsp/engine/swarm_engine.h ****   inline void Init() {
  135:eurorack/plaits/dsp/engine/swarm_engine.h ****     phase_ = 0.0f;
  136:eurorack/plaits/dsp/engine/swarm_engine.h ****     next_sample_ = 0.0f;
  137:eurorack/plaits/dsp/engine/swarm_engine.h ****     frequency_ = 0.01f;
  138:eurorack/plaits/dsp/engine/swarm_engine.h ****     gain_ = 0.0f;
  139:eurorack/plaits/dsp/engine/swarm_engine.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 56
-
-
  140:eurorack/plaits/dsp/engine/swarm_engine.h **** 
  141:eurorack/plaits/dsp/engine/swarm_engine.h ****   inline void Render(
  142:eurorack/plaits/dsp/engine/swarm_engine.h ****       float frequency,
@@ -3352,15 +3358,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  188:eurorack/plaits/dsp/engine/swarm_engine.h **** 
  189:eurorack/plaits/dsp/engine/swarm_engine.h **** class SwarmVoice {
  190:eurorack/plaits/dsp/engine/swarm_engine.h ****  public:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 57
+
+
  191:eurorack/plaits/dsp/engine/swarm_engine.h ****   SwarmVoice() { }
  192:eurorack/plaits/dsp/engine/swarm_engine.h ****   ~SwarmVoice() { }
  193:eurorack/plaits/dsp/engine/swarm_engine.h ****   
  194:eurorack/plaits/dsp/engine/swarm_engine.h ****   void Init(float rank) {
  195:eurorack/plaits/dsp/engine/swarm_engine.h ****     rank_ = rank;
  196:eurorack/plaits/dsp/engine/swarm_engine.h ****     envelope_.Init();
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 57
-
-
  197:eurorack/plaits/dsp/engine/swarm_engine.h ****     saw_.Init();
  198:eurorack/plaits/dsp/engine/swarm_engine.h ****     sine_.Init();
  199:eurorack/plaits/dsp/engine/swarm_engine.h ****   }
@@ -3401,27 +3407,27 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  234:eurorack/plaits/dsp/engine/swarm_engine.h **** class SwarmEngine : public Engine {
  235:eurorack/plaits/dsp/engine/swarm_engine.h ****  public:
  236:eurorack/plaits/dsp/engine/swarm_engine.h ****   SwarmEngine() { }
- 967              		.loc 30 236 3 is_stmt 1 view .LVU268
- 968              	.LBB1374:
- 969              	.LBB1375:
- 970              	.LBI1375:
- 971              		.loc 6 80 3 view .LVU269
- 972              		.loc 6 80 3 is_stmt 0 view .LVU270
- 973              	.LBE1375:
- 974              		.loc 30 236 17 view .LVU271
- 975 0042 1F4A     		ldr	r2, .L36+44
- 976 0044 C3F81829 		str	r2, [r3, #2328]
- 977              		.loc 30 236 17 is_stmt 1 view .LVU272
- 978              	.LVL33:
- 979              		.loc 30 236 17 is_stmt 0 view .LVU273
- 980              	.LBE1374:
- 981              	.LBE1373:
- 982              	.LBB1376:
- 983              	.LBI1376:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 58
+ 970              		.loc 30 236 3 is_stmt 1 view .LVU270
+ 971              	.LBB1374:
+ 972              	.LBB1375:
+ 973              	.LBI1375:
+ 974              		.loc 6 80 3 view .LVU271
+ 975              		.loc 6 80 3 is_stmt 0 view .LVU272
+ 976              	.LBE1375:
+ 977              		.loc 30 236 17 view .LVU273
+ 978 0042 1F4A     		ldr	r2, .L36+44
+ 979 0044 C3F81829 		str	r2, [r3, #2328]
+ 980              		.loc 30 236 17 is_stmt 1 view .LVU274
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 58
 
 
- 984              		.file 31 "eurorack/plaits/dsp/engine/virtual_analog_engine.h"
+ 981              	.LVL33:
+ 982              		.loc 30 236 17 is_stmt 0 view .LVU275
+ 983              	.LBE1374:
+ 984              	.LBE1373:
+ 985              	.LBB1376:
+ 986              	.LBI1376:
+ 987              		.file 31 "eurorack/plaits/dsp/engine/virtual_analog_engine.h"
    1:eurorack/plaits/dsp/engine/virtual_analog_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/virtual_analog_engine.h **** //
    3:eurorack/plaits/dsp/engine/virtual_analog_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -3464,23 +3470,23 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   40:eurorack/plaits/dsp/engine/virtual_analog_engine.h **** class VirtualAnalogEngine : public Engine {
   41:eurorack/plaits/dsp/engine/virtual_analog_engine.h ****  public:
   42:eurorack/plaits/dsp/engine/virtual_analog_engine.h ****   VirtualAnalogEngine() { }
- 985              		.loc 31 42 3 is_stmt 1 view .LVU274
- 986              	.LBB1377:
- 987              	.LBB1378:
- 988              	.LBI1378:
- 989              		.loc 6 80 3 view .LVU275
- 990              		.loc 6 80 3 is_stmt 0 view .LVU276
- 991              	.LBE1378:
- 992              		.loc 31 42 25 view .LVU277
- 993 0048 1E4A     		ldr	r2, .L36+48
- 994 004a C3F8282B 		str	r2, [r3, #2856]
- 995              	.LVL34:
- 996              	.LBB1379:
- 997              	.LBI1379:
- 998              		.file 32 "eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 59
+ 988              		.loc 31 42 3 is_stmt 1 view .LVU276
+ 989              	.LBB1377:
+ 990              	.LBB1378:
+ 991              	.LBI1378:
+ 992              		.loc 6 80 3 view .LVU277
+ 993              		.loc 6 80 3 is_stmt 0 view .LVU278
+ 994              	.LBE1378:
+ 995              		.loc 31 42 25 view .LVU279
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 59
 
 
+ 996 0048 1E4A     		ldr	r2, .L36+48
+ 997 004a C3F8282B 		str	r2, [r3, #2856]
+ 998              	.LVL34:
+ 999              	.LBB1379:
+ 1000              	.LBI1379:
+ 1001              		.file 32 "eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h"
    1:eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h **** //
    3:eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -3525,25 +3531,25 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   42:eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h **** class VariableShapeOscillator {
   43:eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h ****  public:
   44:eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h ****   VariableShapeOscillator() { }
- 999              		.loc 32 44 3 is_stmt 1 view .LVU278
- 1000              		.loc 32 44 3 is_stmt 0 view .LVU279
- 1001              	.LBE1379:
- 1002              	.LBB1380:
- 1003              	.LBI1380:
- 1004              		.loc 32 44 3 is_stmt 1 view .LVU280
- 1005              		.loc 32 44 3 is_stmt 0 view .LVU281
- 1006              	.LBE1380:
- 1007              	.LBB1381:
- 1008              	.LBI1381:
- 1009              		.loc 32 44 3 is_stmt 1 view .LVU282
- 1010              		.loc 32 44 3 is_stmt 0 view .LVU283
- 1011              	.LBE1381:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 60
+ 1002              		.loc 32 44 3 is_stmt 1 view .LVU280
+ 1003              		.loc 32 44 3 is_stmt 0 view .LVU281
+ 1004              	.LBE1379:
+ 1005              	.LBB1380:
+ 1006              	.LBI1380:
+ 1007              		.loc 32 44 3 is_stmt 1 view .LVU282
+ 1008              		.loc 32 44 3 is_stmt 0 view .LVU283
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 60
 
 
- 1012              	.LBB1382:
- 1013              	.LBI1382:
- 1014              		.file 33 "eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h"
+ 1009              	.LBE1380:
+ 1010              	.LBB1381:
+ 1011              	.LBI1381:
+ 1012              		.loc 32 44 3 is_stmt 1 view .LVU284
+ 1013              		.loc 32 44 3 is_stmt 0 view .LVU285
+ 1014              	.LBE1381:
+ 1015              	.LBB1382:
+ 1016              	.LBI1382:
+ 1017              		.file 33 "eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h"
    1:eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h **** //
    3:eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -3590,17 +3596,17 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   44:eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h **** class VariableSawOscillator {
   45:eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h ****  public:
   46:eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h ****   VariableSawOscillator() { }
- 1015              		.loc 33 46 3 is_stmt 1 view .LVU284
- 1016              		.loc 33 46 3 is_stmt 0 view .LVU285
- 1017              	.LBE1382:
- 1018              	.LBE1377:
- 1019              	.LBE1376:
- 1020              	.LBB1383:
- 1021              	.LBI1383:
- 1022              		.file 34 "eurorack/plaits/dsp/engine/waveshaping_engine.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 61
+ 1018              		.loc 33 46 3 is_stmt 1 view .LVU286
+ 1019              		.loc 33 46 3 is_stmt 0 view .LVU287
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 61
 
 
+ 1020              	.LBE1382:
+ 1021              	.LBE1377:
+ 1022              	.LBE1376:
+ 1023              	.LBB1383:
+ 1024              	.LBI1383:
+ 1025              		.file 34 "eurorack/plaits/dsp/engine/waveshaping_engine.h"
    1:eurorack/plaits/dsp/engine/waveshaping_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/waveshaping_engine.h **** //
    3:eurorack/plaits/dsp/engine/waveshaping_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -3640,27 +3646,27 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   37:eurorack/plaits/dsp/engine/waveshaping_engine.h **** class WaveshapingEngine : public Engine {
   38:eurorack/plaits/dsp/engine/waveshaping_engine.h ****  public:
   39:eurorack/plaits/dsp/engine/waveshaping_engine.h ****   WaveshapingEngine() { }
- 1023              		.loc 34 39 3 is_stmt 1 view .LVU286
- 1024              	.LBB1384:
- 1025              	.LBB1385:
- 1026              	.LBI1385:
- 1027              		.loc 6 80 3 view .LVU287
- 1028              		.loc 6 80 3 is_stmt 0 view .LVU288
- 1029              	.LBE1385:
- 1030              		.loc 34 39 23 view .LVU289
- 1031 004e 1E4A     		ldr	r2, .L36+52
- 1032 0050 C3F8CC2B 		str	r2, [r3, #3020]
- 1033              	.LVL35:
- 1034              	.LBB1386:
- 1035              	.LBI1386:
- 1036              		.file 35 "eurorack/plaits/dsp/oscillator/oscillator.h"
+ 1026              		.loc 34 39 3 is_stmt 1 view .LVU288
+ 1027              	.LBB1384:
+ 1028              	.LBB1385:
+ 1029              	.LBI1385:
+ 1030              		.loc 6 80 3 view .LVU289
+ 1031              		.loc 6 80 3 is_stmt 0 view .LVU290
+ 1032              	.LBE1385:
+ 1033              		.loc 34 39 23 view .LVU291
+ 1034 004e 1E4A     		ldr	r2, .L36+52
+ 1035 0050 C3F8CC2B 		str	r2, [r3, #3020]
+ 1036              	.LVL35:
+ 1037              	.LBB1386:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 62
+
+
+ 1038              	.LBI1386:
+ 1039              		.file 35 "eurorack/plaits/dsp/oscillator/oscillator.h"
    1:eurorack/plaits/dsp/oscillator/oscillator.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/oscillator/oscillator.h **** //
    3:eurorack/plaits/dsp/oscillator/oscillator.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
    4:eurorack/plaits/dsp/oscillator/oscillator.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 62
-
-
    5:eurorack/plaits/dsp/oscillator/oscillator.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
    6:eurorack/plaits/dsp/oscillator/oscillator.h **** // of this software and associated documentation files (the "Software"), to deal
    7:eurorack/plaits/dsp/oscillator/oscillator.h **** // in the Software without restriction, including without limitation the rights
@@ -3712,22 +3718,22 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   53:eurorack/plaits/dsp/oscillator/oscillator.h **** class Oscillator {
   54:eurorack/plaits/dsp/oscillator/oscillator.h ****  public:
   55:eurorack/plaits/dsp/oscillator/oscillator.h ****   Oscillator() { }
- 1037              		.loc 35 55 3 is_stmt 1 view .LVU290
- 1038              		.loc 35 55 3 is_stmt 0 view .LVU291
- 1039              	.LBE1386:
- 1040              	.LBB1387:
- 1041              	.LBI1387:
- 1042              		.loc 35 55 3 is_stmt 1 view .LVU292
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 63
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 63
 
 
- 1043              		.loc 35 55 3 is_stmt 0 view .LVU293
- 1044              	.LBE1387:
- 1045              	.LBE1384:
- 1046              	.LBE1383:
- 1047              	.LBB1388:
- 1048              	.LBI1388:
- 1049              		.file 36 "eurorack/stmlib/dsp/hysteresis_quantizer.h"
+ 1040              		.loc 35 55 3 is_stmt 1 view .LVU292
+ 1041              		.loc 35 55 3 is_stmt 0 view .LVU293
+ 1042              	.LBE1386:
+ 1043              	.LBB1387:
+ 1044              	.LBI1387:
+ 1045              		.loc 35 55 3 is_stmt 1 view .LVU294
+ 1046              		.loc 35 55 3 is_stmt 0 view .LVU295
+ 1047              	.LBE1387:
+ 1048              	.LBE1384:
+ 1049              	.LBE1383:
+ 1050              	.LBB1388:
+ 1051              	.LBI1388:
+ 1052              		.file 36 "eurorack/stmlib/dsp/hysteresis_quantizer.h"
    1:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // Copyright 2015 Emilie Gillet.
    2:eurorack/stmlib/dsp/hysteresis_quantizer.h **** //
    3:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -3767,20 +3773,20 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   37:eurorack/stmlib/dsp/hysteresis_quantizer.h **** class HysteresisQuantizer {
   38:eurorack/stmlib/dsp/hysteresis_quantizer.h ****  public:
   39:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   HysteresisQuantizer() { }
- 1050              		.loc 36 39 3 is_stmt 1 view .LVU294
- 1051              		.loc 36 39 3 is_stmt 0 view .LVU295
- 1052              	.LBE1388:
- 1053              	.LBB1389:
- 1054              	.LBI1389:
- 1055              		.file 37 "eurorack/plaits/dsp/envelope.h"
+ 1053              		.loc 36 39 3 is_stmt 1 view .LVU296
+ 1054              		.loc 36 39 3 is_stmt 0 view .LVU297
+ 1055              	.LBE1388:
+ 1056              	.LBB1389:
+ 1057              	.LBI1389:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 64
+
+
+ 1058              		.file 37 "eurorack/plaits/dsp/envelope.h"
    1:eurorack/plaits/dsp/envelope.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/envelope.h **** //
    3:eurorack/plaits/dsp/envelope.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
    4:eurorack/plaits/dsp/envelope.h **** //
    5:eurorack/plaits/dsp/envelope.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 64
-
-
    6:eurorack/plaits/dsp/envelope.h **** // of this software and associated documentation files (the "Software"), to deal
    7:eurorack/plaits/dsp/envelope.h **** // in the Software without restriction, including without limitation the rights
    8:eurorack/plaits/dsp/envelope.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
@@ -3832,15 +3838,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   54:eurorack/plaits/dsp/envelope.h ****       float short_decay,
   55:eurorack/plaits/dsp/envelope.h ****       float decay_tail,
   56:eurorack/plaits/dsp/envelope.h ****       float hf) {
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 65
+
+
   57:eurorack/plaits/dsp/envelope.h ****     if (ramp_up_) {
   58:eurorack/plaits/dsp/envelope.h ****       vactrol_state_ += attack;
   59:eurorack/plaits/dsp/envelope.h ****       if (vactrol_state_ >= 1.0f) {
   60:eurorack/plaits/dsp/envelope.h ****         vactrol_state_ = 1.0f;
   61:eurorack/plaits/dsp/envelope.h ****         ramp_up_ = false;
   62:eurorack/plaits/dsp/envelope.h ****       }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 65
-
-
   63:eurorack/plaits/dsp/envelope.h ****     }
   64:eurorack/plaits/dsp/envelope.h ****     ProcessLP(ramp_up_ ? vactrol_state_ : 0.0f, short_decay, decay_tail, hf);
   65:eurorack/plaits/dsp/envelope.h ****   }
@@ -3883,31 +3889,31 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
  102:eurorack/plaits/dsp/envelope.h **** class DecayEnvelope {
  103:eurorack/plaits/dsp/envelope.h ****  public:
  104:eurorack/plaits/dsp/envelope.h ****   DecayEnvelope() { }
- 1056              		.loc 37 104 3 is_stmt 1 view .LVU296
- 1057              		.loc 37 104 3 is_stmt 0 view .LVU297
- 1058              	.LBE1389:
- 1059              	.LBB1390:
- 1060              	.LBI1390:
+ 1059              		.loc 37 104 3 is_stmt 1 view .LVU298
+ 1060              		.loc 37 104 3 is_stmt 0 view .LVU299
+ 1061              	.LBE1389:
+ 1062              	.LBB1390:
+ 1063              	.LBI1390:
   38:eurorack/plaits/dsp/envelope.h ****   ~LPGEnvelope() { }
- 1061              		.loc 37 38 3 is_stmt 1 view .LVU298
+ 1064              		.loc 37 38 3 is_stmt 1 view .LVU300
   38:eurorack/plaits/dsp/envelope.h ****   ~LPGEnvelope() { }
- 1062              		.loc 37 38 3 is_stmt 0 view .LVU299
- 1063              	.LBE1390:
- 1064              	.LBB1391:
- 1065              	.LBI1391:
- 1066              		.loc 29 41 3 is_stmt 1 view .LVU300
- 1067              		.loc 29 41 3 is_stmt 0 view .LVU301
- 1068              	.LBE1391:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 66
+ 1065              		.loc 37 38 3 is_stmt 0 view .LVU301
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 66
 
 
- 1069              	.LBB1392:
- 1070              	.LBI1392:
+ 1066              	.LBE1390:
+ 1067              	.LBB1391:
+ 1068              	.LBI1391:
+ 1069              		.loc 29 41 3 is_stmt 1 view .LVU302
+ 1070              		.loc 29 41 3 is_stmt 0 view .LVU303
+ 1071              	.LBE1391:
+ 1072              	.LBB1392:
+ 1073              	.LBI1392:
   68:eurorack/plaits/dsp/voice.h ****   ~ChannelPostProcessor() { }
- 1071              		.loc 4 68 3 is_stmt 1 view .LVU302
- 1072              	.LBB1393:
- 1073              	.LBI1393:
- 1074              		.file 38 "eurorack/stmlib/dsp/limiter.h"
+ 1074              		.loc 4 68 3 is_stmt 1 view .LVU304
+ 1075              	.LBB1393:
+ 1076              	.LBI1393:
+ 1077              		.file 38 "eurorack/stmlib/dsp/limiter.h"
    1:eurorack/stmlib/dsp/limiter.h **** // Copyright 2015 Emilie Gillet.
    2:eurorack/stmlib/dsp/limiter.h **** //
    3:eurorack/stmlib/dsp/limiter.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -3951,16 +3957,16 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   41:eurorack/stmlib/dsp/limiter.h **** class Limiter {
   42:eurorack/stmlib/dsp/limiter.h ****  public:
   43:eurorack/stmlib/dsp/limiter.h ****   Limiter() { }
- 1075              		.loc 38 43 3 view .LVU303
- 1076              		.loc 38 43 3 is_stmt 0 view .LVU304
- 1077              	.LBE1393:
- 1078              	.LBB1394:
- 1079              	.LBI1394:
- 1080              		.file 39 "eurorack/plaits/dsp/fx/low_pass_gate.h"
+ 1078              		.loc 38 43 3 view .LVU305
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 67
+
+
+ 1079              		.loc 38 43 3 is_stmt 0 view .LVU306
+ 1080              	.LBE1393:
+ 1081              	.LBB1394:
+ 1082              	.LBI1394:
+ 1083              		.file 39 "eurorack/plaits/dsp/fx/low_pass_gate.h"
    1:eurorack/plaits/dsp/fx/low_pass_gate.h **** // Copyright 2014 Emilie Gillet.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 67
-
-
    2:eurorack/plaits/dsp/fx/low_pass_gate.h **** //
    3:eurorack/plaits/dsp/fx/low_pass_gate.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
    4:eurorack/plaits/dsp/fx/low_pass_gate.h **** //
@@ -4002,38 +4008,38 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   40:eurorack/plaits/dsp/fx/low_pass_gate.h **** class LowPassGate {
   41:eurorack/plaits/dsp/fx/low_pass_gate.h ****  public:
   42:eurorack/plaits/dsp/fx/low_pass_gate.h ****   LowPassGate() { }
- 1081              		.loc 39 42 3 is_stmt 1 view .LVU305
- 1082              	.LBB1395:
- 1083              	.LBI1395:
- 1084              		.loc 9 179 3 view .LVU306
- 1085              		.loc 9 179 3 is_stmt 0 view .LVU307
- 1086              	.LBE1395:
- 1087              	.LBE1394:
- 1088              	.LBE1392:
- 1089              	.LBB1396:
- 1090              	.LBI1396:
+ 1084              		.loc 39 42 3 is_stmt 1 view .LVU307
+ 1085              	.LBB1395:
+ 1086              	.LBI1395:
+ 1087              		.loc 9 179 3 view .LVU308
+ 1088              		.loc 9 179 3 is_stmt 0 view .LVU309
+ 1089              	.LBE1395:
+ 1090              	.LBE1394:
+ 1091              	.LBE1392:
+ 1092              	.LBB1396:
+ 1093              	.LBI1396:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 68
+
+
   68:eurorack/plaits/dsp/voice.h ****   ~ChannelPostProcessor() { }
- 1091              		.loc 4 68 3 is_stmt 1 view .LVU308
- 1092              	.LBB1397:
- 1093              	.LBI1397:
- 1094              		.loc 38 43 3 view .LVU309
- 1095              		.loc 38 43 3 is_stmt 0 view .LVU310
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 68
-
-
- 1096              	.LBE1397:
- 1097              	.LBB1398:
- 1098              	.LBI1398:
- 1099              		.loc 39 42 3 is_stmt 1 view .LVU311
- 1100              	.LBB1399:
- 1101              	.LBI1399:
- 1102              		.loc 9 179 3 view .LVU312
- 1103              		.loc 9 179 3 is_stmt 0 view .LVU313
- 1104              	.LBE1399:
- 1105              	.LBE1398:
- 1106              	.LBE1396:
- 1107              	.LBB1400:
- 1108              	.LBI1400:
+ 1094              		.loc 4 68 3 is_stmt 1 view .LVU310
+ 1095              	.LBB1397:
+ 1096              	.LBI1397:
+ 1097              		.loc 38 43 3 view .LVU311
+ 1098              		.loc 38 43 3 is_stmt 0 view .LVU312
+ 1099              	.LBE1397:
+ 1100              	.LBB1398:
+ 1101              	.LBI1398:
+ 1102              		.loc 39 42 3 is_stmt 1 view .LVU313
+ 1103              	.LBB1399:
+ 1104              	.LBI1399:
+ 1105              		.loc 9 179 3 view .LVU314
+ 1106              		.loc 9 179 3 is_stmt 0 view .LVU315
+ 1107              	.LBE1399:
+ 1108              	.LBE1398:
+ 1109              	.LBE1396:
+ 1110              	.LBB1400:
+ 1111              	.LBI1400:
   81:eurorack/plaits/dsp/engine/engine.h ****   ~Engine() { }
   82:eurorack/plaits/dsp/engine/engine.h ****   virtual void Init(stmlib::BufferAllocator* allocator) = 0;
   83:eurorack/plaits/dsp/engine/engine.h ****   virtual void Reset() = 0;
@@ -4050,334 +4056,334 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 1
   94:eurorack/plaits/dsp/engine/engine.h **** class EngineRegistry {
   95:eurorack/plaits/dsp/engine/engine.h ****  public:
   96:eurorack/plaits/dsp/engine/engine.h ****   EngineRegistry() { }
- 1109              		.loc 6 96 3 is_stmt 1 view .LVU314
- 1110              		.loc 6 96 3 is_stmt 0 view .LVU315
- 1111              	.LBE1400:
- 1112              	.LBE1406:
+ 1112              		.loc 6 96 3 is_stmt 1 view .LVU316
+ 1113              		.loc 6 96 3 is_stmt 0 view .LVU317
+ 1114              	.LBE1400:
+ 1115              	.LBE1406:
    4:Polyphony.cpp **** plaits::Voice voices[NUM_VOICES];
- 1113              		.loc 1 4 32 is_stmt 1 view .LVU316
+ 1116              		.loc 1 4 32 is_stmt 1 view .LVU318
    4:Polyphony.cpp **** plaits::Voice voices[NUM_VOICES];
- 1114              		.loc 1 4 32 view .LVU317
- 1115 0054 03F55B63 		add	r3, r3, #3504
- 1116 0058 D5D1     		bne	.L32
+ 1117              		.loc 1 4 32 view .LVU319
+ 1118 0054 03F55B63 		add	r3, r3, #3504
+ 1119 0058 D5D1     		bne	.L32
    4:Polyphony.cpp **** plaits::Voice voices[NUM_VOICES];
- 1117              		.loc 1 4 15 is_stmt 0 view .LVU318
- 1118 005a 1C4A     		ldr	r2, .L36+56
- 1119 005c 1C49     		ldr	r1, .L36+60
- 1120 005e FFF7FEFF 		bl	__aeabi_atexit
- 1121              	.LVL36:
+ 1120              		.loc 1 4 15 is_stmt 0 view .LVU320
+ 1121 005a 1C4A     		ldr	r2, .L36+56
+ 1122 005c 1C49     		ldr	r1, .L36+60
+ 1123 005e FFF7FEFF 		bl	__aeabi_atexit
+ 1124              	.LVL36:
   18:Polyphony.cpp **** VoiceEnvelope voice_envelopes[NUM_VOICES]; 
- 1122              		.loc 1 18 41 is_stmt 1 view .LVU319
- 1123 0062 1C4B     		ldr	r3, .L36+64
+ 1125              		.loc 1 18 41 is_stmt 1 view .LVU321
+ 1126 0062 1C4B     		ldr	r3, .L36+64
    4:Polyphony.cpp **** plaits::Voice voices[NUM_VOICES];
- 1124              		.loc 1 4 15 is_stmt 0 view .LVU320
- 1125 0064 0422     		movs	r2, #4
- 1126              	.L33:
- 1127              	.LVL37:
- 1128              	.LBB1407:
- 1129              	.LBI1407:
+ 1127              		.loc 1 4 15 is_stmt 0 view .LVU322
+ 1128 0064 0422     		movs	r2, #4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 69
+
+
+ 1129              	.L33:
+ 1130              	.LVL37:
+ 1131              	.LBB1407:
+ 1132              	.LBI1407:
   20:VoiceEnvelope.h ****         current_state(ENV_IDLE),
- 1130              		.loc 3 20 5 is_stmt 1 view .LVU321
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 69
-
-
- 1131              	.LBB1408:
+ 1133              		.loc 3 20 5 is_stmt 1 view .LVU323
+ 1134              	.LBB1408:
   27:VoiceEnvelope.h ****     {}
- 1132              		.loc 3 27 31 is_stmt 0 view .LVU322
- 1133 0066 0121     		movs	r1, #1
- 1134 0068 0020     		movs	r0, #0
- 1135 006a 4FF07C54 		mov	r4, #1056964608
- 1136              	.LBE1408:
- 1137              	.LBE1407:
+ 1135              		.loc 3 27 31 is_stmt 0 view .LVU324
+ 1136 0066 0121     		movs	r1, #1
+ 1137 0068 0020     		movs	r0, #0
+ 1138 006a 4FF07C54 		mov	r4, #1056964608
+ 1139              	.LBE1408:
+ 1140              	.LBE1407:
   18:Polyphony.cpp **** VoiceEnvelope voice_envelopes[NUM_VOICES]; 
- 1138              		.loc 1 18 41 view .LVU323
- 1139 006e 013A     		subs	r2, r2, #1
- 1140              	.LBB1411:
- 1141              	.LBB1409:
+ 1141              		.loc 1 18 41 view .LVU325
+ 1142 006e 013A     		subs	r2, r2, #1
+ 1143              	.LBB1411:
+ 1144              	.LBB1409:
   27:VoiceEnvelope.h ****     {}
- 1142              		.loc 3 27 31 view .LVU324
- 1143 0070 5970     		strb	r1, [r3, #1]
- 1144 0072 4FF00001 		mov	r1, #0
- 1145 0076 1870     		strb	r0, [r3]
- 1146              	.LBE1409:
- 1147              	.LBE1411:
+ 1145              		.loc 3 27 31 view .LVU326
+ 1146 0070 5970     		strb	r1, [r3, #1]
+ 1147 0072 4FF00001 		mov	r1, #0
+ 1148 0076 1870     		strb	r0, [r3]
+ 1149              	.LBE1409:
+ 1150              	.LBE1411:
   18:Polyphony.cpp **** VoiceEnvelope voice_envelopes[NUM_VOICES]; 
- 1148              		.loc 1 18 41 view .LVU325
- 1149 0078 03F14403 		add	r3, r3, #68
- 1150              	.LVL38:
- 1151              	.LBB1412:
- 1152              	.LBB1410:
+ 1151              		.loc 1 18 41 view .LVU327
+ 1152 0078 03F14403 		add	r3, r3, #68
+ 1153              	.LVL38:
+ 1154              	.LBB1412:
+ 1155              	.LBB1410:
   27:VoiceEnvelope.h ****     {}
- 1153              		.loc 3 27 31 view .LVU326
- 1154 007c 43F8401C 		str	r1, [r3, #-64]	@ float
- 1155 0080 43F83C4C 		str	r4, [r3, #-60]	@ float
- 1156 0084 43F8384C 		str	r4, [r3, #-56]	@ float
- 1157 0088 43F8080C 		str	r0, [r3, #-8]
- 1158 008c 43F8041C 		str	r1, [r3, #-4]	@ float
- 1159              	.LVL39:
+ 1156              		.loc 3 27 31 view .LVU328
+ 1157 007c 43F8401C 		str	r1, [r3, #-64]	@ float
+ 1158 0080 43F83C4C 		str	r4, [r3, #-60]	@ float
+ 1159 0084 43F8384C 		str	r4, [r3, #-56]	@ float
+ 1160 0088 43F8080C 		str	r0, [r3, #-8]
+ 1161 008c 43F8041C 		str	r1, [r3, #-4]	@ float
+ 1162              	.LVL39:
   27:VoiceEnvelope.h ****     {}
- 1160              		.loc 3 27 31 view .LVU327
- 1161              	.LBE1410:
- 1162              	.LBE1412:
+ 1163              		.loc 3 27 31 view .LVU329
+ 1164              	.LBE1410:
+ 1165              	.LBE1412:
   18:Polyphony.cpp **** VoiceEnvelope voice_envelopes[NUM_VOICES]; 
- 1163              		.loc 1 18 41 is_stmt 1 view .LVU328
+ 1166              		.loc 1 18 41 is_stmt 1 view .LVU330
   18:Polyphony.cpp **** VoiceEnvelope voice_envelopes[NUM_VOICES]; 
- 1164              		.loc 1 18 41 view .LVU329
- 1165 0090 E9D1     		bne	.L33
- 1166              	.LBE1418:
- 1167              	.LBE1424:
- 1168              		.loc 1 78 1 is_stmt 0 view .LVU330
- 1169 0092 10BD     		pop	{r4, pc}
- 1170              	.L37:
- 1171              		.align	2
- 1172              	.L36:
- 1173 0094 00000000 		.word	voices
- 1174 0098 08000000 		.word	_ZTVN6plaits14AdditiveEngineE+8
- 1175 009c 08000000 		.word	_ZTVN6plaits14BassDrumEngineE+8
- 1176 00a0 08000000 		.word	_ZTVN6plaits8FMEngineE+8
- 1177 00a4 08000000 		.word	_ZTVN6plaits11GrainEngineE+8
- 1178 00a8 08000000 		.word	_ZTVN6plaits11HiHatEngineE+8
- 1179 00ac 08000000 		.word	_ZTVN6plaits11ModalEngineE+8
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 70
+ 1167              		.loc 1 18 41 view .LVU331
+ 1168 0090 E9D1     		bne	.L33
+ 1169              	.LBE1418:
+ 1170              	.LBE1424:
+ 1171              		.loc 1 79 1 is_stmt 0 view .LVU332
+ 1172 0092 10BD     		pop	{r4, pc}
+ 1173              	.L37:
+ 1174              		.align	2
+ 1175              	.L36:
+ 1176 0094 00000000 		.word	voices
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 70
 
 
- 1180 00b0 08000000 		.word	_ZTVN6plaits11NoiseEngineE+8
- 1181 00b4 08000000 		.word	_ZTVN6plaits14ParticleEngineE+8
- 1182 00b8 08000000 		.word	_ZTVN6plaits15SnareDrumEngineE+8
- 1183 00bc 08000000 		.word	_ZTVN6plaits12StringEngineE+8
- 1184 00c0 08000000 		.word	_ZTVN6plaits11SwarmEngineE+8
- 1185 00c4 08000000 		.word	_ZTVN6plaits19VirtualAnalogEngineE+8
- 1186 00c8 08000000 		.word	_ZTVN6plaits17WaveshapingEngineE+8
- 1187 00cc 00000000 		.word	__dso_handle
- 1188 00d0 00000000 		.word	__tcf_0
- 1189 00d4 00000000 		.word	.LANCHOR4
- 1190              		.cfi_endproc
- 1191              	.LFE6066:
- 1193              		.section	.init_array,"aw",%init_array
- 1194              		.align	2
- 1195 0000 00000000 		.word	_GLOBAL__sub_I_voices(target1)
- 1196              		.global	MAX_ENGINE_INDEX
- 1197              		.global	kTouchMidiNotes
- 1198              		.global	voice_envelopes
- 1199              		.global	last_touch_state
- 1200              		.global	voice_values
- 1201              		.global	voice_note
- 1202              		.global	voice_active
- 1203              		.global	output_buffers
- 1204              		.global	shared_buffer
- 1205              		.global	modulations
- 1206              		.global	patches
- 1207              		.global	voices
- 1208              		.section	.bss.last_touch_state,"aw",%nobits
- 1209              		.align	1
- 1212              	last_touch_state:
- 1213 0000 0000     		.space	2
- 1214              		.section	.bss.modulations,"aw",%nobits
- 1215              		.align	2
- 1216              		.set	.LANCHOR2,. + 0
- 1219              	modulations:
- 1220 0000 00000000 		.space	160
- 1220      00000000 
- 1220      00000000 
- 1220      00000000 
- 1220      00000000 
- 1221              		.section	.bss.output_buffers,"aw",%nobits
- 1222              		.align	1
- 1225              	output_buffers:
- 1226 0000 00000000 		.space	256
- 1226      00000000 
- 1226      00000000 
- 1226      00000000 
- 1226      00000000 
- 1227              		.section	.bss.patches,"aw",%nobits
- 1228              		.align	2
- 1229              		.set	.LANCHOR3,. + 0
- 1232              	patches:
- 1233 0000 00000000 		.space	160
- 1233      00000000 
- 1233      00000000 
- 1233      00000000 
- 1233      00000000 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 71
+ 1177 0098 08000000 		.word	_ZTVN6plaits14AdditiveEngineE+8
+ 1178 009c 08000000 		.word	_ZTVN6plaits14BassDrumEngineE+8
+ 1179 00a0 08000000 		.word	_ZTVN6plaits8FMEngineE+8
+ 1180 00a4 08000000 		.word	_ZTVN6plaits11GrainEngineE+8
+ 1181 00a8 08000000 		.word	_ZTVN6plaits11HiHatEngineE+8
+ 1182 00ac 08000000 		.word	_ZTVN6plaits11ModalEngineE+8
+ 1183 00b0 08000000 		.word	_ZTVN6plaits11NoiseEngineE+8
+ 1184 00b4 08000000 		.word	_ZTVN6plaits14ParticleEngineE+8
+ 1185 00b8 08000000 		.word	_ZTVN6plaits15SnareDrumEngineE+8
+ 1186 00bc 08000000 		.word	_ZTVN6plaits12StringEngineE+8
+ 1187 00c0 08000000 		.word	_ZTVN6plaits11SwarmEngineE+8
+ 1188 00c4 08000000 		.word	_ZTVN6plaits19VirtualAnalogEngineE+8
+ 1189 00c8 08000000 		.word	_ZTVN6plaits17WaveshapingEngineE+8
+ 1190 00cc 00000000 		.word	__dso_handle
+ 1191 00d0 00000000 		.word	__tcf_0
+ 1192 00d4 00000000 		.word	.LANCHOR4
+ 1193              		.cfi_endproc
+ 1194              	.LFE6066:
+ 1196              		.section	.init_array,"aw",%init_array
+ 1197              		.align	2
+ 1198 0000 00000000 		.word	_GLOBAL__sub_I_voices(target1)
+ 1199              		.global	MAX_ENGINE_INDEX
+ 1200              		.global	kTouchMidiNotes
+ 1201              		.global	voice_envelopes
+ 1202              		.global	last_touch_state
+ 1203              		.global	voice_values
+ 1204              		.global	voice_note
+ 1205              		.global	voice_active
+ 1206              		.global	output_buffers
+ 1207              		.global	shared_buffer
+ 1208              		.global	modulations
+ 1209              		.global	patches
+ 1210              		.global	voices
+ 1211              		.section	.bss.last_touch_state,"aw",%nobits
+ 1212              		.align	1
+ 1215              	last_touch_state:
+ 1216 0000 0000     		.space	2
+ 1217              		.section	.bss.modulations,"aw",%nobits
+ 1218              		.align	2
+ 1219              		.set	.LANCHOR2,. + 0
+ 1222              	modulations:
+ 1223 0000 00000000 		.space	160
+ 1223      00000000 
+ 1223      00000000 
+ 1223      00000000 
+ 1223      00000000 
+ 1224              		.section	.bss.output_buffers,"aw",%nobits
+ 1225              		.align	1
+ 1228              	output_buffers:
+ 1229 0000 00000000 		.space	256
+ 1229      00000000 
+ 1229      00000000 
+ 1229      00000000 
+ 1229      00000000 
+ 1230              		.section	.bss.patches,"aw",%nobits
+ 1231              		.align	2
+ 1232              		.set	.LANCHOR3,. + 0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 71
 
 
- 1234              		.section	.bss.voice_active,"aw",%nobits
- 1235              		.set	.LANCHOR1,. + 0
- 1238              	voice_active:
- 1239 0000 00000000 		.space	4
- 1240              		.section	.bss.voice_envelopes,"aw",%nobits
- 1241              		.align	2
- 1242              		.set	.LANCHOR4,. + 0
- 1245              	voice_envelopes:
- 1246 0000 00000000 		.space	272
- 1246      00000000 
- 1246      00000000 
- 1246      00000000 
- 1246      00000000 
- 1247              		.section	.bss.voice_note,"aw",%nobits
- 1248              		.align	2
- 1249              		.set	.LANCHOR0,. + 0
- 1252              	voice_note:
- 1253 0000 00000000 		.space	16
- 1253      00000000 
- 1253      00000000 
- 1253      00000000 
- 1254              		.section	.bss.voice_values,"aw",%nobits
- 1255              		.align	2
- 1256              		.set	.LANCHOR5,. + 0
- 1259              	voice_values:
- 1260 0000 00000000 		.space	16
- 1260      00000000 
- 1260      00000000 
- 1260      00000000 
- 1261              		.section	.bss.voices,"aw",%nobits
- 1262              		.align	2
- 1265              	voices:
- 1266 0000 00000000 		.space	14016
- 1266      00000000 
- 1266      00000000 
- 1266      00000000 
- 1266      00000000 
- 1267              		.section	.rodata.MAX_ENGINE_INDEX,"a"
- 1268              		.align	2
- 1271              	MAX_ENGINE_INDEX:
- 1272 0000 0C000000 		.word	12
- 1273              		.section	.rodata.kTouchMidiNotes,"a"
- 1274              		.align	2
- 1277              	kTouchMidiNotes:
- 1278 0000 00002042 		.word	1109393408
- 1279 0004 00002442 		.word	1109655552
- 1280 0008 00002C42 		.word	1110179840
- 1281 000c 00003442 		.word	1110704128
- 1282 0010 00003C42 		.word	1111228416
- 1283 0014 00004042 		.word	1111490560
- 1284 0018 00004842 		.word	1112014848
- 1285 001c 00005042 		.word	1112539136
- 1286 0020 00005442 		.word	1112801280
- 1287 0024 00005C42 		.word	1113325568
- 1288 0028 00006442 		.word	1113849856
- 1289 002c 00006C42 		.word	1114374144
- 1290              		.section	.sdram_bss,"aw"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 72
+ 1235              	patches:
+ 1236 0000 00000000 		.space	160
+ 1236      00000000 
+ 1236      00000000 
+ 1236      00000000 
+ 1236      00000000 
+ 1237              		.section	.bss.voice_active,"aw",%nobits
+ 1238              		.set	.LANCHOR1,. + 0
+ 1241              	voice_active:
+ 1242 0000 00000000 		.space	4
+ 1243              		.section	.bss.voice_envelopes,"aw",%nobits
+ 1244              		.align	2
+ 1245              		.set	.LANCHOR4,. + 0
+ 1248              	voice_envelopes:
+ 1249 0000 00000000 		.space	272
+ 1249      00000000 
+ 1249      00000000 
+ 1249      00000000 
+ 1249      00000000 
+ 1250              		.section	.bss.voice_note,"aw",%nobits
+ 1251              		.align	2
+ 1252              		.set	.LANCHOR0,. + 0
+ 1255              	voice_note:
+ 1256 0000 00000000 		.space	16
+ 1256      00000000 
+ 1256      00000000 
+ 1256      00000000 
+ 1257              		.section	.bss.voice_values,"aw",%nobits
+ 1258              		.align	2
+ 1259              		.set	.LANCHOR5,. + 0
+ 1262              	voice_values:
+ 1263 0000 00000000 		.space	16
+ 1263      00000000 
+ 1263      00000000 
+ 1263      00000000 
+ 1264              		.section	.bss.voices,"aw",%nobits
+ 1265              		.align	2
+ 1268              	voices:
+ 1269 0000 00000000 		.space	14016
+ 1269      00000000 
+ 1269      00000000 
+ 1269      00000000 
+ 1269      00000000 
+ 1270              		.section	.rodata.MAX_ENGINE_INDEX,"a"
+ 1271              		.align	2
+ 1274              	MAX_ENGINE_INDEX:
+ 1275 0000 0C000000 		.word	12
+ 1276              		.section	.rodata.kTouchMidiNotes,"a"
+ 1277              		.align	2
+ 1280              	kTouchMidiNotes:
+ 1281 0000 00002042 		.word	1109393408
+ 1282 0004 00002442 		.word	1109655552
+ 1283 0008 00002C42 		.word	1110179840
+ 1284 000c 00003442 		.word	1110704128
+ 1285 0010 00003C42 		.word	1111228416
+ 1286 0014 00004042 		.word	1111490560
+ 1287 0018 00004842 		.word	1112014848
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 72
 
 
- 1293              	shared_buffer:
- 1294 0000 00000000 		.space	262144
- 1294      00000000 
- 1294      00000000 
- 1294      00000000 
- 1294      00000000 
- 1295              		.text
- 1296              	.Letext0:
- 1297              		.file 40 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
- 1298              		.file 41 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
- 1299              		.file 42 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
- 1300              		.file 43 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 1301              		.file 44 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/cpp_type_traits.
- 1302              		.file 45 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
- 1303              		.file 46 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
- 1304              		.file 47 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
- 1305              		.file 48 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
- 1306              		.file 49 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
- 1307              		.file 50 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
- 1308              		.file 51 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
- 1309              		.file 52 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
- 1310              		.file 53 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
- 1311              		.file 54 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
- 1312              		.file 55 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
- 1313              		.file 56 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
- 1314              		.file 57 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
- 1315              		.file 58 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
- 1316              		.file 59 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
- 1317              		.file 60 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
- 1318              		.file 61 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
- 1319              		.file 62 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/uses_allocator.h
- 1320              		.file 63 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/tuple"
- 1321              		.file 64 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/functional"
- 1322              		.file 65 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
- 1323              		.file 66 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
- 1324              		.file 67 "<built-in>"
- 1325              		.file 68 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
- 1326              		.file 69 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
- 1327              		.file 70 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
- 1328              		.file 71 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
- 1329              		.file 72 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
- 1330              		.file 73 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
- 1331              		.file 74 "lib/libdaisy/src/daisy_core.h"
- 1332              		.file 75 "lib/libdaisy/src/util/wav_format.h"
- 1333              		.file 76 "lib/libdaisy/src/daisy_seed.h"
- 1334              		.file 77 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
- 1335              		.file 78 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
- 1336              		.file 79 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
- 1337              		.file 80 "lib/DaisySP/Source/Control/adenv.h"
- 1338              		.file 81 "lib/DaisySP/Source/Utility/dsp.h"
- 1339              		.file 82 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
- 1340              		.file 83 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
- 1341              		.file 84 "eurorack/stmlib/stmlib.h"
- 1342              		.file 85 "eurorack/stmlib/dsp/cosine_oscillator.h"
- 1343              		.file 86 "eurorack/plaits/dsp/dsp.h"
- 1344              		.file 87 "eurorack/plaits/dsp/oscillator/harmonic_oscillator.h"
- 1345              		.file 88 "eurorack/plaits/dsp/engine/chord_engine.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 73
+ 1288 001c 00005042 		.word	1112539136
+ 1289 0020 00005442 		.word	1112801280
+ 1290 0024 00005C42 		.word	1113325568
+ 1291 0028 00006442 		.word	1113849856
+ 1292 002c 00006C42 		.word	1114374144
+ 1293              		.section	.sdram_bss,"aw"
+ 1296              	shared_buffer:
+ 1297 0000 00000000 		.space	262144
+ 1297      00000000 
+ 1297      00000000 
+ 1297      00000000 
+ 1297      00000000 
+ 1298              		.text
+ 1299              	.Letext0:
+ 1300              		.file 40 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 1301              		.file 41 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 1302              		.file 42 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
+ 1303              		.file 43 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1304              		.file 44 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/cpp_type_traits.
+ 1305              		.file 45 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 1306              		.file 46 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 1307              		.file 47 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 1308              		.file 48 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
+ 1309              		.file 49 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 1310              		.file 50 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 1311              		.file 51 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 1312              		.file 52 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 1313              		.file 53 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 1314              		.file 54 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 1315              		.file 55 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
+ 1316              		.file 56 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
+ 1317              		.file 57 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
+ 1318              		.file 58 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
+ 1319              		.file 59 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
+ 1320              		.file 60 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
+ 1321              		.file 61 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
+ 1322              		.file 62 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/uses_allocator.h
+ 1323              		.file 63 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/tuple"
+ 1324              		.file 64 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/functional"
+ 1325              		.file 65 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 1326              		.file 66 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
+ 1327              		.file 67 "<built-in>"
+ 1328              		.file 68 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
+ 1329              		.file 69 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
+ 1330              		.file 70 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 1331              		.file 71 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 1332              		.file 72 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 1333              		.file 73 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
+ 1334              		.file 74 "lib/libdaisy/src/daisy_core.h"
+ 1335              		.file 75 "lib/libdaisy/src/util/wav_format.h"
+ 1336              		.file 76 "lib/libdaisy/src/daisy_seed.h"
+ 1337              		.file 77 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 1338              		.file 78 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
+ 1339              		.file 79 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
+ 1340              		.file 80 "lib/DaisySP/Source/Control/adenv.h"
+ 1341              		.file 81 "lib/DaisySP/Source/Utility/dsp.h"
+ 1342              		.file 82 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 73
 
 
- 1346              		.file 89 "eurorack/plaits/dsp/oscillator/grainlet_oscillator.h"
- 1347              		.file 90 "eurorack/plaits/dsp/noise/clocked_noise.h"
- 1348              		.file 91 "eurorack/plaits/dsp/noise/particle.h"
- 1349              		.file 92 "eurorack/plaits/dsp/physical_modelling/string.h"
- 1350              		.file 93 "eurorack/plaits/dsp/physical_modelling/string_voice.h"
- 1351              		.file 94 "mpr121_daisy.h"
- 1352              		.file 95 "Effects/BiquadFilters.h"
- 1353              		.file 96 "Arpeggiator.h"
- 1354              		.file 97 "Thaumazein.h"
- 1355              		.file 98 "lib/libdaisy/src/dev/sr_595.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 74
+ 1343              		.file 83 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
+ 1344              		.file 84 "eurorack/stmlib/stmlib.h"
+ 1345              		.file 85 "eurorack/stmlib/dsp/cosine_oscillator.h"
+ 1346              		.file 86 "eurorack/plaits/dsp/dsp.h"
+ 1347              		.file 87 "eurorack/plaits/dsp/oscillator/harmonic_oscillator.h"
+ 1348              		.file 88 "eurorack/plaits/dsp/engine/chord_engine.h"
+ 1349              		.file 89 "eurorack/plaits/dsp/oscillator/grainlet_oscillator.h"
+ 1350              		.file 90 "eurorack/plaits/dsp/noise/clocked_noise.h"
+ 1351              		.file 91 "eurorack/plaits/dsp/noise/particle.h"
+ 1352              		.file 92 "eurorack/plaits/dsp/physical_modelling/string.h"
+ 1353              		.file 93 "eurorack/plaits/dsp/physical_modelling/string_voice.h"
+ 1354              		.file 94 "mpr121_daisy.h"
+ 1355              		.file 95 "Effects/BiquadFilters.h"
+ 1356              		.file 96 "Arpeggiator.h"
+ 1357              		.file 97 "Thaumazein.h"
+ 1358              		.file 98 "lib/libdaisy/src/dev/sr_595.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 74
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Polyphony.cpp
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:19     .text.__tcf_0:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:24     .text.__tcf_0:0000000000000000 __tcf_0
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:38     .text._Z9FindVoicefi:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:44     .text._Z9FindVoicefi:0000000000000000 _Z9FindVoicefi
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:109    .text._Z9FindVoicefi:000000000000003c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:116    .text._Z18FindAvailableVoicei:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:122    .text._Z18FindAvailableVoicei:0000000000000000 _Z18FindAvailableVoicei
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:164    .text._Z18FindAvailableVoicei:000000000000001c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:169    .text._Z14AssignMonoNotef:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:175    .text._Z14AssignMonoNotef:0000000000000000 _Z14AssignMonoNotef
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:205    .text._Z14AssignMonoNotef:0000000000000018 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:212    .text._Z16InitializeVoicesv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:218    .text._Z16InitializeVoicesv:0000000000000000 _Z16InitializeVoicesv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:516    .text._Z16InitializeVoicesv:00000000000000a0 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1293   .sdram_bss:0000000000000000 shared_buffer
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1265   .bss.voices:0000000000000000 voices
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:537    .text.startup._GLOBAL__sub_I_voices:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:542    .text.startup._GLOBAL__sub_I_voices:0000000000000000 _GLOBAL__sub_I_voices
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1173   .text.startup._GLOBAL__sub_I_voices:0000000000000094 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1194   .init_array:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1271   .rodata.MAX_ENGINE_INDEX:0000000000000000 MAX_ENGINE_INDEX
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1277   .rodata.kTouchMidiNotes:0000000000000000 kTouchMidiNotes
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1245   .bss.voice_envelopes:0000000000000000 voice_envelopes
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1212   .bss.last_touch_state:0000000000000000 last_touch_state
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1259   .bss.voice_values:0000000000000000 voice_values
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1252   .bss.voice_note:0000000000000000 voice_note
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1238   .bss.voice_active:0000000000000000 voice_active
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1225   .bss.output_buffers:0000000000000000 output_buffers
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1219   .bss.modulations:0000000000000000 modulations
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1232   .bss.patches:0000000000000000 patches
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1209   .bss.last_touch_state:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1215   .bss.modulations:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1222   .bss.output_buffers:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1228   .bss.patches:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1239   .bss.voice_active:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1241   .bss.voice_envelopes:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1248   .bss.voice_note:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1255   .bss.voice_values:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1262   .bss.voices:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1268   .rodata.MAX_ENGINE_INDEX:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1274   .rodata.kTouchMidiNotes:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s:1294   .sdram_bss:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:19     .text.__tcf_0:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:24     .text.__tcf_0:0000000000000000 __tcf_0
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:38     .text._Z9FindVoicefi:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:44     .text._Z9FindVoicefi:0000000000000000 _Z9FindVoicefi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:109    .text._Z9FindVoicefi:000000000000003c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:116    .text._Z18FindAvailableVoicei:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:122    .text._Z18FindAvailableVoicei:0000000000000000 _Z18FindAvailableVoicei
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:164    .text._Z18FindAvailableVoicei:000000000000001c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:169    .text._Z14AssignMonoNotef:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:175    .text._Z14AssignMonoNotef:0000000000000000 _Z14AssignMonoNotef
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:205    .text._Z14AssignMonoNotef:0000000000000018 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:212    .text._Z16InitializeVoicesv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:218    .text._Z16InitializeVoicesv:0000000000000000 _Z16InitializeVoicesv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:519    .text._Z16InitializeVoicesv:00000000000000a4 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1296   .sdram_bss:0000000000000000 shared_buffer
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1268   .bss.voices:0000000000000000 voices
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:540    .text.startup._GLOBAL__sub_I_voices:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:545    .text.startup._GLOBAL__sub_I_voices:0000000000000000 _GLOBAL__sub_I_voices
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1176   .text.startup._GLOBAL__sub_I_voices:0000000000000094 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1197   .init_array:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1274   .rodata.MAX_ENGINE_INDEX:0000000000000000 MAX_ENGINE_INDEX
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1280   .rodata.kTouchMidiNotes:0000000000000000 kTouchMidiNotes
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1248   .bss.voice_envelopes:0000000000000000 voice_envelopes
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1215   .bss.last_touch_state:0000000000000000 last_touch_state
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1262   .bss.voice_values:0000000000000000 voice_values
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1255   .bss.voice_note:0000000000000000 voice_note
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1241   .bss.voice_active:0000000000000000 voice_active
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1228   .bss.output_buffers:0000000000000000 output_buffers
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1222   .bss.modulations:0000000000000000 modulations
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1235   .bss.patches:0000000000000000 patches
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1212   .bss.last_touch_state:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1218   .bss.modulations:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1225   .bss.output_buffers:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1231   .bss.patches:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1242   .bss.voice_active:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1244   .bss.voice_envelopes:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1251   .bss.voice_note:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1258   .bss.voice_values:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1265   .bss.voices:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1271   .rodata.MAX_ENGINE_INDEX:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1277   .rodata.kTouchMidiNotes:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s:1297   .sdram_bss:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 _ZN6plaits5Voice4InitEPN6stmlib15BufferAllocatorE
@@ -4391,7 +4397,7 @@ _ZTVN6plaits11ModalEngineE
 _ZTVN6plaits11NoiseEngineE
 _ZTVN6plaits14ParticleEngineE
 _ZTVN6plaits15SnareDrumEngineE
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cczaav1z.s 			page 75
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFUhNMS.s 			page 75
 
 
 _ZTVN6plaits12StringEngineE

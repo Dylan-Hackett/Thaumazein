@@ -159,11 +159,13 @@ void InitializeSynth() {
         arp_led_timestamps[11 - pad_idx] = hw.system.GetNow();
     });
     
+    // --- Serial Log (Start before audio) ---
+    // Use blocking log start so the USB CDC is fully synchronized before the first prints.
+    // This prevents the logger buffer from overflowing and truncating long messages.
+    hw.StartLog(false); // Start log immediately (non-blocking) - reverted to prevent freezing at startup
+    
     // --- Start Audio ---
     hw.StartAudio(AudioCallback);
-    
-    // --- Serial Log (Needs to be started for USB reading) ---
-    hw.StartLog(false); // Start log immediately (non-blocking)
     
     hw.PrintLine("Plaits Synth Started - Ready for Bootloader CMD");
     char settings[64];
