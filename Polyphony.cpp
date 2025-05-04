@@ -66,12 +66,13 @@ void InitializeVoices() {
         patches[i].engine = 0;      
         modulations[i].engine = 0; 
         modulations[i].trigger = 0.0f;
+        modulations[i].level_patched = false; // Initialize level patched flag
         voice_active[i] = false;
         voice_note[i] = 0.0f;
         
         // Initialize envelopes with proper settings
         voice_envelopes[i].Init(SAMPLE_RATE);
-        voice_envelopes[i].SetMode(VoiceEnvelope::MODE_ASR); // Use ASR mode by default
+        voice_envelopes[i].SetMode(VoiceEnvelope::MODE_AR);  // Use AR mode (no sustain) for snappier release
         voice_envelopes[i].SetShape(0.5f); // Start with middle curve
         voice_values[i] = 0.0f;
     }
