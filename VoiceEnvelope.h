@@ -31,7 +31,7 @@ public:
         time_range_2x = 2.0f * 4.0f * sample_rate;  // 4s max time
         min_attack_time = 0.0002f * sample_rate;    // 0.2ms min attack (much faster for punchiness)
         min_decay_time_a = 0.4f * sample_rate;      // 400ms min decay A
-        min_decay_time_b = 0.01f * sample_rate;     // 10ms min decay B
+        min_decay_time_b = 0.005f * sample_rate;    //  5ms min decay B (tighter release)
         reset_time = 0.008f * sample_rate;          // 8ms reset time
         reset_coefficient = 1.0f / reset_time;
         
