@@ -31,7 +31,7 @@ public:
         time_range_2x = 2.0f * 4.0f * sample_rate;  // 4s max time
         min_attack_time = 0.0002f * sample_rate;    // 0.2ms min attack (much faster for punchiness)
         min_decay_time_a = 0.4f * sample_rate;      // 400ms min decay A
-        min_decay_time_b = 0.0001f * sample_rate;    // 0.1ms min decay B (pulse-like release)
+        min_decay_time_b = 1.0f;    // 1 sample min decay B (ultra-tight release)
         reset_time = 0.008f * sample_rate;          // 8ms reset time
         reset_coefficient = 1.0f / reset_time;
         
@@ -93,16 +93,9 @@ public:
     }
     
     void SetReleaseTime(float value) {
-        // Map 0-1 value to release time (exponential scaling)
-        // value³ for finer control at shorter settings
-        float value_cubed = value * value * value;
-        
-        // Release time ranges from min_decay_time_b to 8 seconds
-        decay_time = static_cast<size_t>(min_decay_time_b + 
-                                        (time_range_2x * value_cubed));
+        // Ultra-fast release: always minimal (1 sample)
+        decay_time = min_decay_time_b;
         decay_coefficient = 1.0f / decay_time;
-        
-        // Use consistent release curve regardless of release time
         SetReleaseCurve(0.5f);
     }
     
