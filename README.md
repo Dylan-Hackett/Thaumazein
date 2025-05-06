@@ -7,7 +7,7 @@ Thaumazein is a polyphonic and percussive synthesizer for the Daisy Seed platfor
 - Polyphony (up to 4 voices) for Virtual Analog engines
 - Echo delay effect with feedback, time, lag, and mix controls
 - Touch-based interface using MPR121 capacitive touch sensor
-- Separate attack and release envelope controls with punchy response and ultra-tight release capability (down to 1 sample)
+- Separate attack and release envelope controls with punchy response and pulse-like release capability (down to 0.1ms)
 - Capacitive touch position and pressure sensing for continuous control of synth parameters
 
 ## Project Structure
@@ -189,7 +189,8 @@ When adding features or making changes, follow the modular structure:
 
 - Scale Mode chosen with the button combo and keyboard. pick 12 scales.
 
-- Improve Attack/Release response (ultra-tight release implemented)
+- Improve Attack/Release response (pulse-like release implemented)
+- - Debounce engine prev/next pad buttons to prevent multiple jumps (implemented)
 
 - Finetune Touch Sensitivty 
 

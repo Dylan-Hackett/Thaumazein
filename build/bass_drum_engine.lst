@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   28:eurorack/plaits/dsp/engine/bass_drum_engine.cc **** 
   29:eurorack/plaits/dsp/engine/bass_drum_engine.cc **** #include "plaits/dsp/engine/bass_drum_engine.h"
   30:eurorack/plaits/dsp/engine/bass_drum_engine.cc **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 2
 
 
   31:eurorack/plaits/dsp/engine/bass_drum_engine.cc **** #include <algorithm>
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   21:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** // THE SOFTWARE.
   22:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** // 
   23:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 3
 
 
   24:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** //
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   78:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   float Render() {
   79:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     float sample = stmlib::Random::GetFloat();
   80:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     ONE_POLE(lp_, sample, 0.05f);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 4
 
 
   81:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     ONE_POLE(hp_, lp_, 0.005f);
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
    5:eurorack/stmlib/dsp/dsp.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
    6:eurorack/stmlib/dsp/dsp.h **** // of this software and associated documentation files (the "Software"), to deal
    7:eurorack/stmlib/dsp/dsp.h **** // in the Software without restriction, including without limitation the rights
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 5
 
 
    8:eurorack/stmlib/dsp/dsp.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   62:eurorack/stmlib/dsp/dsp.h ****   const float a = w + v + (x2 - x0) * 0.5f;
   63:eurorack/stmlib/dsp/dsp.h ****   const float b_neg = w + a;
   64:eurorack/stmlib/dsp/dsp.h ****   const float f = index_fractional;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 6
 
 
   65:eurorack/stmlib/dsp/dsp.h ****   return (((a * f) - b_neg) * f + c) * f + x0;
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  100              		.loc 2 122 25 view .LVU22
  101 0044 76EEC16A 		vsub.f32	s13, s13, s2
  119:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     float sine = 2.0f * triangle / (1.0f + fabsf(triangle));
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 7
 
 
  102              		.loc 2 119 11 view .LVU23
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  142              		.loc 3 73 3 is_stmt 1 view .LVU40
   74:eurorack/stmlib/dsp/dsp.h ****   return a + (b - a) * index_fractional;
  143              		.loc 3 74 3 view .LVU41
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 8
 
 
   71:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  194              	.LVL18:
   45:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
  195              		.loc 3 45 3 view .LVU54
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 9
 
 
   46:eurorack/stmlib/dsp/dsp.h ****   float b = table[index_integral + 1];
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   82:eurorack/stmlib/dsp/dsp.h **** #define SLOPE(out, in, positive, negative) { \
   83:eurorack/stmlib/dsp/dsp.h ****   float error = (in) - out; \
   84:eurorack/stmlib/dsp/dsp.h ****   out += (error > 0 ? positive : negative) * error; \
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 10
 
 
   85:eurorack/stmlib/dsp/dsp.h **** }
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  259              	.LBB97:
  102:eurorack/stmlib/dsp/dsp.h **** }
  260              		.loc 3 102 3 view .LVU72
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 11
 
 
  102:eurorack/stmlib/dsp/dsp.h **** }
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  302              	.LBE99:
  112:eurorack/stmlib/dsp/dsp.h ****   }
  113:eurorack/stmlib/dsp/dsp.h **** }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 12
 
 
  303              		.loc 3 113 1 view .LVU88
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   41:eurorack/stmlib/dsp/filter.h ****   FILTER_MODE_LOW_PASS,
   42:eurorack/stmlib/dsp/filter.h ****   FILTER_MODE_BAND_PASS,
   43:eurorack/stmlib/dsp/filter.h ****   FILTER_MODE_BAND_PASS_NORMALIZED,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 13
 
 
   44:eurorack/stmlib/dsp/filter.h ****   FILTER_MODE_HIGH_PASS
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   98:eurorack/stmlib/dsp/filter.h ****     set_f<FREQUENCY_DIRTY>(0.01f);
   99:eurorack/stmlib/dsp/filter.h ****     Reset();
  100:eurorack/stmlib/dsp/filter.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 14
 
 
  101:eurorack/stmlib/dsp/filter.h ****   
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  155:eurorack/stmlib/dsp/filter.h ****       return 0.0f;
  156:eurorack/stmlib/dsp/filter.h ****     }
  157:eurorack/stmlib/dsp/filter.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 15
 
 
  158:eurorack/stmlib/dsp/filter.h ****   
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  204:eurorack/stmlib/dsp/filter.h ****   
  205:eurorack/stmlib/dsp/filter.h ****   // Set frequency and resonance coefficients from LUT, adjust remaining
  206:eurorack/stmlib/dsp/filter.h ****   // parameter.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 16
 
 
  207:eurorack/stmlib/dsp/filter.h ****   inline void set_g_r(float g, float r) {
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  355              	.LBE110:
  356              	.LBE109:
  185:eurorack/stmlib/dsp/filter.h ****   
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 17
 
 
  357              		.loc 4 185 3 view .LVU102
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   26:eurorack/plaits/dsp/drums/analog_bass_drum.h **** //
   27:eurorack/plaits/dsp/drums/analog_bass_drum.h **** // 808 bass drum model, revisited.
   28:eurorack/plaits/dsp/drums/analog_bass_drum.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 18
 
 
   29:eurorack/plaits/dsp/drums/analog_bass_drum.h **** #ifndef PLAITS_DSP_DRUMS_ANALOG_BASS_DRUM_H_
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  412              		.loc 5 53 19 view .LVU112
  413 000a C561     		str	r5, [r0, #28]	@ float
   54:eurorack/plaits/dsp/drums/analog_bass_drum.h ****     pulse_lp_ = 0.0f;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 19
 
 
  414              		.loc 5 54 15 view .LVU113
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
    6:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** // of this software and associated documentation files (the "Software"), to deal
    7:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** // in the Software without restriction, including without limitation the rights
    8:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 20
 
 
    9:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** // copies of the Software, and to permit persons to whom the Software is
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  459 0022 04F18C00 		add	r0, r4, #140
  460              	.LBE142:
  461              	.LBE141:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 21
 
 
  462              	.LBE140:
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  103:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     body_env_ = 0.0f;
  502              		.loc 2 103 5 is_stmt 1 view .LVU153
  103:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     body_env_ = 0.0f;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 22
 
 
  503              		.loc 2 103 18 is_stmt 0 view .LVU154
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  223:eurorack/stmlib/dsp/filter.h ****     g_ = OnePole::tan<approximation>(f);
  540              		.loc 4 223 15 view .LVU172
  541              	.LBB144:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 23
 
 
  224:eurorack/stmlib/dsp/filter.h ****     r_ = 1.0f / resonance;
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
    2:eurorack/plaits/dsp/fx/overdrive.h **** //
    3:eurorack/plaits/dsp/fx/overdrive.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
    4:eurorack/plaits/dsp/fx/overdrive.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 24
 
 
    5:eurorack/plaits/dsp/fx/overdrive.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  602              		.loc 4 226 8 view .LVU182
  603              	.LBE147:
  604              	.LBE150:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 25
 
 
  605              	.LBE155:
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  651              	_ZN6stmlib16SemitonesToRatioEf:
  652              	.LVL44:
  653              	.LFB1491:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 26
 
 
  654              		.file 8 "eurorack/stmlib/dsp/units.h"
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  663              		.loc 8 45 74 view .LVU199
  664 0004 0E4A     		ldr	r2, .L19+4
   41:eurorack/stmlib/dsp/units.h ****   float pitch = semitones + 128.0f;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 27
 
 
  665              		.loc 8 41 9 view .LVU200
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  713              	.LVL50:
  714              	.LFB1528:
   63:eurorack/plaits/dsp/drums/analog_bass_drum.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 28
 
 
   64:eurorack/plaits/dsp/drums/analog_bass_drum.h ****   
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  740              		.cfi_offset 84, -64
  741              		.cfi_offset 85, -60
  742              		.cfi_offset 86, -56
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 29
 
 
  743              		.cfi_offset 87, -52
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  783 0042 DFEDB57A 		vldr.32	s15, .L58+12
  784              	.LBB205:
  785              	.LBB206:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 30
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 30
 
 
  786              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h"
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   54:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  */
   55:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
   56:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #ifndef _STL_ALGOBASE_H
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 31
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 31
 
 
   57:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #define _STL_ALGOBASE_H 1
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  111:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   // when it's safe, i.e., the value_types are equal.
  112:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<bool _BoolType>
  113:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     struct __iter_swap
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 32
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 32
 
 
  114:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     {
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  168:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_function_requires(_ConvertibleConcept<_ValueType2,
  169:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 				  _ValueType1>)
  170:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 33
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 33
 
 
  171:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       typedef typename iterator_traits<_ForwardIterator1>::reference
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  225:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  preprocessor macro.
  226:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   */
  227:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<typename _Tp>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 34
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 34
 
 
  228:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX14_CONSTEXPR
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  825              		.loc 9 236 9 view .LVU245
  826              	.LBE207:
  827              	.LBE209:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 35
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 35
 
 
  828              		.loc 5 96 5 is_stmt 1 view .LVU246
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   13:eurorack/stmlib/dsp/parameter_interpolator.h **** // all copies or substantial portions of the Software.
   14:eurorack/stmlib/dsp/parameter_interpolator.h **** // 
   15:eurorack/stmlib/dsp/parameter_interpolator.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 36
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 36
 
 
   16:eurorack/stmlib/dsp/parameter_interpolator.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  870              		.loc 10 56 5 is_stmt 1 view .LVU265
  871              		.loc 10 56 41 is_stmt 0 view .LVU266
  872 00a6 07EE907A 		vmov	s15, r7	@ int
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 37
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 37
 
 
  873              		.loc 10 56 29 view .LVU267
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  915              	.L56:
  118:eurorack/plaits/dsp/drums/analog_bass_drum.h ****       } else {
  119:eurorack/plaits/dsp/drums/analog_bass_drum.h ****         pulse_ *= 1.0f - 1.0f / kPulseDecayTime;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 38
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 38
 
 
  120:eurorack/plaits/dsp/drums/analog_bass_drum.h ****         pulse = pulse_;
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  952 0110 09DA     		bge	.L29
  953              	.LVL68:
  954              	.LBB217:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 39
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 39
 
 
  955              	.LBI217:
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  992 0134 DFED7A7A 		vldr.32	s15, .L58+20
  993 0138 002A     		cmp	r2, #0
  133:eurorack/plaits/dsp/drums/analog_bass_drum.h ****         --fm_pulse_remaining_samples_;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 40
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 40
 
 
  994              		.loc 5 133 9 view .LVU316
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1030              	.LVL78:
  1031              	.LBB219:
  1032              	.LBI219:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 41
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 41
 
 
   65:eurorack/plaits/dsp/drums/analog_bass_drum.h ****     if (x >= 0.0f) {
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1070              		.loc 5 152 7 view .LVU346
  150:eurorack/plaits/dsp/drums/analog_bass_drum.h ****       float self_fm = punch * 0.08f * self_fm_amount;
  1071              		.loc 5 150 38 is_stmt 0 view .LVU347
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 42
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 42
 
 
  1072 0190 DFED686A 		vldr.32	s13, .L58+40
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1115              	.LBB227:
   52:eurorack/plaits/dsp/oscillator/sine_oscillator.h ****   }
   53:eurorack/plaits/dsp/oscillator/sine_oscillator.h ****   
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 43
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 43
 
 
   54:eurorack/plaits/dsp/oscillator/sine_oscillator.h ****   inline float Next(float frequency) {
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1142              	.LVL91:
   72:eurorack/plaits/dsp/oscillator/sine_oscillator.h ****     if (phase_ >= 1.0f) {
  1143              		.loc 6 72 5 is_stmt 1 view .LVU371
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 44
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 44
 
 
   72:eurorack/plaits/dsp/oscillator/sine_oscillator.h ****     if (phase_ >= 1.0f) {
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1182              		.loc 5 167 7 is_stmt 1 view .LVU385
  1183 0228 ACEEAAAA 		vfma.f32	s20, s25, s21
  1184              	.LVL97:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 45
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 45
 
 
  1185              		.loc 5 167 7 is_stmt 0 view .LVU386
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1228              	.LVL104:
  1229              	.L37:
  159:eurorack/plaits/dsp/drums/analog_bass_drum.h ****         resonator_.Process<stmlib::FILTER_MODE_BAND_PASS,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 46
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 46
 
 
  1230              		.loc 5 159 9 is_stmt 1 view .LVU400
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1274              	.LBB250:
  227:eurorack/stmlib/dsp/filter.h ****   }
  228:eurorack/stmlib/dsp/filter.h ****   
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 47
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 47
 
 
  229:eurorack/stmlib/dsp/filter.h ****   template<FilterMode mode>
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1299              		.loc 4 224 8 view .LVU417
  1300 029c C4ED0A7A 		vstr.32	s15, [r4, #40]
  226:eurorack/stmlib/dsp/filter.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 48
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 48
 
 
  1301              		.loc 4 226 23 view .LVU418
@@ -2878,7 +2878,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1346              	.LBB253:
  1347              		.loc 4 252 30 is_stmt 0 view .LVU431
  1348 02c8 AAEE677A 		vfms.f32	s14, s20, s15
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 49
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 49
 
 
  1349              		.loc 4 252 46 view .LVU432
@@ -2938,7 +2938,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  275:eurorack/stmlib/dsp/filter.h ****       *out_2 = hp;
  276:eurorack/stmlib/dsp/filter.h ****     }
  277:eurorack/stmlib/dsp/filter.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 50
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 50
 
 
  1378              		.loc 4 277 3 view .LVU443
@@ -2998,7 +2998,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1426 031c 0000D842 		.word	1121452032
  1427 0320 00000000 		.word	0
  1428 0324 5555553E 		.word	1045779797
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 51
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 51
 
 
  1429 0328 3333333F 		.word	1060320051
@@ -3058,7 +3058,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   31:eurorack/stmlib/utils/random.h **** 
   32:eurorack/stmlib/utils/random.h **** #include "stmlib/stmlib.h"
   33:eurorack/stmlib/utils/random.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 52
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 52
 
 
   34:eurorack/stmlib/utils/random.h **** namespace stmlib {
@@ -3118,7 +3118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1481              		.loc 11 45 16 view .LVU461
  1482 0010 1360     		str	r3, [r2]
   46:eurorack/stmlib/utils/random.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 53
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 53
 
 
  1483              		.loc 11 46 5 is_stmt 1 view .LVU462
@@ -3178,7 +3178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  130:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****       bool sustain,
  1518              		.loc 2 130 8 is_stmt 0 view .LVU468
  1519 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 54
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 54
 
 
  1520              		.cfi_def_cfa_offset 24
@@ -3238,7 +3238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1565              		.loc 2 130 8 view .LVU474
  1566 0020 0446     		mov	r4, r0
  1567              	.LBB325:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 55
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 55
 
 
  1568              	.LBB320:
@@ -3298,7 +3298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1607              	.LBE328:
  130:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****       bool sustain,
  1608              		.loc 2 130 8 view .LVU488
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 56
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 56
 
 
  1609 0034 9046     		mov	r8, r2
@@ -3358,7 +3358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  241:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @brief This does what you think it does.
  242:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @ingroup sorting_algorithms
  243:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @param  __a  A thing of arbitrary type.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 57
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 57
 
 
  244:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @param  __b  Another thing of arbitrary type.
@@ -3418,7 +3418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1676 0086 67EE877A 		vmul.f32	s15, s15, s14
  150:eurorack/plaits/dsp/drums/synthetic_bass_drum.h **** 
  1677              		.loc 2 150 60 view .LVU510
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 58
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 58
 
 
  1678 008a 9FEDC17A 		vldr.32	s14, .L91+12
@@ -3478,7 +3478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  159:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     
  160:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     if (trigger) {
  1719              		.loc 2 160 5 view .LVU525
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 59
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 59
 
 
  1720 00c2 B8F1000F 		cmp	r8, #0
@@ -3538,7 +3538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1756              		.loc 10 54 5 view .LVU542
   55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
  1757              		.loc 10 55 5 view .LVU543
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 60
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 60
 
 
   55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
@@ -3598,7 +3598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1797              	.LBB343:
  1798 012e 97B3     		cbz	r7, .L68
  1799              	.LBB344:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 61
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 61
 
 
  178:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****         phase_ += f0_mod.Next();
@@ -3658,7 +3658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1840              	.LVL139:
  183:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****         mix -= TransistorVCA(body, sustain_gain.Next());
  1841              		.loc 2 183 9 is_stmt 1 view .LVU572
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 62
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 62
 
 
  1842              	.LBB350:
@@ -3718,7 +3718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1883              	.LBE343:
  184:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****       } else {
  185:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****         if (fm_pulse_width_) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 63
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 63
 
 
  186:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****           --fm_pulse_width_;
@@ -3778,7 +3778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1904              	.LVL148:
  1905              	.L68:
  1906              	.LBB400:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 64
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 64
 
 
  1907              	.LBB399:
@@ -3838,7 +3838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  205:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****         ONE_POLE(transient_env_lp_, transient_env_, envelope_lp_f);
  1946              		.loc 2 205 9 view .LVU613
  1947 01c0 D4ED056A 		vldr.32	s13, [r4, #20]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 65
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 65
 
 
  1948 01c4 9FED795A 		vldr.32	s10, .L91+40
@@ -3898,7 +3898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  1987 0210 B6EE006A 		vmov.f32	s12, #5.0e-1
  1988              	.LBE365:
  1989              	.LBE364:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 66
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 66
 
 
  1990              	.LBE363:
@@ -3958,7 +3958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2031 0244 C4ED0B7A 		vstr.32	s15, [r4, #44]
  2032              	.LVL156:
   55:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****     ONE_POLE(hp_, lp_, 0.04f);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 67
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 67
 
 
  2033              		.loc 2 55 5 view .LVU642
@@ -4018,7 +4018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2071 0274 A5EE276A 		vfma.f32	s12, s10, s15
  2072              	.LVL159:
  235:eurorack/stmlib/dsp/filter.h ****     state_2_ = g_ * bp + lp;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 68
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 68
 
 
  2073              		.loc 4 235 8 view .LVU659
@@ -4078,7 +4078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2115 02a8 DDED016A 		vldr.32	s13, [sp, #4]	@ int
  2116              	.LBE383:
  2117              	.LBE382:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 69
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 69
 
 
  2118              	.LBB389:
@@ -4138,7 +4138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2159              		.loc 2 127 17 view .LVU684
  2160 02d8 2DEE099A 		vmul.f32	s18, s26, s18
  127:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 70
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 70
 
 
  2161              		.loc 2 127 36 view .LVU685
@@ -4198,7 +4198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2202 02f8 E6EE0C7A 		vfma.f32	s15, s12, s24
  2203              	.LVL169:
  127:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 71
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 71
 
 
  2204              		.loc 2 127 50 view .LVU699
@@ -4258,7 +4258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  191:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****           if (phase_ >= 1.0f) {
  2244              		.loc 2 191 11 is_stmt 1 view .LVU714
  2245              	.LBB359:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 72
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 72
 
 
  2246              	.LBI356:
@@ -4318,7 +4318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  201:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****         }
  2288              		.loc 2 201 26 view .LVU729
  2289 0356 D4ED077A 		vldr.32	s15, [r4, #28]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 73
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 73
 
 
  200:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****           transient_env_ *= transient_env_decay;
@@ -4378,7 +4378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2329 0378 02B0     		add	sp, sp, #8
  2330              		.cfi_def_cfa_offset 88
  2331              		@ sp needed
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 74
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 74
 
 
  2332 037a BDEC108B 		vldm	sp!, {d8-d15}
@@ -4438,7 +4438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   49:eurorack/plaits/dsp/fx/overdrive.h ****   void Process(float drive, float* in_out, size_t size) {
  2386              		.loc 7 49 8 is_stmt 1 view -0
  2387              		.cfi_startproc
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 75
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 75
 
 
  2388              		@ args = 0, pretend = 0, frame = 0
@@ -4498,7 +4498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2431              	.LVL187:
   53:eurorack/plaits/dsp/fx/overdrive.h ****     const float pre_gain = pre_gain_a + (pre_gain_b - pre_gain_a) * drive_2;
  2432              		.loc 7 53 17 view .LVU761
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 76
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 76
 
 
  2433 0030 A0EE078A 		vfma.f32	s16, s0, s14
@@ -4558,7 +4558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2473              	.LBB427:
   56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
  2474              		.loc 10 56 41 view .LVU777
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 77
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 77
 
 
  2475 0054 07EE905A 		vmov	s15, r5	@ int
@@ -4618,7 +4618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
  2513              		.loc 10 55 5 view .LVU790
   55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 78
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 78
 
 
  2514              		.loc 10 55 14 is_stmt 0 view .LVU791
@@ -4678,7 +4678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2555              	.LBE442:
   70:eurorack/plaits/dsp/fx/overdrive.h ****       *in_out++ = stmlib::SoftClip(pre) * post_gain_modulation.Next();
  2556              		.loc 7 70 7 is_stmt 1 view .LVU806
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 79
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 79
 
 
  2557              	.LBB443:
@@ -4738,7 +4738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2602              	.LBB449:
  2603              	.LBI449:
   49:eurorack/stmlib/dsp/parameter_interpolator.h ****     *state_ = value_;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 80
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 80
 
 
  2604              		.loc 10 49 3 is_stmt 1 view .LVU823
@@ -4798,7 +4798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2647              	.LBB467:
  2648              	.LBI467:
  2649              		.file 12 "eurorack/plaits/dsp/engine/engine.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 81
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 81
 
 
    1:eurorack/plaits/dsp/engine/engine.h **** // Copyright 2016 Emilie Gillet.
@@ -4858,7 +4858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2663              		.cfi_offset 6, -24
  2664              		.cfi_offset 7, -20
  2665              		.cfi_offset 8, -16
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 82
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 82
 
 
  2666              		.cfi_offset 9, -12
@@ -4918,7 +4918,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2715              	.L99:
  2716              		.loc 12 41 40 view .LVU846
   42:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 83
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 83
 
 
  2717              		.loc 12 42 3 view .LVU847
@@ -4978,7 +4978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   56:eurorack/plaits/dsp/engine/bass_drum_engine.cc ****   const float self_fm_amount = max(min(parameters.harmonics * 4.0f - 1.0f, 1.0f), 0.0f);
  2756              		.loc 1 56 59 view .LVU862
  2757 006e 67EE277A 		vmul.f32	s15, s14, s15
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 84
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 84
 
 
  2758              	.LVL216:
@@ -5038,7 +5038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2801              		.loc 9 237 14 view .LVU874
  2802 00a4 05AA     		addle	r2, sp, #20
  2803              	.LVL218:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 85
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 85
 
 
  237:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
@@ -5098,7 +5098,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   61:eurorack/plaits/dsp/engine/bass_drum_engine.cc ****   
  2847              		.loc 1 61 35 is_stmt 0 view .LVU888
  2848 00ca 2278     		ldrb	r2, [r4]	@ zero_extendqisi2
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 86
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 86
 
 
  2849              	.LBB500:
@@ -5158,7 +5158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2897              	.LBE506:
   59:eurorack/plaits/dsp/engine/bass_drum_engine.cc ****   
  2898              		.loc 1 59 34 view .LVU902
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 87
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 87
 
 
  2899 00fa 67EEA88A 		vmul.f32	s17, s15, s17
@@ -5218,7 +5218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
   80:eurorack/plaits/dsp/engine/bass_drum_engine.cc ****       sustain,
  2928              		.loc 1 80 30 view .LVU914
  2929 0130 DDED030A 		vldr.32	s1, [sp, #12]	@ int
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 88
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 88
 
 
  2930 0134 BAF1000F 		cmp	r10, #0
@@ -5278,7 +5278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  2970              		.loc 9 259 7 is_stmt 0 view .LVU925
  2971 015e B5EEC03A 		vcmpe.f32	s6, #0
  2972 0162 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 89
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 89
 
 
  2973              		.loc 9 260 9 view .LVU926
@@ -5338,7 +5338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  3016 0190 D5E7     		b	.L109
  3017              	.L124:
  3018 0192 00BF     		.align	2
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 90
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 90
 
 
  3019              	.L123:
@@ -5398,7 +5398,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  3076              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
  3077              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
  3078              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 91
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 91
 
 
  3079              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
@@ -5414,52 +5414,52 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 1
  3089              		.file 32 "eurorack/plaits/resources.h"
  3090              		.file 33 "eurorack/plaits/dsp/engine/bass_drum_engine.h"
  3091              		.file 34 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s 			page 92
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s 			page 92
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 bass_drum_engine.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:19     .text._ZN6plaits14BassDrumEngine5ResetEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:25     .text._ZN6plaits14BassDrumEngine5ResetEv:0000000000000000 _ZN6plaits14BassDrumEngine5ResetEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:40     .text._ZN6plaits17SyntheticBassDrum13DistortedSineEfff.isra.0:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:45     .text._ZN6plaits17SyntheticBassDrum13DistortedSineEfff.isra.0:0000000000000000 _ZN6plaits17SyntheticBassDrum13DistortedSineEfff.isra.0
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:168    .text._ZN6plaits17SyntheticBassDrum13DistortedSineEfff.isra.0:000000000000009c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:174    .text._ZN6stmlib11InterpolateEPKfff:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:180    .text._ZN6stmlib11InterpolateEPKfff:0000000000000000 _ZN6stmlib11InterpolateEPKfff
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:225    .text._ZN6stmlib8SoftClipEf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:231    .text._ZN6stmlib8SoftClipEf:0000000000000000 _ZN6stmlib8SoftClipEf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:309    .text._ZN6stmlib3Svf4InitEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:315    .text._ZN6stmlib3Svf4InitEv:0000000000000000 _ZN6stmlib3Svf4InitEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:362    .text._ZN6stmlib3Svf4InitEv:0000000000000014 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:369    .text._ZN6plaits14BassDrumEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:375    .text._ZN6plaits14BassDrumEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits14BassDrumEngine4InitEPN6stmlib15BufferAllocatorE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:639    .text._ZN6plaits14BassDrumEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000078 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:645    .text._ZN6stmlib16SemitonesToRatioEf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:651    .text._ZN6stmlib16SemitonesToRatioEf:0000000000000000 _ZN6stmlib16SemitonesToRatioEf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:699    .text._ZN6stmlib16SemitonesToRatioEf:000000000000003c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:706    .text._ZN6plaits14AnalogBassDrum6RenderEbbffffffPfj:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:712    .text._ZN6plaits14AnalogBassDrum6RenderEbbffffffPfj:0000000000000000 _ZN6plaits14AnalogBassDrum6RenderEbbffffffPfj
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:1422   .text._ZN6plaits14AnalogBassDrum6RenderEbbffffffPfj:000000000000030c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:1446   .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:1452   .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 _ZN6stmlib6Random8GetFloatEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:1496   .text._ZN6stmlib6Random8GetFloatEv:0000000000000020 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:1504   .text._ZN6plaits17SyntheticBassDrum6RenderEbbfffffffPfj:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:1510   .text._ZN6plaits17SyntheticBassDrum6RenderEbbfffffffPfj:0000000000000000 _ZN6plaits17SyntheticBassDrum6RenderEbbfffffffPfj
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:2358   .text._ZN6plaits17SyntheticBassDrum6RenderEbbfffffffPfj:0000000000000384 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:2377   .text._ZN6plaits9Overdrive7ProcessEfPfj:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:2383   .text._ZN6plaits9Overdrive7ProcessEfPfj:0000000000000000 _ZN6plaits9Overdrive7ProcessEfPfj
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:2628   .text._ZN6plaits9Overdrive7ProcessEfPfj:00000000000000a8 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:2633   .text._ZN6plaits14BassDrumEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:2639   .text._ZN6plaits14BassDrumEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits14BassDrumEngine6RenderERKNS_16EngineParametersEPfS4_jPb
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:3020   .text._ZN6plaits14BassDrumEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000194 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:3032   .rodata._ZTSN6plaits6EngineE:0000000000000000 _ZTSN6plaits6EngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:3039   .rodata._ZTIN6plaits6EngineE:0000000000000000 _ZTIN6plaits6EngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:3036   .rodata._ZTIN6plaits6EngineE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:3056   .rodata._ZTSN6plaits14BassDrumEngineE:0000000000000000 _ZTSN6plaits14BassDrumEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:3049   .rodata._ZTIN6plaits14BassDrumEngineE:0000000000000000 _ZTIN6plaits14BassDrumEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:3062   .rodata._ZTVN6plaits14BassDrumEngineE:0000000000000000 _ZTVN6plaits14BassDrumEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:3046   .rodata._ZTIN6plaits14BassDrumEngineE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccupOXTt.s:3059   .rodata._ZTVN6plaits14BassDrumEngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:19     .text._ZN6plaits14BassDrumEngine5ResetEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:25     .text._ZN6plaits14BassDrumEngine5ResetEv:0000000000000000 _ZN6plaits14BassDrumEngine5ResetEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:40     .text._ZN6plaits17SyntheticBassDrum13DistortedSineEfff.isra.0:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:45     .text._ZN6plaits17SyntheticBassDrum13DistortedSineEfff.isra.0:0000000000000000 _ZN6plaits17SyntheticBassDrum13DistortedSineEfff.isra.0
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:168    .text._ZN6plaits17SyntheticBassDrum13DistortedSineEfff.isra.0:000000000000009c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:174    .text._ZN6stmlib11InterpolateEPKfff:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:180    .text._ZN6stmlib11InterpolateEPKfff:0000000000000000 _ZN6stmlib11InterpolateEPKfff
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:225    .text._ZN6stmlib8SoftClipEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:231    .text._ZN6stmlib8SoftClipEf:0000000000000000 _ZN6stmlib8SoftClipEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:309    .text._ZN6stmlib3Svf4InitEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:315    .text._ZN6stmlib3Svf4InitEv:0000000000000000 _ZN6stmlib3Svf4InitEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:362    .text._ZN6stmlib3Svf4InitEv:0000000000000014 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:369    .text._ZN6plaits14BassDrumEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:375    .text._ZN6plaits14BassDrumEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits14BassDrumEngine4InitEPN6stmlib15BufferAllocatorE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:639    .text._ZN6plaits14BassDrumEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000078 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:645    .text._ZN6stmlib16SemitonesToRatioEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:651    .text._ZN6stmlib16SemitonesToRatioEf:0000000000000000 _ZN6stmlib16SemitonesToRatioEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:699    .text._ZN6stmlib16SemitonesToRatioEf:000000000000003c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:706    .text._ZN6plaits14AnalogBassDrum6RenderEbbffffffPfj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:712    .text._ZN6plaits14AnalogBassDrum6RenderEbbffffffPfj:0000000000000000 _ZN6plaits14AnalogBassDrum6RenderEbbffffffPfj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:1422   .text._ZN6plaits14AnalogBassDrum6RenderEbbffffffPfj:000000000000030c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:1446   .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:1452   .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 _ZN6stmlib6Random8GetFloatEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:1496   .text._ZN6stmlib6Random8GetFloatEv:0000000000000020 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:1504   .text._ZN6plaits17SyntheticBassDrum6RenderEbbfffffffPfj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:1510   .text._ZN6plaits17SyntheticBassDrum6RenderEbbfffffffPfj:0000000000000000 _ZN6plaits17SyntheticBassDrum6RenderEbbfffffffPfj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:2358   .text._ZN6plaits17SyntheticBassDrum6RenderEbbfffffffPfj:0000000000000384 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:2377   .text._ZN6plaits9Overdrive7ProcessEfPfj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:2383   .text._ZN6plaits9Overdrive7ProcessEfPfj:0000000000000000 _ZN6plaits9Overdrive7ProcessEfPfj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:2628   .text._ZN6plaits9Overdrive7ProcessEfPfj:00000000000000a8 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:2633   .text._ZN6plaits14BassDrumEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:2639   .text._ZN6plaits14BassDrumEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits14BassDrumEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:3020   .text._ZN6plaits14BassDrumEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000194 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:3032   .rodata._ZTSN6plaits6EngineE:0000000000000000 _ZTSN6plaits6EngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:3039   .rodata._ZTIN6plaits6EngineE:0000000000000000 _ZTIN6plaits6EngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:3036   .rodata._ZTIN6plaits6EngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:3056   .rodata._ZTSN6plaits14BassDrumEngineE:0000000000000000 _ZTSN6plaits14BassDrumEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:3049   .rodata._ZTIN6plaits14BassDrumEngineE:0000000000000000 _ZTIN6plaits14BassDrumEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:3062   .rodata._ZTVN6plaits14BassDrumEngineE:0000000000000000 _ZTVN6plaits14BassDrumEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:3046   .rodata._ZTIN6plaits14BassDrumEngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccZ0UVQf.s:3059   .rodata._ZTVN6plaits14BassDrumEngineE:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 _ZN6plaits8lut_sineE
