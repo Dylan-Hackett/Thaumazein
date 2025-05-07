@@ -16,10 +16,12 @@ The codebase has been refactored from a single monolithic file to a more modular
 
 * **Thaumazein.h**: Main header defining project constants, external variables, and function declarations
 * **Thaumazein.cpp**: Main program entry point and UI handling
-* **Polyphony.cpp**: Handles voice allocation, polyphony management, and voice initialization
-* **Interface.cpp**: Manages hardware interface, controls, and system initialization
-* **AudioProcessor.cpp**: Implements the audio processing callback and voice rendering
+* **Polyphony.cpp**: Handles voice allocation, polyphony management (`FindVoice`, `FindAvailableVoice`, `AssignMonoNote`), touch input to voice logic (`HandleTouchInput`), voice initialization, and helper functions for voice parameter updates (patch, modulation, trigger).
+* **Interface.cpp**: Manages hardware interface, controls (including `ProcessControls()` which calls `UpdateEngineSelection()` and `UpdateArpeggiatorToggle()`), engine selection (`UpdateEngineSelection()`), arpeggiator toggle (`UpdateArpeggiatorToggle()`), and system initialization
+* **AudioProcessor.cpp**: Implements the audio processing callback. Calls functions from Interface, Polyphony, Arpeggiator, and DelayEffect modules. Orchestrates voice parameter preparation (via `PrepareVoiceParameters`) using helpers from `Polyphony.cpp`.
 * **VoiceEnvelope.h/cpp**: Custom envelope generator for polyphonic voices with attack/release phases
+* **Arpeggiator.h/cpp**: Manages arpeggiator state, note sequencing, tempo, and direction.
+* **DelayEffect.h/cpp**: Handles the echo delay effect, including parameter configuration (`UpdateDelay()`) and audio processing (`ApplyDelayToOutput()`).
 
 ## Codebase Architecture Diagram
 
@@ -37,8 +39,10 @@ The codebase has been refactored from a single monolithic file to a more modular
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                               Thaumazein.h                                │
 │                                                                         │
-│ - Constants (NUM_VOICES, BLOCK_SIZE)                                    │
-│ - External declarations (variables, functions)                          │
+│ - Constants (NUM_VOICES, BLOCK_SIZE, MASTER_VOLUME)                     │
+│ - External declarations (delay, delay_feedback_val, delay_time_val,     │
+│   variables, functions like ProcessControls(), UpdateEngineSelection(), │
+│   UpdateArpeggiatorToggle(), arp_enabled)                               │
 │ - Forward declarations                                                  │
 └───────────┬──────────────┬────────────────┬────────────────┬────────────┘
             │              │                │                │
@@ -47,31 +51,50 @@ The codebase has been refactored from a single monolithic file to a more modular
 │ Thaumazein.cpp │ │ Interface.cpp│ │ Polyphony.cpp  │ │AudioProcessor.cpp│
 │                │ │              │ │                │ │                  │
 │ - Main()       │ │ - Hardware   │ │ - Voice data   │ │ - AudioCallback()│
-│ - Display      │ │   setup      │ │ - Voice alloc  │ │ - Real-time      │
-│                │ │ - ADC config │ │ - MIDI mapping │ │   audio rendering│
-│                │ │ - Controls   │ │ - Voice init   │ │ - Control reading│
-│                │ │ - Button     │ │                │ │ - Effect params  │
+│ - Display      │ │   setup      │ │ - Voice alloc  │ │   (calls Interface,│
+│                │ │ - ADC config │ │ - MIDI mapping │ │    Polyphony,    │
+│                │ │ - Controls   │ │ - Touch Input  │ │    Arpeggiator,  │
+│                │ │   (Process-  │ │   (HandleTouch │ │    DelayEffect   │
+│                │ │    Controls())│ │    Input())    │ │    functions)    │
+│                │ │ - Engine Sel.│ │ - Voice init   │ │ - Real-time      │
+│                │ │   (UpdateEng-│ │ - Voice param  │ │   audio rendering│
+│                │ │    ineSelect())│ │   helpers      │ │ - Calls          │
+│                │ │ - Arp Toggle │ │                │ │   PrepareVoice-  │
+│                │ │   (UpdateArp │ │                │ │   Parameters     │
+│                │ │    Toggle()) │ │                │ │                  │
+│                │ │ - Button     │ │                │ │                  │
 │                │ │ - LED control│ │                │ │                  │
 └────────────────┘ └──────────────┘ └────────────────┘ └──────────────────┘
-        │                 │                                     │
-        └─────────────────┼─────────────────────────────────────┘
-                          │                
-                          ▼                
-                 ┌──────────────────┐
-                 │ VoiceEnvelope.h  │
-                 │ VoiceEnvelope.cpp│
-                 │                  │
-                 │ - Envelope       │
-                 │   processing     │
-                 └──────────────────┘
+        │                 │                 │               │     │
+        └─────────────────┼─────────────────┼───────────────┘     │
+                          │                 │                     │
+                          ▼                 ▼                     ▼
+                 ┌──────────────────┐   ┌──────────────────┐   ┌──────────────────┐
+                 │ VoiceEnvelope.h  │   │ Arpeggiator.h    │   │ DelayEffect.h    │
+                 │ VoiceEnvelope.cpp│   │ Arpeggiator.cpp  │   │ DelayEffect.cpp  │
+                 │                  │   │                  │   │                  │
+                 │ - Envelope       │   │ - Arp Logic      │   │ - Delay Config   │
+                 │   processing     │   │ - Note Update    │   │   (UpdateDelay())│
+                 │                  │   │                  │   │ - Delay Process  │
+                 │                  │   │                  │   │   (ApplyDelayTo-│
+                 │                  │   │                  │   │    Output())     │
+                 └──────────────────┘   └──────────────────┘   └──────────────────┘
 ```
 
 **Data Flow:**
-1. **Thaumazein.cpp** contains `main()` - the entry point that initializes everything via `InitializeSynth()` and handles display updates
-2. **Interface.cpp** manages hardware setup, ADC mapping, button handling, LED control, and peripherals
-3. **Polyphony.cpp** handles voice allocation and initialization
-4. **AudioProcessor.cpp** contains the real-time audio callback that runs continuously
-5. **VoiceEnvelope.h/cpp** provides envelope processing for the audio system
+1. **Thaumazein.cpp**: Entry point, initializes synth, handles display.
+2. **Interface.cpp**: Manages hardware, controls. `ProcessControls()` calls `UpdateEngineSelection()` and `UpdateArpeggiatorToggle()` (sets global `arp_enabled`). `ReadKnobValues()` updates `delay_time_val`, `delay_feedback_val` etc. (which are global via `Thaumazein.h`).
+3. **Polyphony.cpp**: Voice allocation, initialization, `HandleTouchInput()`.
+4. **AudioProcessor.cpp**: Real-time audio callback.
+    - Calls `ProcessControls()` and `ReadKnobValues()` (from `Interface.cpp`).
+    - If ARP is on, calls `arp.UpdateHeldNotes()`, `arp.SetMainTempoFromKnob()`, `arp.SetPolyrhythmRatioFromKnob()`, then `arp.Process()`.
+    - Else, calls `HandleTouchInput()` (from `Polyphony.cpp`).
+    - Calls `DelayEffect::UpdateDelay()` to configure delay parameters.
+    - Calls `PrepareVoiceParameters()` (in `AudioProcessor.cpp`, which in turn calls helpers in `Polyphony.cpp`), `ProcessVoiceEnvelopes()` (in `AudioProcessor.cpp`).
+    - Calls `DelayEffect::ApplyDelayToOutput()` to apply delay to the mixed audio.
+5. **Arpeggiator.h/cpp**: Arpeggiator logic.
+6. **VoiceEnvelope.h/cpp**: Envelope processing.
+7. **DelayEffect.h/cpp**: Reads global delay parameters (`delay_feedback_val`, `delay_time_val`) and uses the global `delay` object (all via `Thaumazein.h`) to configure and process the delay effect. Reads `MASTER_VOLUME` and `NUM_VOICES` (via `Thaumazein.h`).
 
 ## Controls
 
@@ -168,15 +191,26 @@ This project requires the following hardware:
 When adding features or making changes, follow the modular structure:
 1. Add new class definitions to appropriate headers
 2. Implement voice-related code in Polyphony.cpp
-3. Implement hardware interface code in Interface.cpp  
+3. Implement hardware interface code (including control processing) in Interface.cpp
 4. Add audio processing code to AudioProcessor.cpp
 5. Add UI elements to Thaumazein.cpp
 
 ## TO DO:
 
+- Refactor AudioProcessor.cpp (ongoing):
+  - **DONE:** Extract Control Processing (ProcessControls & ADC Reads) to Interface.cpp
+  - **DONE:** Extract Knob Value Reading (ReadKnobValues) to Interface.cpp
+  - **DONE:** Extract Engine/Model Selection Logic from ProcessControls to `UpdateEngineSelection()` in Interface.cpp
+  - **DONE:** Move Touch-Input-to-Voice Logic (`HandleTouchInput`) to Polyphony.cpp
+  - **DONE:** Extract Arpeggiator Toggle Pad Logic to `UpdateArpeggiatorToggle()` in Interface.cpp
+  - **DONE:** Extract Arpeggiator Note List Handling to `Arpeggiator::UpdateHeldNotes()`
+  - **DONE:** Move ARP parameter mapping (tempo, polyrhythm ratio from knobs) into Arpeggiator class.
+  - **DONE:** Extract Delay Effect Handling (ConfigureDelaySettings, audio mixing part of ProcessAudioOutput) to DelayEffect.cpp/h.
+  - **DONE:** Refactor Voice Rendering Loop (`PrepareVoiceParameters`): Broke into sub-tasks, moved parts to `Polyphony.cpp` helpers (`UpdateVoicePatchParams`, `UpdateVoiceModulationAndEnvelope`, `SetVoiceTrigger`, etc.), updated headers.
+  - **DONE:** Clean Up Globals and Headers: Reviewed/removed unnecessary externs, ensured single definitions, added missing function declarations to `Thaumazein.h`.
+  - **DONE:** Refactor magic numbers in `Thaumazein.cpp` (`PollTouchSensor`) to named constants.
+  - **DONE:** Refactor `SetVoiceTrigger` function in `Polyphony.cpp` to `UpdateMonoNonArpVoiceTrigger` for clarity and conditionally call it only when necessary in `AudioProcessor.cpp`.
 - Integrate basic Arpeggiator: use ADC8 to toggle on/off, map held touch pads to notes, tempo mapped to ADC0, triggers Plaits voices.
-- Implement an Arpeggiator preset mode, which stores each parameter per step, including the engine parameter and then cycles through them rhytmically. Monophonic implementation to save CPU
-
 - Improve onboard effects with either reverb or more full delay network. Possibly port code from clouds instead of current delay/reverb
 
 - Improve and potentially redesign how the touch control for each keyboard key will work. Currently its one parameter for the whole keyboard being modulated by all keys being touched. Will definitely change which parameter is being modulated depending on engine. Potentially will change to modulate multiple params with different keys/parts of the keyboard as well.

@@ -26,6 +26,8 @@ using namespace infrasonic;
 #define MAX_DELAY_SAMPLES 48000 
 #define SAMPLE_RATE 48000  // Adding sample rate definition
 
+const float MASTER_VOLUME = 0.7f; // Master output level scaler
+
 
 void AudioCallback(AudioHandle::InterleavingInputBuffer in, AudioHandle::InterleavingOutputBuffer out, size_t size);
 int FindVoice(float note, int max_voices);
@@ -36,6 +38,11 @@ void InitializeSynth();
 void Bootload();
 void UpdateLED();
 void PollTouchSensor();
+void ProcessControls();
+void ReadKnobValues();
+void UpdateEngineSelection();
+void UpdateArpeggiatorToggle();
+void HandleTouchInput(int engineIndex, bool poly_mode, int effective_num_voices);
 
 
 extern DaisySeed hw;
@@ -72,6 +79,7 @@ extern AnalogControl mod_wheel;             // ADC 11 (Pin 28) Mod Wheel Control
 
 extern const float kTouchMidiNotes[12];
 extern Arpeggiator arp;
+extern volatile bool arp_enabled;
 
 
 extern float sample_rate;
@@ -92,8 +100,14 @@ extern volatile uint16_t current_touch_state;
 extern volatile float touch_cv_value; 
 
 extern volatile int current_engine_index;
+extern volatile bool engine_changed_flag;
 
 extern volatile float adc_raw_values[12]; // Array to hold raw values for all 12 ADCs
+
+// Extern declarations for global knob values
+extern float pitch_val, harm_knob_val, timbre_knob_val, morph_knob_val;
+extern float delay_time_val, delay_mix_feedback_val, delay_mix_val, delay_feedback_val;
+extern float env_attack_val, env_release_val;
 
 extern volatile int engine_retrigger_phase;
 extern volatile int arp_patch_phase;
@@ -104,5 +118,46 @@ extern daisy::GPIO touch_leds[12];
 // Add extern declarations for ARP LED blink timestamps and duration
 extern volatile uint32_t arp_led_timestamps[12];
 extern const uint32_t ARP_LED_DURATION_MS;
+
+// Polyphony Helper Functions (declarations)
+void UpdateVoicePatchParams(
+    plaits::Patch& patch, 
+    int engine_idx, 
+    float base_note, 
+    float pitch_offset, 
+    float harmonics, 
+    float timbre_knob_val,
+    float morph, 
+    bool arp_on, 
+    float env_release_val
+);
+
+void UpdateVoiceModulationAndEnvelope(
+    plaits::Modulations& mod, 
+    VoiceEnvelope& envelope, 
+    bool percussive_engine, 
+    float attack_val, 
+    float release_val
+);
+
+void UpdateMonoNonArpVoiceTrigger(
+    plaits::Modulations& mod, 
+    bool voice_active_state,
+    bool engine_changed_flag
+);
+
+void RenderAndProcessPercussiveArpVoice(
+    int voice_idx,
+    int engine_idx,
+    float global_pitch_offset,
+    float current_global_harmonics,
+    float current_global_morph,
+    float timbre_knob_val,
+    float current_env_release_val
+);
+
+void SilenceVoiceOutput(int voice_idx);
+
+void RetriggerActiveVoiceEnvelope(int voice_idx);
 
 #endif // THAUMAZEIN_H_ 
