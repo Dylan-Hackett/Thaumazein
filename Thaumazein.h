@@ -12,6 +12,7 @@
 #include "Effects/reverbsc.h"
 #include "Effects/BiquadFilters.h"
 #include "util/CpuLoadMeter.h"
+#include "stmlib/utils/buffer_allocator.h"
 #include <cmath>
 #include "Arpeggiator.h"
 
@@ -30,10 +31,6 @@ const float MASTER_VOLUME = 0.7f; // Master output level scaler
 
 
 void AudioCallback(AudioHandle::InterleavingInputBuffer in, AudioHandle::InterleavingOutputBuffer out, size_t size);
-int FindVoice(float note, int max_voices);
-int FindAvailableVoice(int max_voices);
-void AssignMonoNote(float note);
-void InitializeVoices();
 void InitializeSynth();
 void Bootload();
 void UpdateLED();
@@ -42,7 +39,6 @@ void ProcessControls();
 void ReadKnobValues();
 void UpdateEngineSelection();
 void UpdateArpeggiatorToggle();
-void HandleTouchInput(int engineIndex, bool poly_mode, int effective_num_voices);
 
 
 extern DaisySeed hw;
@@ -50,17 +46,6 @@ extern Mpr121 touch_sensor;
 extern EchoDelay<48000> delay;
 extern CpuLoadMeter cpu_meter;
 
-
-extern plaits::Voice voices[NUM_VOICES];
-extern plaits::Patch patches[NUM_VOICES];
-extern plaits::Modulations modulations[NUM_VOICES];
-extern plaits::Voice::Frame output_buffers[NUM_VOICES][BLOCK_SIZE];
-
-
-extern bool voice_active[NUM_VOICES];
-extern float voice_note[NUM_VOICES];
-extern VoiceEnvelope voice_envelopes[NUM_VOICES];
-extern uint16_t last_touch_state;
 
 extern Switch button;
 extern AnalogControl delay_time_knob;        // ADC 0 (Pin 15) Delay Time
@@ -119,45 +104,6 @@ extern daisy::GPIO touch_leds[12];
 extern volatile uint32_t arp_led_timestamps[12];
 extern const uint32_t ARP_LED_DURATION_MS;
 
-// Polyphony Helper Functions (declarations)
-void UpdateVoicePatchParams(
-    plaits::Patch& patch, 
-    int engine_idx, 
-    float base_note, 
-    float pitch_offset, 
-    float harmonics, 
-    float timbre_knob_val,
-    float morph, 
-    bool arp_on, 
-    float env_release_val
-);
-
-void UpdateVoiceModulationAndEnvelope(
-    plaits::Modulations& mod, 
-    VoiceEnvelope& envelope, 
-    bool percussive_engine, 
-    float attack_val, 
-    float release_val
-);
-
-void UpdateMonoNonArpVoiceTrigger(
-    plaits::Modulations& mod, 
-    bool voice_active_state,
-    bool engine_changed_flag
-);
-
-void RenderAndProcessPercussiveArpVoice(
-    int voice_idx,
-    int engine_idx,
-    float global_pitch_offset,
-    float current_global_harmonics,
-    float current_global_morph,
-    float timbre_knob_val,
-    float current_env_release_val
-);
-
-void SilenceVoiceOutput(int voice_idx);
-
-void RetriggerActiveVoiceEnvelope(int voice_idx);
+void InitInterface(daisy::DaisySeed& hardware); 
 
 #endif // THAUMAZEIN_H_ 

@@ -234,7 +234,7 @@ build/Polyphony.o: Polyphony.cpp \
  eurorack/plaits/dsp/envelope.h eurorack/plaits/dsp/fx/low_pass_gate.h \
  mpr121_daisy.h Effects/EchoDelay.h Effects/BiquadFilters.h \
  Effects/DSPUtils.h lib/libdaisy/Drivers/CMSIS/DSP/Include/arm_math.h \
- VoiceEnvelope.h Effects/reverbsc.h Arpeggiator.h
+ VoiceEnvelope.h Effects/reverbsc.h Arpeggiator.h Polyphony.h
 lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
 lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h:
 lib/libdaisy/Drivers/CMSIS/Include/core_cm7.h:
@@ -527,3 +527,4 @@ lib/libdaisy/Drivers/CMSIS/DSP/Include/arm_math.h:
 VoiceEnvelope.h:
 Effects/reverbsc.h:
 Arpeggiator.h:
+Polyphony.h:

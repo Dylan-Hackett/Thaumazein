@@ -1,5 +1,7 @@
 #include "Thaumazein.h"
 #include "Arpeggiator.h"
+#include "Polyphony.h" // Add include for PolyphonyEngine
+#include <algorithm> // Added for std::min and std::max
 
 // --- Global hardware variables ---
 DaisySeed hw;
@@ -7,12 +9,14 @@ Mpr121 touch_sensor;
 EchoDelay<48000> delay;
 // Arpeggiator instance
 Arpeggiator arp;
-// Global array for touch pad LEDs
 GPIO touch_leds[12];
 // Timestamp for each LED when an ARP note triggers (ms)
 volatile uint32_t arp_led_timestamps[12] = {0};
 // Duration in milliseconds for each LED blink on ARP trigger
 const uint32_t ARP_LED_DURATION_MS = 100;
+
+// ADDED: Global flag for arpeggiator state, managed by Interface.cpp
+volatile bool arp_enabled = false;
 
 // Hardware controls - Remapped to use ADCs 0-9
 Switch button;
@@ -35,6 +39,14 @@ volatile uint32_t avg_elapsed_us = 0;
 volatile bool update_display = false; 
 // Output Level monitoring
 volatile float smoothed_output_level = 0.0f; 
+
+// Definition for adc_raw_values moved from AudioProcessor.cpp
+volatile float adc_raw_values[12] = {0.0f};
+
+// Global knob values, moved from AudioProcessor.cpp
+float pitch_val, harm_knob_val, timbre_knob_val, morph_knob_val;
+float delay_time_val, delay_mix_feedback_val, delay_mix_val, delay_feedback_val;
+float env_attack_val, env_release_val;
 
 // Bootloader configuration
 const uint32_t BOOTLOADER_HOLD_TIME_MS = 3000; // Hold button for 3 seconds
@@ -129,7 +141,7 @@ void InitializeTouchLEDs() {
 
 void InitializeSynth() {
     InitializeHardware();
-    InitializeVoices(); // Call function from Polyphony.cpp
+    poly_engine.Init(&hw);
     InitializeControls();
     InitializeTouchSensor();
     InitializeDelay();
@@ -138,26 +150,14 @@ void InitializeSynth() {
     
     // --- Initialize Arpeggiator ---
     arp.Init(sample_rate);
-    // Default arp tempo for audible stepping
-    arp.SetMainTempo(8.0f);
+    // Default arp tempo for audible stepping - REMOVED, now controlled by knob
+    // arp.SetMainTempo(8.0f); 
     // Route arpeggiator triggers into Plaits voices
-    arp.SetNoteTriggerCallback([](int pad_idx) {
-        // Monophonic ARP: set AR mode and retrigger envelope without full reset
-        voice_envelopes[0].SetMode(VoiceEnvelope::MODE_AR);
-        // Assign the new note to voice 0
-        float note = kTouchMidiNotes[pad_idx];
-        voice_note[0] = note;
-        voice_active[0] = true;
-        // Start the envelope attack; release phase follows based on knob
-        voice_envelopes[0].Trigger();
-        // Send patched trigger to Plaits engine only for percussive modes
-        if (current_engine_index > 7) {
-            modulations[0].trigger = 1.0f;
-            modulations[0].trigger_patched = true;
-        }
-        // Record the timestamp for ARP LED blink (pad 11→led[0], etc.)
+    arp.SetNoteTriggerCallback([&](int pad_idx){ 
+        poly_engine.TriggerArpCallbackVoice(pad_idx, current_engine_index); 
         arp_led_timestamps[11 - pad_idx] = hw.system.GetNow();
     });
+    arp.SetDirection(Arpeggiator::AsPlayed); // Set default direction to AsPlayed
     
     // --- Serial Log (Start before audio) ---
     // Use blocking log start so the USB CDC is fully synchronized before the first prints.
@@ -193,17 +193,135 @@ void Bootload() {
 
 void UpdateLED() {
     // LED based on voice activity (any voice active)
-    bool any_voice_active = false;
-    for(int v=0; v<NUM_VOICES; ++v) { 
-        if(voice_active[v]) { 
-            any_voice_active = true; 
-            break; 
-        } 
-    }
+    bool any_voice_active = poly_engine.IsAnyVoiceActive(); // NEW Access
     
     bool led_on = any_voice_active;
     if (!any_voice_active && (System::GetNow() % 1000) < 500) { // Blink if inactive
         led_on = true;
     }
     hw.SetLed(led_on);
+}
+
+// NEW Function for Arpeggiator Toggle Pad
+void UpdateArpeggiatorToggle() {
+    constexpr float kOnThreshold  = 0.30f;   // more sensitive press detection
+    constexpr float kOffThreshold = 0.20f;   // lower release threshold for fast reset
+    static bool pad_pressed = false;          // debounced pad pressed state
+
+    float pad_read = arp_pad.Value();
+
+    // Detect state transitions with hysteresis
+    if(!pad_pressed && pad_read > kOnThreshold)
+    {
+        pad_pressed = true;
+        // Rising edge detected -> toggle arp
+        arp_enabled = !arp_enabled;
+        if(arp_enabled)
+        {
+            arp.Init(sample_rate);          // restart timing
+            arp.SetNoteTriggerCallback([&](int pad_idx){ 
+                poly_engine.TriggerArpCallbackVoice(pad_idx, current_engine_index); 
+                arp_led_timestamps[11 - pad_idx] = hw.system.GetNow();
+            });
+            arp.SetDirection(Arpeggiator::AsPlayed); // Set default direction to AsPlayed
+        }
+        else
+        {
+            // Clearing held notes ensures LEDs revert to touch-indication mode
+            arp.ClearNotes();
+        }
+    }
+    else if(pad_pressed && pad_read < kOffThreshold)
+    {
+        // Consider pad released only when it falls well below off threshold
+        pad_pressed = false;
+    }
+}
+
+// NEW Function for Engine Selection
+void UpdateEngineSelection() {
+    // --- Model selection logic via touch pads ---
+    const float threshold = 0.5f;
+    const int kNumEngines = MAX_ENGINE_INDEX + 1; // inclusive range 0..MAX_ENGINE_INDEX
+    const int kDebounceCount = 10; // blocks for debounce (~3ms)
+    static int model_prev_counter = 0;
+    static int model_next_counter = 0;
+    static bool debounced_prev = false;
+    static bool debounced_next = false;
+
+    // Raw readings
+    bool raw_prev = model_prev_pad.Value() > threshold;
+    bool raw_next = model_next_pad.Value() > threshold;
+
+    // Update debounce counters
+    model_prev_counter = raw_prev
+        ? std::min(model_prev_counter + 1, kDebounceCount)
+        : std::max(model_prev_counter - 1, 0);
+    model_next_counter = raw_next
+        ? std::min(model_next_counter + 1, kDebounceCount)
+        : std::max(model_next_counter - 1, 0);
+
+    // Determine debounced states (press when counter > half)
+    bool new_debounced_prev = model_prev_counter > (kDebounceCount / 2);
+    bool new_debounced_next = model_next_counter > (kDebounceCount / 2);
+
+    // On rising edge, update engine index
+    if (new_debounced_prev && !debounced_prev) {
+        current_engine_index = (current_engine_index + 1) % kNumEngines;
+        engine_changed_flag = true;
+    }
+    if (new_debounced_next && !debounced_next) {
+        current_engine_index = (current_engine_index - 1 + kNumEngines) % kNumEngines;
+        engine_changed_flag = true;
+    }
+
+    debounced_prev = new_debounced_prev;
+    debounced_next = new_debounced_next;
+
+    // Voice migration/reset logic has been moved to PolyphonyEngine::OnEngineChange
+    // Audio layer (AudioProcessor.cpp) now handles reacting to engine_changed_flag.
+}
+
+// Moved from AudioProcessor.cpp
+void ProcessControls() {
+    button.Debounce();
+    delay_time_knob.Process();        // ADC 0
+    delay_mix_feedback_knob.Process(); // ADC 1
+    env_release_knob.Process();       // ADC 2
+    env_attack_knob.Process();        // ADC 3
+    timbre_knob.Process();            // ADC 4
+    harmonics_knob.Process();         // ADC 5
+    morph_knob.Process();             // ADC 6
+    pitch_knob.Process();             // ADC 7
+    // Process the remaining ADC-based controls
+    arp_pad.Process();            // Process ADC 8: Arpeggiator Toggle Pad
+    model_prev_pad.Process();     // Process ADC 9: Model Select Previous Pad
+    model_next_pad.Process();     // Process ADC 10: Model Select Next Pad
+    mod_wheel.Process();          // Process ADC 11: Mod Wheel Control
+
+    // Read raw values for ALL 12 ADC channels
+    for(int i = 0; i < 12; ++i) {
+        adc_raw_values[i] = hw.adc.GetFloat(i);
+    }
+
+    // Call the new engine selection function
+    UpdateEngineSelection();
+    UpdateArpeggiatorToggle(); // Call the new arp toggle function
+}
+
+// Moved from AudioProcessor.cpp
+void ReadKnobValues() {
+    delay_time_val = delay_time_knob.Value();           // ADC 0
+    delay_mix_feedback_val = delay_mix_feedback_knob.Value(); // ADC 1 (Combined)
+    env_release_val = env_release_knob.Value();       // ADC 2
+    env_attack_val = env_attack_knob.Value();        // ADC 3
+    timbre_knob_val = timbre_knob.Value();            // ADC 4
+    harm_knob_val = harmonics_knob.Value();         // ADC 5
+    morph_knob_val = morph_knob.Value();             // ADC 6
+    pitch_val = pitch_knob.Value();                 // ADC 7
+
+    // Derive separate mix and feedback values from the combined knob
+    // Simple approach: use the same value for both
+    delay_mix_val = delay_mix_feedback_val;
+    delay_feedback_val = delay_mix_feedback_val;
 } 

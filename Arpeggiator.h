@@ -4,6 +4,7 @@
 #include "daisy_seed.h"
 #include "daisysp.h"
 #include <functional>
+#include <vector>
 
 using namespace daisy;
 using namespace daisysp;
@@ -12,7 +13,6 @@ class Arpeggiator {
 public:
     Arpeggiator();
     void Init(float samplerate);
-    void SetNotes(int* notes, int num_notes);
     void SetScale(float* scale, int scale_size);
     void SetMainTempo(float tempo);             // Main tempo in Hz
     void SetPolyrhythmRatio(float ratio);       // Ratio for polyrhythm
@@ -28,11 +28,20 @@ public:
     enum Direction { Forward, Random, AsPlayed };
     void SetDirection(Direction dir);
 
+    // New method to update notes based on touch state
+    void UpdateHeldNotes(uint16_t current_touch_state, uint16_t last_touch_state);
+
+    // New methods for setting tempo and polyrhythm from knob values
+    void SetMainTempoFromKnob(float knob_value); // knob_value is 0-1 range
+    void SetPolyrhythmRatioFromKnob(float knob_value); // knob_value is 0-1 range
+
+    // Clears all currently held notes (useful when ARP is disabled)
+    void ClearNotes();
+
 private:
     Metro metro_;
     uint32_t rng_state_;
-    int* notes_;
-    int num_notes_;
+    std::vector<int> notes_;
     float* scale_;
     int scale_size_;
     float octave_jump_prob_;

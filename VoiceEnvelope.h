@@ -19,8 +19,8 @@ public:
 
     VoiceEnvelope() :
         current_state(ENV_IDLE),
-        current_value(0.0f),
         mode(MODE_ASR),
+        current_value(0.0f),
         attack_curve_coefficient(0.5f),
         release_curve_coefficient(0.5f),
         phase(0),
