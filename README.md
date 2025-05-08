@@ -1,5 +1,13 @@
 # Thaumazein Synthesizer Firmware
 
+## License
+
+This project contains code adapted from Mutable Instruments Plaits, which is released under the MIT License.
+
+```
+Copyright 2014-2019 Emilie Gillet.
+```
+
 ## Project Description
 
 Thaumazein is a Daisy Seed based polyphonic synthesizer with a capacitive touch interface, arpeggiator, and delay effect. This firmware aims to provide a flexible and expressive musical instrument.
@@ -274,13 +282,6 @@ When adding features or making changes, follow the modular structure:
 4. Add audio processing orchestration code to `AudioProcessor.cpp`.
 5. Add UI elements (display, main loop logic) to `Thaumazein.cpp`.
 
-## License
-
-This project contains code adapted from Mutable Instruments Plaits, which is released under the MIT License.
-
-```
-Copyright 2014-2019 Emilie Gillet.
-```
 
 ### Completed
 
