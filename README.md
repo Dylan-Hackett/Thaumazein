@@ -7,7 +7,8 @@ Thaumazein is a Daisy Seed based polyphonic synthesizer module, featuring multip
 1.  **Resolve QSPI Boot Issue:**
     *   [X] Configure Makefile linker flags for QSPI memory sections (`.qspiflash_text` at `0x90000000`, `.qspiflash_data` at `0x90800000`).
     *   [X] Ensure QSPI peripheral is explicitly initialized to memory-mapped mode after `hw.Init()`. (Added call to `SynthStateStorage::InitMemoryMapped()`).
-    *   [ ] Verify Vector Table Offset Register (VTOR) is correctly set for QSPI boot (currently assuming libDaisy startup handles this with QSPI linker script).
+    *   [X] Fix VTOR Misalignment: Modify `JumpToQspi` to set `SCB->VTOR = 0x90040000`.
+    *   [X] Correct MPU Configuration: Adjust QSPI MPU region to `BaseAddress = 0x90000000` and `Size = 8MB` for proper alignment.
     *   [ ] Investigate and ensure correct CPU cache (I-Cache, D-Cache) handling for QSPI XIP mode if issues persist.
     *   [ ] Ensure essential GPIOs (e.g., status LED) are functional when booting from QSPI.
 2.  **Build and Flash:**

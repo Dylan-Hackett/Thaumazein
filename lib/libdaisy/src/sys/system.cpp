@@ -65,7 +65,7 @@ typedef struct
 __attribute__((always_inline)) static inline void __JUMPTOQSPI()
 {
     __asm("LDR R1, =0xE000ED00;"); // SCB
-    __asm("LDR R0, =0x90000000;"); // APP BASE
+    __asm("LDR R0, =0x90040000;"); // APP BASE
     __asm("STR R0, [R1, #8]");     // VTOR
     __asm("LDR SP, [R0, #0]");     // SP @ +0
     __asm("LDR R0, [R0, #4]");     // PC @ +4
@@ -411,19 +411,19 @@ void System::ConfigureMpu()
     // MPU_InitStruct.DisableExec is still MPU_INSTRUCTION_ACCESS_ENABLE from previous region setting
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
-    // Configure QSPI region (0x90040000, for code, ~8MB)
-    // This matches the QSPIFLASH ORIGIN in STM32H750IB_qspi.lds for .isr_vector and .text
+    // Configure QSPI region (0x90000000, 8MB total, code starts at 0x90040000)
+    // This covers the entire QSPI flash memory.
     MPU_InitStruct.Enable           = MPU_REGION_ENABLE;
-    MPU_InitStruct.BaseAddress      = 0x90040000; 
-    MPU_InitStruct.Size             = MPU_REGION_SIZE_8MB; // Covers 0x90040000 to 0x9083FFFF. Linker script QSPIFLASH is 7936K (0x7D0000) bytes long.
-    MPU_InitStruct.AccessPermission = MPU_REGION_RO;       // Read-Only for code execution
-    MPU_InitStruct.IsBufferable     = MPU_ACCESS_BUFFERABLE; // TEX[2:0] = 001 (Outer and Inner Write-Back, Write and Read Allocate)
-    MPU_InitStruct.IsCacheable      = MPU_ACCESS_CACHEABLE;  // C bit for Cacheable
-    MPU_InitStruct.IsShareable      = MPU_ACCESS_NOT_SHAREABLE; // S bit for Not Shareable
-    MPU_InitStruct.Number           = MPU_REGION_NUMBER2; // Use next available region number
-    MPU_InitStruct.TypeExtField     = MPU_TEX_LEVEL0; // Used with C and B bits for memory type. TEX=000, C=1, B=1 -> WBWA Normal memory.
+    MPU_InitStruct.BaseAddress      = 0x90000000; 
+    MPU_InitStruct.Size             = MPU_REGION_SIZE_8MB; 
+    MPU_InitStruct.AccessPermission = MPU_REGION_RO;       
+    MPU_InitStruct.IsBufferable     = MPU_ACCESS_BUFFERABLE; 
+    MPU_InitStruct.IsCacheable      = MPU_ACCESS_CACHEABLE;  
+    MPU_InitStruct.IsShareable      = MPU_ACCESS_NOT_SHAREABLE; 
+    MPU_InitStruct.Number           = MPU_REGION_NUMBER2; 
+    MPU_InitStruct.TypeExtField     = MPU_TEX_LEVEL0; 
     MPU_InitStruct.SubRegionDisable = 0x00;
-    MPU_InitStruct.DisableExec      = MPU_INSTRUCTION_ACCESS_ENABLE; // XN bit = 0, allow instruction execution
+    MPU_InitStruct.DisableExec      = MPU_INSTRUCTION_ACCESS_ENABLE; 
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
     HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
