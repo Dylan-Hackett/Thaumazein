@@ -16,6 +16,7 @@ CPP_SOURCES += Thaumazein.cpp \
               AudioProcessor.cpp \
               VoiceEnvelope.cpp \
               mpr121_daisy.cpp \
+              SynthStateStorage.cpp \
               Effects/reverbsc.cpp \
               Effects/BiquadFilters.cpp \
               Effects/DelayEffect.cpp
@@ -56,6 +57,11 @@ OPT ?= -Os -s
 
 # Set target Linker Script to QSPI
 LDSCRIPT = $(LIBDAISY_DIR)/core/STM32H750IB_qspi.lds
+
+# Add QSPI section start flags
+LDFLAGS += -Wl,--section-start=.qspiflash_text=0x90000000
+LDFLAGS += -Wl,--section-start=.qspiflash_data=0x90800000
+LDFLAGS += -Wl,--gc-sections
 
 # Core location, and generic makefile.
 SYSTEM_FILES_DIR = $(LIBDAISY_DIR)/core

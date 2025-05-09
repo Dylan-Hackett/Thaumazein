@@ -1,4 +1,80 @@
-# Thaumazein Synthesizer Firmware
+# Thaumazein Synthesizer
+
+## Project Overview
+Thaumazein is a Daisy Seed based polyphonic synthesizer module, featuring multiple synthesis engines (likely based on Plaits), an arpeggiator, touch-sensitive controls, and CV/Gate I/O. It aims to provide a versatile sound design platform in a compact Eurorack (or similar) format. The current development effort is focused on migrating the firmware to run from QSPI flash to accommodate a larger codebase and more features.
+
+## Current Tasks
+1.  **Resolve QSPI Boot Issue:**
+    *   [X] Configure Makefile linker flags for QSPI memory sections (`.qspiflash_text` at `0x90000000`, `.qspiflash_data` at `0x90800000`).
+    *   [X] Ensure QSPI peripheral is explicitly initialized to memory-mapped mode after `hw.Init()`. (Added call to `SynthStateStorage::InitMemoryMapped()`).
+    *   [ ] Verify Vector Table Offset Register (VTOR) is correctly set for QSPI boot (currently assuming libDaisy startup handles this with QSPI linker script).
+    *   [ ] Investigate and ensure correct CPU cache (I-Cache, D-Cache) handling for QSPI XIP mode if issues persist.
+    *   [ ] Ensure essential GPIOs (e.g., status LED) are functional when booting from QSPI.
+2.  **Build and Flash:**
+    *   [ ] Successfully build the project with QSPI changes.
+    *   [ ] Successfully flash the firmware to the Daisy Seed using `make program-dfu`.
+3.  **Testing and Debugging:**
+    *   [ ] Verify the synthesizer boots and operates correctly from QSPI.
+    *   [ ] Confirm all functionalities (audio, controls, display, arpeggiator, engine switching) are working as expected.
+4.  **Codebase Diagram:**
+    *   [ ] Create and embed a Mermaid diagram in the README representing the main components and their interactions.
+5.  **README Maintenance:**
+    *   [ ] Keep this overview and task list updated.
+
+## Codebase Diagram
+
+```mermaid
+graph TD
+    A[Main Loop - Thaumazein.cpp] --> B(InitializeSynth - Interface.cpp)
+    B --> B1(InitializeHardware)
+    B1 --> B1_1(hw.Configure)
+    B1 --> B1_2(hw.Init)
+    B1 --> B1_3(SynthStateStorage::InitMemoryMapped)
+    B --> B2(InitializeControls)
+    B --> B3(InitializeTouchSensor)
+    B --> B4(InitializeDelay)
+    B --> B5(InitializeTouchLEDs)
+    B --> B6(poly_engine.Init)
+    B --> B7(arp.Init)
+    B --> B8(hw.StartAudio - AudioCallback)
+
+    A --> C(UpdateLED)
+    A --> D(Bootload Check)
+    A --> E(UpdateDisplay)
+    A --> F(PollTouchSensor)
+
+    AudioCallback[AudioCallback - AudioProcessor.cpp] --> G(ProcessControls - Interface.cpp)
+    AudioCallback --> H(ReadKnobValues - Interface.cpp)
+    AudioCallback --> I(poly_engine.ProcessBlock)
+    AudioCallback --> J(arp.Process)
+    AudioCallback --> K(delay.Process)
+    AudioCallback --> L(Output Samples)
+
+    G --> G1(UpdateEngineSelection)
+    G --> G2(UpdateArpeggiatorToggle)
+
+    M(SynthStateStorage.cpp) -.-> B1_3
+    M -.-> N(Load/Save State)
+
+    subgraph HardwareAbstractions
+        hw(DaisySeed - libDaisy)
+        touch_sensor(Mpr121Driver)
+        QSPI(QSPIHandle - SynthStateStorage)
+    end
+
+    subgraph CoreLogic
+        poly_engine(PolyphonyEngine)
+        arp(Arpeggiator)
+        delay(DelayEffect)
+    end
+
+    B1_2 -.-> hw
+    B3 -.-> touch_sensor
+    B1_3 -.-> QSPI
+    B6 -.-> poly_engine
+    B7 -.-> arp
+    B4 -.-> delay
+```
 
 ## License
 
@@ -82,110 +158,6 @@ The project is structured around the Daisy Seed platform, utilizing its audio pr
     *   Some "magic numbers" (e.g., `sensitivity = 150.0f`, smoothing bounds in `Thaumazein.cpp::PollTouchSensor`) could be pulled into named constants or config.
     *   Build system could automate the multi‑library build steps via a top‑level Makefile or CMake wrapper.
     *   Fine-tune Touch Sensitivity.
-
-## Codebase Diagram
-
-```mermaid
-graph TD
-    subgraph MainLoop [Thaumazein.cpp]
-        direction LR
-        ML_Init[InitializeSynth] --> ML_Loop
-        ML_Loop --> ML_PollTouch[PollTouchSensor]
-        ML_Loop --> ML_UpdateDisplay[UpdateDisplay]
-        ML_Loop --> ML_UpdateLED[UpdateLED]
-        ML_Loop --> ML_Bootload[Bootload Check]
-    end
-
-    subgraph AudioProcessing [AudioCallback in AudioProcessor.cpp]
-        direction LR
-        AC_Start[Audio In/Out] --> AC_ProcessUI[ProcessUIAndControls]
-        AC_ProcessUI --> AC_UpdateArp[UpdateArpState]
-        AC_UpdateArp --> AC_RenderVoices[RenderVoices]
-        AC_RenderVoices --> AC_ApplyEffects[ApplyEffectsAndOutput]
-        AC_ApplyEffects --> AC_UpdateMonitors[UpdatePerformanceMonitors]
-    end
-
-    subgraph UI [Interface.cpp]
-        direction TB
-        UI_Init[InitializeHardware, Controls, Touch, Delay, LEDs]
-        UI_ProcessCtrl[ProcessControls] --> UI_ReadKnobs[ReadKnobValues]
-        UI_ProcessCtrl --> UI_UpdateEngine[UpdateEngineSelection]
-        UI_ProcessCtrl --> UI_UpdateArpToggle[UpdateArpeggiatorToggle]
-        UI_Touch[Mpr121 Touch Sensor] --> ML_PollTouch
-        UI_Knobs[Analog Controls] --> UI_ReadKnobs
-        UI_Button[Button] --> UI_ProcessCtrl
-        UI_TouchStateGlobal["current_touch_state (Global in AudioProcessor context via Thaumazein.h)"]
-    end
-
-    subgraph Polyphony [PolyphonyEngine in Polyphony.cpp]
-        direction TB
-        PE_Init[Init]
-        PE_HandleTouch[HandleTouchInput]
-        PE_Render[RenderBlock]
-        PE_Reset[ResetVoices]
-        PE_ArpTrigger[TriggerArpCallbackVoice]
-        PE_GetLastTouch[GetLastTouchState]
-    end
-
-    subgraph Arpeggiator [Arpeggiator.cpp]
-        direction TB
-        Arp_Init[Init]
-        Arp_SetCB[SetNoteTriggerCallback]
-        Arp_UpdateNotes[UpdateHeldNotes]
-        Arp_Process[Process(frames)]
-        Arp_SetTempo[SetMainTempoFromKnob]
-    end
-
-    subgraph Effects [DelayEffect.cpp]
-        direction TB
-        DE_Update[UpdateDelay]
-        DE_Apply[ApplyDelayToOutput]
-    end
-
-    subgraph Plaits [Plaits Code]
-        direction TB
-        Plaits_Voice[plaits::Voice]
-        Plaits_Patch[plaits::Patch]
-        Plaits_Mod[plaits::Modulations]
-    end
-
-    %% Connections
-    ML_Init --> UI_Init
-    ML_Init --> PE_Init
-    ML_Init --> Arp_Init
-    ML_Init --> Arp_SetCB
-    UI_UpdateArpToggle --> Arp_Init
-    UI_UpdateArpToggle --> Arp_SetCB
-
-    ML_PollTouch --> AC_ProcessUI
-    AC_ProcessUI --> UI_ProcessCtrl
-    AC_ProcessUI --> UI_ReadKnobs
-    
-    AC_UpdateArp --> PE_GetLastTouch
-    PE_GetLastTouch --> Arp_UpdateNotes
-    UI_TouchStateGlobal --> Arp_UpdateNotes
-    AC_UpdateArp --> Arp_UpdateNotes
-    Arp_UpdateNotes --> Arp_Process
-    
-    AC_UpdateArp --> PE_HandleTouch
-    AC_RenderVoices --> PE_Render
-    PE_Render --> Plaits_Voice
-    Arp_Process -.-> PE_ArpTrigger
-    AC_ApplyEffects --> DE_Update
-    AC_ApplyEffects --> DE_Apply
-
-    classDef main fill:#f9f,stroke:#333,stroke-width:2px;
-    classDef audio fill:#9cf,stroke:#333,stroke-width:2px;
-    classDef ui fill:#9f9,stroke:#333,stroke-width:2px;
-    classDef dsp fill:#fc9,stroke:#333,stroke-width:2px;
-
-    class MainLoop main;
-    class AudioProcessing audio;
-    class UI ui;
-    class Polyphony,Plaits,Arpeggiator,Effects dsp;
-```
-
-*(Diagram needs to be rendered with a Mermaid plugin or tool. The diagram provides a high-level overview of module interactions and is updated as the project evolves.)*
 
 ## Controls
 The synthesizer uses the following knobs and touch pads connected to the Daisy Seed ADC pins:

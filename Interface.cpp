@@ -1,6 +1,7 @@
 #include "Thaumazein.h"
 #include "Arpeggiator.h"
 #include "Polyphony.h"
+#include "SynthStateStorage.h"
 #include <algorithm>
 
 // --- Global hardware variables ---
@@ -67,6 +68,7 @@ void InitializeHardware() {
     // Initialize Daisy Seed hardware
     hw.Configure();
     hw.Init();
+    SynthStateStorage::InitMemoryMapped();
     hw.SetAudioBlockSize(BLOCK_SIZE);
     sample_rate = hw.AudioSampleRate();
     // hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ); // debug: stick with default SR

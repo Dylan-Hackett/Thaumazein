@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
   28:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
   29:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** #include "plaits/dsp/engine/waveshaping_engine.h"
   30:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 2
 
 
   31:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** #include <algorithm>
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
    4:eurorack/plaits/dsp/oscillator/oscillator.h **** //
    5:eurorack/plaits/dsp/oscillator/oscillator.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
    6:eurorack/plaits/dsp/oscillator/oscillator.h **** // of this software and associated documentation files (the "Software"), to deal
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 3
 
 
    7:eurorack/plaits/dsp/oscillator/oscillator.h **** // in the Software without restriction, including without limitation the rights
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
   59:eurorack/plaits/dsp/oscillator/oscillator.h ****     phase_ = 0.5f;
   59              		.loc 2 59 5 view .LVU5
   60:eurorack/plaits/dsp/oscillator/oscillator.h ****     next_sample_ = 0.0f;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 4
 
 
   60              		.loc 2 60 18 is_stmt 0 view .LVU6
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
   47:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   previous_overtone_gain_ = 0.0f;
   97              		.loc 1 47 29 view .LVU22
   98 001e C364     		str	r3, [r0, #76]	@ float
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 5
 
 
   48:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** }
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  136              		.loc 2 63 5 view .LVU41
   63:eurorack/plaits/dsp/oscillator/oscillator.h **** 
  137              		.loc 2 63 11 is_stmt 0 view .LVU42
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 6
 
 
  138 0032 80F83C40 		strb	r4, [r0, #60]
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
   22:eurorack/stmlib/dsp/dsp.h **** // 
   23:eurorack/stmlib/dsp/dsp.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
   24:eurorack/stmlib/dsp/dsp.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 7
 
 
   25:eurorack/stmlib/dsp/dsp.h **** // -----------------------------------------------------------------------------
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  183              		.loc 3 54 3 is_stmt 1 view .LVU56
   55:eurorack/stmlib/dsp/dsp.h ****   const float xm1 = table[index_integral - 1];
  184              		.loc 3 55 45 is_stmt 0 view .LVU57
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 8
 
 
  185 000c 17EE903A 		vmov	r3, s15	@ int
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  221              		.loc 3 61 3 is_stmt 1 view .LVU75
  222              		.loc 3 62 31 is_stmt 0 view .LVU76
  223 003a 75EEC05A 		vsub.f32	s11, s11, s0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 9
 
 
   61:eurorack/stmlib/dsp/dsp.h ****   const float a = w + v + (x2 - x0) * 0.5f;
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
    5:eurorack/stmlib/dsp/polyblep.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
    6:eurorack/stmlib/dsp/polyblep.h **** // of this software and associated documentation files (the "Software"), to deal
    7:eurorack/stmlib/dsp/polyblep.h **** // in the Software without restriction, including without limitation the rights
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 10
 
 
    8:eurorack/stmlib/dsp/polyblep.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  280              		.loc 4 50 18 is_stmt 0 view .LVU95
  281 0008 B4EE080A 		vmov.f32	s0, #1.875e-1
  282              	.LVL24:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 11
 
 
   48:eurorack/stmlib/dsp/polyblep.h ****   const float t2 = t1 * t1;
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  313              		@ frame_needed = 0, uses_anonymous_args = 0
   90:eurorack/plaits/dsp/oscillator/oscillator.h ****       float frequency,
   91:eurorack/plaits/dsp/oscillator/oscillator.h ****       float pw,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 12
 
 
   92:eurorack/plaits/dsp/oscillator/oscillator.h ****       const float* external_fm,
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  102:eurorack/plaits/dsp/oscillator/oscillator.h ****       CONSTRAIN(pw, fabsf(frequency) * 2.0f, 1.0f - 2.0f * fabsf(frequency))
  356              		.loc 2 102 7 view .LVU109
  357 002c F0EEC07A 		vabs.f32	s15, s0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 13
 
 
  358 0030 77EEA77A 		vadd.f32	s15, s15, s15
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  373              	.LBE110:
   40:eurorack/stmlib/dsp/parameter_interpolator.h ****     Init(state, new_value, size);
  374              		.loc 5 40 5 view .LVU111
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 14
 
 
  375              	.LBB119:
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  108:eurorack/plaits/dsp/oscillator/oscillator.h ****     float next_sample = next_sample_;
  407              		.loc 2 108 11 view .LVU120
  408 0062 94ED01BA 		vldr.32	s22, [r4, #4]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 15
 
 
  409              	.LBB128:
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  458              	.LBE132:
  109:eurorack/plaits/dsp/oscillator/oscillator.h ****   
  110:eurorack/plaits/dsp/oscillator/oscillator.h ****     while (size--) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 16
 
 
  459              		.loc 2 110 5 is_stmt 1 view .LVU134
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  488              		.loc 5 60 5 view .LVU143
  489              	.LBE139:
  490              	.LBE138:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 17
 
 
  491              	.LBB141:
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  512 0090 79EE288A 		vadd.f32	s17, s18, s17
  513              	.LBB157:
  156:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 18
 
 
  514              		.loc 2 156 37 view .LVU150
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  559              	.LBE145:
  560              	.LBE144:
  161:eurorack/plaits/dsp/oscillator/oscillator.h ****           if (through_zero_fm && frequency < 0.0f) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 19
 
 
  162:eurorack/plaits/dsp/oscillator/oscillator.h ****             discontinuity = -discontinuity;
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  603              		.loc 2 169 18 view .LVU176
  604 00fa C4ED008A 		vstr.32	s17, [r4]
  605              		.loc 2 171 17 view .LVU177
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 20
 
 
  606 00fe 2AEE09AA 		vmul.f32	s20, s20, s18
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  186:eurorack/plaits/dsp/oscillator/oscillator.h ****         *out++ = 2.0f * this_sample - 1.0f;
  645              		.loc 2 186 37 view .LVU189
  646 0126 B0EE007A 		vmov.f32	s14, #2.0e+0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 21
 
 
  647 012a FFEE007A 		vmov.f32	s15, #-1.0e+0
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  195:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample += stmlib::NextBlepSample(t) * discontinuity;
  196:eurorack/plaits/dsp/oscillator/oscillator.h ****           high_ = phase_ >= pw;
  197:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 22
 
 
  198:eurorack/plaits/dsp/oscillator/oscillator.h ****         if (phase_ >= 1.0f) {
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  698              	.LBE161:
  699              	.LBB163:
  700              	.LBI163:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 23
 
 
   49:eurorack/stmlib/dsp/parameter_interpolator.h ****     *state_ = value_;
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  750              		.loc 1 55 52 is_stmt 1 view -0
  751              		.cfi_startproc
  752              		@ args = 0, pretend = 0, frame = 0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 24
 
 
  753              		@ frame_needed = 0, uses_anonymous_args = 0
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
   59:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   CONSTRAIN(max_amount, 0.0f, 1.0f);
  800              		.loc 1 59 3 view .LVU229
  801 0044 F7E7     		b	.L29
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 25
 
 
  802              	.L34:
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
   21:eurorack/plaits/dsp/engine/engine.h **** // THE SOFTWARE.
   22:eurorack/plaits/dsp/engine/engine.h **** // 
   23:eurorack/plaits/dsp/engine/engine.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 26
 
 
   24:eurorack/plaits/dsp/engine/engine.h **** //
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  862 001c F4EEC77A 		vcmpe.f32	s15, s14
  863              	.LBE219:
  864              	.LBE229:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 27
 
 
   68:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float root = parameters.note;
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
   11:eurorack/stmlib/dsp/units.h **** // 
   12:eurorack/stmlib/dsp/units.h **** // The above copyright notice and this permission notice shall be included in
   13:eurorack/stmlib/dsp/units.h **** // all copies or substantial portions of the Software.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 28
 
 
   14:eurorack/stmlib/dsp/units.h **** // 
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  926              	.LBE222:
  927              	.LBE232:
  928              	.LBB233:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 29
 
 
  929              	.LBB234:
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  972              	.LBE240:
  973              		.loc 1 72 15 view .LVU266
  974 0064 97ED037A 		vldr.32	s14, [r7, #12]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 30
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 30
 
 
  975              	.LBB241:
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1023              	.LBI233:
   70:eurorack/plaits/dsp/oscillator/oscillator.h ****     Render<shape, false, false>(frequency, pw, NULL, out, size);
  1024              		.loc 2 70 8 view .LVU279
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 31
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 31
 
 
  1025              	.LBB237:
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1064              		.loc 1 80 15 view .LVU293
  1065 00ca B1EE044A 		vmov.f32	s8, #5.0e+0
  1066 00ce F0EE450A 		vmov.f32	s1, s10
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 32
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 32
 
 
   80:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float shape_amount = fabsf(parameters.harmonics - 0.5f) * 2.0f;
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1108              		.loc 1 84 49 view .LVU312
  1109 010e FFF7FEFF 		bl	_ZN6plaits4TameEfff
  1110              	.LVL102:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 33
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 33
 
 
   87:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       12.0f);
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1149              		.loc 5 56 5 view .LVU324
  1150              	.LBE250:
  1151              	.LBE253:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 34
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 34
 
 
  1152              	.LBE264:
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
   94:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   ParameterInterpolator wf_gain_modulation(
  1196              		.loc 1 94 3 is_stmt 1 view .LVU334
   97:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       size);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 35
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 35
 
 
  1197              		.loc 1 97 11 is_stmt 0 view .LVU335
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1240              	.LBI265:
   39:eurorack/stmlib/dsp/parameter_interpolator.h ****     Init(state, new_value, size);
  1241              		.loc 5 39 3 view .LVU350
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 36
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 36
 
 
  1242              	.LBE280:
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1281              	.LBB286:
   60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
  1282              		.loc 5 60 5 view .LVU363
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 37
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 37
 
 
  1283              	.LBE286:
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1312              		.loc 1 105 45 view .LVU374
  1313 018e 68EEA77A 		vmul.f32	s15, s17, s15
  1314              	.LVL117:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 38
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 38
 
 
  106:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  112:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     ws_index_integral &= 255;
  1353              		.loc 1 112 5 is_stmt 1 view .LVU391
  116:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x = x0 + (x1 - x0) * ws_index_fractional;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 39
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 39
 
 
  1354              		.loc 1 116 11 is_stmt 0 view .LVU392
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1391              		.loc 1 120 16 is_stmt 0 view .LVU409
  1392 01ee 8B5E     		ldrsh	r3, [r1, r2]
  119:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y1 = static_cast<float>(shape_2[ws_index_integral + 1]) / 32768.0f;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 40
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 40
 
 
  1393              		.loc 1 119 16 view .LVU410
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1430 0226 37EE677A 		vsub.f32	s14, s14, s15
  1431              	.LVL135:
  123:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float index = mix * wf_gain_modulation.Next() + 0.5f;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 41
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 41
 
 
  1432              		.loc 1 123 11 view .LVU429
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
   69:eurorack/stmlib/dsp/dsp.h ****   index -= static_cast<float>(static_cast<int32_t>(index));
   70:eurorack/stmlib/dsp/dsp.h ****   index *= size;
   71:eurorack/stmlib/dsp/dsp.h ****   MAKE_INTEGRAL_FRACTIONAL(index)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 42
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 42
 
 
   72:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1515              	.LVL147:
   73:eurorack/stmlib/dsp/dsp.h ****   float b = table[index_integral + 1];
  1516              		.loc 3 73 3 is_stmt 1 view .LVU463
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 43
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 43
 
 
   74:eurorack/stmlib/dsp/dsp.h ****   return a + (b - a) * index_fractional;
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1563              	.LBE283:
  1564              	.LBB303:
  1565              	.LBB227:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 44
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 44
 
 
   41:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
   50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
  1606              		.loc 5 50 13 view .LVU496
  1607              	.LBE309:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 45
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 45
 
 
  1608              	.LBE308:
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1659              		.weak	_ZTIN6plaits6EngineE
  1660              		.section	.rodata._ZTIN6plaits6EngineE,"aG",%progbits,_ZTIN6plaits6EngineE,comdat
  1661              		.align	2
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 46
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 46
 
 
  1664              	_ZTIN6plaits6EngineE:
@@ -2752,37 +2752,37 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 1
  1714              		.file 27 "eurorack/plaits/resources.h"
  1715              		.file 28 "eurorack/plaits/dsp/engine/waveshaping_engine.h"
  1716              		.file 29 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s 			page 47
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s 			page 47
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 waveshaping_engine.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:19     .text._ZN6plaits17WaveshapingEngine5ResetEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:25     .text._ZN6plaits17WaveshapingEngine5ResetEv:0000000000000000 _ZN6plaits17WaveshapingEngine5ResetEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:40     .text._ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:46     .text._ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:153    .text._ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000038 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:158    .text._ZN6stmlib18InterpolateHermiteEPKfff:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:164    .text._ZN6stmlib18InterpolateHermiteEPKfff:0000000000000000 _ZN6stmlib18InterpolateHermiteEPKfff
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:259    .text._ZN6stmlib24NextIntegratedBlepSampleEf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:265    .text._ZN6stmlib24NextIntegratedBlepSampleEf:0000000000000000 _ZN6stmlib24NextIntegratedBlepSampleEf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:302    .text._ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:307    .text._ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0:0000000000000000 _ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:735    .text._ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0:0000000000000164 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:741    .text._ZN6plaits4TameEfff:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:747    .text._ZN6plaits4TameEfff:0000000000000000 _ZN6plaits4TameEfff
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:805    .text._ZN6plaits4TameEfff:0000000000000048 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:810    .text._ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:816    .text._ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:1633   .text._ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb:00000000000002cc $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:1657   .rodata._ZTSN6plaits6EngineE:0000000000000000 _ZTSN6plaits6EngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:1664   .rodata._ZTIN6plaits6EngineE:0000000000000000 _ZTIN6plaits6EngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:1661   .rodata._ZTIN6plaits6EngineE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:1681   .rodata._ZTSN6plaits17WaveshapingEngineE:0000000000000000 _ZTSN6plaits17WaveshapingEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:1674   .rodata._ZTIN6plaits17WaveshapingEngineE:0000000000000000 _ZTIN6plaits17WaveshapingEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:1687   .rodata._ZTVN6plaits17WaveshapingEngineE:0000000000000000 _ZTVN6plaits17WaveshapingEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:1671   .rodata._ZTIN6plaits17WaveshapingEngineE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccbVioEc.s:1684   .rodata._ZTVN6plaits17WaveshapingEngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:19     .text._ZN6plaits17WaveshapingEngine5ResetEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:25     .text._ZN6plaits17WaveshapingEngine5ResetEv:0000000000000000 _ZN6plaits17WaveshapingEngine5ResetEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:40     .text._ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:46     .text._ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:153    .text._ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000038 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:158    .text._ZN6stmlib18InterpolateHermiteEPKfff:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:164    .text._ZN6stmlib18InterpolateHermiteEPKfff:0000000000000000 _ZN6stmlib18InterpolateHermiteEPKfff
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:259    .text._ZN6stmlib24NextIntegratedBlepSampleEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:265    .text._ZN6stmlib24NextIntegratedBlepSampleEf:0000000000000000 _ZN6stmlib24NextIntegratedBlepSampleEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:302    .text._ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:307    .text._ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0:0000000000000000 _ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:735    .text._ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0:0000000000000164 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:741    .text._ZN6plaits4TameEfff:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:747    .text._ZN6plaits4TameEfff:0000000000000000 _ZN6plaits4TameEfff
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:805    .text._ZN6plaits4TameEfff:0000000000000048 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:810    .text._ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:816    .text._ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:1633   .text._ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb:00000000000002cc $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:1657   .rodata._ZTSN6plaits6EngineE:0000000000000000 _ZTSN6plaits6EngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:1664   .rodata._ZTIN6plaits6EngineE:0000000000000000 _ZTIN6plaits6EngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:1661   .rodata._ZTIN6plaits6EngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:1681   .rodata._ZTSN6plaits17WaveshapingEngineE:0000000000000000 _ZTSN6plaits17WaveshapingEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:1674   .rodata._ZTIN6plaits17WaveshapingEngineE:0000000000000000 _ZTIN6plaits17WaveshapingEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:1687   .rodata._ZTVN6plaits17WaveshapingEngineE:0000000000000000 _ZTVN6plaits17WaveshapingEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:1671   .rodata._ZTIN6plaits17WaveshapingEngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHInAfP.s:1684   .rodata._ZTVN6plaits17WaveshapingEngineE:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 _ZN6stmlib19lut_pitch_ratio_lowE
