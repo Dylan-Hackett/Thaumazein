@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
   28:eurorack/plaits/dsp/speech/sam_speech_synth.cc **** 
   29:eurorack/plaits/dsp/speech/sam_speech_synth.cc **** #include "plaits/dsp/speech/sam_speech_synth.h"
   30:eurorack/plaits/dsp/speech/sam_speech_synth.cc **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 2
 
 
   31:eurorack/plaits/dsp/speech/sam_speech_synth.cc **** #include <algorithm>
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
   27:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  * Copyright (c) 1994
   28:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  * Hewlett-Packard Company
   29:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  *
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 3
 
 
   30:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  * Permission to use, copy, modify, distribute and sell this software
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
   84:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    * A constexpr wrapper for __builtin_memcmp.
   85:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    * @param __num The number of elements of type _Tp (not bytes).
   86:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    */
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 4
 
 
   87:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<typename _Tp, typename _Up>
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  141:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @ingroup mutating_algorithms
  142:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @param  __a  An iterator.
  143:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @param  __b  Another iterator.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 5
 
 
  144:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @return   Nothing.
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  198:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<typename _ForwardIterator1, typename _ForwardIterator2>
  199:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX20_CONSTEXPR
  200:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _ForwardIterator2
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 6
 
 
  201:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     swap_ranges(_ForwardIterator1 __first1, _ForwardIterator1 __last1,
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  255:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     {
  256:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       // concept requirements
  257:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_function_requires(_LessThanComparableConcept<_Tp>)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 7
 
 
  258:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       //return  __a < __b ? __b : __a;
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  312:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     inline _Iterator
  313:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __niter_base(_Iterator __it)
  314:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX_NOEXCEPT_IF(std::is_nothrow_copy_constructible<_Iterator>::value)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 8
 
 
  315:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     { return __it; }
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  369:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<>
  370:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     struct __copy_move<false, false, random_access_iterator_tag>
  371:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 9
 
 
  372:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       template<typename _II, typename _OI>
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  426:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	    __builtin_memmove(__result, __first, sizeof(_Tp) * _Num);
  427:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	  return __result + _Num;
  428:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	}
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 10
 
 
  429:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     };
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  483:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	   typename _Tp, typename _Ref, typename _Ptr, typename _OI>
  484:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _OI
  485:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __copy_move_a1(_GLIBCXX_STD_C::_Deque_iterator<_Tp, _Ref, _Ptr>,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 11
 
 
  486:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 		   _GLIBCXX_STD_C::_Deque_iterator<_Tp, _Ref, _Ptr>,
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  540:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   /**
  541:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @brief Copies the range [first,last) into result.
  542:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @ingroup mutating_algorithms
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 12
 
 
  543:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @param  __first  An input iterator.
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  597:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_function_requires(_OutputIteratorConcept<_OI,
  598:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	    typename iterator_traits<_II>::value_type>)
  599:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_requires_can_increment_range(__first, __last, __result);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 13
 
 
  600:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  654:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     };
  655:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
  656:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #if __cplusplus >= 201103L
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 14
 
 
  657:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<>
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  711:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 								 __result);
  712:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
  713:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 15
 
 
  714:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<bool _IsMove, typename _BI1, typename _BI2>
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  768:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	   typename _IIte, typename _ISeq, typename _ICat,
  769:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	   typename _OIte, typename _OSeq, typename _OCat>
  770:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     ::__gnu_debug::_Safe_iterator<_OIte, _OSeq, _OCat>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 16
 
 
  771:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __copy_move_backward_a(
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  825:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  optimizations such as unrolling).
  826:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *
  827:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  Result may not be in the range (first,last].  Use move instead.  Note
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 17
 
 
  828:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  that the start of the output range may overlap [first,last).
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
   46:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****   frequency_ = 0.0f;
   50              		.loc 1 46 3 is_stmt 1 view .LVU5
   51              		.loc 1 46 14 is_stmt 0 view .LVU6
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 18
 
 
   52 0006 4360     		str	r3, [r0, #4]	@ float
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  913:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __fill_a(_FIte __first, _FIte __last, const _Tp& __value)
  914:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     { std::__fill_a1(__first, __last, __value); }
  915:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 19
 
 
  916:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<typename _Ite, typename _Seq, typename _Cat, typename _Tp>
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
   87              	.LBE39:
   88              	.LBE41:
   89              	.LBE43:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 20
 
 
   90              	.LBE45:
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
   89:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****   uint32_t* formant_frequency,
   90:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****   float* formant_amplitude) {
  109              		.loc 1 90 29 is_stmt 1 view -0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 21
 
 
  110              		.cfi_startproc
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  152              	.LVL9:
   97:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****   for (int i = 0; i < kSAMNumFormants; ++i) {
  153              		.loc 1 97 3 is_stmt 1 view .LVU34
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 22
 
 
  154              	.LBB46:
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  191              		.loc 1 100 26 discriminator 2 view .LVU49
  192 006e 37EE677A 		vsub.f32	s14, s14, s15
  100:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****     f *= 8.0f * formant_shift * 4294967296.0f / kSampleRate;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 23
 
 
  193              		.loc 1 100 11 discriminator 2 view .LVU50
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  236              	.LBE46:
  107:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****   }
  108:eurorack/plaits/dsp/speech/sam_speech_synth.cc **** }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 24
 
 
  237              		.loc 1 108 1 is_stmt 0 view .LVU69
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  279              		.cfi_offset 5, -16
  280              		.cfi_offset 6, -12
  281              		.cfi_offset 7, -8
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 25
 
 
  282              		.cfi_offset 14, -4
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  325 004e 01F00701 		and	r1, r1, #7
  326 0052 03F00703 		and	r3, r3, #7
  327 0056 58BF     		it	pl
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 26
 
 
  328 0058 5942     		rsbpl	r1, r3, #0
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  371              		.loc 1 133 3 is_stmt 1 view .LVU107
  134:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****   float formant_amplitude[kSAMNumFormants];
  372              		.loc 1 134 3 view .LVU108
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 27
 
 
  135:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****   
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
   31:eurorack/stmlib/dsp/parameter_interpolator.h **** 
   32:eurorack/stmlib/dsp/parameter_interpolator.h **** #include "stmlib/stmlib.h"
   33:eurorack/stmlib/dsp/parameter_interpolator.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 28
 
 
   34:eurorack/stmlib/dsp/parameter_interpolator.h **** namespace stmlib {
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  153:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****       float t = phase_ / frequency;
  154:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****       formant_phase_[0] = static_cast<uint32_t>(
  155:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****           t * static_cast<float>(formant_frequency[0]));
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 29
 
 
  156:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****       formant_phase_[1] = static_cast<uint32_t>(
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  443              	.LBB83:
  444              	.LBB80:
  445              		.loc 3 56 39 view .LVU129
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 30
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 30
 
 
  446 00b2 C6EE273A 		vdiv.f32	s7, s12, s15
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  485              		.loc 3 61 5 is_stmt 0 view .LVU145
  486              	.LBE94:
  487              	.LBE93:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 31
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 31
 
 
  149:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****   
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  526 0102 65EE865A 		vmul.f32	s11, s11, s12
  154:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****           t * static_cast<float>(formant_frequency[0]));
  527              		.loc 1 154 27 view .LVU162
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 32
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 32
 
 
  528 0106 FCEEE55A 		vcvt.u32.f32	s11, s11
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
   21:eurorack/stmlib/dsp/polyblep.h **** // THE SOFTWARE.
   22:eurorack/stmlib/dsp/polyblep.h **** // 
   23:eurorack/stmlib/dsp/polyblep.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 33
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 33
 
 
   24:eurorack/stmlib/dsp/polyblep.h **** //
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  583              	.LBE87:
  584              	.LBE97:
  167:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****     
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 34
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 34
 
 
  585              		.loc 1 167 5 is_stmt 1 view .LVU184
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  236:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       return __a;
  624              		.loc 2 236 9 view .LVU200
  625 0176 B4EE476A 		vcmp.f32	s12, s14
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 35
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 35
 
 
  626              	.LBE100:
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  666 019e D0ED007A 		vldr.32	s15, [r0]
  667              		.loc 1 176 37 view .LVU216
  668 01a2 9B0D     		lsrs	r3, r3, #22
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 36
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 36
 
 
  669              		.loc 1 176 42 view .LVU217
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  147:eurorack/plaits/dsp/speech/sam_speech_synth.cc ****     const float frequency = fm.Next();
  712              		.loc 1 147 23 view .LVU233
  713 01d6 F0EE662A 		vmov.f32	s5, s13
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 37
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 37
 
 
  714              	.LBB108:
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  755              	.L28:
  756              		.loc 1 181 1 view .LVU247
  757              		.align	2
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 38
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 38
 
 
  758              	.L27:
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  817 0016 F7       		.byte	-9
  818 0017 08       		.byte	8
  819 0018 33       		.byte	51
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 39
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 39
 
 
  820 0019 0F       		.byte	15
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  874 004f 0E       		.byte	14
  875 0050 53       		.byte	83
  876 0051 08       		.byte	8
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 40
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 40
 
 
  877 0052 F9       		.byte	-7
@@ -2385,22 +2385,22 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 1
  918              		.file 24 "eurorack/plaits/dsp/oscillator/oscillator.h"
  919              		.file 25 "eurorack/plaits/resources.h"
  920              		.file 26 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s 			page 41
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s 			page 41
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 sam_speech_synth.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:19     .text._ZN6plaits14SAMSpeechSynth4InitEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:25     .text._ZN6plaits14SAMSpeechSynth4InitEv:0000000000000000 _ZN6plaits14SAMSpeechSynth4InitEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:100    .text._ZN6plaits14SAMSpeechSynth22InterpolatePhonemeDataEffPmPf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:106    .text._ZN6plaits14SAMSpeechSynth22InterpolatePhonemeDataEffPmPf:0000000000000000 _ZN6plaits14SAMSpeechSynth22InterpolatePhonemeDataEffPmPf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:244    .text._ZN6plaits14SAMSpeechSynth22InterpolatePhonemeDataEffPmPf:00000000000000b0 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:252    .text._ZN6plaits14SAMSpeechSynth6RenderEbfffPfS1_j:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:258    .text._ZN6plaits14SAMSpeechSynth6RenderEbfffPfS1_j:0000000000000000 _ZN6plaits14SAMSpeechSynth6RenderEbfffPfS1_j
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:759    .text._ZN6plaits14SAMSpeechSynth6RenderEbfffPfS1_j:00000000000001f8 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:773    .data._ZN6plaits14SAMSpeechSynth21formant_amplitude_lutE:0000000000000000 _ZN6plaits14SAMSpeechSynth21formant_amplitude_lutE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:794    .data._ZN6plaits14SAMSpeechSynth9phonemes_E:0000000000000000 _ZN6plaits14SAMSpeechSynth9phonemes_E
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuyf6Pb.s:769    .data._ZN6plaits14SAMSpeechSynth21formant_amplitude_lutE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:19     .text._ZN6plaits14SAMSpeechSynth4InitEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:25     .text._ZN6plaits14SAMSpeechSynth4InitEv:0000000000000000 _ZN6plaits14SAMSpeechSynth4InitEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:100    .text._ZN6plaits14SAMSpeechSynth22InterpolatePhonemeDataEffPmPf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:106    .text._ZN6plaits14SAMSpeechSynth22InterpolatePhonemeDataEffPmPf:0000000000000000 _ZN6plaits14SAMSpeechSynth22InterpolatePhonemeDataEffPmPf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:244    .text._ZN6plaits14SAMSpeechSynth22InterpolatePhonemeDataEffPmPf:00000000000000b0 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:252    .text._ZN6plaits14SAMSpeechSynth6RenderEbfffPfS1_j:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:258    .text._ZN6plaits14SAMSpeechSynth6RenderEbfffPfS1_j:0000000000000000 _ZN6plaits14SAMSpeechSynth6RenderEbfffPfS1_j
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:759    .text._ZN6plaits14SAMSpeechSynth6RenderEbfffPfS1_j:00000000000001f8 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:773    .data._ZN6plaits14SAMSpeechSynth21formant_amplitude_lutE:0000000000000000 _ZN6plaits14SAMSpeechSynth21formant_amplitude_lutE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:794    .data._ZN6plaits14SAMSpeechSynth9phonemes_E:0000000000000000 _ZN6plaits14SAMSpeechSynth9phonemes_E
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccWNvRY.s:769    .data._ZN6plaits14SAMSpeechSynth21formant_amplitude_lutE:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 _ZN6plaits8lut_sineE

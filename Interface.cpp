@@ -1,7 +1,7 @@
 #include "Thaumazein.h"
 #include "Arpeggiator.h"
-#include "Polyphony.h" // Add include for PolyphonyEngine
-#include <algorithm> // Added for std::min and std::max
+#include "Polyphony.h"
+#include <algorithm>
 
 // --- Global hardware variables ---
 DaisySeed hw;
@@ -19,7 +19,6 @@ const uint32_t ARP_LED_DURATION_MS = 100;
 volatile bool arp_enabled = false;
 
 // Hardware controls - Remapped to use ADCs 0-9
-Switch button;
 AnalogControl delay_time_knob;        // ADC 0 (Pin 15) Delay Time
 AnalogControl delay_mix_feedback_knob; // ADC 1 (Pin 16) Delay Mix & Feedback
 AnalogControl env_release_knob;       // ADC 2 (Pin 17) Envelope Release
@@ -47,11 +46,6 @@ volatile float adc_raw_values[12] = {0.0f};
 float pitch_val, harm_knob_val, timbre_knob_val, morph_knob_val;
 float delay_time_val, delay_mix_feedback_val, delay_mix_val, delay_feedback_val;
 float env_attack_val, env_release_val;
-
-// Bootloader configuration
-const uint32_t BOOTLOADER_HOLD_TIME_MS = 3000; // Hold button for 3 seconds
-uint32_t button_held_start_time = 0;
-bool button_was_pressed = false;
 
 // --- Initialization functions ---
 void InitializeHardware() {
@@ -95,9 +89,6 @@ void InitializeControls() {
     model_prev_pad.Init(hw.adc.GetPtr(9), sample_rate);        // ADC 9
     model_next_pad.Init(hw.adc.GetPtr(10), sample_rate);       // ADC 10
     mod_wheel.Init(hw.adc.GetPtr(11), sample_rate);            // ADC 11
-
-    // --- Initialize Buttons ---
-    button.Init(hw.GetPin(27), sample_rate / 48.0f);
 }
 
 void InitializeTouchSensor() {
@@ -150,18 +141,14 @@ void InitializeSynth() {
     
     // --- Initialize Arpeggiator ---
     arp.Init(sample_rate);
-    // Default arp tempo for audible stepping - REMOVED, now controlled by knob
-    // arp.SetMainTempo(8.0f); 
-    // Route arpeggiator triggers into Plaits voices
+
     arp.SetNoteTriggerCallback([&](int pad_idx){ 
-        poly_engine.TriggerArpCallbackVoice(pad_idx, current_engine_index); 
+        poly_engine.TriggerArpVoice(pad_idx, current_engine_index); 
         arp_led_timestamps[11 - pad_idx] = hw.system.GetNow();
     });
     arp.SetDirection(Arpeggiator::AsPlayed); // Set default direction to AsPlayed
     
-    // --- Serial Log (Start before audio) ---
-    // Use blocking log start so the USB CDC is fully synchronized before the first prints.
-    // This prevents the logger buffer from overflowing and truncating long messages.
+
     hw.StartLog(false); // Start log immediately (non-blocking) - reverted to prevent freezing at startup
     
     // --- Start Audio ---
@@ -220,7 +207,7 @@ void UpdateArpeggiatorToggle() {
         {
             arp.Init(sample_rate);          // restart timing
             arp.SetNoteTriggerCallback([&](int pad_idx){ 
-                poly_engine.TriggerArpCallbackVoice(pad_idx, current_engine_index); 
+                poly_engine.TriggerArpVoice(pad_idx, current_engine_index); 
                 arp_led_timestamps[11 - pad_idx] = hw.system.GetNow();
             });
             arp.SetDirection(Arpeggiator::AsPlayed); // Set default direction to AsPlayed
@@ -284,7 +271,6 @@ void UpdateEngineSelection() {
 
 // Moved from AudioProcessor.cpp
 void ProcessControls() {
-    button.Debounce();
     delay_time_knob.Process();        // ADC 0
     delay_mix_feedback_knob.Process(); // ADC 1
     env_release_knob.Process();       // ADC 2

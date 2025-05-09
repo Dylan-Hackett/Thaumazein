@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
   39              		.thumb_func
   41              	_Z13UpdateDisplayv.part.0:
   42              	.LFB6067:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 2
 
 
   43              		.file 1 "Thaumazein.cpp"
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
   28:lib/libdaisy/src/util/CpuLoadMeter.h ****      */
   29:lib/libdaisy/src/util/CpuLoadMeter.h ****     void Init(float sampleRateInHz,
   30:lib/libdaisy/src/util/CpuLoadMeter.h ****               int   blockSizeInSamples,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 3
 
 
   31:lib/libdaisy/src/util/CpuLoadMeter.h ****               float smoothingFilterCutoffHz = 1.0f)
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
   62              		.loc 1 15 9 is_stmt 1 view .LVU7
   16:Thaumazein.cpp ****         cpu_percent_int = cpu_percent_int < 0 ? 0 : (cpu_percent_int > 100 ? 100 : cpu_percent_int)
   63              		.loc 1 16 9 view .LVU8
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 4
 
 
   17:Thaumazein.cpp ****         pos += snprintf(msg + pos, sizeof(msg) - pos, "CPU: %d\n", cpu_percent_int);
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  102 0022 17EE903A 		vmov	r3, s15	@ int
   16:Thaumazein.cpp ****         pos += snprintf(msg + pos, sizeof(msg) - pos, "CPU: %d\n", cpu_percent_int);
  103              		.loc 1 16 47 view .LVU21
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 5
 
 
  104 0026 642B     		cmp	r3, #100
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  145 005a C4F50071 		rsb	r1, r4, #512
  146 005e 1819     		adds	r0, r3, r4
  147 0060 FFF7FEFF 		bl	snprintf
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 6
 
 
  148              	.LVL7:
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
   28:Thaumazein.cpp ****         }
   29:Thaumazein.cpp **** 
   30:Thaumazein.cpp ****         // Separator
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 7
 
 
   31:Thaumazein.cpp ****         pos += snprintf(msg + pos, sizeof(msg) - pos, "--------");
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
   39:lib/libdaisy/src/daisy_seed.h **** 
   40:lib/libdaisy/src/daisy_seed.h ****     /** 
   41:lib/libdaisy/src/daisy_seed.h ****     Deinitializes all peripherals automatically handled by `Init`.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 8
 
 
   42:lib/libdaisy/src/daisy_seed.h ****     */
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
   96:lib/libdaisy/src/daisy_seed.h **** 
   97:lib/libdaisy/src/daisy_seed.h ****     /** Returns the rate in Hz that the Audio callback is called */
   98:lib/libdaisy/src/daisy_seed.h ****     float AudioCallbackRate() const;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 9
 
 
   99:lib/libdaisy/src/daisy_seed.h **** 
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  235              	.L7:
  236 00c0 00000000 		.word	cpu_meter
  237 00c4 0000C842 		.word	1120403456
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 10
 
 
  238 00c8 0C000000 		.word	.LC4
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  291              		.thumb
  292              		.thumb_func
  294              	_Z15PollTouchSensorv:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 11
 
 
  295              	.LFB5344:
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
    5:mpr121_daisy.h **** #include "daisy_seed.h"
    6:mpr121_daisy.h **** #include "per/i2c.h"
    7:mpr121_daisy.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 12
 
 
    8:mpr121_daisy.h **** using namespace daisy;
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  338              	.LBI70:
  339              		.file 5 "lib/libdaisy/src/per/i2c.h"
    1:lib/libdaisy/src/per/i2c.h **** #pragma once
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 13
 
 
    2:lib/libdaisy/src/per/i2c.h **** #include "daisy_core.h"
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  357              		.loc 5 28 12 view .LVU84
  358 001c 8DF81030 		strb	r3, [sp, #16]
  359              	.LVL19:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 14
 
 
  360              		.loc 5 28 12 view .LVU85
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  404 003e FFF7FEFF 		bl	_ZN6Mpr1214InitERKNS_6ConfigE
  405              	.LVL21:
   48:Thaumazein.cpp ****         touch_sensor.SetThresholds(6, 3);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 15
 
 
  406              		.loc 1 48 9 is_stmt 1 view .LVU105
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  445              	.LVL28:
  446 0066 0746     		mov	r7, r0
  447              	.LVL29:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 16
 
 
   56:Thaumazein.cpp ****     for(int i = 0; i < 12; ++i) {
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  493              	.LBE83:
   56:Thaumazein.cpp ****         int ledIdx = 11 - i;  // pad i maps to LED[11-i]
  494              		.loc 1 56 5 is_stmt 1 discriminator 10 view .LVU138
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 17
 
 
   56:Thaumazein.cpp ****         int ledIdx = 11 - i;  // pad i maps to LED[11-i]
@@ -974,7 +974,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
   64:Thaumazein.cpp ****     if (touched == 0) {
  501              		.loc 1 64 5 is_stmt 1 view .LVU141
  502 009e 66B9     		cbnz	r6, .L22
-  65:Thaumazein.cpp ****         // Optionally decay the control value smoothly to 0 when no pads are touched
+  65:Thaumazein.cpp ****        
   66:Thaumazein.cpp ****         touch_cv_value = touch_cv_value * 0.95f; 
  503              		.loc 1 66 9 view .LVU142
  504              		.loc 1 66 26 is_stmt 0 view .LVU143
@@ -996,45 +996,44 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
   73:Thaumazein.cpp ****     // Iterate through all pads
   74:Thaumazein.cpp ****     for (int i = 0; i < 12; i++) {
   75:Thaumazein.cpp ****         if (touched & (1 << i)) {
-  76:Thaumazein.cpp ****             // Get capacitance deviation for this touched pad
-  77:Thaumazein.cpp ****             int16_t deviation = touch_sensor.GetBaselineDeviation(i);
-  78:Thaumazein.cpp ****             total_deviation += deviation;
-  79:Thaumazein.cpp ****             touched_count++;
-  80:Thaumazein.cpp ****         }
-  81:Thaumazein.cpp ****     }
-  82:Thaumazein.cpp **** 
-  83:Thaumazein.cpp ****     float average_deviation = 0.0f;
-  84:Thaumazein.cpp ****     if (touched_count > 0) {
-  85:Thaumazein.cpp ****         average_deviation = total_deviation / touched_count;
-  86:Thaumazein.cpp ****     }
-  87:Thaumazein.cpp **** 
-  88:Thaumazein.cpp ****     // Normalize to 0.0-1.0 range with adjustable sensitivity
-  89:Thaumazein.cpp ****     // Consider recalibrating sensitivity if needed for average pressure
-  90:Thaumazein.cpp ****     float sensitivity = 150.0f;
-  91:Thaumazein.cpp ****     float normalized_value = daisysp::fmax(0.0f, daisysp::fmin(1.0f, average_deviation / sensitivit
-  92:Thaumazein.cpp **** 
-  93:Thaumazein.cpp ****     // Apply curve for better control response (squared curve feels more natural)
-  94:Thaumazein.cpp ****     normalized_value = normalized_value * normalized_value;
-  95:Thaumazein.cpp **** 
-  96:Thaumazein.cpp ****     // Remove the position component - control is now based purely on average pressure
-  97:Thaumazein.cpp ****     // float position_value = highest_pad / 11.0f; // Removed
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 18
+  76:Thaumazein.cpp ****             int16_t deviation = touch_sensor.GetBaselineDeviation(i);
+  77:Thaumazein.cpp ****             total_deviation += deviation;
+  78:Thaumazein.cpp ****             touched_count++;
+  79:Thaumazein.cpp ****         }
+  80:Thaumazein.cpp ****     }
+  81:Thaumazein.cpp **** 
+  82:Thaumazein.cpp ****     float average_deviation = 0.0f;
+  83:Thaumazein.cpp ****     if (touched_count > 0) {
+  84:Thaumazein.cpp ****         average_deviation = total_deviation / touched_count;
+  85:Thaumazein.cpp ****     }
+  86:Thaumazein.cpp **** 
+  87:Thaumazein.cpp ****     // Normalize to 0.0-1.0 range with adjustable sensitivity
+  88:Thaumazein.cpp ****     // Consider recalibrating sensitivity if needed for average pressure
+  89:Thaumazein.cpp ****     float sensitivity = 150.0f;
+  90:Thaumazein.cpp ****     float normalized_value = daisysp::fmax(0.0f, daisysp::fmin(1.0f, average_deviation / sensitivit
+  91:Thaumazein.cpp **** 
+  92:Thaumazein.cpp ****     // Apply curve for better control response (squared curve feels more natural)
+  93:Thaumazein.cpp ****     normalized_value = normalized_value * normalized_value;
+  94:Thaumazein.cpp **** 
+  95:Thaumazein.cpp ****     // Remove the position component - control is now based purely on average pressure
+  96:Thaumazein.cpp ****     // float position_value = highest_pad / 11.0f; // Removed
+  97:Thaumazein.cpp ****     // float position_weight = 0.7f;              // Removed
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 18
 
 
-  98:Thaumazein.cpp ****     // float position_weight = 0.7f;              // Removed
-  99:Thaumazein.cpp ****     // float combined_value = position_value * position_weight + normalized_value * (1.0f - positio
- 100:Thaumazein.cpp ****     float combined_value = normalized_value; // Use normalized average pressure directly
- 101:Thaumazein.cpp **** 
- 102:Thaumazein.cpp ****     // Apply adaptive smoothing - more smoothing for small changes, less for big changes
- 103:Thaumazein.cpp ****     float change = fabsf(combined_value - touch_cv_value);
- 104:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
- 105:Thaumazein.cpp **** 
- 106:Thaumazein.cpp ****     // Update the shared volatile variable
- 107:Thaumazein.cpp ****     touch_cv_value = touch_cv_value * smoothing + combined_value * (1.0f - smoothing);
- 514              		.loc 1 107 20 view .LVU147
+  98:Thaumazein.cpp ****     // float combined_value = position_value * position_weight + normalized_value * (1.0f - positio
+  99:Thaumazein.cpp ****     float combined_value = normalized_value; // Use normalized average pressure directly
+ 100:Thaumazein.cpp **** 
+ 101:Thaumazein.cpp ****     // Apply adaptive smoothing - more smoothing for small changes, less for big changes
+ 102:Thaumazein.cpp ****     float change = fabsf(combined_value - touch_cv_value);
+ 103:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ 104:Thaumazein.cpp **** 
+ 105:Thaumazein.cpp ****     // Update the shared volatile variable
+ 106:Thaumazein.cpp ****     touch_cv_value = touch_cv_value * smoothing + combined_value * (1.0f - smoothing);
+ 514              		.loc 1 106 20 view .LVU147
  515 00ae C3ED007A 		vstr.32	s15, [r3]
- 108:Thaumazein.cpp **** }
- 516              		.loc 1 108 1 view .LVU148
+ 107:Thaumazein.cpp **** }
+ 516              		.loc 1 107 1 view .LVU148
  517 00b2 07B0     		add	sp, sp, #28
  518              		.cfi_remember_state
  519              		.cfi_def_cfa_offset 28
@@ -1064,48 +1063,48 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  539 00c4 2C46     		mov	r4, r5
  540              	.LVL39:
  541              	.L17:
-  75:Thaumazein.cpp ****             // Get capacitance deviation for this touched pad
+  75:Thaumazein.cpp ****             int16_t deviation = touch_sensor.GetBaselineDeviation(i);
  542              		.loc 1 75 9 is_stmt 1 view .LVU153
  543              	.LBB87:
  544              	.LBB85:
-  75:Thaumazein.cpp ****             // Get capacitance deviation for this touched pad
+  75:Thaumazein.cpp ****             int16_t deviation = touch_sensor.GetBaselineDeviation(i);
  545              		.loc 1 75 21 is_stmt 0 view .LVU154
  546 00c6 46FA05F3 		asr	r3, r6, r5
-  75:Thaumazein.cpp ****             // Get capacitance deviation for this touched pad
+  75:Thaumazein.cpp ****             int16_t deviation = touch_sensor.GetBaselineDeviation(i);
  547              		.loc 1 75 9 view .LVU155
  548 00ca DB07     		lsls	r3, r3, #31
  549 00cc 0AD5     		bpl	.L19
  550              	.LBB86:
-  77:Thaumazein.cpp ****             total_deviation += deviation;
- 551              		.loc 1 77 13 is_stmt 1 view .LVU156
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 19
+  76:Thaumazein.cpp ****             total_deviation += deviation;
+ 551              		.loc 1 76 13 is_stmt 1 view .LVU156
+  76:Thaumazein.cpp ****             total_deviation += deviation;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 19
 
 
-  77:Thaumazein.cpp ****             total_deviation += deviation;
- 552              		.loc 1 77 66 is_stmt 0 view .LVU157
+ 552              		.loc 1 76 66 is_stmt 0 view .LVU157
  553 00ce E9B2     		uxtb	r1, r5
  554 00d0 1E48     		ldr	r0, .L33
  555 00d2 FFF7FEFF 		bl	_ZN6Mpr12120GetBaselineDeviationEh
  556              	.LVL40:
-  78:Thaumazein.cpp ****             touched_count++;
- 557              		.loc 1 78 13 is_stmt 1 view .LVU158
-  78:Thaumazein.cpp ****             touched_count++;
- 558              		.loc 1 78 29 is_stmt 0 view .LVU159
+  77:Thaumazein.cpp ****             touched_count++;
+ 557              		.loc 1 77 13 is_stmt 1 view .LVU158
+  77:Thaumazein.cpp ****             touched_count++;
+ 558              		.loc 1 77 29 is_stmt 0 view .LVU159
  559 00d6 07EE900A 		vmov	s15, r0	@ int
-  79:Thaumazein.cpp ****         }
- 560              		.loc 1 79 26 view .LVU160
+  78:Thaumazein.cpp ****         }
+ 560              		.loc 1 78 26 view .LVU160
  561 00da 0134     		adds	r4, r4, #1
  562              	.LVL41:
-  78:Thaumazein.cpp ****             touched_count++;
- 563              		.loc 1 78 29 view .LVU161
+  77:Thaumazein.cpp ****             touched_count++;
+ 563              		.loc 1 77 29 view .LVU161
  564 00dc F8EEE77A 		vcvt.f32.s32	s15, s15
  565 00e0 78EEA78A 		vadd.f32	s17, s17, s15
  566              	.LVL42:
-  79:Thaumazein.cpp ****         }
- 567              		.loc 1 79 13 is_stmt 1 view .LVU162
+  78:Thaumazein.cpp ****         }
+ 567              		.loc 1 78 13 is_stmt 1 view .LVU162
  568              	.L19:
-  79:Thaumazein.cpp ****         }
- 569              		.loc 1 79 13 is_stmt 0 view .LVU163
+  78:Thaumazein.cpp ****         }
+ 569              		.loc 1 78 13 is_stmt 0 view .LVU163
  570              	.LBE86:
  571              	.LBE85:
   74:Thaumazein.cpp ****         if (touched & (1 << i)) {
@@ -1119,30 +1118,30 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
   74:Thaumazein.cpp ****         if (touched & (1 << i)) {
  578              		.loc 1 74 23 is_stmt 0 discriminator 2 view .LVU166
  579              	.LBE87:
-  83:Thaumazein.cpp ****     if (touched_count > 0) {
- 580              		.loc 1 83 5 is_stmt 1 view .LVU167
+  82:Thaumazein.cpp ****     if (touched_count > 0) {
+ 580              		.loc 1 82 5 is_stmt 1 view .LVU167
  581              	.LVL44:
-  84:Thaumazein.cpp ****         average_deviation = total_deviation / touched_count;
- 582              		.loc 1 84 5 view .LVU168
+  83:Thaumazein.cpp ****         average_deviation = total_deviation / touched_count;
+ 582              		.loc 1 83 5 view .LVU168
  583 00ea 5CB3     		cbz	r4, .L23
-  85:Thaumazein.cpp ****     }
- 584              		.loc 1 85 9 view .LVU169
-  85:Thaumazein.cpp ****     }
- 585              		.loc 1 85 45 is_stmt 0 view .LVU170
+  84:Thaumazein.cpp ****     }
+ 584              		.loc 1 84 9 view .LVU169
+  84:Thaumazein.cpp ****     }
+ 585              		.loc 1 84 45 is_stmt 0 view .LVU170
  586 00ec 07EE904A 		vmov	s15, r4	@ int
  587 00f0 F8EEE77A 		vcvt.f32.s32	s15, s15
-  85:Thaumazein.cpp ****     }
- 588              		.loc 1 85 27 view .LVU171
+  84:Thaumazein.cpp ****     }
+ 588              		.loc 1 84 27 view .LVU171
  589 00f4 C8EEA76A 		vdiv.f32	s13, s17, s15
  590              	.LVL45:
  591              	.L20:
-  90:Thaumazein.cpp ****     float normalized_value = daisysp::fmax(0.0f, daisysp::fmin(1.0f, average_deviation / sensitivit
- 592              		.loc 1 90 5 is_stmt 1 view .LVU172
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 20
+  89:Thaumazein.cpp ****     float normalized_value = daisysp::fmax(0.0f, daisysp::fmin(1.0f, average_deviation / sensitivit
+ 592              		.loc 1 89 5 is_stmt 1 view .LVU172
+  90:Thaumazein.cpp **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 20
 
 
-  91:Thaumazein.cpp **** 
- 593              		.loc 1 91 5 view .LVU173
+ 593              		.loc 1 90 5 view .LVU173
  594              	.LBB88:
  595              	.LBI88:
  596              		.file 6 "lib/DaisySP/Source/Utility/dsp.h"
@@ -1198,10 +1197,10 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
   50:lib/DaisySP/Source/Utility/dsp.h **** 
   51:lib/DaisySP/Source/Utility/dsp.h **** inline float fmin(float a, float b)
  597              		.loc 6 51 14 view .LVU174
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 21
-
-
  598              	.LBB89:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 21
+
+
   52:lib/DaisySP/Source/Utility/dsp.h **** {
   53:lib/DaisySP/Source/Utility/dsp.h ****     float r;
  599              		.loc 6 53 5 view .LVU175
@@ -1210,22 +1209,22 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  600              		.loc 6 55 5 view .LVU176
  601              	.LBE89:
  602              	.LBE88:
-  91:Thaumazein.cpp **** 
- 603              		.loc 1 91 43 is_stmt 0 view .LVU177
+  90:Thaumazein.cpp **** 
+ 603              		.loc 1 90 43 is_stmt 0 view .LVU177
  604 00f8 9FED1E6A 		vldr.32	s12, .L33+40
- 103:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
- 605              		.loc 1 103 43 view .LVU178
+ 102:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ 605              		.loc 1 102 43 view .LVU178
  606 00fc 1A4B     		ldr	r3, .L33+28
-  91:Thaumazein.cpp **** 
- 607              		.loc 1 91 43 view .LVU179
+  90:Thaumazein.cpp **** 
+ 607              		.loc 1 90 43 view .LVU179
  608 00fe 86EE867A 		vdiv.f32	s14, s13, s12
  609              	.LVL46:
- 103:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
- 610              		.loc 1 103 43 view .LVU180
+ 102:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ 610              		.loc 1 102 43 view .LVU180
  611 0102 D3ED006A 		vldr.32	s13, [r3]
  612              	.LVL47:
- 104:Thaumazein.cpp **** 
- 613              		.loc 1 104 36 view .LVU181
+ 103:Thaumazein.cpp **** 
+ 613              		.loc 1 103 36 view .LVU181
  614 0106 9FED196A 		vldr.32	s12, .L33+32
  615              	.LBB91:
  616              	.LBB90:
@@ -1258,10 +1257,10 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  636              		.syntax unified
  637              	@ 44 "lib/DaisySP/Source/Utility/dsp.h" 1
  638 0112 88FE077A 		vmaxnm.f32 s14, s16, s14
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 22
-
-
  639              	@ 0 "" 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 22
+
+
  640              	.LVL49:
   48:lib/DaisySP/Source/Utility/dsp.h **** }
  641              		.loc 6 48 5 view .LVU188
@@ -1271,31 +1270,31 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  644              		.syntax unified
  645              	.LBE93:
  646              	.LBE92:
-  94:Thaumazein.cpp **** 
- 647              		.loc 1 94 5 is_stmt 1 view .LVU190
-  94:Thaumazein.cpp **** 
- 648              		.loc 1 94 22 is_stmt 0 view .LVU191
+  93:Thaumazein.cpp **** 
+ 647              		.loc 1 93 5 is_stmt 1 view .LVU190
+  93:Thaumazein.cpp **** 
+ 648              		.loc 1 93 22 is_stmt 0 view .LVU191
  649 0116 27EE077A 		vmul.f32	s14, s14, s14
  650              	.LVL50:
- 100:Thaumazein.cpp **** 
- 651              		.loc 1 100 5 is_stmt 1 view .LVU192
- 103:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
- 652              		.loc 1 103 5 view .LVU193
- 104:Thaumazein.cpp **** 
- 653              		.loc 1 104 5 view .LVU194
- 104:Thaumazein.cpp **** 
- 654              		.loc 1 104 36 is_stmt 0 view .LVU195
+  99:Thaumazein.cpp **** 
+ 651              		.loc 1 99 5 is_stmt 1 view .LVU192
+ 102:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ 652              		.loc 1 102 5 view .LVU193
+ 103:Thaumazein.cpp **** 
+ 653              		.loc 1 103 5 view .LVU194
+ 103:Thaumazein.cpp **** 
+ 654              		.loc 1 103 36 is_stmt 0 view .LVU195
  655 011a F0EE005A 		vmov.f32	s11, #2.0e+0
- 103:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
- 656              		.loc 1 103 41 view .LVU196
+ 102:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ 656              		.loc 1 102 41 view .LVU196
  657 011e 77EE666A 		vsub.f32	s13, s14, s13
  658              	.LVL51:
- 103:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
- 659              		.loc 1 103 57 view .LVU197
+ 102:Thaumazein.cpp ****     float smoothing = daisysp::fmax(0.5f, 0.95f - change * 2.0f); // 0.5-0.95 smoothing range
+ 659              		.loc 1 102 57 view .LVU197
  660 0122 F0EEE66A 		vabs.f32	s13, s13
  661              	.LVL52:
- 104:Thaumazein.cpp **** 
- 662              		.loc 1 104 36 view .LVU198
+ 103:Thaumazein.cpp **** 
+ 662              		.loc 1 103 36 view .LVU198
  663 0126 A6EEE56A 		vfms.f32	s12, s13, s11
  664              	.LVL53:
  665              	.LBB94:
@@ -1318,34 +1317,34 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  678              	.LVL55:
   48:lib/DaisySP/Source/Utility/dsp.h **** }
  679              		.loc 6 48 5 is_stmt 1 view .LVU203
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 23
-
-
   48:lib/DaisySP/Source/Utility/dsp.h **** }
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 23
+
+
  680              		.loc 6 48 5 is_stmt 0 view .LVU204
  681              		.thumb
  682              		.syntax unified
  683              	.LBE95:
  684              	.LBE94:
- 107:Thaumazein.cpp **** }
- 685              		.loc 1 107 5 is_stmt 1 view .LVU205
- 107:Thaumazein.cpp **** }
- 686              		.loc 1 107 74 is_stmt 0 view .LVU206
+ 106:Thaumazein.cpp **** }
+ 685              		.loc 1 106 5 is_stmt 1 view .LVU205
+ 106:Thaumazein.cpp **** }
+ 686              		.loc 1 106 74 is_stmt 0 view .LVU206
  687 0132 77EEE67A 		vsub.f32	s15, s15, s13
- 107:Thaumazein.cpp **** }
- 688              		.loc 1 107 22 view .LVU207
+ 106:Thaumazein.cpp **** }
+ 688              		.loc 1 106 22 view .LVU207
  689 0136 93ED006A 		vldr.32	s12, [r3]
- 107:Thaumazein.cpp **** }
- 690              		.loc 1 107 66 view .LVU208
+ 106:Thaumazein.cpp **** }
+ 690              		.loc 1 106 66 view .LVU208
  691 013a 67EE877A 		vmul.f32	s15, s15, s14
- 107:Thaumazein.cpp **** }
- 692              		.loc 1 107 49 view .LVU209
+ 106:Thaumazein.cpp **** }
+ 692              		.loc 1 106 49 view .LVU209
  693 013e E6EE267A 		vfma.f32	s15, s12, s13
  694 0142 B4E7     		b	.L32
  695              	.LVL56:
  696              	.L23:
-  83:Thaumazein.cpp ****     if (touched_count > 0) {
- 697              		.loc 1 83 11 view .LVU210
+  82:Thaumazein.cpp ****     if (touched_count > 0) {
+ 697              		.loc 1 82 11 view .LVU210
  698 0144 DFED0A6A 		vldr.32	s13, .L33+36
  699 0148 D6E7     		b	.L20
  700              	.L34:
@@ -1372,234 +1371,228 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 1
  722              		.thumb_func
  724              	main:
  725              	.LFB5348:
- 109:Thaumazein.cpp **** 
- 110:Thaumazein.cpp **** int main(void) {
- 726              		.loc 1 110 16 is_stmt 1 view -0
+ 108:Thaumazein.cpp **** 
+ 109:Thaumazein.cpp **** int main(void) {
+ 726              		.loc 1 109 16 is_stmt 1 view -0
  727              		.cfi_startproc
  728              		@ args = 0, pretend = 0, frame = 0
  729              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 24
-
-
- 111:Thaumazein.cpp ****     InitializeSynth();
- 730              		.loc 1 111 5 view .LVU212
  110:Thaumazein.cpp ****     InitializeSynth();
- 731              		.loc 1 110 16 is_stmt 0 view .LVU213
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 24
+
+
+ 730              		.loc 1 110 5 view .LVU212
+ 109:Thaumazein.cpp ****     InitializeSynth();
+ 731              		.loc 1 109 16 is_stmt 0 view .LVU213
  732 0000 10B5     		push	{r4, lr}
  733              		.cfi_def_cfa_offset 8
  734              		.cfi_offset 4, -8
  735              		.cfi_offset 14, -4
- 736              		.loc 1 111 20 view .LVU214
+ 736              		.loc 1 110 20 view .LVU214
  737 0002 FFF7FEFF 		bl	_Z15InitializeSynthv
  738              	.LVL57:
- 112:Thaumazein.cpp ****     // Check bootloader condition once at startup
- 113:Thaumazein.cpp ****     Bootload();
- 739              		.loc 1 113 5 is_stmt 1 view .LVU215
- 740              		.loc 1 113 13 is_stmt 0 view .LVU216
- 741 0006 FFF7FEFF 		bl	_Z8Bootloadv
+ 111:Thaumazein.cpp ****     
+ 112:Thaumazein.cpp ****     uint32_t lastPoll = hw.system.GetNow();  // Track last poll time
+ 739              		.loc 1 112 5 is_stmt 1 view .LVU215
+ 740              		.loc 1 112 41 is_stmt 0 view .LVU216
+ 741 0006 FFF7FEFF 		bl	_ZN5daisy6System6GetNowEv
  742              	.LVL58:
- 114:Thaumazein.cpp ****     
- 115:Thaumazein.cpp ****     uint32_t lastPoll = hw.system.GetNow();  // Track last poll time
- 743              		.loc 1 115 5 is_stmt 1 view .LVU217
- 744              		.loc 1 115 41 is_stmt 0 view .LVU218
- 745 000a FFF7FEFF 		bl	_ZN5daisy6System6GetNowEv
- 746              	.LVL59:
- 747 000e 0446     		mov	r4, r0
- 748              	.LVL60:
- 749              	.L37:
- 116:Thaumazein.cpp ****     
- 117:Thaumazein.cpp ****     // Main Loop 
- 118:Thaumazein.cpp ****     while (1) {
- 750              		.loc 1 118 5 is_stmt 1 view .LVU219
- 119:Thaumazein.cpp ****         UpdateLED();
- 751              		.loc 1 119 9 view .LVU220
- 752              		.loc 1 119 18 is_stmt 0 view .LVU221
- 753 0010 FFF7FEFF 		bl	_Z9UpdateLEDv
+ 743 000a 0446     		mov	r4, r0
+ 744              	.LVL59:
+ 745              	.L37:
+ 113:Thaumazein.cpp ****     
+ 114:Thaumazein.cpp ****     // Main Loop 
+ 115:Thaumazein.cpp ****     while (1) {
+ 746              		.loc 1 115 5 is_stmt 1 view .LVU217
+ 116:Thaumazein.cpp ****         UpdateLED();
+ 747              		.loc 1 116 9 view .LVU218
+ 748              		.loc 1 116 18 is_stmt 0 view .LVU219
+ 749 000c FFF7FEFF 		bl	_Z9UpdateLEDv
+ 750              	.LVL60:
+ 117:Thaumazein.cpp ****         
+ 118:Thaumazein.cpp ****         // Check bootloader condition via ADC touch pads
+ 119:Thaumazein.cpp ****         Bootload();
+ 751              		.loc 1 119 9 is_stmt 1 view .LVU220
+ 752              		.loc 1 119 17 is_stmt 0 view .LVU221
+ 753 0010 FFF7FEFF 		bl	_Z8Bootloadv
  754              	.LVL61:
  120:Thaumazein.cpp ****         
- 121:Thaumazein.cpp ****         // Check bootloader condition anytime during operation
- 122:Thaumazein.cpp ****         Bootload();
- 755              		.loc 1 122 9 is_stmt 1 view .LVU222
- 756              		.loc 1 122 17 is_stmt 0 view .LVU223
- 757 0014 FFF7FEFF 		bl	_Z8Bootloadv
+ 121:Thaumazein.cpp ****         UpdateDisplay();
+ 755              		.loc 1 121 9 is_stmt 1 view .LVU222
+ 756              		.loc 1 121 22 is_stmt 0 view .LVU223
+ 757 0014 FFF7FEFF 		bl	_Z13UpdateDisplayv
  758              	.LVL62:
- 123:Thaumazein.cpp ****         
- 124:Thaumazein.cpp ****         UpdateDisplay();
+ 122:Thaumazein.cpp ****         
+ 123:Thaumazein.cpp ****         // Poll touch sensor every 5 ms (200 Hz)
+ 124:Thaumazein.cpp ****         if (hw.system.GetNow() - lastPoll >= 5) {
  759              		.loc 1 124 9 is_stmt 1 view .LVU224
- 760              		.loc 1 124 22 is_stmt 0 view .LVU225
- 761 0018 FFF7FEFF 		bl	_Z13UpdateDisplayv
+ 760              		.loc 1 124 29 is_stmt 0 view .LVU225
+ 761 0018 FFF7FEFF 		bl	_ZN5daisy6System6GetNowEv
  762              	.LVL63:
- 125:Thaumazein.cpp ****         
- 126:Thaumazein.cpp ****         // Poll touch sensor every 5 ms (200 Hz)
- 127:Thaumazein.cpp ****         if (hw.system.GetNow() - lastPoll >= 5) {
- 763              		.loc 1 127 9 is_stmt 1 view .LVU226
- 764              		.loc 1 127 29 is_stmt 0 view .LVU227
- 765 001c FFF7FEFF 		bl	_ZN5daisy6System6GetNowEv
- 766              	.LVL64:
- 767              		.loc 1 127 32 view .LVU228
- 768 0020 001B     		subs	r0, r0, r4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 25
+ 763              		.loc 1 124 32 view .LVU226
+ 764 001c 001B     		subs	r0, r0, r4
+ 765              		.loc 1 124 9 view .LVU227
+ 766 001e 0428     		cmp	r0, #4
+ 767 0020 04D9     		bls	.L36
+ 125:Thaumazein.cpp ****             lastPoll = hw.system.GetNow();
+ 768              		.loc 1 125 13 is_stmt 1 view .LVU228
+ 769              		.loc 1 125 40 is_stmt 0 view .LVU229
+ 770 0022 FFF7FEFF 		bl	_ZN5daisy6System6GetNowEv
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 25
 
 
- 769              		.loc 1 127 9 view .LVU229
- 770 0022 0428     		cmp	r0, #4
- 771 0024 04D9     		bls	.L36
- 128:Thaumazein.cpp ****             lastPoll = hw.system.GetNow();
- 772              		.loc 1 128 13 is_stmt 1 view .LVU230
- 773              		.loc 1 128 40 is_stmt 0 view .LVU231
- 774 0026 FFF7FEFF 		bl	_ZN5daisy6System6GetNowEv
- 775              	.LVL65:
- 776 002a 0446     		mov	r4, r0
+ 771              	.LVL64:
+ 772 0026 0446     		mov	r4, r0
+ 773              	.LVL65:
+ 126:Thaumazein.cpp ****             PollTouchSensor(); 
+ 774              		.loc 1 126 13 is_stmt 1 view .LVU230
+ 775              		.loc 1 126 28 is_stmt 0 view .LVU231
+ 776 0028 FFF7FEFF 		bl	_Z15PollTouchSensorv
  777              	.LVL66:
- 129:Thaumazein.cpp ****             PollTouchSensor(); 
- 778              		.loc 1 129 13 is_stmt 1 view .LVU232
- 779              		.loc 1 129 28 is_stmt 0 view .LVU233
- 780 002c FFF7FEFF 		bl	_Z15PollTouchSensorv
- 781              	.LVL67:
- 782              	.L36:
- 130:Thaumazein.cpp ****         }
- 131:Thaumazein.cpp ****         
- 132:Thaumazein.cpp ****         // Yield for system tasks, adjusted for polling interval
- 133:Thaumazein.cpp ****         System::Delay(1); // Shorter delay to allow more frequent polling checks
- 783              		.loc 1 133 9 is_stmt 1 view .LVU234
- 784              		.loc 1 133 22 is_stmt 0 view .LVU235
- 785 0030 0120     		movs	r0, #1
- 786 0032 FFF7FEFF 		bl	_ZN5daisy6System5DelayEm
- 787              	.LVL68:
- 118:Thaumazein.cpp ****         UpdateLED();
- 788              		.loc 1 118 5 is_stmt 1 view .LVU236
- 119:Thaumazein.cpp ****         
- 789              		.loc 1 119 18 is_stmt 0 view .LVU237
- 790 0036 EBE7     		b	.L37
- 791              		.cfi_endproc
- 792              	.LFE5348:
- 794              		.global	touch_cv_value
- 795              		.global	current_touch_state
- 796              		.section	.rodata
- 797              		.set	.LANCHOR0,. + 0
- 798              	.LC0:
- 799 0000 01       		.byte	1
- 800 0001 08       		.byte	8
- 801              	.LC1:
- 802 0002 01       		.byte	1
- 803 0003 09       		.byte	9
- 804              		.section	.bss.current_touch_state,"aw",%nobits
- 805              		.align	1
- 806              		.set	.LANCHOR1,. + 0
- 809              	current_touch_state:
- 810 0000 0000     		.space	2
- 811              		.section	.bss.touch_cv_value,"aw",%nobits
- 812              		.align	2
- 813              		.set	.LANCHOR2,. + 0
- 816              	touch_cv_value:
- 817 0000 00000000 		.space	4
- 818              		.text
- 819              	.Letext0:
- 820              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
- 821              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
- 822              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 26
+ 778              	.L36:
+ 127:Thaumazein.cpp ****         }
+ 128:Thaumazein.cpp ****         
+ 129:Thaumazein.cpp ****         // Yield for system tasks, adjusted for polling interval
+ 130:Thaumazein.cpp ****         System::Delay(1); // Shorter delay to allow more frequent polling checks
+ 779              		.loc 1 130 9 is_stmt 1 view .LVU232
+ 780              		.loc 1 130 22 is_stmt 0 view .LVU233
+ 781 002c 0120     		movs	r0, #1
+ 782 002e FFF7FEFF 		bl	_ZN5daisy6System5DelayEm
+ 783              	.LVL67:
+ 115:Thaumazein.cpp ****         UpdateLED();
+ 784              		.loc 1 115 5 is_stmt 1 view .LVU234
+ 116:Thaumazein.cpp ****         
+ 785              		.loc 1 116 18 is_stmt 0 view .LVU235
+ 786 0032 EBE7     		b	.L37
+ 787              		.cfi_endproc
+ 788              	.LFE5348:
+ 790              		.global	touch_cv_value
+ 791              		.global	current_touch_state
+ 792              		.section	.rodata
+ 793              		.set	.LANCHOR0,. + 0
+ 794              	.LC0:
+ 795 0000 01       		.byte	1
+ 796 0001 08       		.byte	8
+ 797              	.LC1:
+ 798 0002 01       		.byte	1
+ 799 0003 09       		.byte	9
+ 800              		.section	.bss.current_touch_state,"aw",%nobits
+ 801              		.align	1
+ 802              		.set	.LANCHOR1,. + 0
+ 805              	current_touch_state:
+ 806 0000 0000     		.space	2
+ 807              		.section	.bss.touch_cv_value,"aw",%nobits
+ 808              		.align	2
+ 809              		.set	.LANCHOR2,. + 0
+ 812              	touch_cv_value:
+ 813 0000 00000000 		.space	4
+ 814              		.text
+ 815              	.Letext0:
+ 816              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 817              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 818              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
+ 819              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 820              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 821              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 822              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 823              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
+ 824              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 825              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 26
 
 
- 823              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 824              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
- 825              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
- 826              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
- 827              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
- 828              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
- 829              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
- 830              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
- 831              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
- 832              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
- 833              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
- 834              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
- 835              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
- 836              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
- 837              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
- 838              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
- 839              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
- 840              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
- 841              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/uses_allocator.h
- 842              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/tuple"
- 843              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h"
- 844              		.file 31 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/functional"
- 845              		.file 32 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/allocator.h"
- 846              		.file 33 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/alloc_traits.h"
- 847              		.file 34 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_vector.h"
- 848              		.file 35 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc"
- 849              		.file 36 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_function.h"
- 850              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/refwrap.h"
- 851              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
- 852              		.file 39 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/ext/new_allocator.h"
- 853              		.file 40 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/ext/alloc_traits.h"
- 854              		.file 41 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
- 855              		.file 42 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
- 856              		.file 43 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
- 857              		.file 44 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
- 858              		.file 45 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
- 859              		.file 46 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
- 860              		.file 47 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
- 861              		.file 48 "lib/libdaisy/src/daisy_core.h"
- 862              		.file 49 "lib/libdaisy/src/per/tim.h"
- 863              		.file 50 "lib/libdaisy/src/sys/system.h"
- 864              		.file 51 "lib/libdaisy/src/per/qspi.h"
- 865              		.file 52 "lib/libdaisy/src/per/dac.h"
- 866              		.file 53 "lib/libdaisy/src/per/gpio.h"
- 867              		.file 54 "lib/libdaisy/src/per/sai.h"
- 868              		.file 55 "lib/libdaisy/src/hid/audio.h"
- 869              		.file 56 "lib/libdaisy/src/per/adc.h"
- 870              		.file 57 "lib/libdaisy/src/hid/usb.h"
- 871              		.file 58 "lib/libdaisy/src/hid/logger_impl.h"
- 872              		.file 59 "lib/libdaisy/src/util/wav_format.h"
- 873              		.file 60 "lib/libdaisy/src/hid/logger.h"
- 874              		.file 61 "lib/libdaisy/src/dev/sdram.h"
- 875              		.file 62 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
- 876              		.file 63 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
- 877              		.file 64 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
- 878              		.file 65 "lib/DaisySP/Source/Control/adenv.h"
- 879              		.file 66 "lib/DaisySP/Source/Utility/metro.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 27
+ 826              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 827              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 828              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 829              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 830              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
+ 831              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
+ 832              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
+ 833              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
+ 834              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
+ 835              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
+ 836              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
+ 837              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/uses_allocator.h
+ 838              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/tuple"
+ 839              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h"
+ 840              		.file 31 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/functional"
+ 841              		.file 32 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/allocator.h"
+ 842              		.file 33 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/alloc_traits.h"
+ 843              		.file 34 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_vector.h"
+ 844              		.file 35 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc"
+ 845              		.file 36 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_function.h"
+ 846              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/refwrap.h"
+ 847              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 848              		.file 39 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/ext/new_allocator.h"
+ 849              		.file 40 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/ext/alloc_traits.h"
+ 850              		.file 41 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
+ 851              		.file 42 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
+ 852              		.file 43 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
+ 853              		.file 44 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 854              		.file 45 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 855              		.file 46 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 856              		.file 47 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
+ 857              		.file 48 "lib/libdaisy/src/daisy_core.h"
+ 858              		.file 49 "lib/libdaisy/src/per/tim.h"
+ 859              		.file 50 "lib/libdaisy/src/sys/system.h"
+ 860              		.file 51 "lib/libdaisy/src/per/qspi.h"
+ 861              		.file 52 "lib/libdaisy/src/per/dac.h"
+ 862              		.file 53 "lib/libdaisy/src/per/gpio.h"
+ 863              		.file 54 "lib/libdaisy/src/per/sai.h"
+ 864              		.file 55 "lib/libdaisy/src/hid/audio.h"
+ 865              		.file 56 "lib/libdaisy/src/per/adc.h"
+ 866              		.file 57 "lib/libdaisy/src/hid/usb.h"
+ 867              		.file 58 "lib/libdaisy/src/hid/logger_impl.h"
+ 868              		.file 59 "lib/libdaisy/src/util/wav_format.h"
+ 869              		.file 60 "lib/libdaisy/src/hid/logger.h"
+ 870              		.file 61 "lib/libdaisy/src/dev/sdram.h"
+ 871              		.file 62 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 872              		.file 63 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
+ 873              		.file 64 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
+ 874              		.file 65 "lib/DaisySP/Source/Control/adenv.h"
+ 875              		.file 66 "lib/DaisySP/Source/Utility/metro.h"
+ 876              		.file 67 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
+ 877              		.file 68 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
+ 878              		.file 69 "eurorack/stmlib/stmlib.h"
+ 879              		.file 70 "eurorack/plaits/dsp/dsp.h"
+ 880              		.file 71 "eurorack/plaits/dsp/engine/additive_engine.h"
+ 881              		.file 72 "eurorack/plaits/dsp/oscillator/oscillator.h"
+ 882              		.file 73 "eurorack/plaits/dsp/engine/chord_engine.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 27
 
 
- 880              		.file 67 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
- 881              		.file 68 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
- 882              		.file 69 "eurorack/stmlib/stmlib.h"
- 883              		.file 70 "eurorack/plaits/dsp/dsp.h"
- 884              		.file 71 "eurorack/plaits/dsp/engine/additive_engine.h"
- 885              		.file 72 "eurorack/plaits/dsp/oscillator/oscillator.h"
- 886              		.file 73 "eurorack/plaits/dsp/engine/chord_engine.h"
- 887              		.file 74 "eurorack/plaits/dsp/physical_modelling/resonator.h"
- 888              		.file 75 "eurorack/plaits/dsp/engine/particle_engine.h"
- 889              		.file 76 "eurorack/plaits/dsp/physical_modelling/string.h"
- 890              		.file 77 "eurorack/plaits/dsp/engine/string_engine.h"
- 891              		.file 78 "eurorack/plaits/dsp/engine/swarm_engine.h"
- 892              		.file 79 "eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h"
- 893              		.file 80 "eurorack/plaits/dsp/voice.h"
- 894              		.file 81 "Effects/BiquadFilters.h"
- 895              		.file 82 "Arpeggiator.h"
- 896              		.file 83 "Thaumazein.h"
- 897              		.file 84 "lib/libdaisy/src/dev/sr_595.h"
- 898              		.file 85 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s 			page 28
+ 883              		.file 74 "eurorack/plaits/dsp/physical_modelling/resonator.h"
+ 884              		.file 75 "eurorack/plaits/dsp/engine/particle_engine.h"
+ 885              		.file 76 "eurorack/plaits/dsp/physical_modelling/string.h"
+ 886              		.file 77 "eurorack/plaits/dsp/engine/string_engine.h"
+ 887              		.file 78 "eurorack/plaits/dsp/engine/swarm_engine.h"
+ 888              		.file 79 "eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h"
+ 889              		.file 80 "eurorack/plaits/dsp/voice.h"
+ 890              		.file 81 "Effects/BiquadFilters.h"
+ 891              		.file 82 "Arpeggiator.h"
+ 892              		.file 83 "Thaumazein.h"
+ 893              		.file 84 "lib/libdaisy/src/dev/sr_595.h"
+ 894              		.file 85 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s 			page 28
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Thaumazein.cpp
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:36     .text._Z13UpdateDisplayv.part.0:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:41     .text._Z13UpdateDisplayv.part.0:0000000000000000 _Z13UpdateDisplayv.part.0
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:236    .text._Z13UpdateDisplayv.part.0:00000000000000c0 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:254    .text._Z13UpdateDisplayv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:260    .text._Z13UpdateDisplayv:0000000000000000 _Z13UpdateDisplayv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:283    .text._Z13UpdateDisplayv:000000000000000c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:288    .text._Z15PollTouchSensorv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:294    .text._Z15PollTouchSensorv:0000000000000000 _Z15PollTouchSensorv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:703    .text._Z15PollTouchSensorv:000000000000014c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:718    .text.startup.main:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:724    .text.startup.main:0000000000000000 main
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:816    .bss.touch_cv_value:0000000000000000 touch_cv_value
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:809    .bss.current_touch_state:0000000000000000 current_touch_state
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:805    .bss.current_touch_state:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc5LV8fB.s:812    .bss.touch_cv_value:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:36     .text._Z13UpdateDisplayv.part.0:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:41     .text._Z13UpdateDisplayv.part.0:0000000000000000 _Z13UpdateDisplayv.part.0
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:236    .text._Z13UpdateDisplayv.part.0:00000000000000c0 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:254    .text._Z13UpdateDisplayv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:260    .text._Z13UpdateDisplayv:0000000000000000 _Z13UpdateDisplayv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:283    .text._Z13UpdateDisplayv:000000000000000c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:288    .text._Z15PollTouchSensorv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:294    .text._Z15PollTouchSensorv:0000000000000000 _Z15PollTouchSensorv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:703    .text._Z15PollTouchSensorv:000000000000014c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:718    .text.startup.main:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:724    .text.startup.main:0000000000000000 main
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:812    .bss.touch_cv_value:0000000000000000 touch_cv_value
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:805    .bss.current_touch_state:0000000000000000 current_touch_state
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:801    .bss.current_touch_state:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccnok6VO.s:808    .bss.touch_cv_value:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 snprintf
@@ -1623,6 +1616,6 @@ arp_led_timestamps
 ARP_LED_DURATION_MS
 touch_leds
 _Z15InitializeSynthv
-_Z8Bootloadv
 _Z9UpdateLEDv
+_Z8Bootloadv
 _ZN5daisy6System5DelayEm

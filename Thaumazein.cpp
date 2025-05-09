@@ -62,7 +62,7 @@ void PollTouchSensor() {
     }
 
     if (touched == 0) {
-        // Optionally decay the control value smoothly to 0 when no pads are touched
+       
         touch_cv_value = touch_cv_value * 0.95f; 
         return;
     }
@@ -73,7 +73,6 @@ void PollTouchSensor() {
     // Iterate through all pads
     for (int i = 0; i < 12; i++) {
         if (touched & (1 << i)) {
-            // Get capacitance deviation for this touched pad
             int16_t deviation = touch_sensor.GetBaselineDeviation(i);
             total_deviation += deviation;
             touched_count++;
@@ -109,8 +108,6 @@ void PollTouchSensor() {
 
 int main(void) {
     InitializeSynth();
-    // Check bootloader condition once at startup
-    Bootload();
     
     uint32_t lastPoll = hw.system.GetNow();  // Track last poll time
     
@@ -118,7 +115,7 @@ int main(void) {
     while (1) {
         UpdateLED();
         
-        // Check bootloader condition anytime during operation
+        // Check bootloader condition via ADC touch pads
         Bootload();
         
         UpdateDisplay();

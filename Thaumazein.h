@@ -47,7 +47,6 @@ extern EchoDelay<48000> delay;
 extern CpuLoadMeter cpu_meter;
 
 
-extern Switch button;
 extern AnalogControl delay_time_knob;        // ADC 0 (Pin 15) Delay Time
 extern AnalogControl delay_mix_feedback_knob; // ADC 1 (Pin 16) Delay Mix & Feedback
 extern AnalogControl env_release_knob;       // ADC 2 (Pin 17) Envelope Release
@@ -62,7 +61,6 @@ extern AnalogControl model_next_pad;        // ADC 10 (Pin 25) Model Select Next
 extern AnalogControl mod_wheel;             // ADC 11 (Pin 28) Mod Wheel Control
 
 
-extern const float kTouchMidiNotes[12];
 extern Arpeggiator arp;
 extern volatile bool arp_enabled;
 
@@ -71,11 +69,6 @@ extern float sample_rate;
 extern volatile bool update_display;
 extern volatile float smoothed_output_level;
 extern const int MAX_ENGINE_INDEX;
-
-// Bootloader configuration
-extern const uint32_t BOOTLOADER_HOLD_TIME_MS;
-extern uint32_t button_held_start_time;
-extern bool button_was_pressed;
 
 // Shared buffer
 extern char shared_buffer[262144];
@@ -94,16 +87,11 @@ extern float pitch_val, harm_knob_val, timbre_knob_val, morph_knob_val;
 extern float delay_time_val, delay_mix_feedback_val, delay_mix_val, delay_feedback_val;
 extern float env_attack_val, env_release_val;
 
-extern volatile int engine_retrigger_phase;
-extern volatile int arp_patch_phase;
-
 // Add extern declaration for touch pad LED GPIOs
 extern daisy::GPIO touch_leds[12];
 
 // Add extern declarations for ARP LED blink timestamps and duration
 extern volatile uint32_t arp_led_timestamps[12];
 extern const uint32_t ARP_LED_DURATION_MS;
-
-void InitInterface(daisy::DaisySeed& hardware); 
 
 #endif // THAUMAZEIN_H_ 
