@@ -39,6 +39,10 @@ void UpdateDisplay() {
 
 // Poll the touch sensor and update shared variables
 void PollTouchSensor() {
+    if(!touch_sensor_present) {
+        // Touch sensor unavailable – nothing to poll
+        return;
+    }
     // Recover from any I2C errors on the touch sensor
     if(touch_sensor.HasError()) {
         touch_sensor.ClearError();

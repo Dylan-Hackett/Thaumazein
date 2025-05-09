@@ -53,6 +53,10 @@ The project is structured around the Daisy Seed platform, utilizing its audio pr
 *   **Refactor delay processing into `DelayEffect` namespace/module.**
 *   **Initial port of Plaits code.**
 *   **Basic UI and control handling.**
+*   **THM-110: Gracefully handle missing touch sensor (MPR121) on startup** - *Completed*
+    *   Replaced blocking `while(1)` loop in `InitializeTouchSensor` with a non-fatal warning and flag.
+    *   Added global `touch_sensor_present` flag to allow the rest of the firmware to skip touch-sensor logic when unavailable.
+    *   Prevents total boot-freeze when MPR121 is disconnected or faulty.
 
 ### Backlog / Future Enhancements
 *   **Verification & Testing:**
@@ -73,7 +77,7 @@ The project is structured around the Daisy Seed platform, utilizing its audio pr
     *   Implement Scale Mode chosen with a button combo and keyboard (select from ~12 scales).
 *   **Optimization:**
     *   Further investigate and optimize CPU usage.
-    *   Investigate FLASH memory usage (currently high) and explore optimization techniques if necessary (e.g., compiler flags, code size reduction).
+    *   **RESOLVED (THM-109):** Flash memory usage was high because the application was incorrectly targeted to internal flash. The build system now targets the 8MB QSPI flash, providing ample space.
 *   **Code Quality & Refinements:**
     *   Some "magic numbers" (e.g., `sensitivity = 150.0f`, smoothing bounds in `Thaumazein.cpp::PollTouchSensor`) could be pulled into named constants or config.
     *   Build system could automate the multi‑library build steps via a top‑level Makefile or CMake wrapper.

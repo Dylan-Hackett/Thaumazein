@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
   57 0080 73ED803F 		.word	1065414003
   58 0084 E6F4803F 		.word	1065415910
   59 0088 59FC803F 		.word	1065417817
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 2
 
 
   60 008c CD03813F 		.word	1065419725
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
  114 0164 AE98823F 		.word	1065523374
  115 0168 39A0823F 		.word	1065525305
  116 016c C5A7823F 		.word	1065527237
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 3
 
 
  117 0170 51AF823F 		.word	1065529169
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
  171 0248 7049843F 		.word	1065634160
  172 024c 1551843F 		.word	1065636117
  173 0250 B958843F 		.word	1065638073
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 4
 
 
  174 0254 5F60843F 		.word	1065640031
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
  228 032c CCFF853F 		.word	1065746380
  229 0330 8A07863F 		.word	1065748362
  230 0334 480F863F 		.word	1065750344
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 5
 
 
  231 0338 0717863F 		.word	1065752327
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
  287 0000 1845213A 		.word	975258904
  288 0004 08DC2A3A 		.word	975887368
  289 0008 F304353A 		.word	976553203
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 6
 
 
  290 000c 87C83F3A 		.word	977258631
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
  344 00e4 7D9C873C 		.word	1015520381
  345 00e8 D6AC8F3C 		.word	1016048854
  346 00ec F037983C 		.word	1016608752
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 7
 
 
  347 00f0 1845A13C 		.word	1017201944
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
  401 01c8 F011E43E 		.word	1055134192
  402 01cc BFA1F13E 		.word	1056022975
  403 01d0 0000003F 		.word	1056964608
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 8
 
 
  404 01d4 7D9C073F 		.word	1057463421
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
  458 02ac 87C83F41 		.word	1094699143
  459 02b0 F52F4B41 		.word	1095446517
  460 02b4 FD445741 		.word	1096238333
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 9
 
 
  461 02b8 F0116441 		.word	1097077232
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
  515 0390 1845A143 		.word	1134642456
  516 0394 08DCAA43 		.word	1135270920
  517 0398 F304B543 		.word	1135936755
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 10
 
 
  518 039c 87C8BF43 		.word	1136642183
@@ -584,14 +584,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 1
  558              		.file 13 "eurorack/stmlib/dsp/units.h"
  559              		.file 14 "eurorack/stmlib/dsp/units.cc"
  560              		.file 15 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 units.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s:24     .rodata._ZN6stmlib19lut_pitch_ratio_lowE:0000000000000000 _ZN6stmlib19lut_pitch_ratio_lowE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s:286    .rodata._ZN6stmlib20lut_pitch_ratio_highE:0000000000000000 _ZN6stmlib20lut_pitch_ratio_highE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s:21     .rodata._ZN6stmlib19lut_pitch_ratio_lowE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDgsMux.s:283    .rodata._ZN6stmlib20lut_pitch_ratio_highE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s:24     .rodata._ZN6stmlib19lut_pitch_ratio_lowE:0000000000000000 _ZN6stmlib19lut_pitch_ratio_lowE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s:286    .rodata._ZN6stmlib20lut_pitch_ratio_highE:0000000000000000 _ZN6stmlib20lut_pitch_ratio_highE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s:21     .rodata._ZN6stmlib19lut_pitch_ratio_lowE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuWrubs.s:283    .rodata._ZN6stmlib20lut_pitch_ratio_highE:0000000000000000 $d
 
 NO UNDEFINED SYMBOLS

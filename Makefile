@@ -33,6 +33,9 @@ CC_SOURCES += $(STMLIB_DIR)/dsp/units.cc \
 DAISYSP_SOURCES += $(wildcard $(DAISYSP_DIR)/Source/*.cpp)
 DAISYSP_SOURCES += $(wildcard $(DAISYSP_DIR)/Source/*/*.cpp)
 
+# Define vpath for .cc sources BEFORE including core Makefile
+vpath %.cc $(sort $(dir $(CC_SOURCES)))
+
 # Define Includes BEFORE including core Makefile
 C_INCLUDES += \
 -I$(MPR121_DIR) \
@@ -51,6 +54,9 @@ C_INCLUDES += -Wno-unused-local-typedefs
 # Optimization level (can be overridden)
 OPT ?= -Os -s
 
+# Set target Linker Script to QSPI
+LDSCRIPT = $(LIBDAISY_DIR)/core/STM32H750IB_qspi.lds
+
 # Core location, and generic makefile.
 SYSTEM_FILES_DIR = $(LIBDAISY_DIR)/core
 include $(SYSTEM_FILES_DIR)/Makefile # Include core makefile
@@ -60,12 +66,12 @@ include $(SYSTEM_FILES_DIR)/Makefile # Include core makefile
 # Add .cc source files to the OBJECTS list defined by the core makefile
 # Use the same pattern (notdir/vpath) as the core makefile
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(CC_SOURCES:.cc=.o)))
-vpath %.cc $(sort $(dir $(CC_SOURCES))) # Tell make where to find .cc sources
 
 # Add the rule for compiling .cc files
 # This pattern should match the .c/.cpp rules in the core Makefile
-$(BUILD_DIR)/%.o: %.cc Makefile | $(BUILD_DIR)
-	$(CXX) -c $(CPPFLAGS) $(CPP_STANDARD) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.cc=.lst)) $< -o $@
+$(BUILD_DIR)/%.o: %.cc $(MAKEFILE_LIST) | $(BUILD_DIR)
+	@echo Compiling $< 
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c $< -o $@ $(DEPFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.cc=.lst))
 
 # Explicitly override the linker rule AFTER OBJECTS is fully populated
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile

@@ -18,6 +18,9 @@ const uint32_t ARP_LED_DURATION_MS = 100;
 // ADDED: Global flag for arpeggiator state, managed by Interface.cpp
 volatile bool arp_enabled = false;
 
+// Add: flag indicating if the MPR121 touch sensor was successfully initialised
+bool touch_sensor_present = true;
+
 // Hardware controls - Remapped to use ADCs 0-9
 AnalogControl delay_time_knob;        // ADC 0 (Pin 15) Delay Time
 AnalogControl delay_mix_feedback_knob; // ADC 1 (Pin 16) Delay Mix & Feedback
@@ -47,6 +50,18 @@ float pitch_val, harm_knob_val, timbre_knob_val, morph_knob_val;
 float delay_time_val, delay_mix_feedback_val, delay_mix_val, delay_feedback_val;
 float env_attack_val, env_release_val;
 
+// Simple diagnostic blink: flashes the Daisy user LED 'count' times rapidly.
+static void DebugBlink(int count)
+{
+    for(int i = 0; i < count; ++i)
+    {
+        hw.SetLed(true);
+        System::Delay(60);
+        hw.SetLed(false);
+        System::Delay(60);
+    }
+}
+
 // --- Initialization functions ---
 void InitializeHardware() {
     // Initialize Daisy Seed hardware
@@ -54,8 +69,8 @@ void InitializeHardware() {
     hw.Init();
     hw.SetAudioBlockSize(BLOCK_SIZE);
     sample_rate = hw.AudioSampleRate();
-    hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ); // Using 48kHz now
-    sample_rate = hw.AudioSampleRate(); // Update sample_rate after setting it
+    // hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ); // debug: stick with default SR
+    // sample_rate = hw.AudioSampleRate(); // Update sample_rate after setting it
 }
 
 void InitializeControls() {
@@ -96,7 +111,10 @@ void InitializeTouchSensor() {
     Mpr121::Config touch_config;
     touch_config.Defaults();
     if (!touch_sensor.Init(touch_config)) {
-        while(1) { hw.SetLed(true); System::Delay(50); hw.SetLed(false); System::Delay(50); }
+        // Touch sensor failed to initialise – continue without it
+        touch_sensor_present = false;
+        hw.PrintLine("[WARN] MPR121 init failed – continuing without touch sensor");
+        return; // Skip further configuration
     }
     // Override default thresholds for more sensitivity
     touch_sensor.SetThresholds(6, 3); 
@@ -132,27 +150,42 @@ void InitializeTouchLEDs() {
 
 void InitializeSynth() {
     InitializeHardware();
+    DebugBlink(1);
+
     poly_engine.Init(&hw);
+    DebugBlink(2);
+
     InitializeControls();
+    DebugBlink(3);
+
     InitializeTouchSensor();
+    DebugBlink(4);
+
     InitializeDelay();
+    DebugBlink(5);
+
     InitializeTouchLEDs();
-    cpu_meter.Init(sample_rate, BLOCK_SIZE); // Initialize the CPU Load Meter
-    
+    DebugBlink(6);
+
+    cpu_meter.Init(sample_rate, BLOCK_SIZE); // Initialize CPU Load Meter
+    DebugBlink(7);
+
     // --- Initialize Arpeggiator ---
     arp.Init(sample_rate);
+    DebugBlink(8);
 
+    // Note trigger callback
     arp.SetNoteTriggerCallback([&](int pad_idx){ 
         poly_engine.TriggerArpVoice(pad_idx, current_engine_index); 
         arp_led_timestamps[11 - pad_idx] = hw.system.GetNow();
     });
-    arp.SetDirection(Arpeggiator::AsPlayed); // Set default direction to AsPlayed
-    
+    arp.SetDirection(Arpeggiator::AsPlayed);
 
-    hw.StartLog(false); // Start log immediately (non-blocking) - reverted to prevent freezing at startup
-    
-    // --- Start Audio ---
+    hw.StartLog(false); // Start log immediately (non-blocking)
+    DebugBlink(9);
+
     hw.StartAudio(AudioCallback);
+    DebugBlink(10);
     
     hw.PrintLine("Plaits Synth Started - Ready for Bootloader CMD");
     char settings[64];

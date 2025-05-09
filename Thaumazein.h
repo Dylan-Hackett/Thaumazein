@@ -94,4 +94,6 @@ extern daisy::GPIO touch_leds[12];
 extern volatile uint32_t arp_led_timestamps[12];
 extern const uint32_t ARP_LED_DURATION_MS;
 
+extern bool touch_sensor_present;
+
 #endif // THAUMAZEIN_H_ 

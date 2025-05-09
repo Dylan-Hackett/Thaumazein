@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   29:AudioProcessor.cpp **** CpuLoadMeter cpu_meter;
   30:AudioProcessor.cpp **** 
   31:AudioProcessor.cpp **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 2
 
 
   32:AudioProcessor.cpp **** static bool was_arp_on = false; // For ARP state change detection
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   37              		.cfi_offset 14, -4
   38              		.loc 1 75 20 view .LVU3
   39 0002 FFF7FEFF 		bl	_Z15ProcessControlsv
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 3
 
 
   40              	.LVL0:
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   88:AudioProcessor.cpp ****     delay_feedback_val = delay_feedback_val * (1.0f - intensity_factor) + touch_control * intensity
   80              		.loc 1 88 5 is_stmt 1 view .LVU21
   81              		.loc 1 88 45 is_stmt 0 view .LVU22
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 4
 
 
   82 003c 084B     		ldr	r3, .L6+20
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  108:AudioProcessor.cpp ****     if (current_arp_on) {
  109:AudioProcessor.cpp ****         arp.UpdateHeldNotes(current_touch_state, poly_engine.GetLastTouchState());
  110:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 5
 
 
  111:AudioProcessor.cpp ****     } else {
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  136              	.LBB18:
  137              		.loc 1 146 12 view .LVU31
  138 0006 274B     		ldr	r3, .L17
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 6
 
 
  139              	.LVL6:
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   98:AudioProcessor.cpp ****     if (!current_arp_on && was_arp_on) {
  180              		.loc 1 98 27 is_stmt 0 view .LVU47
  181 002c 1E4B     		ldr	r3, .L17+4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 7
 
 
  182 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  223 0054 B8F80010 		ldrh	r1, [r8]
  105:AudioProcessor.cpp ****     arp_on_out = current_arp_on;
  224              		.loc 1 105 16 view .LVU61
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 8
 
 
  225 0058 89F80070 		strb	r7, [r9]
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  268              	.LVL17:
  115:AudioProcessor.cpp **** }
  269              		.loc 1 115 37 view .LVU73
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 9
 
 
  270 0086 FFF7FEBF 		b	_ZN15PolyphonyEngine20UpdateLastTouchStateEt
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  320              		.cfi_offset 14, -4
  321 0002 8DB0     		sub	sp, sp, #52
  322              		.cfi_def_cfa_offset 56
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 10
 
 
  123:AudioProcessor.cpp ****     params.pitch_val = pitch_val;
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  358 0022 1B68     		ldr	r3, [r3]	@ float
  359 0024 0693     		str	r3, [sp, #24]	@ float
  127:AudioProcessor.cpp ****     params.env_attack_val = env_attack_val;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 11
 
 
  360              		.loc 1 127 5 is_stmt 1 view .LVU99
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  402 0064 00000000 		.word	env_attack_val
  403 0068 00000000 		.word	env_release_val
  404 006c 00000000 		.word	delay_mix_val
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 12
 
 
  405 0070 00000000 		.word	touch_cv_value
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  457              		.cfi_offset 14, -4
  458              	.LBB26:
  459              		.loc 1 150 5 view .LVU119
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 13
 
 
  460 0002 80B1     		cbz	r0, .L26
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  506 003e 144B     		ldr	r3, .L37+20
  507              		.loc 1 156 95 discriminator 2 view .LVU137
  508 0040 2046     		mov	r0, r4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 14
 
 
  509              		.loc 1 156 76 discriminator 2 view .LVU138
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  558 0094 0000803D 		.word	1031798784
  559 0098 00000000 		.word	.LANCHOR4
  560 009c 00000000 		.word	update_display
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 15
 
 
  561              		.cfi_endproc
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   14:Polyphony.h   **** namespace plaits {
   15:Polyphony.h   ****     class Voice;
   16:Polyphony.h   **** }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 16
 
 
   17:Polyphony.h   **** 
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  609 0016 2246     		mov	r2, r4
  610 0018 0648     		ldr	r0, .L40+4
  611 001a 30EE670A 		vsub.f32	s0, s0, s15
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 17
 
 
  612              	.LVL37:
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   44:AudioProcessor.cpp ****     static bool audio_cb_started = false;
  657              		.loc 1 44 5 view .LVU174
   45:AudioProcessor.cpp ****     if(!audio_cb_started) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 18
 
 
  658              		.loc 1 45 5 view .LVU175
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   22:lib/libdaisy/src/daisy_seed.h ****     ~DaisySeed() {}
   23:lib/libdaisy/src/daisy_seed.h **** 
   24:lib/libdaisy/src/daisy_seed.h ****     /** This function used to provide a pre-initialization configuraiton 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 19
 
 
   25:lib/libdaisy/src/daisy_seed.h ****      *  it has since been deprecated, and does nothing.
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   79:lib/libdaisy/src/daisy_seed.h ****     void StopAudio();
   80:lib/libdaisy/src/daisy_seed.h **** 
   81:lib/libdaisy/src/daisy_seed.h ****     /** Updates the Audio Sample Rate, and reinitializes.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 20
 
 
   82:lib/libdaisy/src/daisy_seed.h ****      ** Audio must be stopped for this to work.
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  697              		.loc 1 47 26 is_stmt 0 view .LVU187
  698 0016 0123     		movs	r3, #1
  699 0018 2370     		strb	r3, [r4]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 21
 
 
  700              	.L43:
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   48:lib/libdaisy/src/util/CpuLoadMeter.h ****     /** Call this at the beginning of your audio callback */
   49:lib/libdaisy/src/util/CpuLoadMeter.h ****     void OnBlockStart() { currentBlockStartTicks_ = System::GetTick(); }
  706              		.loc 4 49 10 view .LVU189
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 22
 
 
  707              	.LBB38:
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  748              	.LVL49:
   63:AudioProcessor.cpp ****         prev_engine_index_static = current_engine_index;
  749              		.loc 1 63 9 is_stmt 1 view .LVU208
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 23
 
 
   63:AudioProcessor.cpp ****         prev_engine_index_static = current_engine_index;
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   55:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto ticksPassed = end - currentBlockStartTicks_;
  789              		.loc 4 55 9 is_stmt 1 view .LVU222
   56:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto currentBlockLoad
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 24
 
 
  790              		.loc 4 56 9 view .LVU223
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  829 00a2 05B0     		add	sp, sp, #20
  830              		.cfi_remember_state
  831              		.cfi_def_cfa_offset 28
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 25
 
 
  832              		@ sp needed
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
   71:lib/libdaisy/src/util/CpuLoadMeter.h ****                    + (1.0f - smoothingConstant_) * avg_;
  867              		.loc 4 71 13 is_stmt 1 view .LVU255
  868              		.loc 4 72 50 is_stmt 0 view .LVU256
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 26
 
 
  869 00dc 27EE067A 		vmul.f32	s14, s14, s12
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  931              		.align	2
  932              		.set	.LANCHOR3,. + 0
  935              	_ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 27
 
 
  936 0000 00000000 		.space	4
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  994              		.file 34 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_function.h"
  995              		.file 35 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/refwrap.h"
  996              		.file 36 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstddef"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 28
 
 
  997              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
@@ -1678,57 +1678,57 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 1
  1051              		.file 91 "VoiceEnvelope.h"
  1052              		.file 92 "Arpeggiator.h"
  1053              		.file 93 "Thaumazein.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 29
 
 
  1054              		.file 94 "lib/libdaisy/src/dev/sr_595.h"
  1055              		.file 95 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 30
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 30
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 AudioProcessor.cpp
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:19     .text._Z20ProcessUIAndControlsv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:25     .text._Z20ProcessUIAndControlsv:0000000000000000 _Z20ProcessUIAndControlsv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:93     .text._Z20ProcessUIAndControlsv:000000000000004c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:103    .text._Z14UpdateArpStateRiRbS_S0_:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:109    .text._Z14UpdateArpStateRiRbS_S0_:0000000000000000 _Z14UpdateArpStateRiRbS_S0_
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:292    .text._Z14UpdateArpStateRiRbS_S0_:00000000000000a4 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:302    .text._Z12RenderVoicesibib:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:308    .text._Z12RenderVoicesibib:0000000000000000 _Z12RenderVoicesibib
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:397    .text._Z12RenderVoicesibib:0000000000000050 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:410    .text._Z23DetermineEngineSettingsv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:416    .text._Z23DetermineEngineSettingsv:0000000000000000 _Z23DetermineEngineSettingsv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:432    .text._Z23DetermineEngineSettingsv:0000000000000008 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:437    .text._Z25UpdatePerformanceMonitorsjPf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:443    .text._Z25UpdatePerformanceMonitorsjPf:0000000000000000 _Z25UpdatePerformanceMonitorsjPf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:552    .text._Z25UpdatePerformanceMonitorsjPf:000000000000007c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:565    .text._Z21ApplyEffectsAndOutputPfj:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:571    .text._Z21ApplyEffectsAndOutputPfj:0000000000000000 _Z21ApplyEffectsAndOutputPfj
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:635    .text._Z21ApplyEffectsAndOutputPfj:0000000000000030 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:644    .text._Z13AudioCallbackPKfPfj:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:650    .text._Z13AudioCallbackPKfPfj:0000000000000000 _Z13AudioCallbackPKfPfj
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:883    .text._Z13AudioCallbackPKfPfj:00000000000000ec $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:961    .bss.engine_retrigger_phase:0000000000000000 engine_retrigger_phase
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:955    .bss.engine_changed_flag:0000000000000000 engine_changed_flag
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:949    .bss.current_engine_index:0000000000000000 current_engine_index
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:942    .bss.cpu_meter:0000000000000000 cpu_meter
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:898    .bss._ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:902    .bss._ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 _ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:908    .bss._ZL10was_arp_on:0000000000000000 _ZL10was_arp_on
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:909    .bss._ZL10was_arp_on:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:914    .bss._ZZ13AudioCallbackPKfPfjE16audio_cb_started:0000000000000000 _ZZ13AudioCallbackPKfPfjE16audio_cb_started
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:915    .bss._ZZ13AudioCallbackPKfPfjE16audio_cb_started:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:917    .bss._ZZ13AudioCallbackPKfPfjE24prev_engine_index_static:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:921    .bss._ZZ13AudioCallbackPKfPfjE24prev_engine_index_static:0000000000000000 _ZZ13AudioCallbackPKfPfjE24prev_engine_index_static
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:924    .bss._ZZ25UpdatePerformanceMonitorsjPfE15display_counter:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:928    .bss._ZZ25UpdatePerformanceMonitorsjPfE15display_counter:0000000000000000 _ZZ25UpdatePerformanceMonitorsjPfE15display_counter
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:931    .bss._ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:935    .bss._ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 _ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:938    .bss.cpu_meter:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:945    .bss.current_engine_index:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:956    .bss.engine_changed_flag:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s:958    .bss.engine_retrigger_phase:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:19     .text._Z20ProcessUIAndControlsv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:25     .text._Z20ProcessUIAndControlsv:0000000000000000 _Z20ProcessUIAndControlsv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:93     .text._Z20ProcessUIAndControlsv:000000000000004c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:103    .text._Z14UpdateArpStateRiRbS_S0_:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:109    .text._Z14UpdateArpStateRiRbS_S0_:0000000000000000 _Z14UpdateArpStateRiRbS_S0_
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:292    .text._Z14UpdateArpStateRiRbS_S0_:00000000000000a4 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:302    .text._Z12RenderVoicesibib:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:308    .text._Z12RenderVoicesibib:0000000000000000 _Z12RenderVoicesibib
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:397    .text._Z12RenderVoicesibib:0000000000000050 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:410    .text._Z23DetermineEngineSettingsv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:416    .text._Z23DetermineEngineSettingsv:0000000000000000 _Z23DetermineEngineSettingsv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:432    .text._Z23DetermineEngineSettingsv:0000000000000008 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:437    .text._Z25UpdatePerformanceMonitorsjPf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:443    .text._Z25UpdatePerformanceMonitorsjPf:0000000000000000 _Z25UpdatePerformanceMonitorsjPf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:552    .text._Z25UpdatePerformanceMonitorsjPf:000000000000007c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:565    .text._Z21ApplyEffectsAndOutputPfj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:571    .text._Z21ApplyEffectsAndOutputPfj:0000000000000000 _Z21ApplyEffectsAndOutputPfj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:635    .text._Z21ApplyEffectsAndOutputPfj:0000000000000030 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:644    .text._Z13AudioCallbackPKfPfj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:650    .text._Z13AudioCallbackPKfPfj:0000000000000000 _Z13AudioCallbackPKfPfj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:883    .text._Z13AudioCallbackPKfPfj:00000000000000ec $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:961    .bss.engine_retrigger_phase:0000000000000000 engine_retrigger_phase
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:955    .bss.engine_changed_flag:0000000000000000 engine_changed_flag
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:949    .bss.current_engine_index:0000000000000000 current_engine_index
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:942    .bss.cpu_meter:0000000000000000 cpu_meter
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:898    .bss._ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:902    .bss._ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 _ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:908    .bss._ZL10was_arp_on:0000000000000000 _ZL10was_arp_on
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:909    .bss._ZL10was_arp_on:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:914    .bss._ZZ13AudioCallbackPKfPfjE16audio_cb_started:0000000000000000 _ZZ13AudioCallbackPKfPfjE16audio_cb_started
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:915    .bss._ZZ13AudioCallbackPKfPfjE16audio_cb_started:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:917    .bss._ZZ13AudioCallbackPKfPfjE24prev_engine_index_static:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:921    .bss._ZZ13AudioCallbackPKfPfjE24prev_engine_index_static:0000000000000000 _ZZ13AudioCallbackPKfPfjE24prev_engine_index_static
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:924    .bss._ZZ25UpdatePerformanceMonitorsjPfE15display_counter:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:928    .bss._ZZ25UpdatePerformanceMonitorsjPfE15display_counter:0000000000000000 _ZZ25UpdatePerformanceMonitorsjPfE15display_counter
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:931    .bss._ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:935    .bss._ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 _ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:938    .bss.cpu_meter:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:945    .bss.current_engine_index:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:956    .bss.engine_changed_flag:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s:958    .bss.engine_retrigger_phase:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 _Z15ProcessControlsv
@@ -1743,7 +1743,7 @@ delay_feedback_val
 _ZN15PolyphonyEngine11ResetVoicesEv
 _ZN15PolyphonyEngine20UpdateLastTouchStateEt
 _ZNK15PolyphonyEngine17GetLastTouchStateEv
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccDooZFg.s 			page 31
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccfmeXqM.s 			page 31
 
 
 _ZN11Arpeggiator15UpdateHeldNotesEtt
