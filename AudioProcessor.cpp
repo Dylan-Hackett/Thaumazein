@@ -28,9 +28,7 @@ extern bool voice_active[NUM_VOICES];
 // Define the CpuLoadMeter instance
 CpuLoadMeter cpu_meter;
 
-// ADDED: Global variables needed by the new helper functions, formerly local to AudioCallback or implicitly global
-// These might need refinement based on actual usage after refactoring
-static uint32_t button_press_time = 0; // For panic button
+
 static bool was_arp_on = false; // For ARP state change detection
 
 volatile int current_engine_index = 0; // Global engine index controlled by touch pads
@@ -89,16 +87,7 @@ void ProcessUIAndControls() {
     morph_knob_val   = morph_knob_val   * (1.0f - intensity_factor) + touch_control * intensity_factor;
     delay_feedback_val = delay_feedback_val * (1.0f - intensity_factor) + touch_control * intensity_factor;
 
-    if (button.RisingEdge()) {
-        button_press_time = System::GetNow();
-    }
-    else if (button.Pressed() && button_press_time > 0) {
-        uint32_t held_time = System::GetNow() - button_press_time;
-        if (held_time > 1000 && held_time < 3000) {
-            poly_engine.ResetVoices();
-            button_press_time = 0;
-        }
-    }
+
 }
 
 void UpdateArpState(int& engineIndex, bool& poly_mode, int& effective_num_voices, bool& arp_on_out) {
@@ -127,19 +116,21 @@ void UpdateArpState(int& engineIndex, bool& poly_mode, int& effective_num_voices
 }
 
 void RenderVoices(int engineIndex, bool poly_mode, int effective_num_voices, bool arp_on) {
-    poly_engine.RenderBlock(engineIndex, 
-                              poly_mode, 
-                              effective_num_voices, 
-                              arp_on, 
-                              pitch_val, 
-                              harm_knob_val, 
-                              morph_knob_val, 
-                              timbre_knob_val, 
-                              env_attack_val, 
-                              env_release_val,
-                              delay_mix_val,
-                              touch_cv_value
-                              );
+    PolyphonyEngine::RenderParameters params;
+    params.engine_index = engineIndex;
+    params.poly_mode = poly_mode;
+    params.effective_num_voices = effective_num_voices;
+    params.arp_on = arp_on;
+    params.pitch_val = pitch_val;
+    params.harm_knob_val = harm_knob_val;
+    params.morph_knob_val = morph_knob_val;
+    params.timbre_knob_val = timbre_knob_val;
+    params.env_attack_val = env_attack_val;
+    params.env_release_val = env_release_val;
+    params.delay_mix_val = delay_mix_val;
+    params.touch_cv_value = touch_cv_value;
+    
+    poly_engine.RenderBlock(params);
 }
 
 void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
