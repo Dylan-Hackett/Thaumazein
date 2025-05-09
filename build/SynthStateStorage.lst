@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
   38              		.cfi_offset 5, -8
   39              		.cfi_offset 14, -4
   40              		.loc 1 17 8 view .LVU4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 2
 
 
   41 0002 054C     		ldr	r4, .L3
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
   42:lib/libdaisy/src/per/qspi.h ****          * 
   43:lib/libdaisy/src/per/qspi.h ****          *  \param GOOD - No errors have been reported.
   44:lib/libdaisy/src/per/qspi.h ****          *  \param E_HAL_ERROR - HAL code did not return HAL_OK.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 3
 
 
   45:lib/libdaisy/src/per/qspi.h ****          *  \param E_SWITCHING_MODES - An error was encountered while switching QSPI peripheral mod
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
   99:lib/libdaisy/src/per/qspi.h ****         \return Result::OK or Result::ERR
  100:lib/libdaisy/src/per/qspi.h ****         */
  101:lib/libdaisy/src/per/qspi.h ****     Result Init(const Config& config);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 4
 
 
  102:lib/libdaisy/src/per/qspi.h **** 
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
  156:lib/libdaisy/src/per/qspi.h **** 
  157:lib/libdaisy/src/per/qspi.h ****     /** Returns a pointer to the actual memory used 
  158:lib/libdaisy/src/per/qspi.h ****      *  The memory at this address is read-only
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 5
 
 
  159:lib/libdaisy/src/per/qspi.h ****      *  to write to it use the Write function.
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
   93              		.cfi_offset 4, -8
   94              		.cfi_offset 14, -4
   26:SynthStateStorage.cpp ****     cfg.mode   = mode;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 6
 
 
   27:SynthStateStorage.cpp ****     cfg.pin_config.io0 = dsy_pin(DSY_GPIOF, 8);
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
   32:lib/libdaisy/src/daisy_core.h **** 
   33:lib/libdaisy/src/daisy_core.h **** #define FBIPMAX 0.999985f             /**< close to 1.0f-LSB at 16 bit */
   34:lib/libdaisy/src/daisy_core.h **** #define FBIPMIN (-FBIPMAX)            /**< - (1 - LSB) */
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 7
 
 
   35:lib/libdaisy/src/daisy_core.h **** #define U82F_SCALE 0.0078740f         /**< 1 / 127 */
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
   89:lib/libdaisy/src/daisy_core.h ****     x = x <= FBIPMIN ? FBIPMIN : x;
   90:lib/libdaisy/src/daisy_core.h ****     x = x >= FBIPMAX ? FBIPMAX : x;
   91:lib/libdaisy/src/daisy_core.h ****     return (uint8_t)((x * F2U8_SCALE) + F2U8_SCALE);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 8
 
 
   92:lib/libdaisy/src/daisy_core.h **** }
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
  146:lib/libdaisy/src/daisy_core.h **** FORCE_INLINE int32_t f2s24(float x)
  147:lib/libdaisy/src/daisy_core.h **** {
  148:lib/libdaisy/src/daisy_core.h ****     x = x <= FBIPMIN ? FBIPMIN : x;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 9
 
 
  149:lib/libdaisy/src/daisy_core.h ****     x = x >= FBIPMAX ? FBIPMAX : x;
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
  203:lib/libdaisy/src/daisy_core.h ****  */
  204:lib/libdaisy/src/daisy_core.h **** typedef struct
  205:lib/libdaisy/src/daisy_core.h **** {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 10
 
 
  206:lib/libdaisy/src/daisy_core.h ****     dsy_gpio_port port; /**< & */
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
  138 0028 8DF80520 		strb	r2, [sp, #5]
   30:SynthStateStorage.cpp ****     cfg.pin_config.io3 = dsy_pin(DSY_GPIOF, 6);
  139              		.loc 1 30 5 is_stmt 1 view .LVU46
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 11
 
 
  140              	.LVL5:
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
  180              	.LVL10:
   35:SynthStateStorage.cpp ****     qspi.Init(cfg);
  181              		.loc 1 35 5 is_stmt 1 view .LVU71
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 12
 
 
  182              		.loc 1 35 14 is_stmt 0 view .LVU72
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
  227              		.loc 1 13 59 view .LVU83
   13:SynthStateStorage.cpp **** 
  228              		.loc 1 13 59 is_stmt 0 view .LVU84
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 13
 
 
  229              	.LBE24:
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
   50:SynthStateStorage.cpp ****     SynthState state{};
  278              		.loc 1 50 5 view .LVU96
   51:SynthStateStorage.cpp ****     state.magic = kMagic;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 14
 
 
  279              		.loc 1 51 5 view .LVU97
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
  321              		.loc 1 58 15 is_stmt 0 view .LVU114
  322 00a2 01AB     		add	r3, sp, #4
  323 00a4 0C22     		movs	r2, #12
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 15
 
 
  324 00a6 0021     		movs	r1, #0
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
  378              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
  379              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
  380              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 16
 
 
  381              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
@@ -931,25 +931,25 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 1
  408              		.file 35 "lib/libdaisy/src/dev/sr_595.h"
  409              		.file 36 "<built-in>"
  410              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/new"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s 			page 17
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 SynthStateStorage.cpp
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:19     .text._ZN12_GLOBAL__N_17GetQSPIEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:24     .text._ZN12_GLOBAL__N_17GetQSPIEv:0000000000000000 _ZN12_GLOBAL__N_17GetQSPIEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:71     .text._ZN12_GLOBAL__N_17GetQSPIEv:0000000000000018 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:76     .qspiflash_text:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:81     .qspiflash_text:0000000000000000 _ZN12_GLOBAL__N_113ConfigureQSPIEN5daisy10QSPIHandle6Config4ModeE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:202    .qspiflash_text:000000000000005e _ZN17SynthStateStorage4LoadERi
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:261    .qspiflash_text:0000000000000080 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:265    .qspiflash_text:0000000000000084 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:271    .qspiflash_text:0000000000000084 _ZN17SynthStateStorage4SaveEi
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:343    .qspiflash_text:00000000000000b8 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:347    .qspiflash_text:00000000000000bc $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:353    .qspiflash_text:00000000000000bc _ZN17SynthStateStorage16InitMemoryMappedEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:369    .bss._ZZN12_GLOBAL__N_17GetQSPIEvE8qspi_ptr:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccTslkv.s:373    .bss._ZZN12_GLOBAL__N_17GetQSPIEvE8qspi_ptr:0000000000000000 _ZZN12_GLOBAL__N_17GetQSPIEvE8qspi_ptr
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:19     .text._ZN12_GLOBAL__N_17GetQSPIEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:24     .text._ZN12_GLOBAL__N_17GetQSPIEv:0000000000000000 _ZN12_GLOBAL__N_17GetQSPIEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:71     .text._ZN12_GLOBAL__N_17GetQSPIEv:0000000000000018 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:76     .qspiflash_text:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:81     .qspiflash_text:0000000000000000 _ZN12_GLOBAL__N_113ConfigureQSPIEN5daisy10QSPIHandle6Config4ModeE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:202    .qspiflash_text:000000000000005e _ZN17SynthStateStorage4LoadERi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:261    .qspiflash_text:0000000000000080 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:265    .qspiflash_text:0000000000000084 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:271    .qspiflash_text:0000000000000084 _ZN17SynthStateStorage4SaveEi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:343    .qspiflash_text:00000000000000b8 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:347    .qspiflash_text:00000000000000bc $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:353    .qspiflash_text:00000000000000bc _ZN17SynthStateStorage16InitMemoryMappedEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:369    .bss._ZZN12_GLOBAL__N_17GetQSPIEvE8qspi_ptr:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccerGSgr.s:373    .bss._ZZN12_GLOBAL__N_17GetQSPIEvE8qspi_ptr:0000000000000000 _ZZN12_GLOBAL__N_17GetQSPIEvE8qspi_ptr
 
 UNDEFINED SYMBOLS
 _Znwj

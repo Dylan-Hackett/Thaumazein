@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccUq0pMd.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s 			page 1
   57 0027 4F       		.byte	79
   58 0028 39       		.byte	57
   59 0029 16       		.byte	22
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccUq0pMd.s 			page 2
 
 
   60 002a C0       		.byte	-64
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s 			page 1
  114 006a E8       		.byte	-24
  115 006b EC       		.byte	-20
  116 006c CB       		.byte	-53
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccUq0pMd.s 			page 3
 
 
  117 006d 37       		.byte	55
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s 			page 1
  171 00ac 80E7     		.short	-6272
  172 00ae AD       		.byte	-83
  173 00af 1D       		.byte	29
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccUq0pMd.s 			page 4
 
 
  174 00b0 39       		.byte	57
@@ -228,12 +228,12 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s 			page 1
  218              		.file 13 "eurorack/plaits/dsp/speech/lpc_speech_synth_controller.h"
  219              		.file 14 "<built-in>"
  220              		.file 15 "eurorack/plaits/dsp/speech/lpc_speech_synth_phonemes.cc"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccUq0pMd.s 			page 5
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 lpc_speech_synth_phonemes.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s:23     .rodata._ZN6plaits24LPCSpeechSynthController9phonemes_E:0000000000000000 _ZN6plaits24LPCSpeechSynthController9phonemes_E
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cccGnGnr.s:20     .rodata._ZN6plaits24LPCSpeechSynthController9phonemes_E:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccUq0pMd.s:23     .rodata._ZN6plaits24LPCSpeechSynthController9phonemes_E:0000000000000000 _ZN6plaits24LPCSpeechSynthController9phonemes_E
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccUq0pMd.s:20     .rodata._ZN6plaits24LPCSpeechSynthController9phonemes_E:0000000000000000 $d
 
 NO UNDEFINED SYMBOLS

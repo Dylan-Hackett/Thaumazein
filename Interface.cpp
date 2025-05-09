@@ -67,8 +67,17 @@ static void DebugBlink(int count)
 void InitializeHardware() {
     // Initialize Daisy Seed hardware
     hw.Configure();
-    hw.Init();
-    SynthStateStorage::InitMemoryMapped();
+    hw.Init(); // This calls SystemInit(), which sets VTOR to 0x08000000 by default
+    SynthStateStorage::InitMemoryMapped(); // QSPI is configured for memory-mapped mode here
+
+    // Relocate the vector table to the QSPI flash base address
+    // This address (0x90040000) must match the QSPIFLASH ORIGIN in the linker script
+    // and where the .isr_vector section is actually placed.
+    #if defined(__STM32H750xx_H) || defined(STM32H750xx) || defined(STM32H7XX)
+        // Ensure SCB is usable (usually through stm32h7xx.h or similar, included by DaisySeed.h)
+        SCB->VTOR = 0x90040000UL;
+    #endif
+
     hw.SetAudioBlockSize(BLOCK_SIZE);
     sample_rate = hw.AudioSampleRate();
     // hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ); // debug: stick with default SR
