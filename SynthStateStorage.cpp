@@ -1,5 +1,6 @@
 #include "SynthStateStorage.h"
 #include "daisy_seed.h"
+#include "system.h"
 
 using namespace daisy;
 
@@ -52,6 +53,11 @@ QSPIFUNC void Save(int engine_index) {
     state.engine_index = engine_index;
     state.crc = CalcCrc(state.magic, state.engine_index);
 
+    // Writing while executing from QSPI requires caution. For now, if the
+    // program is running from QSPI we skip the write to avoid crashing.
+    if(daisy::System::GetProgramMemoryRegion() == daisy::System::MemoryRegion::QSPI)
+        return; // TODO: copy write routine to ITCM/DTCM so we can support runtime saves.
+
     ConfigureQSPI(QSPIHandle::Config::Mode::INDIRECT_POLLING);
     auto &qspi = GetQSPI();
     qspi.EraseSector(0);
@@ -60,7 +66,13 @@ QSPIFUNC void Save(int engine_index) {
 }
 
 QSPIFUNC void InitMemoryMapped() {
-    ConfigureQSPI(QSPIHandle::Config::Mode::MEMORY_MAPPED);
+    // When firmware already runs from QSPI (BOOT_APP), QSPI is
+    // *already* in memory-mapped mode.  De-initialising it while
+    // executing code from the same region would cause an immediate
+    // fault.  Only configure QSPI if we are *not* executing from it
+    // (e.g. during a debug build running from SRAM).
+    if(daisy::System::GetProgramMemoryRegion() != daisy::System::MemoryRegion::QSPI)
+        ConfigureQSPI(QSPIHandle::Config::Mode::MEMORY_MAPPED);
 }
 
 } // namespace SynthStateStorage 

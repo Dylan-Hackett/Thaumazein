@@ -158,7 +158,7 @@ build/SynthStateStorage.o: SynthStateStorage.cpp \
  lib/libdaisy/src/util/PersistentStorage.h lib/libdaisy/src/per/qspi.h \
  lib/libdaisy/src/util/VoctCalibration.h \
  lib/libdaisy/src/util/WaveTableLoader.h lib/libdaisy/src/sys/fatfs.h \
- lib/libdaisy/src/util/WavWriter.h
+ lib/libdaisy/src/util/WavWriter.h lib/libdaisy/src/sys/system.h
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h:
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h750xx.h:
 lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/core_cm7.h:
@@ -357,3 +357,4 @@ lib/libdaisy/src/util/VoctCalibration.h:
 lib/libdaisy/src/util/WaveTableLoader.h:
 lib/libdaisy/src/sys/fatfs.h:
 lib/libdaisy/src/util/WavWriter.h:
+lib/libdaisy/src/sys/system.h:

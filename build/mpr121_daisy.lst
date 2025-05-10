@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
   28:mpr121_daisy.cpp **** // 			{
   29:mpr121_daisy.cpp **** // 				uint8_t value = 0;
   30:mpr121_daisy.cpp **** // 				i2c_handle_.ReadDataAtAddress(i2c_address_, reg_addr, 1, &value, 1, kTimeout);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 2
 
 
   31:mpr121_daisy.cpp **** // 				return value;
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
   85:mpr121_daisy.cpp ****         if ((channelMask >> i) & 0x01) { // Check if this channel is in the mask
   86:mpr121_daisy.cpp ****             uint16_t filtered_data = FilteredData(i);
   87:mpr121_daisy.cpp ****             uint8_t baseline_data = BaselineData(i);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 3
 
 
   88:mpr121_daisy.cpp ****             
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
   44              		.loc 1 122 1 view .LVU5
   45 0006 0A46     		mov	r2, r1
  124:mpr121_daisy.cpp ****     auto res = i2c_handle_.ReadDataAtAddress(i2c_address_, reg, 1, &value, 1, kTimeout);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 4
 
 
   46              		.loc 1 124 45 view .LVU6
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
   31:mpr121_daisy.h **** #define MPR121_FDLT 0x35
   32:mpr121_daisy.h **** 
   33:mpr121_daisy.h **** #define MPR121_TOUCHTH_0 0x41
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 5
 
 
   34:mpr121_daisy.h **** #define MPR121_RELEASETH_0 0x42
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
   88:mpr121_daisy.h ****     bool HasError() const;     // true if any I2C transaction failed since last ClearError()
   89:mpr121_daisy.h ****     void ClearError();         // reset internal error flag
   90:mpr121_daisy.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 6
 
 
   91:mpr121_daisy.h ****   private:
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  113              		.loc 1 62 5 view .LVU23
  114 0000 0C29     		cmp	r1, #12
  115 0002 03D8     		bhi	.L3
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 7
 
 
  116              	.LVL6:
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  159              		.cfi_def_cfa_offset 8
  160              		.cfi_offset 4, -8
  161              		.cfi_offset 14, -4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 8
 
 
  162 0002 0A46     		mov	r2, r1
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  210              	.LBE21:
  211              	.LBE23:
  134:mpr121_daisy.cpp ****     if (res == daisy::I2CHandle::Result::OK) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 9
 
 
  212              		.loc 1 134 5 is_stmt 1 view .LVU48
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  262              		.loc 1 55 5 view .LVU57
  263 0000 0C29     		cmp	r1, #12
  264 0002 05D8     		bhi	.L9
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 10
 
 
  265              	.LVL18:
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  311              		.cfi_offset 5, -12
  312              		.cfi_offset 6, -8
  313              		.cfi_offset 14, -4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 11
 
 
   70:mpr121_daisy.cpp ****     if (channel > 11) return 0; // Only for touch channels 0-11
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  356              		.thumb
  357              		.thumb_func
  359              	_ZN14thaumazein_hal6Mpr12117GetProximityValueEtf:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 12
 
 
  360              	.LVL30:
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  402              		.loc 1 82 5 view .LVU92
   84:mpr121_daisy.cpp ****         if ((channelMask >> i) & 0x01) { // Check if this channel is in the mask
  403              		.loc 1 84 5 view .LVU93
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 13
 
 
  404              	.LBB28:
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  445 004c 1BB2     		sxth	r3, r3
  446 004e 002B     		cmp	r3, #0
   95:mpr121_daisy.cpp ****             }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 14
 
 
  447              		.loc 1 95 17 view .LVU107
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  485 0076 DFED097A 		vldr.32	s15, .L26+4
  486 007a 28EE278A 		vmul.f32	s16, s16, s15
  487              	.LVL42:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 15
 
 
  106:mpr121_daisy.cpp **** }
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  533              		.cfi_def_cfa_offset 8
  534              		.cfi_offset 4, -8
  535              		.cfi_offset 14, -4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 16
 
 
  536 0002 86B0     		sub	sp, sp, #24
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  585              	.LFE2668:
  587              		.section	.text._ZN14thaumazein_hal6Mpr12113SetThresholdsEhh,"ax",%progbits
  588              		.align	1
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 17
 
 
  589              		.global	_ZN14thaumazein_hal6Mpr12113SetThresholdsEhh
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  114:mpr121_daisy.cpp ****         WriteRegister(MPR121_RELEASETH_0 + 2 * i, release);
  632              		.loc 1 114 22 is_stmt 0 discriminator 2 view .LVU160
  633 0012 2146     		mov	r1, r4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 18
 
 
  634 0014 3A46     		mov	r2, r7
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  675              		.loc 1 117 18 view .LVU173
  676              		.cfi_endproc
  677              	.LFE2665:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 19
 
 
  679              		.section	.text._ZN14thaumazein_hal6Mpr1214InitERKNS0_6ConfigE,"ax",%progbits
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  721 0016 6571     		strb	r5, [r4, #5]
   11:mpr121_daisy.cpp ****     daisy::System::Delay(1); // Allow time for reset
  722              		.loc 1 11 5 is_stmt 1 view .LVU187
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 20
 
 
   11:mpr121_daisy.cpp ****     daisy::System::Delay(1); // Allow time for reset
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
   20:mpr121_daisy.cpp ****     WriteRegister(MPR121_ECR, 0x8F); // Enable all 12 electrodes and proximity
  767              		.loc 1 20 5 is_stmt 1 view .LVU203
   20:mpr121_daisy.cpp ****     WriteRegister(MPR121_ECR, 0x8F); // Enable all 12 electrodes and proximity
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 21
 
 
  768              		.loc 1 20 18 is_stmt 0 view .LVU204
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  820              	_ZN14thaumazein_hal6Mpr12110ClearErrorEv:
  821              	.LVL72:
  822              	.LFB2670:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 22
 
 
  149:mpr121_daisy.cpp **** 
@@ -1315,36 +1315,36 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 1
  873              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
  874              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
  875              		.file 39 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 mpr121_daisy.cpp
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:19     .text._ZN14thaumazein_hal6Mpr12113ReadRegister8Eh:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:25     .text._ZN14thaumazein_hal6Mpr12113ReadRegister8Eh:0000000000000000 _ZN14thaumazein_hal6Mpr12113ReadRegister8Eh
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:99     .text._ZN14thaumazein_hal6Mpr12112BaselineDataEh:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:105    .text._ZN14thaumazein_hal6Mpr12112BaselineDataEh:0000000000000000 _ZN14thaumazein_hal6Mpr12112BaselineDataEh
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:142    .text._ZN14thaumazein_hal6Mpr12114ReadRegister16Eh:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:148    .text._ZN14thaumazein_hal6Mpr12114ReadRegister16Eh:0000000000000000 _ZN14thaumazein_hal6Mpr12114ReadRegister16Eh
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:224    .text._ZN14thaumazein_hal6Mpr1217TouchedEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:230    .text._ZN14thaumazein_hal6Mpr1217TouchedEv:0000000000000000 _ZN14thaumazein_hal6Mpr1217TouchedEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:248    .text._ZN14thaumazein_hal6Mpr12112FilteredDataEh:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:254    .text._ZN14thaumazein_hal6Mpr12112FilteredDataEh:0000000000000000 _ZN14thaumazein_hal6Mpr12112FilteredDataEh
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:292    .text._ZN14thaumazein_hal6Mpr12120GetBaselineDeviationEh:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:298    .text._ZN14thaumazein_hal6Mpr12120GetBaselineDeviationEh:0000000000000000 _ZN14thaumazein_hal6Mpr12120GetBaselineDeviationEh
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:353    .text._ZN14thaumazein_hal6Mpr12117GetProximityValueEtf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:359    .text._ZN14thaumazein_hal6Mpr12117GetProximityValueEtf:0000000000000000 _ZN14thaumazein_hal6Mpr12117GetProximityValueEtf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:511    .text._ZN14thaumazein_hal6Mpr12117GetProximityValueEtf:0000000000000098 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:517    .text._ZN14thaumazein_hal6Mpr12113WriteRegisterEhh:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:523    .text._ZN14thaumazein_hal6Mpr12113WriteRegisterEhh:0000000000000000 _ZN14thaumazein_hal6Mpr12113WriteRegisterEhh
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:588    .text._ZN14thaumazein_hal6Mpr12113SetThresholdsEhh:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:594    .text._ZN14thaumazein_hal6Mpr12113SetThresholdsEhh:0000000000000000 _ZN14thaumazein_hal6Mpr12113SetThresholdsEhh
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:680    .text._ZN14thaumazein_hal6Mpr1214InitERKNS0_6ConfigE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:686    .text._ZN14thaumazein_hal6Mpr1214InitERKNS0_6ConfigE:0000000000000000 _ZN14thaumazein_hal6Mpr1214InitERKNS0_6ConfigE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:790    .text._ZNK14thaumazein_hal6Mpr1218HasErrorEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:796    .text._ZNK14thaumazein_hal6Mpr1218HasErrorEv:0000000000000000 _ZNK14thaumazein_hal6Mpr1218HasErrorEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:814    .text._ZN14thaumazein_hal6Mpr12110ClearErrorEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccrNAoHy.s:820    .text._ZN14thaumazein_hal6Mpr12110ClearErrorEv:0000000000000000 _ZN14thaumazein_hal6Mpr12110ClearErrorEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:19     .text._ZN14thaumazein_hal6Mpr12113ReadRegister8Eh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:25     .text._ZN14thaumazein_hal6Mpr12113ReadRegister8Eh:0000000000000000 _ZN14thaumazein_hal6Mpr12113ReadRegister8Eh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:99     .text._ZN14thaumazein_hal6Mpr12112BaselineDataEh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:105    .text._ZN14thaumazein_hal6Mpr12112BaselineDataEh:0000000000000000 _ZN14thaumazein_hal6Mpr12112BaselineDataEh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:142    .text._ZN14thaumazein_hal6Mpr12114ReadRegister16Eh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:148    .text._ZN14thaumazein_hal6Mpr12114ReadRegister16Eh:0000000000000000 _ZN14thaumazein_hal6Mpr12114ReadRegister16Eh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:224    .text._ZN14thaumazein_hal6Mpr1217TouchedEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:230    .text._ZN14thaumazein_hal6Mpr1217TouchedEv:0000000000000000 _ZN14thaumazein_hal6Mpr1217TouchedEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:248    .text._ZN14thaumazein_hal6Mpr12112FilteredDataEh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:254    .text._ZN14thaumazein_hal6Mpr12112FilteredDataEh:0000000000000000 _ZN14thaumazein_hal6Mpr12112FilteredDataEh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:292    .text._ZN14thaumazein_hal6Mpr12120GetBaselineDeviationEh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:298    .text._ZN14thaumazein_hal6Mpr12120GetBaselineDeviationEh:0000000000000000 _ZN14thaumazein_hal6Mpr12120GetBaselineDeviationEh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:353    .text._ZN14thaumazein_hal6Mpr12117GetProximityValueEtf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:359    .text._ZN14thaumazein_hal6Mpr12117GetProximityValueEtf:0000000000000000 _ZN14thaumazein_hal6Mpr12117GetProximityValueEtf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:511    .text._ZN14thaumazein_hal6Mpr12117GetProximityValueEtf:0000000000000098 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:517    .text._ZN14thaumazein_hal6Mpr12113WriteRegisterEhh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:523    .text._ZN14thaumazein_hal6Mpr12113WriteRegisterEhh:0000000000000000 _ZN14thaumazein_hal6Mpr12113WriteRegisterEhh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:588    .text._ZN14thaumazein_hal6Mpr12113SetThresholdsEhh:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:594    .text._ZN14thaumazein_hal6Mpr12113SetThresholdsEhh:0000000000000000 _ZN14thaumazein_hal6Mpr12113SetThresholdsEhh
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:680    .text._ZN14thaumazein_hal6Mpr1214InitERKNS0_6ConfigE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:686    .text._ZN14thaumazein_hal6Mpr1214InitERKNS0_6ConfigE:0000000000000000 _ZN14thaumazein_hal6Mpr1214InitERKNS0_6ConfigE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:790    .text._ZNK14thaumazein_hal6Mpr1218HasErrorEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:796    .text._ZNK14thaumazein_hal6Mpr1218HasErrorEv:0000000000000000 _ZNK14thaumazein_hal6Mpr1218HasErrorEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:814    .text._ZN14thaumazein_hal6Mpr12110ClearErrorEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNvhm5G.s:820    .text._ZN14thaumazein_hal6Mpr12110ClearErrorEv:0000000000000000 _ZN14thaumazein_hal6Mpr12110ClearErrorEv
 
 UNDEFINED SYMBOLS
 _ZN5daisy9I2CHandle17ReadDataAtAddressEtttPhtm

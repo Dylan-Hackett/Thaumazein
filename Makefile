@@ -114,6 +114,16 @@ flash-app:
 
 # Flash application code directly to QSPI external flash via the QSPI bootloader stub (alt 0)
 program-app:
-	dfu-util -a 0 -s $(QSPI_ADDRESS):leave -D $(BUILD_DIR)/$(TARGET_BIN) -d ,0483:df11 -R
+	@echo "Flashing application to QSPI..."
+	-dfu-util -a 0 -s $(QSPI_ADDRESS):leave -D $(BUILD_DIR)/$(TARGET_BIN) -d ,0483:df11
 
-.PHONY: flash-stub flash-app
+program-sram:
+	@echo "Loading into SRAM via OpenOCD..."
+	$(OCD) -s $(OCD_DIR) $(OCDFLAGS) -c "init; reset halt; load $(BUILD_DIR)/$(TARGET).elf; reset init; exit"
+
+# Override program-boot locally so detach-error (libusb code-74) doesn't abort the make.
+program-boot:
+	@echo "Flashing bootloader stub to internal flash…"
+	-dfu-util -a 0 -s 0x08000000:leave -D $(BOOT_BIN) -d ,0483:df11
+
+.PHONY: flash-stub flash-app program-sram

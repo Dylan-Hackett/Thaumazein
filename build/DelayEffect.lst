@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
   10:Effects/EchoDelay.h **** 
   11:Effects/EchoDelay.h **** /**
   12:Effects/EchoDelay.h ****  * @brief
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 2
 
 
   13:Effects/EchoDelay.h ****  * Tape-ish echo delay.
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
   40              		.loc 1 9 22 is_stmt 0 view .LVU3
   41 0000 0A4A     		ldr	r2, .L2
   42              	.LVL1:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 3
 
 
   43              		.loc 1 9 22 view .LVU4
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
   89 002c 00000000 		.word	delay_feedback_val
   90 0030 48E17A3F 		.word	1065017672
   91 0034 00000000 		.word	delay
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 4
 
 
   92 0038 00000000 		.word	delay_time_val
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
   23:DelayEffect.cpp ****     if (norm_factor == 0.0f) { // Prevent division by zero
   24:DelayEffect.cpp ****         // Handle the case where norm_factor is zero
   25:DelayEffect.cpp ****         // This is a placeholder and should be replaced with an appropriate handling logic
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 5
 
 
   26:DelayEffect.cpp ****         norm_factor = 1.0f; // Using a default value to avoid division by zero
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
   13:lib/DaisySP/Source/Utility/dsp.h **** #define DSY_CORE_DSP
   14:lib/DaisySP/Source/Utility/dsp.h **** #include <cassert>
   15:lib/DaisySP/Source/Utility/dsp.h **** #include <cstdint>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 6
 
 
   16:lib/DaisySP/Source/Utility/dsp.h **** #include <random>
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
   70:lib/DaisySP/Source/Utility/dsp.h **** Original code by Stefan Stenzel
   71:lib/DaisySP/Source/Utility/dsp.h **** These are approximations
   72:lib/DaisySP/Source/Utility/dsp.h **** */
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 7
 
 
   73:lib/DaisySP/Source/Utility/dsp.h **** inline float fastpower(float f, int n)
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  127:lib/DaisySP/Source/Utility/dsp.h ****     f += -3.13396450166353f;
  128:lib/DaisySP/Source/Utility/dsp.h ****     f += exp;
  129:lib/DaisySP/Source/Utility/dsp.h ****     return (f);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 8
 
 
  130:lib/DaisySP/Source/Utility/dsp.h **** }
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
   24:lib/DaisySP/Source/Utility/delayline.h **** 
   25:lib/DaisySP/Source/Utility/delayline.h **** By: shensley
   26:lib/DaisySP/Source/Utility/delayline.h **** */
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 9
 
 
   27:lib/DaisySP/Source/Utility/delayline.h **** template <typename T, size_t max_size>
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
   67:lib/DaisySP/Source/Utility/delayline.h **** 
   68:lib/DaisySP/Source/Utility/delayline.h ****     /** writes the sample of type T to the delay line, and advances the write ptr
   69:lib/DaisySP/Source/Utility/delayline.h ****     */
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 10
 
 
   70:lib/DaisySP/Source/Utility/delayline.h ****     inline void Write(const T sample)
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  219 005e 93ED007A 		vldr.32	s14, [r3]
  220              	.LBB112:
  221              	.LBB100:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 11
 
 
  222              		.loc 3 153 9 discriminator 2 view .LVU52
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  266 0084 C3ED057A 		vstr.32	s15, [r3, #20]
  267              	.LBE104:
  268              	.LBE115:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 12
 
 
  269              	.LBB116:
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
   26:Effects/BiquadFilters.h ****         // Ordering numerator then denominator: {b0, b1, b2, a1, a2}
   27:Effects/BiquadFilters.h ****         using Coefficients = std::array<float, 5>;
   28:Effects/BiquadFilters.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 13
 
 
   29:Effects/BiquadFilters.h ****         static const Coefficients CalculateCoefficients(const FilterType type, 
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  324              	.LVL20:
  325              		.loc 4 82 30 discriminator 2 view .LVU76
  326              	.LBE110:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 14
 
 
  327              	.LBE136:
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  105:Effects/BiquadFilters.h ****         {
  106:Effects/BiquadFilters.h ****             cutoff_hz_ = daisysp::fclamp(cutoff_hz, 1.f, sample_rate_ * 0.5f);
  107:Effects/BiquadFilters.h ****             for (size_t i=0; i<NumSections; i++) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 15
 
 
  108:Effects/BiquadFilters.h ****                 q_[i] = daisysp::fmax(q, 0.1f);
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  353 00c8 E7EE066A 		vfma.f32	s13, s14, s12
   53:Effects/BiquadFilters.h ****             s2_[channel] = b2 * in - a2 * y;
  354              		.loc 5 53 51 discriminator 2 view .LVU90
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 16
 
 
  355 00cc 95ED036A 		vldr.32	s12, [r5, #12]
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  184:lib/DaisySP/Source/Utility/dsp.h ****         {
  185:lib/DaisySP/Source/Utility/dsp.h ****             const float a = 1.f / log10f(max / min);
  186:lib/DaisySP/Source/Utility/dsp.h ****             return fclamp(min * powf(10, in / a), min, max);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 17
 
 
  187:lib/DaisySP/Source/Utility/dsp.h ****         }
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  241:lib/DaisySP/Source/Utility/dsp.h **** /** Soft Clipping function extracted from pichenettes/stmlib */
  242:lib/DaisySP/Source/Utility/dsp.h **** inline float SoftClip(float x)
  243:lib/DaisySP/Source/Utility/dsp.h **** {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 18
 
 
  244:lib/DaisySP/Source/Utility/dsp.h ****     if(x < -3.0f)
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  417              	.LVL25:
  418              	.LBB142:
  419              	.LBI142:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 19
 
 
  236:lib/DaisySP/Source/Utility/dsp.h **** {
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  457              	.LBE151:
  458              	.LBE150:
  459              	.LBE163:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 20
 
 
  460              	.LBE170:
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  505              	.LVL31:
  506              	.LBB173:
  507              	.LBB166:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 21
 
 
  508              	.LBB159:
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  245:lib/DaisySP/Source/Utility/dsp.h ****     else if(x > 3.0f)
  553              		.loc 3 245 17 view .LVU145
  554 0170 FFEE007A 		vmov.f32	s15, #-1.0e+0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 22
 
 
  555              	.LVL35:
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  604              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
  605              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
  606              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 23
 
 
  607              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
@@ -1375,17 +1375,17 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 1
  658              		.file 67 "Thaumazein.h"
  659              		.file 68 "DelayEffect.h"
  660              		.file 69 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 DelayEffect.cpp
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s:19     .text._ZN11DelayEffect11UpdateDelayEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s:25     .text._ZN11DelayEffect11UpdateDelayEv:0000000000000000 _ZN11DelayEffect11UpdateDelayEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s:89     .text._ZN11DelayEffect11UpdateDelayEv:000000000000002c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s:99     .text._ZN11DelayEffect18ApplyDelayToOutputEPKfPfjf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s:105    .text._ZN11DelayEffect18ApplyDelayToOutputEPKfPfjf:0000000000000000 _ZN11DelayEffect18ApplyDelayToOutputEPKfPfjf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccT2bBhc.s:586    .text._ZN11DelayEffect18ApplyDelayToOutputEPKfPfjf:0000000000000184 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s:19     .text._ZN11DelayEffect11UpdateDelayEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s:25     .text._ZN11DelayEffect11UpdateDelayEv:0000000000000000 _ZN11DelayEffect11UpdateDelayEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s:89     .text._ZN11DelayEffect11UpdateDelayEv:000000000000002c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s:99     .text._ZN11DelayEffect18ApplyDelayToOutputEPKfPfjf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s:105    .text._ZN11DelayEffect18ApplyDelayToOutputEPKfPfjf:0000000000000000 _ZN11DelayEffect18ApplyDelayToOutputEPKfPfjf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNotpBi.s:586    .text._ZN11DelayEffect18ApplyDelayToOutputEPKfPfjf:0000000000000184 $d
 
 UNDEFINED SYMBOLS
 delay_feedback_val

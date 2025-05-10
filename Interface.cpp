@@ -239,9 +239,12 @@ void Bootload() {
     {
         if(++hold_cnt >= kHoldFrames)
         {
-            hw.PrintLine("Entering bootloader (ADC combo)…");
+            hw.PrintLine("Entering Daisy DFU bootloader (ADC combo)…");
             System::Delay(100);
-            System::ResetToBootloader();
+            // Jump to Daisy bootloader and keep it in DFU until a new
+            // image is flashed. This avoids ending up in the STM ROM DFU
+            // which cannot load QSPI apps.
+            System::ResetToBootloader(System::BootloaderMode::DAISY_INFINITE_TIMEOUT);
         }
     }
     else
