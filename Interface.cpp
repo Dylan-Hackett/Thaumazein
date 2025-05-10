@@ -218,13 +218,35 @@ void InitializeSynth() {
 
 // --- User Interface Functions ---
 void Bootload() {
-    // Bootloader via ADC: pads on ADC 8, 9, and 10 pressed simultaneously at any time
-    if (arp_pad.GetRawFloat() > 0.5f &&
-        model_prev_pad.GetRawFloat() > 0.5f &&
-        model_next_pad.GetRawFloat() > 0.5f) {
-        hw.PrintLine("Entering bootloader (ADC combo)...");
-        System::Delay(100);
-        System::ResetToBootloader();
+    /*
+        Bootloader entry via ADC combo (pads 8-10).
+        Require the condition to be held for ~1 s to avoid false triggers
+        from floating ADC inputs or brief noise at startup.
+    */
+    static uint16_t hold_cnt = 0;
+    const uint16_t kHoldFrames = 500; // 500 * 2 ms ≈ 1 s
+
+    // Skip bootloader combo for first 5 seconds after power-up to avoid
+    // false triggers from floating ADC inputs while they settle.
+    if(System::GetNow() < 5000)
+        return;
+
+    bool combo_pressed = (arp_pad.GetRawFloat()   > 0.5f) &&
+                         (model_prev_pad.GetRawFloat() > 0.5f) &&
+                         (model_next_pad.GetRawFloat() > 0.5f);
+
+    if(combo_pressed)
+    {
+        if(++hold_cnt >= kHoldFrames)
+        {
+            hw.PrintLine("Entering bootloader (ADC combo)…");
+            System::Delay(100);
+            System::ResetToBootloader();
+        }
+    }
+    else
+    {
+        hold_cnt = 0; // reset counter when combo released
     }
 }
 

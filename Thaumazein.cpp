@@ -120,7 +120,9 @@ int main(void) {
         UpdateLED();
         
         // Check bootloader condition via ADC touch pads
+#ifdef ENABLE_ADC_BOOT_COMBO
         Bootload();
+#endif
         
         UpdateDisplay();
         
