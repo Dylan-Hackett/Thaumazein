@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc45z2FZ.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3xgS2Z.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -27,7 +27,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc45z2FZ.s 			page 1
   26              	.Letext0:
   27              		.file 1 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
   28              		.file 2 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
-  29              		.file 3 "lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h"
+  29              		.file 3 "lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h"
   30              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/cpp_type_traits.h
   31              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
   32              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
@@ -40,12 +40,12 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc45z2FZ.s 			page 1
   39              		.file 13 "eurorack/stmlib/utils/random.h"
   40              		.file 14 "<built-in>"
   41              		.file 15 "eurorack/stmlib/utils/random.cc"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc45z2FZ.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3xgS2Z.s 			page 2
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 random.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc45z2FZ.s:23     .data._ZN6stmlib6Random10rng_state_E:0000000000000000 _ZN6stmlib6Random10rng_state_E
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc45z2FZ.s:20     .data._ZN6stmlib6Random10rng_state_E:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3xgS2Z.s:23     .data._ZN6stmlib6Random10rng_state_E:0000000000000000 _ZN6stmlib6Random10rng_state_E
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3xgS2Z.s:20     .data._ZN6stmlib6Random10rng_state_E:0000000000000000 $d
 
 NO UNDEFINED SYMBOLS

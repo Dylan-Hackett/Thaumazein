@@ -3,22 +3,31 @@
 #define DSY_GPIO_H
 #include "daisy_core.h"
 
-/** New C++ GPIO */
 #ifdef __cplusplus
 
 namespace daisy
 {
-/** @brief General Purpose I/O control */
+/** @brief General Purpose I/O control 
+ *  @details peripheral control over a single GPIO
+ *  @ingroup peripheral
+ *   
+ *  Button Input (with internal Pullup resistor)
+ *  @include GPIO_Input.cpp 
+ * 
+ *  Output Example (perfect for blinking an LED)
+ *  @include GPIO_Output.cpp
+ * 
+*/
 class GPIO
 {
   public:
     /** @brief Mode of operation for the specified GPIO */
     enum class Mode
     {
-        INPUT,     /**< Input for reading state of pin */
-        OUTPUT,    /**< Output w/ push-pull configuration */
-        OUTPUT_OD, /**< Output w/ open-drain configuration */
-        ANALOG,    /**< Analog for connection to ADC or DAC peripheral */
+        INPUT,      /**< Input for reading state of pin */
+        OUTPUT,     /**< Output w/ push-pull configuration */
+        OPEN_DRAIN, /**< Output w/ open-drain configuration */
+        ANALOG,     /**< Analog for connection to ADC or DAC peripheral */
     };
 
     /** @brief Configures whether an internal Pull up or Pull down resistor is used. 
@@ -64,13 +73,27 @@ class GPIO
 
     GPIO() {}
 
-    /** @brief Initialize the GPIO from a Configuration struct */
+    /** @brief Initialize the GPIO using the internal Config struct */
+    void Init();
+
+    /** @brief Initialize the GPIO from a Config struct 
+     *  @param cfg reference to a Config struct populated with the desired settings
+    */
     void Init(const Config &cfg);
 
-    /** @brief Initialize the GPIO with a Configuration struct, and explicit pin */
+    /** @brief Initialize the GPIO with a Configuration struct, and explicit pin 
+     *  @param p Pin specifying the physical connection on the hardware
+     *  @param cfg reference to a Config struct populated with the desired settings. 
+     *         Config::pin will be overwritten
+    */
     void Init(Pin p, const Config &cfg);
 
-    /** @brief Explicity initialize all configuration for the GPIO */
+    /** @brief Explicity initialize all configuration for the GPIO 
+     *  @param p Pin specifying the physical connection on the hardware
+     *  @param m Mode specifying the behavior of the GPIO (input, output, etc.). Defaults to Mode::INPUT
+     *  @param pu Pull up/down state for the GPIO. Defaults to Pull::NOPULL
+     *  @param sp Speed setting for drive strength/slew rate. Defaults to Speed::Slow
+    */
     void Init(Pin   p,
               Mode  m  = Mode::INPUT,
               Pull  pu = Pull::NOPULL,
@@ -80,8 +103,7 @@ class GPIO
     void DeInit();
 
     /** @brief Reads the state of the GPIO.
-     *  If a GPIO is configured in Config::Mode::ANALOG, this function will 
-     *  always return false.
+     *  @return State of the GPIO unless Mode is set to Mode::Analog, then always false
      */
     bool Read();
 
@@ -119,82 +141,4 @@ class GPIO
 } // namespace daisy
 
 #endif
-
-/** Old Style C API for GPIO is staying in place for a 
- *  few versions to support backwards compatibility.
- * 
- *  This should not be used for anything new.
- */
-
-#ifdef __cplusplus
-extern "C"
-{
 #endif
-
-    /** General Purpose IO driver */
-
-    /** @addtogroup other
-    @{
-    */
-
-    /** Sets the mode of the GPIO */
-    typedef enum
-    {
-        DSY_GPIO_MODE_INPUT,     /**< & */
-        DSY_GPIO_MODE_OUTPUT_PP, /**< Push-Pull */
-        DSY_GPIO_MODE_OUTPUT_OD, /**< Open-Drain */
-        DSY_GPIO_MODE_ANALOG,    /**< & */
-        DSY_GPIO_MODE_LAST,      /**< & */
-    } dsy_gpio_mode;
-
-    /** Configures whether an internal Pull up or Pull down resistor is used */
-    typedef enum
-    {
-        DSY_GPIO_NOPULL,   /**< & */
-        DSY_GPIO_PULLUP,   /**< & */
-        DSY_GPIO_PULLDOWN, /**< & */
-    } dsy_gpio_pull;
-
-    /** Struct for holding the pin, and configuration */
-    typedef struct
-    {
-        dsy_gpio_pin  pin;  /**< & */
-        dsy_gpio_mode mode; /**< & */
-        dsy_gpio_pull pull; /**< & */
-    } dsy_gpio;
-
-    /** Initializes the gpio with the settings configured. 
-    \param *p Pin pointer
-    */
-    void dsy_gpio_init(const dsy_gpio *p);
-
-    /** Deinitializes the gpio pin 
-    \param *p Pin pointer
-     */
-    void dsy_gpio_deinit(const dsy_gpio *p);
-
-    /** 
-    Reads the state of the gpio pin
-    \param *p Pin pointer 
-    \return 1 if the pin is HIGH, and 0 if the pin is LOW */
-    uint8_t dsy_gpio_read(const dsy_gpio *p);
-
-    /** 
-    Writes the state to the gpio pin
-    Pin will be set to 3v3 when state is 1, and 0V when state is 0
-    \param *p Pin pointer
-    \param state State to write
-    */
-    void dsy_gpio_write(const dsy_gpio *p, uint8_t state);
-
-    /** Toggles the state of the pin so that it is not at the same state as it was previously.
-    \param *p Pin pointer
-     */
-    void dsy_gpio_toggle(const dsy_gpio *p);
-
-#ifdef __cplusplus
-}
-#endif
-
-#endif
-/** @} */

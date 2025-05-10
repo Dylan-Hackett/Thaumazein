@@ -1,5 +1,19 @@
+// TODO: make this adjustable
+#define SYSEX_BUFFER_LEN 128
+
 namespace daisy
 {
+/** @addtogroup midi MIDI
+ *  @ingroup human_interface
+ *  @ingroup libdaisy
+ *  @brief MIDI handlers, transports, and message types
+ *  @{
+ */
+
+/** @defgroup midi_events MIDI_EVENTS
+ *  @{
+*/
+
 /** Parsed from the Status Byte, these are the common Midi Messages that can be handled. \n
 At this time only 3-byte messages are correctly parsed into MidiEvents.
 */
@@ -119,6 +133,15 @@ struct PitchBendEvent
     int     channel; /**< & */
     int16_t value;   /**< & */
 };
+/** Struct containing channel mode event for a given channel.
+Can be made from MidiEvent
+*/
+struct ChannelModeEvent
+{
+    int             channel;    /**< & */
+    ChannelModeType event_type; /**< & */
+    int16_t         value;      /**< & */
+};
 /** Struct containing sysex data.
 Can be made from MidiEvent
 */
@@ -180,7 +203,7 @@ struct AllNotesOffEvent
 {
     int channel; /**< & */
 };
-/** Struct containing OmniModeOffEvent data. 
+/** Struct containing OmniModeOffEvent data.
  * Can be made from MidiEvent
 */
 struct OmniModeOffEvent
@@ -291,6 +314,18 @@ struct MidiEvent
         m.value   = ((uint16_t)data[1] << 7) + (data[0] - 8192);
         return m;
     }
+
+    ChannelModeEvent AsChannelMode()
+    {
+        ChannelModeEvent m;
+
+        m.channel    = channel;
+        m.event_type = (ChannelModeType)(data[0] - 120);
+        m.value      = data[1];
+
+        return m;
+    }
+
     SystemExclusiveEvent AsSystemExclusive()
     {
         SystemExclusiveEvent m;
@@ -376,5 +411,27 @@ struct MidiEvent
         m.channel = channel;
         return m;
     }
+
+    static const char* GetTypeAsString(MidiEvent& msg)
+    {
+        switch(msg.type)
+        {
+            case NoteOff: return "NoteOff";
+            case NoteOn: return "NoteOn";
+            case PolyphonicKeyPressure: return "PolyKeyPres.";
+            case ControlChange: return "CC";
+            case ProgramChange: return "Prog. Change";
+            case ChannelPressure: return "Chn. Pressure";
+            case PitchBend: return "PitchBend";
+            case SystemCommon: return "Sys. Common";
+            case SystemRealTime: return "Sys. Realtime";
+            case ChannelMode: return "Chn. Mode";
+            default: return "Unknown";
+        }
+    }
 };
+
+/** @} */ // End midi_events
+
+/** @} */ // End midi
 } //namespace daisy

@@ -16,6 +16,7 @@ CPP_SOURCES += Thaumazein.cpp \
               AudioProcessor.cpp \
               VoiceEnvelope.cpp \
               mpr121_daisy.cpp \
+              SynthStateStorage.cpp \
               Effects/reverbsc.cpp \
               Effects/BiquadFilters.cpp \
               Effects/DelayEffect.cpp
@@ -33,6 +34,9 @@ CC_SOURCES += $(STMLIB_DIR)/dsp/units.cc \
 DAISYSP_SOURCES += $(wildcard $(DAISYSP_DIR)/Source/*.cpp)
 DAISYSP_SOURCES += $(wildcard $(DAISYSP_DIR)/Source/*/*.cpp)
 
+# Define vpath for .cc sources BEFORE including core Makefile
+vpath %.cc $(sort $(dir $(CC_SOURCES)))
+
 # Define Includes BEFORE including core Makefile
 C_INCLUDES += \
 -I$(MPR121_DIR) \
@@ -45,11 +49,24 @@ C_INCLUDES += \
 # Hardware target
 HWDEFS = -DSEED
 
+# Ensure build is treated as boot application (code executes from QSPI)
+C_DEFS += -DBOOT_APP
+APP_TYPE = BOOT_QSPI
+
 # Warning suppression
 C_INCLUDES += -Wno-unused-local-typedefs
 
 # Optimization level (can be overridden)
 OPT ?= -Os -s
+
+# Set target Linker Script to QSPI (no 256k offset)
+LDSCRIPT = $(LIBDAISY_DIR)/core/STM32H750IB_qspi.lds
+
+# Override QSPI write address to match linker (no 0x40000 offset)
+QSPI_ADDRESS = 0x90040000
+
+# Add QSPI section start flags
+LDFLAGS += -Wl,--gc-sections
 
 # Core location, and generic makefile.
 SYSTEM_FILES_DIR = $(LIBDAISY_DIR)/core
@@ -60,12 +77,12 @@ include $(SYSTEM_FILES_DIR)/Makefile # Include core makefile
 # Add .cc source files to the OBJECTS list defined by the core makefile
 # Use the same pattern (notdir/vpath) as the core makefile
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(CC_SOURCES:.cc=.o)))
-vpath %.cc $(sort $(dir $(CC_SOURCES))) # Tell make where to find .cc sources
 
 # Add the rule for compiling .cc files
 # This pattern should match the .c/.cpp rules in the core Makefile
-$(BUILD_DIR)/%.o: %.cc Makefile | $(BUILD_DIR)
-	$(CXX) -c $(CPPFLAGS) $(CPP_STANDARD) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.cc=.lst)) $< -o $@
+$(BUILD_DIR)/%.o: %.cc $(MAKEFILE_LIST) | $(BUILD_DIR)
+	@echo Compiling $< 
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c $< -o $@ $(DEPFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.cc=.lst))
 
 # Explicitly override the linker rule AFTER OBJECTS is fully populated
 $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
@@ -75,3 +92,38 @@ $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
 
 # No need to override other rules (all, .c, .cpp, .bin, .hex, clean, etc.)
 # Let the core Makefile handle those.
+
+# -------------------------------------------------------------
+# Convenience targets for QSPI workflow
+# -------------------------------------------------------------
+# 1. flash-stub : Builds the project with the internal-flash linker
+#    and flashes it to alt-setting 0 (0x08000000).  This becomes the
+#    tiny boot stub that jumps to QSPI.
+# 2. flash-app  : Normal build (QSPI linker) + flash to alt-setting 1
+#    (0x90040000).
+# -------------------------------------------------------------
+
+flash-stub:
+	$(MAKE) clean
+	$(MAKE) program-boot
+
+flash-app:
+	$(MAKE) clean
+	$(MAKE) all
+	$(MAKE) program-app
+
+# Flash application code directly to QSPI external flash via the QSPI bootloader stub (alt 0)
+program-app:
+	@echo "Flashing application to QSPI..."
+	-dfu-util -a 0 -s $(QSPI_ADDRESS):leave -D $(BUILD_DIR)/$(TARGET_BIN) -d ,0483:df11
+
+program-sram:
+	@echo "Loading into SRAM via OpenOCD..."
+	$(OCD) -s $(OCD_DIR) $(OCDFLAGS) -c "init; reset halt; load $(BUILD_DIR)/$(TARGET).elf; reset init; exit"
+
+# Override program-boot locally so detach-error (libusb code-74) doesn't abort the make.
+program-boot:
+	@echo "Flashing bootloader stub to internal flash…"
+	-dfu-util -a 0 -s 0x08000000:leave -D $(BOOT_BIN) -d ,0483:df11
+
+.PHONY: flash-stub flash-app program-sram

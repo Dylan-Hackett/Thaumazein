@@ -4,10 +4,6 @@
 #include "stm32h7xx_hal.h"
 #include "dev/flash_IS25LP080D.h"
 #include "dev/flash_IS25LP064A.h"
-extern "C"
-{
-#include "util/hal_map.h"
-}
 
 // TODO: Add handling for alternate device types,
 //        This will be a thing much sooner than anticipated
@@ -57,7 +53,7 @@ class QSPIHandle::Impl
 
     QSPI_HandleTypeDef* GetHalHandle();
 
-    size_t GetNumPins() { return pin_count_; }
+    constexpr size_t GetNumPins() { return pin_count_; }
 
     Status GetStatus() { return status_; }
 
@@ -93,14 +89,14 @@ class QSPIHandle::Impl
     Status             status_;
 
     static constexpr size_t pin_count_
-        = sizeof(QSPIHandle::Config::pin_config) / sizeof(dsy_gpio_pin);
+        = sizeof(QSPIHandle::Config::pin_config) / sizeof(Pin);
     // Data structure for easy hal initialization
-    dsy_gpio_pin* pin_config_arr_[pin_count_] = {&config_.pin_config.io0,
-                                                 &config_.pin_config.io1,
-                                                 &config_.pin_config.io2,
-                                                 &config_.pin_config.io3,
-                                                 &config_.pin_config.clk,
-                                                 &config_.pin_config.ncs};
+    Pin* pin_config_arr_[pin_count_] = {&config_.pin_config.io0,
+                                        &config_.pin_config.io1,
+                                        &config_.pin_config.io2,
+                                        &config_.pin_config.io3,
+                                        &config_.pin_config.clk,
+                                        &config_.pin_config.ncs};
 };
 
 
@@ -334,7 +330,7 @@ QSPIHandle::Result QSPIHandle::Impl::Erase(uint32_t start_addr,
     uint32_t block_size = IS25LP080D_SECTOR_SIZE; // 4kB blocks for now.
     // 64kB chunks for now.
     start_addr = start_addr - (start_addr % block_size);
-    while(end_addr >= start_addr)
+    while(end_addr > start_addr)
     {
         block_addr = start_addr & 0x0FFFFFFF;
         if(EraseSector(block_addr) != QSPIHandle::Result::OK)
@@ -836,15 +832,15 @@ uint8_t QSPIHandle::Impl::GetStatusRegister()
 
 uint32_t QSPIHandle::Impl::GetPin(size_t pin)
 {
-    dsy_gpio_pin* p = pin_config_arr_[pin];
-    return dsy_hal_map_get_pin(p);
+    Pin* p = pin_config_arr_[pin];
+    return GetHALPin(*p);
 }
 
 
 GPIO_TypeDef* QSPIHandle::Impl::GetPort(size_t pin)
 {
-    dsy_gpio_pin* p = pin_config_arr_[pin];
-    return dsy_hal_map_get_port(p);
+    Pin* p = pin_config_arr_[pin];
+    return GetHALPort(*p);
 }
 
 

@@ -1,11 +1,14 @@
 build/lpc_speech_synth_controller.o: \
  eurorack/plaits/dsp/speech/lpc_speech_synth_controller.cc \
- lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h \
- lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h \
- lib/libdaisy/Drivers/CMSIS/Include/core_cm7.h \
- lib/libdaisy/Drivers/CMSIS/Include/cmsis_compiler.h \
- lib/libdaisy/Drivers/CMSIS/Include/cmsis_gcc.h \
- lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h \
+ lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h \
+ lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h750xx.h \
+ lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/core_cm7.h \
+ lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/cmsis_version.h \
+ lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h \
+ lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h \
+ lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/mpu_armv7.h \
+ lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/cachel1_armv7.h \
+ lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/system_stm32h7xx.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  lib/libdaisy/src/sys/stm32h7xx_hal_conf.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -23,6 +26,7 @@ build/lpc_speech_synth_controller.o: \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma2d.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dsi.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dfsdm.h \
+ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dts.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_eth.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_eth_ex.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h \
@@ -33,6 +37,7 @@ build/lpc_speech_synth_controller.o: \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fdcan.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cec.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_comp.h \
+ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cordic.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_crc.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_crc_ex.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cryp.h \
@@ -41,6 +46,8 @@ build/lpc_speech_synth_controller.o: \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dac_ex.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h \
+ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gfxmmu.h \
+ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fmac.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hrtim.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sram.h \
@@ -61,6 +68,9 @@ build/lpc_speech_synth_controller.o: \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc_ex.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_opamp.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_opamp_ex.h \
+ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ospi.h \
+ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_otfdec.h \
+ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pssi.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_qspi.h \
@@ -89,6 +99,7 @@ build/lpc_speech_synth_controller.o: \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_smartcard.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_smartcard_ex.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_smbus.h \
+ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_smbus_ex.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_wwdg.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
@@ -102,12 +113,15 @@ build/lpc_speech_synth_controller.o: \
  eurorack/plaits/dsp/oscillator/oscillator.h \
  eurorack/stmlib/dsp/parameter_interpolator.h \
  eurorack/stmlib/dsp/polyblep.h
-lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h7xx.h:
-lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h:
-lib/libdaisy/Drivers/CMSIS/Include/core_cm7.h:
-lib/libdaisy/Drivers/CMSIS/Include/cmsis_compiler.h:
-lib/libdaisy/Drivers/CMSIS/Include/cmsis_gcc.h:
-lib/libdaisy/Drivers/CMSIS/Device/ST/STM32H7xx/Include/system_stm32h7xx.h:
+lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h:
+lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h750xx.h:
+lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/core_cm7.h:
+lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/cmsis_version.h:
+lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/cmsis_compiler.h:
+lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/cmsis_gcc.h:
+lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/mpu_armv7.h:
+lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/cachel1_armv7.h:
+lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/system_stm32h7xx.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h:
 lib/libdaisy/src/sys/stm32h7xx_hal_conf.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h:
@@ -125,6 +139,7 @@ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dcmi.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dma2d.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dsi.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dfsdm.h:
+lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dts.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_eth.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_eth_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_exti.h:
@@ -135,6 +150,7 @@ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_adc_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fdcan.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cec.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_comp.h:
+lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cordic.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_crc.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_crc_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cryp.h:
@@ -143,6 +159,8 @@ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dac.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dac_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_flash_ex.h:
+lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gfxmmu.h:
+lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_fmac.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hrtim.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hsem.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sram.h:
@@ -163,6 +181,9 @@ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ltdc_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_opamp.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_opamp_ex.h:
+lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_ospi.h:
+lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_otfdec.h:
+lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pssi.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_qspi.h:
@@ -191,6 +212,7 @@ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_irda_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_smartcard.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_smartcard_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_smbus.h:
+lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_smbus_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_wwdg.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h:

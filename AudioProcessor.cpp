@@ -26,7 +26,7 @@ extern VoiceEnvelope voice_envelopes[NUM_VOICES];
 extern bool voice_active[NUM_VOICES];
 
 // Define the CpuLoadMeter instance
-CpuLoadMeter cpu_meter;
+// CpuLoadMeter cpu_meter; // Removed: Now defined in Interface.cpp
 
 
 static bool was_arp_on = false; // For ARP state change detection

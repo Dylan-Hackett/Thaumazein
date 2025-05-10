@@ -4,9 +4,6 @@ CHIPSET ?= stm32h7x
 
 TARGET_BIN=$(TARGET).bin
 TARGET_ELF=$(TARGET).elf
-BOOT_BIN ?= $(wildcard $(SYSTEM_FILES_DIR)/dsy_bootloader*)
-FLASH_ADDRESS ?= 0x08000000
-QSPI_ADDRESS  ?= 0x90040000
 
 # If you have the arm-none-eabi- toolchain located in a particular place, but not installed for the entire system, add the path here:
 # GCC_PATH=
@@ -50,7 +47,7 @@ SYSTEM_FILES_DIR ?= \
 # source
 ######################################
 
-CPP_SOURCES ?= 
+CPP_SOURCES ?=
 
 C_SOURCES += \
 $(SYSTEM_FILES_DIR)/startup_stm32h750xx.c
@@ -71,13 +68,13 @@ PREFIX = arm-none-eabi-
 ifdef GCC_PATH
 CC = $(GCC_PATH)/$(PREFIX)gcc
 AS = $(GCC_PATH)/$(PREFIX)gcc -x assembler-with-cpp
-CXX = $(GCC_PATH)/$(PREFIX)g++ 
+CXX = $(GCC_PATH)/$(PREFIX)g++
 GDB = $(GCC_PATH)/$(PREFIX)gdb
 CP = $(GCC_PATH)/$(PREFIX)objcopy
 SZ = $(GCC_PATH)/$(PREFIX)size
 else
 CC = $(PREFIX)gcc
-CXX = $(PREFIX)g++ 
+CXX = $(PREFIX)g++
 GDB = $(PREFIX)gdb
 AS = $(PREFIX)gcc -x assembler-with-cpp
 CP = $(PREFIX)objcopy
@@ -127,7 +124,7 @@ endif
 # AS includes
 AS_INCLUDES =
 
-C_INCLUDES ?= 
+C_INCLUDES ?=
 
 C_INCLUDES += \
 -I$(LIBDAISY_DIR) \
@@ -135,18 +132,27 @@ C_INCLUDES += \
 -I$(LIBDAISY_DIR)/src/sys \
 -I$(LIBDAISY_DIR)/src/usbd \
 -I$(LIBDAISY_DIR)/src/usbh \
--I$(LIBDAISY_DIR)/Drivers/CMSIS/Include/ \
--I$(LIBDAISY_DIR)/Drivers/CMSIS/DSP/Include \
--I$(LIBDAISY_DIR)/Drivers/CMSIS/Device/ST/STM32H7xx/Include \
+-I$(LIBDAISY_DIR)/Drivers/CMSIS_5/CMSIS/Core/Include/ \
+-I$(LIBDAISY_DIR)/Drivers/CMSIS-DSP/Include \
+-I$(LIBDAISY_DIR)/Drivers/CMSIS-Device/ST/STM32H7xx/Include \
 -I$(LIBDAISY_DIR)/Drivers/STM32H7xx_HAL_Driver/Inc/ \
 -I$(LIBDAISY_DIR)/Middlewares/ST/STM32_USB_Device_Library/Core/Inc \
 -I$(LIBDAISY_DIR)/Middlewares/ST/STM32_USB_Host_Library/Core/Inc \
 -I$(LIBDAISY_DIR)/Middlewares/ST/STM32_USB_Host_Library/Class/MSC/Inc \
+-I$(LIBDAISY_DIR)/Middlewares/ST/STM32_USB_Host_Library/Class/MIDI/Inc \
 -I$(SYSTEM_FILES_DIR)/
 
 ifdef DAISYSP_DIR
 C_INCLUDES += -I$(DAISYSP_DIR)/Source
 endif
+
+ifeq ($(USE_DAISYSP_LGPL),1)
+C_INCLUDES += -I$(DAISYSP_DIR)/DaisySP-LGPL/Source
+
+C_DEFS +=  \
+-DUSE_DAISYSP_LGPL
+endif
+
 
 # Include FATFS files
 # This does not include the additional option files
@@ -188,19 +194,58 @@ CPPFLAGS += \
 -fshort-enums \
 -fno-move-loop-invariants \
 -fno-unwind-tables \
+-fno-rtti \
 -Wno-register
 
 C_STANDARD = -std=gnu11
 CPP_STANDARD ?= -std=gnu++14
 
+
+#######################################
+# Boot Management
+#######################################
+
+INTERNAL_ADDRESS = 0x08000000
+QSPI_ADDRESS ?= 0x90040000
+
+# For the time being, we'll keep the Daisy Bootloader's PID as df11
+# DAISY_PID = a360
+DAISY_PID = df11
+STM_PID = df11
+
+BOOT_BIN ?= $(SYSTEM_FILES_DIR)/dsy_bootloader_v6_2-intdfu-2000ms.bin
+APP_TYPE ?= BOOT_NONE
+
+ifeq ($(APP_TYPE), BOOT_NONE)
+
+LDSCRIPT ?= $(SYSTEM_FILES_DIR)/STM32H750IB_flash.lds
+USBPID = $(STM_PID)
+FLASH_ADDRESS ?= $(INTERNAL_ADDRESS)
+
+else ifeq ($(APP_TYPE), BOOT_SRAM)
+
+LDSCRIPT ?= $(SYSTEM_FILES_DIR)/STM32H750IB_sram.lds
+USBPID = $(DAISY_PID)
+FLASH_ADDRESS ?= $(QSPI_ADDRESS)
+C_DEFS += -DBOOT_APP
+
+else ifeq ($(APP_TYPE), BOOT_QSPI)
+
+LDSCRIPT ?= $(SYSTEM_FILES_DIR)/STM32H750IB_qspi.lds
+USBPID = $(DAISY_PID)
+FLASH_ADDRESS ?= $(QSPI_ADDRESS)
+C_DEFS += -DBOOT_APP
+
+else
+
+$(error Unkown app type "$(APP_TYPE)")
+
+endif
+
 #######################################
 # LDFLAGS
 #######################################
-# link script
-LDSCRIPT ?= $(SYSTEM_FILES_DIR)/STM32H750IB_flash.lds
-
 # libraries
-
 LIBS += -ldaisy -lc -lm -lnosys
 LIBDIR += -L$(LIBDAISY_DIR)/build
 #LIBDIR = -L./VisualGDB/Release
@@ -208,6 +253,12 @@ LIBDIR += -L$(LIBDAISY_DIR)/build
 ifdef DAISYSP_DIR
 LIBS += -ldaisysp
 LIBDIR += -L $(DAISYSP_DIR)/build
+endif
+
+
+ifeq ($(USE_DAISYSP_LGPL),1)
+LIBS += -ldaisysp-lgpl
+LIBDIR += -L $(DAISYSP_DIR)/DaisySP-LGPL/build
 endif
 
 LDFLAGS ?=
@@ -277,22 +328,24 @@ debug:
 debug_client:
 	ddd --eval-command="target remote localhost:3333" --debugger $(GDB) $(TARGET_ELF)
 
+ifeq ($(APP_TYPE), BOOT_NONE)
 program:
 	$(OCD) -s $(OCD_DIR) $(OCDFLAGS) \
 		-c "program ./build/$(TARGET).elf verify reset exit"
+else
+program:
+	$(error Cannot program via openocd with an app type of "$(APP_TYPE)". Try program-dfu instead)
+endif
 
 #######################################
 # dfu-util
 #######################################
 
 program-dfu:
-	dfu-util -a 0 -s $(FLASH_ADDRESS):leave -D $(BUILD_DIR)/$(TARGET_BIN) -d ,0483:df11
-
-program-app:
-	dfu-util -a 0 -s $(QSPI_ADDRESS):leave -D $(BUILD_DIR)/$(TARGET_BIN) -d ,0483:df11
+	dfu-util -a 0 -s $(FLASH_ADDRESS):leave -D $(BUILD_DIR)/$(TARGET_BIN) -d ,0483:$(USBPID)
 
 program-boot:
-	dfu-util -a 0 -s $(FLASH_ADDRESS):leave -D $(BOOT_BIN) -d ,0483:df11
+	dfu-util -a 0 -s $(INTERNAL_ADDRESS):leave -D $(BOOT_BIN) -d ,0483:$(STM_PID)
 
 #######################################
 # dependencies

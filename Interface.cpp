@@ -1,12 +1,19 @@
 #include "Thaumazein.h"
 #include "Arpeggiator.h"
 #include "Polyphony.h"
+#include "SynthStateStorage.h"
 #include <algorithm>
 
 // --- Global hardware variables ---
 DaisySeed hw;
-Mpr121 touch_sensor;
+CpuLoadMeter cpu_meter;
+
+// Global definition for the touch sensor driver
+thaumazein_hal::Mpr121 touch_sensor;
+
+// Global definition for the delay effect
 EchoDelay<48000> delay;
+
 // Arpeggiator instance
 Arpeggiator arp;
 GPIO touch_leds[12];
@@ -17,6 +24,9 @@ const uint32_t ARP_LED_DURATION_MS = 100;
 
 // ADDED: Global flag for arpeggiator state, managed by Interface.cpp
 volatile bool arp_enabled = false;
+
+// Add: flag indicating if the MPR121 touch sensor was successfully initialised
+bool touch_sensor_present = true;
 
 // Hardware controls - Remapped to use ADCs 0-9
 AnalogControl delay_time_knob;        // ADC 0 (Pin 15) Delay Time
@@ -47,15 +57,37 @@ float pitch_val, harm_knob_val, timbre_knob_val, morph_knob_val;
 float delay_time_val, delay_mix_feedback_val, delay_mix_val, delay_feedback_val;
 float env_attack_val, env_release_val;
 
+// Simple diagnostic blink: flashes the Daisy user LED 'count' times rapidly.
+static void DebugBlink(int count)
+{
+    for(int i = 0; i < count; ++i)
+    {
+        hw.SetLed(true);
+        System::Delay(60);
+        hw.SetLed(false);
+        System::Delay(60);
+    }
+}
+
 // --- Initialization functions ---
 void InitializeHardware() {
     // Initialize Daisy Seed hardware
     hw.Configure();
-    hw.Init();
+    hw.Init(); // This calls SystemInit(), which sets VTOR to 0x08000000 by default
+    SynthStateStorage::InitMemoryMapped(); // QSPI is configured for memory-mapped mode here
+
+    // Relocate the vector table to the QSPI flash base address
+    // This address (0x90040000) must match the QSPIFLASH ORIGIN in the linker script
+    // and where the .isr_vector section is actually placed.
+    #if defined(__STM32H750xx_H) || defined(STM32H750xx) || defined(STM32H7XX)
+        // Ensure SCB is usable (usually through stm32h7xx.h or similar, included by DaisySeed.h)
+        SCB->VTOR = 0x90040000UL;
+    #endif
+
     hw.SetAudioBlockSize(BLOCK_SIZE);
     sample_rate = hw.AudioSampleRate();
-    hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ); // Using 48kHz now
-    sample_rate = hw.AudioSampleRate(); // Update sample_rate after setting it
+    // hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ); // debug: stick with default SR
+    // sample_rate = hw.AudioSampleRate(); // Update sample_rate after setting it
 }
 
 void InitializeControls() {
@@ -92,11 +124,14 @@ void InitializeControls() {
 }
 
 void InitializeTouchSensor() {
-    // --- Initialize MPR121 ---
-    Mpr121::Config touch_config;
-    touch_config.Defaults();
+    // Attempt to initialize the MPR121 touch sensor
+    thaumazein_hal::Mpr121::Config touch_config;
+    touch_config.Defaults(); 
     if (!touch_sensor.Init(touch_config)) {
-        while(1) { hw.SetLed(true); System::Delay(50); hw.SetLed(false); System::Delay(50); }
+        // Touch sensor failed to initialise – continue without it
+        touch_sensor_present = false;
+        hw.PrintLine("[WARN] MPR121 init failed – continuing without touch sensor");
+        return; // Skip further configuration
     }
     // Override default thresholds for more sensitivity
     touch_sensor.SetThresholds(6, 3); 
@@ -132,27 +167,42 @@ void InitializeTouchLEDs() {
 
 void InitializeSynth() {
     InitializeHardware();
+    DebugBlink(1);
+
     poly_engine.Init(&hw);
+    DebugBlink(2);
+
     InitializeControls();
+    DebugBlink(3);
+
     InitializeTouchSensor();
+    DebugBlink(4);
+
     InitializeDelay();
+    DebugBlink(5);
+
     InitializeTouchLEDs();
-    cpu_meter.Init(sample_rate, BLOCK_SIZE); // Initialize the CPU Load Meter
-    
+    DebugBlink(6);
+
+    cpu_meter.Init(sample_rate, BLOCK_SIZE); // Initialize CPU Load Meter
+    DebugBlink(7);
+
     // --- Initialize Arpeggiator ---
     arp.Init(sample_rate);
+    DebugBlink(8);
 
+    // Note trigger callback
     arp.SetNoteTriggerCallback([&](int pad_idx){ 
         poly_engine.TriggerArpVoice(pad_idx, current_engine_index); 
         arp_led_timestamps[11 - pad_idx] = hw.system.GetNow();
     });
-    arp.SetDirection(Arpeggiator::AsPlayed); // Set default direction to AsPlayed
-    
+    arp.SetDirection(Arpeggiator::AsPlayed);
 
-    hw.StartLog(false); // Start log immediately (non-blocking) - reverted to prevent freezing at startup
-    
-    // --- Start Audio ---
+    hw.StartLog(false); // Start log immediately (non-blocking)
+    DebugBlink(9);
+
     hw.StartAudio(AudioCallback);
+    DebugBlink(10);
     
     hw.PrintLine("Plaits Synth Started - Ready for Bootloader CMD");
     char settings[64];
@@ -168,13 +218,38 @@ void InitializeSynth() {
 
 // --- User Interface Functions ---
 void Bootload() {
-    // Bootloader via ADC: pads on ADC 8, 9, and 10 pressed simultaneously at any time
-    if (arp_pad.GetRawFloat() > 0.5f &&
-        model_prev_pad.GetRawFloat() > 0.5f &&
-        model_next_pad.GetRawFloat() > 0.5f) {
-        hw.PrintLine("Entering bootloader (ADC combo)...");
-        System::Delay(100);
-        System::ResetToBootloader();
+    /*
+        Bootloader entry via ADC combo (pads 8-10).
+        Require the condition to be held for ~1 s to avoid false triggers
+        from floating ADC inputs or brief noise at startup.
+    */
+    static uint16_t hold_cnt = 0;
+    const uint16_t kHoldFrames = 500; // 500 * 2 ms ≈ 1 s
+
+    // Skip bootloader combo for first 5 seconds after power-up to avoid
+    // false triggers from floating ADC inputs while they settle.
+    if(System::GetNow() < 5000)
+        return;
+
+    bool combo_pressed = (arp_pad.GetRawFloat()   > 0.5f) &&
+                         (model_prev_pad.GetRawFloat() > 0.5f) &&
+                         (model_next_pad.GetRawFloat() > 0.5f);
+
+    if(combo_pressed)
+    {
+        if(++hold_cnt >= kHoldFrames)
+        {
+            hw.PrintLine("Entering Daisy DFU bootloader (ADC combo)…");
+            System::Delay(100);
+            // Jump to Daisy bootloader and keep it in DFU until a new
+            // image is flashed. This avoids ending up in the STM ROM DFU
+            // which cannot load QSPI apps.
+            System::ResetToBootloader(System::BootloaderMode::DAISY_INFINITE_TIMEOUT);
+        }
+    }
+    else
+    {
+        hold_cnt = 0; // reset counter when combo released
     }
 }
 

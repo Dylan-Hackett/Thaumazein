@@ -1,22 +1,265 @@
 # libDaisy Changelog
 
-## Unreleased
-
-### Breaking Changes
+## v7.1.0
 
 ### Features
 
+* Support for MIDI via USB Host has been added. (PR #611)
+* Four new OLED fonts were added: 4x6, 4x8, 5x8, and 6x7. (PR #619)
+
+### Bugfixes
+
+* Fixed issue with posting test results for contributor PRs form forks (PR #617)
+
+## v7.0.1
+
+### Features
+- Change `AudioHandle::Config` to an aggregate type, allows for aggregate init. Doesn't break existing code.
+- Add SerialRead example, shows how to read via Serial over USB
+- Add SH1106 OLED driver
+
+### Bugfixes
+- Fix float range for `Random::GetFloat()`
+- Move SAI initialized check so it isn't a no-op
+
+## v7.0.0
+
+### Features
+- Update internal CMSIS and HAL.
+- Adds new HAL module support via `src/sys/stm32h7xx_hal_conf.h`
+  - Digital Temperature Sensor
+  - Filter Math Accelerator (FMAC)
+  - Octo-SPI Controller (OSPI)
+  - Digital Filter for Delta-Sigma Modulation
+  - CORDIC co-processor block
+- Moves relevant HAL, CMSIS, Middleware code to submodules:
+  - https://github.com/ARM-software/CMSIS_5
+  - https://github.com/STMicroelectronics/cmsis_device_h7
+  - https://github.com/STMicroelectronics/stm32h7xx_hal_driver
+  - https://github.com/ARM-software/CMSIS-DSP
+  - https://github.com/STMicroelectronics/stm32_mw_usb_device
+
+### Bugfixes
+- Very minor bugfix in CpuLoadMeter_gtest.cpp so that a number would no longer overflow when bitshifting left
+
+### Migrating
+- Updating an existing libDaisy install via `git pull` will require you to run `git restore . --recurse-submodules` before it will compile.
+  - Note, this will also undo any local changes you may have to the library. Make sure to stash those!
+- If you clone a fresh copy of libDaisy with `git clone https://www.github.com/electro-smith/libDaisy --recurse-submodules`, this will not be necessary
+- Breaking changes:
+  - `GPIO::Mode::OUTPUT_OD` renamed to `GPIO::Mode::OPEN_DRAIN` due to a name conflict collision
+  - Compiled code size has increased by up to 7%
+
+## v6.0.0
+
+### Features
+
+* bootloader: Add local BootloaderBlink example for testing the bootloader and its various configs
+* bootloader: Add four bin variants: internal / external DFU, and 10ms / 2000ms timeouts
+* core: Add USE_DAISYSP_LGPL flag to core/Makefile for DaisySP_LGPL support.
+* bootloader: added `System::BootloaderMode::DAISY`, `System::BootloaderMode::DAISY_SKIP_TIMEOUT`, and `System::BootloaderMode::DAISY_INFINITE_TIMEOUT` options to `System::ResetToBootloader` method for better firmware updating flexibility.
+
+### Bug fixes
+
+* Fix link to electro-smith website in README
+* bootloader: pins `D0`, `D29` and `D30` are no longer stuck when using the Daisy bootloader
+* Color: Fixed bug with init not setting the green value correctly
+
+#### Bootloader
+
+* This version of libDaisy and greater will be compatible with any version of the Daisy bootloader, meaning you won't have to update the bootloader on your product if you want the latest changes to libDaisy.
+* However, for newer versions of the bootloader, you must use a compatible version of libDaisy.
+  * Daisy bootloader v6.0 and up will only be compatible with libDaisy v5.3 and up.
+
+## v5.4.0
+
+### Features
+
+* adc: added ConversionSpeed configuration to the AdcChannelConfig (#579)
+* board: Updated Daisy board definitions to use new Pin system (#581)
+* board: added official support for new Daisy Seed2 DFM hardware (built in compatibility with DaisySeed class).
+* device: added driver for SK9822 (#574)
+* examples: added a number of minimal examples for the Seed/Seed2DFM
+* gatein: added new Init function that is compatible with newer C++ `Pin` type.
+
 ### Bug Fixes
+
+* patchsm: Corrected gate out pin assignment confusion added by (#417) as noted by [apbianco](https://forum.electro-smith.com/u/apbianco) and [tele_player](https://forum.electro-smith.com/u/tele_player)
+* midi: improvements to UART transport stability, and fixes to parser (#566, #564, #583)
+* qspi: fixed memory cache invalidation for Persistent Storage (#572)
+* spi: fixed issue with unpredictable pin states at end of transmission (#553, #559)
 
 ### Other
 
+* build: removed redundant compile-time def from CMake build (#565)
+* docs: use explicit grouping; omit comments from output (#563)
+* docs: fix typo in GPIO guide (#567)
+
+## v5.3.0
+
+### Features
+
+* driver: Software SPI transport `SSD130x4WireSoftSpiTransport` added for the OLED Display driver. (#551)
+
+### Bug Fixes
+
+* driver: Fixed a compiler error in `Max11300Driver::WriteAnalogPinVolts()`
+* driver: Fixed error reading multiple registers at once from the MPC23x17 GPIO expanders (#550)
+* seed: Fixed out of range pin definitions for extra GPIO on the Daisy Seed2 DFM (#544)
+* patchsm: Fixed issue where updating the audio callback params didn't update control samplerate (#543)
+
+## v5.2.0
+
+### Features
+
+* board: added board support for Noise Engineering legio platform
+* audio: added `output_compensation` value to config struct to allow for post-scaling of uneven audio passthru levels.
+* util: added a multiply operator to the Color class for scaling a color by a single factor.
+* device: Added ICM20948 sensor device driver
+* device: Added DPS310 device driver
+* device: Added MPR121 device driver
+* device: Added APDS9960 device driver
+* device: Added TLV493D device driver.
+* device: Added neotrellis driver
+* device: Added neopixel driver
+
+### Bug fixes
+
+* uart: fixed bug with fifo-dma-receive mode that would result in erratic reads over time. Fixes issues with UART (TRS/DIN) MIDI parsing
+
+## v5.1.0
+
+### Features
+
+* tim: `TimerHandle` now has callbacks each time the Period has elapsed. These can be enabled with `TimerHandle::Config::enable_irq` at Init time.
+* bootloader: Working with the bootloader has been simplified. See [the new guide for updates on usage](https://electro-smith.github.io/libDaisy/md_doc_md__a7__getting__started__daisy__bootloader.html)
+* usb: `USBHost` class has added support for user callbacks on device connection, disconnection, and when the MSC class becomes active.
+* uart: Adds DMA RX and TX modes, similar to how they work on the I2C and SPI.
+* uart: Update function names to be more in line with the new DMA / Blocking scheme.
+  * The old methods are wrappers for the new ones to preserve backwards compatibility, but **will be removed in a future version**.
+  * Affected functions: `PollReceive`, `PollTx`, `StartRx`, `RxActive`, `FlushRx`, `PopRx`, `Readable`
+
+### Bug Fixes
+
+* util: PersistentStorage class had a bug where calling the `RestoreDefaults` function would cause a crash
+* usb: LL HAL files for USB were updated to prevent timing issues when running with optimization
+* spi: Add IRQ handlers for SPI2-5. These should work with DMA now.
+* midi: bugs related to running status bytes for note off, and single data-byte messages have been resolved
+
+### Other
+
+* build: core/Makefile has had the `-fnortti` flag added to match libDaisy's Makefile
+* bootloader: local version of daisy bootloader has been updated to improve stability
+* spi: Added examples for blocking TX and DMA TX, added a writeup explaining how to use the SPI on the Daisy
+* uart: Adds examples for common modes of communication, both DMA, blocking, FIFO, and mixed.
+
+## v5.0.0
+
+### Breaking Changes
+
+* driver: MAX11300 driver interface changed considerably
+* spi: Order of arguments of the `SpiHandle` DMA functions changed
+* dma: `SpiHandle` previously used `DMA1_Stream7`, now uses `DMA2_Stream2` and `DMA2_Stream3`
+
+### Features
+
+* spi: `SpiHandle` now has callbacks before and after a DMA transaction starts (can be used for software driven chip select)
+* spi: `SpiHandle` now supports simultaneous transmit and receive with DMA using `SpiHandle::DmaTransmitAndReceive()`
+* spi: added `MultiSlaveSpiHandle` that allows to connect to multiple SPI slave devices on a shared bus
+* driver: MAX11300 now supports multiple chips on a shared bus
+* driver: MAX11300 now uses DMA to handle updates without blocking
+* driver: MAX11300 now updates the chips continuously until manually stopped
+* driver: MAX11300 can now call a user-provided callback after an update is complete
+* debugging: added additional debugging aids to the HardFault handler
+* gatein: added invert init parameter for reading from different input circuits from the GateIn class.
+* ui: added `OnUserInteraction` virtual function to UI framework to allow for tracking user activity
+
+### Bug Fixes
+
+* logger: Added 10ms delay at the end of `StartLog` function. Without this, messages immediatly following the `StartLog` function were getting missed when `wait_for_pc` is set to `true`.
+* testing: debugging configuration now uses `lldb` debugging extension to support unit test debugging on macOS with Apple Silicon
+* driver: oled_ssd130x.h - Add the SpiHandle:Config struct to SSD130x4WireTransport:Config to allow full access to the SPI peripheral configuration.
+* hid: fixed issue in `AnalogControl` where computed coeff could be out of range with certain block sizes
+* driver: added missing alternate function pin mappings for SPI2, and UART for pins available on the patch_sm hardware
+* usb: fixed issue with MIDI output from USB
+* driver: fixed off-by-one error in qspi erase function.
+
+### Other
+
+* driver: improved debouncing for `Switch`, and `Encoder` classes (limiting debouncing to 1kHz max frequency internally).
+
 ### Migrating
+
+#### SPI
+
+```c++
+// Old
+SpiHandle::Result DmaTransmit(uint8_t*            buff,
+                              size_t              size,
+                              SpiHandle::CallbackFunctionPtr callback,
+                              void*               callback_context);
+// New
+SpiHandle::Result DmaTransmit(uint8_t*                            buff,
+                              size_t                              size,
+                              SpiHandle::StartCallbackFunctionPtr start_callback,
+                              SpiHandle::EndCallbackFunctionPtr   end_callback,
+                              void*                               callback_context);
+// Same for DmaReceive and DmaTransmitAndReceive
+```
+
+#### MAX11300
+
+```c++
+// Old: MAX11300 takes no template arguments
+MAX11300 max11300driver;
+// New: MAX11300 takes number of chips as template argument
+constexpr size_t num_devices = 4;
+MAX11300<num_devices> max11300driver;
+
+// Old: constructor only takes a config struct
+max11300driver.Init(config);
+// New: constructor takes a DMA buffer situated in non-cached and DMA-accessible memory
+MAX11300Types::DmaBuffer DMA_BUFFER_MEM_SECTION max11300DmaBuffer;
+max11300driver.Init(config, &max11300DmaBuffer);
+
+// Old: most types are inside the MAX11300 classname scope
+daisy::MAX11300::PIN_0
+daisy::MAX11300::AdcVoltageRange
+// New: types are in a separate namespace to keep them independent from the "num_devices" template argument
+daisy::MAX11300Types::PIN_0
+daisy::MAX11300Types::AdcVoltageRange
+
+// Old: only a single chip was handled by the driver
+max11300driver.ConfigurePinAsAnalogRead(daisy::MAX11300::PIN_0, daisy::MAX11300::AdcVoltageRange::NEGATIVE_5_TO_5);
+max11300driver.ConfigurePinAsAnalogWrite(daisy::MAX11300::PIN_1, daisy::MAX11300::DacVoltageRange::NEGATIVE_5_TO_5);
+// New: each function now takes an additional argument, the index of the chip
+max11300driver.ConfigurePinAsAnalogRead(0, daisy::MAX11300Types::PIN_0, daisy::MAX11300Types::AdcVoltageRange::NEGATIVE_5_TO_5);
+max11300driver.ConfigurePinAsAnalogWrite(1, daisy::MAX11300Types::PIN_1, daisy::MAX11300Types::DacVoltageRange::NEGATIVE_5_TO_5);
+
+// Old: Update() synchronously updates the chip and blocks until the update is complete
+max11300driver.Update(); // blocks
+// New: - Start() works asynchronously in the background using DMA
+//      - Start() will retrigger updates itself automatically, until stopped by calling Stop()
+//      - A callback can be called after each update cycle that was completed successfully
+void MyUpdateCompleteCallback(void* context) {
+    // The context is the pointer you passed when calling `.Update()`
+    // This callback comes from an interrupt, keep is fast.
+}
+max11300driver.Start(
+    &MyUpdateCompleteCallback, // or nullptr if you don't need a callback. default: nullptr
+    &someThingThatYouWantToGetPassedToYourCallback // callback context, or nullptr if not needed
+);
+// you don't have to specify the arguments, then the defaults will be used
+max11300driver.Start();
+// you can stop the auto update after you started it
+max11300driver.Stop();
+```
 
 ## v4.0.0
 
 ### Breaking Changes
 
-* driver: added support for the 0 .. 2.5V ADC range to MAX11300 getter functions `const`, splitting the `enum VoltageRange` into two enums for the ADC and DAC configurations.
+* driver: added support for the 0 .. 2.5V ADC range to MAX11300, splitting the `enum VoltageRange` into two enums for the ADC and DAC configurations.
 
 ### Features
 
@@ -28,6 +271,7 @@
   * Shared IRQHandlers for the USB HS peripheral have been moved to sys/system.cpp
 * driver: made MAX11300 getter functions `const`
 * cmake: changed optimization to `-O0` for Debug builds
+* qspi: fixed bug causing one sector erase beyond the given end address
 
 ### Other
 
@@ -85,7 +329,7 @@ max11300driver.ConfigurePinAsAnalogWrite(daisy::MAX11300::PIN_1, daisy::MAX11300
 
 ### Other
 
-* switch: Use `System::GetNow()` rather than the update rate to calculate `TimeHeldMs()`.  
+* switch: Use `System::GetNow()` rather than the update rate to calculate `TimeHeldMs()`.
   * This has also been applied to the `Encoder` class (since it uses `Switch` internally).
 * usb host: ST Middleware for USB Host support has been added to the Middlewares folder
 * fatfs: changed default `FS_LOCK` to 0, allowing for more simultaneously open FIL objects.
@@ -279,7 +523,7 @@ sdram.Init();
 
 ### Other
 
-* test: add unit testing for midi parser.  
+* test: add unit testing for midi parser.
 * tests: add tests for `FIFO`
 * docs: Update TODO comment in `uart.h` to reflect most recent uart update.
 * ci: add filters to the workflows

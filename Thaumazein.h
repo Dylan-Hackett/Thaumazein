@@ -15,6 +15,8 @@
 #include "stmlib/utils/buffer_allocator.h"
 #include <cmath>
 #include "Arpeggiator.h"
+#include "Polyphony.h"
+#include "SynthStateStorage.h"
 
 using namespace daisy;
 using namespace daisysp;
@@ -22,10 +24,12 @@ using namespace stmlib;
 using namespace infrasonic;
 
 
-#define NUM_VOICES 4 
-#define BLOCK_SIZE 16
+// Global Constants
+// Moved to Polyphony.h as they are primarily used there
+// #define NUM_VOICES 4 
+// #define BLOCK_SIZE 16
 #define MAX_DELAY_SAMPLES 48000 
-#define SAMPLE_RATE 48000  // Adding sample rate definition
+#define SAMPLE_RATE 48000.0f  // Adding sample rate definition
 
 const float MASTER_VOLUME = 0.7f; // Master output level scaler
 
@@ -42,7 +46,7 @@ void UpdateArpeggiatorToggle();
 
 
 extern DaisySeed hw;
-extern Mpr121 touch_sensor;
+extern thaumazein_hal::Mpr121 touch_sensor;
 extern EchoDelay<48000> delay;
 extern CpuLoadMeter cpu_meter;
 
@@ -93,5 +97,9 @@ extern daisy::GPIO touch_leds[12];
 // Add extern declarations for ARP LED blink timestamps and duration
 extern volatile uint32_t arp_led_timestamps[12];
 extern const uint32_t ARP_LED_DURATION_MS;
+
+extern bool touch_sensor_present;
+
+extern PolyphonyEngine poly_engine;
 
 #endif // THAUMAZEIN_H_ 

@@ -1,4 +1,5 @@
 #pragma once
+#include "util/hal_map.h"
 #include "daisy_core.h"
 
 namespace daisy
@@ -56,9 +57,9 @@ class I2CHandle
         Peripheral periph; /**< & */
         struct
         {
-            dsy_gpio_pin scl; /**< & */
-            dsy_gpio_pin sda; /**< & */
-        } pin_config;         /**< & */
+            Pin scl;  /**< & */
+            Pin sda;  /**< & */
+        } pin_config; /**< & */
 
         Speed speed; /**< & */
         Mode  mode;  /**< & */
@@ -176,6 +177,7 @@ class I2CHandle
     * \param mem_address_size   Size of the memory address in bytes.
     * \param data               Pointer to buffer that will be filled with contents at mem_address
     * \param data_size          Size of the data to be read in bytes.
+    * \param timeout            The timeout in milliseconds before returning without communication
     */
     Result ReadDataAtAddress(uint16_t address,
                              uint16_t mem_address,
@@ -192,6 +194,7 @@ class I2CHandle
     * \param mem_address_size   Size of the memory address in bytes.
     * \param data               Pointer to buffer that will be written to the mem_address
     * \param data_size          Size of the data to be written in bytes.
+    * \param timeout            The timeout in milliseconds before returning without communication
     */
     Result WriteDataAtAddress(uint16_t address,
                               uint16_t mem_address,

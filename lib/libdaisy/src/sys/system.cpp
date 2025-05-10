@@ -12,7 +12,12 @@ extern "C"
 {
     extern void dsy_i2c_global_init();
     extern void dsy_spi_global_init();
+    extern void dsy_uart_global_init();
 }
+
+// boot info struct declared in persistent backup SRAM
+volatile daisy::System::BootInfo __attribute__((section(".backup_sram")))
+daisy::boot_info;
 
 // Jump related stuff
 #define u32 uint32_t
@@ -119,9 +124,79 @@ extern "C"
     // TODO: Add some real handling to the HardFaultHandler
     void HardFault_Handler()
     {
-#ifdef DEBUG
-        asm("bkpt 255");
-#endif
+        // Grab an instance of the SCB so we can `p/x *scb` from the debugger
+        SCB_Type* scb = SCB;
+        (void)(scb);
+
+        // Identify hardfault type
+        if(SCB->HFSR & SCB_HFSR_FORCED_Msk)
+        {
+            // Forced hardfault
+
+            // Copy faults for easy debugging
+            size_t mmu_fault = (SCB->CFSR >> 0) & 0xFF;
+            (void)(mmu_fault);
+            size_t bus_fault = (SCB->CFSR >> 8) & 0xFF;
+            (void)(bus_fault);
+            size_t usage_fault = (SCB->CFSR >> 16) & 0xFFFF;
+            (void)(usage_fault);
+
+            // Check for memory manger faults
+            if(SCB->CFSR & SCB_CFSR_MMARVALID_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_MLSPERR_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_MSTKERR_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_MUNSTKERR_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_DACCVIOL_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_IACCVIOL_Msk)
+                __asm("BKPT #0");
+
+            // Check for bus faults
+            if(SCB->CFSR & SCB_CFSR_BFARVALID_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_LSPERR_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_STKERR_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_UNSTKERR_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_IMPRECISERR_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_PRECISERR_Msk)
+                __asm("BKPT #0");
+            if(SCB->CFSR & SCB_CFSR_IBUSERR_Msk)
+                __asm("BKPT #0");
+
+            // Check for usage faults
+            if(SCB->CFSR & SCB_CFSR_DIVBYZERO_Msk)
+                __asm("BKPT 0");
+            if(SCB->CFSR & SCB_CFSR_UNALIGNED_Msk)
+                __asm("BKPT 0");
+            if(SCB->CFSR & SCB_CFSR_NOCP_Msk)
+                __asm("BKPT 0");
+            if(SCB->CFSR & SCB_CFSR_INVPC_Msk)
+                __asm("BKPT 0");
+            if(SCB->CFSR & SCB_CFSR_INVSTATE_Msk)
+                __asm("BKPT 0");
+            if(SCB->CFSR & SCB_CFSR_UNDEFINSTR_Msk)
+                __asm("BKPT 0");
+
+            __asm("BKPT #0");
+        }
+        else if(SCB->HFSR & SCB_HFSR_VECTTBL_Msk)
+        {
+            // Vector table bus fault
+
+            __asm("BKPT #0");
+        }
+
+        __asm("BKPT #0");
+        while(1)
+            ;
     }
 }
 
@@ -150,6 +225,7 @@ void System::Init(const System::Config& config)
     dsy_dma_init();
     dsy_i2c_global_init();
     dsy_spi_global_init();
+    dsy_uart_global_init();
 
     // Initialize Caches
     if(config.use_dcache)
@@ -222,20 +298,52 @@ void System::DelayTicks(uint32_t delay_ticks)
     tim_.DelayTick(delay_ticks);
 }
 
-void System::ResetToBootloader()
+void System::ResetToBootloader(BootloaderMode mode)
 {
-    // Initialize Boot Pin
-    dsy_gpio_pin bootpin = {DSY_GPIOG, 3};
-    dsy_gpio     pin;
-    pin.mode = DSY_GPIO_MODE_OUTPUT_PP;
-    pin.pin  = bootpin;
-    dsy_gpio_init(&pin);
+    if(mode == BootloaderMode::STM)
+    {
+        // Initialize Boot Pin
+        constexpr Pin bootpin = Pin(PORTG, 3);
 
-    // Pull Pin HIGH
-    dsy_gpio_write(&pin, 1);
+        GPIO pin;
+        pin.Init(bootpin, GPIO::Mode::OUTPUT);
 
-    // wait a few ms for cap to charge
-    HAL_Delay(10);
+        // Pull Pin HIGH
+        pin.Write(1);
+
+        // wait a few ms for cap to charge
+        HAL_Delay(10);
+    }
+    else if(mode == BootloaderMode::DAISY
+            || mode == BootloaderMode::DAISY_SKIP_TIMEOUT
+            || mode == BootloaderMode::DAISY_INFINITE_TIMEOUT)
+    {
+        auto region = GetProgramMemoryRegion();
+        if(region == MemoryRegion::INTERNAL_FLASH)
+            return; // Cannot return to Daisy bootloader if it's not present!
+
+        // Coming from a bootloaded program, the backup SRAM will already
+        // be initialized. If the bootloader is <= v5, then it will not
+        // be initialized, but a failed write will not cause a fault.
+        switch(mode)
+        {
+            case BootloaderMode::DAISY_SKIP_TIMEOUT:
+                boot_info.status = BootInfo::Type::SKIP_TIMEOUT;
+                break;
+            case BootloaderMode::DAISY_INFINITE_TIMEOUT:
+                boot_info.status = BootInfo::Type::INF_TIMEOUT;
+                break;
+            default:
+                // this is technically valid, just means no
+                // special behavior applied on boot
+                boot_info.status = BootInfo::Type::INVALID;
+                break;
+        }
+    }
+    else
+    {
+        return; // Malformed mode
+    }
 
     // disable interupts
     RCC->CIER = 0x00000000;
@@ -244,20 +352,47 @@ void System::ResetToBootloader()
     HAL_NVIC_SystemReset();
 }
 
+void System::InitBackupSram()
+{
+    PWR->CR1 |= PWR_CR1_DBP;
+    while((PWR->CR1 & PWR_CR1_DBP) == RESET)
+        ;
+    __HAL_RCC_BKPRAM_CLK_ENABLE();
+}
+
+System::BootInfo::Version System::GetBootloaderVersion()
+{
+    auto region = GetProgramMemoryRegion();
+    if(region == MemoryRegion::INTERNAL_FLASH)
+        return BootInfo::Version::NONE;
+
+    for(int i = 0; i < (int)BootInfo::Version::LAST; i++)
+    {
+        if(boot_info.version == (BootInfo::Version)i)
+            return (BootInfo::Version)i;
+    }
+
+    // Otherwise, the version may be higher than this
+    // version of the library knows about. In that case,
+    // expecting backwards compatibility, we'll say it's
+    // at least the latest version.
+    return (BootInfo::Version)((int)BootInfo::Version::LAST - 1);
+}
+
 void System::ConfigureClocks()
 {
     RCC_OscInitTypeDef       RCC_OscInitStruct   = {0};
     RCC_ClkInitTypeDef       RCC_ClkInitStruct   = {0};
     RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
-    /** Supply configuration update enable 
+    /** Supply configuration update enable
   */
     HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
 
-    /** Configure the main internal regulator output voltage 
+    /** Configure the main internal regulator output voltage
      ** and set PLLN value, and flash-latency.
      **
-     ** See page 159 of Reference manual for VOS/Freq relationship 
+     ** See page 159 of Reference manual for VOS/Freq relationship
      ** and table for flash latency.
      */
 
@@ -278,10 +413,10 @@ void System::ConfigureClocks()
     }
 
     while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
-    /** Macro to configure the PLL clock source 
+    /** Macro to configure the PLL clock source
   */
     __HAL_RCC_PLL_PLLSOURCE_CONFIG(RCC_PLLSOURCE_HSE);
-    /** Initializes the CPU, AHB and APB busses clocks 
+    /** Initializes the CPU, AHB and APB busses clocks
   */
     RCC_OscInitStruct.OscillatorType
         = RCC_OSCILLATORTYPE_HSI48 | RCC_OSCILLATORTYPE_HSE;
@@ -302,7 +437,7 @@ void System::ConfigureClocks()
     {
         Error_Handler();
     }
-    /** Initializes the CPU, AHB and APB busses clocks 
+    /** Initializes the CPU, AHB and APB busses clocks
   */
     RCC_ClkInitStruct.ClockType
         = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_PCLK1
@@ -407,6 +542,16 @@ void System::ConfigureMpu()
     MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
     MPU_InitStruct.Size         = MPU_REGION_SIZE_64MB;
     MPU_InitStruct.BaseAddress  = 0xC0000000;
+    HAL_MPU_ConfigRegion(&MPU_InitStruct);
+
+    // Configure the backup SRAM region as non-cacheable
+    MPU_InitStruct.IsCacheable  = MPU_ACCESS_NOT_CACHEABLE;
+    MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
+    MPU_InitStruct.IsShareable  = MPU_ACCESS_SHAREABLE;
+    MPU_InitStruct.Number       = MPU_REGION_NUMBER2;
+    MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL1;
+    MPU_InitStruct.Size         = MPU_REGION_SIZE_4KB;
+    MPU_InitStruct.BaseAddress  = 0x38800000;
     HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
     HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
