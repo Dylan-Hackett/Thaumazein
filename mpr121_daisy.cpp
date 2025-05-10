@@ -5,7 +5,10 @@
 
 bool thaumazein_hal::Mpr121::Init(const thaumazein_hal::Mpr121::Config& config)
 {
-    i2c_address_ = config.i2c_address << 1; // Shift address for ST I2C peripheral
+    // Use 8-bit address (7-bit left-shifted) to match pre-update driver
+    // behaviour and the custom board routing.
+    i2c_address_ = config.i2c_address << 1;  // 0x5A → 0xB4
+
     i2c_handle_.Init(config.i2c_config);
     transport_error_ = false; 
     WriteRegister(MPR121_SOFTRESET, 0x63);
@@ -17,8 +20,33 @@ bool thaumazein_hal::Mpr121::Init(const thaumazein_hal::Mpr121::Config& config)
         return false;
     }
 
-    SetThresholds(8, 4); // Default thresholds
-    WriteRegister(MPR121_ECR, 0x8F); // Enable all 12 electrodes and proximity
+    // Stop electodes while configuring
+    WriteRegister(MPR121_ECR, 0x00);
+
+    SetThresholds(8, 4);
+
+    // Filter and global CDC/CDT configuration (matches working pre-update settings)
+    WriteRegister(MPR121_MHDR, 0x01);
+    WriteRegister(MPR121_NHDR, 0x03);
+    WriteRegister(MPR121_NCLR, 0x10);
+    WriteRegister(MPR121_FDLR, 0x20);
+
+    WriteRegister(MPR121_MHDF, 0x01);
+    WriteRegister(MPR121_NHDF, 0x03);
+    WriteRegister(MPR121_NCLF, 0x10);
+    WriteRegister(MPR121_FDLF, 0x20);
+
+    WriteRegister(MPR121_NHDT, 0x01);
+    WriteRegister(MPR121_NCLT, 0x05);
+    WriteRegister(MPR121_FDLT, 0x00);
+
+    WriteRegister(MPR121_DEBOUNCE, (2 << 4) | 2);
+    WriteRegister(MPR121_CONFIG1, 0x3F);
+    WriteRegister(MPR121_CONFIG2, 0x00);
+
+    // Enable all electrodes in run mode, 10-bit data, 63 samples
+    WriteRegister(MPR121_ECR, 0x8F);
+
     return !transport_error_;
 }
 
@@ -69,9 +97,10 @@ uint8_t thaumazein_hal::Mpr121::BaselineData(uint8_t channel)
 int16_t thaumazein_hal::Mpr121::GetBaselineDeviation(uint8_t channel)
 {
     if (channel > 11) return 0; // Only for touch channels 0-11
-    uint16_t filtered = FilteredData(channel);
-    uint8_t baseline = BaselineData(channel);
-    return static_cast<int16_t>(filtered) - (static_cast<int16_t>(baseline) << 2);
+    uint16_t filtered  = FilteredData(channel);
+    uint8_t  baseline  = BaselineData(channel);
+    // Deviation positive when touch lowers the filtered value below baseline
+    return (static_cast<int16_t>(baseline) << 2) - static_cast<int16_t>(filtered);
 }
 
 
@@ -83,13 +112,10 @@ float thaumazein_hal::Mpr121::GetProximityValue(const uint16_t channelMask, floa
 
     for (uint8_t i = 0; i < 12; ++i) {
         if ((channelMask >> i) & 0x01) { // Check if this channel is in the mask
-            uint16_t filtered_data = FilteredData(i);
-            uint8_t baseline_data = BaselineData(i);
-            
-            // The baseline is 8-bit, representing the upper 8 bits of a 10-bit value.
-            // The filtered data is 10-bit.
-            // To compare them, scale the baseline to 10-bit by left-shifting by 2.
-            int16_t deviation = static_cast<int16_t>(filtered_data) - (static_cast<int16_t>(baseline_data) << 2);
+            uint16_t filtered_data  = FilteredData(i);
+            uint8_t  baseline_data  = BaselineData(i);
+            // Positive deviation when touch lowers filtered value
+            int16_t deviation = (static_cast<int16_t>(baseline_data) << 2) - static_cast<int16_t>(filtered_data);
             
             if (deviation > 0) { // Consider only positive deviations for proximity
                 total_deviation += deviation;
