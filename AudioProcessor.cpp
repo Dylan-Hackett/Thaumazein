@@ -46,6 +46,13 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
         hw.PrintLine("[AudioCallback] Enter");
         audio_cb_started = true;
     }
+    // Process UI controls at 1ms intervals inside audio callback
+    static uint32_t last_ui_time = 0;
+    uint32_t now_ms = hw.system.GetNow();
+    if(now_ms - last_ui_time >= 1) {
+        last_ui_time = now_ms;
+        ProcessUIAndControls();
+    }
     cpu_meter.OnBlockStart(); // Mark the beginning of the audio block
     
     // Variables to be passed between helper functions
@@ -53,8 +60,6 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     bool poly_mode;
     int effective_num_voices;
     bool arp_on;
-
-    ProcessUIAndControls();
 
     // React to engine change flag by delegating voice migration to DSP layer.
     static int prev_engine_index_static = 0;

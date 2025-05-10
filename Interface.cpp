@@ -74,6 +74,8 @@ void InitializeHardware() {
     // Initialize Daisy Seed hardware
     hw.Configure();
     hw.Init(); // This calls SystemInit(), which sets VTOR to 0x08000000 by default
+    // Set sample rate to 32 kHz for lower CPU load and memory use
+    hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_32KHZ);
     SynthStateStorage::InitMemoryMapped(); // QSPI is configured for memory-mapped mode here
 
     // Relocate the vector table to the QSPI flash base address
@@ -85,7 +87,7 @@ void InitializeHardware() {
     #endif
 
     hw.SetAudioBlockSize(BLOCK_SIZE);
-    sample_rate = hw.AudioSampleRate();
+    sample_rate = hw.AudioSampleRate(); // now should be 32000
     // hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_48KHZ); // debug: stick with default SR
     // sample_rate = hw.AudioSampleRate(); // Update sample_rate after setting it
 }
@@ -385,4 +387,9 @@ void ReadKnobValues() {
     // Simple approach: use the same value for both
     delay_mix_val = delay_mix_feedback_val;
     delay_feedback_val = delay_mix_feedback_val;
+
+    // Restore touch-pad pressure modulation (was previously in audio ISR)
+    const float intensity = 0.5f;
+    morph_knob_val      = morph_knob_val * (1.0f - intensity) + touch_cv_value * intensity;
+    delay_feedback_val  = delay_feedback_val * (1.0f - intensity) + touch_cv_value * intensity;
 } 

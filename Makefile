@@ -74,6 +74,9 @@ include $(SYSTEM_FILES_DIR)/Makefile # Include core makefile
 
 # --- Additions/Overrides AFTER Core Makefile --- 
 
+# Ensure 'all' target only builds the final elf
+all: $(BUILD_DIR)/$(TARGET).elf
+
 # Add .cc source files to the OBJECTS list defined by the core makefile
 # Use the same pattern (notdir/vpath) as the core makefile
 OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(CC_SOURCES:.cc=.o)))

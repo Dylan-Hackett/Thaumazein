@@ -157,7 +157,7 @@ void PolyphonyEngine::PrepVoiceParams(const RenderParameters& params) {
         patch_params.timbre = current_global_timbre;
         patch_params.morph = current_global_morph;
         patch_params.arp_on = params.arp_on;
-        patch_params.decay = params.env_release_val;
+        patch_params.decay = release_value;
         
         UpdatePatchParams(patches_[v], patch_params);
 
@@ -217,7 +217,7 @@ void PolyphonyEngine::UpdatePatchParams(plaits::Patch& patch, const PatchParams&
     patch.timbre = params.timbre;
     patch.morph = params.morph;
     patch.lpg_colour = 0.0f;
-    patch.decay = params.arp_on ? params.decay : 0.5f;
+    patch.decay = params.decay;
     patch.frequency_modulation_amount = 0.f;
     patch.timbre_modulation_amount = 0.f;
     patch.morph_modulation_amount = 0.f;
@@ -411,7 +411,7 @@ void PolyphonyEngine::TriggerArpVoice(int pad_idx, int current_engine_index_val)
     patch_params.timbre = 0.5f;
     patch_params.morph = 0.5f;
     patch_params.arp_on = true;
-    patch_params.decay = 0.5f;
+    patch_params.decay = env_release_val;  // wire knob to arp decay
     
     UpdatePatchParams(patches_[0], patch_params);
 

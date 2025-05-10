@@ -3,7 +3,7 @@
 
 // Define global constants needed by this header
 #define NUM_VOICES 4
-#define BLOCK_SIZE 16
+#define BLOCK_SIZE 32
 
 #include "daisy_seed.h"
 #include "plaits/dsp/voice.h"

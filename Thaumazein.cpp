@@ -10,11 +10,14 @@ void UpdateDisplay() {
         char msg[512];
         int pos = 0;
 
-        // CPU Load
+        // cpu load average/max
         float avg_cpu_load = cpu_meter.GetAvgCpuLoad();
-        int cpu_percent_int = static_cast<int>(avg_cpu_load * 100.0f);
-        cpu_percent_int = cpu_percent_int < 0 ? 0 : (cpu_percent_int > 100 ? 100 : cpu_percent_int);
-        pos += snprintf(msg + pos, sizeof(msg) - pos, "CPU: %d\n", cpu_percent_int);
+        int cpu_avg = static_cast<int>(avg_cpu_load * 100.0f);
+        cpu_avg = cpu_avg < 0 ? 0 : (cpu_avg > 100 ? 100 : cpu_avg);
+        float max_cpu_load = cpu_meter.GetMaxCpuLoad();
+        int cpu_max = static_cast<int>(max_cpu_load * 100.0f);
+        cpu_max = cpu_max < 0 ? 0 : (cpu_max > 100 ? 100 : cpu_max);
+        pos += snprintf(msg + pos, sizeof(msg) - pos, "cpu : %d/%d\n", cpu_avg, cpu_max);
 
         // Engine Info
         int current_engine_idx = current_engine_index;
@@ -127,7 +130,7 @@ int main(void) {
         // Poll touch sensor every 5 ms (200 Hz)
         if (hw.system.GetNow() - lastPoll >= 5) {
             lastPoll = hw.system.GetNow();
-            PollTouchSensor(); 
+            PollTouchSensor();
         }
         
         // Yield for system tasks, adjusted for polling interval

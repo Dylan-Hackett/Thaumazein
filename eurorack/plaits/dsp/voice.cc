@@ -132,7 +132,7 @@ void Voice::Render(
     p.trigger = TRIGGER_UNPATCHED;
   }
   
-  const float short_decay = (200.0f * kBlockSize) / kSampleRate *
+  const float short_decay = (200.0f * size) / kSampleRate *
       SemitonesToRatio(-96.0f * patch.decay);
 
   decay_envelope_.Process(short_decay * 2.0f);
@@ -204,13 +204,13 @@ void Voice::Render(
   // Compute LPG parameters.
   if (!lpg_bypass) {
     const float hf = patch.lpg_colour;
-    const float decay_tail = (20.0f * kBlockSize) / kSampleRate *
+    const float decay_tail = (20.0f * size) / kSampleRate *
         SemitonesToRatio(-72.0f * patch.decay + 12.0f * hf) - short_decay;
     
     if (modulations.level_patched) {
       lpg_envelope_.ProcessLP(compressed_level, short_decay, decay_tail, hf);
     } else {
-      const float attack = NoteToFrequency(p.note) * float(kBlockSize) * 2.0f;
+      const float attack = NoteToFrequency(p.note) * float(size) * 2.0f;
       lpg_envelope_.ProcessPing(attack, short_decay, decay_tail, hf);
     }
   }

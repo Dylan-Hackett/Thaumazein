@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   28:eurorack/plaits/dsp/engine/hi_hat_engine.cc **** // more metallic.
   29:eurorack/plaits/dsp/engine/hi_hat_engine.cc **** 
   30:eurorack/plaits/dsp/engine/hi_hat_engine.cc **** #include "plaits/dsp/engine/hi_hat_engine.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 2
 
 
   31:eurorack/plaits/dsp/engine/hi_hat_engine.cc **** 
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   22:eurorack/plaits/dsp/drums/hi_hat.h **** // 
   23:eurorack/plaits/dsp/drums/hi_hat.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
   24:eurorack/plaits/dsp/drums/hi_hat.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 3
 
 
   25:eurorack/plaits/dsp/drums/hi_hat.h **** // -----------------------------------------------------------------------------
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   79:eurorack/plaits/dsp/drums/hi_hat.h ****       uint32_t noise = 0;
   80:eurorack/plaits/dsp/drums/hi_hat.h ****       noise += (phase[0] >> 31);
   81:eurorack/plaits/dsp/drums/hi_hat.h ****       noise += (phase[1] >> 31);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 4
 
 
   82:eurorack/plaits/dsp/drums/hi_hat.h ****       noise += (phase[2] >> 31);
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  132:eurorack/plaits/dsp/drums/hi_hat.h ****       float* temp_1,
  133:eurorack/plaits/dsp/drums/hi_hat.h ****       float* temp_2,
  134:eurorack/plaits/dsp/drums/hi_hat.h ****       float* out,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 5
 
 
  135:eurorack/plaits/dsp/drums/hi_hat.h ****       size_t size) {
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   48:eurorack/plaits/dsp/oscillator/oscillator.h **** };
   49:eurorack/plaits/dsp/oscillator/oscillator.h **** 
   50:eurorack/plaits/dsp/oscillator/oscillator.h **** const float kMaxFrequency = 0.25f;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 6
 
 
   51:eurorack/plaits/dsp/oscillator/oscillator.h **** const float kMinFrequency = 0.000001f;
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  128:eurorack/plaits/dsp/drums/hi_hat.h ****       Oscillator* osc,
   64              		.loc 2 128 8 view .LVU5
   65 0008 F0B5     		push	{r4, r5, r6, r7, lr}
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 7
 
 
   66              		.cfi_def_cfa_offset 20
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  113              	.LVL4:
  114              	.LBB222:
  115              	.LBI222:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 8
 
 
  116              		.file 4 "eurorack/stmlib/dsp/parameter_interpolator.h"
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   42:eurorack/stmlib/dsp/parameter_interpolator.h **** 
   43:eurorack/stmlib/dsp/parameter_interpolator.h ****   ParameterInterpolator(float* state, float new_value, float step) {
   44:eurorack/stmlib/dsp/parameter_interpolator.h ****     state_ = state;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 9
 
 
   45:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  163              	.LBB226:
  164              		.loc 4 56 29 view .LVU24
  165 0066 30EE660A 		vsub.f32	s0, s0, s13
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 10
 
 
  166              	.LVL6:
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  215              	.L12:
  216              		.loc 4 56 39 view .LVU38
  217              	.LBE237:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 11
 
 
  218              	.LBE239:
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   59:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ += increment_;
  247              		.loc 4 59 16 is_stmt 1 view .LVU47
  248              	.LBB251:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 12
 
 
   60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  177:eurorack/plaits/dsp/oscillator/oscillator.h ****           phase_ += 1.0f;
  178:eurorack/plaits/dsp/oscillator/oscillator.h ****           float discontinuity = (slope_up + slope_down) * frequency;
  179:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample -= stmlib::ThisIntegratedBlepSample(t) * discontinuity;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 13
 
 
  180:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample -= stmlib::NextIntegratedBlepSample(t) * discontinuity;
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  193:eurorack/plaits/dsp/oscillator/oscillator.h ****           }
  194:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample += stmlib::ThisBlepSample(t) * discontinuity;
  195:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample += stmlib::NextBlepSample(t) * discontinuity;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 14
 
 
  196:eurorack/plaits/dsp/oscillator/oscillator.h ****           high_ = phase_ >= pw;
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  306              	.LBE256:
  194:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample += stmlib::NextBlepSample(t) * discontinuity;
  307              		.loc 3 194 23 view .LVU64
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 15
 
 
  308 00bc E4EE225A 		vfma.f32	s11, s8, s5
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   37:eurorack/stmlib/dsp/polyblep.h ****   return 0.5f * t * t;
  347              		.loc 5 37 14 is_stmt 1 view .LVU76
  348              	.LBB265:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 16
 
 
   38:eurorack/stmlib/dsp/polyblep.h **** }
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  209:eurorack/plaits/dsp/oscillator/oscillator.h ****           high_ = true;
  210:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
  211:eurorack/plaits/dsp/oscillator/oscillator.h ****         next_sample += phase_ < pw ? 0.0f : 1.0f;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 17
 
 
  388              		.loc 3 211 36 view .LVU89
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  421              	.LBE277:
  422              	.LBE245:
   98:eurorack/plaits/dsp/oscillator/oscillator.h ****       } else {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 18
 
 
  423              		.loc 3 98 9 view .LVU98
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  464 0142 C0ED056A 		vstr.32	s13, [r0, #20]
  465              	.LVL30:
   50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 19
 
 
  466              		.loc 4 50 13 view .LVU109
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  511              	.LBE299:
  512              	.LBE351:
  513              	.LBE354:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 20
 
 
  514              	.LBE358:
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  556 0198 D0ED085A 		vldr.32	s11, [r0, #32]
  557              	.LBB315:
  558              	.LBB312:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 21
 
 
  559              	.LBB310:
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  601              	.LBE311:
  602              	.LBE313:
  603              	.LBE318:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 22
 
 
  110:eurorack/plaits/dsp/oscillator/oscillator.h ****       float this_sample = next_sample;
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  648              		.loc 4 61 5 is_stmt 1 view .LVU155
  649              		.loc 4 61 5 is_stmt 0 view .LVU156
  650              	.LBE326:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 23
 
 
  651              	.LBE342:
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   98:eurorack/plaits/dsp/oscillator/oscillator.h ****       } else {
  693              		.loc 3 98 9 view .LVU169
  694 01f4 B2E7     		b	.L13
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 24
 
 
  695              	.LVL49:
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  738 020e BEEE004A 		vmov.f32	s8, #-5.0e-1
  739              	.LVL52:
  740              		.loc 5 43 16 view .LVU183
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 25
 
 
  741              	.LBE336:
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  784              	.LVL57:
  785              	.L22:
   50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 26
 
 
  786              		.loc 4 50 13 view .LVU197
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  837              		.file 6 "eurorack/stmlib/dsp/filter.h"
    1:eurorack/stmlib/dsp/filter.h **** // Copyright 2014 Emilie Gillet.
    2:eurorack/stmlib/dsp/filter.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 27
 
 
    3:eurorack/stmlib/dsp/filter.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   57:eurorack/stmlib/dsp/filter.h **** #define M_PI_POW_5 M_PI_POW_3 * M_PI_POW_2
   58:eurorack/stmlib/dsp/filter.h **** #define M_PI_POW_7 M_PI_POW_5 * M_PI_POW_2
   59:eurorack/stmlib/dsp/filter.h **** #define M_PI_POW_9 M_PI_POW_7 * M_PI_POW_2
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 28
 
 
   60:eurorack/stmlib/dsp/filter.h **** #define M_PI_POW_11 M_PI_POW_9 * M_PI_POW_2
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  114:eurorack/stmlib/dsp/filter.h ****       const float a = 3.736e-01f * M_PI_POW_3;
  115:eurorack/stmlib/dsp/filter.h ****       return f * (M_PI_F + a * f * f);
  116:eurorack/stmlib/dsp/filter.h ****     } else if (approximation == FREQUENCY_FAST) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 29
 
 
  117:eurorack/stmlib/dsp/filter.h ****       // The usual tangent approximation uses 3.1755e-01 and 2.033e-01, but
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  171:eurorack/stmlib/dsp/filter.h ****   
  172:eurorack/stmlib/dsp/filter.h ****   DISALLOW_COPY_AND_ASSIGN(OnePole);
  173:eurorack/stmlib/dsp/filter.h **** };
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 30
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 30
 
 
  174:eurorack/stmlib/dsp/filter.h **** 
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  220:eurorack/stmlib/dsp/filter.h ****   // Set frequency and resonance from true units. Various approximations
  221:eurorack/stmlib/dsp/filter.h ****   // are available to avoid the cost of tanf.
  222:eurorack/stmlib/dsp/filter.h ****   template<FrequencyApproximation approximation>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 31
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 31
 
 
  223:eurorack/stmlib/dsp/filter.h ****   inline void set_f_q(float f, float resonance) {
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  890              		.syntax unified
  891              		.thumb
  892              		.thumb_func
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 32
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 32
 
 
  894              	_ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE:
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  916 0002 0026     		movs	r6, #0
  917              	.LBE397:
  918              	.LBE424:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 33
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 33
 
 
   36:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****   hi_hat_1_.Init();
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   43:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  * and its documentation for any purpose is hereby granted without fee,
   44:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  * provided that the above copyright notice appear in all copies and
   45:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  * that both that copyright notice and this permission notice appear
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 34
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 34
 
 
   46:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  * in supporting documentation.  Silicon Graphics makes no
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  100:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	      return *__first1 < *__first2 ? -1 : 1;
  101:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	  return 0;
  102:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	}
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 35
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 35
 
 
  103:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       else
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  157:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_function_requires(_Mutable_ForwardIteratorConcept<
  158:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 				  _ForwardIterator2>)
  159:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 36
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 36
 
 
  160:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #if __cplusplus < 201103L
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  214:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
  215:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
  216:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   /**
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 37
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 37
 
 
  217:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @brief This does what you think it does.
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  271:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *
  272:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  This will work on temporary expressions, since they are only evaluated
  273:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  once, unlike a preprocessor macro.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 38
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 38
 
 
  274:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   */
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  328:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX20_CONSTEXPR
  329:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     inline _Iterator
  330:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __niter_wrap(const _Iterator&, _Iterator __res)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 39
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 39
 
 
  331:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     { return __res; }
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  385:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	}
  386:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     };
  387:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 40
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 40
 
 
  388:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #if __cplusplus >= 201103L
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  442:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<bool _IsMove, typename _CharT>
  443:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     typename __gnu_cxx::__enable_if<__is_char<_CharT>::__value,
  444:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	     ostreambuf_iterator<_CharT, char_traits<_CharT> > >::__type
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 41
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 41
 
 
  445:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __copy_move_a2(_CharT*, _CharT*,
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  499:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       _GLIBCXX_STD_C::_Deque_iterator<_Tp, _Tp&, _Tp*> >::__type
  500:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __copy_move_a1(_II, _II, _GLIBCXX_STD_C::_Deque_iterator<_Tp, _Tp&, _Tp*>);
  501:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 42
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 42
 
 
  502:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<bool _IsMove, typename _II, typename _OI>
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  556:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   */
  557:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<typename _II, typename _OI>
  558:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX20_CONSTEXPR
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 43
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 43
 
 
  559:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     inline _OI
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  613:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       template<typename _BI1, typename _BI2>
  614:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	_GLIBCXX20_CONSTEXPR
  615:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	static _BI2
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 44
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 44
 
 
  616:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	__copy_move_b(_BI1 __first, _BI1 __last, _BI2 __result)
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  670:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	}
  671:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     };
  672:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #endif
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 45
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 45
 
 
  673:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  727:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<bool _IsMove,
  728:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	   typename _ITp, typename _IRef, typename _IPtr, typename _OTp>
  729:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX_STD_C::_Deque_iterator<_OTp, _OTp&, _OTp*>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 46
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 46
 
 
  730:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __copy_move_backward_a1(
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  784:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  The function has the same effect as copy, but starts at the end of the
  785:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  range and works its way to the start, returning the start of the result.
  786:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  This inline function will boil down to a call to @c memmove whenever
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 47
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 47
 
 
  787:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  possible.  Failing that, if random access iterators are passed, then the
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  841:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_requires_can_decrement_range(__first, __last, __result);
  842:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
  843:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       return std::__copy_move_backward_a<true>(std::__miter_base(__first),
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 48
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 48
 
 
  844:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 					       std::__miter_base(__last),
@@ -2878,7 +2878,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  953 000c 0021     		movs	r1, #0
  954              	.LVL68:
  955              		.loc 7 873 11 view .LVU233
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 49
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 49
 
 
  956              	.LBE404:
@@ -2938,7 +2938,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  887:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	  for (; __first != __last; ++__first)
  888:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	    *__first = __tmp;
  889:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	  return;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 50
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 50
 
 
  890:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	}
@@ -2998,7 +2998,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  997              	.LBI402:
  868:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	      const _Tp& __value)
  998              		.loc 7 868 5 view .LVU243
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 51
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 51
 
 
  999              	.LBB406:
@@ -3058,7 +3058,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1040              	.LBB430:
  106:eurorack/plaits/dsp/drums/hi_hat.h ****       oscillator_[i].Init();
  1041              		.loc 2 106 23 view .LVU256
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 52
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 52
 
 
  1042              	.L41:
@@ -3118,7 +3118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   65:eurorack/plaits/dsp/oscillator/oscillator.h ****     pw_ = 0.5f;
  1078              		.loc 3 65 16 is_stmt 0 view .LVU275
  1079 0056 9866     		str	r0, [r3, #104]	@ float
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 53
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 53
 
 
   66:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
@@ -3178,7 +3178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   18:eurorack/stmlib/utils/buffer_allocator.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
   19:eurorack/stmlib/utils/buffer_allocator.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   20:eurorack/stmlib/utils/buffer_allocator.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 54
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 54
 
 
   21:eurorack/stmlib/utils/buffer_allocator.h **** // THE SOFTWARE.
@@ -3226,7 +3226,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1112              		.loc 8 59 23 is_stmt 0 view .LVU287
  1113 006e AB68     		ldr	r3, [r5, #8]
  1114              		.loc 8 59 5 view .LVU288
- 1115 0070 5F2B     		cmp	r3, #95
+ 1115 0070 7F2B     		cmp	r3, #127
  1116              	.LBB438:
   60:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
  1117              		.loc 8 60 10 view .LVU289
@@ -3236,9 +3236,9 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   61:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
   62:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
  1121              		.loc 8 62 13 view .LVU290
- 1122 0076 603B     		subhi	r3, r3, #96
+ 1122 0076 803B     		subhi	r3, r3, #128
  1123              	.LBE438:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 55
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 55
 
 
   63:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
@@ -3250,7 +3250,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1127              	.LBB439:
   61:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
  1128              		.loc 8 61 13 view .LVU292
- 1129 007a 02F16001 		addhi	r1, r2, #96
+ 1129 007a 02F18001 		addhi	r1, r2, #128
   62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
  1130              		.loc 8 62 13 view .LVU293
  1131 007e 88BF     		it	hi
@@ -3285,7 +3285,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1158              	.LBB448:
   59:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
  1159              		.loc 8 59 5 view .LVU296
- 1160 0088 5F2B     		cmp	r3, #95
+ 1160 0088 7F2B     		cmp	r3, #127
  1161              	.LBE448:
  1162              	.LBE450:
  1163              	.LBE453:
@@ -3298,7 +3298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1168              	.LBB454:
  1169              	.LBI443:
   57:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 56
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 56
 
 
  1170              		.loc 8 57 13 view .LVU299
@@ -3312,7 +3312,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1177              	.LVL81:
   62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
  1178              		.loc 8 62 13 view .LVU301
- 1179 0092 603B     		subhi	r3, r3, #96
+ 1179 0092 803B     		subhi	r3, r3, #128
  1180              	.LBE446:
  1181              		.loc 8 65 14 view .LVU302
  1182 0094 0022     		movls	r2, #0
@@ -3320,7 +3320,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1184              	.LBB447:
   61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
  1185              		.loc 8 61 13 view .LVU303
- 1186 0096 02F16001 		addhi	r1, r2, #96
+ 1186 0096 02F18001 		addhi	r1, r2, #128
   62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
  1187              		.loc 8 62 13 view .LVU304
  1188 009a 84BF     		itt	hi
@@ -3358,7 +3358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1218              	.LFB1508:
  1219              		.file 9 "eurorack/stmlib/dsp/units.h"
    1:eurorack/stmlib/dsp/units.h **** // Copyright 2014 Emilie Gillet.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 57
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 57
 
 
    2:eurorack/stmlib/dsp/units.h **** //
@@ -3418,7 +3418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   41:eurorack/stmlib/dsp/units.h ****   float pitch = semitones + 128.0f;
  1230              		.loc 9 41 9 view .LVU313
  1231 0006 30EE270A 		vadd.f32	s0, s0, s15
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 58
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 58
 
 
  1232              	.LVL85:
@@ -3478,7 +3478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
    1:eurorack/stmlib/utils/random.h **** // Copyright 2012 Emilie Gillet.
    2:eurorack/stmlib/utils/random.h **** //
    3:eurorack/stmlib/utils/random.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 59
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 59
 
 
    4:eurorack/stmlib/utils/random.h **** //
@@ -3538,7 +3538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1284              		@ link register save eliminated.
   54:eurorack/stmlib/utils/random.h ****     return static_cast<float>(GetWord()) / 4294967296.0f;
  1285              		.loc 10 54 5 view .LVU326
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 60
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 60
 
 
  1286              	.LBB457:
@@ -3598,7 +3598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1331              		.syntax unified
  1332              		.thumb
  1333              		.thumb_func
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 61
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 61
 
 
  1335              	_ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff:
@@ -3658,7 +3658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1376              		.loc 6 225 15 view .LVU351
  1377 003c C7EE206A 		vdiv.f32	s13, s14, s1
  1378              		.loc 6 226 23 view .LVU352
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 62
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 62
 
 
  1379 0040 F0EE477A 		vmov.f32	s15, s14
@@ -3718,7 +3718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  248:eurorack/stmlib/dsp/filter.h ****   
  249:eurorack/stmlib/dsp/filter.h ****   template<FilterMode mode_1, FilterMode mode_2>
  250:eurorack/stmlib/dsp/filter.h ****   inline void Process(float in, float* out_1, float* out_2) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 63
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 63
 
 
  251:eurorack/stmlib/dsp/filter.h ****     float hp, bp, lp;
@@ -3778,7 +3778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1431              		.loc 6 286 17 view .LVU363
  1432 000c 90ED016A 		vldr.32	s12, [r0, #4]
  1433 0010 F1EC017A 		vldmia.32	r1!, {s15}
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 64
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 64
 
 
  1434              	.LVL97:
@@ -3838,7 +3838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1468              		.loc 6 285 5 view .LVU377
  1469 0044 E0E7     		b	.L60
  1470              	.LVL105:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 65
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 65
 
 
  1471              	.L59:
@@ -3898,7 +3898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1514 0014 D0ED025A 		vldr.32	s11, [r0, #8]
  286:eurorack/stmlib/dsp/filter.h ****       bp = g_ * hp + state_1;
  1515              		.loc 6 286 17 view .LVU388
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 66
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 66
 
 
  1516 0018 E6EE667A 		vfms.f32	s15, s12, s13
@@ -3958,7 +3958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1556              		.cfi_endproc
  1557              	.LFE1620:
  1559              		.section	.text._ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j,"axG",
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 67
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 67
 
 
  1560              		.align	1
@@ -4018,7 +4018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1599              		.loc 2 180 8 view .LVU407
  1600 000c A1B0     		sub	sp, sp, #132
  1601              		.cfi_def_cfa_offset 208
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 68
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 68
 
 
  180:eurorack/plaits/dsp/drums/hi_hat.h ****       bool sustain,
@@ -4078,7 +4078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1645              		.loc 2 197 5 view .LVU424
  1646 0060 9FB1     		cbz	r7, .L67
  198:eurorack/plaits/dsp/drums/hi_hat.h ****       envelope_ = (1.5f + 0.5f * (1.0f - decay)) * (0.3f + 0.7f * accent);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 69
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 69
 
 
  1647              		.loc 2 198 25 view .LVU425
@@ -4104,7 +4104,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1667              	.LBB489:
   58:eurorack/plaits/dsp/drums/hi_hat.h ****         // Nominal f0: 414 Hz
  1668              		.loc 2 58 17 view .LVU433
- 1669 008a DFF800C3 		ldr	ip, .L111+56
+ 1669 008a DFF8FCC2 		ldr	ip, .L111+52
  1670 008e 0EAF     		add	r7, sp, #56
  1671              	.LBE489:
  1672              	.LBE488:
@@ -4138,7 +4138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1690              		.loc 2 65 5 view .LVU440
  1691              	.LVL126:
  1692              	.LBB490:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 70
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 70
 
 
   65:eurorack/plaits/dsp/drums/hi_hat.h ****       float f = f0 * ratios[i];
@@ -4198,7 +4198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1732              	.LVL132:
   65:eurorack/plaits/dsp/drums/hi_hat.h ****       float f = f0 * ratios[i];
  1733              		.loc 2 65 23 view .LVU456
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 71
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 71
 
 
  1734 00d2 E9D1     		bne	.L70
@@ -4258,7 +4258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1777              		.loc 2 78 30 view .LVU467
  1778 0112 0796     		str	r6, [sp, #28]
  1779 0114 0293     		str	r3, [sp, #8]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 72
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 72
 
 
  1780 0116 1D9B     		ldr	r3, [sp, #116]
@@ -4318,7 +4318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   74:eurorack/plaits/dsp/drums/hi_hat.h ****       phase[2] += increment[2];
  1824              		.loc 2 74 7 view .LVU478
   75:eurorack/plaits/dsp/drums/hi_hat.h ****       phase[3] += increment[3];
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 73
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 73
 
 
  1825              		.loc 2 75 7 view .LVU479
@@ -4378,7 +4378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1860 018a A7EEA67A 		vfma.f32	s14, s15, s13
   86:eurorack/plaits/dsp/drums/hi_hat.h ****     }
  1861              		.loc 2 86 14 view .LVU499
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 74
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 74
 
 
  1862 018e A3EC017A 		vstmia.32	r3!, {s14}
@@ -4438,7 +4438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1910 01ee 43F8041C 		str	r1, [r3, #-4]	@ unaligned
  1911 01f2 9446     		mov	ip, r2
  1912 01f4 F5D1     		bne	.L75
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 75
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 75
 
 
  1913              	.LVL141:
@@ -4466,7 +4466,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  1929 020e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  1930 0212 4CD4     		bmi	.L89
  1931              		.loc 2 207 5 discriminator 2 view .LVU510
- 1932 0214 DFED5A7A 		vldr.32	s15, .L111+44
+ 1932 0214 F6EE007A 		vmov.f32	s15, #5.0e-1
  1933 0218 F4EE678A 		vcmp.f32	s17, s15
  1934 021c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  1935 0220 77FEA88A 		vselgt.f32	s17, s15, s17
@@ -4498,7 +4498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  217:eurorack/plaits/dsp/drums/hi_hat.h ****     float noise_f = f0 * (16.0f + 16.0f * (1.0f - noisiness));
  1952              		.loc 2 217 33 view .LVU513
  1953 0246 B3EE008A 		vmov.f32	s16, #1.6e+1
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 76
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 76
 
 
  1954              	.LVL146:
@@ -4558,7 +4558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  224:eurorack/plaits/dsp/drums/hi_hat.h ****         noise_sample_ = stmlib::Random::GetFloat() - 0.5f;
  225:eurorack/plaits/dsp/drums/hi_hat.h ****       }
  226:eurorack/plaits/dsp/drums/hi_hat.h ****       out[i] += noisiness * (noise_sample_ - out[i]);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 77
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 77
 
 
  1999              		.loc 2 226 14 discriminator 2 view .LVU527
@@ -4586,7 +4586,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  2017              	.LBE500:
  207:eurorack/plaits/dsp/drums/hi_hat.h ****     noise_coloration_svf_.set_f_q<stmlib::FREQUENCY_ACCURATE>(
  2018              		.loc 2 207 5 view .LVU534
- 2019 02ae DFED358A 		vldr.32	s17, .L111+48
+ 2019 02ae DFED348A 		vldr.32	s17, .L111+44
  2020              	.LVL155:
  207:eurorack/plaits/dsp/drums/hi_hat.h ****     noise_coloration_svf_.set_f_q<stmlib::FREQUENCY_ACCURATE>(
  2021              		.loc 2 207 5 view .LVU535
@@ -4595,7 +4595,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  2024              	.L90:
  218:eurorack/plaits/dsp/drums/hi_hat.h ****     
  2025              		.loc 2 218 5 view .LVU536
- 2026 02b4 9FED338A 		vldr.32	s16, .L111+48
+ 2026 02b4 9FED328A 		vldr.32	s16, .L111+44
  2027              	.LVL157:
  218:eurorack/plaits/dsp/drums/hi_hat.h ****     
  2028              		.loc 2 218 5 view .LVU537
@@ -4618,7 +4618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  224:eurorack/plaits/dsp/drums/hi_hat.h ****       }
  2042              		.loc 2 224 23 view .LVU541
  2043 02ce 84ED020A 		vstr.32	s0, [r4, #8]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 78
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 78
 
 
  2044 02d2 E0E7     		b	.L82
@@ -4678,7 +4678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  228:eurorack/plaits/dsp/drums/hi_hat.h **** 
  229:eurorack/plaits/dsp/drums/hi_hat.h ****     // Apply VCA.
  230:eurorack/plaits/dsp/drums/hi_hat.h ****     stmlib::ParameterInterpolator sustain_gain(
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 79
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 79
 
 
  231:eurorack/plaits/dsp/drums/hi_hat.h ****         &sustain_gain_,
@@ -4687,7 +4687,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  234:eurorack/plaits/dsp/drums/hi_hat.h ****     for (size_t i = 0; i < size; ++i) {
  2083              		.loc 2 234 26 is_stmt 1 discriminator 2 view .LVU556
  2084 02f0 4345     		cmp	r3, r8
- 2085 02f2 4DD0     		beq	.L84
+ 2085 02f2 4BD0     		beq	.L84
  2086              	.LBB507:
  235:eurorack/plaits/dsp/drums/hi_hat.h ****       VCA vca;
  236:eurorack/plaits/dsp/drums/hi_hat.h ****       envelope_ *= envelope_ > 0.5f ? envelope_decay : cut_decay;
@@ -4738,14 +4738,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  2122              		.loc 2 149 9 is_stmt 1 discriminator 4 view .LVU569
  2123              	.LBB511:
  150:eurorack/plaits/dsp/drums/hi_hat.h ****    s = s / (1.0f + fabsf(s));
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 80
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 80
 
 
  2124              		.loc 2 150 4 discriminator 4 view .LVU570
  150:eurorack/plaits/dsp/drums/hi_hat.h ****    s = s / (1.0f + fabsf(s));
  2125              		.loc 2 150 18 is_stmt 0 discriminator 4 view .LVU571
  2126 0320 F5EEC06A 		vcmpe.f32	s13, #0
- 2127 0324 9FED186A 		vldr.32	s12, .L111+52
+ 2127 0324 9FED176A 		vldr.32	s12, .L111+48
  2128 0328 B2EE047A 		vmov.f32	s14, #1.0e+1
  2129 032c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
  2130 0330 37FE067A 		vselgt.f32	s14, s14, s12
@@ -4794,766 +4794,764 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
  2164 0370 0000804F 		.word	1333788672
  2165 0374 C3F5A83E 		.word	1051260355
  2166 0378 00009042 		.word	1116733440
- 2167 037c CDCC4C3B 		.word	994888909
- 2168 0380 ABAAAA3E 		.word	1051372203
- 2169 0384 00000000 		.word	0
- 2170 0388 CDCCCC3D 		.word	1036831949
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 81
+ 2167 037c 9A99993B 		.word	999922074
+ 2168 0380 00000000 		.word	0
+ 2169 0384 CDCCCC3D 		.word	1036831949
+ 2170 0388 00000000 		.word	.LANCHOR0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 81
 
 
- 2171 038c 00000000 		.word	.LANCHOR0
- 2172              	.L84:
+ 2171              	.L84:
  234:eurorack/plaits/dsp/drums/hi_hat.h ****       VCA vca;
- 2173              		.loc 2 234 5 is_stmt 0 discriminator 4 view .LVU582
- 2174              	.LBE506:
+ 2172              		.loc 2 234 5 is_stmt 0 discriminator 4 view .LVU582
+ 2173              	.LBE506:
  238:eurorack/plaits/dsp/drums/hi_hat.h ****     }
  239:eurorack/plaits/dsp/drums/hi_hat.h ****     
  240:eurorack/plaits/dsp/drums/hi_hat.h ****     hpf_.set_f_q<stmlib::FREQUENCY_ACCURATE>(cutoff, 0.5f);
- 2175              		.loc 2 240 45 view .LVU583
- 2176 0390 04F13C00 		add	r0, r4, #60
- 2177 0394 F6EE000A 		vmov.f32	s1, #5.0e-1
- 2178 0398 B0EE680A 		vmov.f32	s0, s17
- 2179 039c 0090     		str	r0, [sp]
- 2180 039e FFF7FEFF 		bl	_ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff
- 2181              	.LVL168:
+ 2174              		.loc 2 240 45 view .LVU583
+ 2175 038c 04F13C00 		add	r0, r4, #60
+ 2176 0390 F6EE000A 		vmov.f32	s1, #5.0e-1
+ 2177 0394 B0EE680A 		vmov.f32	s0, s17
+ 2178 0398 0090     		str	r0, [sp]
+ 2179 039a FFF7FEFF 		bl	_ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff
+ 2180              	.LVL168:
  241:eurorack/plaits/dsp/drums/hi_hat.h ****     hpf_.Process<stmlib::FILTER_MODE_HIGH_PASS>(out, out, size);
- 2182              		.loc 2 241 48 view .LVU584
- 2183 03a2 2B46     		mov	r3, r5
- 2184 03a4 3246     		mov	r2, r6
- 2185 03a6 3146     		mov	r1, r6
- 2186 03a8 0098     		ldr	r0, [sp]
- 2187 03aa FFF7FEFF 		bl	_ZN6stmlib3Svf7ProcessILNS_10FilterModeE3EEEvPKfPfj
- 2188              	.LVL169:
- 2189              	.LBB512:
- 2190              	.LBI512:
+ 2181              		.loc 2 241 48 view .LVU584
+ 2182 039e 2B46     		mov	r3, r5
+ 2183 03a0 3246     		mov	r2, r6
+ 2184 03a2 3146     		mov	r1, r6
+ 2185 03a4 0098     		ldr	r0, [sp]
+ 2186 03a6 FFF7FEFF 		bl	_ZN6stmlib3Svf7ProcessILNS_10FilterModeE3EEEvPKfPfj
+ 2187              	.LVL169:
+ 2188              	.LBB512:
+ 2189              	.LBI512:
   49:eurorack/stmlib/dsp/parameter_interpolator.h ****     *state_ = value_;
- 2191              		.loc 4 49 3 is_stmt 1 view .LVU585
- 2192              	.LBB513:
+ 2190              		.loc 4 49 3 is_stmt 1 view .LVU585
+ 2191              	.LBB513:
   50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2193              		.loc 4 50 5 view .LVU586
+ 2192              		.loc 4 50 5 view .LVU586
   50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2194              		.loc 4 50 13 is_stmt 0 view .LVU587
- 2195 03ae 84ED038A 		vstr.32	s16, [r4, #12]
- 2196              	.LVL170:
+ 2193              		.loc 4 50 13 is_stmt 0 view .LVU587
+ 2194 03aa 84ED038A 		vstr.32	s16, [r4, #12]
+ 2195              	.LVL170:
   50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2197              		.loc 4 50 13 view .LVU588
- 2198              	.LBE513:
- 2199              	.LBE512:
+ 2196              		.loc 4 50 13 view .LVU588
+ 2197              	.LBE513:
+ 2198              	.LBE512:
  242:eurorack/plaits/dsp/drums/hi_hat.h ****   }
- 2200              		.loc 2 242 3 view .LVU589
- 2201 03b2 21B0     		add	sp, sp, #132
- 2202              		.cfi_def_cfa_offset 76
- 2203              		@ sp needed
- 2204 03b4 BDEC0A8B 		vldm	sp!, {d8-d12}
- 2205              		.cfi_restore 88
- 2206              		.cfi_restore 89
- 2207              		.cfi_restore 86
- 2208              		.cfi_restore 87
- 2209              		.cfi_restore 84
- 2210              		.cfi_restore 85
- 2211              		.cfi_restore 82
- 2212              		.cfi_restore 83
- 2213              		.cfi_restore 80
- 2214              		.cfi_restore 81
- 2215              		.cfi_def_cfa_offset 36
- 2216              	.LVL171:
- 2217              		.loc 2 242 3 view .LVU590
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 82
+ 2199              		.loc 2 242 3 view .LVU589
+ 2200 03ae 21B0     		add	sp, sp, #132
+ 2201              		.cfi_def_cfa_offset 76
+ 2202              		@ sp needed
+ 2203 03b0 BDEC0A8B 		vldm	sp!, {d8-d12}
+ 2204              		.cfi_restore 88
+ 2205              		.cfi_restore 89
+ 2206              		.cfi_restore 86
+ 2207              		.cfi_restore 87
+ 2208              		.cfi_restore 84
+ 2209              		.cfi_restore 85
+ 2210              		.cfi_restore 82
+ 2211              		.cfi_restore 83
+ 2212              		.cfi_restore 80
+ 2213              		.cfi_restore 81
+ 2214              		.cfi_def_cfa_offset 36
+ 2215              	.LVL171:
+ 2216              		.loc 2 242 3 view .LVU590
+ 2217 03b4 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 82
 
 
- 2218 03b8 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
- 2219              		.loc 2 242 3 view .LVU591
- 2220              		.cfi_endproc
- 2221              	.LFE1611:
- 2223              		.section	.text._ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j,"axG
- 2224              		.align	1
- 2225              		.weak	_ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j
- 2226              		.syntax unified
- 2227              		.thumb
- 2228              		.thumb_func
- 2230              	_ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j:
- 2231              	.LVL172:
- 2232              	.LFB1612:
+ 2218              		.loc 2 242 3 view .LVU591
+ 2219              		.cfi_endproc
+ 2220              	.LFE1611:
+ 2222              		.section	.text._ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j,"axG
+ 2223              		.align	1
+ 2224              		.weak	_ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j
+ 2225              		.syntax unified
+ 2226              		.thumb
+ 2227              		.thumb_func
+ 2229              	_ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j:
+ 2230              	.LVL172:
+ 2231              	.LFB1612:
  180:eurorack/plaits/dsp/drums/hi_hat.h ****       bool sustain,
- 2233              		.loc 2 180 8 is_stmt 1 view -0
- 2234              		.cfi_startproc
- 2235              		@ args = 12, pretend = 0, frame = 8
- 2236              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2232              		.loc 2 180 8 is_stmt 1 view -0
+ 2233              		.cfi_startproc
+ 2234              		@ args = 12, pretend = 0, frame = 8
+ 2235              		@ frame_needed = 0, uses_anonymous_args = 0
  180:eurorack/plaits/dsp/drums/hi_hat.h ****       bool sustain,
- 2237              		.loc 2 180 8 is_stmt 0 view .LVU593
- 2238 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
- 2239              		.cfi_def_cfa_offset 36
- 2240              		.cfi_offset 4, -36
- 2241              		.cfi_offset 5, -32
- 2242              		.cfi_offset 6, -28
- 2243              		.cfi_offset 7, -24
- 2244              		.cfi_offset 8, -20
- 2245              		.cfi_offset 9, -16
- 2246              		.cfi_offset 10, -12
- 2247              		.cfi_offset 11, -8
- 2248              		.cfi_offset 14, -4
- 2249 0004 2DED0A8B 		vpush.64	{d8, d9, d10, d11, d12}
- 2250              		.cfi_def_cfa_offset 76
- 2251              		.cfi_offset 80, -76
- 2252              		.cfi_offset 81, -72
- 2253              		.cfi_offset 82, -68
- 2254              		.cfi_offset 83, -64
- 2255              		.cfi_offset 84, -60
- 2256              		.cfi_offset 85, -56
- 2257              		.cfi_offset 86, -52
- 2258              		.cfi_offset 87, -48
- 2259              		.cfi_offset 88, -44
- 2260              		.cfi_offset 89, -40
+ 2236              		.loc 2 180 8 is_stmt 0 view .LVU593
+ 2237 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 2238              		.cfi_def_cfa_offset 36
+ 2239              		.cfi_offset 4, -36
+ 2240              		.cfi_offset 5, -32
+ 2241              		.cfi_offset 6, -28
+ 2242              		.cfi_offset 7, -24
+ 2243              		.cfi_offset 8, -20
+ 2244              		.cfi_offset 9, -16
+ 2245              		.cfi_offset 10, -12
+ 2246              		.cfi_offset 11, -8
+ 2247              		.cfi_offset 14, -4
+ 2248 0004 2DED0A8B 		vpush.64	{d8, d9, d10, d11, d12}
+ 2249              		.cfi_def_cfa_offset 76
+ 2250              		.cfi_offset 80, -76
+ 2251              		.cfi_offset 81, -72
+ 2252              		.cfi_offset 82, -68
+ 2253              		.cfi_offset 83, -64
+ 2254              		.cfi_offset 84, -60
+ 2255              		.cfi_offset 85, -56
+ 2256              		.cfi_offset 86, -52
+ 2257              		.cfi_offset 87, -48
+ 2258              		.cfi_offset 88, -44
+ 2259              		.cfi_offset 89, -40
  192:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 84.0f);
- 2261              		.loc 2 192 17 view .LVU594
- 2262 0008 B7EE00BA 		vmov.f32	s22, #1.0e+0
+ 2260              		.loc 2 192 17 view .LVU594
+ 2261 0008 B7EE00BA 		vmov.f32	s22, #1.0e+0
  180:eurorack/plaits/dsp/drums/hi_hat.h ****       bool sustain,
- 2263              		.loc 2 180 8 view .LVU595
- 2264 000c 85B0     		sub	sp, sp, #20
- 2265              		.cfi_def_cfa_offset 96
+ 2262              		.loc 2 180 8 view .LVU595
+ 2263 000c 85B0     		sub	sp, sp, #20
+ 2264              		.cfi_def_cfa_offset 96
  180:eurorack/plaits/dsp/drums/hi_hat.h ****       bool sustain,
- 2266              		.loc 2 180 8 view .LVU596
- 2267 000e F0EE40BA 		vmov.f32	s23, s0
+ 2265              		.loc 2 180 8 view .LVU596
+ 2266 000e F0EE40BA 		vmov.f32	s23, s0
  192:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 84.0f);
- 2268              		.loc 2 192 74 view .LVU597
- 2269 0012 9FED960A 		vldr.32	s0, .L139
- 2270              	.LVL173:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 83
+ 2267              		.loc 2 192 74 view .LVU597
+ 2268 0012 9FED960A 		vldr.32	s0, .L139
+ 2269              	.LVL173:
+ 192:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 84.0f);
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 83
 
 
- 192:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 84.0f);
- 2271              		.loc 2 192 74 view .LVU598
- 2272 0016 F1EE618A 		vneg.f32	s17, s3
+ 2270              		.loc 2 192 74 view .LVU598
+ 2271 0016 F1EE618A 		vneg.f32	s17, s3
  180:eurorack/plaits/dsp/drums/hi_hat.h ****       bool sustain,
- 2273              		.loc 2 180 8 view .LVU599
- 2274 001a 0446     		mov	r4, r0
+ 2272              		.loc 2 180 8 view .LVU599
+ 2273 001a 0446     		mov	r4, r0
  192:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 84.0f);
- 2275              		.loc 2 192 74 view .LVU600
- 2276 001c 21EEC00A 		vnmul.f32	s0, s3, s0
+ 2274              		.loc 2 192 74 view .LVU600
+ 2275 001c 21EEC00A 		vnmul.f32	s0, s3, s0
  180:eurorack/plaits/dsp/drums/hi_hat.h ****       bool sustain,
- 2277              		.loc 2 180 8 view .LVU601
- 2278 0020 8A46     		mov	r10, r1
+ 2276              		.loc 2 180 8 view .LVU601
+ 2277 0020 8A46     		mov	r10, r1
  192:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 84.0f);
- 2279              		.loc 2 192 17 view .LVU602
- 2280 0022 B0EE4BAA 		vmov.f32	s20, s22
+ 2278              		.loc 2 192 17 view .LVU602
+ 2279 0022 B0EE4BAA 		vmov.f32	s20, s22
  180:eurorack/plaits/dsp/drums/hi_hat.h ****       bool sustain,
- 2281              		.loc 2 180 8 view .LVU603
- 2282 0026 9046     		mov	r8, r2
- 2283 0028 B0EE60CA 		vmov.f32	s24, s1
- 2284 002c 1F46     		mov	r7, r3
- 2285 002e B0EE418A 		vmov.f32	s16, s2
- 2286 0032 1A9E     		ldr	r6, [sp, #104]
- 2287 0034 F0EE619A 		vmov.f32	s19, s3
- 2288 0038 B0EE429A 		vmov.f32	s18, s4
+ 2280              		.loc 2 180 8 view .LVU603
+ 2281 0026 9046     		mov	r8, r2
+ 2282 0028 B0EE60CA 		vmov.f32	s24, s1
+ 2283 002c 1F46     		mov	r7, r3
+ 2284 002e B0EE418A 		vmov.f32	s16, s2
+ 2285 0032 1A9E     		ldr	r6, [sp, #104]
+ 2286 0034 F0EE619A 		vmov.f32	s19, s3
+ 2287 0038 B0EE429A 		vmov.f32	s18, s4
  192:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 84.0f);
- 2289              		.loc 2 192 74 view .LVU604
- 2290 003c FFF7FEFF 		bl	_ZN6stmlib16SemitonesToRatioEf
- 2291              	.LVL174:
+ 2288              		.loc 2 192 74 view .LVU604
+ 2289 003c FFF7FEFF 		bl	_ZN6stmlib16SemitonesToRatioEf
+ 2290              	.LVL174:
  192:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 84.0f);
- 2292              		.loc 2 192 17 view .LVU605
- 2293 0040 DFED8B7A 		vldr.32	s15, .L139+4
+ 2291              		.loc 2 192 17 view .LVU605
+ 2292 0040 DFED8B7A 		vldr.32	s15, .L139+4
  194:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 36.0f);
- 2294              		.loc 2 194 17 view .LVU606
- 2295 0044 F0EE4BAA 		vmov.f32	s21, s22
+ 2293              		.loc 2 194 17 view .LVU606
+ 2294 0044 F0EE4BAA 		vmov.f32	s21, s22
  192:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 84.0f);
- 2296              		.loc 2 192 17 view .LVU607
- 2297 0048 A0EE67AA 		vfms.f32	s20, s0, s15
- 2298              	.LVL175:
+ 2295              		.loc 2 192 17 view .LVU607
+ 2296 0048 A0EE67AA 		vfms.f32	s20, s0, s15
+ 2297              	.LVL175:
  194:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 36.0f);
- 2299              		.loc 2 194 70 view .LVU608
- 2300 004c 9FED890A 		vldr.32	s0, .L139+8
- 2301 0050 28EE800A 		vmul.f32	s0, s17, s0
- 2302 0054 FFF7FEFF 		bl	_ZN6stmlib16SemitonesToRatioEf
- 2303              	.LVL176:
+ 2298              		.loc 2 194 70 view .LVU608
+ 2299 004c 9FED890A 		vldr.32	s0, .L139+8
+ 2300 0050 28EE800A 		vmul.f32	s0, s17, s0
+ 2301 0054 FFF7FEFF 		bl	_ZN6stmlib16SemitonesToRatioEf
+ 2302              	.LVL176:
  194:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 36.0f);
- 2304              		.loc 2 194 17 view .LVU609
- 2305 0058 DFED877A 		vldr.32	s15, .L139+12
+ 2303              		.loc 2 194 17 view .LVU609
+ 2304 0058 DFED877A 		vldr.32	s15, .L139+12
  180:eurorack/plaits/dsp/drums/hi_hat.h ****       bool sustain,
- 2306              		.loc 2 180 8 view .LVU610
- 2307 005c DDE918B5 		ldrd	fp, r5, [sp, #96]
+ 2305              		.loc 2 180 8 view .LVU610
+ 2306 005c DDE918B5 		ldrd	fp, r5, [sp, #96]
  194:eurorack/plaits/dsp/drums/hi_hat.h ****         -decay * 36.0f);
- 2308              		.loc 2 194 17 view .LVU611
- 2309 0060 E0EE67AA 		vfms.f32	s21, s0, s15
- 2310              	.LVL177:
+ 2307              		.loc 2 194 17 view .LVU611
+ 2308 0060 E0EE67AA 		vfms.f32	s21, s0, s15
+ 2309              	.LVL177:
  197:eurorack/plaits/dsp/drums/hi_hat.h ****       envelope_ = (1.5f + 0.5f * (1.0f - decay)) * (0.3f + 0.7f * accent);
- 2311              		.loc 2 197 5 view .LVU612
- 2312 0064 B8F1000F 		cmp	r8, #0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 84
+ 2310              		.loc 2 197 5 view .LVU612
+ 2311 0064 B8F1000F 		cmp	r8, #0
+ 2312 0068 13D0     		beq	.L114
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 84
 
 
- 2313 0068 13D0     		beq	.L114
  198:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2314              		.loc 2 198 25 view .LVU613
- 2315 006a F6EE006A 		vmov.f32	s13, #5.0e-1
+ 2313              		.loc 2 198 25 view .LVU613
+ 2314 006a F6EE006A 		vmov.f32	s13, #5.0e-1
  198:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2316              		.loc 2 198 40 view .LVU614
- 2317 006e 3BEE696A 		vsub.f32	s12, s22, s19
+ 2315              		.loc 2 198 40 view .LVU614
+ 2316 006e 3BEE696A 		vsub.f32	s12, s22, s19
  198:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2318              		.loc 2 198 25 view .LVU615
- 2319 0072 F7EE087A 		vmov.f32	s15, #1.5e+0
- 2320 0076 E6EE267A 		vfma.f32	s15, s12, s13
+ 2317              		.loc 2 198 25 view .LVU615
+ 2318 0072 F7EE087A 		vmov.f32	s15, #1.5e+0
+ 2319 0076 E6EE267A 		vfma.f32	s15, s12, s13
  198:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2321              		.loc 2 198 58 view .LVU616
- 2322 007a DFED806A 		vldr.32	s13, .L139+16
+ 2320              		.loc 2 198 58 view .LVU616
+ 2321 007a DFED806A 		vldr.32	s13, .L139+16
  198:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2323              		.loc 2 198 25 view .LVU617
- 2324 007e B0EE677A 		vmov.f32	s14, s15
+ 2322              		.loc 2 198 25 view .LVU617
+ 2323 007e B0EE677A 		vmov.f32	s14, s15
  198:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2325              		.loc 2 198 58 view .LVU618
- 2326 0082 DFED7F7A 		vldr.32	s15, .L139+20
- 2327 0086 EBEEA67A 		vfma.f32	s15, s23, s13
+ 2324              		.loc 2 198 58 view .LVU618
+ 2325 0082 DFED7F7A 		vldr.32	s15, .L139+20
+ 2326 0086 EBEEA67A 		vfma.f32	s15, s23, s13
  198:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2328              		.loc 2 198 50 view .LVU619
- 2329 008a 67EE277A 		vmul.f32	s15, s14, s15
+ 2327              		.loc 2 198 50 view .LVU619
+ 2328 008a 67EE277A 		vmul.f32	s15, s14, s15
  198:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2330              		.loc 2 198 17 view .LVU620
- 2331 008e C4ED007A 		vstr.32	s15, [r4]
- 2332              	.L114:
+ 2329              		.loc 2 198 17 view .LVU620
+ 2330 008e C4ED007A 		vstr.32	s15, [r4]
+ 2331              	.L114:
  202:eurorack/plaits/dsp/drums/hi_hat.h **** 
- 2333              		.loc 2 202 27 view .LVU621
- 2334 0092 3CEE0C7A 		vadd.f32	s14, s24, s24
- 2335              	.LVL178:
- 2336              	.LBB535:
- 2337              	.LBI535:
+ 2332              		.loc 2 202 27 view .LVU621
+ 2333 0092 3CEE0C7A 		vadd.f32	s14, s24, s24
+ 2334              	.LVL178:
+ 2335              	.LBB535:
+ 2336              	.LBI535:
  111:eurorack/plaits/dsp/drums/hi_hat.h ****     const float ratio = f0 / (0.01f + f0);
- 2338              		.loc 2 111 8 is_stmt 1 view .LVU622
- 2339              	.LBB536:
+ 2337              		.loc 2 111 8 is_stmt 1 view .LVU622
+ 2338              	.LBB536:
  112:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f1a = 200.0f / kSampleRate * ratio;
- 2340              		.loc 2 112 5 view .LVU623
+ 2339              		.loc 2 112 5 view .LVU623
  112:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f1a = 200.0f / kSampleRate * ratio;
- 2341              		.loc 2 112 37 is_stmt 0 view .LVU624
- 2342 0096 DFED7B7A 		vldr.32	s15, .L139+24
+ 2340              		.loc 2 112 37 is_stmt 0 view .LVU624
+ 2341 0096 DFED7B7A 		vldr.32	s15, .L139+24
  120:eurorack/plaits/dsp/drums/hi_hat.h ****     
- 2343              		.loc 2 120 33 view .LVU625
- 2344 009a 4FEA8609 		lsl	r9, r6, #2
- 2345              	.LBB537:
- 2346              	.LBB538:
- 2347              	.LBB539:
- 2348              	.LBB540:
+ 2342              		.loc 2 120 33 view .LVU625
+ 2343 009a 4FEA8609 		lsl	r9, r6, #2
+ 2344              	.LBB537:
+ 2345              	.LBB538:
+ 2346              	.LBB539:
+ 2347              	.LBB540:
  873:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
- 2349              		.loc 7 873 11 view .LVU626
- 2350 009e 0021     		movs	r1, #0
- 2351 00a0 2846     		mov	r0, r5
- 2352 00a2 A846     		mov	r8, r5
- 2353              	.LBE540:
- 2354              	.LBE539:
- 2355              	.LBE538:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 85
+ 2348              		.loc 7 873 11 view .LVU626
+ 2349 009e 0021     		movs	r1, #0
+ 2350 00a0 2846     		mov	r0, r5
+ 2351 00a2 A846     		mov	r8, r5
+ 2352              	.LBE540:
+ 2353              	.LBE539:
+ 2354              	.LBE538:
+ 2355              	.LBE537:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 85
 
 
- 2356              	.LBE537:
  112:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f1a = 200.0f / kSampleRate * ratio;
- 2357              		.loc 2 112 37 view .LVU627
- 2358 00a4 77EE277A 		vadd.f32	s15, s14, s15
- 2359              	.LBB547:
- 2360              	.LBB545:
- 2361              	.LBB543:
- 2362              	.LBB541:
+ 2356              		.loc 2 112 37 view .LVU627
+ 2357 00a4 77EE277A 		vadd.f32	s15, s14, s15
+ 2358              	.LBB547:
+ 2359              	.LBB545:
+ 2360              	.LBB543:
+ 2361              	.LBB541:
  873:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
- 2363              		.loc 7 873 11 view .LVU628
- 2364 00a8 4A46     		mov	r2, r9
- 2365              	.LBE541:
- 2366              	.LBE543:
- 2367              	.LBE545:
- 2368              	.LBE547:
+ 2362              		.loc 7 873 11 view .LVU628
+ 2363 00a8 4A46     		mov	r2, r9
+ 2364              	.LBE541:
+ 2365              	.LBE543:
+ 2366              	.LBE545:
+ 2367              	.LBE547:
  112:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f1a = 200.0f / kSampleRate * ratio;
- 2369              		.loc 2 112 17 view .LVU629
- 2370 00aa C7EE278A 		vdiv.f32	s17, s14, s15
- 2371              	.LVL179:
+ 2368              		.loc 2 112 17 view .LVU629
+ 2369 00aa C7EE278A 		vdiv.f32	s17, s14, s15
+ 2370              	.LVL179:
  113:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f1b = 7530.0f / kSampleRate * ratio;
- 2372              		.loc 2 113 5 is_stmt 1 view .LVU630
+ 2371              		.loc 2 113 5 is_stmt 1 view .LVU630
  114:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f2a = 510.0f / kSampleRate * ratio;
- 2373              		.loc 2 114 5 view .LVU631
+ 2372              		.loc 2 114 5 view .LVU631
  115:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f2b = 8075.0f / kSampleRate * ratio;
- 2374              		.loc 2 115 5 view .LVU632
+ 2373              		.loc 2 115 5 view .LVU632
  116:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f3a = 730.0f / kSampleRate * ratio;
- 2375              		.loc 2 116 5 view .LVU633
+ 2374              		.loc 2 116 5 view .LVU633
  117:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f3b = 10500.0f / kSampleRate * ratio;
- 2376              		.loc 2 117 5 view .LVU634
+ 2375              		.loc 2 117 5 view .LVU634
  118:eurorack/plaits/dsp/drums/hi_hat.h ****     
- 2377              		.loc 2 118 5 view .LVU635
+ 2376              		.loc 2 118 5 view .LVU635
  120:eurorack/plaits/dsp/drums/hi_hat.h ****     
- 2378              		.loc 2 120 5 view .LVU636
- 2379              	.LBB548:
- 2380              	.LBI537:
- 2381              		.loc 7 937 5 view .LVU637
- 2382              	.LBB546:
- 2383              	.LBI538:
+ 2377              		.loc 2 120 5 view .LVU636
+ 2378              	.LBB548:
+ 2379              	.LBI537:
+ 2380              		.loc 7 937 5 view .LVU637
+ 2381              	.LBB546:
+ 2382              	.LBI538:
  913:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     { std::__fill_a1(__first, __last, __value); }
- 2384              		.loc 7 913 5 view .LVU638
- 2385              	.LBB544:
- 2386              	.LBI539:
+ 2383              		.loc 7 913 5 view .LVU638
+ 2384              	.LBB544:
+ 2385              	.LBI539:
  868:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	      const _Tp& __value)
- 2387              		.loc 7 868 5 view .LVU639
- 2388              	.LBB542:
+ 2386              		.loc 7 868 5 view .LVU639
+ 2387              	.LBB542:
  873:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
- 2389              		.loc 7 873 11 is_stmt 0 view .LVU640
- 2390 00ae FFF7FEFF 		bl	memset
- 2391              	.LVL180:
+ 2388              		.loc 7 873 11 is_stmt 0 view .LVU640
+ 2389 00ae FFF7FEFF 		bl	memset
+ 2390              	.LVL180:
  873:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
- 2392              		.loc 7 873 11 view .LVU641
- 2393              	.LBE542:
- 2394              	.LBE544:
- 2395              	.LBE546:
- 2396              	.LBE548:
+ 2391              		.loc 7 873 11 view .LVU641
+ 2392              	.LBE542:
+ 2393              	.LBE544:
+ 2394              	.LBE546:
+ 2395              	.LBE548:
  122:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[2], f2a, f2b, temp_1, temp_2, out, size);
- 2397              		.loc 2 122 5 is_stmt 1 view .LVU642
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 86
+ 2396              		.loc 2 122 5 is_stmt 1 view .LVU642
+ 122:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[2], f2a, f2b, temp_1, temp_2, out, size);
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 86
 
 
+ 2397              		.loc 2 122 15 is_stmt 0 view .LVU643
+ 2398 00b2 DFED750A 		vldr.32	s1, .L139+28
+ 2399 00b6 2B46     		mov	r3, r5
+ 2400 00b8 9FED740A 		vldr.32	s0, .L139+32
+ 2401 00bc 5A46     		mov	r2, fp
+ 2402 00be 3946     		mov	r1, r7
+ 2403 00c0 04F11000 		add	r0, r4, #16
+ 2404              	.LVL181:
  122:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[2], f2a, f2b, temp_1, temp_2, out, size);
- 2398              		.loc 2 122 15 is_stmt 0 view .LVU643
- 2399 00b2 DFED750A 		vldr.32	s1, .L139+28
- 2400 00b6 2B46     		mov	r3, r5
- 2401 00b8 9FED740A 		vldr.32	s0, .L139+32
- 2402 00bc 5A46     		mov	r2, fp
- 2403 00be 3946     		mov	r1, r7
- 2404 00c0 04F11000 		add	r0, r4, #16
- 2405              	.LVL181:
+ 2405              		.loc 2 122 15 view .LVU644
+ 2406 00c4 0096     		str	r6, [sp]
+ 2407 00c6 68EEA00A 		vmul.f32	s1, s17, s1
+ 2408              	.LVL182:
  122:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[2], f2a, f2b, temp_1, temp_2, out, size);
- 2406              		.loc 2 122 15 view .LVU644
- 2407 00c4 0096     		str	r6, [sp]
- 2408 00c6 68EEA00A 		vmul.f32	s1, s17, s1
- 2409              	.LVL182:
+ 2409              		.loc 2 122 15 view .LVU645
+ 2410 00ca 28EE800A 		vmul.f32	s0, s17, s0
+ 2411              	.LVL183:
  122:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[2], f2a, f2b, temp_1, temp_2, out, size);
- 2410              		.loc 2 122 15 view .LVU645
- 2411 00ca 28EE800A 		vmul.f32	s0, s17, s0
- 2412              	.LVL183:
- 122:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[2], f2a, f2b, temp_1, temp_2, out, size);
- 2413              		.loc 2 122 15 view .LVU646
- 2414 00ce FFF7FEFF 		bl	_ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0
- 2415              	.LVL184:
+ 2412              		.loc 2 122 15 view .LVU646
+ 2413 00ce FFF7FEFF 		bl	_ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0
+ 2414              	.LVL184:
  123:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[4], f3a, f3b, temp_1, temp_2, out, size);
- 2416              		.loc 2 123 5 is_stmt 1 view .LVU647
+ 2415              		.loc 2 123 5 is_stmt 1 view .LVU647
  123:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[4], f3a, f3b, temp_1, temp_2, out, size);
- 2417              		.loc 2 123 15 is_stmt 0 view .LVU648
- 2418 00d2 DFED6F0A 		vldr.32	s1, .L139+36
- 2419 00d6 9FED6F0A 		vldr.32	s0, .L139+40
- 2420 00da 2B46     		mov	r3, r5
- 2421 00dc 68EEA00A 		vmul.f32	s1, s17, s1
- 2422              	.LVL185:
+ 2416              		.loc 2 123 15 is_stmt 0 view .LVU648
+ 2417 00d2 DFED6F0A 		vldr.32	s1, .L139+36
+ 2418 00d6 9FED6F0A 		vldr.32	s0, .L139+40
+ 2419 00da 2B46     		mov	r3, r5
+ 2420 00dc 68EEA00A 		vmul.f32	s1, s17, s1
+ 2421              	.LVL185:
  123:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[4], f3a, f3b, temp_1, temp_2, out, size);
- 2423              		.loc 2 123 15 view .LVU649
- 2424 00e0 5A46     		mov	r2, fp
- 2425 00e2 28EE800A 		vmul.f32	s0, s17, s0
- 2426              	.LVL186:
+ 2422              		.loc 2 123 15 view .LVU649
+ 2423 00e0 5A46     		mov	r2, fp
+ 2424 00e2 28EE800A 		vmul.f32	s0, s17, s0
+ 2425              	.LVL186:
  123:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[4], f3a, f3b, temp_1, temp_2, out, size);
- 2427              		.loc 2 123 15 view .LVU650
- 2428 00e6 3946     		mov	r1, r7
- 2429 00e8 04F14800 		add	r0, r4, #72
- 2430              	.LVL187:
+ 2426              		.loc 2 123 15 view .LVU650
+ 2427 00e6 3946     		mov	r1, r7
+ 2428 00e8 04F14800 		add	r0, r4, #72
+ 2429              	.LVL187:
  123:eurorack/plaits/dsp/drums/hi_hat.h ****     RenderPair(&oscillator_[4], f3a, f3b, temp_1, temp_2, out, size);
- 2431              		.loc 2 123 15 view .LVU651
- 2432 00ec 0096     		str	r6, [sp]
- 2433 00ee FFF7FEFF 		bl	_ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0
- 2434              	.LVL188:
+ 2430              		.loc 2 123 15 view .LVU651
+ 2431 00ec 0096     		str	r6, [sp]
+ 2432 00ee FFF7FEFF 		bl	_ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0
+ 2433              	.LVL188:
  124:eurorack/plaits/dsp/drums/hi_hat.h ****   }
- 2435              		.loc 2 124 5 is_stmt 1 view .LVU652
+ 2434              		.loc 2 124 5 is_stmt 1 view .LVU652
  124:eurorack/plaits/dsp/drums/hi_hat.h ****   }
- 2436              		.loc 2 124 15 is_stmt 0 view .LVU653
- 2437 00f2 F4EE0C0A 		vmov.f32	s1, #2.1875e-1
- 2438 00f6 9FED680A 		vldr.32	s0, .L139+44
- 2439 00fa 2B46     		mov	r3, r5
- 2440 00fc 5A46     		mov	r2, fp
- 2441 00fe 3946     		mov	r1, r7
- 2442 0100 68EEA00A 		vmul.f32	s1, s17, s1
- 2443              	.LVL189:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 87
+ 2435              		.loc 2 124 15 is_stmt 0 view .LVU653
+ 2436 00f2 F5EE050A 		vmov.f32	s1, #3.28125e-1
+ 2437 00f6 9FED680A 		vldr.32	s0, .L139+44
+ 2438 00fa 2B46     		mov	r3, r5
+ 2439 00fc 5A46     		mov	r2, fp
+ 2440 00fe 3946     		mov	r1, r7
+ 2441 0100 68EEA00A 		vmul.f32	s1, s17, s1
+ 2442              	.LVL189:
+ 124:eurorack/plaits/dsp/drums/hi_hat.h ****   }
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 87
 
 
+ 2443              		.loc 2 124 15 view .LVU654
+ 2444 0104 04F18000 		add	r0, r4, #128
+ 2445 0108 28EE800A 		vmul.f32	s0, s17, s0
+ 2446              	.LVL190:
  124:eurorack/plaits/dsp/drums/hi_hat.h ****   }
- 2444              		.loc 2 124 15 view .LVU654
- 2445 0104 04F18000 		add	r0, r4, #128
- 2446 0108 28EE800A 		vmul.f32	s0, s17, s0
- 2447              	.LVL190:
+ 2447              		.loc 2 124 15 view .LVU655
+ 2448 010c 0096     		str	r6, [sp]
+ 2449 010e FFF7FEFF 		bl	_ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0
+ 2450              	.LVL191:
  124:eurorack/plaits/dsp/drums/hi_hat.h ****   }
- 2448              		.loc 2 124 15 view .LVU655
- 2449 010c 0096     		str	r6, [sp]
- 2450 010e FFF7FEFF 		bl	_ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0
- 2451              	.LVL191:
- 124:eurorack/plaits/dsp/drums/hi_hat.h ****   }
- 2452              		.loc 2 124 15 view .LVU656
- 2453              	.LBE536:
- 2454              	.LBE535:
+ 2451              		.loc 2 124 15 view .LVU656
+ 2452              	.LBE536:
+ 2453              	.LBE535:
  205:eurorack/plaits/dsp/drums/hi_hat.h ****         tone * 72.0f);
- 2455              		.loc 2 205 67 view .LVU657
- 2456 0112 9FED620A 		vldr.32	s0, .L139+48
- 2457 0116 28EE000A 		vmul.f32	s0, s16, s0
- 2458 011a FFF7FEFF 		bl	_ZN6stmlib16SemitonesToRatioEf
- 2459              	.LVL192:
+ 2454              		.loc 2 205 67 view .LVU657
+ 2455 0112 9FED620A 		vldr.32	s0, .L139+48
+ 2456 0116 28EE000A 		vmul.f32	s0, s16, s0
+ 2457 011a FFF7FEFF 		bl	_ZN6stmlib16SemitonesToRatioEf
+ 2458              	.LVL192:
  205:eurorack/plaits/dsp/drums/hi_hat.h ****         tone * 72.0f);
- 2460              		.loc 2 205 11 view .LVU658
- 2461 011e DFED607A 		vldr.32	s15, .L139+52
- 2462 0122 60EE278A 		vmul.f32	s17, s0, s15
- 2463              	.LVL193:
+ 2459              		.loc 2 205 11 view .LVU658
+ 2460 011e DFED607A 		vldr.32	s15, .L139+52
+ 2461 0122 60EE278A 		vmul.f32	s17, s0, s15
+ 2462              	.LVL193:
  207:eurorack/plaits/dsp/drums/hi_hat.h ****     noise_coloration_svf_.set_f_q<stmlib::FREQUENCY_ACCURATE>(
- 2464              		.loc 2 207 5 view .LVU659
- 2465 0126 F5EEC08A 		vcmpe.f32	s17, #0
- 2466 012a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 2467 012e 48D4     		bmi	.L127
+ 2463              		.loc 2 207 5 view .LVU659
+ 2464 0126 F5EEC08A 		vcmpe.f32	s17, #0
+ 2465 012a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 2466 012e 48D4     		bmi	.L127
  207:eurorack/plaits/dsp/drums/hi_hat.h ****     noise_coloration_svf_.set_f_q<stmlib::FREQUENCY_ACCURATE>(
- 2468              		.loc 2 207 5 discriminator 2 view .LVU660
- 2469 0130 DFED5C7A 		vldr.32	s15, .L139+56
- 2470 0134 F4EE678A 		vcmp.f32	s17, s15
- 2471 0138 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 2472 013c 77FEA88A 		vselgt.f32	s17, s15, s17
- 2473              	.LVL194:
- 2474              	.L115:
+ 2467              		.loc 2 207 5 discriminator 2 view .LVU660
+ 2468 0130 F6EE007A 		vmov.f32	s15, #5.0e-1
+ 2469 0134 F4EE678A 		vcmp.f32	s17, s15
+ 2470 0138 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 2471 013c 77FEA88A 		vselgt.f32	s17, s15, s17
+ 2472              	.LVL194:
+ 2473              	.L115:
  208:eurorack/plaits/dsp/drums/hi_hat.h ****         cutoff, resonance ? 3.0f + 6.0f * tone : 1.0f);
- 2475              		.loc 2 208 62 view .LVU661
- 2476 0140 04F1B800 		add	r0, r4, #184
- 2477 0144 F7EE000A 		vmov.f32	s1, #1.0e+0
- 2478 0148 B0EE680A 		vmov.f32	s0, s17
- 2479 014c 0390     		str	r0, [sp, #12]
- 2480 014e FFF7FEFF 		bl	_ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff
- 2481              	.LVL195:
+ 2474              		.loc 2 208 62 view .LVU661
+ 2475 0140 04F1B800 		add	r0, r4, #184
+ 2476 0144 F7EE000A 		vmov.f32	s1, #1.0e+0
+ 2477 0148 B0EE680A 		vmov.f32	s0, s17
+ 2478 014c 0390     		str	r0, [sp, #12]
+ 2479 014e FFF7FEFF 		bl	_ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff
+ 2480              	.LVL195:
  210:eurorack/plaits/dsp/drums/hi_hat.h ****         out, out, size);
- 2482              		.loc 2 210 65 view .LVU662
- 2483 0152 3346     		mov	r3, r6
- 2484 0154 2A46     		mov	r2, r5
- 2485 0156 2946     		mov	r1, r5
- 2486 0158 0398     		ldr	r0, [sp, #12]
- 2487 015a FFF7FEFF 		bl	_ZN6stmlib3Svf7ProcessILNS_10FilterModeE1EEEvPKfPfj
- 2488              	.LVL196:
+ 2481              		.loc 2 210 65 view .LVU662
+ 2482 0152 3346     		mov	r3, r6
+ 2483 0154 2A46     		mov	r2, r5
+ 2484 0156 2946     		mov	r1, r5
+ 2485 0158 0398     		ldr	r0, [sp, #12]
+ 2486 015a FFF7FEFF 		bl	_ZN6stmlib3Svf7ProcessILNS_10FilterModeE1EEEvPKfPfj
+ 2487              	.LVL196:
  216:eurorack/plaits/dsp/drums/hi_hat.h ****     float noise_f = f0 * (16.0f + 16.0f * (1.0f - noisiness));
- 2489              		.loc 2 216 15 view .LVU663
- 2490 015e 29EE099A 		vmul.f32	s18, s18, s18
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 88
+ 2488              		.loc 2 216 15 view .LVU663
+ 2489 015e 29EE099A 		vmul.f32	s18, s18, s18
+ 2490              	.LVL197:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 88
 
 
- 2491              	.LVL197:
  217:eurorack/plaits/dsp/drums/hi_hat.h ****     CONSTRAIN(noise_f, 0.0f, 0.5f);
- 2492              		.loc 2 217 33 view .LVU664
- 2493 0162 B3EE008A 		vmov.f32	s16, #1.6e+1
- 2494              	.LVL198:
+ 2491              		.loc 2 217 33 view .LVU664
+ 2492 0162 B3EE008A 		vmov.f32	s16, #1.6e+1
+ 2493              	.LVL198:
  217:eurorack/plaits/dsp/drums/hi_hat.h ****     CONSTRAIN(noise_f, 0.0f, 0.5f);
- 2495              		.loc 2 217 49 view .LVU665
- 2496 0166 7BEE497A 		vsub.f32	s15, s22, s18
+ 2494              		.loc 2 217 49 view .LVU665
+ 2495 0166 7BEE497A 		vsub.f32	s15, s22, s18
  217:eurorack/plaits/dsp/drums/hi_hat.h ****     CONSTRAIN(noise_f, 0.0f, 0.5f);
- 2497              		.loc 2 217 33 view .LVU666
- 2498 016a A7EE888A 		vfma.f32	s16, s15, s16
+ 2496              		.loc 2 217 33 view .LVU666
+ 2497 016a A7EE888A 		vfma.f32	s16, s15, s16
  217:eurorack/plaits/dsp/drums/hi_hat.h ****     CONSTRAIN(noise_f, 0.0f, 0.5f);
- 2499              		.loc 2 217 11 view .LVU667
- 2500 016e 28EE0C8A 		vmul.f32	s16, s16, s24
- 2501              	.LVL199:
+ 2498              		.loc 2 217 11 view .LVU667
+ 2499 016e 28EE0C8A 		vmul.f32	s16, s16, s24
+ 2500              	.LVL199:
  218:eurorack/plaits/dsp/drums/hi_hat.h ****     
- 2502              		.loc 2 218 5 view .LVU668
- 2503 0172 B5EEC08A 		vcmpe.f32	s16, #0
- 2504 0176 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 2505 017a 25D4     		bmi	.L128
+ 2501              		.loc 2 218 5 view .LVU668
+ 2502 0172 B5EEC08A 		vcmpe.f32	s16, #0
+ 2503 0176 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 2504 017a 25D4     		bmi	.L128
  218:eurorack/plaits/dsp/drums/hi_hat.h ****     
- 2506              		.loc 2 218 5 discriminator 2 view .LVU669
- 2507 017c F6EE007A 		vmov.f32	s15, #5.0e-1
- 2508 0180 B4EE678A 		vcmp.f32	s16, s15
- 2509 0184 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 2510 0188 37FE888A 		vselgt.f32	s16, s15, s16
- 2511              	.LVL200:
- 2512              	.L117:
+ 2505              		.loc 2 218 5 discriminator 2 view .LVU669
+ 2506 017c F6EE007A 		vmov.f32	s15, #5.0e-1
+ 2507 0180 B4EE678A 		vcmp.f32	s16, s15
+ 2508 0184 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 2509 0188 37FE888A 		vselgt.f32	s16, s15, s16
+ 2510              	.LVL200:
+ 2511              	.L117:
  218:eurorack/plaits/dsp/drums/hi_hat.h ****     
- 2513              		.loc 2 218 5 view .LVU670
- 2514 018c AB46     		mov	fp, r5
- 2515              	.LBB549:
+ 2512              		.loc 2 218 5 view .LVU670
+ 2513 018c AB46     		mov	fp, r5
+ 2514              	.LBB549:
  220:eurorack/plaits/dsp/drums/hi_hat.h ****       noise_clock_ += noise_f;
- 2516              		.loc 2 220 17 view .LVU671
- 2517 018e 0027     		movs	r7, #0
- 2518              	.LVL201:
- 2519              	.L122:
+ 2515              		.loc 2 220 17 view .LVU671
+ 2516 018e 0027     		movs	r7, #0
+ 2517              	.LVL201:
+ 2518              	.L122:
  220:eurorack/plaits/dsp/drums/hi_hat.h ****       noise_clock_ += noise_f;
- 2520              		.loc 2 220 26 is_stmt 1 discriminator 1 view .LVU672
- 2521 0190 B742     		cmp	r7, r6
- 2522 0192 29D0     		beq	.L119
+ 2519              		.loc 2 220 26 is_stmt 1 discriminator 1 view .LVU672
+ 2520 0190 B742     		cmp	r7, r6
+ 2521 0192 29D0     		beq	.L119
  221:eurorack/plaits/dsp/drums/hi_hat.h ****       if (noise_clock_ >= 1.0f) {
- 2523              		.loc 2 221 20 is_stmt 0 view .LVU673
- 2524 0194 D4ED017A 		vldr.32	s15, [r4, #4]
- 2525 0198 78EE277A 		vadd.f32	s15, s16, s15
+ 2522              		.loc 2 221 20 is_stmt 0 view .LVU673
+ 2523 0194 D4ED017A 		vldr.32	s15, [r4, #4]
+ 2524 0198 78EE277A 		vadd.f32	s15, s16, s15
  222:eurorack/plaits/dsp/drums/hi_hat.h ****         noise_clock_ -= 1.0f;
- 2526              		.loc 2 222 7 view .LVU674
- 2527 019c F4EECB7A 		vcmpe.f32	s15, s22
- 2528 01a0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 2529 01a4 13DA     		bge	.L120
+ 2525              		.loc 2 222 7 view .LVU674
+ 2526 019c F4EECB7A 		vcmpe.f32	s15, s22
+ 2527 01a0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 2528 01a4 13DA     		bge	.L120
  221:eurorack/plaits/dsp/drums/hi_hat.h ****       if (noise_clock_ >= 1.0f) {
- 2530              		.loc 2 221 20 view .LVU675
- 2531 01a6 C4ED017A 		vstr.32	s15, [r4, #4]
- 2532              	.L121:
+ 2529              		.loc 2 221 20 view .LVU675
+ 2530 01a6 C4ED017A 		vstr.32	s15, [r4, #4]
+ 2531              	.L121:
  226:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2533              		.loc 2 226 14 discriminator 2 view .LVU676
- 2534 01aa DBED007A 		vldr.32	s15, [fp]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 89
+ 2532              		.loc 2 226 14 discriminator 2 view .LVU676
+ 2533 01aa DBED007A 		vldr.32	s15, [fp]
+ 220:eurorack/plaits/dsp/drums/hi_hat.h ****       noise_clock_ += noise_f;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 89
 
 
- 220:eurorack/plaits/dsp/drums/hi_hat.h ****       noise_clock_ += noise_f;
- 2535              		.loc 2 220 5 discriminator 2 view .LVU677
- 2536 01ae 0137     		adds	r7, r7, #1
- 2537              	.LVL202:
+ 2534              		.loc 2 220 5 discriminator 2 view .LVU677
+ 2535 01ae 0137     		adds	r7, r7, #1
+ 2536              	.LVL202:
  226:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2538              		.loc 2 226 44 discriminator 2 view .LVU678
- 2539 01b0 94ED027A 		vldr.32	s14, [r4, #8]
- 2540 01b4 37EE677A 		vsub.f32	s14, s14, s15
+ 2537              		.loc 2 226 44 discriminator 2 view .LVU678
+ 2538 01b0 94ED027A 		vldr.32	s14, [r4, #8]
+ 2539 01b4 37EE677A 		vsub.f32	s14, s14, s15
  226:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2541              		.loc 2 226 14 discriminator 2 view .LVU679
- 2542 01b8 E7EE097A 		vfma.f32	s15, s14, s18
- 2543 01bc EBEC017A 		vstmia.32	fp!, {s15}
+ 2540              		.loc 2 226 14 discriminator 2 view .LVU679
+ 2541 01b8 E7EE097A 		vfma.f32	s15, s14, s18
+ 2542 01bc EBEC017A 		vstmia.32	fp!, {s15}
  220:eurorack/plaits/dsp/drums/hi_hat.h ****       noise_clock_ += noise_f;
- 2544              		.loc 2 220 5 is_stmt 1 discriminator 2 view .LVU680
- 2545              	.LVL203:
+ 2543              		.loc 2 220 5 is_stmt 1 discriminator 2 view .LVU680
+ 2544              	.LVL203:
  220:eurorack/plaits/dsp/drums/hi_hat.h ****       noise_clock_ += noise_f;
- 2546              		.loc 2 220 5 is_stmt 0 discriminator 2 view .LVU681
- 2547 01c0 E6E7     		b	.L122
- 2548              	.LVL204:
- 2549              	.L127:
+ 2545              		.loc 2 220 5 is_stmt 0 discriminator 2 view .LVU681
+ 2546 01c0 E6E7     		b	.L122
+ 2547              	.LVL204:
+ 2548              	.L127:
  220:eurorack/plaits/dsp/drums/hi_hat.h ****       noise_clock_ += noise_f;
- 2550              		.loc 2 220 5 discriminator 2 view .LVU682
- 2551              	.LBE549:
+ 2549              		.loc 2 220 5 discriminator 2 view .LVU682
+ 2550              	.LBE549:
  207:eurorack/plaits/dsp/drums/hi_hat.h ****     noise_coloration_svf_.set_f_q<stmlib::FREQUENCY_ACCURATE>(
- 2552              		.loc 2 207 5 view .LVU683
- 2553 01c2 DFED398A 		vldr.32	s17, .L139+60
- 2554              	.LVL205:
+ 2551              		.loc 2 207 5 view .LVU683
+ 2552 01c2 DFED388A 		vldr.32	s17, .L139+56
+ 2553              	.LVL205:
  207:eurorack/plaits/dsp/drums/hi_hat.h ****     noise_coloration_svf_.set_f_q<stmlib::FREQUENCY_ACCURATE>(
- 2555              		.loc 2 207 5 view .LVU684
- 2556 01c6 BBE7     		b	.L115
- 2557              	.LVL206:
- 2558              	.L128:
+ 2554              		.loc 2 207 5 view .LVU684
+ 2555 01c6 BBE7     		b	.L115
+ 2556              	.LVL206:
+ 2557              	.L128:
  218:eurorack/plaits/dsp/drums/hi_hat.h ****     
- 2559              		.loc 2 218 5 view .LVU685
- 2560 01c8 9FED378A 		vldr.32	s16, .L139+60
- 2561              	.LVL207:
+ 2558              		.loc 2 218 5 view .LVU685
+ 2559 01c8 9FED368A 		vldr.32	s16, .L139+56
+ 2560              	.LVL207:
  218:eurorack/plaits/dsp/drums/hi_hat.h ****     
- 2562              		.loc 2 218 5 view .LVU686
- 2563 01cc DEE7     		b	.L117
- 2564              	.LVL208:
- 2565              	.L120:
- 2566              	.LBB550:
+ 2561              		.loc 2 218 5 view .LVU686
+ 2562 01cc DEE7     		b	.L117
+ 2563              	.LVL208:
+ 2564              	.L120:
+ 2565              	.LBB550:
  223:eurorack/plaits/dsp/drums/hi_hat.h ****         noise_sample_ = stmlib::Random::GetFloat() - 0.5f;
- 2567              		.loc 2 223 22 view .LVU687
- 2568 01ce 77EECB7A 		vsub.f32	s15, s15, s22
- 2569 01d2 C4ED017A 		vstr.32	s15, [r4, #4]
+ 2566              		.loc 2 223 22 view .LVU687
+ 2567 01ce 77EECB7A 		vsub.f32	s15, s15, s22
+ 2568 01d2 C4ED017A 		vstr.32	s15, [r4, #4]
  224:eurorack/plaits/dsp/drums/hi_hat.h ****       }
- 2570              		.loc 2 224 49 view .LVU688
- 2571 01d6 FFF7FEFF 		bl	_ZN6stmlib6Random8GetFloatEv
- 2572              	.LVL209:
+ 2569              		.loc 2 224 49 view .LVU688
+ 2570 01d6 FFF7FEFF 		bl	_ZN6stmlib6Random8GetFloatEv
+ 2571              	.LVL209:
  224:eurorack/plaits/dsp/drums/hi_hat.h ****       }
- 2573              		.loc 2 224 52 view .LVU689
- 2574 01da F6EE007A 		vmov.f32	s15, #5.0e-1
- 2575 01de 30EE670A 		vsub.f32	s0, s0, s15
+ 2572              		.loc 2 224 52 view .LVU689
+ 2573 01da F6EE007A 		vmov.f32	s15, #5.0e-1
+ 2574 01de 30EE670A 		vsub.f32	s0, s0, s15
  224:eurorack/plaits/dsp/drums/hi_hat.h ****       }
- 2576              		.loc 2 224 23 view .LVU690
- 2577 01e2 84ED020A 		vstr.32	s0, [r4, #8]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 90
+ 2575              		.loc 2 224 23 view .LVU690
+ 2576 01e2 84ED020A 		vstr.32	s0, [r4, #8]
+ 2577 01e6 E0E7     		b	.L121
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 90
 
 
- 2578 01e6 E0E7     		b	.L121
- 2579              	.L119:
- 2580              	.LVL210:
+ 2578              	.L119:
+ 2579              	.LVL210:
  224:eurorack/plaits/dsp/drums/hi_hat.h ****       }
- 2581              		.loc 2 224 23 view .LVU691
- 2582              	.LBE550:
- 2583              	.LBB551:
- 2584              	.LBI551:
+ 2580              		.loc 2 224 23 view .LVU691
+ 2581              	.LBE550:
+ 2582              	.LBB551:
+ 2583              	.LBI551:
   39:eurorack/stmlib/dsp/parameter_interpolator.h ****     Init(state, new_value, size);
- 2585              		.loc 4 39 3 is_stmt 1 view .LVU692
- 2586              	.LBE551:
+ 2584              		.loc 4 39 3 is_stmt 1 view .LVU692
+ 2585              	.LBE551:
   40:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2587              		.loc 4 40 5 view .LVU693
- 2588              	.LBB554:
- 2589              	.LBB552:
- 2590              	.LBI552:
+ 2586              		.loc 4 40 5 view .LVU693
+ 2587              	.LBB554:
+ 2588              	.LBB552:
+ 2589              	.LBI552:
   53:eurorack/stmlib/dsp/parameter_interpolator.h ****     state_ = state;
- 2591              		.loc 4 53 15 view .LVU694
- 2592              	.LBB553:
+ 2590              		.loc 4 53 15 view .LVU694
+ 2591              	.LBB553:
   54:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
- 2593              		.loc 4 54 5 view .LVU695
+ 2592              		.loc 4 54 5 view .LVU695
   55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
- 2594              		.loc 4 55 5 view .LVU696
+ 2593              		.loc 4 55 5 view .LVU696
   55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
- 2595              		.loc 4 55 14 is_stmt 0 view .LVU697
- 2596 01e8 94ED038A 		vldr.32	s16, [r4, #12]
- 2597              	.LVL211:
+ 2594              		.loc 4 55 14 is_stmt 0 view .LVU697
+ 2595 01e8 94ED038A 		vldr.32	s16, [r4, #12]
+ 2596              	.LVL211:
   56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2598              		.loc 4 56 5 is_stmt 1 view .LVU698
+ 2597              		.loc 4 56 5 is_stmt 1 view .LVU698
   56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2599              		.loc 4 56 41 is_stmt 0 view .LVU699
- 2600 01ec 07EE906A 		vmov	s15, r6	@ int
- 2601 01f0 A944     		add	r9, r9, r5
+ 2598              		.loc 4 56 41 is_stmt 0 view .LVU699
+ 2599 01ec 07EE906A 		vmov	s15, r6	@ int
+ 2600 01f0 A944     		add	r9, r9, r5
   56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2602              		.loc 4 56 29 view .LVU700
- 2603 01f2 B0EE487A 		vmov.f32	s14, s16
+ 2601              		.loc 4 56 29 view .LVU700
+ 2602 01f2 B0EE487A 		vmov.f32	s14, s16
   56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2604              		.loc 4 56 41 view .LVU701
- 2605 01f6 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 2603              		.loc 4 56 41 view .LVU701
+ 2604 01f6 F8EEE77A 		vcvt.f32.s32	s15, s15
   56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2606              		.loc 4 56 29 view .LVU702
- 2607 01fa 99EEAB7A 		vfnms.f32	s14, s19, s23
+ 2605              		.loc 4 56 29 view .LVU702
+ 2606 01fa 99EEAB7A 		vfnms.f32	s14, s19, s23
   56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2608              		.loc 4 56 39 view .LVU703
- 2609 01fe C7EE276A 		vdiv.f32	s13, s14, s15
- 2610              	.LVL212:
- 2611              	.L126:
+ 2607              		.loc 4 56 39 view .LVU703
+ 2608 01fe C7EE276A 		vdiv.f32	s13, s14, s15
+ 2609              	.LVL212:
+ 2610              	.L126:
   56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2612              		.loc 4 56 39 view .LVU704
- 2613              	.LBE553:
- 2614              	.LBE552:
- 2615              	.LBE554:
- 2616              	.LBB555:
+ 2611              		.loc 4 56 39 view .LVU704
+ 2612              	.LBE553:
+ 2613              	.LBE552:
+ 2614              	.LBE554:
+ 2615              	.LBB555:
  234:eurorack/plaits/dsp/drums/hi_hat.h ****       VCA vca;
- 2617              		.loc 2 234 26 is_stmt 1 discriminator 2 view .LVU705
- 2618 0202 C145     		cmp	r9, r8
- 2619 0204 1BD0     		beq	.L123
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 91
+ 2616              		.loc 2 234 26 is_stmt 1 discriminator 2 view .LVU705
+ 2617 0202 C145     		cmp	r9, r8
+ 2618 0204 1BD0     		beq	.L123
+ 2619              	.LBB556:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 91
 
 
- 2620              	.LBB556:
  236:eurorack/plaits/dsp/drums/hi_hat.h ****       out[i] = vca(out[i], sustain ? sustain_gain.Next() : envelope_);
- 2621              		.loc 2 236 17 is_stmt 0 view .LVU706
- 2622 0206 D4ED007A 		vldr.32	s15, [r4]
+ 2620              		.loc 2 236 17 is_stmt 0 view .LVU706
+ 2621 0206 D4ED007A 		vldr.32	s15, [r4]
  236:eurorack/plaits/dsp/drums/hi_hat.h ****       out[i] = vca(out[i], sustain ? sustain_gain.Next() : envelope_);
- 2623              		.loc 2 236 37 view .LVU707
- 2624 020a B6EE007A 		vmov.f32	s14, #5.0e-1
- 2625 020e F4EEC77A 		vcmpe.f32	s15, s14
- 2626 0212 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 2627 0216 3AFE2A7A 		vselgt.f32	s14, s20, s21
+ 2622              		.loc 2 236 37 view .LVU707
+ 2623 020a B6EE007A 		vmov.f32	s14, #5.0e-1
+ 2624 020e F4EEC77A 		vcmpe.f32	s15, s14
+ 2625 0212 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 2626 0216 3AFE2A7A 		vselgt.f32	s14, s20, s21
  236:eurorack/plaits/dsp/drums/hi_hat.h ****       out[i] = vca(out[i], sustain ? sustain_gain.Next() : envelope_);
- 2628              		.loc 2 236 17 view .LVU708
- 2629 021a 67EE877A 		vmul.f32	s15, s15, s14
- 2630 021e C4ED007A 		vstr.32	s15, [r4]
+ 2627              		.loc 2 236 17 view .LVU708
+ 2628 021a 67EE877A 		vmul.f32	s15, s15, s14
+ 2629 021e C4ED007A 		vstr.32	s15, [r4]
  237:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2631              		.loc 2 237 19 view .LVU709
- 2632 0222 98ED007A 		vldr.32	s14, [r8]
- 2633 0226 BAF1000F 		cmp	r10, #0
- 2634 022a 03D0     		beq	.L125
- 2635              	.LVL213:
- 2636              	.LBB557:
- 2637              	.LBI557:
+ 2630              		.loc 2 237 19 view .LVU709
+ 2631 0222 98ED007A 		vldr.32	s14, [r8]
+ 2632 0226 BAF1000F 		cmp	r10, #0
+ 2633 022a 03D0     		beq	.L125
+ 2634              	.LVL213:
+ 2635              	.LBB557:
+ 2636              	.LBI557:
   59:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ += increment_;
- 2638              		.loc 4 59 16 is_stmt 1 view .LVU710
- 2639              	.LBB558:
+ 2637              		.loc 4 59 16 is_stmt 1 view .LVU710
+ 2638              	.LBB558:
   60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
- 2640              		.loc 4 60 5 view .LVU711
+ 2639              		.loc 4 60 5 view .LVU711
   60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
- 2641              		.loc 4 60 12 is_stmt 0 view .LVU712
- 2642 022c 36EE888A 		vadd.f32	s16, s13, s16
- 2643              	.LVL214:
- 2644              		.loc 4 61 5 is_stmt 1 view .LVU713
+ 2640              		.loc 4 60 12 is_stmt 0 view .LVU712
+ 2641 022c 36EE888A 		vadd.f32	s16, s13, s16
+ 2642              	.LVL214:
+ 2643              		.loc 4 61 5 is_stmt 1 view .LVU713
   60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
- 2645              		.loc 4 60 12 is_stmt 0 view .LVU714
- 2646 0230 F0EE487A 		vmov.f32	s15, s16
- 2647              	.L125:
- 2648              	.LVL215:
+ 2644              		.loc 4 60 12 is_stmt 0 view .LVU714
+ 2645 0230 F0EE487A 		vmov.f32	s15, s16
+ 2646              	.L125:
+ 2647              	.LVL215:
   60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
- 2649              		.loc 4 60 12 view .LVU715
- 2650              	.LBE558:
- 2651              	.LBE557:
- 2652              	.LBB559:
- 2653              	.LBI559:
+ 2648              		.loc 4 60 12 view .LVU715
+ 2649              	.LBE558:
+ 2650              	.LBE557:
+ 2651              	.LBB559:
+ 2652              	.LBI559:
  158:eurorack/plaits/dsp/drums/hi_hat.h ****    return s * gain;
- 2654              		.loc 2 158 9 is_stmt 1 discriminator 4 view .LVU716
- 2655              	.LBB560:
+ 2653              		.loc 2 158 9 is_stmt 1 discriminator 4 view .LVU716
+ 2654              	.LBB560:
  159:eurorack/plaits/dsp/drums/hi_hat.h ****   }
- 2656              		.loc 2 159 4 discriminator 4 view .LVU717
+ 2655              		.loc 2 159 4 discriminator 4 view .LVU717
  159:eurorack/plaits/dsp/drums/hi_hat.h ****   }
- 2657              		.loc 2 159 15 is_stmt 0 discriminator 4 view .LVU718
- 2658 0234 67EE277A 		vmul.f32	s15, s14, s15
- 2659              	.LBE560:
- 2660              	.LBE559:
+ 2656              		.loc 2 159 15 is_stmt 0 discriminator 4 view .LVU718
+ 2657 0234 67EE277A 		vmul.f32	s15, s14, s15
+ 2658              	.LBE560:
+ 2659              	.LBE559:
  237:eurorack/plaits/dsp/drums/hi_hat.h ****     }
- 2661              		.loc 2 237 14 discriminator 4 view .LVU719
- 2662 0238 E8EC017A 		vstmia.32	r8!, {s15}
- 2663              	.LBE556:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 92
+ 2660              		.loc 2 237 14 discriminator 4 view .LVU719
+ 2661 0238 E8EC017A 		vstmia.32	r8!, {s15}
+ 2662              	.LBE556:
+ 234:eurorack/plaits/dsp/drums/hi_hat.h ****       VCA vca;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 92
 
 
+ 2663              		.loc 2 234 5 is_stmt 1 discriminator 4 view .LVU720
+ 2664 023c E1E7     		b	.L126
+ 2665              	.LVL216:
+ 2666              	.L123:
  234:eurorack/plaits/dsp/drums/hi_hat.h ****       VCA vca;
- 2664              		.loc 2 234 5 is_stmt 1 discriminator 4 view .LVU720
- 2665 023c E1E7     		b	.L126
- 2666              	.LVL216:
- 2667              	.L123:
- 234:eurorack/plaits/dsp/drums/hi_hat.h ****       VCA vca;
- 2668              		.loc 2 234 5 is_stmt 0 discriminator 4 view .LVU721
- 2669              	.LBE555:
+ 2667              		.loc 2 234 5 is_stmt 0 discriminator 4 view .LVU721
+ 2668              	.LBE555:
  240:eurorack/plaits/dsp/drums/hi_hat.h ****     hpf_.Process<stmlib::FILTER_MODE_HIGH_PASS>(out, out, size);
- 2670              		.loc 2 240 45 view .LVU722
- 2671 023e 04F1CC00 		add	r0, r4, #204
- 2672 0242 F6EE000A 		vmov.f32	s1, #5.0e-1
- 2673 0246 B0EE680A 		vmov.f32	s0, s17
- 2674 024a 0390     		str	r0, [sp, #12]
- 2675 024c FFF7FEFF 		bl	_ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff
- 2676              	.LVL217:
+ 2669              		.loc 2 240 45 view .LVU722
+ 2670 023e 04F1CC00 		add	r0, r4, #204
+ 2671 0242 F6EE000A 		vmov.f32	s1, #5.0e-1
+ 2672 0246 B0EE680A 		vmov.f32	s0, s17
+ 2673 024a 0390     		str	r0, [sp, #12]
+ 2674 024c FFF7FEFF 		bl	_ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff
+ 2675              	.LVL217:
  241:eurorack/plaits/dsp/drums/hi_hat.h ****   }
- 2677              		.loc 2 241 48 view .LVU723
- 2678 0250 3346     		mov	r3, r6
- 2679 0252 2A46     		mov	r2, r5
- 2680 0254 2946     		mov	r1, r5
- 2681 0256 0398     		ldr	r0, [sp, #12]
- 2682 0258 FFF7FEFF 		bl	_ZN6stmlib3Svf7ProcessILNS_10FilterModeE3EEEvPKfPfj
- 2683              	.LVL218:
- 2684              	.LBB561:
- 2685              	.LBI561:
+ 2676              		.loc 2 241 48 view .LVU723
+ 2677 0250 3346     		mov	r3, r6
+ 2678 0252 2A46     		mov	r2, r5
+ 2679 0254 2946     		mov	r1, r5
+ 2680 0256 0398     		ldr	r0, [sp, #12]
+ 2681 0258 FFF7FEFF 		bl	_ZN6stmlib3Svf7ProcessILNS_10FilterModeE3EEEvPKfPfj
+ 2682              	.LVL218:
+ 2683              	.LBB561:
+ 2684              	.LBI561:
   49:eurorack/stmlib/dsp/parameter_interpolator.h ****     *state_ = value_;
- 2686              		.loc 4 49 3 is_stmt 1 view .LVU724
- 2687              	.LBB562:
+ 2685              		.loc 4 49 3 is_stmt 1 view .LVU724
+ 2686              	.LBB562:
   50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2688              		.loc 4 50 5 view .LVU725
+ 2687              		.loc 4 50 5 view .LVU725
   50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2689              		.loc 4 50 13 is_stmt 0 view .LVU726
- 2690 025c 84ED038A 		vstr.32	s16, [r4, #12]
- 2691              	.LVL219:
+ 2688              		.loc 4 50 13 is_stmt 0 view .LVU726
+ 2689 025c 84ED038A 		vstr.32	s16, [r4, #12]
+ 2690              	.LVL219:
   50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
- 2692              		.loc 4 50 13 view .LVU727
- 2693              	.LBE562:
- 2694              	.LBE561:
- 2695              		.loc 2 242 3 view .LVU728
- 2696 0260 05B0     		add	sp, sp, #20
- 2697              		.cfi_def_cfa_offset 76
- 2698              		@ sp needed
- 2699 0262 BDEC0A8B 		vldm	sp!, {d8-d12}
- 2700              		.cfi_restore 88
- 2701              		.cfi_restore 89
- 2702              		.cfi_restore 86
- 2703              		.cfi_restore 87
- 2704              		.cfi_restore 84
- 2705              		.cfi_restore 85
- 2706              		.cfi_restore 82
- 2707              		.cfi_restore 83
- 2708              		.cfi_restore 80
- 2709              		.cfi_restore 81
- 2710              		.cfi_def_cfa_offset 36
- 2711              	.LVL220:
- 2712              		.loc 2 242 3 view .LVU729
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 93
+ 2691              		.loc 4 50 13 view .LVU727
+ 2692              	.LBE562:
+ 2693              	.LBE561:
+ 2694              		.loc 2 242 3 view .LVU728
+ 2695 0260 05B0     		add	sp, sp, #20
+ 2696              		.cfi_def_cfa_offset 76
+ 2697              		@ sp needed
+ 2698 0262 BDEC0A8B 		vldm	sp!, {d8-d12}
+ 2699              		.cfi_restore 88
+ 2700              		.cfi_restore 89
+ 2701              		.cfi_restore 86
+ 2702              		.cfi_restore 87
+ 2703              		.cfi_restore 84
+ 2704              		.cfi_restore 85
+ 2705              		.cfi_restore 82
+ 2706              		.cfi_restore 83
+ 2707              		.cfi_restore 80
+ 2708              		.cfi_restore 81
+ 2709              		.cfi_def_cfa_offset 36
+ 2710              	.LVL220:
+ 2711              		.loc 2 242 3 view .LVU729
+ 2712 0266 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 93
 
 
- 2713 0266 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
- 2714              	.LVL221:
- 2715              	.L140:
- 2716              		.loc 2 242 3 view .LVU730
- 2717 026a 00BF     		.align	2
- 2718              	.L139:
- 2719 026c 0000A842 		.word	1118306304
- 2720 0270 A69B443B 		.word	994352038
- 2721 0274 00001042 		.word	1108344832
- 2722 0278 0AD7233B 		.word	992204554
- 2723 027c 3333333F 		.word	1060320051
- 2724 0280 9A99993E 		.word	1050253722
- 2725 0284 0AD7233C 		.word	1008981770
- 2726 0288 D7A3203E 		.word	1042326487
- 2727 028c 8988883B 		.word	998803593
- 2728 0290 44442C3E 		.word	1043088452
- 2729 0294 7B142E3C 		.word	1009652859
- 2730 0298 602C793C 		.word	1014574176
- 2731 029c 00009042 		.word	1116733440
- 2732 02a0 CDCC4C3B 		.word	994888909
- 2733 02a4 ABAAAA3E 		.word	1051372203
- 2734 02a8 00000000 		.word	0
- 2735              		.cfi_endproc
- 2736              	.LFE1612:
- 2738              		.section	.text._ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb,"ax",%progbits
- 2739              		.align	1
- 2740              		.global	_ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb
- 2741              		.syntax unified
- 2742              		.thumb
- 2743              		.thumb_func
- 2745              	_ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb:
- 2746              	.LVL222:
- 2747              	.LFB1588:
+ 2713              	.LVL221:
+ 2714              	.L140:
+ 2715              		.loc 2 242 3 view .LVU730
+ 2716 026a 00BF     		.align	2
+ 2717              	.L139:
+ 2718 026c 0000A842 		.word	1118306304
+ 2719 0270 A69B443B 		.word	994352038
+ 2720 0274 00001042 		.word	1108344832
+ 2721 0278 0AD7233B 		.word	992204554
+ 2722 027c 3333333F 		.word	1060320051
+ 2723 0280 9A99993E 		.word	1050253722
+ 2724 0284 0AD7233C 		.word	1008981770
+ 2725 0288 C3F5703E 		.word	1047590339
+ 2726 028c CDCCCC3B 		.word	1003277517
+ 2727 0290 3333813E 		.word	1048654643
+ 2728 0294 5C8F823C 		.word	1015189340
+ 2729 0298 48E1BA3C 		.word	1018880328
+ 2730 029c 00009042 		.word	1116733440
+ 2731 02a0 9A99993B 		.word	999922074
+ 2732 02a4 00000000 		.word	0
+ 2733              		.cfi_endproc
+ 2734              	.LFE1612:
+ 2736              		.section	.text._ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb,"ax",%progbits
+ 2737              		.align	1
+ 2738              		.global	_ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+ 2739              		.syntax unified
+ 2740              		.thumb
+ 2741              		.thumb_func
+ 2743              	_ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb:
+ 2744              	.LVL222:
+ 2745              	.LFB1588:
   46:eurorack/plaits/dsp/engine/hi_hat_engine.cc **** 
   47:eurorack/plaits/dsp/engine/hi_hat_engine.cc **** void HiHatEngine::Render(
   48:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****     const EngineParameters& parameters,
@@ -5561,15 +5559,15 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   50:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****     float* aux,
   51:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****     size_t size,
   52:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****     bool* already_enveloped) {
- 2748              		.loc 1 52 30 is_stmt 1 view -0
- 2749              		.cfi_startproc
- 2750              		@ args = 8, pretend = 0, frame = 8
- 2751              		@ frame_needed = 0, uses_anonymous_args = 0
+ 2746              		.loc 1 52 30 is_stmt 1 view -0
+ 2747              		.cfi_startproc
+ 2748              		@ args = 8, pretend = 0, frame = 8
+ 2749              		@ frame_needed = 0, uses_anonymous_args = 0
   53:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
- 2752              		.loc 1 53 3 view .LVU732
- 2753              	.LBB565:
- 2754              	.LBI565:
- 2755              		.file 11 "eurorack/plaits/dsp/engine/engine.h"
+ 2750              		.loc 1 53 3 view .LVU732
+ 2751              	.LBB565:
+ 2752              	.LBI565:
+ 2753              		.file 11 "eurorack/plaits/dsp/engine/engine.h"
    1:eurorack/plaits/dsp/engine/engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/engine.h **** //
    3:eurorack/plaits/dsp/engine/engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -5578,11 +5576,11 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
    6:eurorack/plaits/dsp/engine/engine.h **** // of this software and associated documentation files (the "Software"), to deal
    7:eurorack/plaits/dsp/engine/engine.h **** // in the Software without restriction, including without limitation the rights
    8:eurorack/plaits/dsp/engine/engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 94
-
-
    9:eurorack/plaits/dsp/engine/engine.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/engine/engine.h **** // furnished to do so, subject to the following conditions:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 94
+
+
   11:eurorack/plaits/dsp/engine/engine.h **** // 
   12:eurorack/plaits/dsp/engine/engine.h **** // The above copyright notice and this permission notice shall be included in
   13:eurorack/plaits/dsp/engine/engine.h **** // all copies or substantial portions of the Software.
@@ -5612,115 +5610,115 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   37:eurorack/plaits/dsp/engine/engine.h **** namespace plaits {
   38:eurorack/plaits/dsp/engine/engine.h **** 
   39:eurorack/plaits/dsp/engine/engine.h **** inline float NoteToFrequency(float midi_note) {
- 2756              		.loc 11 39 14 view .LVU733
- 2757              	.LBB566:
+ 2754              		.loc 11 39 14 view .LVU733
+ 2755              	.LBB566:
   40:eurorack/plaits/dsp/engine/engine.h ****   midi_note -= 9.0f;
- 2758              		.loc 11 40 3 view .LVU734
- 2759              		.loc 11 40 13 is_stmt 0 view .LVU735
- 2760 0000 F2EE027A 		vmov.f32	s15, #9.0e+0
- 2761 0004 91ED010A 		vldr.32	s0, [r1, #4]
- 2762              	.LBE566:
- 2763              	.LBE565:
+ 2756              		.loc 11 40 3 view .LVU734
+ 2757              		.loc 11 40 13 is_stmt 0 view .LVU735
+ 2758 0000 F2EE027A 		vmov.f32	s15, #9.0e+0
+ 2759 0004 91ED010A 		vldr.32	s0, [r1, #4]
+ 2760              	.LBE566:
+ 2761              	.LBE565:
   52:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
- 2764              		.loc 1 52 30 view .LVU736
- 2765 0008 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
- 2766              		.cfi_def_cfa_offset 24
- 2767              		.cfi_offset 4, -24
- 2768              		.cfi_offset 5, -20
- 2769              		.cfi_offset 6, -16
- 2770              		.cfi_offset 7, -12
- 2771              		.cfi_offset 8, -8
- 2772              		.cfi_offset 14, -4
- 2773              	.LBB572:
- 2774              	.LBB567:
- 2775              		.loc 11 40 13 view .LVU737
- 2776 000c 30EE670A 		vsub.f32	s0, s0, s15
- 2777              	.LVL223:
+ 2762              		.loc 1 52 30 view .LVU736
+ 2763 0008 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 2764              		.cfi_def_cfa_offset 24
+ 2765              		.cfi_offset 4, -24
+ 2766              		.cfi_offset 5, -20
+ 2767              		.cfi_offset 6, -16
+ 2768              		.cfi_offset 7, -12
+ 2769              		.cfi_offset 8, -8
+ 2770              		.cfi_offset 14, -4
+ 2771              	.LBB572:
+ 2772              	.LBB567:
+ 2773              		.loc 11 40 13 view .LVU737
+ 2774 000c 30EE670A 		vsub.f32	s0, s0, s15
+ 2775              	.LVL223:
   41:eurorack/plaits/dsp/engine/engine.h ****   CONSTRAIN(midi_note, -128.0f, 127.0f);
- 2778              		.loc 11 41 3 is_stmt 1 view .LVU738
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 95
+ 2776              		.loc 11 41 3 is_stmt 1 view .LVU738
+ 2777 0010 DFED2A7A 		vldr.32	s15, .L146
+ 2778              	.LBE567:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 95
 
 
- 2779 0010 DFED2A7A 		vldr.32	s15, .L146
- 2780              	.LBE567:
- 2781              	.LBE572:
+ 2779              	.LBE572:
   52:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
- 2782              		.loc 1 52 30 is_stmt 0 view .LVU739
- 2783 0014 86B0     		sub	sp, sp, #24
- 2784              		.cfi_def_cfa_offset 48
+ 2780              		.loc 1 52 30 is_stmt 0 view .LVU739
+ 2781 0014 86B0     		sub	sp, sp, #24
+ 2782              		.cfi_def_cfa_offset 48
   52:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
- 2785              		.loc 1 52 30 view .LVU740
- 2786 0016 0546     		mov	r5, r0
- 2787 0018 0C46     		mov	r4, r1
- 2788 001a 1746     		mov	r7, r2
- 2789              	.LBB573:
- 2790              	.LBB568:
- 2791              		.loc 11 41 3 view .LVU741
- 2792 001c B4EEE70A 		vcmpe.f32	s0, s15
- 2793              	.LBE568:
- 2794              	.LBE573:
+ 2783              		.loc 1 52 30 view .LVU740
+ 2784 0016 0546     		mov	r5, r0
+ 2785 0018 0C46     		mov	r4, r1
+ 2786 001a 1746     		mov	r7, r2
+ 2787              	.LBB573:
+ 2788              	.LBB568:
+ 2789              		.loc 11 41 3 view .LVU741
+ 2790 001c B4EEE70A 		vcmpe.f32	s0, s15
+ 2791              	.LBE568:
+ 2792              	.LBE573:
   52:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
- 2795              		.loc 1 52 30 view .LVU742
- 2796 0020 1E46     		mov	r6, r3
- 2797 0022 DDF83080 		ldr	r8, [sp, #48]
- 2798              	.LBB574:
- 2799              	.LBB569:
- 2800              		.loc 11 41 3 view .LVU743
- 2801 0026 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 2802 002a 44D4     		bmi	.L144
- 2803              		.loc 11 41 3 is_stmt 1 view .LVU744
- 2804 002c DFED247A 		vldr.32	s15, .L146+4
- 2805 0030 B4EE670A 		vcmp.f32	s0, s15
- 2806 0034 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 2807 0038 37FE800A 		vselgt.f32	s0, s15, s0
- 2808              	.LVL224:
- 2809              	.L142:
- 2810              		.loc 11 41 40 view .LVU745
+ 2793              		.loc 1 52 30 view .LVU742
+ 2794 0020 1E46     		mov	r6, r3
+ 2795 0022 DDF83080 		ldr	r8, [sp, #48]
+ 2796              	.LBB574:
+ 2797              	.LBB569:
+ 2798              		.loc 11 41 3 view .LVU743
+ 2799 0026 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 2800 002a 44D4     		bmi	.L144
+ 2801              		.loc 11 41 3 is_stmt 1 view .LVU744
+ 2802 002c DFED247A 		vldr.32	s15, .L146+4
+ 2803 0030 B4EE670A 		vcmp.f32	s0, s15
+ 2804 0034 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 2805 0038 37FE800A 		vselgt.f32	s0, s15, s0
+ 2806              	.LVL224:
+ 2807              	.L142:
+ 2808              		.loc 11 41 40 view .LVU745
   42:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
- 2811              		.loc 11 42 3 view .LVU746
- 2812              		.loc 11 42 47 is_stmt 0 view .LVU747
- 2813 003c FFF7FEFF 		bl	_ZN6stmlib16SemitonesToRatioEf
- 2814              	.LVL225:
- 2815              		.loc 11 42 57 view .LVU748
- 2816 0040 DFED200A 		vldr.32	s1, .L146+8
- 2817              	.LBE569:
- 2818              	.LBE574:
+ 2809              		.loc 11 42 3 view .LVU746
+ 2810              		.loc 11 42 47 is_stmt 0 view .LVU747
+ 2811 003c FFF7FEFF 		bl	_ZN6stmlib16SemitonesToRatioEf
+ 2812              	.LVL225:
+ 2813              		.loc 11 42 57 view .LVU748
+ 2814 0040 DFED200A 		vldr.32	s1, .L146+8
+ 2815              	.LBE569:
+ 2816              	.LBE574:
   54:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****   
   55:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****   hi_hat_1_.Render(
   56:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.trigger & TRIGGER_UNPATCHED,
- 2819              		.loc 1 56 18 view .LVU749
- 2820 0044 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
+ 2817              		.loc 1 56 18 view .LVU749
+ 2818 0044 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
   55:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.trigger & TRIGGER_UNPATCHED,
- 2821              		.loc 1 55 19 view .LVU750
- 2822 0046 05F11000 		add	r0, r5, #16
- 2823              	.LBB575:
- 2824              	.LBB570:
- 2825              		.loc 11 42 57 view .LVU751
- 2826 004a 60EE200A 		vmul.f32	s1, s0, s1
- 2827              	.LVL226:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 96
+ 2819              		.loc 1 55 19 view .LVU750
+ 2820 0046 05F11000 		add	r0, r5, #16
+ 2821              	.LBB575:
+ 2822              	.LBB570:
+ 2823              		.loc 11 42 57 view .LVU751
+ 2824 004a 60EE200A 		vmul.f32	s1, s0, s1
+ 2825              	.LVL226:
+ 2826              		.loc 11 42 57 view .LVU752
+ 2827              	.LBE570:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 96
 
 
- 2828              		.loc 11 42 57 view .LVU752
- 2829              	.LBE570:
- 2830              	.LBE575:
+ 2828              	.LBE575:
   55:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.trigger & TRIGGER_UNPATCHED,
- 2831              		.loc 1 55 3 is_stmt 1 view .LVU753
+ 2829              		.loc 1 55 3 is_stmt 1 view .LVU753
   55:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.trigger & TRIGGER_UNPATCHED,
- 2832              		.loc 1 55 19 is_stmt 0 view .LVU754
- 2833 004e D5F84431 		ldr	r3, [r5, #324]
- 2834 0052 94ED042A 		vldr.32	s4, [r4, #16]
- 2835 0056 01F00102 		and	r2, r1, #1
- 2836 005a D4ED031A 		vldr.32	s3, [r4, #12]
- 2837 005e C1F34001 		ubfx	r1, r1, #1, #1
- 2838 0062 94ED021A 		vldr.32	s2, [r4, #8]
- 2839 0066 94ED050A 		vldr.32	s0, [r4, #20]
- 2840 006a 0093     		str	r3, [sp]
- 2841 006c D5F84031 		ldr	r3, [r5, #320]
- 2842 0070 CDED050A 		vstr.32	s1, [sp, #20]	@ int
- 2843 0074 CDE90178 		strd	r7, r8, [sp, #4]
- 2844 0078 FFF7FEFF 		bl	_ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j
- 2845              	.LVL227:
+ 2830              		.loc 1 55 19 is_stmt 0 view .LVU754
+ 2831 004e D5F84431 		ldr	r3, [r5, #324]
+ 2832 0052 94ED042A 		vldr.32	s4, [r4, #16]
+ 2833 0056 01F00102 		and	r2, r1, #1
+ 2834 005a D4ED031A 		vldr.32	s3, [r4, #12]
+ 2835 005e C1F34001 		ubfx	r1, r1, #1, #1
+ 2836 0062 94ED021A 		vldr.32	s2, [r4, #8]
+ 2837 0066 94ED050A 		vldr.32	s0, [r4, #20]
+ 2838 006a 0093     		str	r3, [sp]
+ 2839 006c D5F84031 		ldr	r3, [r5, #320]
+ 2840 0070 CDED050A 		vstr.32	s1, [sp, #20]	@ int
+ 2841 0074 CDE90178 		strd	r7, r8, [sp, #4]
+ 2842 0078 FFF7FEFF 		bl	_ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j
+ 2843              	.LVL227:
   57:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.trigger & TRIGGER_RISING_EDGE,
   58:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.accent,
   59:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       f0,
@@ -5733,154 +5731,154 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 1
   66:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       size);
   67:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****   
   68:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****   hi_hat_2_.Render(
- 2846              		.loc 1 68 3 is_stmt 1 view .LVU755
+ 2844              		.loc 1 68 3 is_stmt 1 view .LVU755
   69:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.trigger & TRIGGER_UNPATCHED,
- 2847              		.loc 1 69 18 is_stmt 0 view .LVU756
- 2848 007c 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
+ 2845              		.loc 1 69 18 is_stmt 0 view .LVU756
+ 2846 007c 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
   68:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.trigger & TRIGGER_UNPATCHED,
- 2849              		.loc 1 68 19 view .LVU757
- 2850 007e D5F84431 		ldr	r3, [r5, #324]
- 2851 0082 05F16000 		add	r0, r5, #96
- 2852 0086 01F00102 		and	r2, r1, #1
- 2853 008a 94ED042A 		vldr.32	s4, [r4, #16]
- 2854 008e 0093     		str	r3, [sp]
- 2855 0090 C1F34001 		ubfx	r1, r1, #1, #1
- 2856 0094 D5F84031 		ldr	r3, [r5, #320]
- 2857 0098 D4ED031A 		vldr.32	s3, [r4, #12]
- 2858 009c 94ED021A 		vldr.32	s2, [r4, #8]
- 2859 00a0 DDED050A 		vldr.32	s1, [sp, #20]	@ int
- 2860 00a4 94ED050A 		vldr.32	s0, [r4, #20]
- 2861 00a8 CDE90168 		strd	r6, r8, [sp, #4]
- 2862 00ac FFF7FEFF 		bl	_ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j
- 2863              	.LVL228:
+ 2847              		.loc 1 68 19 view .LVU757
+ 2848 007e D5F84431 		ldr	r3, [r5, #324]
+ 2849 0082 05F16000 		add	r0, r5, #96
+ 2850 0086 01F00102 		and	r2, r1, #1
+ 2851 008a 94ED042A 		vldr.32	s4, [r4, #16]
+ 2852 008e 0093     		str	r3, [sp]
+ 2853 0090 C1F34001 		ubfx	r1, r1, #1, #1
+ 2854 0094 D5F84031 		ldr	r3, [r5, #320]
+ 2855 0098 D4ED031A 		vldr.32	s3, [r4, #12]
+ 2856 009c 94ED021A 		vldr.32	s2, [r4, #8]
+ 2857 00a0 DDED050A 		vldr.32	s1, [sp, #20]	@ int
+ 2858 00a4 94ED050A 		vldr.32	s0, [r4, #20]
+ 2859 00a8 CDE90168 		strd	r6, r8, [sp, #4]
+ 2860 00ac FFF7FEFF 		bl	_ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j
+ 2861              	.LVL228:
   70:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.trigger & TRIGGER_RISING_EDGE,
   71:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.accent,
   72:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       f0,
   73:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.timbre,
   74:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.morph,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 97
-
-
   75:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       parameters.harmonics,
   76:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       temp_buffer_[0],
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 97
+
+
   77:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       temp_buffer_[1],
   78:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       aux,
   79:eurorack/plaits/dsp/engine/hi_hat_engine.cc ****       size);
   80:eurorack/plaits/dsp/engine/hi_hat_engine.cc **** }
- 2864              		.loc 1 80 1 view .LVU758
- 2865 00b0 06B0     		add	sp, sp, #24
- 2866              		.cfi_remember_state
- 2867              		.cfi_def_cfa_offset 24
- 2868              		@ sp needed
- 2869 00b2 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
- 2870              	.LVL229:
- 2871              	.L144:
- 2872              		.cfi_restore_state
- 2873              	.LBB576:
- 2874              	.LBB571:
+ 2862              		.loc 1 80 1 view .LVU758
+ 2863 00b0 06B0     		add	sp, sp, #24
+ 2864              		.cfi_remember_state
+ 2865              		.cfi_def_cfa_offset 24
+ 2866              		@ sp needed
+ 2867 00b2 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 2868              	.LVL229:
+ 2869              	.L144:
+ 2870              		.cfi_restore_state
+ 2871              	.LBB576:
+ 2872              	.LBB571:
   41:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
- 2875              		.loc 11 41 3 view .LVU759
- 2876 00b6 B0EE670A 		vmov.f32	s0, s15
- 2877              	.LVL230:
+ 2873              		.loc 11 41 3 view .LVU759
+ 2874 00b6 B0EE670A 		vmov.f32	s0, s15
+ 2875              	.LVL230:
   41:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
- 2878              		.loc 11 41 3 view .LVU760
- 2879 00ba BFE7     		b	.L142
- 2880              	.L147:
- 2881              		.align	2
- 2882              	.L146:
- 2883 00bc 000000C3 		.word	-1023410176
- 2884 00c0 0000FE42 		.word	1123942400
- 2885 00c4 51969639 		.word	966170193
- 2886              	.LBE571:
- 2887              	.LBE576:
- 2888              		.cfi_endproc
- 2889              	.LFE1588:
- 2891              		.global	_ZTVN6plaits11HiHatEngineE
- 2892              		.section	.rodata
- 2893              		.align	2
- 2894              		.set	.LANCHOR0,. + 0
- 2895              	.LC0:
- 2896 0000 0000803F 		.word	1065353216
- 2897 0004 79E9A63F 		.word	1067903353
- 2898 0008 E3A5BB3F 		.word	1069262307
- 2899 000c 6ABCE43F 		.word	1071955050
- 2900 0010 C74BF73F 		.word	1073171399
- 2901 0014 D34D2240 		.word	1075989971
- 2902              		.section	.rodata._ZTVN6plaits11HiHatEngineE,"a"
- 2903              		.align	2
- 2906              	_ZTVN6plaits11HiHatEngineE:
- 2907 0000 00000000 		.word	0
- 2908 0004 00000000 		.word	0
- 2909 0008 00000000 		.word	_ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE
- 2910 000c 00000000 		.word	_ZN6plaits11HiHatEngine5ResetEv
- 2911 0010 00000000 		.word	_ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb
- 2912              		.text
- 2913              	.Letext0:
- 2914              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
- 2915              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 98
+ 2876              		.loc 11 41 3 view .LVU760
+ 2877 00ba BFE7     		b	.L142
+ 2878              	.L147:
+ 2879              		.align	2
+ 2880              	.L146:
+ 2881 00bc 000000C3 		.word	-1023410176
+ 2882 00c0 0000FE42 		.word	1123942400
+ 2883 00c4 51969639 		.word	966170193
+ 2884              	.LBE571:
+ 2885              	.LBE576:
+ 2886              		.cfi_endproc
+ 2887              	.LFE1588:
+ 2889              		.global	_ZTVN6plaits11HiHatEngineE
+ 2890              		.section	.rodata
+ 2891              		.align	2
+ 2892              		.set	.LANCHOR0,. + 0
+ 2893              	.LC0:
+ 2894 0000 0000803F 		.word	1065353216
+ 2895 0004 79E9A63F 		.word	1067903353
+ 2896 0008 E3A5BB3F 		.word	1069262307
+ 2897 000c 6ABCE43F 		.word	1071955050
+ 2898 0010 C74BF73F 		.word	1073171399
+ 2899 0014 D34D2240 		.word	1075989971
+ 2900              		.section	.rodata._ZTVN6plaits11HiHatEngineE,"a"
+ 2901              		.align	2
+ 2904              	_ZTVN6plaits11HiHatEngineE:
+ 2905 0000 00000000 		.word	0
+ 2906 0004 00000000 		.word	0
+ 2907 0008 00000000 		.word	_ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE
+ 2908 000c 00000000 		.word	_ZN6plaits11HiHatEngine5ResetEv
+ 2909 0010 00000000 		.word	_ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+ 2910              		.text
+ 2911              	.Letext0:
+ 2912              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 2913              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 2914              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 2915              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 98
 
 
- 2916              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 2917              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
- 2918              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
- 2919              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
- 2920              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
- 2921              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
- 2922              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
- 2923              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
- 2924              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
- 2925              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
- 2926              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
- 2927              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
- 2928              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
- 2929              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
- 2930              		.file 28 "eurorack/stmlib/stmlib.h"
- 2931              		.file 29 "eurorack/plaits/dsp/dsp.h"
- 2932              		.file 30 "eurorack/plaits/dsp/engine/hi_hat_engine.h"
- 2933              		.file 31 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s 			page 99
+ 2916              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 2917              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 2918              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 2919              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 2920              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 2921              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 2922              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 2923              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 2924              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 2925              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 2926              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 2927              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 2928              		.file 28 "eurorack/stmlib/stmlib.h"
+ 2929              		.file 29 "eurorack/plaits/dsp/dsp.h"
+ 2930              		.file 30 "eurorack/plaits/dsp/engine/hi_hat_engine.h"
+ 2931              		.file 31 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s 			page 99
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 hi_hat_engine.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:19     .text._ZN6plaits11HiHatEngine5ResetEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:25     .text._ZN6plaits11HiHatEngine5ResetEv:0000000000000000 _ZN6plaits11HiHatEngine5ResetEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:40     .text._ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:45     .text._ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0:0000000000000000 _ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:822    .text._ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0:0000000000000248 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:828    .text._ZN6stmlib3Svf4InitEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:834    .text._ZN6stmlib3Svf4InitEv:0000000000000000 _ZN6stmlib3Svf4InitEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:881    .text._ZN6stmlib3Svf4InitEv:0000000000000014 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:888    .text._ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:894    .text._ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1205   .text._ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE:00000000000000a8 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1210   .text._ZN6stmlib16SemitonesToRatioEf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1216   .text._ZN6stmlib16SemitonesToRatioEf:0000000000000000 _ZN6stmlib16SemitonesToRatioEf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1264   .text._ZN6stmlib16SemitonesToRatioEf:000000000000003c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1271   .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1277   .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 _ZN6stmlib6Random8GetFloatEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1321   .text._ZN6stmlib6Random8GetFloatEv:0000000000000020 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1329   .text._ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1335   .text._ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff:0000000000000000 _ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1394   .text._ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff:000000000000005c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1404   .text._ZN6stmlib3Svf7ProcessILNS_10FilterModeE1EEEvPKfPfj:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1410   .text._ZN6stmlib3Svf7ProcessILNS_10FilterModeE1EEEvPKfPfj:0000000000000000 _ZN6stmlib3Svf7ProcessILNS_10FilterModeE1EEEvPKfPfj
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1482   .text._ZN6stmlib3Svf7ProcessILNS_10FilterModeE3EEEvPKfPfj:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1488   .text._ZN6stmlib3Svf7ProcessILNS_10FilterModeE3EEEvPKfPfj:0000000000000000 _ZN6stmlib3Svf7ProcessILNS_10FilterModeE3EEEvPKfPfj
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1560   .text._ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:1566   .text._ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j:0000000000000000 _ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2157   .text._ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j:0000000000000354 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2176   .text._ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j:0000000000000390 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2224   .text._ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2230   .text._ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j:0000000000000000 _ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2719   .text._ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j:000000000000026c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2739   .text._ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2745   .text._ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2883   .text._ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb:00000000000000bc $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2906   .rodata._ZTVN6plaits11HiHatEngineE:0000000000000000 _ZTVN6plaits11HiHatEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2893   .rodata:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccFSi4Hg.s:2903   .rodata._ZTVN6plaits11HiHatEngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:19     .text._ZN6plaits11HiHatEngine5ResetEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:25     .text._ZN6plaits11HiHatEngine5ResetEv:0000000000000000 _ZN6plaits11HiHatEngine5ResetEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:40     .text._ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:45     .text._ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0:0000000000000000 _ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:822    .text._ZN6plaits12RingModNoise10RenderPairEPNS_10OscillatorEffPfS3_S3_j.isra.0:0000000000000248 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:828    .text._ZN6stmlib3Svf4InitEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:834    .text._ZN6stmlib3Svf4InitEv:0000000000000000 _ZN6stmlib3Svf4InitEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:881    .text._ZN6stmlib3Svf4InitEv:0000000000000014 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:888    .text._ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:894    .text._ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1205   .text._ZN6plaits11HiHatEngine4InitEPN6stmlib15BufferAllocatorE:00000000000000a8 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1210   .text._ZN6stmlib16SemitonesToRatioEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1216   .text._ZN6stmlib16SemitonesToRatioEf:0000000000000000 _ZN6stmlib16SemitonesToRatioEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1264   .text._ZN6stmlib16SemitonesToRatioEf:000000000000003c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1271   .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1277   .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 _ZN6stmlib6Random8GetFloatEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1321   .text._ZN6stmlib6Random8GetFloatEv:0000000000000020 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1329   .text._ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1335   .text._ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff:0000000000000000 _ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1394   .text._ZN6stmlib3Svf7set_f_qILNS_22FrequencyApproximationE1EEEvff:000000000000005c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1404   .text._ZN6stmlib3Svf7ProcessILNS_10FilterModeE1EEEvPKfPfj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1410   .text._ZN6stmlib3Svf7ProcessILNS_10FilterModeE1EEEvPKfPfj:0000000000000000 _ZN6stmlib3Svf7ProcessILNS_10FilterModeE1EEEvPKfPfj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1482   .text._ZN6stmlib3Svf7ProcessILNS_10FilterModeE3EEEvPKfPfj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1488   .text._ZN6stmlib3Svf7ProcessILNS_10FilterModeE3EEEvPKfPfj:0000000000000000 _ZN6stmlib3Svf7ProcessILNS_10FilterModeE3EEEvPKfPfj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1560   .text._ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:1566   .text._ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j:0000000000000000 _ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2157   .text._ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j:0000000000000354 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2175   .text._ZN6plaits5HiHatINS_11SquareNoiseENS_8SwingVCAELb1EE6RenderEbbfffffPfS4_S4_j:000000000000038c $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2223   .text._ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2229   .text._ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j:0000000000000000 _ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2718   .text._ZN6plaits5HiHatINS_12RingModNoiseENS_9LinearVCAELb0EE6RenderEbbfffffPfS4_S4_j:000000000000026c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2737   .text._ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2743   .text._ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2881   .text._ZN6plaits11HiHatEngine6RenderERKNS_16EngineParametersEPfS4_jPb:00000000000000bc $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2904   .rodata._ZTVN6plaits11HiHatEngineE:0000000000000000 _ZTVN6plaits11HiHatEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2891   .rodata:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuBbKnG.s:2901   .rodata._ZTVN6plaits11HiHatEngineE:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 memset

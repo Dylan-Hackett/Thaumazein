@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
   29:AudioProcessor.cpp **** // CpuLoadMeter cpu_meter; // Removed: Now defined in Interface.cpp
   30:AudioProcessor.cpp **** 
   31:AudioProcessor.cpp **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 2
 
 
   32:AudioProcessor.cpp **** static bool was_arp_on = false; // For ARP state change detection
@@ -78,119 +78,124 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
   46:AudioProcessor.cpp ****         hw.PrintLine("[AudioCallback] Enter");
   47:AudioProcessor.cpp ****         audio_cb_started = true;
   48:AudioProcessor.cpp ****     }
-  49:AudioProcessor.cpp ****     cpu_meter.OnBlockStart(); // Mark the beginning of the audio block
-  50:AudioProcessor.cpp ****     
-  51:AudioProcessor.cpp ****     // Variables to be passed between helper functions
-  52:AudioProcessor.cpp ****     int engineIndex;
-  53:AudioProcessor.cpp ****     bool poly_mode;
-  54:AudioProcessor.cpp ****     int effective_num_voices;
-  55:AudioProcessor.cpp ****     bool arp_on;
-  56:AudioProcessor.cpp **** 
-  57:AudioProcessor.cpp ****     ProcessUIAndControls();
-  58:AudioProcessor.cpp **** 
-  59:AudioProcessor.cpp ****     // React to engine change flag by delegating voice migration to DSP layer.
-  60:AudioProcessor.cpp ****     static int prev_engine_index_static = 0;
-  61:AudioProcessor.cpp ****     if(engine_changed_flag) {
-  62:AudioProcessor.cpp ****         poly_engine.OnEngineChange(prev_engine_index_static, current_engine_index);
-  63:AudioProcessor.cpp ****         prev_engine_index_static = current_engine_index;
-  64:AudioProcessor.cpp ****         engine_changed_flag = false; // Clear flag after handling
-  65:AudioProcessor.cpp ****     }
-  66:AudioProcessor.cpp **** 
-  67:AudioProcessor.cpp ****     UpdateArpState(engineIndex, poly_mode, effective_num_voices, arp_on);
-  68:AudioProcessor.cpp ****     RenderVoices(engineIndex, poly_mode, effective_num_voices, arp_on);
-  69:AudioProcessor.cpp ****     ApplyEffectsAndOutput(out, size);
-  70:AudioProcessor.cpp **** 
-  71:AudioProcessor.cpp ****     cpu_meter.OnBlockEnd(); // Mark the end of the audio block
-  72:AudioProcessor.cpp **** }
-  73:AudioProcessor.cpp **** 
-  74:AudioProcessor.cpp **** void ProcessUIAndControls() {
-  28              		.loc 1 74 29 view -0
+  49:AudioProcessor.cpp ****     // Process UI controls at 1ms intervals inside audio callback
+  50:AudioProcessor.cpp ****     static uint32_t last_ui_time = 0;
+  51:AudioProcessor.cpp ****     uint32_t now_ms = hw.system.GetNow();
+  52:AudioProcessor.cpp ****     if(now_ms - last_ui_time >= 1) {
+  53:AudioProcessor.cpp ****         last_ui_time = now_ms;
+  54:AudioProcessor.cpp ****         ProcessUIAndControls();
+  55:AudioProcessor.cpp ****     }
+  56:AudioProcessor.cpp ****     cpu_meter.OnBlockStart(); // Mark the beginning of the audio block
+  57:AudioProcessor.cpp ****     
+  58:AudioProcessor.cpp ****     // Variables to be passed between helper functions
+  59:AudioProcessor.cpp ****     int engineIndex;
+  60:AudioProcessor.cpp ****     bool poly_mode;
+  61:AudioProcessor.cpp ****     int effective_num_voices;
+  62:AudioProcessor.cpp ****     bool arp_on;
+  63:AudioProcessor.cpp **** 
+  64:AudioProcessor.cpp ****     // React to engine change flag by delegating voice migration to DSP layer.
+  65:AudioProcessor.cpp ****     static int prev_engine_index_static = 0;
+  66:AudioProcessor.cpp ****     if(engine_changed_flag) {
+  67:AudioProcessor.cpp ****         poly_engine.OnEngineChange(prev_engine_index_static, current_engine_index);
+  68:AudioProcessor.cpp ****         prev_engine_index_static = current_engine_index;
+  69:AudioProcessor.cpp ****         engine_changed_flag = false; // Clear flag after handling
+  70:AudioProcessor.cpp ****     }
+  71:AudioProcessor.cpp **** 
+  72:AudioProcessor.cpp ****     UpdateArpState(engineIndex, poly_mode, effective_num_voices, arp_on);
+  73:AudioProcessor.cpp ****     RenderVoices(engineIndex, poly_mode, effective_num_voices, arp_on);
+  74:AudioProcessor.cpp ****     ApplyEffectsAndOutput(out, size);
+  75:AudioProcessor.cpp **** 
+  76:AudioProcessor.cpp ****     cpu_meter.OnBlockEnd(); // Mark the end of the audio block
+  77:AudioProcessor.cpp **** }
+  78:AudioProcessor.cpp **** 
+  79:AudioProcessor.cpp **** void ProcessUIAndControls() {
+  28              		.loc 1 79 29 view -0
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 0
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-  75:AudioProcessor.cpp ****     ProcessControls();
-  32              		.loc 1 75 5 view .LVU1
-  74:AudioProcessor.cpp ****     ProcessControls();
-  33              		.loc 1 74 29 is_stmt 0 view .LVU2
+  80:AudioProcessor.cpp ****     ProcessControls();
+  32              		.loc 1 80 5 view .LVU1
+  79:AudioProcessor.cpp ****     ProcessControls();
+  33              		.loc 1 79 29 is_stmt 0 view .LVU2
   34 0000 08B5     		push	{r3, lr}
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 3
+
+
   35              		.cfi_def_cfa_offset 8
   36              		.cfi_offset 3, -8
   37              		.cfi_offset 14, -4
-  38              		.loc 1 75 20 view .LVU3
+  38              		.loc 1 80 20 view .LVU3
   39 0002 FFF7FEFF 		bl	_Z15ProcessControlsv
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 3
-
-
   40              	.LVL0:
-  76:AudioProcessor.cpp ****     ReadKnobValues();
-  41              		.loc 1 76 5 is_stmt 1 view .LVU4
-  42              		.loc 1 76 19 is_stmt 0 view .LVU5
+  81:AudioProcessor.cpp ****     ReadKnobValues();
+  41              		.loc 1 81 5 is_stmt 1 view .LVU4
+  42              		.loc 1 81 19 is_stmt 0 view .LVU5
   43 0006 FFF7FEFF 		bl	_Z14ReadKnobValuesv
   44              	.LVL1:
-  77:AudioProcessor.cpp ****     
-  78:AudioProcessor.cpp ****     // Update Arpeggiator Tempo from Delay Time Knob if Arp is enabled
-  79:AudioProcessor.cpp ****     if (arp_enabled) {
-  45              		.loc 1 79 5 is_stmt 1 view .LVU6
-  46              		.loc 1 79 9 is_stmt 0 view .LVU7
+  82:AudioProcessor.cpp ****     
+  83:AudioProcessor.cpp ****     // Update Arpeggiator Tempo from Delay Time Knob if Arp is enabled
+  84:AudioProcessor.cpp ****     if (arp_enabled) {
+  45              		.loc 1 84 5 is_stmt 1 view .LVU6
+  46              		.loc 1 84 9 is_stmt 0 view .LVU7
   47 000a 104B     		ldr	r3, .L6
   48 000c 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-  49              		.loc 1 79 5 view .LVU8
+  49              		.loc 1 84 5 view .LVU8
   50 000e 2BB1     		cbz	r3, .L2
-  80:AudioProcessor.cpp ****         arp.SetMainTempoFromKnob(delay_time_val); // delay_time_val is 0-1 from ReadKnobValues
-  51              		.loc 1 80 9 is_stmt 1 view .LVU9
-  52              		.loc 1 80 33 is_stmt 0 view .LVU10
+  85:AudioProcessor.cpp ****         arp.SetMainTempoFromKnob(delay_time_val); // delay_time_val is 0-1 from ReadKnobValues
+  51              		.loc 1 85 9 is_stmt 1 view .LVU9
+  52              		.loc 1 85 33 is_stmt 0 view .LVU10
   53 0010 0F4B     		ldr	r3, .L6+4
   54 0012 1048     		ldr	r0, .L6+8
   55 0014 93ED000A 		vldr.32	s0, [r3]
   56 0018 FFF7FEFF 		bl	_ZN11Arpeggiator20SetMainTempoFromKnobEf
   57              	.LVL2:
   58              	.L2:
-  81:AudioProcessor.cpp ****     }
-  82:AudioProcessor.cpp **** 
-  83:AudioProcessor.cpp ****     float touch_control = touch_cv_value; 
-  59              		.loc 1 83 5 is_stmt 1 view .LVU11
-  60              		.loc 1 83 27 is_stmt 0 view .LVU12
+  86:AudioProcessor.cpp ****     }
+  87:AudioProcessor.cpp **** 
+  88:AudioProcessor.cpp ****     float touch_control = touch_cv_value; 
+  59              		.loc 1 88 5 is_stmt 1 view .LVU11
+  60              		.loc 1 88 27 is_stmt 0 view .LVU12
   61 001c 0E4B     		ldr	r3, .L6+12
-  84:AudioProcessor.cpp ****     
-  85:AudioProcessor.cpp ****     float intensity_factor = 0.5f;
-  86:AudioProcessor.cpp **** 
-  87:AudioProcessor.cpp ****     morph_knob_val   = morph_knob_val   * (1.0f - intensity_factor) + touch_control * intensity_fac
-  62              		.loc 1 87 85 view .LVU13
+  89:AudioProcessor.cpp ****     
+  90:AudioProcessor.cpp ****     float intensity_factor = 0.5f;
+  91:AudioProcessor.cpp **** 
+  92:AudioProcessor.cpp ****     morph_knob_val   = morph_knob_val   * (1.0f - intensity_factor) + touch_control * intensity_fac
+  62              		.loc 1 92 85 view .LVU13
   63 001e B6EE007A 		vmov.f32	s14, #5.0e-1
-  83:AudioProcessor.cpp ****     
-  64              		.loc 1 83 27 view .LVU14
+  88:AudioProcessor.cpp ****     
+  64              		.loc 1 88 27 view .LVU14
   65 0022 D3ED007A 		vldr.32	s15, [r3]
   66              	.LVL3:
-  85:AudioProcessor.cpp **** 
-  67              		.loc 1 85 5 is_stmt 1 view .LVU15
-  68              		.loc 1 87 5 view .LVU16
-  69              		.loc 1 87 41 is_stmt 0 view .LVU17
+  90:AudioProcessor.cpp **** 
+  67              		.loc 1 90 5 is_stmt 1 view .LVU15
+  68              		.loc 1 92 5 view .LVU16
+  69              		.loc 1 92 41 is_stmt 0 view .LVU17
   70 0026 0D4B     		ldr	r3, .L6+16
-  71              		.loc 1 87 85 view .LVU18
+  71              		.loc 1 92 85 view .LVU18
   72 0028 67EE877A 		vmul.f32	s15, s15, s14
   73              	.LVL4:
-  74              		.loc 1 87 69 view .LVU19
+  74              		.loc 1 92 69 view .LVU19
   75 002c 93ED006A 		vldr.32	s12, [r3]
   76 0030 F0EE676A 		vmov.f32	s13, s15
   77 0034 E6EE076A 		vfma.f32	s13, s12, s14
-  78              		.loc 1 87 22 view .LVU20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 4
+
+
+  78              		.loc 1 92 22 view .LVU20
   79 0038 C3ED006A 		vstr.32	s13, [r3]
-  88:AudioProcessor.cpp ****     delay_feedback_val = delay_feedback_val * (1.0f - intensity_factor) + touch_control * intensity
-  80              		.loc 1 88 5 is_stmt 1 view .LVU21
-  81              		.loc 1 88 45 is_stmt 0 view .LVU22
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 4
-
-
+  93:AudioProcessor.cpp ****     delay_feedback_val = delay_feedback_val * (1.0f - intensity_factor) + touch_control * intensity
+  80              		.loc 1 93 5 is_stmt 1 view .LVU21
+  81              		.loc 1 93 45 is_stmt 0 view .LVU22
   82 003c 084B     		ldr	r3, .L6+20
-  83              		.loc 1 88 73 view .LVU23
+  83              		.loc 1 93 73 view .LVU23
   84 003e D3ED006A 		vldr.32	s13, [r3]
   85 0042 E6EE877A 		vfma.f32	s15, s13, s14
-  86              		.loc 1 88 24 view .LVU24
+  86              		.loc 1 93 24 view .LVU24
   87 0046 C3ED007A 		vstr.32	s15, [r3]
-  89:AudioProcessor.cpp **** 
-  90:AudioProcessor.cpp **** 
-  91:AudioProcessor.cpp **** }
-  88              		.loc 1 91 1 view .LVU25
+  94:AudioProcessor.cpp **** 
+  95:AudioProcessor.cpp **** 
+  96:AudioProcessor.cpp **** }
+  88              		.loc 1 96 1 view .LVU25
   89 004a 08BD     		pop	{r3, pc}
   90              	.L7:
   91              		.align	2
@@ -212,78 +217,78 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  109              	_Z14UpdateArpStateRiRbS_S0_:
  110              	.LVL5:
  111              	.LFB5844:
-  92:AudioProcessor.cpp **** 
-  93:AudioProcessor.cpp **** void UpdateArpState(int& engineIndex, bool& poly_mode, int& effective_num_voices, bool& arp_on_out)
- 112              		.loc 1 93 101 is_stmt 1 view -0
+  97:AudioProcessor.cpp **** 
+  98:AudioProcessor.cpp **** void UpdateArpState(int& engineIndex, bool& poly_mode, int& effective_num_voices, bool& arp_on_out)
+ 112              		.loc 1 98 101 is_stmt 1 view -0
  113              		.cfi_startproc
  114              		@ args = 0, pretend = 0, frame = 8
  115              		@ frame_needed = 0, uses_anonymous_args = 0
-  94:AudioProcessor.cpp ****     engineIndex = DetermineEngineSettings();
- 116              		.loc 1 94 5 view .LVU27
+  99:AudioProcessor.cpp ****     engineIndex = DetermineEngineSettings();
+ 116              		.loc 1 99 5 view .LVU27
  117              	.LBB11:
  118              	.LBI11:
-  95:AudioProcessor.cpp ****     poly_mode = (engineIndex <= 3);
-  96:AudioProcessor.cpp ****     effective_num_voices = poly_mode ? NUM_VOICES : 1;
-  97:AudioProcessor.cpp **** 
-  98:AudioProcessor.cpp ****     bool current_arp_on = arp_enabled;
-  99:AudioProcessor.cpp ****     if (!current_arp_on && was_arp_on) {
- 100:AudioProcessor.cpp ****         poly_engine.ResetVoices();
- 101:AudioProcessor.cpp ****         for (int v = 0; v < NUM_VOICES; ++v) {
- 102:AudioProcessor.cpp ****         }
- 103:AudioProcessor.cpp ****         poly_engine.UpdateLastTouchState(0);
- 104:AudioProcessor.cpp ****     }
- 105:AudioProcessor.cpp ****     was_arp_on = current_arp_on;
- 106:AudioProcessor.cpp ****     arp_on_out = current_arp_on;
- 107:AudioProcessor.cpp **** 
- 108:AudioProcessor.cpp ****     if (current_arp_on) {
- 109:AudioProcessor.cpp ****         arp.UpdateHeldNotes(current_touch_state, poly_engine.GetLastTouchState());
- 110:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 5
+ 100:AudioProcessor.cpp ****     poly_mode = (engineIndex <= 3);
+ 101:AudioProcessor.cpp ****     effective_num_voices = poly_mode ? NUM_VOICES : 1;
+ 102:AudioProcessor.cpp **** 
+ 103:AudioProcessor.cpp ****     bool current_arp_on = arp_enabled;
+ 104:AudioProcessor.cpp ****     if (!current_arp_on && was_arp_on) {
+ 105:AudioProcessor.cpp ****         poly_engine.ResetVoices();
+ 106:AudioProcessor.cpp ****         for (int v = 0; v < NUM_VOICES; ++v) {
+ 107:AudioProcessor.cpp ****         }
+ 108:AudioProcessor.cpp ****         poly_engine.UpdateLastTouchState(0);
+ 109:AudioProcessor.cpp ****     }
+ 110:AudioProcessor.cpp ****     was_arp_on = current_arp_on;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 5
 
 
- 111:AudioProcessor.cpp ****     } else {
- 112:AudioProcessor.cpp ****         poly_engine.HandleTouchInput(current_touch_state, poly_engine.GetLastTouchState(), engineIn
- 113:AudioProcessor.cpp ****     }
- 114:AudioProcessor.cpp ****     
- 115:AudioProcessor.cpp ****     poly_engine.UpdateLastTouchState(current_touch_state);
- 116:AudioProcessor.cpp **** }
- 117:AudioProcessor.cpp **** 
- 118:AudioProcessor.cpp **** void RenderVoices(int engineIndex, bool poly_mode, int effective_num_voices, bool arp_on) {
- 119:AudioProcessor.cpp ****     PolyphonyEngine::RenderParameters params;
- 120:AudioProcessor.cpp ****     params.engine_index = engineIndex;
- 121:AudioProcessor.cpp ****     params.poly_mode = poly_mode;
- 122:AudioProcessor.cpp ****     params.effective_num_voices = effective_num_voices;
- 123:AudioProcessor.cpp ****     params.arp_on = arp_on;
- 124:AudioProcessor.cpp ****     params.pitch_val = pitch_val;
- 125:AudioProcessor.cpp ****     params.harm_knob_val = harm_knob_val;
- 126:AudioProcessor.cpp ****     params.morph_knob_val = morph_knob_val;
- 127:AudioProcessor.cpp ****     params.timbre_knob_val = timbre_knob_val;
- 128:AudioProcessor.cpp ****     params.env_attack_val = env_attack_val;
- 129:AudioProcessor.cpp ****     params.env_release_val = env_release_val;
- 130:AudioProcessor.cpp ****     params.delay_mix_val = delay_mix_val;
- 131:AudioProcessor.cpp ****     params.touch_cv_value = touch_cv_value;
- 132:AudioProcessor.cpp ****     
- 133:AudioProcessor.cpp ****     poly_engine.RenderBlock(params);
- 134:AudioProcessor.cpp **** }
- 135:AudioProcessor.cpp **** 
- 136:AudioProcessor.cpp **** void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
- 137:AudioProcessor.cpp ****     DelayEffect::UpdateDelay();
- 138:AudioProcessor.cpp ****     
- 139:AudioProcessor.cpp ****     float dry_level = 1.0f - delay_mix_val;
- 140:AudioProcessor.cpp ****     DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
- 141:AudioProcessor.cpp ****     
- 142:AudioProcessor.cpp ****     UpdatePerformanceMonitors(size, out);
- 143:AudioProcessor.cpp **** }
- 144:AudioProcessor.cpp **** 
- 145:AudioProcessor.cpp **** int DetermineEngineSettings() {
- 119              		.loc 1 145 5 view .LVU28
+ 111:AudioProcessor.cpp ****     arp_on_out = current_arp_on;
+ 112:AudioProcessor.cpp **** 
+ 113:AudioProcessor.cpp ****     if (current_arp_on) {
+ 114:AudioProcessor.cpp ****         arp.UpdateHeldNotes(current_touch_state, poly_engine.GetLastTouchState());
+ 115:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
+ 116:AudioProcessor.cpp ****     } else {
+ 117:AudioProcessor.cpp ****         poly_engine.HandleTouchInput(current_touch_state, poly_engine.GetLastTouchState(), engineIn
+ 118:AudioProcessor.cpp ****     }
+ 119:AudioProcessor.cpp ****     
+ 120:AudioProcessor.cpp ****     poly_engine.UpdateLastTouchState(current_touch_state);
+ 121:AudioProcessor.cpp **** }
+ 122:AudioProcessor.cpp **** 
+ 123:AudioProcessor.cpp **** void RenderVoices(int engineIndex, bool poly_mode, int effective_num_voices, bool arp_on) {
+ 124:AudioProcessor.cpp ****     PolyphonyEngine::RenderParameters params;
+ 125:AudioProcessor.cpp ****     params.engine_index = engineIndex;
+ 126:AudioProcessor.cpp ****     params.poly_mode = poly_mode;
+ 127:AudioProcessor.cpp ****     params.effective_num_voices = effective_num_voices;
+ 128:AudioProcessor.cpp ****     params.arp_on = arp_on;
+ 129:AudioProcessor.cpp ****     params.pitch_val = pitch_val;
+ 130:AudioProcessor.cpp ****     params.harm_knob_val = harm_knob_val;
+ 131:AudioProcessor.cpp ****     params.morph_knob_val = morph_knob_val;
+ 132:AudioProcessor.cpp ****     params.timbre_knob_val = timbre_knob_val;
+ 133:AudioProcessor.cpp ****     params.env_attack_val = env_attack_val;
+ 134:AudioProcessor.cpp ****     params.env_release_val = env_release_val;
+ 135:AudioProcessor.cpp ****     params.delay_mix_val = delay_mix_val;
+ 136:AudioProcessor.cpp ****     params.touch_cv_value = touch_cv_value;
+ 137:AudioProcessor.cpp ****     
+ 138:AudioProcessor.cpp ****     poly_engine.RenderBlock(params);
+ 139:AudioProcessor.cpp **** }
+ 140:AudioProcessor.cpp **** 
+ 141:AudioProcessor.cpp **** void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
+ 142:AudioProcessor.cpp ****     DelayEffect::UpdateDelay();
+ 143:AudioProcessor.cpp ****     
+ 144:AudioProcessor.cpp ****     float dry_level = 1.0f - delay_mix_val;
+ 145:AudioProcessor.cpp ****     DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
+ 146:AudioProcessor.cpp ****     
+ 147:AudioProcessor.cpp ****     UpdatePerformanceMonitors(size, out);
+ 148:AudioProcessor.cpp **** }
+ 149:AudioProcessor.cpp **** 
+ 150:AudioProcessor.cpp **** int DetermineEngineSettings() {
+ 119              		.loc 1 150 5 view .LVU28
  120              	.LBB12:
- 146:AudioProcessor.cpp ****     return current_engine_index;
- 121              		.loc 1 146 5 view .LVU29
+ 151:AudioProcessor.cpp ****     return current_engine_index;
+ 121              		.loc 1 151 5 view .LVU29
  122              	.LBE12:
  123              	.LBE11:
-  93:AudioProcessor.cpp ****     engineIndex = DetermineEngineSettings();
- 124              		.loc 1 93 101 is_stmt 0 view .LVU30
+  98:AudioProcessor.cpp ****     engineIndex = DetermineEngineSettings();
+ 124              		.loc 1 98 101 is_stmt 0 view .LVU30
  125 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
  126              		.cfi_def_cfa_offset 28
  127              		.cfi_offset 4, -28
@@ -293,111 +298,111 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  131              		.cfi_offset 8, -12
  132              		.cfi_offset 9, -8
  133              		.cfi_offset 14, -4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 6
+
+
  134 0004 9846     		mov	r8, r3
  135              	.LBB15:
  136              	.LBB13:
- 137              		.loc 1 146 12 view .LVU31
+ 137              		.loc 1 151 12 view .LVU31
  138 0006 274B     		ldr	r3, .L17
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 6
-
-
  139              	.LVL6:
- 140              		.loc 1 146 12 view .LVU32
+ 140              		.loc 1 151 12 view .LVU32
  141              	.LBE13:
  142              	.LBE15:
-  93:AudioProcessor.cpp ****     engineIndex = DetermineEngineSettings();
- 143              		.loc 1 93 101 view .LVU33
+  98:AudioProcessor.cpp ****     engineIndex = DetermineEngineSettings();
+ 143              		.loc 1 98 101 view .LVU33
  144 0008 1646     		mov	r6, r2
  145 000a 85B0     		sub	sp, sp, #20
  146              		.cfi_def_cfa_offset 48
  147              	.LBB16:
  148              	.LBB14:
- 149              		.loc 1 146 12 view .LVU34
+ 149              		.loc 1 151 12 view .LVU34
  150 000c 1B68     		ldr	r3, [r3]
  151              	.LBE14:
  152              	.LBE16:
-  93:AudioProcessor.cpp ****     engineIndex = DetermineEngineSettings();
- 153              		.loc 1 93 101 view .LVU35
+  98:AudioProcessor.cpp ****     engineIndex = DetermineEngineSettings();
+ 153              		.loc 1 98 101 view .LVU35
  154 000e 0446     		mov	r4, r0
  155 0010 0D46     		mov	r5, r1
  156 0012 DFF8A090 		ldr	r9, .L17+16
-  95:AudioProcessor.cpp ****     poly_mode = (engineIndex <= 3);
- 157              		.loc 1 95 30 view .LVU36
+ 100:AudioProcessor.cpp ****     poly_mode = (engineIndex <= 3);
+ 157              		.loc 1 100 30 view .LVU36
  158 0016 032B     		cmp	r3, #3
-  94:AudioProcessor.cpp ****     poly_mode = (engineIndex <= 3);
- 159              		.loc 1 94 17 view .LVU37
+  99:AudioProcessor.cpp ****     poly_mode = (engineIndex <= 3);
+ 159              		.loc 1 99 17 view .LVU37
  160 0018 0360     		str	r3, [r0]
-  95:AudioProcessor.cpp ****     effective_num_voices = poly_mode ? NUM_VOICES : 1;
- 161              		.loc 1 95 5 is_stmt 1 view .LVU38
-  95:AudioProcessor.cpp ****     effective_num_voices = poly_mode ? NUM_VOICES : 1;
- 162              		.loc 1 95 30 is_stmt 0 view .LVU39
+ 100:AudioProcessor.cpp ****     effective_num_voices = poly_mode ? NUM_VOICES : 1;
+ 161              		.loc 1 100 5 is_stmt 1 view .LVU38
+ 100:AudioProcessor.cpp ****     effective_num_voices = poly_mode ? NUM_VOICES : 1;
+ 162              		.loc 1 100 30 is_stmt 0 view .LVU39
  163 001a CCBF     		ite	gt
  164 001c 0022     		movgt	r2, #0
  165              	.LVL7:
-  95:AudioProcessor.cpp ****     effective_num_voices = poly_mode ? NUM_VOICES : 1;
- 166              		.loc 1 95 30 view .LVU40
+ 100:AudioProcessor.cpp ****     effective_num_voices = poly_mode ? NUM_VOICES : 1;
+ 166              		.loc 1 100 30 view .LVU40
  167 001e 0122     		movle	r2, #1
-  96:AudioProcessor.cpp **** 
- 168              		.loc 1 96 38 view .LVU41
+ 101:AudioProcessor.cpp **** 
+ 168              		.loc 1 101 38 view .LVU41
  169 0020 042B     		cmp	r3, #4
-  95:AudioProcessor.cpp ****     effective_num_voices = poly_mode ? NUM_VOICES : 1;
- 170              		.loc 1 95 30 view .LVU42
+ 100:AudioProcessor.cpp ****     effective_num_voices = poly_mode ? NUM_VOICES : 1;
+ 170              		.loc 1 100 30 view .LVU42
  171 0022 0A70     		strb	r2, [r1]
-  96:AudioProcessor.cpp **** 
- 172              		.loc 1 96 5 is_stmt 1 view .LVU43
-  96:AudioProcessor.cpp **** 
- 173              		.loc 1 96 38 is_stmt 0 view .LVU44
+ 101:AudioProcessor.cpp **** 
+ 172              		.loc 1 101 5 is_stmt 1 view .LVU43
+ 101:AudioProcessor.cpp **** 
+ 173              		.loc 1 101 38 is_stmt 0 view .LVU44
  174 0024 B4BF     		ite	lt
  175 0026 0423     		movlt	r3, #4
  176 0028 0123     		movge	r3, #1
-  96:AudioProcessor.cpp **** 
- 177              		.loc 1 96 26 view .LVU45
+ 101:AudioProcessor.cpp **** 
+ 177              		.loc 1 101 26 view .LVU45
  178 002a 3360     		str	r3, [r6]
-  98:AudioProcessor.cpp ****     if (!current_arp_on && was_arp_on) {
- 179              		.loc 1 98 5 is_stmt 1 view .LVU46
-  98:AudioProcessor.cpp ****     if (!current_arp_on && was_arp_on) {
- 180              		.loc 1 98 27 is_stmt 0 view .LVU47
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 7
+
+
+ 103:AudioProcessor.cpp ****     if (!current_arp_on && was_arp_on) {
+ 179              		.loc 1 103 5 is_stmt 1 view .LVU46
+ 103:AudioProcessor.cpp ****     if (!current_arp_on && was_arp_on) {
+ 180              		.loc 1 103 27 is_stmt 0 view .LVU47
  181 002c 1E4B     		ldr	r3, .L17+4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 7
-
-
  182 002e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
  183              	.LVL8:
-  99:AudioProcessor.cpp ****         poly_engine.ResetVoices();
- 184              		.loc 1 99 5 is_stmt 1 view .LVU48
+ 104:AudioProcessor.cpp ****         poly_engine.ResetVoices();
+ 184              		.loc 1 104 5 is_stmt 1 view .LVU48
  185              	.LBB17:
  186 0030 03F0FF07 		and	r7, r3, #255
  187 0034 4BB9     		cbnz	r3, .L10
-  99:AudioProcessor.cpp ****         poly_engine.ResetVoices();
- 188              		.loc 1 99 25 is_stmt 0 discriminator 1 view .LVU49
+ 104:AudioProcessor.cpp ****         poly_engine.ResetVoices();
+ 188              		.loc 1 104 25 is_stmt 0 discriminator 1 view .LVU49
  189 0036 99F80030 		ldrb	r3, [r9]	@ zero_extendqisi2
  190              	.LVL9:
-  99:AudioProcessor.cpp ****         poly_engine.ResetVoices();
- 191              		.loc 1 99 25 discriminator 1 view .LVU50
+ 104:AudioProcessor.cpp ****         poly_engine.ResetVoices();
+ 191              		.loc 1 104 25 discriminator 1 view .LVU50
  192 003a 33B1     		cbz	r3, .L10
  193              	.LBB18:
- 100:AudioProcessor.cpp ****         for (int v = 0; v < NUM_VOICES; ++v) {
- 194              		.loc 1 100 9 is_stmt 1 view .LVU51
- 100:AudioProcessor.cpp ****         for (int v = 0; v < NUM_VOICES; ++v) {
- 195              		.loc 1 100 32 is_stmt 0 view .LVU52
+ 105:AudioProcessor.cpp ****         for (int v = 0; v < NUM_VOICES; ++v) {
+ 194              		.loc 1 105 9 is_stmt 1 view .LVU51
+ 105:AudioProcessor.cpp ****         for (int v = 0; v < NUM_VOICES; ++v) {
+ 195              		.loc 1 105 32 is_stmt 0 view .LVU52
  196 003c 1B48     		ldr	r0, .L17+8
  197              	.LVL10:
- 100:AudioProcessor.cpp ****         for (int v = 0; v < NUM_VOICES; ++v) {
- 198              		.loc 1 100 32 view .LVU53
+ 105:AudioProcessor.cpp ****         for (int v = 0; v < NUM_VOICES; ++v) {
+ 198              		.loc 1 105 32 view .LVU53
  199 003e FFF7FEFF 		bl	_ZN15PolyphonyEngine11ResetVoicesEv
  200              	.LVL11:
- 101:AudioProcessor.cpp ****         }
- 201              		.loc 1 101 9 is_stmt 1 view .LVU54
+ 106:AudioProcessor.cpp ****         }
+ 201              		.loc 1 106 9 is_stmt 1 view .LVU54
  202              	.LBE18:
  203              	.LBE17:
- 101:AudioProcessor.cpp ****         }
- 204              		.loc 1 101 27 view .LVU55
+ 106:AudioProcessor.cpp ****         }
+ 204              		.loc 1 106 27 view .LVU55
  205              	.LBB20:
  206              	.LBB19:
- 103:AudioProcessor.cpp ****     }
- 207              		.loc 1 103 9 view .LVU56
- 103:AudioProcessor.cpp ****     }
- 208              		.loc 1 103 41 is_stmt 0 view .LVU57
+ 108:AudioProcessor.cpp ****     }
+ 207              		.loc 1 108 9 view .LVU56
+ 108:AudioProcessor.cpp ****     }
+ 208              		.loc 1 108 41 is_stmt 0 view .LVU57
  209 0042 3946     		mov	r1, r7
  210 0044 1948     		ldr	r0, .L17+8
  211 0046 FFF7FEFF 		bl	_ZN15PolyphonyEngine20UpdateLastTouchStateEt
@@ -405,38 +410,38 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  213              	.L10:
  214              	.LBE19:
  215              	.LBE20:
- 105:AudioProcessor.cpp ****     arp_on_out = current_arp_on;
- 216              		.loc 1 105 5 is_stmt 1 view .LVU58
- 106:AudioProcessor.cpp **** 
- 217              		.loc 1 106 16 is_stmt 0 view .LVU59
+ 110:AudioProcessor.cpp ****     arp_on_out = current_arp_on;
+ 216              		.loc 1 110 5 is_stmt 1 view .LVU58
+ 111:AudioProcessor.cpp **** 
+ 217              		.loc 1 111 16 is_stmt 0 view .LVU59
  218 004a 88F80070 		strb	r7, [r8]
  219 004e DFF86880 		ldr	r8, .L17+20
  220              	.LVL13:
- 109:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
- 221              		.loc 1 109 28 view .LVU60
+ 114:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 8
+
+
+ 221              		.loc 1 114 28 view .LVU60
  222 0052 1648     		ldr	r0, .L17+8
  223 0054 B8F80010 		ldrh	r1, [r8]
- 105:AudioProcessor.cpp ****     arp_on_out = current_arp_on;
- 224              		.loc 1 105 16 view .LVU61
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 8
-
-
+ 110:AudioProcessor.cpp ****     arp_on_out = current_arp_on;
+ 224              		.loc 1 110 16 view .LVU61
  225 0058 89F80070 		strb	r7, [r9]
- 106:AudioProcessor.cpp **** 
- 226              		.loc 1 106 5 is_stmt 1 view .LVU62
- 108:AudioProcessor.cpp ****         arp.UpdateHeldNotes(current_touch_state, poly_engine.GetLastTouchState());
- 227              		.loc 1 108 5 view .LVU63
- 109:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
- 228              		.loc 1 109 28 is_stmt 0 view .LVU64
+ 111:AudioProcessor.cpp **** 
+ 226              		.loc 1 111 5 is_stmt 1 view .LVU62
+ 113:AudioProcessor.cpp ****         arp.UpdateHeldNotes(current_touch_state, poly_engine.GetLastTouchState());
+ 227              		.loc 1 113 5 view .LVU63
+ 114:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
+ 228              		.loc 1 114 28 is_stmt 0 view .LVU64
  229 005c 89B2     		uxth	r1, r1
  230 005e 0391     		str	r1, [sp, #12]
- 108:AudioProcessor.cpp ****         arp.UpdateHeldNotes(current_touch_state, poly_engine.GetLastTouchState());
- 231              		.loc 1 108 5 view .LVU65
+ 113:AudioProcessor.cpp ****         arp.UpdateHeldNotes(current_touch_state, poly_engine.GetLastTouchState());
+ 231              		.loc 1 113 5 view .LVU65
  232 0060 9FB1     		cbz	r7, .L11
- 109:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
- 233              		.loc 1 109 9 is_stmt 1 view .LVU66
- 109:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
- 234              		.loc 1 109 28 is_stmt 0 view .LVU67
+ 114:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
+ 233              		.loc 1 114 9 is_stmt 1 view .LVU66
+ 114:AudioProcessor.cpp ****         arp.Process(BLOCK_SIZE);
+ 234              		.loc 1 114 28 is_stmt 0 view .LVU67
  235 0062 FFF7FEFF 		bl	_ZNK15PolyphonyEngine17GetLastTouchStateEv
  236              	.LVL14:
  237 0066 0399     		ldr	r1, [sp, #12]
@@ -444,24 +449,24 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  239 006a 1148     		ldr	r0, .L17+12
  240 006c FFF7FEFF 		bl	_ZN11Arpeggiator15UpdateHeldNotesEtt
  241              	.LVL15:
- 110:AudioProcessor.cpp ****     } else {
- 242              		.loc 1 110 9 is_stmt 1 view .LVU68
- 110:AudioProcessor.cpp ****     } else {
- 243              		.loc 1 110 20 is_stmt 0 view .LVU69
- 244 0070 1021     		movs	r1, #16
+ 115:AudioProcessor.cpp ****     } else {
+ 242              		.loc 1 115 9 is_stmt 1 view .LVU68
+ 115:AudioProcessor.cpp ****     } else {
+ 243              		.loc 1 115 20 is_stmt 0 view .LVU69
+ 244 0070 2021     		movs	r1, #32
  245 0072 0F48     		ldr	r0, .L17+12
  246 0074 FFF7FEFF 		bl	_ZN11Arpeggiator7ProcessEj
  247              	.LVL16:
  248              	.L12:
- 115:AudioProcessor.cpp **** }
- 249              		.loc 1 115 5 is_stmt 1 view .LVU70
- 115:AudioProcessor.cpp **** }
- 250              		.loc 1 115 37 is_stmt 0 view .LVU71
+ 120:AudioProcessor.cpp **** }
+ 249              		.loc 1 120 5 is_stmt 1 view .LVU70
+ 120:AudioProcessor.cpp **** }
+ 250              		.loc 1 120 37 is_stmt 0 view .LVU71
  251 0078 B8F80010 		ldrh	r1, [r8]
  252 007c 0B48     		ldr	r0, .L17+8
  253 007e 89B2     		uxth	r1, r1
- 116:AudioProcessor.cpp **** 
- 254              		.loc 1 116 1 view .LVU72
+ 121:AudioProcessor.cpp **** 
+ 254              		.loc 1 121 1 view .LVU72
  255 0080 05B0     		add	sp, sp, #20
  256              		.cfi_remember_state
  257              		.cfi_def_cfa_offset 28
@@ -473,22 +478,22 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  263              		.cfi_restore 7
  264              		.cfi_restore 6
  265              		.cfi_restore 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 9
+
+
  266              		.cfi_restore 4
  267              		.cfi_def_cfa_offset 0
  268              	.LVL17:
- 115:AudioProcessor.cpp **** }
- 269              		.loc 1 115 37 view .LVU73
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 9
-
-
+ 120:AudioProcessor.cpp **** }
+ 269              		.loc 1 120 37 view .LVU73
  270 0086 FFF7FEBF 		b	_ZN15PolyphonyEngine20UpdateLastTouchStateEt
  271              	.LVL18:
  272              	.L11:
  273              		.cfi_restore_state
- 112:AudioProcessor.cpp ****     }
- 274              		.loc 1 112 9 is_stmt 1 view .LVU74
- 112:AudioProcessor.cpp ****     }
- 275              		.loc 1 112 37 is_stmt 0 view .LVU75
+ 117:AudioProcessor.cpp ****     }
+ 274              		.loc 1 117 9 is_stmt 1 view .LVU74
+ 117:AudioProcessor.cpp ****     }
+ 275              		.loc 1 117 37 is_stmt 0 view .LVU75
  276 008a FFF7FEFF 		bl	_ZNK15PolyphonyEngine17GetLastTouchStateEv
  277              	.LVL19:
  278 008e 3368     		ldr	r3, [r6]
@@ -522,127 +527,127 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  308              	_Z12RenderVoicesibib:
  309              	.LVL21:
  310              	.LFB5845:
- 118:AudioProcessor.cpp ****     PolyphonyEngine::RenderParameters params;
- 311              		.loc 1 118 91 is_stmt 1 view -0
+ 123:AudioProcessor.cpp ****     PolyphonyEngine::RenderParameters params;
+ 311              		.loc 1 123 91 is_stmt 1 view -0
  312              		.cfi_startproc
  313              		@ args = 0, pretend = 0, frame = 48
  314              		@ frame_needed = 0, uses_anonymous_args = 0
- 119:AudioProcessor.cpp ****     params.engine_index = engineIndex;
- 315              		.loc 1 119 5 view .LVU77
- 120:AudioProcessor.cpp ****     params.poly_mode = poly_mode;
- 316              		.loc 1 120 5 view .LVU78
- 118:AudioProcessor.cpp ****     PolyphonyEngine::RenderParameters params;
- 317              		.loc 1 118 91 is_stmt 0 view .LVU79
+ 124:AudioProcessor.cpp ****     params.engine_index = engineIndex;
+ 315              		.loc 1 124 5 view .LVU77
+ 125:AudioProcessor.cpp ****     params.poly_mode = poly_mode;
+ 316              		.loc 1 125 5 view .LVU78
+ 123:AudioProcessor.cpp ****     PolyphonyEngine::RenderParameters params;
+ 317              		.loc 1 123 91 is_stmt 0 view .LVU79
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 10
+
+
  318 0000 00B5     		push	{lr}
  319              		.cfi_def_cfa_offset 4
  320              		.cfi_offset 14, -4
  321 0002 8DB0     		sub	sp, sp, #52
  322              		.cfi_def_cfa_offset 56
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 10
-
-
- 123:AudioProcessor.cpp ****     params.pitch_val = pitch_val;
- 323              		.loc 1 123 19 view .LVU80
+ 128:AudioProcessor.cpp ****     params.pitch_val = pitch_val;
+ 323              		.loc 1 128 19 view .LVU80
  324 0004 8DF80C30 		strb	r3, [sp, #12]
- 124:AudioProcessor.cpp ****     params.harm_knob_val = harm_knob_val;
- 325              		.loc 1 124 22 view .LVU81
+ 129:AudioProcessor.cpp ****     params.harm_knob_val = harm_knob_val;
+ 325              		.loc 1 129 22 view .LVU81
  326 0008 114B     		ldr	r3, .L20
  327              	.LVL22:
- 120:AudioProcessor.cpp ****     params.poly_mode = poly_mode;
- 328              		.loc 1 120 25 view .LVU82
+ 125:AudioProcessor.cpp ****     params.poly_mode = poly_mode;
+ 328              		.loc 1 125 25 view .LVU82
  329 000a 0090     		str	r0, [sp]
- 121:AudioProcessor.cpp ****     params.effective_num_voices = effective_num_voices;
- 330              		.loc 1 121 5 is_stmt 1 view .LVU83
- 124:AudioProcessor.cpp ****     params.harm_knob_val = harm_knob_val;
- 331              		.loc 1 124 22 is_stmt 0 view .LVU84
+ 126:AudioProcessor.cpp ****     params.effective_num_voices = effective_num_voices;
+ 330              		.loc 1 126 5 is_stmt 1 view .LVU83
+ 129:AudioProcessor.cpp ****     params.harm_knob_val = harm_knob_val;
+ 331              		.loc 1 129 22 is_stmt 0 view .LVU84
  332 000c 1B68     		ldr	r3, [r3]	@ float
- 121:AudioProcessor.cpp ****     params.effective_num_voices = effective_num_voices;
- 333              		.loc 1 121 22 view .LVU85
+ 126:AudioProcessor.cpp ****     params.effective_num_voices = effective_num_voices;
+ 333              		.loc 1 126 22 view .LVU85
  334 000e 8DF80410 		strb	r1, [sp, #4]
- 122:AudioProcessor.cpp ****     params.arp_on = arp_on;
- 335              		.loc 1 122 5 is_stmt 1 view .LVU86
- 133:AudioProcessor.cpp **** }
- 336              		.loc 1 133 28 is_stmt 0 view .LVU87
+ 127:AudioProcessor.cpp ****     params.arp_on = arp_on;
+ 335              		.loc 1 127 5 is_stmt 1 view .LVU86
+ 138:AudioProcessor.cpp **** }
+ 336              		.loc 1 138 28 is_stmt 0 view .LVU87
  337 0012 6946     		mov	r1, sp
  338              	.LVL23:
- 124:AudioProcessor.cpp ****     params.harm_knob_val = harm_knob_val;
- 339              		.loc 1 124 22 view .LVU88
+ 129:AudioProcessor.cpp ****     params.harm_knob_val = harm_knob_val;
+ 339              		.loc 1 129 22 view .LVU88
  340 0014 0493     		str	r3, [sp, #16]	@ float
- 125:AudioProcessor.cpp ****     params.morph_knob_val = morph_knob_val;
- 341              		.loc 1 125 26 view .LVU89
+ 130:AudioProcessor.cpp ****     params.morph_knob_val = morph_knob_val;
+ 341              		.loc 1 130 26 view .LVU89
  342 0016 0F4B     		ldr	r3, .L20+4
- 133:AudioProcessor.cpp **** }
- 343              		.loc 1 133 28 view .LVU90
+ 138:AudioProcessor.cpp **** }
+ 343              		.loc 1 138 28 view .LVU90
  344 0018 0F48     		ldr	r0, .L20+8
  345              	.LVL24:
- 125:AudioProcessor.cpp ****     params.morph_knob_val = morph_knob_val;
- 346              		.loc 1 125 26 view .LVU91
+ 130:AudioProcessor.cpp ****     params.morph_knob_val = morph_knob_val;
+ 346              		.loc 1 130 26 view .LVU91
  347 001a 1B68     		ldr	r3, [r3]	@ float
- 122:AudioProcessor.cpp ****     params.arp_on = arp_on;
- 348              		.loc 1 122 33 view .LVU92
+ 127:AudioProcessor.cpp ****     params.arp_on = arp_on;
+ 348              		.loc 1 127 33 view .LVU92
  349 001c 0292     		str	r2, [sp, #8]
- 123:AudioProcessor.cpp ****     params.pitch_val = pitch_val;
- 350              		.loc 1 123 5 is_stmt 1 view .LVU93
- 124:AudioProcessor.cpp ****     params.harm_knob_val = harm_knob_val;
- 351              		.loc 1 124 5 view .LVU94
- 125:AudioProcessor.cpp ****     params.morph_knob_val = morph_knob_val;
- 352              		.loc 1 125 5 view .LVU95
- 125:AudioProcessor.cpp ****     params.morph_knob_val = morph_knob_val;
- 353              		.loc 1 125 26 is_stmt 0 view .LVU96
+ 128:AudioProcessor.cpp ****     params.pitch_val = pitch_val;
+ 350              		.loc 1 128 5 is_stmt 1 view .LVU93
+ 129:AudioProcessor.cpp ****     params.harm_knob_val = harm_knob_val;
+ 351              		.loc 1 129 5 view .LVU94
+ 130:AudioProcessor.cpp ****     params.morph_knob_val = morph_knob_val;
+ 352              		.loc 1 130 5 view .LVU95
+ 130:AudioProcessor.cpp ****     params.morph_knob_val = morph_knob_val;
+ 353              		.loc 1 130 26 is_stmt 0 view .LVU96
  354 001e 0593     		str	r3, [sp, #20]	@ float
- 126:AudioProcessor.cpp ****     params.timbre_knob_val = timbre_knob_val;
- 355              		.loc 1 126 5 is_stmt 1 view .LVU97
- 126:AudioProcessor.cpp ****     params.timbre_knob_val = timbre_knob_val;
- 356              		.loc 1 126 27 is_stmt 0 view .LVU98
+ 131:AudioProcessor.cpp ****     params.timbre_knob_val = timbre_knob_val;
+ 355              		.loc 1 131 5 is_stmt 1 view .LVU97
+ 131:AudioProcessor.cpp ****     params.timbre_knob_val = timbre_knob_val;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 11
+
+
+ 356              		.loc 1 131 27 is_stmt 0 view .LVU98
  357 0020 0E4B     		ldr	r3, .L20+12
  358 0022 1B68     		ldr	r3, [r3]	@ float
  359 0024 0693     		str	r3, [sp, #24]	@ float
- 127:AudioProcessor.cpp ****     params.env_attack_val = env_attack_val;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 11
-
-
- 360              		.loc 1 127 5 is_stmt 1 view .LVU99
- 127:AudioProcessor.cpp ****     params.env_attack_val = env_attack_val;
- 361              		.loc 1 127 28 is_stmt 0 view .LVU100
+ 132:AudioProcessor.cpp ****     params.env_attack_val = env_attack_val;
+ 360              		.loc 1 132 5 is_stmt 1 view .LVU99
+ 132:AudioProcessor.cpp ****     params.env_attack_val = env_attack_val;
+ 361              		.loc 1 132 28 is_stmt 0 view .LVU100
  362 0026 0E4B     		ldr	r3, .L20+16
  363 0028 1B68     		ldr	r3, [r3]	@ float
  364 002a 0793     		str	r3, [sp, #28]	@ float
- 128:AudioProcessor.cpp ****     params.env_release_val = env_release_val;
- 365              		.loc 1 128 5 is_stmt 1 view .LVU101
- 128:AudioProcessor.cpp ****     params.env_release_val = env_release_val;
- 366              		.loc 1 128 27 is_stmt 0 view .LVU102
+ 133:AudioProcessor.cpp ****     params.env_release_val = env_release_val;
+ 365              		.loc 1 133 5 is_stmt 1 view .LVU101
+ 133:AudioProcessor.cpp ****     params.env_release_val = env_release_val;
+ 366              		.loc 1 133 27 is_stmt 0 view .LVU102
  367 002c 0D4B     		ldr	r3, .L20+20
  368 002e 1B68     		ldr	r3, [r3]	@ float
  369 0030 0893     		str	r3, [sp, #32]	@ float
- 129:AudioProcessor.cpp ****     params.delay_mix_val = delay_mix_val;
- 370              		.loc 1 129 5 is_stmt 1 view .LVU103
- 129:AudioProcessor.cpp ****     params.delay_mix_val = delay_mix_val;
- 371              		.loc 1 129 28 is_stmt 0 view .LVU104
+ 134:AudioProcessor.cpp ****     params.delay_mix_val = delay_mix_val;
+ 370              		.loc 1 134 5 is_stmt 1 view .LVU103
+ 134:AudioProcessor.cpp ****     params.delay_mix_val = delay_mix_val;
+ 371              		.loc 1 134 28 is_stmt 0 view .LVU104
  372 0032 0D4B     		ldr	r3, .L20+24
  373 0034 1B68     		ldr	r3, [r3]	@ float
  374 0036 0993     		str	r3, [sp, #36]	@ float
- 130:AudioProcessor.cpp ****     params.touch_cv_value = touch_cv_value;
- 375              		.loc 1 130 5 is_stmt 1 view .LVU105
- 130:AudioProcessor.cpp ****     params.touch_cv_value = touch_cv_value;
- 376              		.loc 1 130 26 is_stmt 0 view .LVU106
+ 135:AudioProcessor.cpp ****     params.touch_cv_value = touch_cv_value;
+ 375              		.loc 1 135 5 is_stmt 1 view .LVU105
+ 135:AudioProcessor.cpp ****     params.touch_cv_value = touch_cv_value;
+ 376              		.loc 1 135 26 is_stmt 0 view .LVU106
  377 0038 0C4B     		ldr	r3, .L20+28
  378 003a 1B68     		ldr	r3, [r3]	@ float
  379 003c 0A93     		str	r3, [sp, #40]	@ float
- 131:AudioProcessor.cpp ****     
- 380              		.loc 1 131 5 is_stmt 1 view .LVU107
- 131:AudioProcessor.cpp ****     
- 381              		.loc 1 131 27 is_stmt 0 view .LVU108
+ 136:AudioProcessor.cpp ****     
+ 380              		.loc 1 136 5 is_stmt 1 view .LVU107
+ 136:AudioProcessor.cpp ****     
+ 381              		.loc 1 136 27 is_stmt 0 view .LVU108
  382 003e 0C4B     		ldr	r3, .L20+32
  383 0040 1B68     		ldr	r3, [r3]	@ float
  384 0042 0B93     		str	r3, [sp, #44]	@ float
- 133:AudioProcessor.cpp **** }
- 385              		.loc 1 133 5 is_stmt 1 view .LVU109
- 133:AudioProcessor.cpp **** }
- 386              		.loc 1 133 28 is_stmt 0 view .LVU110
+ 138:AudioProcessor.cpp **** }
+ 385              		.loc 1 138 5 is_stmt 1 view .LVU109
+ 138:AudioProcessor.cpp **** }
+ 386              		.loc 1 138 28 is_stmt 0 view .LVU110
  387 0044 FFF7FEFF 		bl	_ZN15PolyphonyEngine11RenderBlockERKNS_16RenderParametersE
  388              	.LVL25:
- 134:AudioProcessor.cpp **** 
- 389              		.loc 1 134 1 view .LVU111
+ 139:AudioProcessor.cpp **** 
+ 389              		.loc 1 139 1 view .LVU111
  390 0048 0DB0     		add	sp, sp, #52
  391              		.cfi_def_cfa_offset 4
  392              		@ sp needed
@@ -653,14 +658,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  397 0050 00000000 		.word	pitch_val
  398 0054 00000000 		.word	harm_knob_val
  399 0058 00000000 		.word	poly_engine
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 12
+
+
  400 005c 00000000 		.word	morph_knob_val
  401 0060 00000000 		.word	timbre_knob_val
  402 0064 00000000 		.word	env_attack_val
  403 0068 00000000 		.word	env_release_val
  404 006c 00000000 		.word	delay_mix_val
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 12
-
-
  405 0070 00000000 		.word	touch_cv_value
  406              		.cfi_endproc
  407              	.LFE5845:
@@ -672,18 +677,18 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  414              		.thumb_func
  416              	_Z23DetermineEngineSettingsv:
  417              	.LFB5847:
- 145:AudioProcessor.cpp ****     return current_engine_index;
- 418              		.loc 1 145 31 is_stmt 1 view -0
+ 150:AudioProcessor.cpp ****     return current_engine_index;
+ 418              		.loc 1 150 31 is_stmt 1 view -0
  419              		.cfi_startproc
  420              		@ args = 0, pretend = 0, frame = 0
  421              		@ frame_needed = 0, uses_anonymous_args = 0
  422              		@ link register save eliminated.
- 423              		.loc 1 146 5 view .LVU113
- 424              		.loc 1 146 12 is_stmt 0 view .LVU114
+ 423              		.loc 1 151 5 view .LVU113
+ 424              		.loc 1 151 12 is_stmt 0 view .LVU114
  425 0000 014B     		ldr	r3, .L23
  426 0002 1868     		ldr	r0, [r3]
- 147:AudioProcessor.cpp **** }
- 427              		.loc 1 147 1 view .LVU115
+ 152:AudioProcessor.cpp **** }
+ 427              		.loc 1 152 1 view .LVU115
  428 0004 7047     		bx	lr
  429              	.L24:
  430 0006 00BF     		.align	2
@@ -700,131 +705,131 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  443              	_Z25UpdatePerformanceMonitorsjPf:
  444              	.LVL26:
  445              	.LFB5848:
- 148:AudioProcessor.cpp **** 
- 149:AudioProcessor.cpp **** void UpdatePerformanceMonitors(size_t size, AudioHandle::InterleavingOutputBuffer out) {
- 446              		.loc 1 149 88 is_stmt 1 view -0
+ 153:AudioProcessor.cpp **** 
+ 154:AudioProcessor.cpp **** void UpdatePerformanceMonitors(size_t size, AudioHandle::InterleavingOutputBuffer out) {
+ 446              		.loc 1 154 88 is_stmt 1 view -0
  447              		.cfi_startproc
  448              		@ args = 0, pretend = 0, frame = 0
  449              		@ frame_needed = 0, uses_anonymous_args = 0
- 150:AudioProcessor.cpp ****     if (size > 0) {
- 450              		.loc 1 150 5 view .LVU117
- 149:AudioProcessor.cpp ****     if (size > 0) {
- 451              		.loc 1 149 88 is_stmt 0 view .LVU118
+ 155:AudioProcessor.cpp ****     if (size > 0) {
+ 450              		.loc 1 155 5 view .LVU117
+ 154:AudioProcessor.cpp ****     if (size > 0) {
+ 451              		.loc 1 154 88 is_stmt 0 view .LVU118
  452 0000 38B5     		push	{r3, r4, r5, lr}
  453              		.cfi_def_cfa_offset 16
  454              		.cfi_offset 3, -16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 13
+
+
  455              		.cfi_offset 4, -12
  456              		.cfi_offset 5, -8
  457              		.cfi_offset 14, -4
  458              	.LBB21:
- 459              		.loc 1 150 5 view .LVU119
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 13
-
-
+ 459              		.loc 1 155 5 view .LVU119
  460 0002 80B1     		cbz	r0, .L26
  461              	.LBB22:
- 151:AudioProcessor.cpp ****         float current_level = fabsf(out[0]);
- 462              		.loc 1 151 9 is_stmt 1 view .LVU120
+ 156:AudioProcessor.cpp ****         float current_level = fabsf(out[0]);
+ 462              		.loc 1 156 9 is_stmt 1 view .LVU120
  463              	.LVL27:
- 152:AudioProcessor.cpp ****         smoothed_output_level = smoothed_output_level * 0.99f + current_level * 0.01f;
- 464              		.loc 1 152 9 view .LVU121
- 151:AudioProcessor.cpp ****         float current_level = fabsf(out[0]);
- 465              		.loc 1 151 15 is_stmt 0 view .LVU122
+ 157:AudioProcessor.cpp ****         smoothed_output_level = smoothed_output_level * 0.99f + current_level * 0.01f;
+ 464              		.loc 1 157 9 view .LVU121
+ 156:AudioProcessor.cpp ****         float current_level = fabsf(out[0]);
+ 465              		.loc 1 156 15 is_stmt 0 view .LVU122
  466 0004 D1ED007A 		vldr.32	s15, [r1]
- 467              		.loc 1 152 79 view .LVU123
+ 467              		.loc 1 157 79 view .LVU123
  468 0008 9FED1C7A 		vldr.32	s14, .L37
- 151:AudioProcessor.cpp ****         float current_level = fabsf(out[0]);
- 469              		.loc 1 151 15 view .LVU124
+ 156:AudioProcessor.cpp ****         float current_level = fabsf(out[0]);
+ 469              		.loc 1 156 15 view .LVU124
  470 000c F0EEE77A 		vabs.f32	s15, s15
  471              	.LVL28:
- 472              		.loc 1 152 33 view .LVU125
+ 472              		.loc 1 157 33 view .LVU125
  473 0010 1B4B     		ldr	r3, .L37+4
  474 0012 D3ED006A 		vldr.32	s13, [r3]
- 475              		.loc 1 152 79 view .LVU126
+ 475              		.loc 1 157 79 view .LVU126
  476 0016 67EE877A 		vmul.f32	s15, s15, s14
  477              	.LVL29:
- 478              		.loc 1 152 63 view .LVU127
+ 478              		.loc 1 157 63 view .LVU127
  479 001a 9FED1A7A 		vldr.32	s14, .L37+8
  480 001e E6EE877A 		vfma.f32	s15, s13, s14
- 481              		.loc 1 152 31 view .LVU128
+ 481              		.loc 1 157 31 view .LVU128
  482 0022 C3ED007A 		vstr.32	s15, [r3]
  483              	.LVL30:
  484              	.L26:
- 485              		.loc 1 152 31 view .LVU129
+ 485              		.loc 1 157 31 view .LVU129
  486              	.LBE22:
  487              	.LBE21:
- 153:AudioProcessor.cpp ****     }
- 154:AudioProcessor.cpp **** 
- 155:AudioProcessor.cpp ****     static uint32_t display_counter = 0;
- 488              		.loc 1 155 5 is_stmt 1 view .LVU130
- 156:AudioProcessor.cpp ****     static const uint32_t display_interval_blocks = (uint32_t)(sample_rate / BLOCK_SIZE * 3.0f);
- 489              		.loc 1 156 5 view .LVU131
- 490              		.loc 1 156 95 is_stmt 0 view .LVU132
+ 158:AudioProcessor.cpp ****     }
+ 159:AudioProcessor.cpp **** 
+ 160:AudioProcessor.cpp ****     static uint32_t display_counter = 0;
+ 488              		.loc 1 160 5 is_stmt 1 view .LVU130
+ 161:AudioProcessor.cpp ****     static const uint32_t display_interval_blocks = (uint32_t)(sample_rate / BLOCK_SIZE * 3.0f);
+ 489              		.loc 1 161 5 view .LVU131
+ 490              		.loc 1 161 95 is_stmt 0 view .LVU132
  491 0026 184C     		ldr	r4, .L37+12
  492 0028 184D     		ldr	r5, .L37+16
  493 002a 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
  494 002c BFF35B8F 		dmb	ish
  495 0030 13F0010F 		tst	r3, #1
  496 0034 15D1     		bne	.L28
- 497              		.loc 1 156 95 discriminator 1 view .LVU133
+ 497              		.loc 1 161 95 discriminator 1 view .LVU133
  498 0036 2046     		mov	r0, r4
  499              	.LVL31:
- 500              		.loc 1 156 95 discriminator 1 view .LVU134
+ 500              		.loc 1 161 95 discriminator 1 view .LVU134
  501 0038 FFF7FEFF 		bl	__cxa_guard_acquire
  502              	.LVL32:
- 503              		.loc 1 156 95 discriminator 1 view .LVU135
+ 503              		.loc 1 161 95 discriminator 1 view .LVU135
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 14
+
+
  504 003c 88B1     		cbz	r0, .L28
- 505              		.loc 1 156 76 discriminator 2 view .LVU136
+ 505              		.loc 1 161 76 discriminator 2 view .LVU136
  506 003e 144B     		ldr	r3, .L37+20
- 507              		.loc 1 156 95 discriminator 2 view .LVU137
+ 507              		.loc 1 161 95 discriminator 2 view .LVU137
  508 0040 2046     		mov	r0, r4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 14
-
-
- 509              		.loc 1 156 76 discriminator 2 view .LVU138
+ 509              		.loc 1 161 76 discriminator 2 view .LVU138
  510 0042 9FED147A 		vldr.32	s14, .L37+24
  511 0046 D3ED007A 		vldr.32	s15, [r3]
  512 004a 67EE877A 		vmul.f32	s15, s15, s14
- 513              		.loc 1 156 89 discriminator 2 view .LVU139
+ 513              		.loc 1 161 89 discriminator 2 view .LVU139
  514 004e B0EE087A 		vmov.f32	s14, #3.0e+0
  515 0052 67EE877A 		vmul.f32	s15, s15, s14
- 516              		.loc 1 156 53 discriminator 2 view .LVU140
+ 516              		.loc 1 161 53 discriminator 2 view .LVU140
  517 0056 FCEEE77A 		vcvt.u32.f32	s15, s15
  518 005a C5ED007A 		vstr.32	s15, [r5]	@ int
- 519              		.loc 1 156 95 discriminator 2 view .LVU141
+ 519              		.loc 1 161 95 discriminator 2 view .LVU141
  520 005e FFF7FEFF 		bl	__cxa_guard_release
  521              	.LVL33:
  522              	.L28:
- 157:AudioProcessor.cpp ****     if (++display_counter >= display_interval_blocks) {
- 523              		.loc 1 157 5 is_stmt 1 view .LVU142
- 524              		.loc 1 157 9 is_stmt 0 view .LVU143
+ 162:AudioProcessor.cpp ****     if (++display_counter >= display_interval_blocks) {
+ 523              		.loc 1 162 5 is_stmt 1 view .LVU142
+ 524              		.loc 1 162 9 is_stmt 0 view .LVU143
  525 0062 0D4A     		ldr	r2, .L37+28
- 526              		.loc 1 157 5 view .LVU144
+ 526              		.loc 1 162 5 view .LVU144
  527 0064 2968     		ldr	r1, [r5]
- 528              		.loc 1 157 9 view .LVU145
+ 528              		.loc 1 162 9 view .LVU145
  529 0066 1368     		ldr	r3, [r2]
  530 0068 0133     		adds	r3, r3, #1
- 531              		.loc 1 157 5 view .LVU146
+ 531              		.loc 1 162 5 view .LVU146
  532 006a 8B42     		cmp	r3, r1
- 533              		.loc 1 157 27 view .LVU147
+ 533              		.loc 1 162 27 view .LVU147
  534 006c 1360     		str	r3, [r2]
- 535              		.loc 1 157 5 view .LVU148
+ 535              		.loc 1 162 5 view .LVU148
  536 006e 04D3     		bcc	.L25
- 158:AudioProcessor.cpp ****         display_counter = 0;
- 537              		.loc 1 158 9 is_stmt 1 view .LVU149
- 538              		.loc 1 158 25 is_stmt 0 view .LVU150
+ 163:AudioProcessor.cpp ****         display_counter = 0;
+ 537              		.loc 1 163 9 is_stmt 1 view .LVU149
+ 538              		.loc 1 163 25 is_stmt 0 view .LVU150
  539 0070 0023     		movs	r3, #0
  540 0072 1360     		str	r3, [r2]
- 159:AudioProcessor.cpp ****         update_display = true;
- 541              		.loc 1 159 9 is_stmt 1 view .LVU151
- 542              		.loc 1 159 24 is_stmt 0 view .LVU152
+ 164:AudioProcessor.cpp ****         update_display = true;
+ 541              		.loc 1 164 9 is_stmt 1 view .LVU151
+ 542              		.loc 1 164 24 is_stmt 0 view .LVU152
  543 0074 0122     		movs	r2, #1
  544 0076 094B     		ldr	r3, .L37+32
  545 0078 1A70     		strb	r2, [r3]
  546              	.L25:
- 160:AudioProcessor.cpp ****     }
- 161:AudioProcessor.cpp **** } ...
- 547              		.loc 1 161 1 view .LVU153
+ 165:AudioProcessor.cpp ****     }
+ 166:AudioProcessor.cpp **** } ...
+ 547              		.loc 1 166 1 view .LVU153
  548 007a 38BD     		pop	{r3, r4, r5, pc}
  549              	.L38:
  550              		.align	2
@@ -833,14 +838,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  553 0080 00000000 		.word	smoothed_output_level
  554 0084 A4707D3F 		.word	1065185444
  555 0088 00000000 		.word	.LANCHOR2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 15
+
+
  556 008c 00000000 		.word	.LANCHOR3
  557 0090 00000000 		.word	sample_rate
- 558 0094 0000803D 		.word	1031798784
+ 558 0094 0000003D 		.word	1023410176
  559 0098 00000000 		.word	.LANCHOR4
  560 009c 00000000 		.word	update_display
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 15
-
-
  561              		.cfi_endproc
  562              	.LFE5848:
  564              		.section	.text._Z21ApplyEffectsAndOutputPfj,"ax",%progbits
@@ -852,33 +857,33 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  571              	_Z21ApplyEffectsAndOutputPfj:
  572              	.LVL34:
  573              	.LFB5846:
- 136:AudioProcessor.cpp **** void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
- 574              		.loc 1 136 84 is_stmt 1 view -0
+ 141:AudioProcessor.cpp **** void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
+ 574              		.loc 1 141 84 is_stmt 1 view -0
  575              		.cfi_startproc
  576              		@ args = 0, pretend = 0, frame = 0
  577              		@ frame_needed = 0, uses_anonymous_args = 0
- 137:AudioProcessor.cpp ****     DelayEffect::UpdateDelay();
- 578              		.loc 1 137 5 view .LVU155
- 136:AudioProcessor.cpp **** void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
- 579              		.loc 1 136 84 is_stmt 0 view .LVU156
+ 142:AudioProcessor.cpp ****     DelayEffect::UpdateDelay();
+ 578              		.loc 1 142 5 view .LVU155
+ 141:AudioProcessor.cpp **** void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
+ 579              		.loc 1 141 84 is_stmt 0 view .LVU156
  580 0000 38B5     		push	{r3, r4, r5, lr}
  581              		.cfi_def_cfa_offset 16
  582              		.cfi_offset 3, -16
  583              		.cfi_offset 4, -12
  584              		.cfi_offset 5, -8
  585              		.cfi_offset 14, -4
- 136:AudioProcessor.cpp **** void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
- 586              		.loc 1 136 84 view .LVU157
+ 141:AudioProcessor.cpp **** void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
+ 586              		.loc 1 141 84 view .LVU157
  587 0002 0546     		mov	r5, r0
  588 0004 0C46     		mov	r4, r1
- 137:AudioProcessor.cpp ****     DelayEffect::UpdateDelay();
- 589              		.loc 1 137 29 view .LVU158
+ 142:AudioProcessor.cpp ****     DelayEffect::UpdateDelay();
+ 589              		.loc 1 142 29 view .LVU158
  590 0006 FFF7FEFF 		bl	_ZN11DelayEffect11UpdateDelayEv
  591              	.LVL35:
- 139:AudioProcessor.cpp ****     float dry_level = 1.0f - delay_mix_val;
- 592              		.loc 1 139 5 is_stmt 1 view .LVU159
- 140:AudioProcessor.cpp ****     DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
- 593              		.loc 1 140 5 view .LVU160
+ 144:AudioProcessor.cpp ****     float dry_level = 1.0f - delay_mix_val;
+ 592              		.loc 1 144 5 is_stmt 1 view .LVU159
+ 145:AudioProcessor.cpp ****     DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
+ 593              		.loc 1 145 5 view .LVU160
  594              	.LBB23:
  595              	.LBI23:
  596              		.file 2 "Polyphony.h"
@@ -887,20 +892,20 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
    3:Polyphony.h   **** 
    4:Polyphony.h   **** // Define global constants needed by this header
    5:Polyphony.h   **** #define NUM_VOICES 4
-   6:Polyphony.h   **** #define BLOCK_SIZE 16
+   6:Polyphony.h   **** #define BLOCK_SIZE 32
    7:Polyphony.h   **** 
    8:Polyphony.h   **** #include "daisy_seed.h"
    9:Polyphony.h   **** #include "plaits/dsp/voice.h"
   10:Polyphony.h   **** #include "VoiceEnvelope.h"
   11:Polyphony.h   **** #include "Thaumazein.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 16
+
+
   12:Polyphony.h   **** #include "stmlib/utils/buffer_allocator.h"
   13:Polyphony.h   **** 
   14:Polyphony.h   **** namespace stmlib {
   15:Polyphony.h   ****     class MonoBlockAllocator;
   16:Polyphony.h   **** }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 16
-
-
   17:Polyphony.h   **** 
   18:Polyphony.h   **** namespace plaits {
   19:Polyphony.h   ****     class Voice;
@@ -946,38 +951,38 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  597              		.loc 2 58 18 view .LVU161
  598              	.LBE23:
  599              		.loc 2 58 48 view .LVU162
- 139:AudioProcessor.cpp ****     float dry_level = 1.0f - delay_mix_val;
- 600              		.loc 1 139 11 is_stmt 0 view .LVU163
+ 144:AudioProcessor.cpp ****     float dry_level = 1.0f - delay_mix_val;
+ 600              		.loc 1 144 11 is_stmt 0 view .LVU163
  601 000a 094B     		ldr	r3, .L40
  602              	.LVL36:
- 140:AudioProcessor.cpp ****     DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
- 603              		.loc 1 140 36 view .LVU164
+ 145:AudioProcessor.cpp ****     DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
+ 603              		.loc 1 145 36 view .LVU164
  604 000c B7EE000A 		vmov.f32	s0, #1.0e+0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 17
+
+
  605 0010 2946     		mov	r1, r5
- 139:AudioProcessor.cpp ****     float dry_level = 1.0f - delay_mix_val;
- 606              		.loc 1 139 11 view .LVU165
+ 144:AudioProcessor.cpp ****     float dry_level = 1.0f - delay_mix_val;
+ 606              		.loc 1 144 11 view .LVU165
  607 0012 D3ED007A 		vldr.32	s15, [r3]
- 140:AudioProcessor.cpp ****     DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 17
-
-
- 608              		.loc 1 140 36 view .LVU166
+ 145:AudioProcessor.cpp ****     DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
+ 608              		.loc 1 145 36 view .LVU166
  609 0016 2246     		mov	r2, r4
  610 0018 0648     		ldr	r0, .L40+4
  611 001a 30EE670A 		vsub.f32	s0, s0, s15
  612              	.LVL37:
- 140:AudioProcessor.cpp ****     DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
- 613              		.loc 1 140 36 view .LVU167
+ 145:AudioProcessor.cpp ****     DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
+ 613              		.loc 1 145 36 view .LVU167
  614 001e FFF7FEFF 		bl	_ZN11DelayEffect18ApplyDelayToOutputEPKfPfjf
  615              	.LVL38:
- 142:AudioProcessor.cpp ****     UpdatePerformanceMonitors(size, out);
- 616              		.loc 1 142 5 is_stmt 1 view .LVU168
- 142:AudioProcessor.cpp ****     UpdatePerformanceMonitors(size, out);
- 617              		.loc 1 142 30 is_stmt 0 view .LVU169
+ 147:AudioProcessor.cpp ****     UpdatePerformanceMonitors(size, out);
+ 616              		.loc 1 147 5 is_stmt 1 view .LVU168
+ 147:AudioProcessor.cpp ****     UpdatePerformanceMonitors(size, out);
+ 617              		.loc 1 147 30 is_stmt 0 view .LVU169
  618 0022 2946     		mov	r1, r5
  619 0024 2046     		mov	r0, r4
- 143:AudioProcessor.cpp **** }
- 620              		.loc 1 143 1 view .LVU170
+ 148:AudioProcessor.cpp **** }
+ 620              		.loc 1 148 1 view .LVU170
  621 0026 BDE83840 		pop	{r3, r4, r5, lr}
  622              		.cfi_restore 14
  623              		.cfi_restore 5
@@ -985,17 +990,17 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  625              		.cfi_restore 3
  626              		.cfi_def_cfa_offset 0
  627              	.LVL39:
- 142:AudioProcessor.cpp ****     UpdatePerformanceMonitors(size, out);
- 628              		.loc 1 142 30 view .LVU171
+ 147:AudioProcessor.cpp ****     UpdatePerformanceMonitors(size, out);
+ 628              		.loc 1 147 30 view .LVU171
  629 002a FFF7FEBF 		b	_Z25UpdatePerformanceMonitorsjPf
  630              	.LVL40:
  631              	.L41:
- 142:AudioProcessor.cpp ****     UpdatePerformanceMonitors(size, out);
- 632              		.loc 1 142 30 view .LVU172
+ 147:AudioProcessor.cpp ****     UpdatePerformanceMonitors(size, out);
+ 632              		.loc 1 147 30 view .LVU172
  633 002e 00BF     		.align	2
  634              	.L40:
  635 0030 00000000 		.word	delay_mix_val
- 636 0034 243A0000 		.word	poly_engine+14884
+ 636 0034 243C0000 		.word	poly_engine+15396
  637              		.cfi_endproc
  638              	.LFE5846:
  640              		.section	.rodata._Z13AudioCallbackPKfPfj.str1.1,"aMS",%progbits,1
@@ -1013,14 +1018,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  648              		.thumb_func
  650              	_Z13AudioCallbackPKfPfj:
  651              	.LVL41:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 18
+
+
  652              	.LFB5842:
   43:AudioProcessor.cpp ****                  size_t size) {
  653              		.loc 1 43 31 is_stmt 1 view -0
  654              		.cfi_startproc
  655              		@ args = 0, pretend = 0, frame = 16
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 18
-
-
  656              		@ frame_needed = 0, uses_anonymous_args = 0
   44:AudioProcessor.cpp ****     static bool audio_cb_started = false;
  657              		.loc 1 44 5 view .LVU174
@@ -1039,7 +1044,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  668              		.cfi_offset 14, -4
   45:AudioProcessor.cpp ****     if(!audio_cb_started) {
  669              		.loc 1 45 8 view .LVU177
- 670 0004 394C     		ldr	r4, .L56
+ 670 0004 3C4C     		ldr	r4, .L57
   43:AudioProcessor.cpp ****                  size_t size) {
  671              		.loc 1 43 31 view .LVU178
  672 0006 85B0     		sub	sp, sp, #20
@@ -1073,14 +1078,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
   13:lib/libdaisy/src/daisy_seed.h ****    @brief This is the higher-level interface for the Daisy board. \n 
   14:lib/libdaisy/src/daisy_seed.h ****     All basic peripheral configuration/initialization is setup here. \n
   15:lib/libdaisy/src/daisy_seed.h **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 19
+
+
   16:lib/libdaisy/src/daisy_seed.h ****    @ingroup boards
   17:lib/libdaisy/src/daisy_seed.h **** */
   18:lib/libdaisy/src/daisy_seed.h **** class DaisySeed
   19:lib/libdaisy/src/daisy_seed.h **** {
   20:lib/libdaisy/src/daisy_seed.h ****   public:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 19
-
-
   21:lib/libdaisy/src/daisy_seed.h ****     DaisySeed() {}
   22:lib/libdaisy/src/daisy_seed.h ****     ~DaisySeed() {}
   23:lib/libdaisy/src/daisy_seed.h **** 
@@ -1133,14 +1138,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
   70:lib/libdaisy/src/daisy_seed.h ****     /** Changes to a new interleaved callback
   71:lib/libdaisy/src/daisy_seed.h ****      */
   72:lib/libdaisy/src/daisy_seed.h ****     void ChangeAudioCallback(AudioHandle::InterleavingAudioCallback cb);
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 20
+
+
   73:lib/libdaisy/src/daisy_seed.h **** 
   74:lib/libdaisy/src/daisy_seed.h ****     /** Changes to a new multichannel callback
   75:lib/libdaisy/src/daisy_seed.h ****      */
   76:lib/libdaisy/src/daisy_seed.h ****     void ChangeAudioCallback(AudioHandle::AudioCallback cb);
   77:lib/libdaisy/src/daisy_seed.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 20
-
-
   78:lib/libdaisy/src/daisy_seed.h ****     /** Stops the audio if it is running. */
   79:lib/libdaisy/src/daisy_seed.h ****     void StopAudio();
   80:lib/libdaisy/src/daisy_seed.h **** 
@@ -1193,14 +1198,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  685              		.loc 3 126 17 view .LVU182
  686              	.LBB31:
  127:lib/libdaisy/src/daisy_seed.h ****     {
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 21
+
+
  128:lib/libdaisy/src/daisy_seed.h ****         Log::PrintLine(format, va...);
  687              		.loc 3 128 23 is_stmt 0 view .LVU183
- 688 0010 3748     		ldr	r0, .L56+4
+ 688 0010 3A48     		ldr	r0, .L57+4
  689              	.LVL43:
  690              		.loc 3 128 23 view .LVU184
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 21
-
-
  691 0012 FFF7FEFF 		bl	_ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
  692              	.LVL44:
  693              		.loc 3 128 23 view .LVU185
@@ -1213,17 +1218,49 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
  698 0016 0123     		movs	r3, #1
  699 0018 2370     		strb	r3, [r4]
  700              	.L43:
-  49:AudioProcessor.cpp ****     cpu_meter.OnBlockStart(); // Mark the beginning of the audio block
- 701              		.loc 1 49 5 is_stmt 1 view .LVU188
- 702              	.LVL45:
- 703              	.LBB32:
- 704              	.LBI32:
- 705              		.file 4 "lib/libdaisy/src/util/CpuLoadMeter.h"
+  50:AudioProcessor.cpp ****     static uint32_t last_ui_time = 0;
+ 701              		.loc 1 50 5 is_stmt 1 view .LVU188
+  51:AudioProcessor.cpp ****     uint32_t now_ms = hw.system.GetNow();
+ 702              		.loc 1 51 5 view .LVU189
+  51:AudioProcessor.cpp ****     uint32_t now_ms = hw.system.GetNow();
+ 703              		.loc 1 51 39 is_stmt 0 view .LVU190
+ 704 001a FFF7FEFF 		bl	_ZN5daisy6System6GetNowEv
+ 705              	.LVL45:
+  52:AudioProcessor.cpp ****     if(now_ms - last_ui_time >= 1) {
+ 706              		.loc 1 52 5 is_stmt 1 view .LVU191
+  52:AudioProcessor.cpp ****     if(now_ms - last_ui_time >= 1) {
+ 707              		.loc 1 52 30 is_stmt 0 view .LVU192
+ 708 001e 384B     		ldr	r3, .L57+8
+  52:AudioProcessor.cpp ****     if(now_ms - last_ui_time >= 1) {
+ 709              		.loc 1 52 5 view .LVU193
+ 710 0020 1A68     		ldr	r2, [r3]
+ 711 0022 8242     		cmp	r2, r0
+ 712 0024 02D0     		beq	.L44
+  53:AudioProcessor.cpp ****         last_ui_time = now_ms;
+ 713              		.loc 1 53 9 is_stmt 1 view .LVU194
+  53:AudioProcessor.cpp ****         last_ui_time = now_ms;
+ 714              		.loc 1 53 22 is_stmt 0 view .LVU195
+ 715 0026 1860     		str	r0, [r3]
+  54:AudioProcessor.cpp ****         ProcessUIAndControls();
+ 716              		.loc 1 54 9 is_stmt 1 view .LVU196
+  54:AudioProcessor.cpp ****         ProcessUIAndControls();
+ 717              		.loc 1 54 29 is_stmt 0 view .LVU197
+ 718 0028 FFF7FEFF 		bl	_Z20ProcessUIAndControlsv
+ 719              	.LVL46:
+ 720              	.L44:
+  56:AudioProcessor.cpp ****     cpu_meter.OnBlockStart(); // Mark the beginning of the audio block
+ 721              		.loc 1 56 5 is_stmt 1 view .LVU198
+ 722              	.LBB32:
+ 723              	.LBI32:
+ 724              		.file 4 "lib/libdaisy/src/util/CpuLoadMeter.h"
    1:lib/libdaisy/src/util/CpuLoadMeter.h **** #pragma once
    2:lib/libdaisy/src/util/CpuLoadMeter.h **** 
    3:lib/libdaisy/src/util/CpuLoadMeter.h **** #include "sys/system.h"
    4:lib/libdaisy/src/util/CpuLoadMeter.h **** #include <cmath>
    5:lib/libdaisy/src/util/CpuLoadMeter.h **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 22
+
+
    6:lib/libdaisy/src/util/CpuLoadMeter.h **** namespace daisy
    7:lib/libdaisy/src/util/CpuLoadMeter.h **** {
    8:lib/libdaisy/src/util/CpuLoadMeter.h **** /** @brief CPU load metering
@@ -1258,9 +1295,6 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
   37:lib/libdaisy/src/util/CpuLoadMeter.h ****         // update filter coefficient for smoothing filter (1pole lowpass)
   38:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto blockRateInHz = sampleRateInHz / float(blockSizeInSamples);
   39:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto cutoffNormalized
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 22
-
-
   40:lib/libdaisy/src/util/CpuLoadMeter.h ****             = smoothingFilterCutoffHz * 2.0f * 3.141592653f / blockRateInHz;
   41:lib/libdaisy/src/util/CpuLoadMeter.h ****         // according to
   42:lib/libdaisy/src/util/CpuLoadMeter.h ****         // https://en.wikipedia.org/wiki/Low-pass_filter#Simple_infinite_impulse_response_filter
@@ -1271,460 +1305,464 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 1
   47:lib/libdaisy/src/util/CpuLoadMeter.h **** 
   48:lib/libdaisy/src/util/CpuLoadMeter.h ****     /** Call this at the beginning of your audio callback */
   49:lib/libdaisy/src/util/CpuLoadMeter.h ****     void OnBlockStart() { currentBlockStartTicks_ = System::GetTick(); }
- 706              		.loc 4 49 10 view .LVU189
- 707              	.LBB33:
- 708              		.loc 4 49 27 view .LVU190
- 709              		.loc 4 49 51 is_stmt 0 view .LVU191
- 710 001a 364C     		ldr	r4, .L56+8
- 711              		.loc 4 49 68 view .LVU192
- 712 001c FFF7FEFF 		bl	_ZN5daisy6System7GetTickEv
- 713              	.LVL46:
- 714              	.LBE33:
- 715              	.LBE32:
-  61:AudioProcessor.cpp ****     if(engine_changed_flag) {
- 716              		.loc 1 61 8 view .LVU193
- 717 0020 354F     		ldr	r7, .L56+12
- 718              	.LBB35:
- 719              	.LBB34:
- 720              		.loc 4 49 51 view .LVU194
- 721 0022 A060     		str	r0, [r4, #8]
- 722              	.LVL47:
- 723              		.loc 4 49 51 view .LVU195
- 724              	.LBE34:
- 725              	.LBE35:
-  52:AudioProcessor.cpp ****     int engineIndex;
- 726              		.loc 1 52 5 is_stmt 1 view .LVU196
-  53:AudioProcessor.cpp ****     bool poly_mode;
- 727              		.loc 1 53 5 view .LVU197
-  54:AudioProcessor.cpp ****     int effective_num_voices;
- 728              		.loc 1 54 5 view .LVU198
-  55:AudioProcessor.cpp ****     bool arp_on;
- 729              		.loc 1 55 5 view .LVU199
-  57:AudioProcessor.cpp ****     ProcessUIAndControls();
- 730              		.loc 1 57 5 view .LVU200
-  57:AudioProcessor.cpp ****     ProcessUIAndControls();
- 731              		.loc 1 57 25 is_stmt 0 view .LVU201
- 732 0024 FFF7FEFF 		bl	_Z20ProcessUIAndControlsv
- 733              	.LVL48:
-  60:AudioProcessor.cpp ****     static int prev_engine_index_static = 0;
- 734              		.loc 1 60 5 is_stmt 1 view .LVU202
-  61:AudioProcessor.cpp ****     if(engine_changed_flag) {
- 735              		.loc 1 61 5 view .LVU203
-  61:AudioProcessor.cpp ****     if(engine_changed_flag) {
- 736              		.loc 1 61 8 is_stmt 0 view .LVU204
- 737 0028 3B78     		ldrb	r3, [r7]	@ zero_extendqisi2
-  61:AudioProcessor.cpp ****     if(engine_changed_flag) {
- 738              		.loc 1 61 5 view .LVU205
- 739 002a 83B1     		cbz	r3, .L44
-  62:AudioProcessor.cpp ****         poly_engine.OnEngineChange(prev_engine_index_static, current_engine_index);
- 740              		.loc 1 62 9 is_stmt 1 view .LVU206
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 23
+ 725              		.loc 4 49 10 view .LVU199
+ 726              	.LBB33:
+ 727              		.loc 4 49 27 view .LVU200
+ 728              	.LBE33:
+ 729              	.LBE32:
+  66:AudioProcessor.cpp ****     if(engine_changed_flag) {
+ 730              		.loc 1 66 8 is_stmt 0 view .LVU201
+ 731 002c 354F     		ldr	r7, .L57+12
+ 732              	.LBB36:
+ 733              	.LBB34:
+ 734              		.loc 4 49 68 view .LVU202
+ 735 002e FFF7FEFF 		bl	_ZN5daisy6System7GetTickEv
+ 736              	.LVL47:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 23
 
 
-  62:AudioProcessor.cpp ****         poly_engine.OnEngineChange(prev_engine_index_static, current_engine_index);
- 741              		.loc 1 62 35 is_stmt 0 view .LVU207
- 742 002c DFF8D090 		ldr	r9, .L56+20
- 743 0030 DFF8D080 		ldr	r8, .L56+24
- 744 0034 D9F80020 		ldr	r2, [r9]
- 745 0038 D8F80010 		ldr	r1, [r8]
- 746 003c 2F48     		ldr	r0, .L56+16
- 747 003e FFF7FEFF 		bl	_ZN15PolyphonyEngine14OnEngineChangeEii
- 748              	.LVL49:
-  63:AudioProcessor.cpp ****         prev_engine_index_static = current_engine_index;
- 749              		.loc 1 63 9 is_stmt 1 view .LVU208
-  63:AudioProcessor.cpp ****         prev_engine_index_static = current_engine_index;
- 750              		.loc 1 63 34 is_stmt 0 view .LVU209
- 751 0042 D9F80030 		ldr	r3, [r9]
- 752 0046 C8F80030 		str	r3, [r8]
-  64:AudioProcessor.cpp ****         engine_changed_flag = false; // Clear flag after handling
- 753              		.loc 1 64 9 is_stmt 1 view .LVU210
-  64:AudioProcessor.cpp ****         engine_changed_flag = false; // Clear flag after handling
- 754              		.loc 1 64 29 is_stmt 0 view .LVU211
- 755 004a 0023     		movs	r3, #0
- 756 004c 3B70     		strb	r3, [r7]
- 757              	.L44:
-  67:AudioProcessor.cpp ****     UpdateArpState(engineIndex, poly_mode, effective_num_voices, arp_on);
- 758              		.loc 1 67 5 is_stmt 1 view .LVU212
-  67:AudioProcessor.cpp ****     UpdateArpState(engineIndex, poly_mode, effective_num_voices, arp_on);
- 759              		.loc 1 67 19 is_stmt 0 view .LVU213
- 760 004e 0DF10703 		add	r3, sp, #7
- 761 0052 03AA     		add	r2, sp, #12
- 762 0054 0DF10601 		add	r1, sp, #6
- 763 0058 02A8     		add	r0, sp, #8
- 764 005a FFF7FEFF 		bl	_Z14UpdateArpStateRiRbS_S0_
- 765              	.LVL50:
-  68:AudioProcessor.cpp ****     RenderVoices(engineIndex, poly_mode, effective_num_voices, arp_on);
- 766              		.loc 1 68 5 is_stmt 1 view .LVU214
-  68:AudioProcessor.cpp ****     RenderVoices(engineIndex, poly_mode, effective_num_voices, arp_on);
- 767              		.loc 1 68 17 is_stmt 0 view .LVU215
- 768 005e 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
- 769 0062 039A     		ldr	r2, [sp, #12]
- 770 0064 9DF80610 		ldrb	r1, [sp, #6]	@ zero_extendqisi2
- 771 0068 0298     		ldr	r0, [sp, #8]
- 772 006a FFF7FEFF 		bl	_Z12RenderVoicesibib
- 773              	.LVL51:
-  69:AudioProcessor.cpp ****     ApplyEffectsAndOutput(out, size);
- 774              		.loc 1 69 5 is_stmt 1 view .LVU216
-  69:AudioProcessor.cpp ****     ApplyEffectsAndOutput(out, size);
- 775              		.loc 1 69 26 is_stmt 0 view .LVU217
- 776 006e 3146     		mov	r1, r6
- 777 0070 2846     		mov	r0, r5
- 778 0072 FFF7FEFF 		bl	_Z21ApplyEffectsAndOutputPfj
- 779              	.LVL52:
-  71:AudioProcessor.cpp ****     cpu_meter.OnBlockEnd(); // Mark the end of the audio block
- 780              		.loc 1 71 5 is_stmt 1 view .LVU218
- 781              	.LBB36:
- 782              	.LBI36:
+ 737              		.loc 4 49 51 view .LVU203
+ 738 0032 354C     		ldr	r4, .L57+16
+ 739              	.LBE34:
+ 740              	.LBE36:
+  66:AudioProcessor.cpp ****     if(engine_changed_flag) {
+ 741              		.loc 1 66 8 view .LVU204
+ 742 0034 3B78     		ldrb	r3, [r7]	@ zero_extendqisi2
+ 743              	.LBB37:
+ 744              	.LBB35:
+ 745              		.loc 4 49 51 view .LVU205
+ 746 0036 A060     		str	r0, [r4, #8]
+ 747              	.LVL48:
+ 748              		.loc 4 49 51 view .LVU206
+ 749              	.LBE35:
+ 750              	.LBE37:
+  59:AudioProcessor.cpp ****     int engineIndex;
+ 751              		.loc 1 59 5 is_stmt 1 view .LVU207
+  60:AudioProcessor.cpp ****     bool poly_mode;
+ 752              		.loc 1 60 5 view .LVU208
+  61:AudioProcessor.cpp ****     int effective_num_voices;
+ 753              		.loc 1 61 5 view .LVU209
+  62:AudioProcessor.cpp ****     bool arp_on;
+ 754              		.loc 1 62 5 view .LVU210
+  65:AudioProcessor.cpp ****     static int prev_engine_index_static = 0;
+ 755              		.loc 1 65 5 view .LVU211
+  66:AudioProcessor.cpp ****     if(engine_changed_flag) {
+ 756              		.loc 1 66 5 view .LVU212
+ 757 0038 83B1     		cbz	r3, .L45
+  67:AudioProcessor.cpp ****         poly_engine.OnEngineChange(prev_engine_index_static, current_engine_index);
+ 758              		.loc 1 67 9 view .LVU213
+  67:AudioProcessor.cpp ****         poly_engine.OnEngineChange(prev_engine_index_static, current_engine_index);
+ 759              		.loc 1 67 35 is_stmt 0 view .LVU214
+ 760 003a DFF8D490 		ldr	r9, .L57+24
+ 761 003e DFF8D480 		ldr	r8, .L57+28
+ 762 0042 D9F80020 		ldr	r2, [r9]
+ 763 0046 D8F80010 		ldr	r1, [r8]
+ 764 004a 3048     		ldr	r0, .L57+20
+ 765 004c FFF7FEFF 		bl	_ZN15PolyphonyEngine14OnEngineChangeEii
+ 766              	.LVL49:
+  68:AudioProcessor.cpp ****         prev_engine_index_static = current_engine_index;
+ 767              		.loc 1 68 9 is_stmt 1 view .LVU215
+  68:AudioProcessor.cpp ****         prev_engine_index_static = current_engine_index;
+ 768              		.loc 1 68 34 is_stmt 0 view .LVU216
+ 769 0050 D9F80030 		ldr	r3, [r9]
+ 770 0054 C8F80030 		str	r3, [r8]
+  69:AudioProcessor.cpp ****         engine_changed_flag = false; // Clear flag after handling
+ 771              		.loc 1 69 9 is_stmt 1 view .LVU217
+  69:AudioProcessor.cpp ****         engine_changed_flag = false; // Clear flag after handling
+ 772              		.loc 1 69 29 is_stmt 0 view .LVU218
+ 773 0058 0023     		movs	r3, #0
+ 774 005a 3B70     		strb	r3, [r7]
+ 775              	.L45:
+  72:AudioProcessor.cpp ****     UpdateArpState(engineIndex, poly_mode, effective_num_voices, arp_on);
+ 776              		.loc 1 72 5 is_stmt 1 view .LVU219
+  72:AudioProcessor.cpp ****     UpdateArpState(engineIndex, poly_mode, effective_num_voices, arp_on);
+ 777              		.loc 1 72 19 is_stmt 0 view .LVU220
+ 778 005c 0DF10703 		add	r3, sp, #7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 24
+
+
+ 779 0060 03AA     		add	r2, sp, #12
+ 780 0062 0DF10601 		add	r1, sp, #6
+ 781 0066 02A8     		add	r0, sp, #8
+ 782 0068 FFF7FEFF 		bl	_Z14UpdateArpStateRiRbS_S0_
+ 783              	.LVL50:
+  73:AudioProcessor.cpp ****     RenderVoices(engineIndex, poly_mode, effective_num_voices, arp_on);
+ 784              		.loc 1 73 5 is_stmt 1 view .LVU221
+  73:AudioProcessor.cpp ****     RenderVoices(engineIndex, poly_mode, effective_num_voices, arp_on);
+ 785              		.loc 1 73 17 is_stmt 0 view .LVU222
+ 786 006c 9DF80730 		ldrb	r3, [sp, #7]	@ zero_extendqisi2
+ 787 0070 039A     		ldr	r2, [sp, #12]
+ 788 0072 9DF80610 		ldrb	r1, [sp, #6]	@ zero_extendqisi2
+ 789 0076 0298     		ldr	r0, [sp, #8]
+ 790 0078 FFF7FEFF 		bl	_Z12RenderVoicesibib
+ 791              	.LVL51:
+  74:AudioProcessor.cpp ****     ApplyEffectsAndOutput(out, size);
+ 792              		.loc 1 74 5 is_stmt 1 view .LVU223
+  74:AudioProcessor.cpp ****     ApplyEffectsAndOutput(out, size);
+ 793              		.loc 1 74 26 is_stmt 0 view .LVU224
+ 794 007c 3146     		mov	r1, r6
+ 795 007e 2846     		mov	r0, r5
+ 796 0080 FFF7FEFF 		bl	_Z21ApplyEffectsAndOutputPfj
+ 797              	.LVL52:
+  76:AudioProcessor.cpp ****     cpu_meter.OnBlockEnd(); // Mark the end of the audio block
+ 798              		.loc 1 76 5 is_stmt 1 view .LVU225
+ 799              	.LBB38:
+ 800              	.LBI38:
   50:lib/libdaisy/src/util/CpuLoadMeter.h **** 
   51:lib/libdaisy/src/util/CpuLoadMeter.h ****     /** Call this at the end of your audio callback */
   52:lib/libdaisy/src/util/CpuLoadMeter.h ****     void OnBlockEnd()
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 24
-
-
- 783              		.loc 4 52 10 view .LVU219
- 784              	.LBB37:
+ 801              		.loc 4 52 10 view .LVU226
+ 802              	.LBB39:
   53:lib/libdaisy/src/util/CpuLoadMeter.h ****     {
   54:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto end         = System::GetTick();
- 785              		.loc 4 54 9 view .LVU220
- 786              		.loc 4 54 49 is_stmt 0 view .LVU221
- 787 0076 FFF7FEFF 		bl	_ZN5daisy6System7GetTickEv
- 788              	.LVL53:
+ 803              		.loc 4 54 9 view .LVU227
+ 804              		.loc 4 54 49 is_stmt 0 view .LVU228
+ 805 0084 FFF7FEFF 		bl	_ZN5daisy6System7GetTickEv
+ 806              	.LVL53:
   55:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto ticksPassed = end - currentBlockStartTicks_;
- 789              		.loc 4 55 9 is_stmt 1 view .LVU222
+ 807              		.loc 4 55 9 is_stmt 1 view .LVU229
   56:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto currentBlockLoad
- 790              		.loc 4 56 9 view .LVU223
+ 808              		.loc 4 56 9 view .LVU230
   55:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto ticksPassed = end - currentBlockStartTicks_;
- 791              		.loc 4 55 20 is_stmt 0 view .LVU224
- 792 007a A368     		ldr	r3, [r4, #8]
- 793              		.loc 4 56 20 view .LVU225
- 794 007c 94ED017A 		vldr.32	s14, [r4, #4]
+ 809              		.loc 4 55 20 is_stmt 0 view .LVU231
+ 810 0088 A368     		ldr	r3, [r4, #8]
+ 811              		.loc 4 56 20 view .LVU232
+ 812 008a 94ED017A 		vldr.32	s14, [r4, #4]
   55:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto ticksPassed = end - currentBlockStartTicks_;
- 795              		.loc 4 55 20 view .LVU226
- 796 0080 C31A     		subs	r3, r0, r3
- 797 0082 07EE903A 		vmov	s15, r3	@ int
+ 813              		.loc 4 55 20 view .LVU233
+ 814 008e C31A     		subs	r3, r0, r3
+ 815 0090 07EE903A 		vmov	s15, r3	@ int
   57:lib/libdaisy/src/util/CpuLoadMeter.h ****             = float(ticksPassed) * ticksPerBlockInv_; // usPassed / usPerBlock
   58:lib/libdaisy/src/util/CpuLoadMeter.h **** 
   59:lib/libdaisy/src/util/CpuLoadMeter.h ****         if(firstCycle_)
- 798              		.loc 4 59 9 view .LVU227
- 799 0086 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 816              		.loc 4 59 9 view .LVU234
+ 817 0094 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
   57:lib/libdaisy/src/util/CpuLoadMeter.h ****             = float(ticksPassed) * ticksPerBlockInv_; // usPassed / usPerBlock
- 800              		.loc 4 57 15 view .LVU228
- 801 0088 F8EE677A 		vcvt.f32.u32	s15, s15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 25
+
+
+ 818              		.loc 4 57 15 view .LVU235
+ 819 0096 F8EE677A 		vcvt.f32.u32	s15, s15
   56:lib/libdaisy/src/util/CpuLoadMeter.h ****         const auto currentBlockLoad
- 802              		.loc 4 56 20 view .LVU229
- 803 008c 67EE877A 		vmul.f32	s15, s15, s14
- 804              	.LVL54:
- 805              		.loc 4 59 9 is_stmt 1 view .LVU230
- 806 0090 53B1     		cbz	r3, .L45
+ 820              		.loc 4 56 20 view .LVU236
+ 821 009a 67EE877A 		vmul.f32	s15, s15, s14
+ 822              	.LVL54:
+ 823              		.loc 4 59 9 is_stmt 1 view .LVU237
+ 824 009e 53B1     		cbz	r3, .L46
   60:lib/libdaisy/src/util/CpuLoadMeter.h ****         {
   61:lib/libdaisy/src/util/CpuLoadMeter.h ****             max_ = min_ = avg_ = currentBlockLoad;
- 807              		.loc 4 61 13 view .LVU231
+ 825              		.loc 4 61 13 view .LVU238
   62:lib/libdaisy/src/util/CpuLoadMeter.h ****             firstCycle_        = false;
- 808              		.loc 4 62 32 is_stmt 0 view .LVU232
- 809 0092 0023     		movs	r3, #0
+ 826              		.loc 4 62 32 is_stmt 0 view .LVU239
+ 827 00a0 0023     		movs	r3, #0
   61:lib/libdaisy/src/util/CpuLoadMeter.h ****             firstCycle_        = false;
- 810              		.loc 4 61 32 view .LVU233
- 811 0094 C4ED057A 		vstr.32	s15, [r4, #20]
+ 828              		.loc 4 61 32 view .LVU240
+ 829 00a2 C4ED057A 		vstr.32	s15, [r4, #20]
   61:lib/libdaisy/src/util/CpuLoadMeter.h ****             firstCycle_        = false;
- 812              		.loc 4 61 25 view .LVU234
- 813 0098 C4ED037A 		vstr.32	s15, [r4, #12]
+ 830              		.loc 4 61 25 view .LVU241
+ 831 00a6 C4ED037A 		vstr.32	s15, [r4, #12]
   61:lib/libdaisy/src/util/CpuLoadMeter.h ****             firstCycle_        = false;
- 814              		.loc 4 61 18 view .LVU235
- 815 009c C4ED047A 		vstr.32	s15, [r4, #16]
- 816              		.loc 4 62 13 is_stmt 1 view .LVU236
- 817              		.loc 4 62 32 is_stmt 0 view .LVU237
- 818 00a0 2370     		strb	r3, [r4]
- 819              	.LVL55:
- 820              	.L42:
- 821              		.loc 4 62 32 view .LVU238
- 822              	.LBE37:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 25
-
-
- 823              	.LBE36:
-  72:AudioProcessor.cpp **** }
- 824              		.loc 1 72 1 view .LVU239
- 825 00a2 05B0     		add	sp, sp, #20
- 826              		.cfi_remember_state
- 827              		.cfi_def_cfa_offset 28
- 828              		@ sp needed
- 829 00a4 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
- 830              	.LVL56:
- 831              	.L45:
- 832              		.cfi_restore_state
- 833              	.LBB39:
- 834              	.LBB38:
+ 832              		.loc 4 61 18 view .LVU242
+ 833 00aa C4ED047A 		vstr.32	s15, [r4, #16]
+ 834              		.loc 4 62 13 is_stmt 1 view .LVU243
+ 835              		.loc 4 62 32 is_stmt 0 view .LVU244
+ 836 00ae 2370     		strb	r3, [r4]
+ 837              	.LVL55:
+ 838              	.L42:
+ 839              		.loc 4 62 32 view .LVU245
+ 840              	.LBE39:
+ 841              	.LBE38:
+  77:AudioProcessor.cpp **** }
+ 842              		.loc 1 77 1 view .LVU246
+ 843 00b0 05B0     		add	sp, sp, #20
+ 844              		.cfi_remember_state
+ 845              		.cfi_def_cfa_offset 28
+ 846              		@ sp needed
+ 847 00b2 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 848              	.LVL56:
+ 849              	.L46:
+ 850              		.cfi_restore_state
+ 851              	.LBB41:
+ 852              	.LBB40:
   63:lib/libdaisy/src/util/CpuLoadMeter.h ****         }
   64:lib/libdaisy/src/util/CpuLoadMeter.h ****         else
   65:lib/libdaisy/src/util/CpuLoadMeter.h ****         {
   66:lib/libdaisy/src/util/CpuLoadMeter.h ****             if(currentBlockLoad > max_)
- 835              		.loc 4 66 13 is_stmt 1 view .LVU240
- 836 00a8 94ED047A 		vldr.32	s14, [r4, #16]
+ 853              		.loc 4 66 13 is_stmt 1 view .LVU247
+ 854 00b6 94ED047A 		vldr.32	s14, [r4, #16]
   67:lib/libdaisy/src/util/CpuLoadMeter.h ****                 max_ = currentBlockLoad;
   68:lib/libdaisy/src/util/CpuLoadMeter.h ****             if(currentBlockLoad < min_)
   69:lib/libdaisy/src/util/CpuLoadMeter.h ****                 min_ = currentBlockLoad;
   70:lib/libdaisy/src/util/CpuLoadMeter.h **** 
   71:lib/libdaisy/src/util/CpuLoadMeter.h ****             avg_ = smoothingConstant_ * currentBlockLoad
- 837              		.loc 4 71 20 is_stmt 0 view .LVU241
- 838 00ac D4ED066A 		vldr.32	s13, [r4, #24]
+ 855              		.loc 4 71 20 is_stmt 0 view .LVU248
+ 856 00ba D4ED066A 		vldr.32	s13, [r4, #24]
   66:lib/libdaisy/src/util/CpuLoadMeter.h ****                 max_ = currentBlockLoad;
- 839              		.loc 4 66 13 view .LVU242
- 840 00b0 F4EEC77A 		vcmpe.f32	s15, s14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 26
+
+
+ 857              		.loc 4 66 13 view .LVU249
+ 858 00be F4EEC77A 		vcmpe.f32	s15, s14
   68:lib/libdaisy/src/util/CpuLoadMeter.h ****                 min_ = currentBlockLoad;
- 841              		.loc 4 68 13 view .LVU243
- 842 00b4 94ED037A 		vldr.32	s14, [r4, #12]
+ 859              		.loc 4 68 13 view .LVU250
+ 860 00c2 94ED037A 		vldr.32	s14, [r4, #12]
   72:lib/libdaisy/src/util/CpuLoadMeter.h ****                    + (1.0f - smoothingConstant_) * avg_;
- 843              		.loc 4 72 50 view .LVU244
- 844 00b8 94ED056A 		vldr.32	s12, [r4, #20]
+ 861              		.loc 4 72 50 view .LVU251
+ 862 00c6 94ED056A 		vldr.32	s12, [r4, #20]
   66:lib/libdaisy/src/util/CpuLoadMeter.h ****                 max_ = currentBlockLoad;
- 845              		.loc 4 66 13 view .LVU245
- 846 00bc F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 863              		.loc 4 66 13 view .LVU252
+ 864 00ca F1EE10FA 		vmrs	APSR_nzcv, FPSCR
   67:lib/libdaisy/src/util/CpuLoadMeter.h ****             if(currentBlockLoad < min_)
- 847              		.loc 4 67 17 is_stmt 1 view .LVU246
+ 865              		.loc 4 67 17 is_stmt 1 view .LVU253
   68:lib/libdaisy/src/util/CpuLoadMeter.h ****                 min_ = currentBlockLoad;
- 848              		.loc 4 68 13 is_stmt 0 view .LVU247
- 849 00c0 F4EEC77A 		vcmpe.f32	s15, s14
- 850              		.loc 4 72 28 view .LVU248
- 851 00c4 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 866              		.loc 4 68 13 is_stmt 0 view .LVU254
+ 867 00ce F4EEC77A 		vcmpe.f32	s15, s14
+ 868              		.loc 4 72 28 view .LVU255
+ 869 00d2 B7EE007A 		vmov.f32	s14, #1.0e+0
   67:lib/libdaisy/src/util/CpuLoadMeter.h ****             if(currentBlockLoad < min_)
- 852              		.loc 4 67 22 view .LVU249
- 853 00c8 C8BF     		it	gt
- 854 00ca C4ED047A 		vstrgt.32	s15, [r4, #16]
+ 870              		.loc 4 67 22 view .LVU256
+ 871 00d6 C8BF     		it	gt
+ 872 00d8 C4ED047A 		vstrgt.32	s15, [r4, #16]
   68:lib/libdaisy/src/util/CpuLoadMeter.h ****                 min_ = currentBlockLoad;
- 855              		.loc 4 68 13 is_stmt 1 view .LVU250
- 856 00ce F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 873              		.loc 4 68 13 is_stmt 1 view .LVU257
+ 874 00dc F1EE10FA 		vmrs	APSR_nzcv, FPSCR
   69:lib/libdaisy/src/util/CpuLoadMeter.h **** 
- 857              		.loc 4 69 17 view .LVU251
- 858              		.loc 4 72 28 is_stmt 0 view .LVU252
- 859 00d2 37EE667A 		vsub.f32	s14, s14, s13
+ 875              		.loc 4 69 17 view .LVU258
+ 876              		.loc 4 72 28 is_stmt 0 view .LVU259
+ 877 00e0 37EE667A 		vsub.f32	s14, s14, s13
   69:lib/libdaisy/src/util/CpuLoadMeter.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 26
+ 878              		.loc 4 69 22 view .LVU260
+ 879 00e4 48BF     		it	mi
+ 880 00e6 C4ED037A 		vstrmi.32	s15, [r4, #12]
+  71:lib/libdaisy/src/util/CpuLoadMeter.h ****                    + (1.0f - smoothingConstant_) * avg_;
+ 881              		.loc 4 71 13 is_stmt 1 view .LVU261
+ 882              		.loc 4 72 50 is_stmt 0 view .LVU262
+ 883 00ea 27EE067A 		vmul.f32	s14, s14, s12
+ 884              		.loc 4 72 20 view .LVU263
+ 885 00ee A7EEA67A 		vfma.f32	s14, s15, s13
+  71:lib/libdaisy/src/util/CpuLoadMeter.h ****                    + (1.0f - smoothingConstant_) * avg_;
+ 886              		.loc 4 71 18 view .LVU264
+ 887 00f2 84ED057A 		vstr.32	s14, [r4, #20]
+ 888              	.LVL57:
+  71:lib/libdaisy/src/util/CpuLoadMeter.h ****                    + (1.0f - smoothingConstant_) * avg_;
+ 889              		.loc 4 71 18 view .LVU265
+ 890              	.LBE40:
+ 891              	.LBE41:
+  77:AudioProcessor.cpp **** }
+ 892              		.loc 1 77 1 view .LVU266
+ 893 00f6 DBE7     		b	.L42
+ 894              	.L58:
+ 895              		.align	2
+ 896              	.L57:
+ 897 00f8 00000000 		.word	.LANCHOR5
+ 898 00fc 00000000 		.word	.LC0
+ 899 0100 00000000 		.word	.LANCHOR6
+ 900 0104 00000000 		.word	.LANCHOR7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 27
 
 
- 860              		.loc 4 69 22 view .LVU253
- 861 00d6 48BF     		it	mi
- 862 00d8 C4ED037A 		vstrmi.32	s15, [r4, #12]
-  71:lib/libdaisy/src/util/CpuLoadMeter.h ****                    + (1.0f - smoothingConstant_) * avg_;
- 863              		.loc 4 71 13 is_stmt 1 view .LVU254
- 864              		.loc 4 72 50 is_stmt 0 view .LVU255
- 865 00dc 27EE067A 		vmul.f32	s14, s14, s12
- 866              		.loc 4 72 20 view .LVU256
- 867 00e0 A7EEA67A 		vfma.f32	s14, s15, s13
-  71:lib/libdaisy/src/util/CpuLoadMeter.h ****                    + (1.0f - smoothingConstant_) * avg_;
- 868              		.loc 4 71 18 view .LVU257
- 869 00e4 84ED057A 		vstr.32	s14, [r4, #20]
- 870              	.LVL57:
-  71:lib/libdaisy/src/util/CpuLoadMeter.h ****                    + (1.0f - smoothingConstant_) * avg_;
- 871              		.loc 4 71 18 view .LVU258
- 872              	.LBE38:
- 873              	.LBE39:
-  72:AudioProcessor.cpp **** }
- 874              		.loc 1 72 1 view .LVU259
- 875 00e8 DBE7     		b	.L42
- 876              	.L57:
- 877 00ea 00BF     		.align	2
- 878              	.L56:
- 879 00ec 00000000 		.word	.LANCHOR5
- 880 00f0 00000000 		.word	.LC0
- 881 00f4 00000000 		.word	cpu_meter
- 882 00f8 00000000 		.word	.LANCHOR6
- 883 00fc 00000000 		.word	poly_engine
- 884 0100 00000000 		.word	.LANCHOR0
- 885 0104 00000000 		.word	.LANCHOR7
- 886              		.cfi_endproc
- 887              	.LFE5842:
- 889              		.global	engine_retrigger_phase
- 890              		.global	engine_changed_flag
- 891              		.global	current_engine_index
- 892              		.section	.bss._ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks,"aw",%nobits
- 893              		.align	2
- 894              		.set	.LANCHOR2,. + 0
- 897              	_ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:
- 898 0000 00000000 		.space	4
- 899              		.section	.bss._ZL10was_arp_on,"aw",%nobits
- 900              		.set	.LANCHOR1,. + 0
- 903              	_ZL10was_arp_on:
- 904 0000 00       		.space	1
- 905              		.section	.bss._ZZ13AudioCallbackPKfPfjE16audio_cb_started,"aw",%nobits
- 906              		.set	.LANCHOR5,. + 0
- 909              	_ZZ13AudioCallbackPKfPfjE16audio_cb_started:
- 910 0000 00       		.space	1
- 911              		.section	.bss._ZZ13AudioCallbackPKfPfjE24prev_engine_index_static,"aw",%nobits
+ 901 0108 00000000 		.word	cpu_meter
+ 902 010c 00000000 		.word	poly_engine
+ 903 0110 00000000 		.word	.LANCHOR0
+ 904 0114 00000000 		.word	.LANCHOR8
+ 905              		.cfi_endproc
+ 906              	.LFE5842:
+ 908              		.global	engine_retrigger_phase
+ 909              		.global	engine_changed_flag
+ 910              		.global	current_engine_index
+ 911              		.section	.bss._ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks,"aw",%nobits
  912              		.align	2
- 913              		.set	.LANCHOR7,. + 0
- 916              	_ZZ13AudioCallbackPKfPfjE24prev_engine_index_static:
+ 913              		.set	.LANCHOR2,. + 0
+ 916              	_ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:
  917 0000 00000000 		.space	4
- 918              		.section	.bss._ZZ25UpdatePerformanceMonitorsjPfE15display_counter,"aw",%nobits
- 919              		.align	2
- 920              		.set	.LANCHOR4,. + 0
- 923              	_ZZ25UpdatePerformanceMonitorsjPfE15display_counter:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 27
-
-
- 924 0000 00000000 		.space	4
- 925              		.section	.bss._ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks,"aw",%nobits
- 926              		.align	2
- 927              		.set	.LANCHOR3,. + 0
- 930              	_ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:
- 931 0000 00000000 		.space	4
- 932              		.section	.bss.current_engine_index,"aw",%nobits
- 933              		.align	2
- 934              		.set	.LANCHOR0,. + 0
- 937              	current_engine_index:
- 938 0000 00000000 		.space	4
- 939              		.section	.bss.engine_changed_flag,"aw",%nobits
- 940              		.set	.LANCHOR6,. + 0
- 943              	engine_changed_flag:
- 944 0000 00       		.space	1
- 945              		.section	.bss.engine_retrigger_phase,"aw",%nobits
- 946              		.align	2
- 949              	engine_retrigger_phase:
+ 918              		.section	.bss._ZL10was_arp_on,"aw",%nobits
+ 919              		.set	.LANCHOR1,. + 0
+ 922              	_ZL10was_arp_on:
+ 923 0000 00       		.space	1
+ 924              		.section	.bss._ZZ13AudioCallbackPKfPfjE12last_ui_time,"aw",%nobits
+ 925              		.align	2
+ 926              		.set	.LANCHOR6,. + 0
+ 929              	_ZZ13AudioCallbackPKfPfjE12last_ui_time:
+ 930 0000 00000000 		.space	4
+ 931              		.section	.bss._ZZ13AudioCallbackPKfPfjE16audio_cb_started,"aw",%nobits
+ 932              		.set	.LANCHOR5,. + 0
+ 935              	_ZZ13AudioCallbackPKfPfjE16audio_cb_started:
+ 936 0000 00       		.space	1
+ 937              		.section	.bss._ZZ13AudioCallbackPKfPfjE24prev_engine_index_static,"aw",%nobits
+ 938              		.align	2
+ 939              		.set	.LANCHOR8,. + 0
+ 942              	_ZZ13AudioCallbackPKfPfjE24prev_engine_index_static:
+ 943 0000 00000000 		.space	4
+ 944              		.section	.bss._ZZ25UpdatePerformanceMonitorsjPfE15display_counter,"aw",%nobits
+ 945              		.align	2
+ 946              		.set	.LANCHOR4,. + 0
+ 949              	_ZZ25UpdatePerformanceMonitorsjPfE15display_counter:
  950 0000 00000000 		.space	4
- 951              		.text
- 952              	.Letext0:
- 953              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
- 954              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
- 955              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
- 956              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
- 957              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
- 958              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
- 959              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
- 960              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
- 961              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
- 962              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
- 963              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
- 964              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
- 965              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
- 966              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
- 967              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
- 968              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
- 969              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
- 970              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
- 971              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
- 972              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
- 973              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
- 974              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/uses_allocator.h
- 975              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/tuple"
- 976              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h"
- 977              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/functional"
- 978              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/allocator.h"
- 979              		.file 31 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/alloc_traits.h"
- 980              		.file 32 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_vector.h"
- 981              		.file 33 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc"
- 982              		.file 34 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_function.h"
- 983              		.file 35 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/refwrap.h"
- 984              		.file 36 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstddef"
- 985              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
- 986              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/ext/new_allocator.h"
- 987              		.file 39 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/ext/alloc_traits.h"
- 988              		.file 40 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 28
+ 951              		.section	.bss._ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks,"aw",%nobits
+ 952              		.align	2
+ 953              		.set	.LANCHOR3,. + 0
+ 956              	_ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:
+ 957 0000 00000000 		.space	4
+ 958              		.section	.bss.current_engine_index,"aw",%nobits
+ 959              		.align	2
+ 960              		.set	.LANCHOR0,. + 0
+ 963              	current_engine_index:
+ 964 0000 00000000 		.space	4
+ 965              		.section	.bss.engine_changed_flag,"aw",%nobits
+ 966              		.set	.LANCHOR7,. + 0
+ 969              	engine_changed_flag:
+ 970 0000 00       		.space	1
+ 971              		.section	.bss.engine_retrigger_phase,"aw",%nobits
+ 972              		.align	2
+ 975              	engine_retrigger_phase:
+ 976 0000 00000000 		.space	4
+ 977              		.text
+ 978              	.Letext0:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 28
 
 
- 989              		.file 41 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
- 990              		.file 42 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
- 991              		.file 43 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
- 992              		.file 44 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
- 993              		.file 45 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
- 994              		.file 46 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
- 995              		.file 47 "lib/libdaisy/src/daisy_core.h"
- 996              		.file 48 "lib/libdaisy/src/per/tim.h"
- 997              		.file 49 "lib/libdaisy/src/sys/system.h"
- 998              		.file 50 "lib/libdaisy/src/per/qspi.h"
- 999              		.file 51 "lib/libdaisy/src/per/dac.h"
- 1000              		.file 52 "lib/libdaisy/src/per/gpio.h"
- 1001              		.file 53 "lib/libdaisy/src/per/sai.h"
- 1002              		.file 54 "lib/libdaisy/src/hid/audio.h"
- 1003              		.file 55 "lib/libdaisy/src/per/adc.h"
- 1004              		.file 56 "lib/libdaisy/src/hid/usb.h"
- 1005              		.file 57 "lib/libdaisy/src/hid/logger_impl.h"
- 1006              		.file 58 "lib/libdaisy/src/util/wav_format.h"
- 1007              		.file 59 "lib/libdaisy/src/dev/sr_595.h"
- 1008              		.file 60 "lib/libdaisy/src/dev/codec_ak4556.h"
- 1009              		.file 61 "lib/libdaisy/src/dev/max11300.h"
- 1010              		.file 62 "lib/libdaisy/src/hid/logger.h"
- 1011              		.file 63 "lib/libdaisy/src/dev/sdram.h"
- 1012              		.file 64 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
- 1013              		.file 65 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
- 1014              		.file 66 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
- 1015              		.file 67 "lib/DaisySP/Source/Control/adenv.h"
- 1016              		.file 68 "lib/DaisySP/Source/Utility/dsp.h"
- 1017              		.file 69 "lib/DaisySP/Source/Utility/metro.h"
- 1018              		.file 70 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
- 1019              		.file 71 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
- 1020              		.file 72 "eurorack/stmlib/stmlib.h"
- 1021              		.file 73 "eurorack/stmlib/dsp/filter.h"
- 1022              		.file 74 "eurorack/stmlib/dsp/limiter.h"
- 1023              		.file 75 "eurorack/stmlib/utils/buffer_allocator.h"
- 1024              		.file 76 "eurorack/stmlib/dsp/hysteresis_quantizer.h"
- 1025              		.file 77 "eurorack/plaits/dsp/dsp.h"
- 1026              		.file 78 "eurorack/plaits/dsp/engine/engine.h"
- 1027              		.file 79 "eurorack/plaits/dsp/engine/additive_engine.h"
- 1028              		.file 80 "eurorack/plaits/dsp/oscillator/oscillator.h"
- 1029              		.file 81 "eurorack/plaits/dsp/engine/chord_engine.h"
- 1030              		.file 82 "eurorack/plaits/dsp/physical_modelling/resonator.h"
- 1031              		.file 83 "eurorack/plaits/dsp/engine/particle_engine.h"
- 1032              		.file 84 "eurorack/plaits/dsp/physical_modelling/string.h"
- 1033              		.file 85 "eurorack/plaits/dsp/engine/string_engine.h"
- 1034              		.file 86 "eurorack/plaits/dsp/engine/swarm_engine.h"
- 1035              		.file 87 "eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h"
- 1036              		.file 88 "eurorack/plaits/dsp/envelope.h"
- 1037              		.file 89 "eurorack/plaits/dsp/fx/low_pass_gate.h"
- 1038              		.file 90 "eurorack/plaits/dsp/voice.h"
- 1039              		.file 91 "eurorack/plaits/dsp/physical_modelling/delay_line.h"
- 1040              		.file 92 "mpr121_daisy.h"
- 1041              		.file 93 "Effects/BiquadFilters.h"
- 1042              		.file 94 "VoiceEnvelope.h"
- 1043              		.file 95 "Arpeggiator.h"
- 1044              		.file 96 "Thaumazein.h"
- 1045              		.file 97 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 29
+ 979              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 980              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 981              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
+ 982              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 983              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 984              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 985              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 986              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdint"
+ 987              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 988              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 989              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 990              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 991              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 992              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 993              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdarg"
+ 994              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdio"
+ 995              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
+ 996              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cwchar"
+ 997              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/clocale"
+ 998              		.file 24 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/basic_string.h"
+ 999              		.file 25 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_iterator.h"
+ 1000              		.file 26 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/uses_allocator.h
+ 1001              		.file 27 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/tuple"
+ 1002              		.file 28 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_function.h"
+ 1003              		.file 29 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/functional"
+ 1004              		.file 30 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/allocator.h"
+ 1005              		.file 31 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/alloc_traits.h"
+ 1006              		.file 32 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_vector.h"
+ 1007              		.file 33 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/vector.tcc"
+ 1008              		.file 34 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_function.h"
+ 1009              		.file 35 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/refwrap.h"
+ 1010              		.file 36 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstddef"
+ 1011              		.file 37 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 1012              		.file 38 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/ext/new_allocator.h"
+ 1013              		.file 39 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/ext/alloc_traits.h"
+ 1014              		.file 40 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_types.h"
+ 1015              		.file 41 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/reent.h"
+ 1016              		.file 42 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/lock.h"
+ 1017              		.file 43 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 1018              		.file 44 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 1019              		.file 45 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 1020              		.file 46 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
+ 1021              		.file 47 "lib/libdaisy/src/daisy_core.h"
+ 1022              		.file 48 "lib/libdaisy/src/per/tim.h"
+ 1023              		.file 49 "lib/libdaisy/src/sys/system.h"
+ 1024              		.file 50 "lib/libdaisy/src/per/qspi.h"
+ 1025              		.file 51 "lib/libdaisy/src/per/dac.h"
+ 1026              		.file 52 "lib/libdaisy/src/per/gpio.h"
+ 1027              		.file 53 "lib/libdaisy/src/per/sai.h"
+ 1028              		.file 54 "lib/libdaisy/src/hid/audio.h"
+ 1029              		.file 55 "lib/libdaisy/src/per/adc.h"
+ 1030              		.file 56 "lib/libdaisy/src/hid/usb.h"
+ 1031              		.file 57 "lib/libdaisy/src/hid/logger_impl.h"
+ 1032              		.file 58 "lib/libdaisy/src/util/wav_format.h"
+ 1033              		.file 59 "lib/libdaisy/src/dev/sr_595.h"
+ 1034              		.file 60 "lib/libdaisy/src/dev/codec_ak4556.h"
+ 1035              		.file 61 "lib/libdaisy/src/dev/max11300.h"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 29
 
 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 30
+ 1036              		.file 62 "lib/libdaisy/src/hid/logger.h"
+ 1037              		.file 63 "lib/libdaisy/src/dev/sdram.h"
+ 1038              		.file 64 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stdarg.h"
+ 1039              		.file 65 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdio.h"
+ 1040              		.file 66 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
+ 1041              		.file 67 "lib/DaisySP/Source/Control/adenv.h"
+ 1042              		.file 68 "lib/DaisySP/Source/Utility/dsp.h"
+ 1043              		.file 69 "lib/DaisySP/Source/Utility/metro.h"
+ 1044              		.file 70 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/wchar.h"
+ 1045              		.file 71 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/locale.h"
+ 1046              		.file 72 "eurorack/stmlib/stmlib.h"
+ 1047              		.file 73 "eurorack/stmlib/dsp/filter.h"
+ 1048              		.file 74 "eurorack/stmlib/dsp/limiter.h"
+ 1049              		.file 75 "eurorack/stmlib/utils/buffer_allocator.h"
+ 1050              		.file 76 "eurorack/stmlib/dsp/hysteresis_quantizer.h"
+ 1051              		.file 77 "eurorack/plaits/dsp/dsp.h"
+ 1052              		.file 78 "eurorack/plaits/dsp/engine/engine.h"
+ 1053              		.file 79 "eurorack/plaits/dsp/engine/additive_engine.h"
+ 1054              		.file 80 "eurorack/plaits/dsp/oscillator/oscillator.h"
+ 1055              		.file 81 "eurorack/plaits/dsp/engine/chord_engine.h"
+ 1056              		.file 82 "eurorack/plaits/dsp/physical_modelling/resonator.h"
+ 1057              		.file 83 "eurorack/plaits/dsp/engine/particle_engine.h"
+ 1058              		.file 84 "eurorack/plaits/dsp/physical_modelling/string.h"
+ 1059              		.file 85 "eurorack/plaits/dsp/engine/string_engine.h"
+ 1060              		.file 86 "eurorack/plaits/dsp/engine/swarm_engine.h"
+ 1061              		.file 87 "eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h"
+ 1062              		.file 88 "eurorack/plaits/dsp/envelope.h"
+ 1063              		.file 89 "eurorack/plaits/dsp/fx/low_pass_gate.h"
+ 1064              		.file 90 "eurorack/plaits/dsp/voice.h"
+ 1065              		.file 91 "eurorack/plaits/dsp/physical_modelling/delay_line.h"
+ 1066              		.file 92 "mpr121_daisy.h"
+ 1067              		.file 93 "Effects/BiquadFilters.h"
+ 1068              		.file 94 "VoiceEnvelope.h"
+ 1069              		.file 95 "Arpeggiator.h"
+ 1070              		.file 96 "Thaumazein.h"
+ 1071              		.file 97 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 30
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 AudioProcessor.cpp
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:19     .text._Z20ProcessUIAndControlsv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:25     .text._Z20ProcessUIAndControlsv:0000000000000000 _Z20ProcessUIAndControlsv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:93     .text._Z20ProcessUIAndControlsv:000000000000004c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:103    .text._Z14UpdateArpStateRiRbS_S0_:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:109    .text._Z14UpdateArpStateRiRbS_S0_:0000000000000000 _Z14UpdateArpStateRiRbS_S0_
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:292    .text._Z14UpdateArpStateRiRbS_S0_:00000000000000a4 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:302    .text._Z12RenderVoicesibib:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:308    .text._Z12RenderVoicesibib:0000000000000000 _Z12RenderVoicesibib
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:397    .text._Z12RenderVoicesibib:0000000000000050 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:410    .text._Z23DetermineEngineSettingsv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:416    .text._Z23DetermineEngineSettingsv:0000000000000000 _Z23DetermineEngineSettingsv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:432    .text._Z23DetermineEngineSettingsv:0000000000000008 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:437    .text._Z25UpdatePerformanceMonitorsjPf:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:443    .text._Z25UpdatePerformanceMonitorsjPf:0000000000000000 _Z25UpdatePerformanceMonitorsjPf
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:552    .text._Z25UpdatePerformanceMonitorsjPf:000000000000007c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:565    .text._Z21ApplyEffectsAndOutputPfj:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:571    .text._Z21ApplyEffectsAndOutputPfj:0000000000000000 _Z21ApplyEffectsAndOutputPfj
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:635    .text._Z21ApplyEffectsAndOutputPfj:0000000000000030 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:644    .text._Z13AudioCallbackPKfPfj:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:650    .text._Z13AudioCallbackPKfPfj:0000000000000000 _Z13AudioCallbackPKfPfj
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:879    .text._Z13AudioCallbackPKfPfj:00000000000000ec $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:949    .bss.engine_retrigger_phase:0000000000000000 engine_retrigger_phase
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:943    .bss.engine_changed_flag:0000000000000000 engine_changed_flag
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:937    .bss.current_engine_index:0000000000000000 current_engine_index
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:893    .bss._ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:897    .bss._ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 _ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:903    .bss._ZL10was_arp_on:0000000000000000 _ZL10was_arp_on
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:904    .bss._ZL10was_arp_on:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:909    .bss._ZZ13AudioCallbackPKfPfjE16audio_cb_started:0000000000000000 _ZZ13AudioCallbackPKfPfjE16audio_cb_started
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:910    .bss._ZZ13AudioCallbackPKfPfjE16audio_cb_started:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:912    .bss._ZZ13AudioCallbackPKfPfjE24prev_engine_index_static:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:916    .bss._ZZ13AudioCallbackPKfPfjE24prev_engine_index_static:0000000000000000 _ZZ13AudioCallbackPKfPfjE24prev_engine_index_static
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:919    .bss._ZZ25UpdatePerformanceMonitorsjPfE15display_counter:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:923    .bss._ZZ25UpdatePerformanceMonitorsjPfE15display_counter:0000000000000000 _ZZ25UpdatePerformanceMonitorsjPfE15display_counter
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:926    .bss._ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:930    .bss._ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 _ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:933    .bss.current_engine_index:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:944    .bss.engine_changed_flag:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s:946    .bss.engine_retrigger_phase:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:19     .text._Z20ProcessUIAndControlsv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:25     .text._Z20ProcessUIAndControlsv:0000000000000000 _Z20ProcessUIAndControlsv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:93     .text._Z20ProcessUIAndControlsv:000000000000004c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:103    .text._Z14UpdateArpStateRiRbS_S0_:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:109    .text._Z14UpdateArpStateRiRbS_S0_:0000000000000000 _Z14UpdateArpStateRiRbS_S0_
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:292    .text._Z14UpdateArpStateRiRbS_S0_:00000000000000a4 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:302    .text._Z12RenderVoicesibib:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:308    .text._Z12RenderVoicesibib:0000000000000000 _Z12RenderVoicesibib
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:397    .text._Z12RenderVoicesibib:0000000000000050 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:410    .text._Z23DetermineEngineSettingsv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:416    .text._Z23DetermineEngineSettingsv:0000000000000000 _Z23DetermineEngineSettingsv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:432    .text._Z23DetermineEngineSettingsv:0000000000000008 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:437    .text._Z25UpdatePerformanceMonitorsjPf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:443    .text._Z25UpdatePerformanceMonitorsjPf:0000000000000000 _Z25UpdatePerformanceMonitorsjPf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:552    .text._Z25UpdatePerformanceMonitorsjPf:000000000000007c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:565    .text._Z21ApplyEffectsAndOutputPfj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:571    .text._Z21ApplyEffectsAndOutputPfj:0000000000000000 _Z21ApplyEffectsAndOutputPfj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:635    .text._Z21ApplyEffectsAndOutputPfj:0000000000000030 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:644    .text._Z13AudioCallbackPKfPfj:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:650    .text._Z13AudioCallbackPKfPfj:0000000000000000 _Z13AudioCallbackPKfPfj
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:897    .text._Z13AudioCallbackPKfPfj:00000000000000f8 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:975    .bss.engine_retrigger_phase:0000000000000000 engine_retrigger_phase
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:969    .bss.engine_changed_flag:0000000000000000 engine_changed_flag
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:963    .bss.current_engine_index:0000000000000000 current_engine_index
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:912    .bss._ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:916    .bss._ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 _ZGVZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:922    .bss._ZL10was_arp_on:0000000000000000 _ZL10was_arp_on
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:923    .bss._ZL10was_arp_on:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:925    .bss._ZZ13AudioCallbackPKfPfjE12last_ui_time:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:929    .bss._ZZ13AudioCallbackPKfPfjE12last_ui_time:0000000000000000 _ZZ13AudioCallbackPKfPfjE12last_ui_time
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:935    .bss._ZZ13AudioCallbackPKfPfjE16audio_cb_started:0000000000000000 _ZZ13AudioCallbackPKfPfjE16audio_cb_started
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:936    .bss._ZZ13AudioCallbackPKfPfjE16audio_cb_started:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:938    .bss._ZZ13AudioCallbackPKfPfjE24prev_engine_index_static:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:942    .bss._ZZ13AudioCallbackPKfPfjE24prev_engine_index_static:0000000000000000 _ZZ13AudioCallbackPKfPfjE24prev_engine_index_static
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:945    .bss._ZZ25UpdatePerformanceMonitorsjPfE15display_counter:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:949    .bss._ZZ25UpdatePerformanceMonitorsjPfE15display_counter:0000000000000000 _ZZ25UpdatePerformanceMonitorsjPfE15display_counter
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:952    .bss._ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:956    .bss._ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks:0000000000000000 _ZZ25UpdatePerformanceMonitorsjPfE23display_interval_blocks
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:959    .bss.current_engine_index:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:970    .bss.engine_changed_flag:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s:972    .bss.engine_retrigger_phase:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 _Z15ProcessControlsv
@@ -1739,11 +1777,11 @@ delay_feedback_val
 _ZN15PolyphonyEngine11ResetVoicesEv
 _ZN15PolyphonyEngine20UpdateLastTouchStateEt
 _ZNK15PolyphonyEngine17GetLastTouchStateEv
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccoKjyK0.s 			page 31
+
+
 _ZN11Arpeggiator15UpdateHeldNotesEtt
 _ZN11Arpeggiator7ProcessEj
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccNWNgNG.s 			page 31
-
-
 _ZN15PolyphonyEngine16HandleTouchInputEttibi
 poly_engine
 current_touch_state
@@ -1762,6 +1800,7 @@ update_display
 _ZN11DelayEffect11UpdateDelayEv
 _ZN11DelayEffect18ApplyDelayToOutputEPKfPfjf
 _ZN5daisy6LoggerILNS_17LoggerDestinationE1EE9PrintLineEPKcz
+_ZN5daisy6System6GetNowEv
 _ZN5daisy6System7GetTickEv
 _ZN15PolyphonyEngine14OnEngineChangeEii
 cpu_meter

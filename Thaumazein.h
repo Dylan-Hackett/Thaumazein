@@ -29,7 +29,7 @@ using namespace infrasonic;
 // #define NUM_VOICES 4 
 // #define BLOCK_SIZE 16
 #define MAX_DELAY_SAMPLES 48000 
-#define SAMPLE_RATE 48000.0f  // Adding sample rate definition
+#define SAMPLE_RATE sample_rate  // Use runtime sample_rate from hardware audio sampler
 
 const float MASTER_VOLUME = 0.7f; // Master output level scaler
 
