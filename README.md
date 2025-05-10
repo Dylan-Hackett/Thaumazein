@@ -5,15 +5,18 @@ Thaumazein is a Daisy Seed based polyphonic synthesizer module, featuring multip
 
 ## Current Tasks
 1.  **Resolve QSPI Boot Issue:**
-    *   [X] Configure Makefile linker flags for QSPI memory sections (`.qspiflash_text` at `0x90000000`, `.qspiflash_data` at `0x90800000`).
+    *   [X] Configure Makefile linker flags for QSPI memory sections (`.qspiflash_data` at `0x90800000`).
+    *   [X] Remove redundant `.qspiflash_text` linker flag to avoid overlap with the vector table at `0x90040000`.
+    *   [X] Build succeeds with `make` – application linked into QSPI (see `build/thaumazein.elf`).
     *   [X] Ensure QSPI peripheral is explicitly initialized to memory-mapped mode after `hw.Init()`. (Added call to `SynthStateStorage::InitMemoryMapped()`).
     *   [X] Fix VTOR Misalignment: Modify `JumpToQspi` to set `SCB->VTOR = 0x90040000`.
     *   [X] Correct MPU Configuration: Adjust QSPI MPU region to `BaseAddress = 0x90000000` and `Size = 8MB` for proper alignment.
     *   [ ] Investigate and ensure correct CPU cache (I-Cache, D-Cache) handling for QSPI XIP mode if issues persist.
     *   [ ] Ensure essential GPIOs (e.g., status LED) are functional when booting from QSPI.
 2.  **Build and Flash:**
-    *   [ ] Successfully build the project with QSPI changes.
-    *   [ ] Successfully flash the firmware to the Daisy Seed using `make program-dfu`.
+    *   [X] Successfully build the project with QSPI changes.
+    *   [X] Successfully flash the QSPI bootloader stub into internal flash (`make flash-stub`) – ignore the occasional "Error during download get_status"; the stub is in place.
+    *   [ ] Successfully flash the firmware to the Daisy Seed using `make flash-app`.
 3.  **Testing and Debugging:**
     *   [ ] Verify the synthesizer boots and operates correctly from QSPI.
     *   [ ] Confirm all functionalities (audio, controls, display, arpeggiator, engine switching) are working as expected.
@@ -247,7 +250,7 @@ This project requires the following hardware:
    ```
 4. Flash to your Daisy Seed using:
    ```
-   make program-dfu
+   make flash-app
    ```
 
 ## Development

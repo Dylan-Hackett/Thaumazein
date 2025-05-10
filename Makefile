@@ -49,18 +49,22 @@ C_INCLUDES += \
 # Hardware target
 HWDEFS = -DSEED
 
+# Ensure build is treated as boot application (code executes from QSPI)
+C_DEFS += -DBOOT_APP
+
 # Warning suppression
 C_INCLUDES += -Wno-unused-local-typedefs
 
 # Optimization level (can be overridden)
 OPT ?= -Os -s
 
-# Set target Linker Script to QSPI
+# Set target Linker Script to QSPI (no 256k offset)
 LDSCRIPT = $(LIBDAISY_DIR)/core/STM32H750IB_qspi.lds
 
+# Override QSPI write address to match linker (no 0x40000 offset)
+QSPI_ADDRESS = 0x90040000
+
 # Add QSPI section start flags
-LDFLAGS += -Wl,--section-start=.qspiflash_text=0x90000000
-LDFLAGS += -Wl,--section-start=.qspiflash_data=0x90800000
 LDFLAGS += -Wl,--gc-sections
 
 # Core location, and generic makefile.
@@ -87,3 +91,28 @@ $(BUILD_DIR)/$(TARGET).elf: $(OBJECTS) Makefile
 
 # No need to override other rules (all, .c, .cpp, .bin, .hex, clean, etc.)
 # Let the core Makefile handle those.
+
+# -------------------------------------------------------------
+# Convenience targets for QSPI workflow
+# -------------------------------------------------------------
+# 1. flash-stub : Builds the project with the internal-flash linker
+#    and flashes it to alt-setting 0 (0x08000000).  This becomes the
+#    tiny boot stub that jumps to QSPI.
+# 2. flash-app  : Normal build (QSPI linker) + flash to alt-setting 1
+#    (0x90040000).
+# -------------------------------------------------------------
+
+flash-stub:
+	$(MAKE) clean
+	$(MAKE) program-boot
+
+flash-app:
+	$(MAKE) clean
+	$(MAKE) all
+	$(MAKE) program-app
+
+# Flash application code directly to QSPI external flash via the QSPI bootloader stub (alt 0)
+program-app:
+	dfu-util -a 0 -s $(QSPI_ADDRESS):leave -D $(BUILD_DIR)/$(TARGET_BIN) -d ,0483:df11 -R
+
+.PHONY: flash-stub flash-app

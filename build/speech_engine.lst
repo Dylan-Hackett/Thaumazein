@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
   28:eurorack/plaits/dsp/engine/speech_engine.cc **** 
   29:eurorack/plaits/dsp/engine/speech_engine.cc **** #include "plaits/dsp/engine/speech_engine.h"
   30:eurorack/plaits/dsp/engine/speech_engine.cc **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 2
 
 
   31:eurorack/plaits/dsp/engine/speech_engine.cc **** #include "plaits/dsp/speech/lpc_speech_synth_words.h"
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
   61:eurorack/plaits/dsp/engine/speech_engine.cc ****     float* out,
   62:eurorack/plaits/dsp/engine/speech_engine.cc ****     float* aux,
   63:eurorack/plaits/dsp/engine/speech_engine.cc ****     size_t size,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 3
 
 
   64:eurorack/plaits/dsp/engine/speech_engine.cc ****     bool* already_enveloped) {
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
   67 0000 B2EE027A 		vmov.f32	s14, #9.0e+0
   68 0004 D1ED017A 		vldr.32	s15, [r1, #4]
   69              	.LBE19:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 4
 
 
   70              	.LBE18:
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  118              	.LBB39:
  119              	.LBB31:
  120              		.loc 2 41 3 view .LVU19
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 5
 
 
  121 002e 00F19B80 		bmi	.L16
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  134              		.loc 3 40 14 view .LVU23
  135              	.LBB21:
   41:eurorack/stmlib/dsp/units.h ****   float pitch = semitones + 128.0f;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 6
 
 
  136              		.loc 3 41 3 view .LVU24
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  170              	.LBE41:
  171              	.LBE70:
  172              	.LBB71:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 7
 
 
  173              	.LBB33:
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  218              	.LBE27:
  219              		.loc 2 42 57 view .LVU46
  220 008e DFED6F7A 		vldr.32	s15, .L28+20
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 8
 
 
  221 0092 20EE270A 		vmul.f32	s0, s0, s15
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
   81:eurorack/plaits/dsp/engine/speech_engine.cc ****           aux,
   82:eurorack/plaits/dsp/engine/speech_engine.cc ****           out,
   83:eurorack/plaits/dsp/engine/speech_engine.cc ****           size);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 9
 
 
   84:eurorack/plaits/dsp/engine/speech_engine.cc ****     } else {
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  288 010e B0EE677A 		vmov.f32	s14, s15
  289 0112 A8EE687A 		vfms.f32	s14, s16, s17
  110:eurorack/plaits/dsp/engine/speech_engine.cc ****     blend *= blend * (3.0f - 2.0f * blend);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 10
 
 
  290              		.loc 1 110 20 view .LVU66
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  112:eurorack/plaits/dsp/engine/speech_engine.cc ****     for (size_t i = 0; i < size; ++i) {
  337              		.loc 1 112 5 is_stmt 1 discriminator 2 view .LVU87
  338 0166 E0E7     		b	.L11
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 11
 
 
  339              	.LVL20:
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  115:eurorack/plaits/dsp/engine/speech_engine.cc ****     }
  116:eurorack/plaits/dsp/engine/speech_engine.cc ****   } else {
  117:eurorack/plaits/dsp/engine/speech_engine.cc ****     // Change phonemes/words for LPC.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 12
 
 
  118:eurorack/plaits/dsp/engine/speech_engine.cc ****     const int word_bank = word_bank_quantizer_.Process(
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  390              	.LBE76:
   47:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     return Process(value, num_steps, 0.25f);
  391              		.loc 4 47 5 view .LVU100
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 13
 
 
  392              	.LBB77:
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  433              	.LBE54:
  434              	.LBE58:
  435              	.LBE63:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 14
 
 
  118:eurorack/plaits/dsp/engine/speech_engine.cc ****         (group - 2.0f) * 0.275f,
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  477              		.loc 4 62 5 view .LVU123
  478              	.LBE52:
  479              	.LBE55:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 15
 
 
  480              	.LBE59:
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  524              		.loc 1 127 40 discriminator 4 view .LVU137
  525 021a 0097     		str	r7, [sp]
  526              	.LVL38:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 16
 
 
  527              		.loc 1 127 40 discriminator 4 view .LVU138
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  565 0248 00000000 		.word	_ZN6stmlib20lut_pitch_ratio_highE
  566 024c 51969639 		.word	966170193
  567 0250 00000000 		.word	0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 17
 
 
  568 0254 CDCC8C3E 		.word	1049414861
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  613              		.loc 1 41 35 is_stmt 0 view .LVU153
  614 0018 2B46     		mov	r3, r5
  615 001a 0422     		movs	r2, #4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 18
 
 
  616 001c 1649     		ldr	r1, .L35
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
   28:eurorack/stmlib/utils/buffer_allocator.h **** 
   29:eurorack/stmlib/utils/buffer_allocator.h **** #ifndef STMLIB_UTILS_BUFFER_ALLOCATOR_H_
   30:eurorack/stmlib/utils/buffer_allocator.h **** #define STMLIB_UTILS_BUFFER_ALLOCATOR_H_
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 19
 
 
   31:eurorack/stmlib/utils/buffer_allocator.h **** 
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  661              	.LVL48:
   43:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   }
  662              		.loc 4 43 22 view .LVU163
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 20
 
 
  663              	.LBE93:
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  704 004a 5F2B     		cmp	r3, #95
  705              	.LBB109:
   60:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 21
 
 
  706              		.loc 5 60 10 view .LVU178
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  747              		.loc 1 52 10 is_stmt 0 view .LVU190
  748 0070 C4F80C32 		str	r3, [r4, #524]	@ float
   53:eurorack/plaits/dsp/engine/speech_engine.cc **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 22
 
 
  749              		.loc 1 53 1 view .LVU191
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  805              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
  806              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
  807              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 23
 
 
  808              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
@@ -1342,27 +1342,27 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 1
  826              		.file 30 "eurorack/plaits/dsp/speech/lpc_speech_synth_words.h"
  827              		.file 31 "eurorack/plaits/dsp/engine/speech_engine.h"
  828              		.file 32 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s 			page 24
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 speech_engine.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:19     .text._ZN6plaits12SpeechEngine5ResetEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:25     .text._ZN6plaits12SpeechEngine5ResetEv:0000000000000000 _ZN6plaits12SpeechEngine5ResetEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:46     .text._ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:52     .text._ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:561    .text._ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000238 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:575    .text._ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:581    .text._ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:756    .text._ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000078 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:764    .rodata._ZTSN6plaits6EngineE:0000000000000000 _ZTSN6plaits6EngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:771    .rodata._ZTIN6plaits6EngineE:0000000000000000 _ZTIN6plaits6EngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:768    .rodata._ZTIN6plaits6EngineE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:788    .rodata._ZTSN6plaits12SpeechEngineE:0000000000000000 _ZTSN6plaits12SpeechEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:781    .rodata._ZTIN6plaits12SpeechEngineE:0000000000000000 _ZTIN6plaits12SpeechEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:794    .rodata._ZTVN6plaits12SpeechEngineE:0000000000000000 _ZTVN6plaits12SpeechEngineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:778    .rodata._ZTIN6plaits12SpeechEngineE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccuLZ0Xi.s:791    .rodata._ZTVN6plaits12SpeechEngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:19     .text._ZN6plaits12SpeechEngine5ResetEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:25     .text._ZN6plaits12SpeechEngine5ResetEv:0000000000000000 _ZN6plaits12SpeechEngine5ResetEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:46     .text._ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:52     .text._ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:561    .text._ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000238 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:575    .text._ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:581    .text._ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:756    .text._ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000078 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:764    .rodata._ZTSN6plaits6EngineE:0000000000000000 _ZTSN6plaits6EngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:771    .rodata._ZTIN6plaits6EngineE:0000000000000000 _ZTIN6plaits6EngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:768    .rodata._ZTIN6plaits6EngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:788    .rodata._ZTSN6plaits12SpeechEngineE:0000000000000000 _ZTSN6plaits12SpeechEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:781    .rodata._ZTIN6plaits12SpeechEngineE:0000000000000000 _ZTIN6plaits12SpeechEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:794    .rodata._ZTVN6plaits12SpeechEngineE:0000000000000000 _ZTVN6plaits12SpeechEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:778    .rodata._ZTIN6plaits12SpeechEngineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7mmzMD.s:791    .rodata._ZTVN6plaits12SpeechEngineE:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 _ZN6plaits22LPCSpeechSynthWordBank5ResetEv
