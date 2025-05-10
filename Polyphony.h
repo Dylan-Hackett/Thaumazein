@@ -1,6 +1,10 @@
 #ifndef POLYPHONY_H
 #define POLYPHONY_H
 
+// Define global constants needed by this header
+#define NUM_VOICES 4
+#define BLOCK_SIZE 16
+
 #include "daisy_seed.h"
 #include "plaits/dsp/voice.h"
 #include "VoiceEnvelope.h"

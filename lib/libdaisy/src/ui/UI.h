@@ -9,7 +9,7 @@ class UI;
 
 /** @brief The type of arrow button in the UI system.
  *  @author jelliesen
- *  @addtogroup ui
+ *  @ingroup ui
  */
 enum class ArrowButtonType
 {
@@ -25,7 +25,7 @@ enum class ArrowButtonType
 
 /** @brief A descriptor for a canvas in the UI system.
  *  @author jelliesen
- *  @addtogroup ui
+ *  @ingroup ui
  * 
  *  A descriptor for a generic display / led / output device 
  *  that's used in the UI system.
@@ -69,7 +69,7 @@ class OneBitGraphicsLookAndFeel;
 
 /** @brief The base class for a page in the UI system.
  *  @author jelliesen
- *  @addtogroup ui
+ *  @ingroup ui
  */
 class UiPage
 {
@@ -92,19 +92,24 @@ class UiPage
     /** Returns true if the page is currently active on a UI - it may not be visible, though. */
     bool IsActive() { return parent_ != nullptr; }
 
+    /** Called on any user input event, after the respective callback has completed.
+     * OnUserInteraction will be invoked for all pages in the page stack and can be used to 
+     * track general user activity. */
+    virtual void OnUserInteraction() {}
+
     /** Closes the current page. This calls the parent UI and asks it to Remove this page
      *  from the page stack.
      */
     void Close();
 
     /** Called when the okay button is pressed or released.
-     *  @param numberOfPresses 	Holds the number of successive button presses.
-     *  						It will be 1 on the first call and increasing by 1
-     *  						with each successive call. A button down event is
-     *  						signaled by numberOfButtonPresses == 0.
+     *  @param numberOfPresses     Holds the number of successive button presses.
+     *                          It will be 1 on the first call and increasing by 1
+     *                          with each successive call. A button down event is
+     *                          signaled by numberOfButtonPresses == 0.
      *  @param isRetriggering   True if the button is auto-retriggering (due to being 
      *                          held down)
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnOkayButton(uint8_t numberOfPresses, bool isRetriggering)
     {
@@ -114,13 +119,13 @@ class UiPage
     }
 
     /** Called when the cancel button is pressed or released.
-     *  @param numberOfPresses 	Holds the number of successive button presses.
-     *  						It will be 1 on the first call and increasing by 1
-     *  						with each successive call. A button down event is
-     *  						signaled by numberOfButtonPresses == 0.
+     *  @param numberOfPresses     Holds the number of successive button presses.
+     *                          It will be 1 on the first call and increasing by 1
+     *                          with each successive call. A button down event is
+     *                          signaled by numberOfButtonPresses == 0.
      *  @param isRetriggering   True if the button is auto-retriggering (due to being 
      *                          held down)
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnCancelButton(uint8_t numberOfPresses, bool isRetriggering)
     {
@@ -130,14 +135,14 @@ class UiPage
     }
 
     /** Called when an arrow button is pressed or released.
-     *  @param arrowType 		The arrow button affected.
-     *  @param numberOfPresses 	Holds the number of successive button presses.
-     *  						It will be 1 on the first call and increasing by 1
-     *  						with each successive call. A button down event is
-     *  						signaled by numberOfButtonPresses == 0.
+     *  @param arrowType         The arrow button affected.
+     *  @param numberOfPresses     Holds the number of successive button presses.
+     *                          It will be 1 on the first call and increasing by 1
+     *                          with each successive call. A button down event is
+     *                          signaled by numberOfButtonPresses == 0.
      *  @param isRetriggering   True if the button is auto-retriggering (due to being 
      *                          held down)
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnArrowButton(ArrowButtonType arrowType,
                                uint8_t         numberOfPresses,
@@ -150,13 +155,13 @@ class UiPage
     }
 
     /** Called when the function button is pressed or released.
-     *  @param numberOfPresses 	Holds the number of successive button presses.
-     *  						It will be 1 on the first call and increasing by 1
-     *  						with each successive call. A button down event is
-     *  						signaled by numberOfButtonPresses == 0.
+     *  @param numberOfPresses     Holds the number of successive button presses.
+     *                          It will be 1 on the first call and increasing by 1
+     *                          with each successive call. A button down event is
+     *                          signaled by numberOfButtonPresses == 0.
      *  @param isRetriggering   True if the button is auto-retriggering (due to being 
      *                          held down)
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnFunctionButton(uint8_t numberOfPresses, bool isRetriggering)
     {
@@ -167,14 +172,14 @@ class UiPage
 
     /** Called when any button is pressed or released that is not an arrow button,
      *  the function button or the okay / cancel buttons.
-     *  @param buttonID 		The ID of the affected button.
-     *  @param numberOfPresses 	Holds the number of successive button presses.
-     *  						It will be 1 on the first call and increasing by 1
-     *  						with each successive call. A button down event is
-     *  						signaled by numberOfButtonPresses == 0.
+     *  @param buttonID         The ID of the affected button.
+     *  @param numberOfPresses     Holds the number of successive button presses.
+     *                          It will be 1 on the first call and increasing by 1
+     *                          with each successive call. A button down event is
+     *                          signaled by numberOfButtonPresses == 0.
      *  @param isRetriggering   True if the button is auto-retriggering (due to being 
      *                          held down)
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool
     OnButton(uint16_t buttonID, uint8_t numberOfPresses, bool isRetriggering)
@@ -186,9 +191,9 @@ class UiPage
     }
 
     /** Called when the menu encoder is turned.
-     *  @param turns		 		The number of increments, positive is clockwise.
-     *  @param stepsPerRevolution	The total number of increments per revolution on this encoder.
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @param turns                 The number of increments, positive is clockwise.
+     *  @param stepsPerRevolution    The total number of increments per revolution on this encoder.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnMenuEncoderTurned(int16_t turns, uint16_t stepsPerRevolution)
     {
@@ -198,9 +203,9 @@ class UiPage
     }
 
     /** Called when the menu encoder is turned.
-     *  @param turns		 		The number of increments, positive is clockwise.
-     *  @param stepsPerRevolution	The total number of increments per revolution on this encoder.
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @param turns                 The number of increments, positive is clockwise.
+     *  @param stepsPerRevolution    The total number of increments per revolution on this encoder.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnValueEncoderTurned(int16_t  turns,
                                       uint16_t stepsPerRevolution)
@@ -211,10 +216,10 @@ class UiPage
     }
 
     /** Called when an encoder is turned that is not the menu encoder or the value encoder.
-     *  @param encoderID			The ID of the affected encoder.
-     *  @param turns		 		The number of increments, positive is clockwise.
-     *  @param stepsPerRevolution	The total number of increments per revolution on this encoder.
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @param encoderID            The ID of the affected encoder.
+     *  @param turns                 The number of increments, positive is clockwise.
+     *  @param stepsPerRevolution    The total number of increments per revolution on this encoder.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnEncoderTurned(uint16_t encoderID,
                                  int16_t  turns,
@@ -227,8 +232,8 @@ class UiPage
     }
 
     /** Called when the user starts or stops turning the menu encoder.
-     *  @param isCurrentlyActive	True, if the user currently moves this encoder.
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @param isCurrentlyActive    True, if the user currently moves this encoder.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnMenuEncoderActivityChanged(bool isCurrentlyActive)
     {
@@ -237,8 +242,8 @@ class UiPage
     }
 
     /** Called when the user starts or stops turning the value encoder.
-     *  @param isCurrentlyActive	True, if the user currently moves this encoder.
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @param isCurrentlyActive    True, if the user currently moves this encoder.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnValueEncoderActivityChanged(bool isCurrentlyActive)
     {
@@ -248,9 +253,9 @@ class UiPage
 
     /** Called when the user starts or stops turning an encoder that is not the menu 
      *  encoder or the value encoder.
-     *  @param encoderID			The ID of the affected encoder.
-     *  @param isCurrentlyActive	True, if the user currently moves this encoder.
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @param encoderID            The ID of the affected encoder.
+     *  @param isCurrentlyActive    True, if the user currently moves this encoder.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnEncoderActivityChanged(uint16_t encoderID,
                                           bool     isCurrentlyActive)
@@ -261,8 +266,8 @@ class UiPage
     }
 
     /** Called when the value potentiometer is turned.
-     *  @param newPosition		 	The new position in the range 0 .. 1
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @param newPosition             The new position in the range 0 .. 1
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnValuePotMoved(float newPosition)
     {
@@ -272,9 +277,9 @@ class UiPage
 
     /** Called when a potentiometer is turned that's not the
      *  value potentiometer.
-     *  @param potID				The ID of the affected potentiometer.
-     *  @param newPosition		 	The new position in the range 0 .. 1
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @param potID                The ID of the affected potentiometer.
+     *  @param newPosition             The new position in the range 0 .. 1
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnPotMoved(uint16_t potID, float newPosition)
     {
@@ -284,8 +289,8 @@ class UiPage
     }
 
     /** Called when the user starts or stops turning the value potentiometer.
-     *  @param isCurrentlyActive	True, if the user currently moves this potentiometer.
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @param isCurrentlyActive    True, if the user currently moves this potentiometer.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnValuePotActivityChanged(bool isCurrentlyActive)
     {
@@ -295,9 +300,9 @@ class UiPage
 
     /** Called when the user starts or stops turning a potentiometer that's not the
      *  value potentiometer.
-     *  @param potID				The ID of the affected potentiometer.
-     *  @param isCurrentlyActive	True, if the user currently moves this potentiometer.
-     *  @returns	false, if you want the event to be passed on to the page below.
+     *  @param potID                The ID of the affected potentiometer.
+     *  @param isCurrentlyActive    True, if the user currently moves this potentiometer.
+     *  @returns    false, if you want the event to be passed on to the page below.
      */
     virtual bool OnPotActivityChanged(uint16_t potID, bool isCurrentlyActive)
     {
@@ -336,7 +341,7 @@ class UiPage
 
 /** @brief A generic UI system
  *  @author jelliesen
- *  @addtogroup ui
+ *  @ingroup ui
  *
  *  This system allows you to create complex and dynamic user interfaces 
  *  with menus, pages and dialogs. It holds a stack of pages. Each page 

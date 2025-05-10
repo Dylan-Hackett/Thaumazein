@@ -6,8 +6,14 @@
 
 // --- Global hardware variables ---
 DaisySeed hw;
-Mpr121 touch_sensor;
+CpuLoadMeter cpu_meter;
+
+// Global definition for the touch sensor driver
+thaumazein_hal::Mpr121 touch_sensor;
+
+// Global definition for the delay effect
 EchoDelay<48000> delay;
+
 // Arpeggiator instance
 Arpeggiator arp;
 GPIO touch_leds[12];
@@ -118,9 +124,9 @@ void InitializeControls() {
 }
 
 void InitializeTouchSensor() {
-    // --- Initialize MPR121 ---
-    Mpr121::Config touch_config;
-    touch_config.Defaults();
+    // Attempt to initialize the MPR121 touch sensor
+    thaumazein_hal::Mpr121::Config touch_config;
+    touch_config.Defaults(); 
     if (!touch_sensor.Init(touch_config)) {
         // Touch sensor failed to initialise – continue without it
         touch_sensor_present = false;

@@ -10,7 +10,7 @@
 
 namespace daisy
 {
-/** @addtogroup analog_digital_conversion
+/** @addtogroup per_analog
     @{
 */
 
@@ -19,7 +19,15 @@ using a struct like this allows us to add more configuration
 later without breaking existing functionality.
 */
 
-/** Configuration Structure for a given channel */
+/** @brief   Configuration Structure for an ADC Channel 
+ *  @details This can be used to configure a a single input, 
+ *           or a multiplexed input, allowing up to 8 inputs on 
+ *           one channel.
+ *  @note    Sharing data lines to multiple muxes _is_ possible, but
+ *           each channel sharing data lines must be set to the maximum
+ *           number of channels, even if some multiplexers have fewer
+ *           inputs connected.
+*/
 struct AdcChannelConfig
 {
     /** Which pin to use for multiplexing */
@@ -31,10 +39,24 @@ struct AdcChannelConfig
         MUX_SEL_LAST, /**< & */
     };
 
+    /** \brief per channel conversion speed added to fixed time based on bitdepth, etc. */
+    enum ConversionSpeed
+    {
+        SPEED_1CYCLES_5,
+        SPEED_2CYCLES_5,
+        SPEED_8CYCLES_5,
+        SPEED_16CYCLES_5,
+        SPEED_32CYCLES_5,
+        SPEED_64CYCLES_5,
+        SPEED_387CYCLES_5,
+        SPEED_810CYCLES_5,
+    };
+
     /** Initializes a single ADC pin as an ADC. 
     \param pin Pin to init.
+    \param speed conversion speed for this pin defaults to 8.5 cycles
      */
-    void InitSingle(dsy_gpio_pin pin);
+    void InitSingle(Pin pin, ConversionSpeed speed = SPEED_8CYCLES_5);
 
     /** 
     Initializes a single ADC pin as a Multiplexed ADC.
@@ -42,25 +64,28 @@ struct AdcChannelConfig
     You only need to supply the mux pins that are required,
     e.g. a 4052 mux would only require mux_0 and mux_1.
     Internal Callbacks handle the pin addressing.
+    \param adc_pin &
     \param mux_channels must be 1-8
     \param mux_0 First mux pin
     \param mux_1 Second mux pin
     \param mux_2 Third mux pin
-    \param adc_pin &
+    \param speed conversion speed for this pin defaults to 8.5 cycles
     */
-    void InitMux(dsy_gpio_pin adc_pin,
-                 size_t       mux_channels,
-                 dsy_gpio_pin mux_0,
-                 dsy_gpio_pin mux_1 = {DSY_GPIOX, 0},
-                 dsy_gpio_pin mux_2 = {DSY_GPIOX, 0});
+    void InitMux(Pin             adc_pin,
+                 size_t          mux_channels,
+                 Pin             mux_0,
+                 Pin             mux_1 = Pin(PORTX, 0),
+                 Pin             mux_2 = Pin(PORTX, 0),
+                 ConversionSpeed speed = SPEED_8CYCLES_5);
 
-    dsy_gpio pin_;                   /**< & */
-    dsy_gpio mux_pin_[MUX_SEL_LAST]; /**< & */
-    uint8_t  mux_channels_;          /**< & */
+    GPIO            pin_;                   /**< & */
+    GPIO            mux_pin_[MUX_SEL_LAST]; /**< & */
+    uint8_t         mux_channels_;          /**< & */
+    ConversionSpeed speed_;
 };
 
 /**
-   Handler for analog to digital conversion
+   @brief Handler for analog to digital conversion
 */
 class AdcHandle
 {

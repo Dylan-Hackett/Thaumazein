@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cassert>
 #include "logger.h"
-#include "stm32h7xx_hal.h"
+#include "sys/system.h"
 
 namespace daisy
 {
@@ -15,17 +15,9 @@ void Logger<dest>::Print(const char* format, ...)
     PrintV(format, va);
     va_end(va);
 }
-
 template <LoggerDestination dest>
 void Logger<dest>::PrintV(const char* format, va_list va)
 {
-    // Throttle all log prints to once every 3 seconds (global throttle)
-    uint32_t now = HAL_GetTick();
-    static uint32_t last_printv_tick = 0;
-    if (last_printv_tick != 0 && (now - last_printv_tick) < 3000) {
-        return;
-    }
-    last_printv_tick = now;
     tx_ptr_ += vsnprintf(
         tx_buff_ + tx_ptr_, sizeof(tx_buff_) - tx_ptr_, format, va);
 
@@ -44,13 +36,6 @@ void Logger<dest>::PrintLine(const char* format, ...)
 template <LoggerDestination dest>
 void Logger<dest>::PrintLineV(const char* format, va_list va)
 {
-    // Throttle all log prints to once every 3 seconds (global throttle)
-    uint32_t now = HAL_GetTick();
-    static uint32_t last_printlinev_tick = 0;
-    if (last_printlinev_tick != 0 && (now - last_printlinev_tick) < 3000) {
-        return;
-    }
-    last_printlinev_tick = now;
     tx_ptr_ += vsnprintf(
         tx_buff_ + tx_ptr_, sizeof(tx_buff_) - tx_ptr_, format, va);
 
@@ -70,6 +55,7 @@ void Logger<dest>::StartLog(bool wait_for_pc)
      */
     PrintLine("Daisy is online");
     PrintLine("===============");
+    System::Delay(10);
 }
 
 template <LoggerDestination dest>

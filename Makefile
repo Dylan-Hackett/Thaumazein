@@ -51,6 +51,7 @@ HWDEFS = -DSEED
 
 # Ensure build is treated as boot application (code executes from QSPI)
 C_DEFS += -DBOOT_APP
+APP_TYPE = BOOT_QSPI
 
 # Warning suppression
 C_INCLUDES += -Wno-unused-local-typedefs

@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -26,7 +26,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   23              		.thumb_func
   25              	_ZN6stmlib3Svf4InitEv:
   26              	.LVL0:
-  27              	.LFB1410:
+  27              	.LFB1427:
   28              		.file 1 "eurorack/stmlib/dsp/filter.h"
    1:eurorack/stmlib/dsp/filter.h **** // Copyright 2014 Emilie Gillet.
    2:eurorack/stmlib/dsp/filter.h **** //
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   28:eurorack/stmlib/dsp/filter.h **** // Naive SVF.
   29:eurorack/stmlib/dsp/filter.h **** 
   30:eurorack/stmlib/dsp/filter.h **** #ifndef STMLIB_DSP_FILTER_H_
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 2
 
 
   31:eurorack/stmlib/dsp/filter.h **** #define STMLIB_DSP_FILTER_H_
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   85:eurorack/stmlib/dsp/filter.h ****   
   86:eurorack/stmlib/dsp/filter.h ****  private:
   87:eurorack/stmlib/dsp/filter.h ****   float pole_;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 3
 
 
   88:eurorack/stmlib/dsp/filter.h ****   float x_;
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  142:eurorack/stmlib/dsp/filter.h ****   }
  143:eurorack/stmlib/dsp/filter.h ****   
  144:eurorack/stmlib/dsp/filter.h ****   template<FilterMode mode>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 4
 
 
  145:eurorack/stmlib/dsp/filter.h ****   inline float Process(float in) {
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  191:eurorack/stmlib/dsp/filter.h ****   // Copy settings from another filter.
  192:eurorack/stmlib/dsp/filter.h ****   inline void set(const Svf& f) {
  193:eurorack/stmlib/dsp/filter.h ****     g_ = f.g();
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 5
 
 
  194:eurorack/stmlib/dsp/filter.h ****     r_ = f.r();
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   56              	.LBB71:
  188:eurorack/stmlib/dsp/filter.h ****   }
   57              		.loc 1 188 5 view .LVU9
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 6
 
 
  188:eurorack/stmlib/dsp/filter.h ****   }
@@ -323,7 +323,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   73 0018 0AD7233C 		.word	1008981770
   74 001c CAAA7F3F 		.word	1065331402
   75              		.cfi_endproc
-  76              	.LFE1410:
+  76              	.LFE1427:
   78              		.section	.text._ZN6plaits16NaiveSpeechSynth4InitEv,"ax",%progbits
   79              		.align	1
   80              		.global	_ZN6plaits16NaiveSpeechSynth4InitEv
@@ -332,7 +332,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   83              		.thumb_func
   85              	_ZN6plaits16NaiveSpeechSynth4InitEv:
   86              	.LVL3:
-  87              	.LFB1519:
+  87              	.LFB1536:
   88              		.file 2 "eurorack/plaits/dsp/speech/naive_speech_synth.cc"
    1:eurorack/plaits/dsp/speech/naive_speech_synth.cc **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/speech/naive_speech_synth.cc **** //
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   22:eurorack/plaits/dsp/speech/naive_speech_synth.cc **** // 
   23:eurorack/plaits/dsp/speech/naive_speech_synth.cc **** // See http://creativecommons.org/licenses/MIT/ for more information.
   24:eurorack/plaits/dsp/speech/naive_speech_synth.cc **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 7
 
 
   25:eurorack/plaits/dsp/speech/naive_speech_synth.cc **** // -----------------------------------------------------------------------------
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   79:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****     { { { 63, 255 }, { 77, 64 }, { 99, 8 }, { 104, 2 }, { 110, 0 } } },
   80:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****     { { { 63, 255 }, { 77, 40 }, { 100, 4 }, { 106, 2 }, { 110, 0 } } }
   81:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****   },
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 8
 
 
   82:eurorack/plaits/dsp/speech/naive_speech_synth.cc **** };
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   43:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_SLOPE,
   44:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_SQUARE,
   45:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_SQUARE_BRIGHT,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 9
 
 
   46:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_SQUARE_DARK,
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  128              	.LBB83:
   62:eurorack/plaits/dsp/oscillator/oscillator.h ****     hp_state_ = 0.0f;
  129              		.loc 3 62 15 view .LVU26
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 10
 
 
  130 0014 C360     		str	r3, [r0, #12]	@ float
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  170              		.loc 2 90 5 discriminator 2 view .LVU46
  171              		.loc 2 90 20 is_stmt 0 discriminator 2 view .LVU47
  172 002e 2846     		mov	r0, r5
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 11
 
 
   89:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****     filter_[i].Init();
@@ -655,10 +655,10 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  214 005c 8CAF563D 		.word	1029091212
  215 0060 C122673F 		.word	1063723713
  216              		.cfi_endproc
- 217              	.LFE1519:
+ 217              	.LFE1536:
  219              		.section	.text._ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j,"ax",%progbits
  220              		.align	1
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 12
 
 
  221              		.global	_ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j
@@ -667,7 +667,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  224              		.thumb_func
  226              	_ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j:
  227              	.LVL10:
- 228              	.LFB1520:
+ 228              	.LFB1537:
   95:eurorack/plaits/dsp/speech/naive_speech_synth.cc **** 
   96:eurorack/plaits/dsp/speech/naive_speech_synth.cc **** void NaiveSpeechSynth::Render(
   97:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****     bool click,
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  262              		.loc 2 106 21 view .LVU69
  263 0014 2262     		str	r2, [r4, #32]
  264              	.L10:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 13
 
 
  107:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****   }
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   48:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  * purpose.  It is provided "as is" without express or implied warranty.
   49:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  */
   50:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 14
 
 
   51:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** /** @file bits/stl_algobase.h
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  105:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	return __builtin_memcmp(__first1, __first2, sizeof(_Tp) * __num);
  106:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
  107:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 15
 
 
  108:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #if __cplusplus < 201103L
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  162:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	_ValueType1;
  163:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       typedef typename iterator_traits<_ForwardIterator2>::value_type
  164:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	_ValueType2;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 16
 
 
  165:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  219:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @param  __a  A thing of arbitrary type.
  220:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @param  __b  Another thing of arbitrary type.
  221:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @return   The lesser of the parameters.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 17
 
 
  222:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   72:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
   73:eurorack/plaits/dsp/oscillator/oscillator.h ****   
   74:eurorack/plaits/dsp/oscillator/oscillator.h ****   template<OscillatorShape shape>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 18
 
 
   75:eurorack/plaits/dsp/oscillator/oscillator.h ****   void Render(
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  324 0070 58BF     		it	pl
  325 0072 F0EE477A 		vmovpl.f32	s15, s14
  326              	.L14:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 19
 
 
  327              	.LVL17:
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  341              	.LBB152:
  342              	.LBI152:
   41:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 20
 
 
   42:eurorack/stmlib/dsp/parameter_interpolator.h **** 
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  381              	.LBE154:
  382              	.LBE157:
  383              	.LBE168:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 21
 
 
  103:eurorack/plaits/dsp/oscillator/oscillator.h ****     }
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   53:eurorack/stmlib/dsp/parameter_interpolator.h ****     state_ = state;
  430              		.loc 5 53 15 view .LVU104
  431              	.LBB165:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 22
 
 
   54:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  460              		.loc 3 128 14 is_stmt 0 view .LVU115
  461 00a2 D4ED007A 		vldr.32	s15, [r4]
  462              	.LBB178:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 23
 
 
  463              	.LBB177:
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  508              	.LBB197:
  132:eurorack/plaits/dsp/oscillator/oscillator.h ****           phase_ -= 1.0f;
  133:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = phase_ / frequency;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 24
 
 
  134:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample -= stmlib::ThisBlepSample(t);
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  542              		.loc 3 142 21 view .LVU141
  543              	.LBE197:
  544              	.LBE174:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 25
 
 
   98:eurorack/plaits/dsp/oscillator/oscillator.h ****       } else {
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   32:eurorack/stmlib/dsp/polyblep.h **** 
   33:eurorack/stmlib/dsp/polyblep.h **** #include "stmlib/stmlib.h"
   34:eurorack/stmlib/dsp/polyblep.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 26
 
 
   35:eurorack/stmlib/dsp/polyblep.h **** namespace stmlib {
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  604              	.LVL40:
  605              	.L16:
  135:eurorack/plaits/dsp/oscillator/oscillator.h ****         } else if (through_zero_fm && phase_ < 0.0f) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 27
 
 
  606              		.loc 3 135 23 view .LVU159
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  200:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = phase_ / frequency;
  201:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample -= stmlib::ThisBlepSample(t);
  202:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample -= stmlib::NextBlepSample(t);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 28
 
 
  203:eurorack/plaits/dsp/oscillator/oscillator.h ****           high_ = false;
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  630              	.LBE222:
  631              	.LBB223:
  632              	.LBB216:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 29
 
 
  633              	.LBB211:
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  268:eurorack/stmlib/dsp/filter.h ****     if (mode_2 == FILTER_MODE_LOW_PASS) {
  269:eurorack/stmlib/dsp/filter.h ****       *out_2 = lp;
  270:eurorack/stmlib/dsp/filter.h ****     } else if (mode_2 == FILTER_MODE_BAND_PASS) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 30
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 30
 
 
  271:eurorack/stmlib/dsp/filter.h ****       *out_2 = bp;
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  117:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****   pulse_coloration_.Process<FILTER_MODE_BAND_PASS>(
  679              		.loc 2 117 3 is_stmt 1 view .LVU175
  680              	.LBB229:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 31
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 31
 
 
  681              	.LBI224:
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  299:eurorack/stmlib/dsp/filter.h ****       } else if (mode == FILTER_MODE_HIGH_PASS) {
  300:eurorack/stmlib/dsp/filter.h ****         value = hp;
  301:eurorack/stmlib/dsp/filter.h ****       }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 32
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 32
 
 
  302:eurorack/stmlib/dsp/filter.h ****       
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  755 0198 D1ED007A 		vldr.32	s15, [r1]
  756 019c 67EE877A 		vmul.f32	s15, s15, s14
  757 01a0 E1EC017A 		vstmia.32	r1!, {s15}
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 33
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 33
 
 
  119:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****     excitation[i] *= 4.0f;
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  275:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<typename _Tp, typename _Compare>
  276:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX14_CONSTEXPR
  277:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     inline const _Tp&
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 34
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 34
 
 
  278:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     min(const _Tp& __a, const _Tp& __b, _Compare __comp)
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  332:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
  333:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   // All of these auxiliary structs serve two purposes.  (1) Replace
  334:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   // calls to copy with memmove whenever possible.  (Memmove, not memcpy,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 35
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 35
 
 
  335:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   // because the input and output ranges are permitted to overlap.)
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  389:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<>
  390:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     struct __copy_move<true, false, random_access_iterator_tag>
  391:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 36
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 36
 
 
  392:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       template<typename _II, typename _OI>
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  446:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 		   ostreambuf_iterator<_CharT, char_traits<_CharT> >);
  447:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
  448:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<bool _IsMove, typename _CharT>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 37
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 37
 
 
  449:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     typename __gnu_cxx::__enable_if<__is_char<_CharT>::__value,
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  503:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX20_CONSTEXPR
  504:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     inline _OI
  505:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __copy_move_a1(_II __first, _II __last, _OI __result)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 38
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 38
 
 
  506:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     { return std::__copy_move_a2<_IsMove>(__first, __last, __result); }
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  560:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     copy(_II __first, _II __last, _OI __result)
  561:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     {
  562:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       // concept requirements
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 39
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 39
 
 
  563:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_function_requires(_InputIteratorConcept<_II>)
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  617:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	{
  618:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	  while (__first != __last)
  619:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	    *--__result = *--__last;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 40
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 40
 
 
  620:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	  return __result;
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  674:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<bool _IsMove>
  675:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     struct __copy_move_backward<_IsMove, true, random_access_iterator_tag>
  676:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 41
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 41
 
 
  677:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       template<typename _Tp>
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  731:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 			_GLIBCXX_STD_C::_Deque_iterator<_ITp, _IRef, _IPtr>,
  732:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 			_GLIBCXX_STD_C::_Deque_iterator<_ITp, _IRef, _IPtr>,
  733:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 			_GLIBCXX_STD_C::_Deque_iterator<_OTp, _OTp&, _OTp*>);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 42
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 42
 
 
  734:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  788:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  loop count will be known (and therefore a candidate for compiler
  789:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  optimizations such as unrolling).
  790:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 43
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 43
 
 
  791:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  Result may not be in the range (first,last].  Use copy instead.  Note
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  845:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 					       __result);
  846:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
  847:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 44
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 44
 
 
  848:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #define _GLIBCXX_MOVE_BACKWARD3(_Tp, _Up, _Vp) std::move_backward(_Tp, _Up, _Vp)
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  787              	.LVL61:
  126:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****   MAKE_INTEGRAL_FRACTIONAL(r);
  788              		.loc 2 126 3 view .LVU212
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 45
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 45
 
 
  127:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****   
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  901:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	      const _Tp& __value)
  902:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     { std::__fill_a1(__first.base(), __last.base(), __value); }
  903:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 46
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 46
 
 
  904:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<typename _Tp, typename _VTp>
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  873:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
  824              		.loc 4 873 11 view .LVU227
  825 01dc 1AEE100A 		vmov	r0, s20	@ int
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 47
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 47
 
 
  826 01e0 4A43     		muls	r2, r1, r2
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  866 0210 801A     		subs	r0, r0, r2
  136:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****         (p0r1.frequency - p0r0.frequency) * r_fractional;
  867              		.loc 2 136 11 view .LVU244
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 48
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 48
 
 
  868 0212 E7EE087A 		vfma.f32	s15, s14, s16
@@ -2878,7 +2878,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  904 0244 07EE102A 		vmov	s14, r2	@ int
  144:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****     float p1r_a = p1r0.amplitude + \
  905              		.loc 2 144 24 view .LVU262
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 49
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 49
 
 
  906 0248 91F83320 		ldrb	r2, [r1, #51]	@ zero_extendqisi2
@@ -2938,7 +2938,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
   38:eurorack/stmlib/dsp/units.h **** extern const float lut_pitch_ratio_low[257];
   39:eurorack/stmlib/dsp/units.h **** 
   40:eurorack/stmlib/dsp/units.h **** inline float SemitonesToRatio(float semitones) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 50
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 50
 
 
   41:eurorack/stmlib/dsp/units.h ****   float pitch = semitones + 128.0f;
@@ -2998,7 +2998,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  959 028c DFED456A 		vldr.32	s13, .L48+28
  960 0290 77EEE67A 		vsub.f32	s15, s15, s13
  961              	.LVL79:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 51
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 51
 
 
  962              	.LBB246:
@@ -3058,7 +3058,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  1006              		.loc 2 153 9 is_stmt 0 view .LVU298
  1007 02da 67EEA87A 		vmul.f32	s15, s15, s17
  1008              	.LVL85:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 52
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 52
 
 
  1009              	.L26:
@@ -3118,7 +3118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  115:eurorack/stmlib/dsp/filter.h ****     } else if (approximation == FREQUENCY_FAST) {
  1051              		.loc 1 115 30 discriminator 2 view .LVU306
  1052 02ea 27EE866A 		vmul.f32	s12, s15, s12
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 53
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 53
 
 
  1053              	.LBE252:
@@ -3178,7 +3178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  226:eurorack/stmlib/dsp/filter.h ****   }
  1096              		.loc 1 226 8 discriminator 2 view .LVU319
  1097 031e C4ED0B7A 		vstr.32	s15, [r4, #44]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 54
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 54
 
 
  1098              	.LVL87:
@@ -3238,7 +3238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  328:eurorack/stmlib/dsp/filter.h ****         value = bp;
  329:eurorack/stmlib/dsp/filter.h ****       } else if (mode == FILTER_MODE_BAND_PASS_NORMALIZED) {
  330:eurorack/stmlib/dsp/filter.h ****         value = bp * r_;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 55
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 55
 
 
  331:eurorack/stmlib/dsp/filter.h ****       } else if (mode == FILTER_MODE_HIGH_PASS) {
@@ -3298,7 +3298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  130:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****     const Formant& p0r0 = phonemes_[p_integral][r_integral].formant[i];
  1176              		.loc 2 130 3 is_stmt 1 view .LVU346
  130:eurorack/plaits/dsp/speech/naive_speech_synth.cc ****     const Formant& p0r0 = phonemes_[p_integral][r_integral].formant[i];
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 56
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 56
 
 
  1177              		.loc 2 130 21 view .LVU347
@@ -3344,7 +3344,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  1214 03b8 DB0F4940 		.word	1078530011
  1215 03bc CDCC4C3D 		.word	1028443341
  1216              		.cfi_endproc
- 1217              	.LFE1520:
+ 1217              	.LFE1537:
  1219              		.global	_ZN6plaits16NaiveSpeechSynth9phonemes_E
  1220              		.section	.data._ZN6plaits16NaiveSpeechSynth9phonemes_E,"aw"
  1221              		.set	.LANCHOR0,. + 0
@@ -3358,7 +3358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  1231 0006 62       		.byte	98
  1232 0007 5A       		.byte	90
  1233 0008 64       		.byte	100
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 57
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 57
 
 
  1234 0009 19       		.byte	25
@@ -3418,7 +3418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  1288 003f 33       		.byte	51
  1289 0040 63       		.byte	99
  1290 0041 40       		.byte	64
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 58
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 58
 
 
  1291 0042 67       		.byte	103
@@ -3478,7 +3478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  1345 0078 3C       		.byte	60
  1346 0079 FF       		.byte	-1
  1347 007a 5D       		.byte	93
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 59
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 59
 
 
  1348 007b 10       		.byte	16
@@ -3538,7 +3538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  1402 00b1 14       		.byte	20
  1403 00b2 67       		.byte	103
  1404 00b3 05       		.byte	5
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 60
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 60
 
 
  1405 00b4 45       		.byte	69
@@ -3598,7 +3598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  1459 00ea 63       		.byte	99
  1460 00eb 08       		.byte	8
  1461 00ec 68       		.byte	104
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 61
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 61
 
 
  1462 00ed 02       		.byte	2
@@ -3636,21 +3636,21 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 1
  1494              		.file 25 "eurorack/plaits/dsp/dsp.h"
  1495              		.file 26 "eurorack/plaits/dsp/speech/naive_speech_synth.h"
  1496              		.file 27 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s 			page 62
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s 			page 62
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 naive_speech_synth.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s:19     .text._ZN6stmlib3Svf4InitEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s:25     .text._ZN6stmlib3Svf4InitEv:0000000000000000 _ZN6stmlib3Svf4InitEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s:72     .text._ZN6stmlib3Svf4InitEv:0000000000000014 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s:79     .text._ZN6plaits16NaiveSpeechSynth4InitEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s:85     .text._ZN6plaits16NaiveSpeechSynth4InitEv:0000000000000000 _ZN6plaits16NaiveSpeechSynth4InitEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s:213    .text._ZN6plaits16NaiveSpeechSynth4InitEv:0000000000000058 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s:220    .text._ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s:226    .text._ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j:0000000000000000 _ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s:1202   .text._ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j:0000000000000388 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccijdP4j.s:1224   .data._ZN6plaits16NaiveSpeechSynth9phonemes_E:0000000000000000 _ZN6plaits16NaiveSpeechSynth9phonemes_E
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s:19     .text._ZN6stmlib3Svf4InitEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s:25     .text._ZN6stmlib3Svf4InitEv:0000000000000000 _ZN6stmlib3Svf4InitEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s:72     .text._ZN6stmlib3Svf4InitEv:0000000000000014 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s:79     .text._ZN6plaits16NaiveSpeechSynth4InitEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s:85     .text._ZN6plaits16NaiveSpeechSynth4InitEv:0000000000000000 _ZN6plaits16NaiveSpeechSynth4InitEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s:213    .text._ZN6plaits16NaiveSpeechSynth4InitEv:0000000000000058 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s:220    .text._ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s:226    .text._ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j:0000000000000000 _ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s:1202   .text._ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j:0000000000000388 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccn4gOi1.s:1224   .data._ZN6plaits16NaiveSpeechSynth9phonemes_E:0000000000000000 _ZN6plaits16NaiveSpeechSynth9phonemes_E
 
 UNDEFINED SYMBOLS
 memset

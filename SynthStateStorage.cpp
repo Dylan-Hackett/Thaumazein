@@ -24,12 +24,12 @@ QSPIFUNC void ConfigureQSPI(QSPIHandle::Config::Mode mode) {
     QSPIHandle::Config cfg;
     cfg.device = QSPIHandle::Config::Device::IS25LP064A;
     cfg.mode   = mode;
-    cfg.pin_config.io0 = dsy_pin(DSY_GPIOF, 8);
-    cfg.pin_config.io1 = dsy_pin(DSY_GPIOF, 9);
-    cfg.pin_config.io2 = dsy_pin(DSY_GPIOF, 7);
-    cfg.pin_config.io3 = dsy_pin(DSY_GPIOF, 6);
-    cfg.pin_config.clk = dsy_pin(DSY_GPIOF,10);
-    cfg.pin_config.ncs = dsy_pin(DSY_GPIOG, 6);
+    cfg.pin_config.io0 = Pin(daisy::GPIOPort::PORTF, 8);
+    cfg.pin_config.io1 = Pin(daisy::GPIOPort::PORTF, 9);
+    cfg.pin_config.io2 = Pin(daisy::GPIOPort::PORTF, 7);
+    cfg.pin_config.io3 = Pin(daisy::GPIOPort::PORTF, 6);
+    cfg.pin_config.clk = Pin(daisy::GPIOPort::PORTF, 10);
+    cfg.pin_config.ncs = Pin(daisy::GPIOPort::PORTG, 6);
     auto &qspi = GetQSPI();
     qspi.DeInit();
     qspi.Init(cfg);

@@ -5,7 +5,10 @@
 #include "daisy_seed.h"
 #include "per/i2c.h"
 
-using namespace daisy;
+// Add a namespace to avoid collision with daisy::Mpr121
+namespace thaumazein_hal {
+
+using namespace daisy; // Keep daisy namespace accessible within thaumazein_hal for convenience
 
 /// mp
 
@@ -66,8 +69,8 @@ class Mpr121
             i2c_config.periph = I2CHandle::Config::Peripheral::I2C_1;
             i2c_config.speed  = I2CHandle::Config::Speed::I2C_400KHZ;
             i2c_config.mode   = I2CHandle::Config::Mode::I2C_MASTER;
-            i2c_config.pin_config.scl = {DSY_GPIOB, 8};
-            i2c_config.pin_config.sda = {DSY_GPIOB, 9};
+            i2c_config.pin_config.scl = Pin(daisy::GPIOPort::PORTB, 8);
+            i2c_config.pin_config.sda = Pin(daisy::GPIOPort::PORTB, 9);
             i2c_address               = MPR121_I2CADDR_DEFAULT;
         }
     };
@@ -96,5 +99,7 @@ class Mpr121
     uint16_t ReadRegister16(uint8_t reg);
     void     WriteRegister(uint8_t reg, uint8_t value);
 };
+
+} // namespace thaumazein_hal
 
 #endif 
