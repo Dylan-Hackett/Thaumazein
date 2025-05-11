@@ -1,0 +1,2758 @@
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 4
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"waveshaping_engine.cc"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text._ZN6plaits17WaveshapingEngine5ResetEv,"ax",%progbits
+  19              		.align	1
+  20              		.global	_ZN6plaits17WaveshapingEngine5ResetEv
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	_ZN6plaits17WaveshapingEngine5ResetEv:
+  26              	.LVL0:
+  27              	.LFB1491:
+  28              		.file 1 "eurorack/plaits/dsp/engine/waveshaping_engine.cc"
+   1:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // Copyright 2016 Emilie Gillet.
+   2:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** //
+   3:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** //
+   5:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // furnished to do so, subject to the following conditions:
+  11:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // 
+  12:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // all copies or substantial portions of the Software.
+  14:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // 
+  15:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // THE SOFTWARE.
+  22:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // 
+  23:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** //
+  25:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // -----------------------------------------------------------------------------
+  26:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** //
+  27:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** // Slope -> Waveshaper -> Wavefolder.
+  28:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+  29:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** #include "plaits/dsp/engine/waveshaping_engine.h"
+  30:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 2
+
+
+  31:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** #include <algorithm>
+  32:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+  33:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** #include "stmlib/dsp/parameter_interpolator.h"
+  34:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** #include "stmlib/utils/dsp.h"
+  35:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+  36:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** #include "plaits/resources.h"
+  37:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+  38:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** namespace plaits {
+  39:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+  40:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** using namespace std;
+  41:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** using namespace stmlib;
+  42:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+  43:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** void WaveshapingEngine::Init(BufferAllocator* allocator) {
+  44:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   slope_.Init();
+  45:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   triangle_.Init();
+  46:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   previous_shape_ = 0.0f;
+  47:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   previous_wavefolder_gain_ = 0.0f;
+  48:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   previous_overtone_gain_ = 0.0f;
+  49:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** }
+  50:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+  51:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** void WaveshapingEngine::Reset() {
+  29              		.loc 1 51 33 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  52:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   
+  53:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** }
+  34              		.loc 1 53 1 is_stmt 0 view .LVU1
+  35 0000 7047     		bx	lr
+  36              		.cfi_endproc
+  37              	.LFE1491:
+  39              		.section	.text._ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE,"ax",%progbits
+  40              		.align	1
+  41              		.global	_ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE
+  42              		.syntax unified
+  43              		.thumb
+  44              		.thumb_func
+  46              	_ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE:
+  47              	.LVL1:
+  48              	.LFB1490:
+  43:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   slope_.Init();
+  49              		.loc 1 43 58 is_stmt 1 view -0
+  50              		.cfi_startproc
+  51              		@ args = 0, pretend = 0, frame = 0
+  52              		@ frame_needed = 0, uses_anonymous_args = 0
+  44:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   triangle_.Init();
+  53              		.loc 1 44 3 view .LVU3
+  54              	.LBB74:
+  55              	.LBI74:
+  56              		.file 2 "eurorack/plaits/dsp/oscillator/oscillator.h"
+   1:eurorack/plaits/dsp/oscillator/oscillator.h **** // Copyright 2016 Emilie Gillet.
+   2:eurorack/plaits/dsp/oscillator/oscillator.h **** //
+   3:eurorack/plaits/dsp/oscillator/oscillator.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/plaits/dsp/oscillator/oscillator.h **** //
+   5:eurorack/plaits/dsp/oscillator/oscillator.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/plaits/dsp/oscillator/oscillator.h **** // of this software and associated documentation files (the "Software"), to deal
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 3
+
+
+   7:eurorack/plaits/dsp/oscillator/oscillator.h **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/plaits/dsp/oscillator/oscillator.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/plaits/dsp/oscillator/oscillator.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/plaits/dsp/oscillator/oscillator.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/plaits/dsp/oscillator/oscillator.h **** // 
+  12:eurorack/plaits/dsp/oscillator/oscillator.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/plaits/dsp/oscillator/oscillator.h **** // all copies or substantial portions of the Software.
+  14:eurorack/plaits/dsp/oscillator/oscillator.h **** // 
+  15:eurorack/plaits/dsp/oscillator/oscillator.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/plaits/dsp/oscillator/oscillator.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/plaits/dsp/oscillator/oscillator.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/plaits/dsp/oscillator/oscillator.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/plaits/dsp/oscillator/oscillator.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/plaits/dsp/oscillator/oscillator.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/plaits/dsp/oscillator/oscillator.h **** // THE SOFTWARE.
+  22:eurorack/plaits/dsp/oscillator/oscillator.h **** // 
+  23:eurorack/plaits/dsp/oscillator/oscillator.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/plaits/dsp/oscillator/oscillator.h **** //
+  25:eurorack/plaits/dsp/oscillator/oscillator.h **** // -----------------------------------------------------------------------------
+  26:eurorack/plaits/dsp/oscillator/oscillator.h **** //
+  27:eurorack/plaits/dsp/oscillator/oscillator.h **** // Single waveform oscillator. Can optionally do audio-rate linear FM, with
+  28:eurorack/plaits/dsp/oscillator/oscillator.h **** // through-zero capabilities (negative frequencies).
+  29:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+  30:eurorack/plaits/dsp/oscillator/oscillator.h **** #ifndef PLAITS_DSP_OSCILLATOR_OSCILLATOR_H_
+  31:eurorack/plaits/dsp/oscillator/oscillator.h **** #define PLAITS_DSP_OSCILLATOR_OSCILLATOR_H_
+  32:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+  33:eurorack/plaits/dsp/oscillator/oscillator.h **** #include "stmlib/dsp/dsp.h"
+  34:eurorack/plaits/dsp/oscillator/oscillator.h **** #include "stmlib/dsp/parameter_interpolator.h"
+  35:eurorack/plaits/dsp/oscillator/oscillator.h **** #include "stmlib/dsp/polyblep.h"
+  36:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+  37:eurorack/plaits/dsp/oscillator/oscillator.h **** namespace plaits {
+  38:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+  39:eurorack/plaits/dsp/oscillator/oscillator.h **** enum OscillatorShape {
+  40:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_IMPULSE_TRAIN,
+  41:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_SAW,
+  42:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_TRIANGLE,
+  43:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_SLOPE,
+  44:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_SQUARE,
+  45:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_SQUARE_BRIGHT,
+  46:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_SQUARE_DARK,
+  47:eurorack/plaits/dsp/oscillator/oscillator.h ****   OSCILLATOR_SHAPE_SQUARE_TRIANGLE
+  48:eurorack/plaits/dsp/oscillator/oscillator.h **** };
+  49:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+  50:eurorack/plaits/dsp/oscillator/oscillator.h **** const float kMaxFrequency = 0.25f;
+  51:eurorack/plaits/dsp/oscillator/oscillator.h **** const float kMinFrequency = 0.000001f;
+  52:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+  53:eurorack/plaits/dsp/oscillator/oscillator.h **** class Oscillator {
+  54:eurorack/plaits/dsp/oscillator/oscillator.h ****  public:
+  55:eurorack/plaits/dsp/oscillator/oscillator.h ****   Oscillator() { }
+  56:eurorack/plaits/dsp/oscillator/oscillator.h ****   ~Oscillator() { }
+  57:eurorack/plaits/dsp/oscillator/oscillator.h ****   
+  58:eurorack/plaits/dsp/oscillator/oscillator.h ****   void Init() {
+  57              		.loc 2 58 8 view .LVU4
+  58              	.LBB75:
+  59:eurorack/plaits/dsp/oscillator/oscillator.h ****     phase_ = 0.5f;
+  59              		.loc 2 59 5 view .LVU5
+  60:eurorack/plaits/dsp/oscillator/oscillator.h ****     next_sample_ = 0.0f;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 4
+
+
+  60              		.loc 2 60 18 is_stmt 0 view .LVU6
+  61 0000 0023     		movs	r3, #0
+  59:eurorack/plaits/dsp/oscillator/oscillator.h ****     phase_ = 0.5f;
+  62              		.loc 2 59 12 view .LVU7
+  63 0002 4FF07C52 		mov	r2, #1056964608
+  61:eurorack/plaits/dsp/oscillator/oscillator.h ****     lp_state_ = 1.0f;
+  62:eurorack/plaits/dsp/oscillator/oscillator.h ****     hp_state_ = 0.0f;
+  63:eurorack/plaits/dsp/oscillator/oscillator.h ****     high_ = true;
+  64:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+  65:eurorack/plaits/dsp/oscillator/oscillator.h ****     frequency_ = 0.001f;
+  64              		.loc 2 65 16 view .LVU8
+  65 0006 0C49     		ldr	r1, .L3
+  66              	.LVL2:
+  59:eurorack/plaits/dsp/oscillator/oscillator.h ****     next_sample_ = 0.0f;
+  67              		.loc 2 59 12 view .LVU9
+  68 0008 0261     		str	r2, [r0, #16]	@ float
+  60:eurorack/plaits/dsp/oscillator/oscillator.h ****     next_sample_ = 0.0f;
+  69              		.loc 2 60 5 is_stmt 1 view .LVU10
+  60:eurorack/plaits/dsp/oscillator/oscillator.h ****     next_sample_ = 0.0f;
+  70              		.loc 2 60 18 is_stmt 0 view .LVU11
+  71 000a 4361     		str	r3, [r0, #20]	@ float
+  61:eurorack/plaits/dsp/oscillator/oscillator.h ****     lp_state_ = 1.0f;
+  72              		.loc 2 61 5 is_stmt 1 view .LVU12
+  62:eurorack/plaits/dsp/oscillator/oscillator.h ****     high_ = true;
+  73              		.loc 2 62 15 is_stmt 0 view .LVU13
+  74 000c C361     		str	r3, [r0, #28]	@ float
+  75              		.loc 2 65 16 view .LVU14
+  76 000e 4162     		str	r1, [r0, #36]	@ float
+  66:eurorack/plaits/dsp/oscillator/oscillator.h ****     pw_ = 0.5f;
+  77              		.loc 2 66 9 view .LVU15
+  78 0010 8262     		str	r2, [r0, #40]	@ float
+  79              	.LBE75:
+  80              	.LBE74:
+  81              	.LBB77:
+  82              	.LBB78:
+  59:eurorack/plaits/dsp/oscillator/oscillator.h ****     next_sample_ = 0.0f;
+  83              		.loc 2 59 12 view .LVU16
+  84 0012 C262     		str	r2, [r0, #44]	@ float
+  60:eurorack/plaits/dsp/oscillator/oscillator.h ****     lp_state_ = 1.0f;
+  85              		.loc 2 60 18 view .LVU17
+  86 0014 0363     		str	r3, [r0, #48]	@ float
+  62:eurorack/plaits/dsp/oscillator/oscillator.h ****     high_ = true;
+  87              		.loc 2 62 15 view .LVU18
+  88 0016 8363     		str	r3, [r0, #56]	@ float
+  65:eurorack/plaits/dsp/oscillator/oscillator.h ****     pw_ = 0.5f;
+  89              		.loc 2 65 16 view .LVU19
+  90 0018 0164     		str	r1, [r0, #64]	@ float
+  91              		.loc 2 66 9 view .LVU20
+  92 001a 4264     		str	r2, [r0, #68]	@ float
+  93              	.LBE78:
+  94              	.LBE77:
+  46:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   previous_wavefolder_gain_ = 0.0f;
+  95              		.loc 1 46 19 view .LVU21
+  96 001c 8364     		str	r3, [r0, #72]	@ float
+  47:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   previous_overtone_gain_ = 0.0f;
+  97              		.loc 1 47 29 view .LVU22
+  98 001e C364     		str	r3, [r0, #76]	@ float
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 5
+
+
+  48:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** }
+  99              		.loc 1 48 27 view .LVU23
+ 100 0020 0365     		str	r3, [r0, #80]	@ float
+  43:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   slope_.Init();
+ 101              		.loc 1 43 58 view .LVU24
+ 102 0022 30B5     		push	{r4, r5, lr}
+ 103              		.cfi_def_cfa_offset 12
+ 104              		.cfi_offset 4, -12
+ 105              		.cfi_offset 5, -8
+ 106              		.cfi_offset 14, -4
+ 107              	.LBB80:
+ 108              	.LBB76:
+  61:eurorack/plaits/dsp/oscillator/oscillator.h ****     hp_state_ = 0.0f;
+ 109              		.loc 2 61 15 view .LVU25
+ 110 0024 4FF07E55 		mov	r5, #1065353216
+  63:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+ 111              		.loc 2 63 11 view .LVU26
+ 112 0028 0124     		movs	r4, #1
+  61:eurorack/plaits/dsp/oscillator/oscillator.h ****     hp_state_ = 0.0f;
+ 113              		.loc 2 61 15 view .LVU27
+ 114 002a 8561     		str	r5, [r0, #24]	@ float
+  62:eurorack/plaits/dsp/oscillator/oscillator.h ****     high_ = true;
+ 115              		.loc 2 62 5 is_stmt 1 view .LVU28
+  63:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+ 116              		.loc 2 63 5 view .LVU29
+  63:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+ 117              		.loc 2 63 11 is_stmt 0 view .LVU30
+ 118 002c 80F82040 		strb	r4, [r0, #32]
+  65:eurorack/plaits/dsp/oscillator/oscillator.h ****     pw_ = 0.5f;
+ 119              		.loc 2 65 5 is_stmt 1 view .LVU31
+ 120              		.loc 2 66 5 view .LVU32
+ 121              	.LVL3:
+ 122              		.loc 2 66 5 is_stmt 0 view .LVU33
+ 123              	.LBE76:
+ 124              	.LBE80:
+  45:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   previous_shape_ = 0.0f;
+ 125              		.loc 1 45 3 is_stmt 1 view .LVU34
+ 126              	.LBB81:
+ 127              	.LBI77:
+  58:eurorack/plaits/dsp/oscillator/oscillator.h ****     phase_ = 0.5f;
+ 128              		.loc 2 58 8 view .LVU35
+ 129              	.LBB79:
+  59:eurorack/plaits/dsp/oscillator/oscillator.h ****     next_sample_ = 0.0f;
+ 130              		.loc 2 59 5 view .LVU36
+  60:eurorack/plaits/dsp/oscillator/oscillator.h ****     lp_state_ = 1.0f;
+ 131              		.loc 2 60 5 view .LVU37
+  61:eurorack/plaits/dsp/oscillator/oscillator.h ****     hp_state_ = 0.0f;
+ 132              		.loc 2 61 5 view .LVU38
+  61:eurorack/plaits/dsp/oscillator/oscillator.h ****     hp_state_ = 0.0f;
+ 133              		.loc 2 61 15 is_stmt 0 view .LVU39
+ 134 0030 4563     		str	r5, [r0, #52]	@ float
+  62:eurorack/plaits/dsp/oscillator/oscillator.h ****     high_ = true;
+ 135              		.loc 2 62 5 is_stmt 1 view .LVU40
+  63:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+ 136              		.loc 2 63 5 view .LVU41
+  63:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+ 137              		.loc 2 63 11 is_stmt 0 view .LVU42
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 6
+
+
+ 138 0032 80F83C40 		strb	r4, [r0, #60]
+  65:eurorack/plaits/dsp/oscillator/oscillator.h ****     pw_ = 0.5f;
+ 139              		.loc 2 65 5 is_stmt 1 view .LVU43
+ 140              		.loc 2 66 5 view .LVU44
+ 141              	.LVL4:
+ 142              		.loc 2 66 5 is_stmt 0 view .LVU45
+ 143              	.LBE79:
+ 144              	.LBE81:
+  46:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   previous_wavefolder_gain_ = 0.0f;
+ 145              		.loc 1 46 3 is_stmt 1 view .LVU46
+  47:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   previous_overtone_gain_ = 0.0f;
+ 146              		.loc 1 47 3 view .LVU47
+  48:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** }
+ 147              		.loc 1 48 3 view .LVU48
+  49:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+ 148              		.loc 1 49 1 is_stmt 0 view .LVU49
+ 149 0036 30BD     		pop	{r4, r5, pc}
+ 150              	.L4:
+ 151              		.align	2
+ 152              	.L3:
+ 153 0038 6F12833A 		.word	981668463
+ 154              		.cfi_endproc
+ 155              	.LFE1490:
+ 157              		.section	.text._ZN6stmlib18InterpolateHermiteEPKfff,"axG",%progbits,_ZN6stmlib18InterpolateHermite
+ 158              		.align	1
+ 159              		.weak	_ZN6stmlib18InterpolateHermiteEPKfff
+ 160              		.syntax unified
+ 161              		.thumb
+ 162              		.thumb_func
+ 164              	_ZN6stmlib18InterpolateHermiteEPKfff:
+ 165              	.LVL5:
+ 166              	.LFB563:
+ 167              		.file 3 "eurorack/stmlib/dsp/dsp.h"
+   1:eurorack/stmlib/dsp/dsp.h **** // Copyright 2012 Emilie Gillet.
+   2:eurorack/stmlib/dsp/dsp.h **** //
+   3:eurorack/stmlib/dsp/dsp.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/stmlib/dsp/dsp.h **** //
+   5:eurorack/stmlib/dsp/dsp.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/stmlib/dsp/dsp.h **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/stmlib/dsp/dsp.h **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/stmlib/dsp/dsp.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/stmlib/dsp/dsp.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/stmlib/dsp/dsp.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/stmlib/dsp/dsp.h **** // 
+  12:eurorack/stmlib/dsp/dsp.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/stmlib/dsp/dsp.h **** // all copies or substantial portions of the Software.
+  14:eurorack/stmlib/dsp/dsp.h **** // 
+  15:eurorack/stmlib/dsp/dsp.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/stmlib/dsp/dsp.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/stmlib/dsp/dsp.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/stmlib/dsp/dsp.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/stmlib/dsp/dsp.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/stmlib/dsp/dsp.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/stmlib/dsp/dsp.h **** // THE SOFTWARE.
+  22:eurorack/stmlib/dsp/dsp.h **** // 
+  23:eurorack/stmlib/dsp/dsp.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/stmlib/dsp/dsp.h **** //
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 7
+
+
+  25:eurorack/stmlib/dsp/dsp.h **** // -----------------------------------------------------------------------------
+  26:eurorack/stmlib/dsp/dsp.h **** //
+  27:eurorack/stmlib/dsp/dsp.h **** // DSP utility routines.
+  28:eurorack/stmlib/dsp/dsp.h **** 
+  29:eurorack/stmlib/dsp/dsp.h **** #ifndef STMLIB_UTILS_DSP_DSP_H_
+  30:eurorack/stmlib/dsp/dsp.h **** #define STMLIB_UTILS_DSP_DSP_H_
+  31:eurorack/stmlib/dsp/dsp.h **** 
+  32:eurorack/stmlib/dsp/dsp.h **** #include "stmlib/stmlib.h"
+  33:eurorack/stmlib/dsp/dsp.h **** 
+  34:eurorack/stmlib/dsp/dsp.h **** #include <cmath>
+  35:eurorack/stmlib/dsp/dsp.h **** #include <math.h>
+  36:eurorack/stmlib/dsp/dsp.h **** 
+  37:eurorack/stmlib/dsp/dsp.h **** namespace stmlib {
+  38:eurorack/stmlib/dsp/dsp.h **** 
+  39:eurorack/stmlib/dsp/dsp.h **** #define MAKE_INTEGRAL_FRACTIONAL(x) \
+  40:eurorack/stmlib/dsp/dsp.h ****   int32_t x ## _integral = static_cast<int32_t>(x); \
+  41:eurorack/stmlib/dsp/dsp.h ****   float x ## _fractional = x - static_cast<float>(x ## _integral);
+  42:eurorack/stmlib/dsp/dsp.h **** 
+  43:eurorack/stmlib/dsp/dsp.h **** inline float Interpolate(const float* table, float index, float size) {
+  44:eurorack/stmlib/dsp/dsp.h ****   index *= size;
+  45:eurorack/stmlib/dsp/dsp.h ****   MAKE_INTEGRAL_FRACTIONAL(index)
+  46:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
+  47:eurorack/stmlib/dsp/dsp.h ****   float b = table[index_integral + 1];
+  48:eurorack/stmlib/dsp/dsp.h ****   return a + (b - a) * index_fractional;
+  49:eurorack/stmlib/dsp/dsp.h **** }
+  50:eurorack/stmlib/dsp/dsp.h **** 
+  51:eurorack/stmlib/dsp/dsp.h **** 
+  52:eurorack/stmlib/dsp/dsp.h **** inline float InterpolateHermite(const float* table, float index, float size) {
+ 168              		.loc 3 52 78 is_stmt 1 view -0
+ 169              		.cfi_startproc
+ 170              		@ args = 0, pretend = 0, frame = 0
+ 171              		@ frame_needed = 0, uses_anonymous_args = 0
+ 172              		@ link register save eliminated.
+  53:eurorack/stmlib/dsp/dsp.h ****   index *= size;
+ 173              		.loc 3 53 3 view .LVU51
+ 174              		.loc 3 53 9 is_stmt 0 view .LVU52
+ 175 0000 60EE200A 		vmul.f32	s1, s0, s1
+ 176              	.LVL6:
+  54:eurorack/stmlib/dsp/dsp.h ****   MAKE_INTEGRAL_FRACTIONAL(index)
+ 177              		.loc 3 54 3 is_stmt 1 view .LVU53
+  55:eurorack/stmlib/dsp/dsp.h ****   const float xm1 = table[index_integral - 1];
+  56:eurorack/stmlib/dsp/dsp.h ****   const float x0 = table[index_integral + 0];
+  57:eurorack/stmlib/dsp/dsp.h ****   const float x1 = table[index_integral + 1];
+  58:eurorack/stmlib/dsp/dsp.h ****   const float x2 = table[index_integral + 2];
+  59:eurorack/stmlib/dsp/dsp.h ****   const float c = (x1 - xm1) * 0.5f;
+  60:eurorack/stmlib/dsp/dsp.h ****   const float v = x0 - x1;
+  61:eurorack/stmlib/dsp/dsp.h ****   const float w = c + v;
+ 178              		.loc 3 61 15 is_stmt 0 view .LVU54
+ 179 0004 B6EE006A 		vmov.f32	s12, #5.0e-1
+  54:eurorack/stmlib/dsp/dsp.h ****   MAKE_INTEGRAL_FRACTIONAL(index)
+ 180              		.loc 3 54 3 view .LVU55
+ 181 0008 FDEEE07A 		vcvt.s32.f32	s15, s1
+ 182              	.LVL7:
+  54:eurorack/stmlib/dsp/dsp.h ****   MAKE_INTEGRAL_FRACTIONAL(index)
+ 183              		.loc 3 54 3 is_stmt 1 view .LVU56
+  55:eurorack/stmlib/dsp/dsp.h ****   const float xm1 = table[index_integral - 1];
+ 184              		.loc 3 55 45 is_stmt 0 view .LVU57
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 8
+
+
+ 185 000c 17EE903A 		vmov	r3, s15	@ int
+  54:eurorack/stmlib/dsp/dsp.h ****   MAKE_INTEGRAL_FRACTIONAL(index)
+ 186              		.loc 3 54 3 view .LVU58
+ 187 0010 B8EEE70A 		vcvt.f32.s32	s0, s15
+  55:eurorack/stmlib/dsp/dsp.h ****   const float xm1 = table[index_integral - 1];
+ 188              		.loc 3 55 45 view .LVU59
+ 189 0014 03F18043 		add	r3, r3, #1073741824
+  54:eurorack/stmlib/dsp/dsp.h ****   MAKE_INTEGRAL_FRACTIONAL(index)
+ 190              		.loc 3 54 3 view .LVU60
+ 191 0018 70EEC00A 		vsub.f32	s1, s1, s0
+ 192              	.LVL8:
+  55:eurorack/stmlib/dsp/dsp.h ****   const float xm1 = table[index_integral - 1];
+ 193              		.loc 3 55 3 is_stmt 1 view .LVU61
+  55:eurorack/stmlib/dsp/dsp.h ****   const float xm1 = table[index_integral - 1];
+ 194              		.loc 3 55 45 is_stmt 0 view .LVU62
+ 195 001c 013B     		subs	r3, r3, #1
+ 196              	.LVL9:
+  56:eurorack/stmlib/dsp/dsp.h ****   const float x1 = table[index_integral + 1];
+ 197              		.loc 3 56 3 is_stmt 1 view .LVU63
+  56:eurorack/stmlib/dsp/dsp.h ****   const float x1 = table[index_integral + 1];
+ 198              		.loc 3 56 15 is_stmt 0 view .LVU64
+ 199 001e 00EB8300 		add	r0, r0, r3, lsl #2
+ 200              	.LVL10:
+  56:eurorack/stmlib/dsp/dsp.h ****   const float x1 = table[index_integral + 1];
+ 201              		.loc 3 56 15 view .LVU65
+ 202 0022 90ED010A 		vldr.32	s0, [r0, #4]
+ 203              	.LVL11:
+  57:eurorack/stmlib/dsp/dsp.h ****   const float x2 = table[index_integral + 2];
+ 204              		.loc 3 57 3 is_stmt 1 view .LVU66
+  57:eurorack/stmlib/dsp/dsp.h ****   const float x2 = table[index_integral + 2];
+ 205              		.loc 3 57 15 is_stmt 0 view .LVU67
+ 206 0026 90ED027A 		vldr.32	s14, [r0, #8]
+ 207              	.LVL12:
+  58:eurorack/stmlib/dsp/dsp.h ****   const float c = (x1 - xm1) * 0.5f;
+ 208              		.loc 3 58 3 is_stmt 1 view .LVU68
+  59:eurorack/stmlib/dsp/dsp.h ****   const float v = x0 - x1;
+ 209              		.loc 3 59 3 view .LVU69
+  59:eurorack/stmlib/dsp/dsp.h ****   const float v = x0 - x1;
+ 210              		.loc 3 59 23 is_stmt 0 view .LVU70
+ 211 002a D0ED006A 		vldr.32	s13, [r0]
+  62:eurorack/stmlib/dsp/dsp.h ****   const float a = w + v + (x2 - x0) * 0.5f;
+ 212              		.loc 3 62 31 view .LVU71
+ 213 002e D0ED035A 		vldr.32	s11, [r0, #12]
+  59:eurorack/stmlib/dsp/dsp.h ****   const float v = x0 - x1;
+ 214              		.loc 3 59 23 view .LVU72
+ 215 0032 77EE666A 		vsub.f32	s13, s14, s13
+ 216              	.LVL13:
+  60:eurorack/stmlib/dsp/dsp.h ****   const float w = c + v;
+ 217              		.loc 3 60 3 is_stmt 1 view .LVU73
+  60:eurorack/stmlib/dsp/dsp.h ****   const float w = c + v;
+ 218              		.loc 3 60 15 is_stmt 0 view .LVU74
+ 219 0036 30EE477A 		vsub.f32	s14, s0, s14
+ 220              	.LVL14:
+  61:eurorack/stmlib/dsp/dsp.h ****   const float a = w + v + (x2 - x0) * 0.5f;
+ 221              		.loc 3 61 3 is_stmt 1 view .LVU75
+ 222              		.loc 3 62 31 is_stmt 0 view .LVU76
+ 223 003a 75EEC05A 		vsub.f32	s11, s11, s0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 9
+
+
+  61:eurorack/stmlib/dsp/dsp.h ****   const float a = w + v + (x2 - x0) * 0.5f;
+ 224              		.loc 3 61 15 view .LVU77
+ 225 003e F0EE477A 		vmov.f32	s15, s14
+ 226              	.LVL15:
+  61:eurorack/stmlib/dsp/dsp.h ****   const float a = w + v + (x2 - x0) * 0.5f;
+ 227              		.loc 3 61 15 view .LVU78
+ 228 0042 E6EE867A 		vfma.f32	s15, s13, s12
+ 229              	.LVL16:
+ 230              		.loc 3 62 3 is_stmt 1 view .LVU79
+ 231              		.loc 3 62 21 is_stmt 0 view .LVU80
+ 232 0046 37EE277A 		vadd.f32	s14, s14, s15
+ 233              	.LVL17:
+ 234              		.loc 3 62 15 view .LVU81
+ 235 004a A5EE867A 		vfma.f32	s14, s11, s12
+ 236              	.LVL18:
+  63:eurorack/stmlib/dsp/dsp.h ****   const float b_neg = w + a;
+ 237              		.loc 3 63 3 is_stmt 1 view .LVU82
+  64:eurorack/stmlib/dsp/dsp.h ****   const float f = index_fractional;
+ 238              		.loc 3 64 3 view .LVU83
+  65:eurorack/stmlib/dsp/dsp.h ****   return (((a * f) - b_neg) * f + c) * f + x0;
+ 239              		.loc 3 65 3 view .LVU84
+  63:eurorack/stmlib/dsp/dsp.h ****   const float b_neg = w + a;
+ 240              		.loc 3 63 15 is_stmt 0 view .LVU85
+ 241 004e 77EE877A 		vadd.f32	s15, s15, s14
+ 242              	.LVL19:
+ 243              		.loc 3 65 20 view .LVU86
+ 244 0052 D0EE877A 		vfnms.f32	s15, s1, s14
+ 245              	.LVL20:
+ 246              		.loc 3 65 29 view .LVU87
+ 247 0056 67EEA07A 		vmul.f32	s15, s15, s1
+ 248              		.loc 3 65 33 view .LVU88
+ 249 005a E6EE867A 		vfma.f32	s15, s13, s12
+  66:eurorack/stmlib/dsp/dsp.h **** }
+ 250              		.loc 3 66 1 view .LVU89
+ 251 005e A7EEA00A 		vfma.f32	s0, s15, s1
+ 252              	.LVL21:
+ 253              		.loc 3 66 1 view .LVU90
+ 254 0062 7047     		bx	lr
+ 255              		.cfi_endproc
+ 256              	.LFE563:
+ 258              		.section	.text._ZN6stmlib24NextIntegratedBlepSampleEf,"axG",%progbits,_ZN6stmlib24NextIntegratedBl
+ 259              		.align	1
+ 260              		.weak	_ZN6stmlib24NextIntegratedBlepSampleEf
+ 261              		.syntax unified
+ 262              		.thumb
+ 263              		.thumb_func
+ 265              	_ZN6stmlib24NextIntegratedBlepSampleEf:
+ 266              	.LVL22:
+ 267              	.LFB620:
+ 268              		.file 4 "eurorack/stmlib/dsp/polyblep.h"
+   1:eurorack/stmlib/dsp/polyblep.h **** // Copyright 2017 Emilie Gillet.
+   2:eurorack/stmlib/dsp/polyblep.h **** //
+   3:eurorack/stmlib/dsp/polyblep.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/stmlib/dsp/polyblep.h **** //
+   5:eurorack/stmlib/dsp/polyblep.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/stmlib/dsp/polyblep.h **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/stmlib/dsp/polyblep.h **** // in the Software without restriction, including without limitation the rights
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 10
+
+
+   8:eurorack/stmlib/dsp/polyblep.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/stmlib/dsp/polyblep.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/stmlib/dsp/polyblep.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/stmlib/dsp/polyblep.h **** // 
+  12:eurorack/stmlib/dsp/polyblep.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/stmlib/dsp/polyblep.h **** // all copies or substantial portions of the Software.
+  14:eurorack/stmlib/dsp/polyblep.h **** // 
+  15:eurorack/stmlib/dsp/polyblep.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/stmlib/dsp/polyblep.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/stmlib/dsp/polyblep.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/stmlib/dsp/polyblep.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/stmlib/dsp/polyblep.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/stmlib/dsp/polyblep.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/stmlib/dsp/polyblep.h **** // THE SOFTWARE.
+  22:eurorack/stmlib/dsp/polyblep.h **** // 
+  23:eurorack/stmlib/dsp/polyblep.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/stmlib/dsp/polyblep.h **** //
+  25:eurorack/stmlib/dsp/polyblep.h **** // -----------------------------------------------------------------------------
+  26:eurorack/stmlib/dsp/polyblep.h **** //
+  27:eurorack/stmlib/dsp/polyblep.h **** // Polynomial approximation of band-limited step for band-limited waveform
+  28:eurorack/stmlib/dsp/polyblep.h **** // synthesis.
+  29:eurorack/stmlib/dsp/polyblep.h **** 
+  30:eurorack/stmlib/dsp/polyblep.h **** #ifndef STMLIB_DSP_POLYBLEP_H_
+  31:eurorack/stmlib/dsp/polyblep.h **** #define STMLIB_DSP_POLYBLEP_H_
+  32:eurorack/stmlib/dsp/polyblep.h **** 
+  33:eurorack/stmlib/dsp/polyblep.h **** #include "stmlib/stmlib.h"
+  34:eurorack/stmlib/dsp/polyblep.h **** 
+  35:eurorack/stmlib/dsp/polyblep.h **** namespace stmlib {
+  36:eurorack/stmlib/dsp/polyblep.h **** 
+  37:eurorack/stmlib/dsp/polyblep.h **** inline float ThisBlepSample(float t) {
+  38:eurorack/stmlib/dsp/polyblep.h ****   return 0.5f * t * t;
+  39:eurorack/stmlib/dsp/polyblep.h **** }
+  40:eurorack/stmlib/dsp/polyblep.h **** 
+  41:eurorack/stmlib/dsp/polyblep.h **** inline float NextBlepSample(float t) {
+  42:eurorack/stmlib/dsp/polyblep.h ****   t = 1.0f - t;
+  43:eurorack/stmlib/dsp/polyblep.h ****   return -0.5f * t * t;
+  44:eurorack/stmlib/dsp/polyblep.h **** }
+  45:eurorack/stmlib/dsp/polyblep.h **** 
+  46:eurorack/stmlib/dsp/polyblep.h **** inline float NextIntegratedBlepSample(float t) {
+ 269              		.loc 4 46 48 is_stmt 1 view -0
+ 270              		.cfi_startproc
+ 271              		@ args = 0, pretend = 0, frame = 0
+ 272              		@ frame_needed = 0, uses_anonymous_args = 0
+ 273              		@ link register save eliminated.
+  47:eurorack/stmlib/dsp/polyblep.h ****   const float t1 = 0.5f * t;
+ 274              		.loc 4 47 3 view .LVU92
+ 275              		.loc 4 47 15 is_stmt 0 view .LVU93
+ 276 0000 F6EE007A 		vmov.f32	s15, #5.0e-1
+ 277 0004 60EE277A 		vmul.f32	s15, s0, s15
+ 278              	.LVL23:
+  48:eurorack/stmlib/dsp/polyblep.h ****   const float t2 = t1 * t1;
+ 279              		.loc 4 48 3 is_stmt 1 view .LVU94
+  49:eurorack/stmlib/dsp/polyblep.h ****   const float t4 = t2 * t2;
+  50:eurorack/stmlib/dsp/polyblep.h ****   return 0.1875f - t1 + 1.5f * t2 - t4;
+ 280              		.loc 4 50 18 is_stmt 0 view .LVU95
+ 281 0008 B4EE080A 		vmov.f32	s0, #1.875e-1
+ 282              	.LVL24:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 11
+
+
+  48:eurorack/stmlib/dsp/polyblep.h ****   const float t2 = t1 * t1;
+ 283              		.loc 4 48 15 view .LVU96
+ 284 000c 27EEA77A 		vmul.f32	s14, s15, s15
+ 285              	.LVL25:
+  49:eurorack/stmlib/dsp/polyblep.h ****   const float t4 = t2 * t2;
+ 286              		.loc 4 49 3 is_stmt 1 view .LVU97
+ 287              		.loc 4 50 3 view .LVU98
+ 288              		.loc 4 50 18 is_stmt 0 view .LVU99
+ 289 0010 30EE670A 		vsub.f32	s0, s0, s15
+ 290              		.loc 4 50 23 view .LVU100
+ 291 0014 F7EE087A 		vmov.f32	s15, #1.5e+0
+ 292              	.LVL26:
+ 293              		.loc 4 50 23 view .LVU101
+ 294 0018 A7EE270A 		vfma.f32	s0, s14, s15
+  51:eurorack/stmlib/dsp/polyblep.h **** }
+ 295              		.loc 4 51 1 view .LVU102
+ 296 001c A7EE470A 		vfms.f32	s0, s14, s14
+ 297 0020 7047     		bx	lr
+ 298              		.cfi_endproc
+ 299              	.LFE620:
+ 301              		.section	.text._ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0,"a
+ 302              		.align	1
+ 303              		.syntax unified
+ 304              		.thumb
+ 305              		.thumb_func
+ 307              	_ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0:
+ 308              	.LVL27:
+ 309              	.LFB1496:
+  67:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+  68:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+  69:eurorack/plaits/dsp/oscillator/oscillator.h ****   template<OscillatorShape shape>
+  70:eurorack/plaits/dsp/oscillator/oscillator.h ****   void Render(float frequency, float pw, float* out, size_t size) {
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****     Render<shape, false, false>(frequency, pw, NULL, out, size);
+  72:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+  73:eurorack/plaits/dsp/oscillator/oscillator.h ****   
+  74:eurorack/plaits/dsp/oscillator/oscillator.h ****   template<OscillatorShape shape>
+  75:eurorack/plaits/dsp/oscillator/oscillator.h ****   void Render(
+  76:eurorack/plaits/dsp/oscillator/oscillator.h ****       float frequency,
+  77:eurorack/plaits/dsp/oscillator/oscillator.h ****       float pw,
+  78:eurorack/plaits/dsp/oscillator/oscillator.h ****       const float* fm,
+  79:eurorack/plaits/dsp/oscillator/oscillator.h ****       float* out,
+  80:eurorack/plaits/dsp/oscillator/oscillator.h ****       size_t size) {
+  81:eurorack/plaits/dsp/oscillator/oscillator.h ****     if (!fm) {
+  82:eurorack/plaits/dsp/oscillator/oscillator.h ****       Render<shape, false, false>(frequency, pw, NULL, out, size);
+  83:eurorack/plaits/dsp/oscillator/oscillator.h ****     } else {
+  84:eurorack/plaits/dsp/oscillator/oscillator.h ****       Render<shape, true, true>(frequency, pw, fm, out, size);
+  85:eurorack/plaits/dsp/oscillator/oscillator.h ****     }
+  86:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+  87:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+  88:eurorack/plaits/dsp/oscillator/oscillator.h ****   template<OscillatorShape shape, bool has_external_fm, bool through_zero_fm>
+  89:eurorack/plaits/dsp/oscillator/oscillator.h ****   void Render(
+ 310              		.loc 2 89 8 is_stmt 1 view -0
+ 311              		.cfi_startproc
+ 312              		@ args = 0, pretend = 0, frame = 0
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+  90:eurorack/plaits/dsp/oscillator/oscillator.h ****       float frequency,
+  91:eurorack/plaits/dsp/oscillator/oscillator.h ****       float pw,
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 12
+
+
+  92:eurorack/plaits/dsp/oscillator/oscillator.h ****       const float* external_fm,
+  93:eurorack/plaits/dsp/oscillator/oscillator.h ****       float* out,
+  94:eurorack/plaits/dsp/oscillator/oscillator.h ****       size_t size) {
+  95:eurorack/plaits/dsp/oscillator/oscillator.h ****     
+  96:eurorack/plaits/dsp/oscillator/oscillator.h ****     if (!has_external_fm) {
+  97:eurorack/plaits/dsp/oscillator/oscillator.h ****       if (!through_zero_fm) {
+  98:eurorack/plaits/dsp/oscillator/oscillator.h ****         CONSTRAIN(frequency, kMinFrequency, kMaxFrequency);
+ 314              		.loc 2 98 9 is_stmt 0 view .LVU104
+ 315 0000 DFED587A 		vldr.32	s15, .L26
+ 316 0004 B4EEE70A 		vcmpe.f32	s0, s15
+  89:eurorack/plaits/dsp/oscillator/oscillator.h ****       float frequency,
+ 317              		.loc 2 89 8 view .LVU105
+ 318 0008 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 319              		.cfi_def_cfa_offset 24
+ 320              		.cfi_offset 3, -24
+ 321              		.cfi_offset 4, -20
+ 322              		.cfi_offset 5, -16
+ 323              		.cfi_offset 6, -12
+ 324              		.cfi_offset 7, -8
+ 325              		.cfi_offset 14, -4
+ 326              		.loc 2 98 9 view .LVU106
+ 327 000a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  89:eurorack/plaits/dsp/oscillator/oscillator.h ****       float frequency,
+ 328              		.loc 2 89 8 view .LVU107
+ 329 000e 0446     		mov	r4, r0
+ 330 0010 0E46     		mov	r6, r1
+ 331 0012 1546     		mov	r5, r2
+ 332 0014 2DED0E8B 		vpush.64	{d8, d9, d10, d11, d12, d13, d14}
+ 333              		.cfi_def_cfa_offset 80
+ 334              		.cfi_offset 80, -80
+ 335              		.cfi_offset 81, -76
+ 336              		.cfi_offset 82, -72
+ 337              		.cfi_offset 83, -68
+ 338              		.cfi_offset 84, -64
+ 339              		.cfi_offset 85, -60
+ 340              		.cfi_offset 86, -56
+ 341              		.cfi_offset 87, -52
+ 342              		.cfi_offset 88, -48
+ 343              		.cfi_offset 89, -44
+ 344              		.cfi_offset 90, -40
+ 345              		.cfi_offset 91, -36
+ 346              		.cfi_offset 92, -32
+ 347              		.cfi_offset 93, -28
+ 348              		.loc 2 98 9 view .LVU108
+ 349 0018 00F19080 		bmi	.L20
+ 350 001c F5EE007A 		vmov.f32	s15, #2.5e-1
+ 351 0020 B4EE670A 		vcmp.f32	s0, s15
+ 352 0024 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 353 0028 37FE800A 		vselgt.f32	s0, s15, s0
+ 354              	.LVL28:
+ 355              	.L8:
+  99:eurorack/plaits/dsp/oscillator/oscillator.h ****       } else {
+ 100:eurorack/plaits/dsp/oscillator/oscillator.h ****         CONSTRAIN(frequency, -kMaxFrequency, kMaxFrequency);
+ 101:eurorack/plaits/dsp/oscillator/oscillator.h ****       }
+ 102:eurorack/plaits/dsp/oscillator/oscillator.h ****       CONSTRAIN(pw, fabsf(frequency) * 2.0f, 1.0f - 2.0f * fabsf(frequency))
+ 356              		.loc 2 102 7 view .LVU109
+ 357 002c F0EEC07A 		vabs.f32	s15, s0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 13
+
+
+ 358 0030 77EEA77A 		vadd.f32	s15, s15, s15
+ 359 0034 F4EEE07A 		vcmpe.f32	s15, s1
+ 360 0038 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 361 003c 09DC     		bgt	.L10
+ 362 003e B7EE007A 		vmov.f32	s14, #1.0e+0
+ 363 0042 77EE677A 		vsub.f32	s15, s14, s15
+ 364 0046 F4EEE70A 		vcmpe.f32	s1, s15
+ 365 004a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 366 004e 77FEA07A 		vselgt.f32	s15, s15, s1
+ 367              	.L10:
+ 368              	.LVL29:
+ 369              	.LBB110:
+ 370              	.LBI110:
+ 371              		.file 5 "eurorack/stmlib/dsp/parameter_interpolator.h"
+   1:eurorack/stmlib/dsp/parameter_interpolator.h **** // Copyright 2015 Emilie Gillet.
+   2:eurorack/stmlib/dsp/parameter_interpolator.h **** //
+   3:eurorack/stmlib/dsp/parameter_interpolator.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/stmlib/dsp/parameter_interpolator.h **** //
+   5:eurorack/stmlib/dsp/parameter_interpolator.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/stmlib/dsp/parameter_interpolator.h **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/stmlib/dsp/parameter_interpolator.h **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/stmlib/dsp/parameter_interpolator.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/stmlib/dsp/parameter_interpolator.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/stmlib/dsp/parameter_interpolator.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/stmlib/dsp/parameter_interpolator.h **** // 
+  12:eurorack/stmlib/dsp/parameter_interpolator.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/stmlib/dsp/parameter_interpolator.h **** // all copies or substantial portions of the Software.
+  14:eurorack/stmlib/dsp/parameter_interpolator.h **** // 
+  15:eurorack/stmlib/dsp/parameter_interpolator.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/stmlib/dsp/parameter_interpolator.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/stmlib/dsp/parameter_interpolator.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/stmlib/dsp/parameter_interpolator.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/stmlib/dsp/parameter_interpolator.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/stmlib/dsp/parameter_interpolator.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/stmlib/dsp/parameter_interpolator.h **** // THE SOFTWARE.
+  22:eurorack/stmlib/dsp/parameter_interpolator.h **** // 
+  23:eurorack/stmlib/dsp/parameter_interpolator.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/stmlib/dsp/parameter_interpolator.h **** //
+  25:eurorack/stmlib/dsp/parameter_interpolator.h **** // -----------------------------------------------------------------------------
+  26:eurorack/stmlib/dsp/parameter_interpolator.h **** //
+  27:eurorack/stmlib/dsp/parameter_interpolator.h **** // Linear interpolation of parameters in rendering loops.
+  28:eurorack/stmlib/dsp/parameter_interpolator.h **** 
+  29:eurorack/stmlib/dsp/parameter_interpolator.h **** #ifndef STMLIB_DSP_PARAMETER_INTERPOLATOR_H_
+  30:eurorack/stmlib/dsp/parameter_interpolator.h **** #define STMLIB_DSP_PARAMETER_INTERPOLATOR_H_
+  31:eurorack/stmlib/dsp/parameter_interpolator.h **** 
+  32:eurorack/stmlib/dsp/parameter_interpolator.h **** #include "stmlib/stmlib.h"
+  33:eurorack/stmlib/dsp/parameter_interpolator.h **** 
+  34:eurorack/stmlib/dsp/parameter_interpolator.h **** namespace stmlib {
+  35:eurorack/stmlib/dsp/parameter_interpolator.h **** 
+  36:eurorack/stmlib/dsp/parameter_interpolator.h **** class ParameterInterpolator {
+  37:eurorack/stmlib/dsp/parameter_interpolator.h ****  public:
+  38:eurorack/stmlib/dsp/parameter_interpolator.h ****   ParameterInterpolator() { }
+  39:eurorack/stmlib/dsp/parameter_interpolator.h ****   ParameterInterpolator(float* state, float new_value, size_t size) {
+ 372              		.loc 5 39 3 is_stmt 1 view .LVU110
+ 373              	.LBE110:
+  40:eurorack/stmlib/dsp/parameter_interpolator.h ****     Init(state, new_value, size);
+ 374              		.loc 5 40 5 view .LVU111
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 14
+
+
+ 375              	.LBB119:
+ 376              	.LBB111:
+ 377              	.LBI111:
+  41:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+  42:eurorack/stmlib/dsp/parameter_interpolator.h **** 
+  43:eurorack/stmlib/dsp/parameter_interpolator.h ****   ParameterInterpolator(float* state, float new_value, float step) {
+  44:eurorack/stmlib/dsp/parameter_interpolator.h ****     state_ = state;
+  45:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
+  46:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) * step;
+  47:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+  48:eurorack/stmlib/dsp/parameter_interpolator.h **** 
+  49:eurorack/stmlib/dsp/parameter_interpolator.h ****   ~ParameterInterpolator() {
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****     *state_ = value_;
+  51:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+  52:eurorack/stmlib/dsp/parameter_interpolator.h ****   
+  53:eurorack/stmlib/dsp/parameter_interpolator.h ****   inline void Init(float* state, float new_value, size_t size) {
+ 378              		.loc 5 53 15 view .LVU112
+ 379              	.LBB112:
+  54:eurorack/stmlib/dsp/parameter_interpolator.h ****     state_ = state;
+ 380              		.loc 5 54 5 view .LVU113
+  55:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
+ 381              		.loc 5 55 5 view .LVU114
+ 382              		.loc 5 55 14 is_stmt 0 view .LVU115
+ 383 0052 94ED059A 		vldr.32	s18, [r4, #20]
+ 384              	.LVL30:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
+ 385              		.loc 5 56 5 is_stmt 1 view .LVU116
+ 386              		.loc 5 56 39 is_stmt 0 view .LVU117
+ 387 0056 07EE105A 		vmov	s14, r5	@ int
+ 388              	.LBE112:
+ 389              	.LBE111:
+ 390              	.LBE119:
+ 391              	.LBB120:
+ 392              	.LBB121:
+ 393              	.LBB122:
+  55:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
+ 394              		.loc 5 55 14 view .LVU118
+ 395 005a D4ED069A 		vldr.32	s19, [r4, #24]
+ 396              	.LBE122:
+ 397              	.LBE121:
+ 398              	.LBE120:
+ 399              	.LBB127:
+ 400              	.LBB116:
+ 401              	.LBB113:
+ 402              		.loc 5 56 39 view .LVU119
+ 403 005e B8EE477A 		vcvt.f32.u32	s14, s14
+ 404              	.LBE113:
+ 405              	.LBE116:
+ 406              	.LBE127:
+ 103:eurorack/plaits/dsp/oscillator/oscillator.h ****     }
+ 104:eurorack/plaits/dsp/oscillator/oscillator.h ****     
+ 105:eurorack/plaits/dsp/oscillator/oscillator.h ****     stmlib::ParameterInterpolator fm(&frequency_, frequency, size);
+ 106:eurorack/plaits/dsp/oscillator/oscillator.h ****     stmlib::ParameterInterpolator pwm(&pw_, pw, size);
+ 107:eurorack/plaits/dsp/oscillator/oscillator.h ****   
+ 108:eurorack/plaits/dsp/oscillator/oscillator.h ****     float next_sample = next_sample_;
+ 407              		.loc 2 108 11 view .LVU120
+ 408 0062 94ED01BA 		vldr.32	s22, [r4, #4]
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 15
+
+
+ 409              	.LBB128:
+ 410              	.LBB117:
+ 411              	.LBB114:
+ 412              		.loc 5 56 29 view .LVU121
+ 413 0066 30EE490A 		vsub.f32	s0, s0, s18
+ 414              	.LVL31:
+ 415              		.loc 5 56 29 view .LVU122
+ 416              	.LBE114:
+ 417              	.LBE117:
+ 418              	.LBE128:
+ 419              	.LBB129:
+ 420              	.LBB125:
+ 421              	.LBB123:
+ 422 006a 77EEE97A 		vsub.f32	s15, s15, s19
+ 423              	.LVL32:
+ 424              		.loc 5 56 29 view .LVU123
+ 425              	.LBE123:
+ 426              	.LBE125:
+ 427              	.LBE129:
+ 428              	.LBB130:
+ 429              	.LBB118:
+ 430              	.LBB115:
+ 431              		.loc 5 56 39 view .LVU124
+ 432 006e C0EE07AA 		vdiv.f32	s21, s0, s14
+ 433              	.LVL33:
+ 434              		.loc 5 56 39 view .LVU125
+ 435              	.LBE115:
+ 436              	.LBE118:
+ 437              	.LBE130:
+ 438              	.LBB131:
+ 439              	.LBI120:
+  39:eurorack/stmlib/dsp/parameter_interpolator.h ****     Init(state, new_value, size);
+ 440              		.loc 5 39 3 is_stmt 1 view .LVU126
+ 441              	.LBE131:
+  40:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 442              		.loc 5 40 5 view .LVU127
+ 443              	.LBB132:
+ 444              	.LBB126:
+ 445              	.LBI121:
+  53:eurorack/stmlib/dsp/parameter_interpolator.h ****     state_ = state;
+ 446              		.loc 5 53 15 view .LVU128
+ 447              	.LBB124:
+  54:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
+ 448              		.loc 5 54 5 view .LVU129
+  55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
+ 449              		.loc 5 55 5 view .LVU130
+ 450              		.loc 5 56 5 view .LVU131
+ 451              		.loc 5 56 39 is_stmt 0 view .LVU132
+ 452 0072 C7EE87BA 		vdiv.f32	s23, s15, s14
+ 453              	.LVL34:
+ 454              	.L19:
+ 455              		.loc 5 56 39 view .LVU133
+ 456              	.LBE124:
+ 457              	.LBE126:
+ 458              	.LBE132:
+ 109:eurorack/plaits/dsp/oscillator/oscillator.h ****   
+ 110:eurorack/plaits/dsp/oscillator/oscillator.h ****     while (size--) {
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 16
+
+
+ 459              		.loc 2 110 5 is_stmt 1 view .LVU134
+ 460 0076 013D     		subs	r5, r5, #1
+ 461              	.LVL35:
+ 462              		.loc 2 110 5 is_stmt 0 view .LVU135
+ 463 0078 6BD3     		bcc	.L12
+ 464              	.LVL36:
+ 465              	.LBB133:
+ 466              	.LBB134:
+ 467              	.LBI134:
+  57:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+  58:eurorack/stmlib/dsp/parameter_interpolator.h **** 
+  59:eurorack/stmlib/dsp/parameter_interpolator.h ****   inline float Next() {
+ 468              		.loc 5 59 16 is_stmt 1 view .LVU136
+ 469              	.LBB135:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ += increment_;
+ 470              		.loc 5 60 5 view .LVU137
+ 471              	.LBE135:
+ 472              	.LBE134:
+ 111:eurorack/plaits/dsp/oscillator/oscillator.h ****       float this_sample = next_sample;
+ 112:eurorack/plaits/dsp/oscillator/oscillator.h ****       next_sample = 0.0f;
+ 113:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+ 114:eurorack/plaits/dsp/oscillator/oscillator.h ****       float frequency = fm.Next();
+ 115:eurorack/plaits/dsp/oscillator/oscillator.h ****       if (has_external_fm) {
+ 116:eurorack/plaits/dsp/oscillator/oscillator.h ****         frequency *= (1.0f + *external_fm++);
+ 117:eurorack/plaits/dsp/oscillator/oscillator.h ****         if (!through_zero_fm) {
+ 118:eurorack/plaits/dsp/oscillator/oscillator.h ****           CONSTRAIN(frequency, kMinFrequency, kMaxFrequency);
+ 119:eurorack/plaits/dsp/oscillator/oscillator.h ****         } else {
+ 120:eurorack/plaits/dsp/oscillator/oscillator.h ****           CONSTRAIN(frequency, -kMaxFrequency, kMaxFrequency);
+ 121:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ 122:eurorack/plaits/dsp/oscillator/oscillator.h ****       }
+ 123:eurorack/plaits/dsp/oscillator/oscillator.h ****       float pw = (shape == OSCILLATOR_SHAPE_SQUARE_TRIANGLE ||
+ 124:eurorack/plaits/dsp/oscillator/oscillator.h ****                   shape == OSCILLATOR_SHAPE_TRIANGLE) ? 0.5f : pwm.Next();
+ 125:eurorack/plaits/dsp/oscillator/oscillator.h ****       if (has_external_fm) {
+ 126:eurorack/plaits/dsp/oscillator/oscillator.h ****         CONSTRAIN(pw, fabsf(frequency) * 2.0f, 1.0f - 2.0f * fabsf(frequency))
+ 127:eurorack/plaits/dsp/oscillator/oscillator.h ****       }
+ 128:eurorack/plaits/dsp/oscillator/oscillator.h ****       phase_ += frequency;
+ 473              		.loc 2 128 14 is_stmt 0 view .LVU138
+ 474 007a D4ED008A 		vldr.32	s17, [r4]
+ 475              	.LBB137:
+ 476              	.LBB136:
+ 477              		.loc 5 60 12 view .LVU139
+ 478 007e 39EE2A9A 		vadd.f32	s18, s18, s21
+ 479              	.LVL37:
+  61:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 480              		.loc 5 61 5 is_stmt 1 view .LVU140
+ 481              		.loc 5 61 5 is_stmt 0 view .LVU141
+ 482              	.LBE136:
+ 483              	.LBE137:
+ 484              	.LBB138:
+ 485              	.LBI138:
+  59:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ += increment_;
+ 486              		.loc 5 59 16 is_stmt 1 view .LVU142
+ 487              	.LBB139:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 488              		.loc 5 60 5 view .LVU143
+ 489              	.LBE139:
+ 490              	.LBE138:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 17
+
+
+ 491              	.LBB141:
+ 492              	.LBB142:
+ 129:eurorack/plaits/dsp/oscillator/oscillator.h ****       
+ 130:eurorack/plaits/dsp/oscillator/oscillator.h ****       if (shape <= OSCILLATOR_SHAPE_SAW) {
+ 131:eurorack/plaits/dsp/oscillator/oscillator.h ****         if (phase_ >= 1.0f) {
+ 132:eurorack/plaits/dsp/oscillator/oscillator.h ****           phase_ -= 1.0f;
+ 133:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = phase_ / frequency;
+ 134:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample -= stmlib::ThisBlepSample(t);
+ 135:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample -= stmlib::NextBlepSample(t);
+ 136:eurorack/plaits/dsp/oscillator/oscillator.h ****         } else if (through_zero_fm && phase_ < 0.0f) {
+ 137:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = phase_ / frequency;
+ 138:eurorack/plaits/dsp/oscillator/oscillator.h ****           phase_ += 1.0f;
+ 139:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample += stmlib::ThisBlepSample(t);
+ 140:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample += stmlib::NextBlepSample(t);
+ 141:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ 142:eurorack/plaits/dsp/oscillator/oscillator.h ****         next_sample += phase_;
+ 143:eurorack/plaits/dsp/oscillator/oscillator.h **** 
+ 144:eurorack/plaits/dsp/oscillator/oscillator.h ****         if (shape == OSCILLATOR_SHAPE_SAW) {
+ 145:eurorack/plaits/dsp/oscillator/oscillator.h ****           *out++ = 2.0f * this_sample - 1.0f;
+ 146:eurorack/plaits/dsp/oscillator/oscillator.h ****         } else {
+ 147:eurorack/plaits/dsp/oscillator/oscillator.h ****           lp_state_ += 0.25f * ((hp_state_ - this_sample) - lp_state_);
+ 148:eurorack/plaits/dsp/oscillator/oscillator.h ****           *out++ = 4.0f * lp_state_;
+ 149:eurorack/plaits/dsp/oscillator/oscillator.h ****           hp_state_ = this_sample;
+ 150:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ 151:eurorack/plaits/dsp/oscillator/oscillator.h ****       } else if (shape <= OSCILLATOR_SHAPE_SLOPE) {
+ 152:eurorack/plaits/dsp/oscillator/oscillator.h ****         float slope_up = 2.0f;
+ 153:eurorack/plaits/dsp/oscillator/oscillator.h ****         float slope_down = 2.0f;
+ 154:eurorack/plaits/dsp/oscillator/oscillator.h ****         if (shape == OSCILLATOR_SHAPE_SLOPE) {
+ 155:eurorack/plaits/dsp/oscillator/oscillator.h ****           slope_up = 1.0f / (pw);
+ 156:eurorack/plaits/dsp/oscillator/oscillator.h ****           slope_down = 1.0f / (1.0f - pw);
+ 157:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ 158:eurorack/plaits/dsp/oscillator/oscillator.h ****         if (high_ ^ (phase_ < pw)) {
+ 493              		.loc 2 158 9 is_stmt 0 view .LVU144
+ 494 0082 237C     		ldrb	r3, [r4, #16]	@ zero_extendqisi2
+ 495              	.LBE142:
+ 496              	.LBE141:
+ 497              	.LBB155:
+ 498              	.LBB140:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 499              		.loc 5 60 12 view .LVU145
+ 500 0084 79EEAB9A 		vadd.f32	s19, s19, s23
+ 501              	.LVL38:
+ 502              		.loc 5 61 5 is_stmt 1 view .LVU146
+ 503              		.loc 5 61 5 is_stmt 0 view .LVU147
+ 504 0088 9FED37CA 		vldr.32	s24, .L26+4
+ 505              	.LBE140:
+ 506              	.LBE155:
+ 507              	.LBB156:
+ 155:eurorack/plaits/dsp/oscillator/oscillator.h ****           slope_down = 1.0f / (1.0f - pw);
+ 508              		.loc 2 155 20 view .LVU148
+ 509 008c B7EE008A 		vmov.f32	s16, #1.0e+0
+ 510              	.LBE156:
+ 128:eurorack/plaits/dsp/oscillator/oscillator.h ****       
+ 511              		.loc 2 128 14 view .LVU149
+ 512 0090 79EE288A 		vadd.f32	s17, s18, s17
+ 513              	.LBB157:
+ 156:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 18
+
+
+ 514              		.loc 2 156 37 view .LVU150
+ 515 0094 78EE697A 		vsub.f32	s15, s16, s19
+ 516              	.LBB148:
+ 517              		.loc 2 158 29 view .LVU151
+ 518 0098 F4EEE89A 		vcmpe.f32	s19, s17
+ 519              	.LBE148:
+ 520              	.LBE157:
+ 128:eurorack/plaits/dsp/oscillator/oscillator.h ****       
+ 521              		.loc 2 128 14 view .LVU152
+ 522 009c C4ED008A 		vstr.32	s17, [r4]
+ 523              	.LVL39:
+ 524              	.LBB158:
+ 155:eurorack/plaits/dsp/oscillator/oscillator.h ****           slope_down = 1.0f / (1.0f - pw);
+ 525              		.loc 2 155 20 view .LVU153
+ 526 00a0 88EE29DA 		vdiv.f32	s26, s16, s19
+ 527              	.LVL40:
+ 528              	.LBB149:
+ 529              		.loc 2 158 29 view .LVU154
+ 530 00a4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 531              	.LBE149:
+ 156:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ 532              		.loc 2 156 22 view .LVU155
+ 533 00a8 88EE27AA 		vdiv.f32	s20, s16, s15
+ 534              	.LVL41:
+ 535              	.LBB150:
+ 536              		.loc 2 158 29 view .LVU156
+ 537 00ac CCBF     		ite	gt
+ 538 00ae 0127     		movgt	r7, #1
+ 539 00b0 0027     		movle	r7, #0
+ 540              		.loc 2 158 9 view .LVU157
+ 541 00b2 BB42     		cmp	r3, r7
+ 542 00b4 16D0     		beq	.L13
+ 543              	.LBB143:
+ 159:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = (phase_ - pw) / frequency;
+ 544              		.loc 2 159 29 view .LVU158
+ 545 00b6 78EEE97A 		vsub.f32	s15, s17, s19
+ 160:eurorack/plaits/dsp/oscillator/oscillator.h ****           float discontinuity = (slope_up + slope_down) * frequency;
+ 546              		.loc 2 160 43 view .LVU159
+ 547 00ba 7DEE0ACA 		vadd.f32	s25, s26, s20
+ 159:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = (phase_ - pw) / frequency;
+ 548              		.loc 2 159 17 view .LVU160
+ 549 00be C7EE89DA 		vdiv.f32	s27, s15, s18
+ 550              	.LVL42:
+ 551              		.loc 2 160 17 view .LVU161
+ 552 00c2 6CEE89CA 		vmul.f32	s25, s25, s18
+ 553              	.LVL43:
+ 554              	.LBB144:
+ 555              	.LBI144:
+  52:eurorack/stmlib/dsp/polyblep.h **** 
+  53:eurorack/stmlib/dsp/polyblep.h **** inline float ThisIntegratedBlepSample(float t) {
+ 556              		.loc 4 53 14 is_stmt 1 view .LVU162
+ 557              	.LBB145:
+  54:eurorack/stmlib/dsp/polyblep.h ****   return NextIntegratedBlepSample(1.0f - t);
+ 558              		.loc 4 54 3 view .LVU163
+ 559              	.LBE145:
+ 560              	.LBE144:
+ 161:eurorack/plaits/dsp/oscillator/oscillator.h ****           if (through_zero_fm && frequency < 0.0f) {
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 19
+
+
+ 162:eurorack/plaits/dsp/oscillator/oscillator.h ****             discontinuity = -discontinuity;
+ 163:eurorack/plaits/dsp/oscillator/oscillator.h ****           }
+ 164:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample -= stmlib::ThisIntegratedBlepSample(t) * discontinuity;
+ 561              		.loc 2 164 23 is_stmt 0 view .LVU164
+ 562 00c6 B1EE6CEA 		vneg.f32	s28, s25
+ 563              	.LBB147:
+ 564              	.LBB146:
+ 565              		.loc 4 54 34 view .LVU165
+ 566 00ca 38EE6D0A 		vsub.f32	s0, s16, s27
+ 567 00ce FFF7FEFF 		bl	_ZN6stmlib24NextIntegratedBlepSampleEf
+ 568              	.LVL44:
+ 569              		.loc 4 54 34 view .LVU166
+ 570              	.LBE146:
+ 571              	.LBE147:
+ 572              		.loc 2 164 23 view .LVU167
+ 573 00d2 ACEEC0BA 		vfms.f32	s22, s25, s0
+ 574              	.LVL45:
+ 165:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample -= stmlib::NextIntegratedBlepSample(t) * discontinuity;
+ 575              		.loc 2 165 58 view .LVU168
+ 576 00d6 B0EE6D0A 		vmov.f32	s0, s27
+ 577 00da FFF7FEFF 		bl	_ZN6stmlib24NextIntegratedBlepSampleEf
+ 578              	.LVL46:
+ 579              		.loc 2 165 23 view .LVU169
+ 580 00de AEEE00CA 		vfma.f32	s24, s28, s0
+ 581              	.LVL47:
+ 166:eurorack/plaits/dsp/oscillator/oscillator.h ****           high_ = phase_ < pw;
+ 582              		.loc 2 166 17 view .LVU170
+ 583 00e2 2774     		strb	r7, [r4, #16]
+ 584              	.LVL48:
+ 585              	.L13:
+ 586              		.loc 2 166 17 view .LVU171
+ 587              	.LBE143:
+ 588              	.LBE150:
+ 589              	.LBB151:
+ 167:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ 168:eurorack/plaits/dsp/oscillator/oscillator.h ****         if (phase_ >= 1.0f) {
+ 590              		.loc 2 168 9 view .LVU172
+ 591 00e4 F4EEC88A 		vcmpe.f32	s17, s16
+ 592 00e8 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 593 00ec 29DB     		blt	.L25
+ 594              	.LBB152:
+ 169:eurorack/plaits/dsp/oscillator/oscillator.h ****           phase_ -= 1.0f;
+ 595              		.loc 2 169 18 view .LVU173
+ 596 00ee 78EEC88A 		vsub.f32	s17, s17, s16
+ 170:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = phase_ / frequency;
+ 171:eurorack/plaits/dsp/oscillator/oscillator.h ****           float discontinuity = (slope_up + slope_down) * frequency;
+ 597              		.loc 2 171 43 view .LVU174
+ 598 00f2 3DEE0AAA 		vadd.f32	s20, s26, s20
+ 599              	.LVL49:
+ 170:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = phase_ / frequency;
+ 600              		.loc 2 170 17 view .LVU175
+ 601 00f6 C8EE89CA 		vdiv.f32	s25, s17, s18
+ 602              	.LVL50:
+ 169:eurorack/plaits/dsp/oscillator/oscillator.h ****           phase_ -= 1.0f;
+ 603              		.loc 2 169 18 view .LVU176
+ 604 00fa C4ED008A 		vstr.32	s17, [r4]
+ 605              		.loc 2 171 17 view .LVU177
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 20
+
+
+ 606 00fe 2AEE09AA 		vmul.f32	s20, s20, s18
+ 607              	.LVL51:
+ 608              	.LBB153:
+ 609              	.LBI153:
+  53:eurorack/stmlib/dsp/polyblep.h ****   return NextIntegratedBlepSample(1.0f - t);
+ 610              		.loc 4 53 14 is_stmt 1 view .LVU178
+ 611              	.LBB154:
+ 612              		.loc 4 54 3 view .LVU179
+ 613              		.loc 4 54 34 is_stmt 0 view .LVU180
+ 614 0102 38EE6C0A 		vsub.f32	s0, s16, s25
+ 615 0106 FFF7FEFF 		bl	_ZN6stmlib24NextIntegratedBlepSampleEf
+ 616              	.LVL52:
+ 617              		.loc 4 54 34 view .LVU181
+ 618              	.LBE154:
+ 619              	.LBE153:
+ 172:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample += stmlib::ThisIntegratedBlepSample(t) * discontinuity;
+ 620              		.loc 2 172 23 view .LVU182
+ 621 010a AAEE00BA 		vfma.f32	s22, s20, s0
+ 622              	.LVL53:
+ 173:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample += stmlib::NextIntegratedBlepSample(t) * discontinuity;
+ 623              		.loc 2 173 58 view .LVU183
+ 624 010e B0EE6C0A 		vmov.f32	s0, s25
+ 625 0112 FFF7FEFF 		bl	_ZN6stmlib24NextIntegratedBlepSampleEf
+ 626              	.LVL54:
+ 627              		.loc 2 173 23 view .LVU184
+ 628 0116 AAEE00CA 		vfma.f32	s24, s20, s0
+ 629              	.LVL55:
+ 174:eurorack/plaits/dsp/oscillator/oscillator.h ****           high_ = true;
+ 630              		.loc 2 174 17 view .LVU185
+ 631 011a 0123     		movs	r3, #1
+ 632 011c 2374     		strb	r3, [r4, #16]
+ 633              	.LVL56:
+ 634              	.L16:
+ 635              		.loc 2 174 17 view .LVU186
+ 636              	.LBE152:
+ 637              	.LBE151:
+ 175:eurorack/plaits/dsp/oscillator/oscillator.h ****         } else if (through_zero_fm && phase_ < 0.0f) {
+ 176:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = phase_ / frequency;
+ 177:eurorack/plaits/dsp/oscillator/oscillator.h ****           phase_ += 1.0f;
+ 178:eurorack/plaits/dsp/oscillator/oscillator.h ****           float discontinuity = (slope_up + slope_down) * frequency;
+ 179:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample -= stmlib::ThisIntegratedBlepSample(t) * discontinuity;
+ 180:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample -= stmlib::NextIntegratedBlepSample(t) * discontinuity;
+ 181:eurorack/plaits/dsp/oscillator/oscillator.h ****           high_ = false;
+ 182:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ 183:eurorack/plaits/dsp/oscillator/oscillator.h ****         next_sample += high_
+ 184:eurorack/plaits/dsp/oscillator/oscillator.h ****           ? phase_ * slope_up
+ 638              		.loc 2 184 11 view .LVU187
+ 639 011e 94ED008A 		vldr.32	s16, [r4]
+ 640              	.LVL57:
+ 641              		.loc 2 184 11 view .LVU188
+ 642 0122 2DEE088A 		vmul.f32	s16, s26, s16
+ 643              	.L18:
+ 644              	.LVL58:
+ 185:eurorack/plaits/dsp/oscillator/oscillator.h ****           : 1.0f - (phase_ - pw) * slope_down;
+ 186:eurorack/plaits/dsp/oscillator/oscillator.h ****         *out++ = 2.0f * this_sample - 1.0f;
+ 645              		.loc 2 186 37 view .LVU189
+ 646 0126 B0EE007A 		vmov.f32	s14, #2.0e+0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 21
+
+
+ 647 012a FFEE007A 		vmov.f32	s15, #-1.0e+0
+ 648 012e EBEE077A 		vfma.f32	s15, s22, s14
+ 183:eurorack/plaits/dsp/oscillator/oscillator.h ****           ? phase_ * slope_up
+ 649              		.loc 2 183 21 view .LVU190
+ 650 0132 3CEE08BA 		vadd.f32	s22, s24, s16
+ 651              	.LVL59:
+ 652              		.loc 2 186 16 view .LVU191
+ 653 0136 E6EC017A 		vstmia.32	r6!, {s15}
+ 654              	.LVL60:
+ 655              		.loc 2 186 16 view .LVU192
+ 656              	.LBE158:
+ 657              	.LBE133:
+ 110:eurorack/plaits/dsp/oscillator/oscillator.h ****       float this_sample = next_sample;
+ 658              		.loc 2 110 5 view .LVU193
+ 659 013a 9CE7     		b	.L19
+ 660              	.LVL61:
+ 661              	.L20:
+  98:eurorack/plaits/dsp/oscillator/oscillator.h ****       } else {
+ 662              		.loc 2 98 9 view .LVU194
+ 663 013c B0EE670A 		vmov.f32	s0, s15
+ 664              	.LVL62:
+  98:eurorack/plaits/dsp/oscillator/oscillator.h ****       } else {
+ 665              		.loc 2 98 9 view .LVU195
+ 666 0140 74E7     		b	.L8
+ 667              	.LVL63:
+ 668              	.L25:
+ 669              	.LBB160:
+ 670              	.LBB159:
+ 184:eurorack/plaits/dsp/oscillator/oscillator.h ****           : 1.0f - (phase_ - pw) * slope_down;
+ 671              		.loc 2 184 11 view .LVU196
+ 672 0142 237C     		ldrb	r3, [r4, #16]	@ zero_extendqisi2
+ 673 0144 002B     		cmp	r3, #0
+ 674 0146 EAD1     		bne	.L16
+ 185:eurorack/plaits/dsp/oscillator/oscillator.h ****         *out++ = 2.0f * this_sample - 1.0f;
+ 675              		.loc 2 185 28 view .LVU197
+ 676 0148 78EEE98A 		vsub.f32	s17, s17, s19
+ 184:eurorack/plaits/dsp/oscillator/oscillator.h ****           : 1.0f - (phase_ - pw) * slope_down;
+ 677              		.loc 2 184 11 view .LVU198
+ 678 014c AAEE688A 		vfms.f32	s16, s20, s17
+ 679 0150 E9E7     		b	.L18
+ 680              	.LVL64:
+ 681              	.L12:
+ 184:eurorack/plaits/dsp/oscillator/oscillator.h ****           : 1.0f - (phase_ - pw) * slope_down;
+ 682              		.loc 2 184 11 view .LVU199
+ 683              	.LBE159:
+ 684              	.LBE160:
+ 187:eurorack/plaits/dsp/oscillator/oscillator.h ****       } else {
+ 188:eurorack/plaits/dsp/oscillator/oscillator.h ****         if (high_ ^ (phase_ >= pw)) {
+ 189:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = (phase_ - pw) / frequency;
+ 190:eurorack/plaits/dsp/oscillator/oscillator.h ****           float discontinuity = 1.0f;
+ 191:eurorack/plaits/dsp/oscillator/oscillator.h ****           if (through_zero_fm && frequency < 0.0f) {
+ 192:eurorack/plaits/dsp/oscillator/oscillator.h ****             discontinuity = -discontinuity;
+ 193:eurorack/plaits/dsp/oscillator/oscillator.h ****           }
+ 194:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample += stmlib::ThisBlepSample(t) * discontinuity;
+ 195:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample += stmlib::NextBlepSample(t) * discontinuity;
+ 196:eurorack/plaits/dsp/oscillator/oscillator.h ****           high_ = phase_ >= pw;
+ 197:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 22
+
+
+ 198:eurorack/plaits/dsp/oscillator/oscillator.h ****         if (phase_ >= 1.0f) {
+ 199:eurorack/plaits/dsp/oscillator/oscillator.h ****           phase_ -= 1.0f;
+ 200:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = phase_ / frequency;
+ 201:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample -= stmlib::ThisBlepSample(t);
+ 202:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample -= stmlib::NextBlepSample(t);
+ 203:eurorack/plaits/dsp/oscillator/oscillator.h ****           high_ = false;
+ 204:eurorack/plaits/dsp/oscillator/oscillator.h ****         } else if (through_zero_fm && phase_ < 0.0f) {
+ 205:eurorack/plaits/dsp/oscillator/oscillator.h ****           float t = phase_ / frequency;
+ 206:eurorack/plaits/dsp/oscillator/oscillator.h ****           phase_ += 1.0f;
+ 207:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample += stmlib::ThisBlepSample(t);
+ 208:eurorack/plaits/dsp/oscillator/oscillator.h ****           next_sample += stmlib::NextBlepSample(t);
+ 209:eurorack/plaits/dsp/oscillator/oscillator.h ****           high_ = true;
+ 210:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ 211:eurorack/plaits/dsp/oscillator/oscillator.h ****         next_sample += phase_ < pw ? 0.0f : 1.0f;
+ 212:eurorack/plaits/dsp/oscillator/oscillator.h ****         
+ 213:eurorack/plaits/dsp/oscillator/oscillator.h ****         if (shape == OSCILLATOR_SHAPE_SQUARE_TRIANGLE) {
+ 214:eurorack/plaits/dsp/oscillator/oscillator.h ****           const float integrator_coefficient = frequency * 0.0625f;
+ 215:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample = 128.0f * (this_sample - 0.5f);
+ 216:eurorack/plaits/dsp/oscillator/oscillator.h ****           lp_state_ += integrator_coefficient * (this_sample - lp_state_);
+ 217:eurorack/plaits/dsp/oscillator/oscillator.h ****           *out++ = lp_state_;
+ 218:eurorack/plaits/dsp/oscillator/oscillator.h ****         } else if (shape == OSCILLATOR_SHAPE_SQUARE_DARK) {
+ 219:eurorack/plaits/dsp/oscillator/oscillator.h ****           const float integrator_coefficient = frequency * 2.0f;
+ 220:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample = 4.0f * (this_sample - 0.5f);
+ 221:eurorack/plaits/dsp/oscillator/oscillator.h ****           lp_state_ += integrator_coefficient * (this_sample - lp_state_);
+ 222:eurorack/plaits/dsp/oscillator/oscillator.h ****           *out++ = lp_state_;
+ 223:eurorack/plaits/dsp/oscillator/oscillator.h ****         } else if (shape == OSCILLATOR_SHAPE_SQUARE_BRIGHT) {
+ 224:eurorack/plaits/dsp/oscillator/oscillator.h ****           const float integrator_coefficient = frequency * 2.0f;
+ 225:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample = 2.0f * this_sample - 1.0f;
+ 226:eurorack/plaits/dsp/oscillator/oscillator.h ****           lp_state_ += integrator_coefficient * (this_sample - lp_state_);
+ 227:eurorack/plaits/dsp/oscillator/oscillator.h ****           *out++ = (this_sample - lp_state_) * 0.5f;
+ 228:eurorack/plaits/dsp/oscillator/oscillator.h ****         } else {
+ 229:eurorack/plaits/dsp/oscillator/oscillator.h ****           this_sample = 2.0f * this_sample - 1.0f;
+ 230:eurorack/plaits/dsp/oscillator/oscillator.h ****           *out++ = this_sample;
+ 231:eurorack/plaits/dsp/oscillator/oscillator.h ****         }
+ 232:eurorack/plaits/dsp/oscillator/oscillator.h ****       }
+ 233:eurorack/plaits/dsp/oscillator/oscillator.h ****     }
+ 234:eurorack/plaits/dsp/oscillator/oscillator.h ****     next_sample_ = next_sample;
+ 685              		.loc 2 234 18 view .LVU200
+ 686 0152 84ED01BA 		vstr.32	s22, [r4, #4]
+ 687              	.LVL65:
+ 688              	.LBB161:
+ 689              	.LBI161:
+  49:eurorack/stmlib/dsp/parameter_interpolator.h ****     *state_ = value_;
+ 690              		.loc 5 49 3 is_stmt 1 view .LVU201
+ 691              	.LBB162:
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 692              		.loc 5 50 5 view .LVU202
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 693              		.loc 5 50 13 is_stmt 0 view .LVU203
+ 694 0156 C4ED069A 		vstr.32	s19, [r4, #24]
+ 695              	.LVL66:
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 696              		.loc 5 50 13 view .LVU204
+ 697              	.LBE162:
+ 698              	.LBE161:
+ 699              	.LBB163:
+ 700              	.LBI163:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 23
+
+
+  49:eurorack/stmlib/dsp/parameter_interpolator.h ****     *state_ = value_;
+ 701              		.loc 5 49 3 is_stmt 1 view .LVU205
+ 702              	.LBB164:
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 703              		.loc 5 50 5 view .LVU206
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 704              		.loc 5 50 13 is_stmt 0 view .LVU207
+ 705 015a 84ED059A 		vstr.32	s18, [r4, #20]
+ 706              	.LVL67:
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 707              		.loc 5 50 13 view .LVU208
+ 708              	.LBE164:
+ 709              	.LBE163:
+ 235:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 710              		.loc 2 235 3 view .LVU209
+ 711 015e BDEC0E8B 		vldm	sp!, {d8-d14}
+ 712              		.cfi_restore 92
+ 713              		.cfi_restore 93
+ 714              		.cfi_restore 90
+ 715              		.cfi_restore 91
+ 716              		.cfi_restore 88
+ 717              		.cfi_restore 89
+ 718              		.cfi_restore 86
+ 719              		.cfi_restore 87
+ 720              		.cfi_restore 84
+ 721              		.cfi_restore 85
+ 722              		.cfi_restore 82
+ 723              		.cfi_restore 83
+ 724              		.cfi_restore 80
+ 725              		.cfi_restore 81
+ 726              		.cfi_def_cfa_offset 24
+ 727              	.LVL68:
+ 728              		.loc 2 235 3 view .LVU210
+ 729 0162 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 730              	.LVL69:
+ 731              	.L27:
+ 732              		.loc 2 235 3 view .LVU211
+ 733              		.align	2
+ 734              	.L26:
+ 735 0164 BD378635 		.word	897988541
+ 736 0168 00000000 		.word	0
+ 737              		.cfi_endproc
+ 738              	.LFE1496:
+ 740              		.section	.text._ZN6plaits4TameEfff,"ax",%progbits
+ 741              		.align	1
+ 742              		.global	_ZN6plaits4TameEfff
+ 743              		.syntax unified
+ 744              		.thumb
+ 745              		.thumb_func
+ 747              	_ZN6plaits4TameEfff:
+ 748              	.LVL70:
+ 749              	.LFB1492:
+  54:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+  55:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** float Tame(float f0, float harmonics, float order) {
+ 750              		.loc 1 55 52 is_stmt 1 view -0
+ 751              		.cfi_startproc
+ 752              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 24
+
+
+ 753              		@ frame_needed = 0, uses_anonymous_args = 0
+ 754              		@ link register save eliminated.
+  56:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   f0 *= harmonics;
+ 755              		.loc 1 56 3 view .LVU213
+  57:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   float max_f = 0.5f / order;
+ 756              		.loc 1 57 3 view .LVU214
+ 757              		.loc 1 57 9 is_stmt 0 view .LVU215
+ 758 0000 F6EE007A 		vmov.f32	s15, #5.0e-1
+ 759 0004 87EE817A 		vdiv.f32	s14, s15, s2
+ 760              	.LVL71:
+  58:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   float max_amount = 1.0f - (f0 - max_f) / (0.5f - max_f);
+ 761              		.loc 1 58 3 is_stmt 1 view .LVU216
+ 762              		.loc 1 58 33 is_stmt 0 view .LVU217
+ 763 0008 F0EE476A 		vmov.f32	s13, s14
+ 764              		.loc 1 58 50 view .LVU218
+ 765 000c 37EEC77A 		vsub.f32	s14, s15, s14
+ 766              	.LVL72:
+ 767              		.loc 1 58 33 view .LVU219
+ 768 0010 D0EE206A 		vfnms.f32	s13, s0, s1
+ 769              	.LVL73:
+ 770              		.loc 1 58 42 view .LVU220
+ 771 0014 C6EE877A 		vdiv.f32	s15, s13, s14
+ 772              	.LVL74:
+ 773              		.loc 1 58 9 view .LVU221
+ 774 0018 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 775 001c 77EE677A 		vsub.f32	s15, s14, s15
+ 776              	.LVL75:
+  59:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   CONSTRAIN(max_amount, 0.0f, 1.0f);
+ 777              		.loc 1 59 3 is_stmt 1 view .LVU222
+ 778 0020 F5EEC07A 		vcmpe.f32	s15, #0
+ 779 0024 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 780 0028 0AD4     		bmi	.L31
+ 781              		.loc 1 59 3 discriminator 2 view .LVU223
+ 782 002a F4EE477A 		vcmp.f32	s15, s14
+ 783 002e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 784 0032 77FE277A 		vselgt.f32	s15, s14, s15
+ 785              	.LVL76:
+ 786              	.L29:
+ 787              		.loc 1 59 36 discriminator 6 view .LVU224
+  60:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   return max_amount * max_amount * max_amount;
+ 788              		.loc 1 60 3 discriminator 6 view .LVU225
+ 789              		.loc 1 60 21 is_stmt 0 discriminator 6 view .LVU226
+ 790 0036 27EEA70A 		vmul.f32	s0, s15, s15
+ 791              	.LVL77:
+  61:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** }
+ 792              		.loc 1 61 1 discriminator 6 view .LVU227
+ 793 003a 20EE270A 		vmul.f32	s0, s0, s15
+ 794 003e 7047     		bx	lr
+ 795              	.LVL78:
+ 796              	.L31:
+  59:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   CONSTRAIN(max_amount, 0.0f, 1.0f);
+ 797              		.loc 1 59 3 view .LVU228
+ 798 0040 DFED017A 		vldr.32	s15, .L33
+ 799              	.LVL79:
+  59:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   CONSTRAIN(max_amount, 0.0f, 1.0f);
+ 800              		.loc 1 59 3 view .LVU229
+ 801 0044 F7E7     		b	.L29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 25
+
+
+ 802              	.L34:
+ 803 0046 00BF     		.align	2
+ 804              	.L33:
+ 805 0048 00000000 		.word	0
+ 806              		.cfi_endproc
+ 807              	.LFE1492:
+ 809              		.section	.text._ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb,"ax",%progbit
+ 810              		.align	1
+ 811              		.global	_ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+ 812              		.syntax unified
+ 813              		.thumb
+ 814              		.thumb_func
+ 816              	_ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb:
+ 817              	.LVL80:
+ 818              	.LFB1493:
+  62:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+  63:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** void WaveshapingEngine::Render(
+  64:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     const EngineParameters& parameters,
+  65:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float* out,
+  66:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float* aux,
+  67:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     size_t size,
+  68:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     bool* already_enveloped) {
+ 819              		.loc 1 68 30 is_stmt 1 view -0
+ 820              		.cfi_startproc
+ 821              		@ args = 8, pretend = 0, frame = 8
+ 822              		@ frame_needed = 0, uses_anonymous_args = 0
+  69:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float root = parameters.note;
+ 823              		.loc 1 69 3 view .LVU231
+  70:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   
+  71:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float f0 = NoteToFrequency(root);
+ 824              		.loc 1 71 3 view .LVU232
+ 825              	.LBB204:
+ 826              	.LBI204:
+ 827              		.file 6 "eurorack/plaits/dsp/engine/engine.h"
+   1:eurorack/plaits/dsp/engine/engine.h **** // Copyright 2016 Emilie Gillet.
+   2:eurorack/plaits/dsp/engine/engine.h **** //
+   3:eurorack/plaits/dsp/engine/engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/plaits/dsp/engine/engine.h **** //
+   5:eurorack/plaits/dsp/engine/engine.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/plaits/dsp/engine/engine.h **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/plaits/dsp/engine/engine.h **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/plaits/dsp/engine/engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/plaits/dsp/engine/engine.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/plaits/dsp/engine/engine.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/plaits/dsp/engine/engine.h **** // 
+  12:eurorack/plaits/dsp/engine/engine.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/plaits/dsp/engine/engine.h **** // all copies or substantial portions of the Software.
+  14:eurorack/plaits/dsp/engine/engine.h **** // 
+  15:eurorack/plaits/dsp/engine/engine.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/plaits/dsp/engine/engine.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/plaits/dsp/engine/engine.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/plaits/dsp/engine/engine.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/plaits/dsp/engine/engine.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/plaits/dsp/engine/engine.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/plaits/dsp/engine/engine.h **** // THE SOFTWARE.
+  22:eurorack/plaits/dsp/engine/engine.h **** // 
+  23:eurorack/plaits/dsp/engine/engine.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 26
+
+
+  24:eurorack/plaits/dsp/engine/engine.h **** //
+  25:eurorack/plaits/dsp/engine/engine.h **** // -----------------------------------------------------------------------------
+  26:eurorack/plaits/dsp/engine/engine.h **** //
+  27:eurorack/plaits/dsp/engine/engine.h **** // Base class for all engines.
+  28:eurorack/plaits/dsp/engine/engine.h **** 
+  29:eurorack/plaits/dsp/engine/engine.h **** #ifndef PLAITS_DSP_ENGINE_ENGINE_H_
+  30:eurorack/plaits/dsp/engine/engine.h **** #define PLAITS_DSP_ENGINE_ENGINE_H_
+  31:eurorack/plaits/dsp/engine/engine.h **** 
+  32:eurorack/plaits/dsp/engine/engine.h **** #include "plaits/dsp/dsp.h"
+  33:eurorack/plaits/dsp/engine/engine.h **** 
+  34:eurorack/plaits/dsp/engine/engine.h **** #include "stmlib/dsp/units.h"
+  35:eurorack/plaits/dsp/engine/engine.h **** #include "stmlib/utils/buffer_allocator.h"
+  36:eurorack/plaits/dsp/engine/engine.h **** 
+  37:eurorack/plaits/dsp/engine/engine.h **** namespace plaits {
+  38:eurorack/plaits/dsp/engine/engine.h **** 
+  39:eurorack/plaits/dsp/engine/engine.h **** inline float NoteToFrequency(float midi_note) {
+ 828              		.loc 6 39 14 view .LVU233
+ 829              	.LBB205:
+  40:eurorack/plaits/dsp/engine/engine.h ****   midi_note -= 9.0f;
+ 830              		.loc 6 40 3 view .LVU234
+ 831              		.loc 6 40 13 is_stmt 0 view .LVU235
+ 832 0000 B2EE027A 		vmov.f32	s14, #9.0e+0
+ 833 0004 D1ED017A 		vldr.32	s15, [r1, #4]
+ 834              	.LBE205:
+ 835              	.LBE204:
+  68:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float root = parameters.note;
+ 836              		.loc 1 68 30 view .LVU236
+ 837 0008 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 838              		.cfi_def_cfa_offset 24
+ 839              		.cfi_offset 4, -24
+ 840              		.cfi_offset 5, -20
+ 841              		.cfi_offset 6, -16
+ 842              		.cfi_offset 7, -12
+ 843              		.cfi_offset 8, -8
+ 844              		.cfi_offset 14, -4
+ 845              	.LBB228:
+ 846              	.LBB218:
+ 847              		.loc 6 40 13 view .LVU237
+ 848 000c 77EEC77A 		vsub.f32	s15, s15, s14
+ 849              	.LVL81:
+  41:eurorack/plaits/dsp/engine/engine.h ****   CONSTRAIN(midi_note, -128.0f, 127.0f);
+ 850              		.loc 6 41 3 is_stmt 1 view .LVU238
+ 851 0010 9FEDAE7A 		vldr.32	s14, .L42
+ 852              	.LBE218:
+ 853              	.LBE228:
+  68:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float root = parameters.note;
+ 854              		.loc 1 68 30 is_stmt 0 view .LVU239
+ 855 0014 0446     		mov	r4, r0
+ 856 0016 0F46     		mov	r7, r1
+ 857 0018 1546     		mov	r5, r2
+ 858 001a 1E46     		mov	r6, r3
+ 859              	.LBB229:
+ 860              	.LBB219:
+ 861              		.loc 6 41 3 view .LVU240
+ 862 001c F4EEC77A 		vcmpe.f32	s15, s14
+ 863              	.LBE219:
+ 864              	.LBE229:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 27
+
+
+  68:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float root = parameters.note;
+ 865              		.loc 1 68 30 view .LVU241
+ 866 0020 2DED0A8B 		vpush.64	{d8, d9, d10, d11, d12}
+ 867              		.cfi_def_cfa_offset 64
+ 868              		.cfi_offset 80, -64
+ 869              		.cfi_offset 81, -60
+ 870              		.cfi_offset 82, -56
+ 871              		.cfi_offset 83, -52
+ 872              		.cfi_offset 84, -48
+ 873              		.cfi_offset 85, -44
+ 874              		.cfi_offset 86, -40
+ 875              		.cfi_offset 87, -36
+ 876              		.cfi_offset 88, -32
+ 877              		.cfi_offset 89, -28
+ 878              	.LBB230:
+ 879              	.LBB220:
+ 880              		.loc 6 41 3 view .LVU242
+ 881 0024 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 882              	.LBE220:
+ 883              	.LBE230:
+  68:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float root = parameters.note;
+ 884              		.loc 1 68 30 view .LVU243
+ 885 0028 82B0     		sub	sp, sp, #8
+ 886              		.cfi_def_cfa_offset 72
+  68:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float root = parameters.note;
+ 887              		.loc 1 68 30 view .LVU244
+ 888 002a DDF84880 		ldr	r8, [sp, #72]
+ 889              	.LBB231:
+ 890              	.LBB221:
+ 891              		.loc 6 41 3 view .LVU245
+ 892 002e 00F13F81 		bmi	.L40
+ 893              		.loc 6 41 3 is_stmt 1 view .LVU246
+ 894 0032 9FEDA77A 		vldr.32	s14, .L42+4
+ 895 0036 F4EE477A 		vcmp.f32	s15, s14
+ 896 003a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 897 003e 77FE277A 		vselgt.f32	s15, s14, s15
+ 898              	.LVL82:
+ 899              	.L36:
+ 900              		.loc 6 41 40 view .LVU247
+  42:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
+ 901              		.loc 6 42 3 view .LVU248
+ 902              	.LBB206:
+ 903              	.LBI206:
+ 904              		.file 7 "eurorack/stmlib/dsp/units.h"
+   1:eurorack/stmlib/dsp/units.h **** // Copyright 2014 Emilie Gillet.
+   2:eurorack/stmlib/dsp/units.h **** //
+   3:eurorack/stmlib/dsp/units.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/stmlib/dsp/units.h **** //
+   5:eurorack/stmlib/dsp/units.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/stmlib/dsp/units.h **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/stmlib/dsp/units.h **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/stmlib/dsp/units.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/stmlib/dsp/units.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/stmlib/dsp/units.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/stmlib/dsp/units.h **** // 
+  12:eurorack/stmlib/dsp/units.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/stmlib/dsp/units.h **** // all copies or substantial portions of the Software.
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 28
+
+
+  14:eurorack/stmlib/dsp/units.h **** // 
+  15:eurorack/stmlib/dsp/units.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/stmlib/dsp/units.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/stmlib/dsp/units.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/stmlib/dsp/units.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/stmlib/dsp/units.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/stmlib/dsp/units.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/stmlib/dsp/units.h **** // THE SOFTWARE.
+  22:eurorack/stmlib/dsp/units.h **** // 
+  23:eurorack/stmlib/dsp/units.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/stmlib/dsp/units.h **** //
+  25:eurorack/stmlib/dsp/units.h **** // -----------------------------------------------------------------------------
+  26:eurorack/stmlib/dsp/units.h **** //
+  27:eurorack/stmlib/dsp/units.h **** // Conversion from semitones to frequency ratio.
+  28:eurorack/stmlib/dsp/units.h **** 
+  29:eurorack/stmlib/dsp/units.h **** #ifndef STMLIB_DSP_UNITS_H_
+  30:eurorack/stmlib/dsp/units.h **** #define STMLIB_DSP_UNITS_H_
+  31:eurorack/stmlib/dsp/units.h **** 
+  32:eurorack/stmlib/dsp/units.h **** #include "stmlib/stmlib.h"
+  33:eurorack/stmlib/dsp/units.h **** #include "stmlib/dsp/dsp.h"
+  34:eurorack/stmlib/dsp/units.h **** 
+  35:eurorack/stmlib/dsp/units.h **** namespace stmlib {
+  36:eurorack/stmlib/dsp/units.h **** 
+  37:eurorack/stmlib/dsp/units.h **** extern const float lut_pitch_ratio_high[257];
+  38:eurorack/stmlib/dsp/units.h **** extern const float lut_pitch_ratio_low[257];
+  39:eurorack/stmlib/dsp/units.h **** 
+  40:eurorack/stmlib/dsp/units.h **** inline float SemitonesToRatio(float semitones) {
+ 905              		.loc 7 40 14 view .LVU249
+ 906              	.LBB207:
+  41:eurorack/stmlib/dsp/units.h ****   float pitch = semitones + 128.0f;
+ 907              		.loc 7 41 3 view .LVU250
+ 908              		.loc 7 41 9 is_stmt 0 view .LVU251
+ 909 0042 9FEDA48A 		vldr.32	s16, .L42+8
+ 910              	.LBE207:
+ 911              	.LBE206:
+ 912              	.LBE221:
+ 913              	.LBE231:
+  72:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float pw = parameters.morph * 0.45f + 0.5f;
+ 914              		.loc 1 72 15 view .LVU252
+ 915 0046 B6EE009A 		vmov.f32	s18, #5.0e-1
+ 916              	.LBB232:
+ 917              	.LBB222:
+ 918              	.LBB213:
+ 919              	.LBB208:
+  42:eurorack/stmlib/dsp/units.h ****   MAKE_INTEGRAL_FRACTIONAL(pitch)
+  43:eurorack/stmlib/dsp/units.h **** 
+  44:eurorack/stmlib/dsp/units.h ****   return lut_pitch_ratio_high[pitch_integral] * \
+  45:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
+ 920              		.loc 7 45 74 view .LVU253
+ 921 004a A34A     		ldr	r2, .L42+12
+ 922              	.LVL83:
+ 923              		.loc 7 45 74 view .LVU254
+ 924              	.LBE208:
+ 925              	.LBE213:
+ 926              	.LBE222:
+ 927              	.LBE232:
+ 928              	.LBB233:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 29
+
+
+ 929              	.LBB234:
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 930              		.loc 2 71 32 view .LVU255
+ 931 004c 04F11000 		add	r0, r4, #16
+ 932              	.LVL84:
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 933              		.loc 2 71 32 view .LVU256
+ 934              	.LBE234:
+ 935              	.LBE233:
+ 936              	.LBB238:
+ 937              	.LBB223:
+ 938              	.LBB214:
+ 939              	.LBB209:
+  41:eurorack/stmlib/dsp/units.h ****   MAKE_INTEGRAL_FRACTIONAL(pitch)
+ 940              		.loc 7 41 9 view .LVU257
+ 941 0050 77EE887A 		vadd.f32	s15, s15, s16
+ 942              	.LVL85:
+  42:eurorack/stmlib/dsp/units.h ****   MAKE_INTEGRAL_FRACTIONAL(pitch)
+ 943              		.loc 7 42 3 is_stmt 1 view .LVU258
+ 944              	.LBE209:
+ 945              	.LBE214:
+ 946              	.LBE223:
+ 947              	.LBE238:
+ 948              	.LBB239:
+ 949              	.LBB235:
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 950              		.loc 2 71 32 is_stmt 0 view .LVU259
+ 951 0054 F0EE490A 		vmov.f32	s1, s18
+ 952              	.LBE235:
+ 953              	.LBE239:
+ 954              	.LBB240:
+ 955              	.LBB224:
+ 956              	.LBB215:
+ 957              	.LBB210:
+  42:eurorack/stmlib/dsp/units.h ****   MAKE_INTEGRAL_FRACTIONAL(pitch)
+ 958              		.loc 7 42 3 view .LVU260
+ 959 0058 BDEEE77A 		vcvt.s32.f32	s14, s15
+ 960              	.LVL86:
+  42:eurorack/stmlib/dsp/units.h ****   MAKE_INTEGRAL_FRACTIONAL(pitch)
+ 961              		.loc 7 42 3 is_stmt 1 view .LVU261
+  44:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
+ 962              		.loc 7 44 3 view .LVU262
+  42:eurorack/stmlib/dsp/units.h **** 
+ 963              		.loc 7 42 3 is_stmt 0 view .LVU263
+ 964 005c F8EEC76A 		vcvt.f32.s32	s13, s14
+  44:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
+ 965              		.loc 7 44 45 view .LVU264
+ 966 0060 17EE101A 		vmov	r1, s14	@ int
+ 967              	.LVL87:
+  44:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
+ 968              		.loc 7 44 45 view .LVU265
+ 969              	.LBE210:
+ 970              	.LBE215:
+ 971              	.LBE224:
+ 972              	.LBE240:
+ 973              		.loc 1 72 15 view .LVU266
+ 974 0064 97ED037A 		vldr.32	s14, [r7, #12]
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 30
+
+
+ 975              	.LBB241:
+ 976              	.LBB225:
+ 977              	.LBB216:
+ 978              	.LBB211:
+  42:eurorack/stmlib/dsp/units.h **** 
+ 979              		.loc 7 42 3 view .LVU267
+ 980 0068 77EEE67A 		vsub.f32	s15, s15, s13
+ 981              		.loc 7 45 27 view .LVU268
+ 982 006c FEEECC7A 		vcvt.s32.f32	s15, s15, #8
+ 983              		.loc 7 45 74 view .LVU269
+ 984 0070 17EE903A 		vmov	r3, s15	@ int
+ 985              	.LVL88:
+ 986              		.loc 7 45 74 view .LVU270
+ 987 0074 02EB8302 		add	r2, r2, r3, lsl #2
+  44:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
+ 988              		.loc 7 44 45 view .LVU271
+ 989 0078 984B     		ldr	r3, .L42+16
+ 990 007a 03EB8103 		add	r3, r3, r1, lsl #2
+ 991              		.loc 7 45 74 view .LVU272
+ 992 007e D2ED008A 		vldr.32	s17, [r2]
+ 993              	.LBE211:
+ 994              	.LBE216:
+ 995              	.LBE225:
+ 996              	.LBE241:
+ 997              	.LBB242:
+ 998              	.LBB236:
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 999              		.loc 2 71 32 view .LVU273
+ 1000 0082 2946     		mov	r1, r5
+ 1001 0084 4246     		mov	r2, r8
+ 1002              	.LBE236:
+ 1003              	.LBE242:
+ 1004              	.LBB243:
+ 1005              	.LBB226:
+ 1006              	.LBB217:
+ 1007              	.LBB212:
+ 1008              		.loc 7 45 74 view .LVU274
+ 1009 0086 D3ED007A 		vldr.32	s15, [r3]
+ 1010 008a 68EEA78A 		vmul.f32	s17, s17, s15
+ 1011              	.LBE212:
+ 1012              	.LBE217:
+ 1013              		.loc 6 42 57 view .LVU275
+ 1014 008e DFED947A 		vldr.32	s15, .L42+20
+ 1015 0092 68EEA78A 		vmul.f32	s17, s17, s15
+ 1016              	.LVL89:
+ 1017              		.loc 6 42 57 view .LVU276
+ 1018              	.LBE226:
+ 1019              	.LBE243:
+ 1020              		.loc 1 72 3 is_stmt 1 view .LVU277
+  73:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   
+  74:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   // Start from bandlimited slope signal.
+  75:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   slope_.Render<OSCILLATOR_SHAPE_SLOPE>(f0, pw, out, size);
+ 1021              		.loc 1 75 3 view .LVU278
+ 1022              	.LBB244:
+ 1023              	.LBI233:
+  70:eurorack/plaits/dsp/oscillator/oscillator.h ****     Render<shape, false, false>(frequency, pw, NULL, out, size);
+ 1024              		.loc 2 70 8 view .LVU279
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 31
+
+
+ 1025              	.LBB237:
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 1026              		.loc 2 71 32 is_stmt 0 view .LVU280
+ 1027 0096 DFED937A 		vldr.32	s15, .L42+24
+ 1028 009a E7EE270A 		vfma.f32	s1, s14, s15
+ 1029              	.LVL90:
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 1030              		.loc 2 71 32 view .LVU281
+ 1031 009e B0EE680A 		vmov.f32	s0, s17
+ 1032 00a2 FFF7FEFF 		bl	_ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0
+ 1033              	.LVL91:
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 1034              		.loc 2 71 32 view .LVU282
+ 1035              	.LBE237:
+ 1036              	.LBE244:
+  76:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   triangle_.Render<OSCILLATOR_SHAPE_SLOPE>(f0, 0.5f, aux, size);
+ 1037              		.loc 1 76 3 is_stmt 1 view .LVU283
+ 1038              	.LBB245:
+ 1039              	.LBI245:
+  70:eurorack/plaits/dsp/oscillator/oscillator.h ****     Render<shape, false, false>(frequency, pw, NULL, out, size);
+ 1040              		.loc 2 70 8 view .LVU284
+ 1041              	.LBB246:
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 1042              		.loc 2 71 32 is_stmt 0 view .LVU285
+ 1043 00a6 B0EE680A 		vmov.f32	s0, s17
+ 1044 00aa F0EE490A 		vmov.f32	s1, s18
+ 1045 00ae 4246     		mov	r2, r8
+ 1046 00b0 3146     		mov	r1, r6
+ 1047 00b2 04F12C00 		add	r0, r4, #44
+ 1048              	.LVL92:
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 1049              		.loc 2 71 32 view .LVU286
+ 1050 00b6 FFF7FEFF 		bl	_ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0
+ 1051              	.LVL93:
+  71:eurorack/plaits/dsp/oscillator/oscillator.h ****   }
+ 1052              		.loc 2 71 32 view .LVU287
+ 1053              	.LBE246:
+ 1054              	.LBE245:
+  77:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+  78:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   // Try to estimate how rich the spectrum is, and reduce the range of the
+  79:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   // waveshaping control accordingly.
+  80:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float slope = 3.0f + fabsf(parameters.morph - 0.5f) * 5.0f;
+ 1055              		.loc 1 80 3 is_stmt 1 view .LVU288
+ 1056              		.loc 1 80 53 is_stmt 0 view .LVU289
+ 1057 00ba D7ED037A 		vldr.32	s15, [r7, #12]
+ 1058              		.loc 1 80 15 view .LVU290
+ 1059 00be B0EE085A 		vmov.f32	s10, #3.0e+0
+  81:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float shape_amount = fabsf(parameters.harmonics - 0.5f) * 2.0f;
+ 1060              		.loc 1 81 57 view .LVU291
+ 1061 00c2 D7ED045A 		vldr.32	s11, [r7, #16]
+  80:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float shape_amount = fabsf(parameters.harmonics - 0.5f) * 2.0f;
+ 1062              		.loc 1 80 53 view .LVU292
+ 1063 00c6 77EEC97A 		vsub.f32	s15, s15, s18
+  80:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float shape_amount = fabsf(parameters.harmonics - 0.5f) * 2.0f;
+ 1064              		.loc 1 80 15 view .LVU293
+ 1065 00ca B1EE044A 		vmov.f32	s8, #5.0e+0
+ 1066 00ce F0EE450A 		vmov.f32	s1, s10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 32
+
+
+  80:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float shape_amount = fabsf(parameters.harmonics - 0.5f) * 2.0f;
+ 1067              		.loc 1 80 35 view .LVU294
+ 1068 00d2 F0EEE77A 		vabs.f32	s15, s15
+ 1069              		.loc 1 81 57 view .LVU295
+ 1070 00d6 75EEC95A 		vsub.f32	s11, s11, s18
+  82:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float shape_amount_attenuation = Tame(f0, slope, 16.0f);
+ 1071              		.loc 1 82 46 view .LVU296
+ 1072 00da B3EE001A 		vmov.f32	s2, #1.6e+1
+  80:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float shape_amount = fabsf(parameters.harmonics - 0.5f) * 2.0f;
+ 1073              		.loc 1 80 15 view .LVU297
+ 1074 00de E7EE840A 		vfma.f32	s1, s15, s8
+ 1075              	.LVL94:
+  81:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float shape_amount = fabsf(parameters.harmonics - 0.5f) * 2.0f;
+ 1076              		.loc 1 81 3 is_stmt 1 view .LVU298
+ 1077              		.loc 1 82 3 view .LVU299
+ 1078              		.loc 1 82 46 is_stmt 0 view .LVU300
+ 1079 00e2 B0EE680A 		vmov.f32	s0, s17
+ 1080 00e6 FFF7FEFF 		bl	_ZN6plaits4TameEfff
+ 1081              	.LVL95:
+  81:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float shape_amount = fabsf(parameters.harmonics - 0.5f) * 2.0f;
+ 1082              		.loc 1 81 35 view .LVU301
+ 1083 00ea F0EEE57A 		vabs.f32	s15, s11
+ 1084              		.loc 1 82 46 view .LVU302
+ 1085 00ee B0EE406A 		vmov.f32	s12, s0
+ 1086              	.LVL96:
+  83:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float wavefolder_gain = parameters.timbre;
+ 1087              		.loc 1 83 3 is_stmt 1 view .LVU303
+ 1088              		.loc 1 83 15 is_stmt 0 view .LVU304
+ 1089 00f2 D7ED024A 		vldr.32	s9, [r7, #8]
+ 1090              	.LVL97:
+  84:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float wavefolder_gain_attenuation = Tame(
+ 1091              		.loc 1 84 3 is_stmt 1 view .LVU305
+ 1092              		.loc 1 84 49 is_stmt 0 view .LVU306
+ 1093 00f6 B2EE081A 		vmov.f32	s2, #1.2e+1
+  81:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float shape_amount_attenuation = Tame(f0, slope, 16.0f);
+ 1094              		.loc 1 81 15 view .LVU307
+ 1095 00fa 77EEA77A 		vadd.f32	s15, s15, s15
+ 1096              	.LVL98:
+  85:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       f0,
+  86:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       slope * (3.0f + shape_amount * shape_amount_attenuation * 5.0f),
+ 1097              		.loc 1 86 36 view .LVU308
+ 1098 00fe 67EE807A 		vmul.f32	s15, s15, s0
+ 1099              	.LVL99:
+  84:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       f0,
+ 1100              		.loc 1 84 49 view .LVU309
+ 1101 0102 B0EE680A 		vmov.f32	s0, s17
+ 1102              	.LVL100:
+ 1103              		.loc 1 86 21 view .LVU310
+ 1104 0106 A7EE845A 		vfma.f32	s10, s15, s8
+  84:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       f0,
+ 1105              		.loc 1 84 49 view .LVU311
+ 1106 010a 65EE200A 		vmul.f32	s1, s10, s1
+ 1107              	.LVL101:
+  84:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       f0,
+ 1108              		.loc 1 84 49 view .LVU312
+ 1109 010e FFF7FEFF 		bl	_ZN6plaits4TameEfff
+ 1110              	.LVL102:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 33
+
+
+  87:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       12.0f);
+  88:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   
+  89:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   // Apply waveshaper / wavefolder.
+  90:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   ParameterInterpolator shape_modulation(
+ 1111              		.loc 1 90 3 is_stmt 1 view .LVU313
+  91:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       &previous_shape_,
+  92:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       0.5f + (parameters.harmonics - 0.5f) * shape_amount_attenuation,
+  93:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       size);
+ 1112              		.loc 1 93 11 is_stmt 0 view .LVU314
+ 1113 0112 F0EE497A 		vmov.f32	s15, s18
+ 1114              	.LBB247:
+ 1115              	.LBB248:
+ 1116              	.LBB249:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1117              		.loc 5 56 41 view .LVU315
+ 1118 0116 07EE108A 		vmov	s14, r8	@ int
+  55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
+ 1119              		.loc 5 55 14 view .LVU316
+ 1120 011a D4ED128A 		vldr.32	s17, [r4, #72]
+ 1121              	.LVL103:
+  55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
+ 1122              		.loc 5 55 14 view .LVU317
+ 1123              	.LBE249:
+ 1124              	.LBE248:
+ 1125              	.LBE247:
+ 1126              	.LBB256:
+ 1127              	.LBB257:
+ 1128              	.LBB258:
+ 1129 011e D4ED139A 		vldr.32	s19, [r4, #76]
+ 1130 0122 05EB8808 		add	r8, r5, r8, lsl #2
+ 1131              	.LBE258:
+ 1132              	.LBE257:
+ 1133              	.LBE256:
+ 1134              		.loc 1 93 11 view .LVU318
+ 1135 0126 E5EE867A 		vfma.f32	s15, s11, s12
+ 1136              	.LVL104:
+ 1137              	.LBB263:
+ 1138              	.LBI247:
+  39:eurorack/stmlib/dsp/parameter_interpolator.h ****     Init(state, new_value, size);
+ 1139              		.loc 5 39 3 is_stmt 1 view .LVU319
+ 1140              	.LBE263:
+  40:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1141              		.loc 5 40 5 view .LVU320
+ 1142              	.LBB264:
+ 1143              	.LBB253:
+ 1144              	.LBI248:
+  53:eurorack/stmlib/dsp/parameter_interpolator.h ****     state_ = state;
+ 1145              		.loc 5 53 15 view .LVU321
+ 1146              	.LBB250:
+  54:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
+ 1147              		.loc 5 54 5 view .LVU322
+  55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
+ 1148              		.loc 5 55 5 view .LVU323
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1149              		.loc 5 56 5 view .LVU324
+ 1150              	.LBE250:
+ 1151              	.LBE253:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 34
+
+
+ 1152              	.LBE264:
+ 1153              	.LBB265:
+ 1154              	.LBB266:
+ 1155              	.LBB267:
+  55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
+ 1156              		.loc 5 55 14 is_stmt 0 view .LVU325
+ 1157 012a 94ED14AA 		vldr.32	s20, [r4, #80]
+ 1158              	.LBE267:
+ 1159              	.LBE266:
+ 1160              	.LBE265:
+ 1161              	.LBB274:
+ 1162              	.LBB254:
+ 1163              	.LBB251:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1164              		.loc 5 56 41 view .LVU326
+ 1165 012e F8EE476A 		vcvt.f32.u32	s13, s14
+ 1166              	.LBE251:
+ 1167              	.LBE254:
+ 1168              	.LBE274:
+  94:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   ParameterInterpolator wf_gain_modulation(
+  95:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       &previous_wavefolder_gain_,
+  96:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       0.03f + 0.46f * wavefolder_gain * wavefolder_gain_attenuation,
+ 1169              		.loc 1 96 21 view .LVU327
+ 1170 0132 9FED6D7A 		vldr.32	s14, .L42+28
+ 1171              	.LBB275:
+ 1172              	.LBB271:
+ 1173              	.LBB268:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1174              		.loc 5 56 29 view .LVU328
+ 1175 0136 B0EE4A6A 		vmov.f32	s12, s20
+ 1176              	.LVL105:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1177              		.loc 5 56 29 view .LVU329
+ 1178              	.LBE268:
+ 1179              	.LBE271:
+ 1180              	.LBE275:
+ 1181              		.loc 1 96 21 view .LVU330
+ 1182 013a 24EE877A 		vmul.f32	s14, s9, s14
+ 1183              	.LBB276:
+ 1184              	.LBB255:
+ 1185              	.LBB252:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1186              		.loc 5 56 29 view .LVU331
+ 1187 013e 77EEE87A 		vsub.f32	s15, s15, s17
+ 1188              	.LVL106:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1189              		.loc 5 56 39 view .LVU332
+ 1190 0142 C7EEA6BA 		vdiv.f32	s23, s15, s13
+ 1191              	.LVL107:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1192              		.loc 5 56 39 view .LVU333
+ 1193              	.LBE252:
+ 1194              	.LBE255:
+ 1195              	.LBE276:
+  94:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   ParameterInterpolator wf_gain_modulation(
+ 1196              		.loc 1 94 3 is_stmt 1 view .LVU334
+  97:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       size);
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 35
+
+
+ 1197              		.loc 1 97 11 is_stmt 0 view .LVU335
+ 1198 0146 DFED697A 		vldr.32	s15, .L42+32
+ 1199 014a E7EE007A 		vfma.f32	s15, s14, s0
+ 1200              	.LVL108:
+ 1201              	.LBB277:
+ 1202              	.LBI256:
+  39:eurorack/stmlib/dsp/parameter_interpolator.h ****     Init(state, new_value, size);
+ 1203              		.loc 5 39 3 is_stmt 1 view .LVU336
+ 1204              	.LBE277:
+  40:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1205              		.loc 5 40 5 view .LVU337
+ 1206              	.LBB278:
+ 1207              	.LBB261:
+ 1208              	.LBI257:
+  53:eurorack/stmlib/dsp/parameter_interpolator.h ****     state_ = state;
+ 1209              		.loc 5 53 15 view .LVU338
+ 1210              	.LBB259:
+  54:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
+ 1211              		.loc 5 54 5 view .LVU339
+  55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
+ 1212              		.loc 5 55 5 view .LVU340
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1213              		.loc 5 56 5 view .LVU341
+ 1214              	.LBE259:
+ 1215              	.LBE261:
+ 1216              	.LBE278:
+  98:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   const float overtone_gain = parameters.timbre * (2.0f - parameters.timbre);
+ 1217              		.loc 1 98 57 is_stmt 0 view .LVU342
+ 1218 014e B0EE007A 		vmov.f32	s14, #2.0e+0
+ 1219              	.LBB279:
+ 1220              	.LBB262:
+ 1221              	.LBB260:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1222              		.loc 5 56 29 view .LVU343
+ 1223 0152 77EEE97A 		vsub.f32	s15, s15, s19
+ 1224              	.LVL109:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1225              		.loc 5 56 39 view .LVU344
+ 1226 0156 87EEA6BA 		vdiv.f32	s22, s15, s13
+ 1227              	.LVL110:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1228              		.loc 5 56 39 view .LVU345
+ 1229              	.LBE260:
+ 1230              	.LBE262:
+ 1231              	.LBE279:
+ 1232              		.loc 1 98 3 is_stmt 1 view .LVU346
+ 1233              		.loc 1 98 57 is_stmt 0 view .LVU347
+ 1234 015a 77EE647A 		vsub.f32	s15, s14, s9
+ 1235              		.loc 1 98 15 view .LVU348
+ 1236 015e 67EEA47A 		vmul.f32	s15, s15, s9
+ 1237              	.LVL111:
+  99:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   ParameterInterpolator overtone_gain_modulation(
+ 1238              		.loc 1 99 3 is_stmt 1 view .LVU349
+ 1239              	.LBB280:
+ 1240              	.LBI265:
+  39:eurorack/stmlib/dsp/parameter_interpolator.h ****     Init(state, new_value, size);
+ 1241              		.loc 5 39 3 view .LVU350
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 36
+
+
+ 1242              	.LBE280:
+  40:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1243              		.loc 5 40 5 view .LVU351
+ 1244              	.LBB281:
+ 1245              	.LBB272:
+ 1246              	.LBI266:
+  53:eurorack/stmlib/dsp/parameter_interpolator.h ****     state_ = state;
+ 1247              		.loc 5 53 15 view .LVU352
+ 1248              	.LBB269:
+  54:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ = *state;
+ 1249              		.loc 5 54 5 view .LVU353
+  55:eurorack/stmlib/dsp/parameter_interpolator.h ****     increment_ = (new_value - *state) / static_cast<float>(size);
+ 1250              		.loc 5 55 5 view .LVU354
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1251              		.loc 5 56 5 view .LVU355
+ 1252              	.LBE269:
+ 1253              	.LBE272:
+ 1254              	.LBE281:
+ 100:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       &previous_overtone_gain_,
+ 101:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       overtone_gain * (2.0f - overtone_gain),
+ 1255              		.loc 1 101 29 is_stmt 0 view .LVU356
+ 1256 0162 37EE677A 		vsub.f32	s14, s14, s15
+ 1257              	.LBB282:
+ 1258              	.LBB273:
+ 1259              	.LBB270:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1260              		.loc 5 56 29 view .LVU357
+ 1261 0166 97EE276A 		vfnms.f32	s12, s14, s15
+ 1262              	.LVL112:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1263              		.loc 5 56 39 view .LVU358
+ 1264 016a C6EE26AA 		vdiv.f32	s21, s12, s13
+ 1265              	.LVL113:
+ 1266              	.L39:
+  56:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1267              		.loc 5 56 39 view .LVU359
+ 1268              	.LBE270:
+ 1269              	.LBE273:
+ 1270              	.LBE282:
+ 1271              	.LBB283:
+ 102:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****       size);
+ 103:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   
+ 104:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   for (size_t i = 0; i < size; ++i) {
+ 1272              		.loc 1 104 24 is_stmt 1 discriminator 3 view .LVU360
+ 1273 016e A845     		cmp	r8, r5
+ 1274 0170 00F0A180 		beq	.L38
+ 1275              	.LBB284:
+ 105:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float shape = shape_modulation.Next() * 3.9999f;
+ 1276              		.loc 1 105 5 view .LVU361
+ 1277              	.LVL114:
+ 1278              	.LBB285:
+ 1279              	.LBI285:
+  59:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ += increment_;
+ 1280              		.loc 5 59 16 view .LVU362
+ 1281              	.LBB286:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 1282              		.loc 5 60 5 view .LVU363
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 37
+
+
+ 1283              	.LBE286:
+ 1284              	.LBE285:
+ 1285              		.loc 1 105 45 is_stmt 0 view .LVU364
+ 1286 0174 DFED5E7A 		vldr.32	s15, .L42+36
+ 1287              	.LBB288:
+ 1288              	.LBB287:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 1289              		.loc 5 60 12 view .LVU365
+ 1290 0178 78EEAB8A 		vadd.f32	s17, s17, s23
+ 1291              	.LVL115:
+ 1292              		.loc 5 61 5 is_stmt 1 view .LVU366
+ 1293              		.loc 5 61 5 is_stmt 0 view .LVU367
+ 1294              	.LBE287:
+ 1295              	.LBE288:
+ 106:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     MAKE_INTEGRAL_FRACTIONAL(shape);
+ 107:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 108:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     const int16_t* shape_1 = lookup_table_i16_table[shape_integral];
+ 109:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     const int16_t* shape_2 = lookup_table_i16_table[shape_integral + 1];
+ 110:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 111:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float ws_index = 127.0f * out[i] + 128.0f;
+ 1296              		.loc 1 111 36 view .LVU368
+ 1297 017c D5ED006A 		vldr.32	s13, [r5]
+ 108:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     const int16_t* shape_2 = lookup_table_i16_table[shape_integral + 1];
+ 1298              		.loc 1 108 20 view .LVU369
+ 1299 0180 5C4A     		ldr	r2, .L42+40
+ 1300              	.LBB289:
+ 1301              	.LBB290:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 1302              		.loc 5 60 12 view .LVU370
+ 1303 0182 79EE8B9A 		vadd.f32	s19, s19, s22
+ 1304              	.LVL116:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 1305              		.loc 5 60 12 view .LVU371
+ 1306              	.LBE290:
+ 1307              	.LBE289:
+ 112:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     MAKE_INTEGRAL_FRACTIONAL(ws_index)
+ 113:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     ws_index_integral &= 255;
+ 114:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 115:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x0 = static_cast<float>(shape_1[ws_index_integral]) / 32768.0f;
+ 116:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x1 = static_cast<float>(shape_1[ws_index_integral + 1]) / 32768.0f;
+ 117:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x = x0 + (x1 - x0) * ws_index_fractional;
+ 118:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+ 119:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y0 = static_cast<float>(shape_2[ws_index_integral]) / 32768.0f;
+ 120:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y1 = static_cast<float>(shape_2[ws_index_integral + 1]) / 32768.0f;
+ 121:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y = y0 + (y1 - y0) * ws_index_fractional;
+ 122:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 123:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float mix = x + (y - x) * shape_fractional;
+ 124:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float index = mix * wf_gain_modulation.Next() + 0.5f;
+ 1308              		.loc 1 124 53 view .LVU372
+ 1309 0186 F0EE49CA 		vmov.f32	s25, s18
+ 125:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float fold = InterpolateHermite(
+ 1310              		.loc 1 125 36 view .LVU373
+ 1311 018a DFED5B0A 		vldr.32	s1, .L42+44
+ 105:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     MAKE_INTEGRAL_FRACTIONAL(shape);
+ 1312              		.loc 1 105 45 view .LVU374
+ 1313 018e 68EEA77A 		vmul.f32	s15, s17, s15
+ 1314              	.LVL117:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 38
+
+
+ 106:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1315              		.loc 1 106 5 is_stmt 1 view .LVU375
+ 1316              	.LBB292:
+ 1317              	.LBB293:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 1318              		.loc 5 60 12 is_stmt 0 view .LVU376
+ 1319 0192 3AEE2AAA 		vadd.f32	s20, s20, s21
+ 1320              	.LVL118:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 1321              		.loc 5 60 12 view .LVU377
+ 1322              	.LBE293:
+ 1323              	.LBE292:
+ 106:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1324              		.loc 1 106 5 view .LVU378
+ 1325 0196 BDEEE77A 		vcvt.s32.f32	s14, s15
+ 1326 019a B8EEC75A 		vcvt.f32.s32	s10, s14
+ 1327 019e 17EE103A 		vmov	r3, s14	@ int
+ 1328              	.LVL119:
+ 106:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1329              		.loc 1 106 5 is_stmt 1 view .LVU379
+ 111:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     MAKE_INTEGRAL_FRACTIONAL(ws_index)
+ 1330              		.loc 1 111 11 is_stmt 0 view .LVU380
+ 1331 01a2 B0EE487A 		vmov.f32	s14, s16
+ 108:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     const int16_t* shape_2 = lookup_table_i16_table[shape_integral + 1];
+ 1332              		.loc 1 108 20 view .LVU381
+ 1333 01a6 52F82300 		ldr	r0, [r2, r3, lsl #2]
+ 109:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1334              		.loc 1 109 20 view .LVU382
+ 1335 01aa 0133     		adds	r3, r3, #1
+ 1336              	.LVL120:
+ 106:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1337              		.loc 1 106 5 view .LVU383
+ 1338 01ac 37EEC55A 		vsub.f32	s10, s15, s10
+ 1339              	.LVL121:
+ 106:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1340              		.loc 1 106 36 is_stmt 1 view .LVU384
+ 108:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     const int16_t* shape_2 = lookup_table_i16_table[shape_integral + 1];
+ 1341              		.loc 1 108 5 view .LVU385
+ 109:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1342              		.loc 1 109 5 view .LVU386
+ 111:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     MAKE_INTEGRAL_FRACTIONAL(ws_index)
+ 1343              		.loc 1 111 11 is_stmt 0 view .LVU387
+ 1344 01b0 DFED477A 		vldr.32	s15, .L42+4
+ 1345              	.LVL122:
+ 109:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1346              		.loc 1 109 20 view .LVU388
+ 1347 01b4 52F82310 		ldr	r1, [r2, r3, lsl #2]
+ 1348              	.LVL123:
+ 111:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     MAKE_INTEGRAL_FRACTIONAL(ws_index)
+ 1349              		.loc 1 111 5 is_stmt 1 view .LVU389
+ 111:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     MAKE_INTEGRAL_FRACTIONAL(ws_index)
+ 1350              		.loc 1 111 11 is_stmt 0 view .LVU390
+ 1351 01b8 A6EEA77A 		vfma.f32	s14, s13, s15
+ 1352              	.LVL124:
+ 112:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     ws_index_integral &= 255;
+ 1353              		.loc 1 112 5 is_stmt 1 view .LVU391
+ 116:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x = x0 + (x1 - x0) * ws_index_fractional;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 39
+
+
+ 1354              		.loc 1 116 11 is_stmt 0 view .LVU392
+ 1355 01bc DFED4F6A 		vldr.32	s13, .L42+48
+ 112:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     ws_index_integral &= 255;
+ 1356              		.loc 1 112 5 view .LVU393
+ 1357 01c0 FDEEC77A 		vcvt.s32.f32	s15, s14
+ 1358 01c4 CDED017A 		vstr.32	s15, [sp, #4]	@ int
+ 1359              	.LVL125:
+ 112:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     ws_index_integral &= 255;
+ 1360              		.loc 1 112 5 is_stmt 1 view .LVU394
+ 1361 01c8 B8EEE76A 		vcvt.f32.s32	s12, s15
+ 113:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1362              		.loc 1 113 23 is_stmt 0 view .LVU395
+ 1363 01cc 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 1364              	.LVL126:
+ 115:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x1 = static_cast<float>(shape_1[ws_index_integral + 1]) / 32768.0f;
+ 1365              		.loc 1 115 60 view .LVU396
+ 1366 01d0 5A00     		lsls	r2, r3, #1
+ 115:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x1 = static_cast<float>(shape_1[ws_index_integral + 1]) / 32768.0f;
+ 1367              		.loc 1 115 16 view .LVU397
+ 1368 01d2 30F91370 		ldrsh	r7, [r0, r3, lsl #1]
+ 112:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     ws_index_integral &= 255;
+ 1369              		.loc 1 112 5 view .LVU398
+ 1370 01d6 37EE466A 		vsub.f32	s12, s14, s12
+ 1371              	.LVL127:
+ 113:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1372              		.loc 1 113 5 is_stmt 1 view .LVU399
+ 115:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x1 = static_cast<float>(shape_1[ws_index_integral + 1]) / 32768.0f;
+ 1373              		.loc 1 115 5 view .LVU400
+ 119:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y1 = static_cast<float>(shape_2[ws_index_integral + 1]) / 32768.0f;
+ 1374              		.loc 1 119 16 is_stmt 0 view .LVU401
+ 1375 01da 31F91330 		ldrsh	r3, [r1, r3, lsl #1]
+ 116:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x = x0 + (x1 - x0) * ws_index_fractional;
+ 1376              		.loc 1 116 64 view .LVU402
+ 1377 01de 0232     		adds	r2, r2, #2
+ 115:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x1 = static_cast<float>(shape_1[ws_index_integral + 1]) / 32768.0f;
+ 1378              		.loc 1 115 16 view .LVU403
+ 1379 01e0 07EE107A 		vmov	s14, r7	@ int
+ 1380              	.LVL128:
+ 119:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y1 = static_cast<float>(shape_2[ws_index_integral + 1]) / 32768.0f;
+ 1381              		.loc 1 119 16 view .LVU404
+ 1382 01e4 05EE903A 		vmov	s11, r3	@ int
+ 116:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x = x0 + (x1 - x0) * ws_index_fractional;
+ 1383              		.loc 1 116 16 view .LVU405
+ 1384 01e8 805E     		ldrsh	r0, [r0, r2]
+ 1385              	.LVL129:
+ 115:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x1 = static_cast<float>(shape_1[ws_index_integral + 1]) / 32768.0f;
+ 1386              		.loc 1 115 16 view .LVU406
+ 1387 01ea B8EEC77A 		vcvt.f32.s32	s14, s14
+ 1388              	.LVL130:
+ 116:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x = x0 + (x1 - x0) * ws_index_fractional;
+ 1389              		.loc 1 116 5 is_stmt 1 view .LVU407
+ 117:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+ 1390              		.loc 1 117 5 view .LVU408
+ 120:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y = y0 + (y1 - y0) * ws_index_fractional;
+ 1391              		.loc 1 120 16 is_stmt 0 view .LVU409
+ 1392 01ee 8B5E     		ldrsh	r3, [r1, r2]
+ 119:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y1 = static_cast<float>(shape_2[ws_index_integral + 1]) / 32768.0f;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 40
+
+
+ 1393              		.loc 1 119 16 view .LVU410
+ 1394 01f0 F8EEE55A 		vcvt.f32.s32	s11, s11
+ 116:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x = x0 + (x1 - x0) * ws_index_fractional;
+ 1395              		.loc 1 116 16 view .LVU411
+ 1396 01f4 07EE900A 		vmov	s15, r0	@ int
+ 1397              	.LVL131:
+ 1398              		.loc 1 125 36 view .LVU412
+ 1399 01f8 4148     		ldr	r0, .L42+52
+ 116:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x = x0 + (x1 - x0) * ws_index_fractional;
+ 1400              		.loc 1 116 16 view .LVU413
+ 1401 01fa F8EEE77A 		vcvt.f32.s32	s15, s15
+ 116:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float x = x0 + (x1 - x0) * ws_index_fractional;
+ 1402              		.loc 1 116 11 view .LVU414
+ 1403 01fe 67EEA67A 		vmul.f32	s15, s15, s13
+ 117:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+ 1404              		.loc 1 117 24 view .LVU415
+ 1405 0202 E7EE667A 		vfms.f32	s15, s14, s13
+ 117:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+ 1406              		.loc 1 117 30 view .LVU416
+ 1407 0206 67EE867A 		vmul.f32	s15, s15, s12
+ 117:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** 
+ 1408              		.loc 1 117 11 view .LVU417
+ 1409 020a E7EE267A 		vfma.f32	s15, s14, s13
+ 1410              	.LVL132:
+ 119:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y1 = static_cast<float>(shape_2[ws_index_integral + 1]) / 32768.0f;
+ 1411              		.loc 1 119 5 is_stmt 1 view .LVU418
+ 120:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y = y0 + (y1 - y0) * ws_index_fractional;
+ 1412              		.loc 1 120 5 view .LVU419
+ 121:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1413              		.loc 1 121 5 view .LVU420
+ 120:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y = y0 + (y1 - y0) * ws_index_fractional;
+ 1414              		.loc 1 120 16 is_stmt 0 view .LVU421
+ 1415 020e 07EE103A 		vmov	s14, r3	@ int
+ 1416              	.LVL133:
+ 120:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y = y0 + (y1 - y0) * ws_index_fractional;
+ 1417              		.loc 1 120 16 view .LVU422
+ 1418 0212 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 120:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float y = y0 + (y1 - y0) * ws_index_fractional;
+ 1419              		.loc 1 120 11 view .LVU423
+ 1420 0216 27EE267A 		vmul.f32	s14, s14, s13
+ 121:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1421              		.loc 1 121 24 view .LVU424
+ 1422 021a A5EEE67A 		vfms.f32	s14, s11, s13
+ 121:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1423              		.loc 1 121 30 view .LVU425
+ 1424 021e 27EE067A 		vmul.f32	s14, s14, s12
+ 121:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 1425              		.loc 1 121 11 view .LVU426
+ 1426 0222 A5EEA67A 		vfma.f32	s14, s11, s13
+ 1427              	.LVL134:
+ 123:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float index = mix * wf_gain_modulation.Next() + 0.5f;
+ 1428              		.loc 1 123 5 is_stmt 1 view .LVU427
+ 123:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float index = mix * wf_gain_modulation.Next() + 0.5f;
+ 1429              		.loc 1 123 24 is_stmt 0 view .LVU428
+ 1430 0226 37EE677A 		vsub.f32	s14, s14, s15
+ 1431              	.LVL135:
+ 123:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float index = mix * wf_gain_modulation.Next() + 0.5f;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 41
+
+
+ 1432              		.loc 1 123 11 view .LVU429
+ 1433 022a E7EE057A 		vfma.f32	s15, s14, s10
+ 1434              	.LVL136:
+ 124:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float fold = InterpolateHermite(
+ 1435              		.loc 1 124 5 is_stmt 1 view .LVU430
+ 1436              	.LBB295:
+ 1437              	.LBI289:
+  59:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ += increment_;
+ 1438              		.loc 5 59 16 view .LVU431
+ 1439              	.LBB291:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 1440              		.loc 5 60 5 view .LVU432
+ 1441              		.loc 5 61 5 view .LVU433
+ 1442              		.loc 5 61 5 is_stmt 0 view .LVU434
+ 1443              	.LBE291:
+ 1444              	.LBE295:
+ 124:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float fold = InterpolateHermite(
+ 1445              		.loc 1 124 53 view .LVU435
+ 1446 022e E9EEA7CA 		vfma.f32	s25, s19, s15
+ 1447              	.LVL137:
+ 1448              		.loc 1 125 5 is_stmt 1 view .LVU436
+ 1449              		.loc 1 125 36 is_stmt 0 view .LVU437
+ 1450 0232 B0EE6C0A 		vmov.f32	s0, s25
+ 1451 0236 FFF7FEFF 		bl	_ZN6stmlib18InterpolateHermiteEPKfff
+ 1452              	.LVL138:
+ 126:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****         lut_fold + 1, index, 512.0f);
+ 127:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float fold_2 = -InterpolateHermite(
+ 1453              		.loc 1 127 39 view .LVU438
+ 1454 023a DFED2F0A 		vldr.32	s1, .L42+44
+ 125:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****         lut_fold + 1, index, 512.0f);
+ 1455              		.loc 1 125 36 view .LVU439
+ 1456 023e B0EE40CA 		vmov.f32	s24, s0
+ 1457              	.LVL139:
+ 1458              		.loc 1 127 5 is_stmt 1 view .LVU440
+ 1459              		.loc 1 127 39 is_stmt 0 view .LVU441
+ 1460 0242 3048     		ldr	r0, .L42+56
+ 1461 0244 B0EE6C0A 		vmov.f32	s0, s25
+ 1462              	.LVL140:
+ 1463              		.loc 1 127 39 view .LVU442
+ 1464 0248 FFF7FEFF 		bl	_ZN6stmlib18InterpolateHermiteEPKfff
+ 1465              	.LVL141:
+ 128:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****         lut_fold_2 + 1, index, 512.0f);
+ 129:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     
+ 130:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float sine = InterpolateWrap(lut_sine, aux[i] * 0.25f + 0.5f, 1024.0f);
+ 1466              		.loc 1 130 5 is_stmt 1 view .LVU443
+ 1467              		.loc 1 130 33 is_stmt 0 view .LVU444
+ 1468 024c B5EE007A 		vmov.f32	s14, #2.5e-1
+ 1469 0250 F0EE497A 		vmov.f32	s15, s18
+ 1470              		.loc 1 130 49 view .LVU445
+ 1471 0254 D6ED006A 		vldr.32	s13, [r6]
+ 1472              	.LBB296:
+ 1473              	.LBB297:
+  67:eurorack/stmlib/dsp/dsp.h **** 
+  68:eurorack/stmlib/dsp/dsp.h **** inline float InterpolateWrap(const float* table, float index, float size) {
+  69:eurorack/stmlib/dsp/dsp.h ****   index -= static_cast<float>(static_cast<int32_t>(index));
+  70:eurorack/stmlib/dsp/dsp.h ****   index *= size;
+  71:eurorack/stmlib/dsp/dsp.h ****   MAKE_INTEGRAL_FRACTIONAL(index)
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 42
+
+
+  72:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
+ 1474              		.loc 3 72 9 view .LVU446
+ 1475 0258 2B4B     		ldr	r3, .L42+60
+ 1476              	.LBE297:
+ 1477              	.LBE296:
+ 128:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****         lut_fold_2 + 1, index, 512.0f);
+ 1478              		.loc 1 128 38 view .LVU447
+ 1479 025a B1EE400A 		vneg.f32	s0, s0
+ 1480              	.LVL142:
+ 1481              		.loc 1 130 33 view .LVU448
+ 1482 025e E6EE877A 		vfma.f32	s15, s13, s14
+ 1483              	.LVL143:
+ 1484              	.LBB300:
+ 1485              	.LBI296:
+  68:eurorack/stmlib/dsp/dsp.h ****   index -= static_cast<float>(static_cast<int32_t>(index));
+ 1486              		.loc 3 68 14 is_stmt 1 view .LVU449
+ 1487              	.LBB298:
+  69:eurorack/stmlib/dsp/dsp.h ****   index *= size;
+ 1488              		.loc 3 69 3 view .LVU450
+  69:eurorack/stmlib/dsp/dsp.h ****   index *= size;
+ 1489              		.loc 3 69 31 is_stmt 0 view .LVU451
+ 1490 0262 BDEEE77A 		vcvt.s32.f32	s14, s15
+  69:eurorack/stmlib/dsp/dsp.h ****   index *= size;
+ 1491              		.loc 3 69 12 view .LVU452
+ 1492 0266 B8EEC77A 		vcvt.f32.s32	s14, s14
+  69:eurorack/stmlib/dsp/dsp.h ****   index *= size;
+ 1493              		.loc 3 69 9 view .LVU453
+ 1494 026a 77EEC77A 		vsub.f32	s15, s15, s14
+ 1495              	.LVL144:
+  70:eurorack/stmlib/dsp/dsp.h ****   MAKE_INTEGRAL_FRACTIONAL(index)
+ 1496              		.loc 3 70 3 is_stmt 1 view .LVU454
+  70:eurorack/stmlib/dsp/dsp.h ****   MAKE_INTEGRAL_FRACTIONAL(index)
+ 1497              		.loc 3 70 9 is_stmt 0 view .LVU455
+ 1498 026e 9FED277A 		vldr.32	s14, .L42+64
+ 1499 0272 67EE877A 		vmul.f32	s15, s15, s14
+ 1500              	.LVL145:
+  71:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
+ 1501              		.loc 3 71 3 is_stmt 1 view .LVU456
+ 1502 0276 BDEEE77A 		vcvt.s32.f32	s14, s15
+ 1503 027a 17EE102A 		vmov	r2, s14	@ int
+ 1504              	.LVL146:
+  71:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
+ 1505              		.loc 3 71 3 view .LVU457
+ 1506              		.loc 3 72 3 view .LVU458
+  71:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
+ 1507              		.loc 3 71 3 is_stmt 0 view .LVU459
+ 1508 027e 06EE902A 		vmov	s13, r2	@ int
+ 1509              		.loc 3 72 9 view .LVU460
+ 1510 0282 03EB8201 		add	r1, r3, r2, lsl #2
+  71:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
+ 1511              		.loc 3 71 3 view .LVU461
+ 1512 0286 F8EEE66A 		vcvt.f32.s32	s13, s13
+ 1513              		.loc 3 72 9 view .LVU462
+ 1514 028a 91ED007A 		vldr.32	s14, [r1]
+ 1515              	.LVL147:
+  73:eurorack/stmlib/dsp/dsp.h ****   float b = table[index_integral + 1];
+ 1516              		.loc 3 73 3 is_stmt 1 view .LVU463
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 43
+
+
+  74:eurorack/stmlib/dsp/dsp.h ****   return a + (b - a) * index_fractional;
+ 1517              		.loc 3 74 3 view .LVU464
+  71:eurorack/stmlib/dsp/dsp.h ****   float a = table[index_integral];
+ 1518              		.loc 3 71 3 is_stmt 0 view .LVU465
+ 1519 028e 77EEE67A 		vsub.f32	s15, s15, s13
+ 1520              	.LVL148:
+ 1521              		.loc 3 74 17 view .LVU466
+ 1522 0292 D1ED016A 		vldr.32	s13, [r1, #4]
+ 1523              	.LBE298:
+ 1524              	.LBE300:
+ 131:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     out[i] = fold;
+ 1525              		.loc 1 131 12 view .LVU467
+ 1526 0296 A5EC01CA 		vstmia.32	r5!, {s24}
+ 1527              	.LVL149:
+ 1528              	.LBB301:
+ 1529              	.LBB299:
+ 1530              		.loc 3 74 17 view .LVU468
+ 1531 029a 76EEC76A 		vsub.f32	s13, s13, s14
+ 1532              		.loc 3 74 24 view .LVU469
+ 1533 029e A7EEA67A 		vfma.f32	s14, s15, s13
+ 1534              	.LVL150:
+ 1535              		.loc 3 74 24 view .LVU470
+ 1536              	.LBE299:
+ 1537              	.LBE301:
+ 1538              		.loc 1 131 5 is_stmt 1 view .LVU471
+ 132:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     aux[i] = sine + (fold_2 - sine) * overtone_gain_modulation.Next();
+ 1539              		.loc 1 132 5 view .LVU472
+ 1540              	.LBB302:
+ 1541              	.LBI292:
+  59:eurorack/stmlib/dsp/parameter_interpolator.h ****     value_ += increment_;
+ 1542              		.loc 5 59 16 view .LVU473
+ 1543              	.LBB294:
+  60:eurorack/stmlib/dsp/parameter_interpolator.h ****     return value_;
+ 1544              		.loc 5 60 5 view .LVU474
+ 1545              		.loc 5 61 5 view .LVU475
+ 1546              		.loc 5 61 5 is_stmt 0 view .LVU476
+ 1547              	.LBE294:
+ 1548              	.LBE302:
+ 1549              		.loc 1 132 29 view .LVU477
+ 1550 02a2 30EE470A 		vsub.f32	s0, s0, s14
+ 1551              	.LVL151:
+ 1552              		.loc 1 132 19 view .LVU478
+ 1553 02a6 A0EE0A7A 		vfma.f32	s14, s0, s20
+ 1554              	.LVL152:
+ 1555              		.loc 1 132 12 view .LVU479
+ 1556 02aa A6EC017A 		vstmia.32	r6!, {s14}
+ 1557              	.LBE284:
+ 104:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float shape = shape_modulation.Next() * 3.9999f;
+ 1558              		.loc 1 104 3 is_stmt 1 view .LVU480
+ 1559 02ae 5EE7     		b	.L39
+ 1560              	.LVL153:
+ 1561              	.L40:
+ 104:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****     float shape = shape_modulation.Next() * 3.9999f;
+ 1562              		.loc 1 104 3 is_stmt 0 view .LVU481
+ 1563              	.LBE283:
+ 1564              	.LBB303:
+ 1565              	.LBB227:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 44
+
+
+  41:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
+ 1566              		.loc 6 41 3 view .LVU482
+ 1567 02b0 F0EE477A 		vmov.f32	s15, s14
+ 1568              	.LVL154:
+  41:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
+ 1569              		.loc 6 41 3 view .LVU483
+ 1570 02b4 C5E6     		b	.L36
+ 1571              	.LVL155:
+ 1572              	.L38:
+  41:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
+ 1573              		.loc 6 41 3 view .LVU484
+ 1574              	.LBE227:
+ 1575              	.LBE303:
+ 1576              	.LBB304:
+ 1577              	.LBI304:
+  49:eurorack/stmlib/dsp/parameter_interpolator.h ****     *state_ = value_;
+ 1578              		.loc 5 49 3 is_stmt 1 view .LVU485
+ 1579              	.LBB305:
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1580              		.loc 5 50 5 view .LVU486
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1581              		.loc 5 50 13 is_stmt 0 view .LVU487
+ 1582 02b6 84ED14AA 		vstr.32	s20, [r4, #80]
+ 1583              	.LVL156:
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1584              		.loc 5 50 13 view .LVU488
+ 1585              	.LBE305:
+ 1586              	.LBE304:
+ 1587              	.LBB306:
+ 1588              	.LBI306:
+  49:eurorack/stmlib/dsp/parameter_interpolator.h ****     *state_ = value_;
+ 1589              		.loc 5 49 3 is_stmt 1 view .LVU489
+ 1590              	.LBB307:
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1591              		.loc 5 50 5 view .LVU490
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1592              		.loc 5 50 13 is_stmt 0 view .LVU491
+ 1593 02ba C4ED139A 		vstr.32	s19, [r4, #76]
+ 1594              	.LVL157:
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1595              		.loc 5 50 13 view .LVU492
+ 1596              	.LBE307:
+ 1597              	.LBE306:
+ 1598              	.LBB308:
+ 1599              	.LBI308:
+  49:eurorack/stmlib/dsp/parameter_interpolator.h ****     *state_ = value_;
+ 1600              		.loc 5 49 3 is_stmt 1 view .LVU493
+ 1601              	.LBB309:
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1602              		.loc 5 50 5 view .LVU494
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1603              		.loc 5 50 13 is_stmt 0 view .LVU495
+ 1604 02be C4ED128A 		vstr.32	s17, [r4, #72]
+ 1605              	.LVL158:
+  50:eurorack/stmlib/dsp/parameter_interpolator.h ****   }
+ 1606              		.loc 5 50 13 view .LVU496
+ 1607              	.LBE309:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 45
+
+
+ 1608              	.LBE308:
+ 133:eurorack/plaits/dsp/engine/waveshaping_engine.cc ****   }
+ 134:eurorack/plaits/dsp/engine/waveshaping_engine.cc **** }
+ 1609              		.loc 1 134 1 view .LVU497
+ 1610 02c2 02B0     		add	sp, sp, #8
+ 1611              		.cfi_def_cfa_offset 64
+ 1612              		@ sp needed
+ 1613 02c4 BDEC0A8B 		vldm	sp!, {d8-d12}
+ 1614              		.cfi_restore 88
+ 1615              		.cfi_restore 89
+ 1616              		.cfi_restore 86
+ 1617              		.cfi_restore 87
+ 1618              		.cfi_restore 84
+ 1619              		.cfi_restore 85
+ 1620              		.cfi_restore 82
+ 1621              		.cfi_restore 83
+ 1622              		.cfi_restore 80
+ 1623              		.cfi_restore 81
+ 1624              		.cfi_def_cfa_offset 24
+ 1625              	.LVL159:
+ 1626              		.loc 1 134 1 view .LVU498
+ 1627 02c8 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 1628              	.LVL160:
+ 1629              	.L43:
+ 1630              		.loc 1 134 1 view .LVU499
+ 1631              		.align	2
+ 1632              	.L42:
+ 1633 02cc 000000C3 		.word	-1023410176
+ 1634 02d0 0000FE42 		.word	1123942400
+ 1635 02d4 00000043 		.word	1124073472
+ 1636 02d8 00000000 		.word	_ZN6stmlib19lut_pitch_ratio_lowE
+ 1637 02dc 00000000 		.word	_ZN6stmlib20lut_pitch_ratio_highE
+ 1638 02e0 51969639 		.word	966170193
+ 1639 02e4 6666E63E 		.word	1055286886
+ 1640 02e8 1F85EB3E 		.word	1055622431
+ 1641 02ec 8FC2F53C 		.word	1022739087
+ 1642 02f0 5DFE7F40 		.word	1082130013
+ 1643 02f4 00000000 		.word	_ZN6plaits22lookup_table_i16_tableE
+ 1644 02f8 00000044 		.word	1140850688
+ 1645 02fc 00000038 		.word	939524096
+ 1646 0300 04000000 		.word	_ZN6plaits8lut_foldE+4
+ 1647 0304 04000000 		.word	_ZN6plaits10lut_fold_2E+4
+ 1648 0308 00000000 		.word	_ZN6plaits8lut_sineE
+ 1649 030c 00008044 		.word	1149239296
+ 1650              		.cfi_endproc
+ 1651              	.LFE1493:
+ 1653              		.global	_ZTVN6plaits17WaveshapingEngineE
+ 1654              		.section	.rodata._ZTVN6plaits17WaveshapingEngineE,"a"
+ 1655              		.align	2
+ 1658              	_ZTVN6plaits17WaveshapingEngineE:
+ 1659 0000 00000000 		.word	0
+ 1660 0004 00000000 		.word	0
+ 1661 0008 00000000 		.word	_ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE
+ 1662 000c 00000000 		.word	_ZN6plaits17WaveshapingEngine5ResetEv
+ 1663 0010 00000000 		.word	_ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+ 1664              		.text
+ 1665              	.Letext0:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 46
+
+
+ 1666              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 1667              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 1668              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 1669              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 1670              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 1671              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 1672              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 1673              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 1674              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 1675              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 1676              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 1677              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 1678              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 1679              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 1680              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 1681              		.file 23 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 1682              		.file 24 "eurorack/stmlib/stmlib.h"
+ 1683              		.file 25 "eurorack/stmlib/utils/buffer_allocator.h"
+ 1684              		.file 26 "eurorack/plaits/dsp/dsp.h"
+ 1685              		.file 27 "eurorack/plaits/resources.h"
+ 1686              		.file 28 "eurorack/plaits/dsp/engine/waveshaping_engine.h"
+ 1687              		.file 29 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s 			page 47
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 waveshaping_engine.cc
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:19     .text._ZN6plaits17WaveshapingEngine5ResetEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:25     .text._ZN6plaits17WaveshapingEngine5ResetEv:0000000000000000 _ZN6plaits17WaveshapingEngine5ResetEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:40     .text._ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:46     .text._ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:153    .text._ZN6plaits17WaveshapingEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000038 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:158    .text._ZN6stmlib18InterpolateHermiteEPKfff:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:164    .text._ZN6stmlib18InterpolateHermiteEPKfff:0000000000000000 _ZN6stmlib18InterpolateHermiteEPKfff
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:259    .text._ZN6stmlib24NextIntegratedBlepSampleEf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:265    .text._ZN6stmlib24NextIntegratedBlepSampleEf:0000000000000000 _ZN6stmlib24NextIntegratedBlepSampleEf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:302    .text._ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:307    .text._ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0:0000000000000000 _ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:735    .text._ZN6plaits10Oscillator6RenderILNS_15OscillatorShapeE3ELb0ELb0EEEvffPKfPfj.isra.0:0000000000000164 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:741    .text._ZN6plaits4TameEfff:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:747    .text._ZN6plaits4TameEfff:0000000000000000 _ZN6plaits4TameEfff
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:805    .text._ZN6plaits4TameEfff:0000000000000048 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:810    .text._ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:816    .text._ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:1633   .text._ZN6plaits17WaveshapingEngine6RenderERKNS_16EngineParametersEPfS4_jPb:00000000000002cc $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:1658   .rodata._ZTVN6plaits17WaveshapingEngineE:0000000000000000 _ZTVN6plaits17WaveshapingEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccmWIW8S.s:1655   .rodata._ZTVN6plaits17WaveshapingEngineE:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+_ZN6stmlib19lut_pitch_ratio_lowE
+_ZN6stmlib20lut_pitch_ratio_highE
+_ZN6plaits22lookup_table_i16_tableE
+_ZN6plaits8lut_foldE
+_ZN6plaits10lut_fold_2E
+_ZN6plaits8lut_sineE

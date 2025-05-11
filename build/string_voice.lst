@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   29:eurorack/stmlib/utils/random.h **** #ifndef STMLIB_UTILS_RANDOM_H_
   30:eurorack/stmlib/utils/random.h **** #define STMLIB_UTILS_RANDOM_H_
   31:eurorack/stmlib/utils/random.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 2
 
 
   32:eurorack/stmlib/utils/random.h **** #include "stmlib/stmlib.h"
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   53              	.LBB28:
   45:eurorack/stmlib/utils/random.h ****     return state();
   54              		.loc 1 45 16 view .LVU9
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 3
 
 
   55 0010 1360     		str	r3, [r2]
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   22:eurorack/plaits/dsp/physical_modelling/string_voice.cc **** // 
   23:eurorack/plaits/dsp/physical_modelling/string_voice.cc **** // See http://creativecommons.org/licenses/MIT/ for more information.
   24:eurorack/plaits/dsp/physical_modelling/string_voice.cc **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 4
 
 
   25:eurorack/plaits/dsp/physical_modelling/string_voice.cc **** // -----------------------------------------------------------------------------
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   27:eurorack/stmlib/dsp/filter.h **** // Zero-delay-feedback filters (one pole and SVF).
   28:eurorack/stmlib/dsp/filter.h **** // Naive SVF.
   29:eurorack/stmlib/dsp/filter.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 5
 
 
   30:eurorack/stmlib/dsp/filter.h **** #ifndef STMLIB_DSP_FILTER_H_
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   84:eurorack/stmlib/dsp/filter.h ****   }
   85:eurorack/stmlib/dsp/filter.h ****   
   86:eurorack/stmlib/dsp/filter.h ****  private:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 6
 
 
   87:eurorack/stmlib/dsp/filter.h ****   float pole_;
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  141:eurorack/stmlib/dsp/filter.h ****     gi_ = 1.0f / (1.0f + g_);
  142:eurorack/stmlib/dsp/filter.h ****   }
  143:eurorack/stmlib/dsp/filter.h ****   
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 7
 
 
  144:eurorack/stmlib/dsp/filter.h ****   template<FilterMode mode>
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  192:eurorack/stmlib/dsp/filter.h ****   inline void set(const Svf& f) {
  193:eurorack/stmlib/dsp/filter.h ****     g_ = f.g();
  194:eurorack/stmlib/dsp/filter.h ****     r_ = f.r();
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 8
 
 
  195:eurorack/stmlib/dsp/filter.h ****     h_ = f.h();
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  123              	.LBB52:
  124              	.LBB46:
  125              	.LBB43:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 9
 
 
  225:eurorack/stmlib/dsp/filter.h ****     r_ = 1.0f / resonance;
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  170 0024 0023     		movs	r3, #0
  171 0026 E365     		str	r3, [r4, #92]
   47:eurorack/plaits/dsp/physical_modelling/string_voice.cc **** }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 10
 
 
  172              		.loc 2 47 1 view .LVU38
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   57:eurorack/plaits/dsp/physical_modelling/string_voice.cc ****     float f0,
   58:eurorack/plaits/dsp/physical_modelling/string_voice.cc ****     float structure,
   59:eurorack/plaits/dsp/physical_modelling/string_voice.cc ****     float brightness,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 11
 
 
   60:eurorack/plaits/dsp/physical_modelling/string_voice.cc ****     float damping,
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  263              		.loc 2 64 18 view .LVU55
  264 001e 169E     		ldr	r6, [sp, #88]
  265              		.loc 2 67 40 view .LVU56
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 12
 
 
  266 0020 3AEE617A 		vsub.f32	s14, s20, s3
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
    7:eurorack/stmlib/dsp/units.h **** // in the Software without restriction, including without limitation the rights
    8:eurorack/stmlib/dsp/units.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/stmlib/dsp/units.h **** // copies of the Software, and to permit persons to whom the Software is
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 13
 
 
   10:eurorack/stmlib/dsp/units.h **** // furnished to do so, subject to the following conditions:
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  115:eurorack/stmlib/dsp/filter.h ****     } else if (approximation == FREQUENCY_FAST) {
  321              		.loc 3 115 30 view .LVU75
  322 005a 9FED8B6A 		vldr.32	s12, .L48+8
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 14
 
 
  323              	.LBE95:
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   44:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
  366              		.loc 4 44 45 view .LVU91
  367 008e 804B     		ldr	r3, .L48+16
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 15
 
 
  368 0090 03EB8003 		add	r3, r3, r0, lsl #2
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   36:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  * purpose.  It is provided "as is" without express or implied warranty.
   37:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  *
   38:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  *
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 16
 
 
   39:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****  * Copyright (c) 1996-1998
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   93:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       static_assert(sizeof(_Tp) == sizeof(_Up), "can be compared with memcmp");
   94:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #endif
   95:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #ifdef __cpp_lib_is_constant_evaluated
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 17
 
 
   96:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       if (std::is_constant_evaluated())
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  150:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX20_CONSTEXPR
  151:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     inline void
  152:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     iter_swap(_ForwardIterator1 __a, _ForwardIterator2 __b)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 18
 
 
  153:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     {
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  207:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_function_requires(_Mutable_ForwardIteratorConcept<
  208:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 				  _ForwardIterator2>)
  209:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_requires_valid_range(__first1, __last1);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 19
 
 
  210:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  411              	.LBE106:
  412              		.loc 2 77 29 view .LVU102
  413 00c6 06FE877A 		vseleq.f32	s14, s13, s14
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 20
 
 
  414              	.LVL24:
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  458              	.LBE101:
  459              	.LBE107:
  460              	.LBE85:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 21
 
 
  461              	.LBE84:
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   10:eurorack/plaits/dsp/noise/dust.h **** // furnished to do so, subject to the following conditions:
   11:eurorack/plaits/dsp/noise/dust.h **** // 
   12:eurorack/plaits/dsp/noise/dust.h **** // The above copyright notice and this permission notice shall be included in
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 22
 
 
   13:eurorack/plaits/dsp/noise/dust.h **** // all copies or substantial portions of the Software.
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   41:eurorack/plaits/dsp/noise/dust.h ****   } else {
   42:eurorack/plaits/dsp/noise/dust.h ****     return 0.0f;
  521              		.loc 6 42 12 view .LVU142
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 23
 
 
  522 013c 9FED590A 		vldrle.32	s0, .L48+36
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
   89:eurorack/plaits/dsp/physical_modelling/string_voice.cc ****     remaining_noise_samples_ -= noise_samples;
  567              		.loc 2 89 5 is_stmt 1 view .LVU157
   89:eurorack/plaits/dsp/physical_modelling/string_voice.cc ****     remaining_noise_samples_ -= noise_samples;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 24
 
 
  568              		.loc 2 89 30 is_stmt 0 view .LVU158
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  256:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       // concept requirements
  257:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_function_requires(_LessThanComparableConcept<_Tp>)
  258:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       //return  __a < __b ? __b : __a;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 25
 
 
  259:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       if (__a < __b)
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  313:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __niter_base(_Iterator __it)
  314:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX_NOEXCEPT_IF(std::is_nothrow_copy_constructible<_Iterator>::value)
  315:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     { return __it; }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 26
 
 
  316:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  370:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     struct __copy_move<false, false, random_access_iterator_tag>
  371:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     {
  372:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       template<typename _II, typename _OI>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 27
 
 
  373:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	_GLIBCXX20_CONSTEXPR
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  427:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	  return __result + _Num;
  428:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	}
  429:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     };
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 28
 
 
  430:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  484:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _OI
  485:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __copy_move_a1(_GLIBCXX_STD_C::_Deque_iterator<_Tp, _Ref, _Ptr>,
  486:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 		   _GLIBCXX_STD_C::_Deque_iterator<_Tp, _Ref, _Ptr>,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 29
 
 
  487:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 		   _OI);
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  541:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @brief Copies the range [first,last) into result.
  542:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @ingroup mutating_algorithms
  543:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @param  __first  An input iterator.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 30
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 30
 
 
  544:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  @param  __last   An input iterator.
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  598:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	    typename iterator_traits<_II>::value_type>)
  599:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       __glibcxx_requires_can_increment_range(__first, __last, __result);
  600:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 31
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 31
 
 
  601:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       return std::__copy_move_a<true>(std::__miter_base(__first),
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  655:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
  656:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #if __cplusplus >= 201103L
  657:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 32
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 32
 
 
  658:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     struct __copy_move_backward<true, false, random_access_iterator_tag>
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  712:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
  713:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
  714:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<bool _IsMove, typename _BI1, typename _BI2>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 33
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 33
 
 
  715:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX20_CONSTEXPR
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  769:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 	   typename _OIte, typename _OSeq, typename _OCat>
  770:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     ::__gnu_debug::_Safe_iterator<_OIte, _OSeq, _OCat>
  771:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     __copy_move_backward_a(
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 34
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 34
 
 
  772:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 		const ::__gnu_debug::_Safe_iterator<_IIte, _ISeq, _ICat>&,
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  826:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *
  827:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  Result may not be in the range (first,last].  Use move instead.  Note
  828:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  that the start of the output range may overlap [first,last).
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 35
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 35
 
 
  829:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   */
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  605              	.LBE116:
  606              	.LBE129:
   97:eurorack/plaits/dsp/physical_modelling/string_voice.cc ****     }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 36
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 36
 
 
   98:eurorack/plaits/dsp/physical_modelling/string_voice.cc ****   } else {
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  273:eurorack/stmlib/dsp/filter.h ****       *out_2 = bp * r_;
  274:eurorack/stmlib/dsp/filter.h ****     } else if (mode_2 == FILTER_MODE_HIGH_PASS) {
  275:eurorack/stmlib/dsp/filter.h ****       *out_2 = hp;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 37
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 37
 
 
  276:eurorack/stmlib/dsp/filter.h ****     }
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  651              		.loc 3 288 15 view .LVU186
  652 01c0 A6EEA77A 		vfma.f32	s14, s13, s15
  653              	.LVL49:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 38
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 38
 
 
  289:eurorack/stmlib/dsp/filter.h ****       lp = g_ * bp + state_2;
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  686              		.loc 2 93 44 view .LVU197
  687 01e0 B0EE007A 		vmov.f32	s14, #2.0e+0
  688 01e4 09F1FF39 		add	r9, r9, #-1
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 39
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 39
 
 
  689              	.LVL57:
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  902:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     { std::__fill_a1(__first.base(), __last.base(), __value); }
  903:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
  904:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<typename _Tp, typename _VTp>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 40
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 40
 
 
  905:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     void
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  873:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     }
  725              		.loc 5 873 11 view .LVU210
  726 0200 2B46     		mov	r3, r5
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 41
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 41
 
 
  727              	.LVL62:
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  768 0230 17D5     		bpl	.L44
  769              		.loc 2 108 20 discriminator 1 view .LVU223
  770 0232 78EE600A 		vsub.f32	s1, s16, s1
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 42
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 42
 
 
  771              		.loc 2 108 7 discriminator 1 view .LVU224
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  821              		.cfi_restore_state
  109:eurorack/plaits/dsp/physical_modelling/string_voice.cc ****       : (structure > 0.26f ? (structure - 0.26f) * 1.35135f : 0.0f);
  822              		.loc 2 109 28 view .LVU231
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 43
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 43
 
 
  823 0262 DFED130A 		vldr.32	s1, .L48+48
@@ -2578,29 +2578,29 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 1
  875              		.file 22 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
  876              		.file 23 "eurorack/stmlib/stmlib.h"
  877              		.file 24 "eurorack/stmlib/utils/buffer_allocator.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 44
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 44
 
 
  878              		.file 25 "eurorack/plaits/dsp/physical_modelling/delay_line.h"
  879              		.file 26 "eurorack/plaits/dsp/physical_modelling/string.h"
  880              		.file 27 "eurorack/plaits/dsp/physical_modelling/string_voice.h"
  881              		.file 28 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s 			page 45
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s 			page 45
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 string_voice.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:19     .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:25     .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 _ZN6stmlib6Random8GetFloatEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:69     .text._ZN6stmlib6Random8GetFloatEv:0000000000000020 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:77     .text._ZN6plaits11StringVoice4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:83     .text._ZN6plaits11StringVoice4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits11StringVoice4InitEPN6stmlib15BufferAllocatorE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:179    .text._ZN6plaits11StringVoice4InitEPN6stmlib15BufferAllocatorE:000000000000002c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:186    .text._ZN6plaits11StringVoice5ResetEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:192    .text._ZN6plaits11StringVoice5ResetEv:0000000000000000 _ZN6plaits11StringVoice5ResetEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:212    .text._ZN6plaits11StringVoice6RenderEbbfffffPfS1_S1_j:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:218    .text._ZN6plaits11StringVoice6RenderEbbfffffPfS1_S1_j:0000000000000000 _ZN6plaits11StringVoice6RenderEbbfffffPfS1_S1_j
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccxTFo3x.s:841    .text._ZN6plaits11StringVoice6RenderEbbfffffPfS1_S1_j:0000000000000280 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:19     .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:25     .text._ZN6stmlib6Random8GetFloatEv:0000000000000000 _ZN6stmlib6Random8GetFloatEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:69     .text._ZN6stmlib6Random8GetFloatEv:0000000000000020 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:77     .text._ZN6plaits11StringVoice4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:83     .text._ZN6plaits11StringVoice4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits11StringVoice4InitEPN6stmlib15BufferAllocatorE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:179    .text._ZN6plaits11StringVoice4InitEPN6stmlib15BufferAllocatorE:000000000000002c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:186    .text._ZN6plaits11StringVoice5ResetEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:192    .text._ZN6plaits11StringVoice5ResetEv:0000000000000000 _ZN6plaits11StringVoice5ResetEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:212    .text._ZN6plaits11StringVoice6RenderEbbfffffPfS1_S1_j:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:218    .text._ZN6plaits11StringVoice6RenderEbbfffffPfS1_S1_j:0000000000000000 _ZN6plaits11StringVoice6RenderEbbfffffPfS1_S1_j
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccQnY8Tw.s:841    .text._ZN6plaits11StringVoice6RenderEbbfffffPfS1_S1_j:0000000000000280 $d
 
 UNDEFINED SYMBOLS
 _ZN6stmlib6Random10rng_state_E

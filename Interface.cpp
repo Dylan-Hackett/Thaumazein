@@ -11,9 +11,6 @@ CpuLoadMeter cpu_meter;
 // Global definition for the touch sensor driver
 thaumazein_hal::Mpr121 touch_sensor;
 
-// Global definition for the delay effect
-EchoDelay<48000> delay;
-
 // Arpeggiator instance
 Arpeggiator arp;
 GPIO touch_leds[12];
@@ -30,7 +27,6 @@ bool touch_sensor_present = true;
 
 // Hardware controls - Remapped to use ADCs 0-9
 AnalogControl delay_time_knob;        // ADC 0 (Pin 15) Delay Time
-AnalogControl delay_mix_feedback_knob; // ADC 1 (Pin 16) Delay Mix & Feedback
 AnalogControl env_release_knob;       // ADC 2 (Pin 17) Envelope Release
 AnalogControl env_attack_knob;        // ADC 3 (Pin 18) Envelope Attack
 AnalogControl timbre_knob;            // ADC 4 (Pin 19) Plaits Timbre
@@ -54,8 +50,8 @@ volatile float adc_raw_values[12] = {0.0f};
 
 // Global knob values, moved from AudioProcessor.cpp
 float pitch_val, harm_knob_val, timbre_knob_val, morph_knob_val;
-float delay_time_val, delay_mix_feedback_val, delay_mix_val, delay_feedback_val;
 float env_attack_val, env_release_val;
+float delay_time_val;
 
 // Simple diagnostic blink: flashes the Daisy user LED 'count' times rapidly.
 static void DebugBlink(int count)
@@ -112,7 +108,6 @@ void InitializeControls() {
 
     // --- Initialize Controls (Matches new mapping) ---
     delay_time_knob.Init(hw.adc.GetPtr(0), sample_rate);        // ADC 0
-    delay_mix_feedback_knob.Init(hw.adc.GetPtr(1), sample_rate); // ADC 1
     env_release_knob.Init(hw.adc.GetPtr(2), sample_rate);       // ADC 2
     env_attack_knob.Init(hw.adc.GetPtr(3), sample_rate);        // ADC 3
     timbre_knob.Init(hw.adc.GetPtr(4), sample_rate);            // ADC 4
@@ -140,11 +135,7 @@ void InitializeTouchSensor() {
 }
 
 void InitializeDelay() {
-    // --- Initialize Echo Delay --- 
-    delay.Init(sample_rate); 
-    delay.SetLagTime(0.02f);         // Short lag for time changes
-    delay.SetDelayTime(0.3f, true); // 300ms delay, set immediately
-    delay.SetFeedback(0.5f);         // 50% feedback
+    // Delay initialization removed
 }
 
 // Initialize GPIO and light up all touch pad LEDs
@@ -180,8 +171,8 @@ void InitializeSynth() {
     InitializeTouchSensor();
     DebugBlink(4);
 
-    InitializeDelay();
-    DebugBlink(5);
+    // InitializeDelay(); // Delay effect removed
+    // DebugBlink(5);
 
     InitializeTouchLEDs();
     DebugBlink(6);
@@ -349,7 +340,6 @@ void UpdateEngineSelection() {
 // Moved from AudioProcessor.cpp
 void ProcessControls() {
     delay_time_knob.Process();        // ADC 0
-    delay_mix_feedback_knob.Process(); // ADC 1
     env_release_knob.Process();       // ADC 2
     env_attack_knob.Process();        // ADC 3
     timbre_knob.Process();            // ADC 4
@@ -375,7 +365,6 @@ void ProcessControls() {
 // Moved from AudioProcessor.cpp
 void ReadKnobValues() {
     delay_time_val = delay_time_knob.Value();           // ADC 0
-    delay_mix_feedback_val = delay_mix_feedback_knob.Value(); // ADC 1 (Combined)
     env_release_val = env_release_knob.Value();       // ADC 2
     env_attack_val = env_attack_knob.Value();        // ADC 3
     timbre_knob_val = timbre_knob.Value();            // ADC 4
@@ -385,11 +374,11 @@ void ReadKnobValues() {
 
     // Derive separate mix and feedback values from the combined knob
     // Simple approach: use the same value for both
-    delay_mix_val = delay_mix_feedback_val;
-    delay_feedback_val = delay_mix_feedback_val;
+    // delay_mix_val = delay_mix_feedback_val;
+    // delay_feedback_val = delay_mix_feedback_val;
 
     // Restore touch-pad pressure modulation (was previously in audio ISR)
     const float intensity = 0.5f;
     morph_knob_val      = morph_knob_val * (1.0f - intensity) + touch_cv_value * intensity;
-    delay_feedback_val  = delay_feedback_val * (1.0f - intensity) + touch_cv_value * intensity;
+    // delay_feedback_val  = delay_feedback_val * (1.0f - intensity) + touch_cv_value * intensity;
 } 

@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
   61              		.section	.rodata._ZN6plaits10lut_fold_2E,"a"
   62              		.align	2
   65              	_ZN6plaits10lut_fold_2E:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 2
 
 
   66 0000 0000803F 		.word	1065353216
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  120 00d8 785F6E3F 		.word	1064198008
  121 00dc 49C46D3F 		.word	1064158281
  122 00e0 2F246D3F 		.word	1064117295
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 3
 
 
  123 00e4 EF7E6C3F 		.word	1064074991
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  177 01bc 76FFD4BD 		.word	-1110114442
  178 01c0 DAB344BE 		.word	-1102793766
  179 01c4 E10188BE 		.word	-1098382879
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 4
 
 
  180 01c8 C0EBA7BE 		.word	-1096291392
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  234 02a0 A35D683E 		.word	1047027107
  235 02a4 6AD20F3E 		.word	1041224298
  236 02a8 89890D3D 		.word	1024297353
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 5
 
 
  237 02ac 7929AABD 		.word	-1112921735
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  291 0384 90A83F3E 		.word	1044359312
  292 0388 85FED33D 		.word	1037303429
  293 038c 6E482C3B 		.word	992757870
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 6
 
 
  294 0390 3920CBBD 		.word	-1110761415
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  348 0468 DB58823E 		.word	1048729819
  349 046c 5FF33B3E 		.word	1044116319
  350 0470 3920CB3D 		.word	1036722233
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 7
 
 
  351 0474 6E482CBB 		.word	-1154725778
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  405 054c 64E4843E 		.word	1048896612
  406 0550 142D383E 		.word	1043868948
  407 0554 7929AA3D 		.word	1034561913
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 8
 
 
  408 0558 89890DBD 		.word	-1123186295
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  462 0630 5E14DB3E 		.word	1054544990
  463 0634 FE4FC33E 		.word	1052987390
  464 0638 C0EBA73E 		.word	1051192256
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 9
 
 
  465 063c E101883E 		.word	1049100769
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  519 0714 F5236BBF 		.word	-1083497483
  520 0718 48D46BBF 		.word	-1083452344
  521 071c EF7E6CBF 		.word	-1083408657
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 10
 
 
  522 0720 2F246DBF 		.word	-1083366353
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  576 07f8 0AA37FBF 		.word	-1082154230
  577 07fc EAD17FBF 		.word	-1082142230
  578 0800 000080BF 		.word	-1082130432
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 11
 
 
  579 0804 A91680BF 		.word	-1082124631
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  635 0060 528F     		.short	-28846
  636 0062 C48F     		.short	-28732
  637 0064 4990     		.short	-28599
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 12
 
 
  638 0066 E290     		.short	-28446
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  692 00d2 CCEC     		.short	-4916
  693 00d4 57EE     		.short	-4521
  694 00d6 D4EF     		.short	-4140
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 13
 
 
  695 00d8 43F1     		.short	-3773
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  749 0144 0B27     		.short	9995
  750 0146 0B29     		.short	10507
  751 0148 112B     		.short	11025
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 14
 
 
  752 014a 1B2D     		.short	11547
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  806 01b6 8A70     		.short	28810
  807 01b8 1270     		.short	28690
  808 01ba 866F     		.short	28550
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 15
 
 
  809 01bc E76E     		.short	28391
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  865 0040 00000000 		.word	0
  866 0044 00000000 		.word	0
  867 0048 00000000 		.word	0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 16
 
 
  868 004c 00000000 		.word	0
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  924 0014 639B4B3F 		.word	1061919587
  925 0018 A1D84D3F 		.word	1062066337
  926 001c F20A503F 		.word	1062210290
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 17
 
 
  927 0020 F330523F 		.word	1062351091
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  981 00f8 60BB7D3F 		.word	1065204576
  982 00fc F2DB7D3F 		.word	1065212914
  983 0100 B2FA7D3F 		.word	1065220786
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 18
 
 
  984 0104 B8177E3F 		.word	1065228216
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1038 01dc 6BEA7F3F 		.word	1065347691
  1039 01e0 A1EB7F3F 		.word	1065348001
  1040 01e4 C6EC7F3F 		.word	1065348294
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 19
 
 
  1041 01e8 DAED7F3F 		.word	1065348570
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1095 02c0 33FF7F3F 		.word	1065353011
  1096 02c4 3EFF7F3F 		.word	1065353022
  1097 02c8 49FF7F3F 		.word	1065353033
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 20
 
 
  1098 02cc 53FF7F3F 		.word	1065353043
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1152 03a4 F8FF7F3F 		.word	1065353208
  1153 03a8 F9FF7F3F 		.word	1065353209
  1154 03ac F9FF7F3F 		.word	1065353209
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 21
 
 
  1155 03b0 FAFF7F3F 		.word	1065353210
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1211 003c 019E     		.short	-25087
  1212 003e 019F     		.short	-24831
  1213 0040 01A0     		.short	-24575
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 22
 
 
  1214 0042 01A1     		.short	-24319
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1268 00ae 00D7     		.short	-10496
  1269 00b0 00D8     		.short	-10240
  1270 00b2 00D9     		.short	-9984
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 23
 
 
  1271 00b4 00DA     		.short	-9728
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1325 0120 0010     		.short	4096
  1326 0122 0011     		.short	4352
  1327 0124 0012     		.short	4608
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 24
 
 
  1328 0126 0013     		.short	4864
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1382 0192 FF48     		.short	18687
  1383 0194 FF49     		.short	18943
  1384 0196 FF4A     		.short	19199
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 25
 
 
  1385 0198 FF4B     		.short	19455
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1439              		.align	1
  1442              	_ZN6plaits18lut_ws_double_bumpE:
  1443 0000 FF7F     		.short	32767
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 26
 
 
  1444 0002 E97F     		.short	32745
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1498 006e DCC7     		.short	-14372
  1499 0070 AAC3     		.short	-15446
  1500 0072 8DBF     		.short	-16499
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 27
 
 
  1501 0074 86BB     		.short	-17530
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1555 00e0 E4B8     		.short	-18204
  1556 00e2 DBBC     		.short	-17189
  1557 00e4 E9C0     		.short	-16151
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 28
 
 
  1558 00e6 0EC5     		.short	-15090
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1612 0152 C17F     		.short	32705
  1613 0154 F57F     		.short	32757
  1614 0156 FD7F     		.short	32765
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 29
 
 
  1615 0158 D87F     		.short	32728
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1669 01c4 74C6     		.short	-14732
  1670 01c6 48C2     		.short	-15800
  1671 01c8 32BE     		.short	-16846
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 30
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 30
 
 
  1672 01ca 33BA     		.short	-17869
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1728 002e ACA3     		.short	-23636
  1729 0030 7FA4     		.short	-23425
  1730 0032 4EA5     		.short	-23218
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 31
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 31
 
 
  1731 0034 1AA6     		.short	-23014
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1785 00a0 4CCA     		.short	-13748
  1786 00a2 F5CA     		.short	-13579
  1787 00a4 9ECB     		.short	-13410
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 32
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 32
 
 
  1788 00a6 48CC     		.short	-13240
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1842 0112 DE15     		.short	5598
  1843 0114 1517     		.short	5909
  1844 0116 3E18     		.short	6206
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 33
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 33
 
 
  1845 0118 5B19     		.short	6491
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1899 0184 4541     		.short	16709
  1900 0186 E941     		.short	16873
  1901 0188 8C42     		.short	17036
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 34
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 34
 
 
  1902 018a 2F43     		.short	17199
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  1956 01f6 C96F     		.short	28617
  1957 01f8 8471     		.short	29060
  1958 01fa 7973     		.short	29561
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 35
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 35
 
 
  1959 01fc C975     		.short	30153
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2015 0060 13BE     		.short	-16877
  2016 0062 35BE     		.short	-16843
  2017 0064 56BE     		.short	-16810
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 36
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 36
 
 
  2018 0066 76BE     		.short	-16778
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2072 00d2 D1C6     		.short	-14639
  2073 00d4 26C7     		.short	-14554
  2074 00d6 81C7     		.short	-14463
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 37
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 37
 
 
  2075 00d8 E3C7     		.short	-14365
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2129 0144 E43B     		.short	15332
  2130 0146 143C     		.short	15380
  2131 0148 423C     		.short	15426
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 38
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 38
 
 
  2132 014a 6F3C     		.short	15471
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2186 01b6 9043     		.short	17296
  2187 01b8 BD43     		.short	17341
  2188 01ba EB43     		.short	17387
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 39
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 39
 
 
  2189 01bc 1B44     		.short	17435
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2231      534E4944 
  2232 0060 01FDF8F4 		.ascii	"\001\375\370\364\360\354\351\346\343\340\335\333\331"
  2232      F0ECE9E6 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 40
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 40
 
 
  2232      E3E0DDDB 
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2246 0116 EAEBECEC 		.ascii	"\352\353\354\354\355\355\355\356\356\356\355\355\355"
  2246      EDEDEDEE 
  2246      EEEEEDED 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 41
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 41
 
 
  2246      ED
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2260 01da 1D1D1C1C 		.ascii	"\035\035\034\034\033\032\032\031\030\027\026\025\024"
  2260      1B1A1A19 
  2260      18171615 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 42
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 42
 
 
  2260      14
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2281 000c A4703DC1 		.word	-1052938076
  2282 0010 A4703DC1 		.word	-1052938076
  2283 0014 A4703DC1 		.word	-1052938076
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 43
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 43
 
 
  2284 0018 8FC231C1 		.word	-1053703537
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2338 00f0 00004041 		.word	1094713344
  2339 00f4 00004041 		.word	1094713344
  2340 00f8 00004041 		.word	1094713344
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 44
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 44
 
 
  2341 00fc 5C8F4241 		.word	1094881116
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2395 01d4 0000F041 		.word	1106247680
  2396 01d8 0000F641 		.word	1106640896
  2397 01dc 0000FC41 		.word	1107034112
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 45
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 45
 
 
  2398 01e0 00000142 		.word	1107361792
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2454 00a8 798273BF 		.word	-1082948999
  2455 00ac E03473BF 		.word	-1082968864
  2456 00b0 B6E572BF 		.word	-1082989130
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 46
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 46
 
 
  2457 00b4 A99472BF 		.word	-1083009879
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2511 018c 15A653BF 		.word	-1085037035
  2512 0190 F5C953BF 		.word	-1085027851
  2513 0194 76F353BF 		.word	-1085017226
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 47
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 47
 
 
  2514 0198 CF1F54BF 		.word	-1085005873
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2568 0270 982DCBBE 		.word	-1093980776
  2569 0274 EF7CD1BE 		.word	-1093567249
  2570 0278 71ABD8BE 		.word	-1093096591
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 48
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 48
 
 
  2571 027c 90A4E0BE 		.word	-1092574064
@@ -2878,7 +2878,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2625 0354 2768F93E 		.word	1056532519
  2626 0358 F518EE3E 		.word	1055791349
  2627 035c 5FA9DF3E 		.word	1054845279
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 49
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 49
 
 
  2628 0360 CC36CE3E 		.word	1053701836
@@ -2938,7 +2938,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2682 0438 87BC443F 		.word	1061469319
  2683 043c B016473F 		.word	1061623472
  2684 0440 617F473F 		.word	1061650273
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 50
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 50
 
 
  2685 0444 1BFA453F 		.word	1061550619
@@ -2998,7 +2998,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2739 051c 7A6A073F 		.word	1057450618
  2740 0520 C117103F 		.word	1058019265
  2741 0524 8CC8173F 		.word	1058523276
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 51
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 51
 
 
  2742 0528 09761E3F 		.word	1058960905
@@ -3058,7 +3058,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2796 0600 8CE32D3F 		.word	1059971980
  2797 0604 64FF313F 		.word	1060241252
  2798 0608 C3E5353F 		.word	1060496835
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 52
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 52
 
 
  2799 060c B892393F 		.word	1060737720
@@ -3118,7 +3118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2853 06e4 C76D633F 		.word	1063480775
  2854 06e8 F952643F 		.word	1063539449
  2855 06ec 7133653F 		.word	1063596913
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 53
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 53
 
 
  2856 06f0 7C0E663F 		.word	1063652988
@@ -3178,7 +3178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2910 07c8 8FB37B3F 		.word	1065071503
  2911 07cc 4EFD7B3F 		.word	1065090382
  2912 07d0 84467C3F 		.word	1065109124
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 54
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 54
 
 
  2913 07d4 258F7C3F 		.word	1065127717
@@ -3238,7 +3238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  2969 0090 135C603E 		.word	1046502419
  2970 0094 667C663E 		.word	1046903910
  2971 0098 7F9A6C3E 		.word	1047304831
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 55
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 55
 
 
  2972 009c 51B6723E 		.word	1047705169
@@ -3298,7 +3298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3026 0174 AD480A3F 		.word	1057638573
  3027 0178 6B9A0B3F 		.word	1057725035
  3028 017c D0EA0C3F 		.word	1057811152
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 56
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 56
 
 
  3029 0180 DA390E3F 		.word	1057896922
@@ -3358,7 +3358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3083 0258 F8BB4B3F 		.word	1061927928
  3084 025c 79AE4C3F 		.word	1061990009
  3085 0260 029F4D3F 		.word	1062051586
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 57
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 57
 
 
  3086 0264 908D4E3F 		.word	1062112656
@@ -3418,7 +3418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3140 033c 2284743F 		.word	1064600610
  3141 0340 0BFA743F 		.word	1064630795
  3142 0344 976D753F 		.word	1064660375
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 58
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 58
 
 
  3143 0348 C6DE753F 		.word	1064689350
@@ -3478,7 +3478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3197 0420 0FB17F3F 		.word	1065333007
  3198 0424 189C7F3F 		.word	1065327640
  3199 0428 AB847F3F 		.word	1065321643
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 59
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 59
 
 
  3200 042c C76A7F3F 		.word	1065315015
@@ -3538,7 +3538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3254 0504 58E86B3F 		.word	1064036440
  3255 0508 0C4B6B3F 		.word	1063996172
  3256 050c 7BAB6A3F 		.word	1063955323
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 60
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 60
 
 
  3257 0510 A7096A3F 		.word	1063913895
@@ -3598,7 +3598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3311 05e8 3B8F3B3F 		.word	1060867899
  3312 05ec A47C3A3F 		.word	1060797604
  3313 05f0 4268393F 		.word	1060726850
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 61
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 61
 
 
  3314 05f4 1652383F 		.word	1060655638
@@ -3658,7 +3658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3368 06cc B700E93E 		.word	1055457463
  3369 06d0 7533E63E 		.word	1055273845
  3370 06d4 FA63E33E 		.word	1055089658
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 62
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 62
 
 
  3371 06d8 4F92E03E 		.word	1054904911
@@ -3718,7 +3718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3425 07b0 73B2FA3D 		.word	1039839859
  3426 07b4 7638EE3D 		.word	1039022198
  3427 07b8 2EBCE13D 		.word	1038203950
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 63
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 63
 
 
  3428 07bc B93DD53D 		.word	1037385145
@@ -3778,7 +3778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3482 0894 667C66BE 		.word	-1100579738
  3483 0898 7F9A6CBE 		.word	-1100178817
  3484 089c 51B672BE 		.word	-1099778479
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 64
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 64
 
 
  3485 08a0 CCCF78BE 		.word	-1099378740
@@ -3838,7 +3838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3539 0978 6B9A0BBF 		.word	-1089758613
  3540 097c D0EA0CBF 		.word	-1089672496
  3541 0980 DA390EBF 		.word	-1089586726
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 65
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 65
 
 
  3542 0984 84870FBF 		.word	-1089501308
@@ -3898,7 +3898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3596 0a5c 79AE4CBF 		.word	-1085493639
  3597 0a60 029F4DBF 		.word	-1085432062
  3598 0a64 908D4EBF 		.word	-1085370992
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 66
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 66
 
 
  3599 0a68 1F7A4FBF 		.word	-1085310433
@@ -3958,7 +3958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3653 0b40 0BFA74BF 		.word	-1082852853
  3654 0b44 976D75BF 		.word	-1082823273
  3655 0b48 C6DE75BF 		.word	-1082794298
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 67
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 67
 
 
  3656 0b4c 974D76BF 		.word	-1082765929
@@ -4018,7 +4018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3710 0c24 189C7FBF 		.word	-1082156008
  3711 0c28 AB847FBF 		.word	-1082162005
  3712 0c2c C76A7FBF 		.word	-1082168633
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 68
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 68
 
 
  3713 0c30 6D4E7FBF 		.word	-1082175891
@@ -4078,7 +4078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3767 0d08 0C4B6BBF 		.word	-1083487476
  3768 0d0c 7BAB6ABF 		.word	-1083528325
  3769 0d10 A7096ABF 		.word	-1083569753
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 69
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 69
 
 
  3770 0d14 916569BF 		.word	-1083611759
@@ -4138,7 +4138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3824 0dec A47C3ABF 		.word	-1086686044
  3825 0df0 426839BF 		.word	-1086756798
  3826 0df4 165238BF 		.word	-1086828010
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 70
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 70
 
 
  3827 0df8 233A37BF 		.word	-1086899677
@@ -4198,7 +4198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3881 0ed0 7533E6BE 		.word	-1092209803
  3882 0ed4 FA63E3BE 		.word	-1092393990
  3883 0ed8 4F92E0BE 		.word	-1092578737
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 71
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 71
 
 
  3884 0edc 79BEDDBE 		.word	-1092764039
@@ -4258,7 +4258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3938 0fb4 7638EEBD 		.word	-1108461450
  3939 0fb8 2EBCE1BD 		.word	-1109279698
  3940 0fbc B93DD5BD 		.word	-1110098503
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 72
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 72
 
 
  3941 0fc0 36BDC8BD 		.word	-1110917834
@@ -4318,7 +4318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  3995 1098 7F9A6C3E 		.word	1047304831
  3996 109c 51B6723E 		.word	1047705169
  3997 10a0 CCCF783E 		.word	1048104908
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 73
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 73
 
 
  3998 10a4 E1E67E3E 		.word	1048504033
@@ -4378,7 +4378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  4052 117c D0EA0C3F 		.word	1057811152
  4053 1180 DA390E3F 		.word	1057896922
  4054 1184 84870F3F 		.word	1057982340
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 74
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 74
 
 
  4055 1188 CDD3103F 		.word	1058067405
@@ -4438,7 +4438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  4109 1260 029F4D3F 		.word	1062051586
  4110 1264 908D4E3F 		.word	1062112656
  4111 1268 1F7A4F3F 		.word	1062173215
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 75
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 75
 
 
  4112 126c AF64503F 		.word	1062233263
@@ -4498,7 +4498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  4166 1344 976D753F 		.word	1064660375
  4167 1348 C6DE753F 		.word	1064689350
  4168 134c 974D763F 		.word	1064717719
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 76
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 76
 
 
  4169 1350 07BA763F 		.word	1064745479
@@ -4558,7 +4558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  4223              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
  4224              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
  4225              		.file 10 "lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_comp.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 77
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 77
 
 
  4226              		.file 11 "lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
@@ -4566,39 +4566,39 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 1
  4228              		.file 13 "eurorack/plaits/resources.h"
  4229              		.file 14 "eurorack/plaits/resources.cc"
  4230              		.file 15 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s 			page 78
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s 			page 78
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 resources.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:48     .data._ZN6plaits21lookup_table_i8_tableE:0000000000000000 _ZN6plaits21lookup_table_i8_tableE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:2227   .rodata._ZN6plaits24lut_lpc_excitation_pulseE:0000000000000000 _ZN6plaits24lut_lpc_excitation_pulseE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:54     .data._ZN6plaits22lookup_table_i16_tableE:0000000000000000 _ZN6plaits22lookup_table_i16_tableE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:1442   .rodata._ZN6plaits18lut_ws_double_bumpE:0000000000000000 _ZN6plaits18lut_ws_double_bumpE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:586    .rodata._ZN6plaits11lut_ws_bumpE:0000000000000000 _ZN6plaits11lut_ws_bumpE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:1180   .rodata._ZN6plaits13lut_ws_linearE:0000000000000000 _ZN6plaits13lut_ws_linearE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:1704   .rodata._ZN6plaits18lut_ws_inverse_sinE:0000000000000000 _ZN6plaits18lut_ws_inverse_sinE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:1966   .rodata._ZN6plaits18lut_ws_inverse_tanE:0000000000000000 _ZN6plaits18lut_ws_inverse_tanE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:37     .data._ZN6plaits18lookup_table_tableE:0000000000000000 _ZN6plaits18lookup_table_tableE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:918    .rodata._ZN6plaits13lut_svf_shiftE:0000000000000000 _ZN6plaits13lut_svf_shiftE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:848    .rodata._ZN6plaits13lut_stiffnessE:0000000000000000 _ZN6plaits13lut_stiffnessE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:65     .rodata._ZN6plaits10lut_fold_2E:0000000000000000 _ZN6plaits10lut_fold_2E
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:2411   .rodata._ZN6plaits8lut_foldE:0000000000000000 _ZN6plaits8lut_foldE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:2277   .rodata._ZN6plaits26lut_fm_frequency_quantizerE:0000000000000000 _ZN6plaits26lut_fm_frequency_quantizerE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:2932   .rodata._ZN6plaits8lut_sineE:0000000000000000 _ZN6plaits8lut_sineE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:34     .data._ZN6plaits18lookup_table_tableE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:45     .data._ZN6plaits21lookup_table_i8_tableE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:51     .data._ZN6plaits22lookup_table_i16_tableE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:62     .rodata._ZN6plaits10lut_fold_2E:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:583    .rodata._ZN6plaits11lut_ws_bumpE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:845    .rodata._ZN6plaits13lut_stiffnessE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:915    .rodata._ZN6plaits13lut_svf_shiftE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:1177   .rodata._ZN6plaits13lut_ws_linearE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:1439   .rodata._ZN6plaits18lut_ws_double_bumpE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:1701   .rodata._ZN6plaits18lut_ws_inverse_sinE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:1963   .rodata._ZN6plaits18lut_ws_inverse_tanE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:2274   .rodata._ZN6plaits26lut_fm_frequency_quantizerE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:2408   .rodata._ZN6plaits8lut_foldE:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccMo9QND.s:2929   .rodata._ZN6plaits8lut_sineE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:48     .data._ZN6plaits21lookup_table_i8_tableE:0000000000000000 _ZN6plaits21lookup_table_i8_tableE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:2227   .rodata._ZN6plaits24lut_lpc_excitation_pulseE:0000000000000000 _ZN6plaits24lut_lpc_excitation_pulseE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:54     .data._ZN6plaits22lookup_table_i16_tableE:0000000000000000 _ZN6plaits22lookup_table_i16_tableE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:1442   .rodata._ZN6plaits18lut_ws_double_bumpE:0000000000000000 _ZN6plaits18lut_ws_double_bumpE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:586    .rodata._ZN6plaits11lut_ws_bumpE:0000000000000000 _ZN6plaits11lut_ws_bumpE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:1180   .rodata._ZN6plaits13lut_ws_linearE:0000000000000000 _ZN6plaits13lut_ws_linearE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:1704   .rodata._ZN6plaits18lut_ws_inverse_sinE:0000000000000000 _ZN6plaits18lut_ws_inverse_sinE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:1966   .rodata._ZN6plaits18lut_ws_inverse_tanE:0000000000000000 _ZN6plaits18lut_ws_inverse_tanE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:37     .data._ZN6plaits18lookup_table_tableE:0000000000000000 _ZN6plaits18lookup_table_tableE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:918    .rodata._ZN6plaits13lut_svf_shiftE:0000000000000000 _ZN6plaits13lut_svf_shiftE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:848    .rodata._ZN6plaits13lut_stiffnessE:0000000000000000 _ZN6plaits13lut_stiffnessE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:65     .rodata._ZN6plaits10lut_fold_2E:0000000000000000 _ZN6plaits10lut_fold_2E
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:2411   .rodata._ZN6plaits8lut_foldE:0000000000000000 _ZN6plaits8lut_foldE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:2277   .rodata._ZN6plaits26lut_fm_frequency_quantizerE:0000000000000000 _ZN6plaits26lut_fm_frequency_quantizerE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:2932   .rodata._ZN6plaits8lut_sineE:0000000000000000 _ZN6plaits8lut_sineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:34     .data._ZN6plaits18lookup_table_tableE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:45     .data._ZN6plaits21lookup_table_i8_tableE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:51     .data._ZN6plaits22lookup_table_i16_tableE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:62     .rodata._ZN6plaits10lut_fold_2E:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:583    .rodata._ZN6plaits11lut_ws_bumpE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:845    .rodata._ZN6plaits13lut_stiffnessE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:915    .rodata._ZN6plaits13lut_svf_shiftE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:1177   .rodata._ZN6plaits13lut_ws_linearE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:1439   .rodata._ZN6plaits18lut_ws_double_bumpE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:1701   .rodata._ZN6plaits18lut_ws_inverse_sinE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:1963   .rodata._ZN6plaits18lut_ws_inverse_tanE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:2274   .rodata._ZN6plaits26lut_fm_frequency_quantizerE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:2408   .rodata._ZN6plaits8lut_foldE:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccHzKgrM.s:2929   .rodata._ZN6plaits8lut_sineE:0000000000000000 $d
 
 NO UNDEFINED SYMBOLS

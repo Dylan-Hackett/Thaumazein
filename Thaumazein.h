@@ -7,7 +7,7 @@
 #include "daisysp.h"
 #include "plaits/dsp/voice.h"
 #include "mpr121_daisy.h"
-#include "Effects/EchoDelay.h"
+// #include "Effects/EchoDelay.h"
 #include "VoiceEnvelope.h"
 #include "Effects/reverbsc.h"
 #include "Effects/BiquadFilters.h"
@@ -47,7 +47,7 @@ void UpdateArpeggiatorToggle();
 
 extern DaisySeed hw;
 extern thaumazein_hal::Mpr121 touch_sensor;
-extern EchoDelay<48000> delay;
+// extern EchoDelay<48000> delay;
 extern CpuLoadMeter cpu_meter;
 
 

@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -26,7 +26,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   23              		.thumb_func
   25              	_ZN15PolyphonyEngineD2Ev:
   26              	.LVL0:
-  27              	.LFB5846:
+  27              	.LFB5800:
   28              		.file 1 "Polyphony.cpp"
    1:Polyphony.cpp **** #include "Thaumazein.h"
    2:Polyphony.cpp **** #include "Polyphony.h"
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   32              		@ frame_needed = 0, uses_anonymous_args = 0
   33              	.LBB1052:
   25:Polyphony.cpp ****     if (allocator_) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 2
 
 
   34              		.loc 1 25 5 view .LVU1
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   30:eurorack/stmlib/utils/buffer_allocator.h **** #define STMLIB_UTILS_BUFFER_ALLOCATOR_H_
   31:eurorack/stmlib/utils/buffer_allocator.h **** 
   32:eurorack/stmlib/utils/buffer_allocator.h **** #include "stmlib/stmlib.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 3
 
 
   33:eurorack/stmlib/utils/buffer_allocator.h **** 
@@ -146,7 +146,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   68 0016 10BD     		pop	{r4, pc}
   69              		.loc 1 29 1 view .LVU13
   70              		.cfi_endproc
-  71              	.LFE5846:
+  71              	.LFE5800:
   73              		.global	_ZN15PolyphonyEngineD1Ev
   74              		.thumb_set _ZN15PolyphonyEngineD1Ev,_ZN15PolyphonyEngineD2Ev
   75              		.section	.text._ZN13VoiceEnvelope7TriggerEv,"axG",%progbits,_ZN13VoiceEnvelope7TriggerEv,comdat
@@ -157,7 +157,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   80              		.thumb_func
   82              	_ZN13VoiceEnvelope7TriggerEv:
   83              	.LVL4:
-  84              	.LFB5540:
+  84              	.LFB5476:
   85              		.file 3 "VoiceEnvelope.h"
    1:VoiceEnvelope.h **** #pragma once
    2:VoiceEnvelope.h **** #include <algorithm>
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   17:VoiceEnvelope.h ****         MODE_ASR   // Attack-Sustain-Release
   18:VoiceEnvelope.h ****     };
   19:VoiceEnvelope.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 4
 
 
   20:VoiceEnvelope.h ****     VoiceEnvelope() :
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   74:VoiceEnvelope.h ****             // Extra fast attacks at the beginning of the range
   75:VoiceEnvelope.h ****             attack_time = static_cast<size_t>(min_attack_time + 
   76:VoiceEnvelope.h ****                                            (min_attack_time * 9.0f * value / 0.1f));
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 5
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 5
 
 
   77:VoiceEnvelope.h ****         } else {
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   96 0004 032B     		cmp	r3, #3
   97 0006 04D0     		beq	.L8
   98 0008 7047     		bx	lr
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 6
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 6
 
 
   99              	.L7:
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  151:VoiceEnvelope.h **** 
  152:VoiceEnvelope.h ****     float Process() {
  153:VoiceEnvelope.h ****         float ph;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 7
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 7
 
 
  154:VoiceEnvelope.h ****         switch (current_state) {
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  208:VoiceEnvelope.h ****         reset_target = current_value;
  209:VoiceEnvelope.h ****         phase = 0;
  210:VoiceEnvelope.h ****     }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 8
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 8
 
 
  211:VoiceEnvelope.h **** 
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  154              		.loc 3 226 55 view .LVU39
  155 002e F8EE677A 		vcvt.f32.u32	s15, s15
  156 0032 67EEA57A 		vmul.f32	s15, s15, s11
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 9
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 9
 
 
  157              		.loc 3 226 61 view .LVU40
@@ -505,7 +505,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  175              		.loc 3 132 5 view .LVU46
  176 004e 7047     		bx	lr
  177              		.cfi_endproc
- 178              	.LFE5540:
+ 178              	.LFE5476:
  180              		.section	.text._ZN13VoiceEnvelope7ReleaseEv,"axG",%progbits,_ZN13VoiceEnvelope7ReleaseEv,comdat
  181              		.align	1
  182              		.weak	_ZN13VoiceEnvelope7ReleaseEv
@@ -514,7 +514,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  185              		.thumb_func
  187              	_ZN13VoiceEnvelope7ReleaseEv:
  188              	.LVL9:
- 189              	.LFB5541:
+ 189              	.LFB5477:
  134:VoiceEnvelope.h ****         switch (current_state) {
  190              		.loc 3 134 10 is_stmt 1 view -0
  191              		.cfi_startproc
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  206              	.LBB1073:
  207              	.LBI1073:
  134:VoiceEnvelope.h ****         switch (current_state) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 10
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 10
 
 
  208              		.loc 3 134 10 is_stmt 1 view .LVU51
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  247              		.loc 3 140 17 is_stmt 0 view .LVU66
  248              	.LBE1074:
  249              	.LBE1073:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 11
 
 
  143:VoiceEnvelope.h ****                 phase = 0;
@@ -621,7 +621,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  260              		.loc 3 150 5 is_stmt 0 view .LVU73
  261 003c 7047     		bx	lr
  262              		.cfi_endproc
- 263              	.LFE5541:
+ 263              	.LFE5477:
  265              		.section	.text._ZN13VoiceEnvelope5ResetEv,"axG",%progbits,_ZN13VoiceEnvelope5ResetEv,comdat
  266              		.align	1
  267              		.weak	_ZN13VoiceEnvelope5ResetEv
@@ -630,7 +630,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  270              		.thumb_func
  272              	_ZN13VoiceEnvelope5ResetEv:
  273              	.LVL14:
- 274              	.LFB5543:
+ 274              	.LFB5479:
  205:VoiceEnvelope.h ****         if (current_state == ENV_IDLE) return;
  275              		.loc 3 205 10 is_stmt 1 view -0
  276              		.cfi_startproc
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  208:VoiceEnvelope.h ****         phase = 0;
  293              		.loc 3 208 22 is_stmt 0 view .LVU80
  294 0008 4368     		ldr	r3, [r0, #4]	@ float
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 12
 
 
  295 000a 8362     		str	r3, [r0, #40]	@ float
@@ -678,7 +678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  305              		.loc 3 210 5 view .LVU84
  306 0010 7047     		bx	lr
  307              		.cfi_endproc
- 308              	.LFE5543:
+ 308              	.LFE5479:
  310              		.section	.text._ZN15PolyphonyEngineC2Ev,"ax",%progbits
  311              		.align	1
  312              		.global	_ZN15PolyphonyEngineC2Ev
@@ -687,7 +687,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  315              		.thumb_func
  317              	_ZN15PolyphonyEngineC2Ev:
  318              	.LVL17:
- 319              	.LFB5843:
+ 319              	.LFB5797:
   17:Polyphony.cpp ****     memset(voice_active_, 0, sizeof(voice_active_));
  320              		.loc 1 17 1 is_stmt 1 view -0
  321              		.cfi_startproc
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  343              		.file 4 "eurorack/plaits/dsp/voice.h"
    1:eurorack/plaits/dsp/voice.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/voice.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 13
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 13
 
 
    3:eurorack/plaits/dsp/voice.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   57:eurorack/plaits/dsp/voice.h **** 
   58:eurorack/plaits/dsp/voice.h **** #include "plaits/dsp/fx/low_pass_gate.h"
   59:eurorack/plaits/dsp/voice.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 14
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 14
 
 
   60:eurorack/plaits/dsp/voice.h **** namespace plaits {
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  114:eurorack/plaits/dsp/voice.h ****   
  115:eurorack/plaits/dsp/voice.h ****   DISALLOW_COPY_AND_ASSIGN(ChannelPostProcessor);
  116:eurorack/plaits/dsp/voice.h **** };
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 15
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 15
 
 
  117:eurorack/plaits/dsp/voice.h **** 
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   16:eurorack/plaits/dsp/engine/additive_engine.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   17:eurorack/plaits/dsp/engine/additive_engine.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
   18:eurorack/plaits/dsp/engine/additive_engine.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 16
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 16
 
 
   19:eurorack/plaits/dsp/engine/additive_engine.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   25:eurorack/plaits/dsp/engine/engine.h **** // -----------------------------------------------------------------------------
   26:eurorack/plaits/dsp/engine/engine.h **** //
   27:eurorack/plaits/dsp/engine/engine.h **** // Base class for all engines.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 17
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 17
 
 
   28:eurorack/plaits/dsp/engine/engine.h **** 
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  354              		.loc 6 80 3 is_stmt 0 view .LVU92
  355              	.LBE1281:
  356              		.loc 5 43 20 view .LVU93
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 18
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 18
 
 
  357 000a 3449     		ldr	r1, .L24
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  369              	.LBB1284:
  370              	.LBI1284:
  371              		.loc 6 80 3 view .LVU97
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 19
 
 
  372              		.loc 6 80 3 is_stmt 0 view .LVU98
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   46:eurorack/plaits/dsp/drums/analog_bass_drum.h ****   AnalogBassDrum() { }
  381              		.loc 8 46 3 is_stmt 1 view .LVU100
  382              	.LBB1286:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 20
 
 
  383              	.LBI1286:
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   53:eurorack/stmlib/dsp/filter.h **** 
   54:eurorack/stmlib/dsp/filter.h **** #define M_PI_F float(M_PI)
   55:eurorack/stmlib/dsp/filter.h **** #define M_PI_POW_2 M_PI * M_PI
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 21
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 21
 
 
   56:eurorack/stmlib/dsp/filter.h **** #define M_PI_POW_3 M_PI_POW_2 * M_PI
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  110:eurorack/stmlib/dsp/filter.h ****       f = f < 0.497f ? f : 0.497f;
  111:eurorack/stmlib/dsp/filter.h ****       return tanf(M_PI_F * f);
  112:eurorack/stmlib/dsp/filter.h ****     } else if (approximation == FREQUENCY_DIRTY) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 22
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 22
 
 
  113:eurorack/stmlib/dsp/filter.h ****       // Optimized for frequencies below 8kHz.
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  167:eurorack/stmlib/dsp/filter.h ****  private:
  168:eurorack/stmlib/dsp/filter.h ****   float g_;
  169:eurorack/stmlib/dsp/filter.h ****   float gi_;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 23
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 23
 
 
  170:eurorack/stmlib/dsp/filter.h ****   float state_;
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   39:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** #include "plaits/resources.h"
   40:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** 
   41:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** namespace plaits {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 24
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 24
 
 
   42:eurorack/plaits/dsp/oscillator/sine_oscillator.h **** 
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   44:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   SyntheticBassDrumClick() { }
   45:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   ~SyntheticBassDrumClick() { }
   46:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 25
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 25
 
 
   47:eurorack/plaits/dsp/drums/synthetic_bass_drum.h ****   void Init() {
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  403              	.LBI1290:
  404              		.loc 9 179 3 view .LVU107
  405              		.loc 9 179 3 is_stmt 0 view .LVU108
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 26
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 26
 
 
  406              	.LBE1290:
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  417              		.loc 12 41 3 is_stmt 1 view .LVU111
  418              		.loc 12 41 3 is_stmt 0 view .LVU112
  419              	.LBE1292:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 27
 
 
  420              	.LBE1283:
@@ -1618,7 +1618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  436              		.loc 13 38 14 view .LVU117
  437              	.LBE1294:
  438              	.LBE1293:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 28
 
 
  439              	.LBB1296:
@@ -1678,7 +1678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  450 001a 3349     		ldr	r1, .L24+12
  451 001c C3F83812 		str	r1, [r3, #568]
  452              		.loc 14 43 17 is_stmt 1 view .LVU122
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 29
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 29
 
 
  453              	.LVL22:
@@ -1738,7 +1738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  463              	.LBE1296:
  464              	.LBB1300:
  465              	.LBI1300:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 30
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 30
 
 
  466              		.file 16 "eurorack/plaits/dsp/engine/hi_hat_engine.h"
@@ -1798,7 +1798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  480              		.file 17 "eurorack/plaits/dsp/drums/hi_hat.h"
    1:eurorack/plaits/dsp/drums/hi_hat.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/drums/hi_hat.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 31
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 31
 
 
    3:eurorack/plaits/dsp/drums/hi_hat.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -1858,7 +1858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   57:eurorack/plaits/dsp/drums/hi_hat.h ****   void Render(float f0, float* temp_1, float* temp_2, float* out, size_t size) {
   58:eurorack/plaits/dsp/drums/hi_hat.h ****     const float ratios[6] = {
   59:eurorack/plaits/dsp/drums/hi_hat.h ****         // Nominal f0: 414 Hz
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 32
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 32
 
 
   60:eurorack/plaits/dsp/drums/hi_hat.h ****         1.0f, 1.304f, 1.466f, 1.787f, 1.932f, 2.536f
@@ -1918,7 +1918,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  114:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f1b = 7530.0f / kSampleRate * ratio;
  115:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f2a = 510.0f / kSampleRate * ratio;
  116:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f2b = 8075.0f / kSampleRate * ratio;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 33
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 33
 
 
  117:eurorack/plaits/dsp/drums/hi_hat.h ****     const float f3a = 730.0f / kSampleRate * ratio;
@@ -1978,7 +1978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  484              		.loc 17 50 3 view .LVU132
   50:eurorack/plaits/dsp/drums/hi_hat.h ****   ~SquareNoise() { }
  485              		.loc 17 50 3 is_stmt 0 view .LVU133
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 34
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 34
 
 
  486              	.LBE1304:
@@ -2038,7 +2038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    7:eurorack/plaits/dsp/engine/modal_engine.h **** // in the Software without restriction, including without limitation the rights
    8:eurorack/plaits/dsp/engine/modal_engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/engine/modal_engine.h **** // copies of the Software, and to permit persons to whom the Software is
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 35
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 35
 
 
   10:eurorack/plaits/dsp/engine/modal_engine.h **** // furnished to do so, subject to the following conditions:
@@ -2098,7 +2098,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   11:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // 
   12:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // The above copyright notice and this permission notice shall be included in
   13:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // all copies or substantial portions of the Software.
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 36
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 36
 
 
   14:eurorack/plaits/dsp/physical_modelling/modal_voice.h **** // 
@@ -2158,7 +2158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   22:eurorack/plaits/dsp/physical_modelling/resonator.h **** // 
   23:eurorack/plaits/dsp/physical_modelling/resonator.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
   24:eurorack/plaits/dsp/physical_modelling/resonator.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 37
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 37
 
 
   25:eurorack/plaits/dsp/physical_modelling/resonator.h **** // -----------------------------------------------------------------------------
@@ -2218,7 +2218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   74:eurorack/plaits/dsp/physical_modelling/resonator.h ****       state_2[i] = state_2_[i];
   75:eurorack/plaits/dsp/physical_modelling/resonator.h ****       gains[i] = gain[i];
   76:eurorack/plaits/dsp/physical_modelling/resonator.h ****     }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 38
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 38
 
 
   77:eurorack/plaits/dsp/physical_modelling/resonator.h ****     
@@ -2278,7 +2278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    8:eurorack/plaits/dsp/engine/noise_engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/engine/noise_engine.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/engine/noise_engine.h **** // furnished to do so, subject to the following conditions:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 39
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 39
 
 
   11:eurorack/plaits/dsp/engine/noise_engine.h **** // 
@@ -2338,7 +2338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  591              		.file 22 "eurorack/plaits/dsp/engine/particle_engine.h"
    1:eurorack/plaits/dsp/engine/particle_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/particle_engine.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 40
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 40
 
 
    3:eurorack/plaits/dsp/engine/particle_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -2398,7 +2398,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  606              		.file 23 "eurorack/plaits/dsp/fx/diffuser.h"
    1:eurorack/plaits/dsp/fx/diffuser.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/fx/diffuser.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 41
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 41
 
 
    3:eurorack/plaits/dsp/fx/diffuser.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
@@ -2458,7 +2458,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   13:eurorack/plaits/dsp/fx/fx_engine.h **** // all copies or substantial portions of the Software.
   14:eurorack/plaits/dsp/fx/fx_engine.h **** // 
   15:eurorack/plaits/dsp/fx/fx_engine.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 42
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 42
 
 
   16:eurorack/plaits/dsp/fx/fx_engine.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -2518,7 +2518,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   70:eurorack/plaits/dsp/fx/fx_engine.h **** 
   71:eurorack/plaits/dsp/fx/fx_engine.h **** template<>
   72:eurorack/plaits/dsp/fx/fx_engine.h **** struct DataType<FORMAT_16_BIT> {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 43
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 43
 
 
   73:eurorack/plaits/dsp/fx/fx_engine.h ****   typedef uint16_t T;
@@ -2578,7 +2578,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    1:eurorack/plaits/dsp/engine/snare_drum_engine.h **** // Copyright 2016 Emilie Gillet.
    2:eurorack/plaits/dsp/engine/snare_drum_engine.h **** //
    3:eurorack/plaits/dsp/engine/snare_drum_engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 44
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 44
 
 
    4:eurorack/plaits/dsp/engine/snare_drum_engine.h **** //
@@ -2638,7 +2638,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    4:eurorack/plaits/dsp/drums/analog_snare_drum.h **** //
    5:eurorack/plaits/dsp/drums/analog_snare_drum.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
    6:eurorack/plaits/dsp/drums/analog_snare_drum.h **** // of this software and associated documentation files (the "Software"), to deal
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 45
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 45
 
 
    7:eurorack/plaits/dsp/drums/analog_snare_drum.h **** // in the Software without restriction, including without limitation the rights
@@ -2698,7 +2698,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  660              	.LBI1336:
  661              		.loc 9 179 3 view .LVU179
  662              		.loc 9 179 3 is_stmt 0 view .LVU180
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 46
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 46
 
 
  663              	.LBE1336:
@@ -2758,7 +2758,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   41:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** 
   42:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** #include "plaits/dsp/dsp.h"
   43:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 47
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 47
 
 
   44:eurorack/plaits/dsp/drums/synthetic_snare_drum.h **** namespace plaits {
@@ -2818,7 +2818,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   24:eurorack/plaits/dsp/engine/string_engine.h **** //
   25:eurorack/plaits/dsp/engine/string_engine.h **** // -----------------------------------------------------------------------------
   26:eurorack/plaits/dsp/engine/string_engine.h **** //
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 48
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 48
 
 
   27:eurorack/plaits/dsp/engine/string_engine.h **** // Three voices of string synthesis.
@@ -2878,7 +2878,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   25:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // -----------------------------------------------------------------------------
   26:eurorack/plaits/dsp/physical_modelling/delay_line.h **** //
   27:eurorack/plaits/dsp/physical_modelling/delay_line.h **** // Delay line (same implementation as from stmlib, but does not own its buffer).
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 49
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 49
 
 
   28:eurorack/plaits/dsp/physical_modelling/delay_line.h **** 
@@ -2938,7 +2938,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   33:eurorack/plaits/dsp/engine/swarm_engine.h **** #include "stmlib/dsp/units.h"
   34:eurorack/plaits/dsp/engine/swarm_engine.h **** #include "stmlib/utils/random.h"
   35:eurorack/plaits/dsp/engine/swarm_engine.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 50
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 50
 
 
   36:eurorack/plaits/dsp/engine/swarm_engine.h **** #include "plaits/dsp/engine/engine.h"
@@ -2998,7 +2998,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   90:eurorack/plaits/dsp/engine/swarm_engine.h ****     if (size_ratio < 1.0f) {
   91:eurorack/plaits/dsp/engine/swarm_engine.h ****       return 2.0f * (from_ + interval_ * phase_) - 1.0f;
   92:eurorack/plaits/dsp/engine/swarm_engine.h ****     } else {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 51
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 51
 
 
   93:eurorack/plaits/dsp/engine/swarm_engine.h ****       return from_;
@@ -3058,7 +3058,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  147:eurorack/plaits/dsp/engine/swarm_engine.h ****       frequency = kMaxFrequency;
  148:eurorack/plaits/dsp/engine/swarm_engine.h ****     }
  149:eurorack/plaits/dsp/engine/swarm_engine.h ****     stmlib::ParameterInterpolator fm(&frequency_, frequency, size);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 52
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 52
 
 
  150:eurorack/plaits/dsp/engine/swarm_engine.h ****     stmlib::ParameterInterpolator gain(&gain_, level, size);
@@ -3118,7 +3118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  204:eurorack/plaits/dsp/engine/swarm_engine.h ****       bool burst_mode,
  205:eurorack/plaits/dsp/engine/swarm_engine.h ****       bool start_burst,
  206:eurorack/plaits/dsp/engine/swarm_engine.h ****       float spread,
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 53
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 53
 
 
  207:eurorack/plaits/dsp/engine/swarm_engine.h ****       float size_ratio,
@@ -3178,7 +3178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    7:eurorack/plaits/dsp/engine/virtual_analog_engine.h **** // in the Software without restriction, including without limitation the rights
    8:eurorack/plaits/dsp/engine/virtual_analog_engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/engine/virtual_analog_engine.h **** // copies of the Software, and to permit persons to whom the Software is
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 54
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 54
 
 
   10:eurorack/plaits/dsp/engine/virtual_analog_engine.h **** // furnished to do so, subject to the following conditions:
@@ -3238,7 +3238,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    8:eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h **** // furnished to do so, subject to the following conditions:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 55
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 55
 
 
   11:eurorack/plaits/dsp/oscillator/variable_shape_oscillator.h **** // 
@@ -3298,7 +3298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    5:eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
    6:eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h **** // of this software and associated documentation files (the "Software"), to deal
    7:eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h **** // in the Software without restriction, including without limitation the rights
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 56
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 56
 
 
    8:eurorack/plaits/dsp/oscillator/variable_saw_oscillator.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
@@ -3358,7 +3358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    8:eurorack/plaits/dsp/engine/waveshaping_engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
    9:eurorack/plaits/dsp/engine/waveshaping_engine.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/engine/waveshaping_engine.h **** // furnished to do so, subject to the following conditions:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 57
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 57
 
 
   11:eurorack/plaits/dsp/engine/waveshaping_engine.h **** // 
@@ -3418,7 +3418,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   12:eurorack/plaits/dsp/oscillator/oscillator.h **** // The above copyright notice and this permission notice shall be included in
   13:eurorack/plaits/dsp/oscillator/oscillator.h **** // all copies or substantial portions of the Software.
   14:eurorack/plaits/dsp/oscillator/oscillator.h **** // 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 58
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 58
 
 
   15:eurorack/plaits/dsp/oscillator/oscillator.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -3478,7 +3478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    1:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // Copyright 2015 Emilie Gillet.
    2:eurorack/stmlib/dsp/hysteresis_quantizer.h **** //
    3:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 59
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 59
 
 
    4:eurorack/stmlib/dsp/hysteresis_quantizer.h **** //
@@ -3538,7 +3538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   13:eurorack/plaits/dsp/envelope.h **** // all copies or substantial portions of the Software.
   14:eurorack/plaits/dsp/envelope.h **** // 
   15:eurorack/plaits/dsp/envelope.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 60
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 60
 
 
   16:eurorack/plaits/dsp/envelope.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -3598,7 +3598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   70:eurorack/plaits/dsp/envelope.h ****       float decay_tail,
   71:eurorack/plaits/dsp/envelope.h ****       float hf) {
   72:eurorack/plaits/dsp/envelope.h ****     float vactrol_input = level;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 61
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 61
 
 
   73:eurorack/plaits/dsp/envelope.h ****     float vactrol_error = (vactrol_input - vactrol_state_);
@@ -3658,7 +3658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    1:eurorack/stmlib/dsp/limiter.h **** // Copyright 2015 Emilie Gillet.
    2:eurorack/stmlib/dsp/limiter.h **** //
    3:eurorack/stmlib/dsp/limiter.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 62
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 62
 
 
    4:eurorack/stmlib/dsp/limiter.h **** //
@@ -3718,7 +3718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
    9:eurorack/plaits/dsp/fx/low_pass_gate.h **** // copies of the Software, and to permit persons to whom the Software is
   10:eurorack/plaits/dsp/fx/low_pass_gate.h **** // furnished to do so, subject to the following conditions:
   11:eurorack/plaits/dsp/fx/low_pass_gate.h **** // 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 63
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 63
 
 
   12:eurorack/plaits/dsp/fx/low_pass_gate.h **** // The above copyright notice and this permission notice shall be included in
@@ -3778,7 +3778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  858              		.loc 9 179 3 is_stmt 0 view .LVU241
  859              	.LBE1376:
  860              	.LBE1375:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 64
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 64
 
 
  861              	.LBE1373:
@@ -3838,7 +3838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  893              	.LBB1385:
   27:VoiceEnvelope.h ****     {}
  894              		.loc 3 27 31 view .LVU250
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 65
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 65
 
 
  895 0072 03F8431C 		strb	r1, [r3, #-67]
@@ -3898,7 +3898,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  935 00bc 04F57050 		add	r0, r4, #15360
  936 00c0 2946     		mov	r1, r5
  937 00c2 8022     		movs	r2, #128
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 66
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 66
 
 
  938 00c4 2430     		adds	r0, r0, #36
@@ -3939,7 +3939,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  969 0108 08000000 		.word	_ZTVN6plaits19VirtualAnalogEngineE+8
  970 010c 08000000 		.word	_ZTVN6plaits17WaveshapingEngineE+8
  971              		.cfi_endproc
- 972              	.LFE5843:
+ 972              	.LFE5797:
  974              		.global	_ZN15PolyphonyEngineC1Ev
  975              		.thumb_set _ZN15PolyphonyEngineC1Ev,_ZN15PolyphonyEngineC2Ev
  976              		.section	.text._ZN15PolyphonyEngine11ResetVoicesEv,"ax",%progbits
@@ -3950,7 +3950,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  981              		.thumb_func
  983              	_ZN15PolyphonyEngine11ResetVoicesEv:
  984              	.LVL39:
- 985              	.LFB5851:
+ 985              	.LFB5805:
   30:Polyphony.cpp **** 
   31:Polyphony.cpp **** void PolyphonyEngine::Init(daisy::DaisySeed* hw) {
   32:Polyphony.cpp ****     hw_ptr_ = hw;
@@ -3958,7 +3958,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   34:Polyphony.cpp ****     InitVoiceParameters(); 
   35:Polyphony.cpp **** }
   36:Polyphony.cpp **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 67
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 67
 
 
   37:Polyphony.cpp **** void PolyphonyEngine::HandleTouchInput(uint16_t current_touch_state_param, uint16_t last_touch_stat
@@ -4018,7 +4018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   91:Polyphony.cpp **** 
   92:Polyphony.cpp **** void PolyphonyEngine::ResetVoices() {
  986              		.loc 1 92 37 is_stmt 1 view -0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 68
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 68
 
 
  987              		.cfi_startproc
@@ -4078,7 +4078,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1032              		.loc 1 93 23 is_stmt 0 discriminator 2 view .LVU283
  1033 002a A642     		cmp	r6, r4
  1034              		.loc 1 96 33 discriminator 2 view .LVU284
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 69
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 69
 
 
  1035 002c 45F8282C 		str	r2, [r5, #-40]	@ float
@@ -4103,7 +4103,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1048 003a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
  1049              		.loc 1 100 1 view .LVU292
  1050              		.cfi_endproc
- 1051              	.LFE5851:
+ 1051              	.LFE5805:
  1053              		.section	.text._ZN15PolyphonyEngine14AllocateVoicesEv,"ax",%progbits
  1054              		.align	1
  1055              		.global	_ZN15PolyphonyEngine14AllocateVoicesEv
@@ -4112,7 +4112,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1058              		.thumb_func
  1060              	_ZN15PolyphonyEngine14AllocateVoicesEv:
  1061              	.LVL44:
- 1062              	.LFB5852:
+ 1062              	.LFB5806:
  101:Polyphony.cpp **** 
  102:Polyphony.cpp **** void PolyphonyEngine::AllocateVoices() {
  1063              		.loc 1 102 40 is_stmt 1 view -0
@@ -4138,7 +4138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1080 0008 D5F8243D 		ldr	r3, [r5, #3364]
  1081 000c 5BB9     		cbnz	r3, .L30
  104:Polyphony.cpp ****         allocator_ = new stmlib::BufferAllocator(shared_buffer, sizeof(shared_buffer));
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 70
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 70
 
 
  1082              		.loc 1 104 9 is_stmt 1 view .LVU299
@@ -4198,7 +4198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   54:eurorack/stmlib/utils/buffer_allocator.h ****   }
   55:eurorack/stmlib/utils/buffer_allocator.h ****   
   56:eurorack/stmlib/utils/buffer_allocator.h ****   template<typename T>
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 71
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 71
 
 
   57:eurorack/stmlib/utils/buffer_allocator.h ****   inline T* Allocate(size_t size) {
@@ -4258,7 +4258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1153 0038 B442     		cmp	r4, r6
  1154 003a F6D1     		bne	.L31
  1155              	.LBE1404:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 72
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 72
 
 
  109:Polyphony.cpp ****     }
@@ -4272,7 +4272,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1162              	.L33:
  1163 0040 00000000 		.word	shared_buffer
  1164              		.cfi_endproc
- 1165              	.LFE5852:
+ 1165              	.LFE5806:
  1167              		.section	.text._ZN15PolyphonyEngine19InitVoiceParametersEv,"ax",%progbits
  1168              		.align	1
  1169              		.global	_ZN15PolyphonyEngine19InitVoiceParametersEv
@@ -4281,7 +4281,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1172              		.thumb_func
  1174              	_ZN15PolyphonyEngine19InitVoiceParametersEv:
  1175              	.LVL52:
- 1176              	.LFB5853:
+ 1176              	.LFB5807:
  111:Polyphony.cpp **** 
  112:Polyphony.cpp **** void PolyphonyEngine::InitVoiceParameters() {
  1177              		.loc 1 112 45 is_stmt 1 view -0
@@ -4318,7 +4318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1206              		.cfi_offset 91, -28
  1207              	.LBB1422:
  1208              	.LBB1423:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 73
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 73
 
 
  1209              	.LBB1424:
@@ -4378,7 +4378,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1251              	.LBB1446:
  1252              	.LBB1439:
   56:VoiceEnvelope.h ****             decay_time = static_cast<size_t>(time_range_2x * (1.0f - value * value)) + min_decay_ti
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 74
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 74
 
 
  1253              		.loc 3 56 61 view .LVU345
@@ -4438,7 +4438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1300              	.LBB1461:
  1301              	.LBB1432:
   36:VoiceEnvelope.h ****         
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 75
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 75
 
 
  1302              		.loc 3 36 34 view .LVU353
@@ -4498,7 +4498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1346              	.LBE1464:
  116:Polyphony.cpp ****         patches_[i].engine = 0;      
  1347              		.loc 1 116 9 is_stmt 1 discriminator 2 view .LVU364
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 76
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 76
 
 
  1348              		.loc 1 116 28 is_stmt 0 discriminator 2 view .LVU365
@@ -4558,7 +4558,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1378              		.loc 1 123 9 is_stmt 1 discriminator 2 view .LVU380
  1379              	.LVL57:
  1380              	.LBB1466:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 77
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 77
 
 
  1381              	.LBI1423:
@@ -4618,7 +4618,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1417 00f0 C2ED009A 		vstr.32	s19, [r2]
  1418              	.LVL59:
  111:VoiceEnvelope.h ****     }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 78
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 78
 
 
  1419              		.loc 3 111 34 discriminator 2 view .LVU399
@@ -4678,7 +4678,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1461              	.LBE1471:
  125:Polyphony.cpp **** 
  1462              		.loc 1 125 9 is_stmt 1 discriminator 2 view .LVU412
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 79
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 79
 
 
  1463              	.LBB1472:
@@ -4738,7 +4738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1499              		.loc 3 62 9 is_stmt 0 discriminator 2 view .LVU430
  1500              	.LBE1453:
  1501              	.LBE1473:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 80
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 80
 
 
  1502              	.LBE1475:
@@ -4798,7 +4798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1545              		.cfi_def_cfa_offset 24
  1546 0134 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
  1547              	.LVL66:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 81
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 81
 
 
  1548              	.L39:
@@ -4812,7 +4812,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1556 0148 CDCCCC3E 		.word	1053609165
  1557 014c 6F12033C 		.word	1006834287
  1558              		.cfi_endproc
- 1559              	.LFE5853:
+ 1559              	.LFE5807:
  1561              		.section	.text._ZN15PolyphonyEngine4InitEPN5daisy9DaisySeedE,"ax",%progbits
  1562              		.align	1
  1563              		.global	_ZN15PolyphonyEngine4InitEPN5daisy9DaisySeedE
@@ -4821,7 +4821,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1566              		.thumb_func
  1568              	_ZN15PolyphonyEngine4InitEPN5daisy9DaisySeedE:
  1569              	.LVL67:
- 1570              	.LFB5848:
+ 1570              	.LFB5802:
   31:Polyphony.cpp ****     hw_ptr_ = hw;
  1571              		.loc 1 31 50 is_stmt 1 view -0
  1572              		.cfi_startproc
@@ -4858,7 +4858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   35:Polyphony.cpp **** 
  1594              		.loc 1 35 1 view .LVU455
  1595 0012 BDE81040 		pop	{r4, lr}
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 82
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 82
 
 
  1596              		.cfi_restore 14
@@ -4872,7 +4872,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   34:Polyphony.cpp **** }
  1603              		.loc 1 34 24 view .LVU457
  1604              		.cfi_endproc
- 1605              	.LFE5848:
+ 1605              	.LFE5802:
  1607              		.section	.text._ZN15PolyphonyEngine16ProcessEnvelopesEb,"ax",%progbits
  1608              		.align	1
  1609              		.global	_ZN15PolyphonyEngine16ProcessEnvelopesEb
@@ -4881,7 +4881,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1612              		.thumb_func
  1614              	_ZN15PolyphonyEngine16ProcessEnvelopesEb:
  1615              	.LVL71:
- 1616              	.LFB5855:
+ 1616              	.LFB5809:
  130:Polyphony.cpp **** 
  131:Polyphony.cpp **** void PolyphonyEngine::PrepVoiceParams(const RenderParameters& params) {
  132:Polyphony.cpp ****     bool percussive_engine = (params.engine_index > 7);
@@ -4918,7 +4918,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  163:Polyphony.cpp **** 
  164:Polyphony.cpp ****         UpdateModAndEnv(
  165:Polyphony.cpp ****             modulations_[v],
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 83
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 83
 
 
  166:Polyphony.cpp ****             voice_envelopes_[v],
@@ -4978,7 +4978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1633 0008 0E46     		mov	r6, r1
  1634              		.loc 1 201 11 view .LVU463
  1635 000a 8022     		movs	r2, #128
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 84
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 84
 
 
  1636 000c 2435     		adds	r5, r5, #36
@@ -5038,7 +5038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  206:Polyphony.cpp ****         for (int i = 0; i < BLOCK_SIZE; ++i) {
  1683              		.loc 1 206 27 discriminator 2 view .LVU478
  1684 0040 9A42     		cmp	r2, r3
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 85
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 85
 
 
  1685              		.loc 1 207 32 discriminator 2 view .LVU479
@@ -5088,7 +5088,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1719              	.L48:
  1720 0078 FCFDFFFF 		.word	-516
  1721              		.cfi_endproc
- 1722              	.LFE5855:
+ 1722              	.LFE5809:
  1724              		.section	.text._ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams,"ax",%progb
  1725              		.align	1
  1726              		.global	_ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams
@@ -5097,8 +5097,8 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1729              		.thumb_func
  1731              	_ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams:
  1732              	.LVL81:
- 1733              	.LFB5856:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 86
+ 1733              	.LFB5810:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 86
 
 
  212:Polyphony.cpp **** 
@@ -5158,7 +5158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1771              		.loc 1 219 22 is_stmt 0 view .LVU511
  1772 0022 0023     		movs	r3, #0
  1773              		.loc 1 220 17 view .LVU512
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 87
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 87
 
 
  1774 0024 0A62     		str	r2, [r1, #32]	@ float
@@ -5182,7 +5182,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1787              		.loc 1 224 1 view .LVU521
  1788 002e 7047     		bx	lr
  1789              		.cfi_endproc
- 1790              	.LFE5856:
+ 1790              	.LFE5810:
  1792              		.section	.text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff,"a
  1793              		.align	1
  1794              		.global	_ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff
@@ -5191,7 +5191,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1797              		.thumb_func
  1799              	_ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:
  1800              	.LVL83:
- 1801              	.LFB5857:
+ 1801              	.LFB5811:
  225:Polyphony.cpp **** 
  226:Polyphony.cpp **** void PolyphonyEngine::UpdateModAndEnv(plaits::Modulations& mod, VoiceEnvelope& env, bool percussive
  1802              		.loc 1 226 150 is_stmt 1 view -0
@@ -5218,7 +5218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  229:Polyphony.cpp ****     mod.frequency = 0.0f;
  1820              		.loc 1 229 5 is_stmt 1 view .LVU529
  1821              		.loc 1 229 19 is_stmt 0 view .LVU530
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 88
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 88
 
 
  1822 0012 C1ED026A 		vstr.32	s13, [r1, #8]
@@ -5278,7 +5278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1861              		.loc 3 75 47 view .LVU548
  1862 003e D2ED055A 		vldr.32	s11, [r2, #20]
   76:VoiceEnvelope.h ****         } else {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 89
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 89
 
 
  1863              		.loc 3 76 61 view .LVU549
@@ -5338,7 +5338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   88:VoiceEnvelope.h ****         } else {
  1902              		.loc 3 88 41 is_stmt 0 view .LVU565
  1903 0074 35EEC06A 		vsub.f32	s12, s11, s0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 90
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 90
 
 
   88:VoiceEnvelope.h ****         } else {
@@ -5398,7 +5398,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1947              	.LBE1529:
  236:Polyphony.cpp ****         env.SetReleaseTime(release_value);
  1948              		.loc 1 236 9 is_stmt 1 view .LVU577
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 91
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 91
 
 
  1949              	.LBB1548:
@@ -5458,7 +5458,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  1987              	.LBE1526:
  1988              	.LBE1527:
  1989              	.LBE1528:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 92
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 92
 
 
  1990              	.LBE1548:
@@ -5518,7 +5518,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2030              		.loc 3 79 75 view .LVU607
  2031 00f0 F4EE005A 		vmov.f32	s11, #1.25e-1
  2032 00f4 E6EE257A 		vfma.f32	s15, s12, s11
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 93
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 93
 
 
  2033 00f8 ABE7     		b	.L82
@@ -5578,7 +5578,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   22:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** // see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
   23:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** // <http://www.gnu.org/licenses/>.
   24:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 94
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 94
 
 
   25:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** /*
@@ -5638,7 +5638,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   79:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** namespace std _GLIBCXX_VISIBILITY(default)
   80:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** {
   81:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** _GLIBCXX_BEGIN_NAMESPACE_VERSION
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 95
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 95
 
 
   82:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
@@ -5698,7 +5698,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  136:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     };
  137:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** #endif // C++03
  138:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 96
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 96
 
 
  139:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   /**
@@ -5758,7 +5758,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  193:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *
  194:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  Swaps each element in the range @p [first1,last1) with the
  195:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  corresponding element in the range @p [first2,(last1-first1)).
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 97
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 97
 
 
  196:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****    *  The ranges must not overlap.
@@ -5818,7 +5818,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  250:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   */
  251:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****   template<typename _Tp>
  252:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     _GLIBCXX14_CONSTEXPR
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 98
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 98
 
 
  253:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****     inline const _Tp&
@@ -5878,7 +5878,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2099 011e D2ED007A 		vldr.32	s15, [r2]
  2100 0122 F4EEC77A 		vcmpe.f32	s15, s14
  2101 0126 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 99
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 99
 
 
  236:/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h ****       return __a;
@@ -5938,7 +5938,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  159:VoiceEnvelope.h ****                 ph = static_cast<float>(phase) * attack_coefficient;
  2144              		.loc 3 159 13 is_stmt 1 view .LVU637
  160:VoiceEnvelope.h ****                 current_value = CalculateAttackAmplitude(ph);
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 100
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 100
 
 
  2145              		.loc 3 160 17 view .LVU638
@@ -5998,7 +5998,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  163:VoiceEnvelope.h ****                     phase = 0;
  2184              		.loc 3 163 21 view .LVU654
  163:VoiceEnvelope.h ****                     phase = 0;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 101
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 101
 
 
  2185              		.loc 3 163 55 is_stmt 0 view .LVU655
@@ -6058,7 +6058,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2223 018e 5468     		ldr	r4, [r2, #4]	@ float
  2224 0190 1464     		str	r4, [r2, #64]	@ float
  2225              	.L67:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 102
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 102
 
 
  182:VoiceEnvelope.h ****                 
@@ -6118,7 +6118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2264              	.LVL113:
  2265              	.L59:
  192:VoiceEnvelope.h ****                 current_value = reset_target - static_cast<float>(phase) * reset_coefficient;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 103
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 103
 
 
  2266              		.loc 3 192 13 is_stmt 1 view .LVU688
@@ -6178,7 +6178,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  242:Polyphony.cpp ****         mod.trigger_patched = true;
  2306              		.loc 1 242 27 is_stmt 0 view .LVU703
  2307 01f0 81F82430 		strb	r3, [r1, #36]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 104
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 104
 
 
  243:Polyphony.cpp ****     }
@@ -6200,7 +6200,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2322 020c 00000043 		.word	1124073472
  2323 0210 6F12033B 		.word	990057071
  2324              		.cfi_endproc
- 2325              	.LFE5857:
+ 2325              	.LFE5811:
  2327              		.section	.text._ZN15PolyphonyEngine17UpdateMonoTriggerERN6plaits11ModulationsERbb,"ax",%progbits
  2328              		.align	1
  2329              		.global	_ZN15PolyphonyEngine17UpdateMonoTriggerERN6plaits11ModulationsERbb
@@ -6209,7 +6209,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2332              		.thumb_func
  2334              	_ZN15PolyphonyEngine17UpdateMonoTriggerERN6plaits11ModulationsERbb:
  2335              	.LVL116:
- 2336              	.LFB5858:
+ 2336              	.LFB5812:
  246:Polyphony.cpp **** 
  247:Polyphony.cpp **** void PolyphonyEngine::UpdateMonoTrigger(plaits::Modulations& mod, bool& active_flag, bool engine_ch
  2337              		.loc 1 247 118 is_stmt 1 view -0
@@ -6237,8 +6237,8 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2355              		.loc 1 251 1 view .LVU713
  2356 000a 7047     		bx	lr
  2357              		.cfi_endproc
- 2358              	.LFE5858:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 105
+ 2358              	.LFE5812:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 105
 
 
  2360              		.section	.text._ZN15PolyphonyEngine12SilenceVoiceEi,"ax",%progbits
@@ -6249,7 +6249,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2365              		.thumb_func
  2367              	_ZN15PolyphonyEngine12SilenceVoiceEi:
  2368              	.LVL118:
- 2369              	.LFB5859:
+ 2369              	.LFB5813:
  252:Polyphony.cpp **** 
  253:Polyphony.cpp **** void PolyphonyEngine::SilenceVoice(int voice_idx) {
  2370              		.loc 1 253 51 is_stmt 1 view -0
@@ -6281,7 +6281,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2392              		.loc 1 257 1 view .LVU720
  2393 0016 7047     		bx	lr
  2394              		.cfi_endproc
- 2395              	.LFE5859:
+ 2395              	.LFE5813:
  2397              		.section	.text._ZN15PolyphonyEngine14RetriggerVoiceEi,"ax",%progbits
  2398              		.align	1
  2399              		.global	_ZN15PolyphonyEngine14RetriggerVoiceEi
@@ -6290,7 +6290,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2402              		.thumb_func
  2404              	_ZN15PolyphonyEngine14RetriggerVoiceEi:
  2405              	.LVL122:
- 2406              	.LFB5860:
+ 2406              	.LFB5814:
  258:Polyphony.cpp **** 
  259:Polyphony.cpp **** void PolyphonyEngine::RetriggerVoice(int voice_idx) {
  2407              		.loc 1 259 53 is_stmt 1 view -0
@@ -6298,7 +6298,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2409              		@ args = 0, pretend = 0, frame = 8
  2410              		@ frame_needed = 0, uses_anonymous_args = 0
  260:Polyphony.cpp ****     if (voice_idx >= 0 && voice_idx < NUM_VOICES && voice_active_[voice_idx]) {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 106
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 106
 
 
  2411              		.loc 1 260 5 view .LVU722
@@ -6358,7 +6358,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2459 0030 FFF7FEFF 		bl	_ZN13VoiceEnvelope5ResetEv
  2460              	.LVL126:
  264:Polyphony.cpp ****             voice_envelopes_[voice_idx].Trigger();
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 107
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 107
 
 
  2461              		.loc 1 264 13 is_stmt 1 view .LVU736
@@ -6409,7 +6409,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2496 005c 70BD     		pop	{r4, r5, r6, pc}
  2497              		.loc 1 272 1 view .LVU748
  2498              		.cfi_endproc
- 2499              	.LFE5860:
+ 2499              	.LFE5814:
  2501              		.section	.text._ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE,"ax",%progbits
  2502              		.align	1
  2503              		.global	_ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE
@@ -6418,10 +6418,10 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2506              		.thumb_func
  2508              	_ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE:
  2509              	.LVL130:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 108
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 108
 
 
- 2510              	.LFB5854:
+ 2510              	.LFB5808:
  131:Polyphony.cpp ****     bool percussive_engine = (params.engine_index > 7);
  2511              		.loc 1 131 71 is_stmt 1 view -0
  2512              		.cfi_startproc
@@ -6478,7 +6478,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2554 001a 8BB0     		sub	sp, sp, #44
  2555              		.cfi_def_cfa_offset 112
  2556              	.LBB1566:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 109
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 109
 
 
  136:Polyphony.cpp ****         float attack_raw = params.env_attack_val; 
@@ -6538,7 +6538,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2593              		.loc 1 146 11 is_stmt 0 view .LVU776
  2594 004e F3EE087A 		vmov.f32	s15, #2.4e+1
  2595 0052 94ED047A 		vldr.32	s14, [r4, #16]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 110
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 110
 
 
  2596 0056 BAEE089A 		vmov.f32	s18, #-1.2e+1
@@ -6598,7 +6598,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2634 008e 06F1A00B 		add	fp, r6, #160
  162:Polyphony.cpp **** 
  2635              		.loc 1 162 26 view .LVU793
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 111
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 111
 
 
  2636 0092 02AA     		add	r2, sp, #8
@@ -6658,7 +6658,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2670              		.loc 1 162 9 is_stmt 1 view .LVU813
  162:Polyphony.cpp **** 
  2671              		.loc 1 162 26 is_stmt 0 view .LVU814
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 112
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 112
 
 
  2672 00c2 FFF7FEFF 		bl	_ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams
@@ -6718,7 +6718,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  182:Polyphony.cpp ****             modulations_[v].trigger = 0.0f;
  2716              		.loc 1 182 49 discriminator 2 view .LVU825
  2717 010e F369     		ldr	r3, [r6, #28]
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 113
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 113
 
 
  2718 0110 072B     		cmp	r3, #7
@@ -6778,7 +6778,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  189:Polyphony.cpp ****     }
  2760              		.loc 1 189 22 is_stmt 0 discriminator 2 view .LVU838
  2761 013c 2146     		mov	r1, r4
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 114
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 114
 
 
  2762 013e 2846     		mov	r0, r5
@@ -6838,7 +6838,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2801              		.loc 1 193 9 is_stmt 1 discriminator 2 view .LVU853
  193:Polyphony.cpp ****             RetriggerVoice(v);
  2802              		.loc 1 193 9 is_stmt 0 discriminator 2 view .LVU854
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 115
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 115
 
 
  2803 0162 F7E7     		b	.L112
@@ -6886,7 +6886,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2838 0174 CDCC4C3E 		.word	1045220557
  2839 0178 00000000 		.word	0
  2840              		.cfi_endproc
- 2841              	.LFE5854:
+ 2841              	.LFE5808:
  2843              		.section	.text._ZN15PolyphonyEngine11RenderBlockERKNS_16RenderParametersE,"ax",%progbits
  2844              		.align	1
  2845              		.global	_ZN15PolyphonyEngine11RenderBlockERKNS_16RenderParametersE
@@ -6895,10 +6895,10 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2848              		.thumb_func
  2850              	_ZN15PolyphonyEngine11RenderBlockERKNS_16RenderParametersE:
  2851              	.LVL154:
- 2852              	.LFB5850:
+ 2852              	.LFB5804:
   81:Polyphony.cpp ****     PrepVoiceParams(params);
  2853              		.loc 1 81 67 is_stmt 1 view -0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 116
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 116
 
 
  2854              		.cfi_startproc
@@ -6958,11 +6958,11 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2895 0028 38BD     		pop	{r3, r4, r5, pc}
   90:Polyphony.cpp **** 
  2896              		.loc 1 90 1 view .LVU876
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 117
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 117
 
 
  2897              		.cfi_endproc
- 2898              	.LFE5850:
+ 2898              	.LFE5804:
  2900              		.section	.text._ZN15PolyphonyEngine11ClearVoicesEv,"ax",%progbits
  2901              		.align	1
  2902              		.global	_ZN15PolyphonyEngine11ClearVoicesEv
@@ -6971,7 +6971,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2905              		.thumb_func
  2907              	_ZN15PolyphonyEngine11ClearVoicesEv:
  2908              	.LVL159:
- 2909              	.LFB5861:
+ 2909              	.LFB5815:
  273:Polyphony.cpp **** 
  274:Polyphony.cpp **** void PolyphonyEngine::ClearVoices() {
  2910              		.loc 1 274 37 is_stmt 1 view -0
@@ -7018,7 +7018,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2946              		.loc 1 277 9 is_stmt 1 discriminator 2 view .LVU885
  2947              		.loc 1 277 26 is_stmt 0 discriminator 2 view .LVU886
  2948 0024 0021     		movs	r1, #0
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 118
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 118
 
 
  278:Polyphony.cpp ****         modulations_[v].trigger = 0.0f;
@@ -7073,19 +7073,19 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  2981 0044 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
  2982              		.loc 1 283 1 view .LVU904
  2983              		.cfi_endproc
- 2984              	.LFE5861:
+ 2984              	.LFE5815:
  2986              		.section	.text._ZN15PolyphonyEngine10PolyToMonoEi,"ax",%progbits
  2987              		.align	1
  2988              		.global	_ZN15PolyphonyEngine10PolyToMonoEi
  2989              		.syntax unified
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 119
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 119
 
 
  2990              		.thumb
  2991              		.thumb_func
  2993              	_ZN15PolyphonyEngine10PolyToMonoEi:
  2994              	.LVL164:
- 2995              	.LFB5862:
+ 2995              	.LFB5816:
  284:Polyphony.cpp **** 
  285:Polyphony.cpp **** void PolyphonyEngine::PolyToMono(int source_voice_idx) {
  2996              		.loc 1 285 56 is_stmt 1 view -0
@@ -7138,7 +7138,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3037              		.loc 1 290 13 view .LVU911
  3038              		.loc 1 290 30 is_stmt 0 view .LVU912
  3039 0022 04F56853 		add	r3, r4, #14848
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 120
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 120
 
 
  3040 0026 4FF0000A 		mov	r10, #0
@@ -7198,7 +7198,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3082 0062 0123     		movs	r3, #1
  299:Polyphony.cpp ****         voice_note_[0] = voice_note_[source_voice_idx];
  300:Polyphony.cpp ****         
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 121
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 121
 
 
  301:Polyphony.cpp ****         voice_envelopes_[0] = voice_envelopes_[source_voice_idx];
@@ -7258,7 +7258,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3117              		.loc 1 303 66 view .LVU944
  3118 00a0 06F56157 		add	r7, r6, #14400
  3119 00a4 BA6B     		ldr	r2, [r7, #56]	@ float
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 122
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 122
 
 
  303:Polyphony.cpp ****         modulations_[0].trigger_patched = modulations_[source_voice_idx].trigger_patched;
@@ -7318,7 +7318,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  315:Polyphony.cpp ****         modulations_[0].trigger = 0.0f;
  316:Polyphony.cpp ****         modulations_[0].trigger_patched = false;
  317:Polyphony.cpp ****     }
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 123
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 123
 
 
  318:Polyphony.cpp **** }
@@ -7369,7 +7369,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3191              	.LBE1584:
  3192              	.LBE1585:
  3193              		.cfi_endproc
- 3194              	.LFE5862:
+ 3194              	.LFE5816:
  3196              		.section	.text._ZN15PolyphonyEngine14OnEngineChangeEii,"ax",%progbits
  3197              		.align	1
  3198              		.global	_ZN15PolyphonyEngine14OnEngineChangeEii
@@ -7378,10 +7378,10 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3201              		.thumb_func
  3203              	_ZN15PolyphonyEngine14OnEngineChangeEii:
  3204              	.LVL174:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 124
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 124
 
 
- 3205              	.LFB5863:
+ 3205              	.LFB5817:
  319:Polyphony.cpp **** 
  320:Polyphony.cpp **** void PolyphonyEngine::OnEngineChange(int old_engine_idx, int new_engine_idx) {
  3206              		.loc 1 320 78 is_stmt 1 view -0
@@ -7438,7 +7438,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  331:Polyphony.cpp ****         return;
  332:Polyphony.cpp ****     }
  333:Polyphony.cpp **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 125
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 125
 
 
  334:Polyphony.cpp ****     if(prev_was_poly && !now_poly) {
@@ -7498,7 +7498,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3280              		.loc 1 349 1 is_stmt 0 view .LVU999
  3281 0040 70BC     		pop	{r4, r5, r6}
  3282              		.cfi_remember_state
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 126
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 126
 
 
  3283              		.cfi_restore 6
@@ -7550,7 +7550,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3324              		.loc 1 349 1 view .LVU1007
  3325 004e 7047     		bx	lr
  3326              		.cfi_endproc
- 3327              	.LFE5863:
+ 3327              	.LFE5817:
  3329              		.section	.text._ZNK15PolyphonyEngine17GetLastTouchStateEv,"ax",%progbits
  3330              		.align	1
  3331              		.global	_ZNK15PolyphonyEngine17GetLastTouchStateEv
@@ -7558,11 +7558,11 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3333              		.thumb
  3334              		.thumb_func
  3336              	_ZNK15PolyphonyEngine17GetLastTouchStateEv:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 127
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 127
 
 
  3337              	.LVL186:
- 3338              	.LFB5864:
+ 3338              	.LFB5818:
  350:Polyphony.cpp **** 
  351:Polyphony.cpp **** uint16_t PolyphonyEngine::GetLastTouchState() const {
  3339              		.loc 1 351 53 is_stmt 1 view -0
@@ -7582,7 +7582,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3351              		.loc 1 353 1 view .LVU1012
  3352 0008 7047     		bx	lr
  3353              		.cfi_endproc
- 3354              	.LFE5864:
+ 3354              	.LFE5818:
  3356              		.section	.text._ZN15PolyphonyEngine20UpdateLastTouchStateEt,"ax",%progbits
  3357              		.align	1
  3358              		.global	_ZN15PolyphonyEngine20UpdateLastTouchStateEt
@@ -7591,7 +7591,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3361              		.thumb_func
  3363              	_ZN15PolyphonyEngine20UpdateLastTouchStateEt:
  3364              	.LVL189:
- 3365              	.LFB5865:
+ 3365              	.LFB5819:
  354:Polyphony.cpp **** 
  355:Polyphony.cpp **** void PolyphonyEngine::UpdateLastTouchState(uint16_t current_state) {
  3366              		.loc 1 355 68 is_stmt 1 view -0
@@ -7610,7 +7610,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3377              		.loc 1 357 1 view .LVU1017
  3378 0008 7047     		bx	lr
  3379              		.cfi_endproc
- 3380              	.LFE5865:
+ 3380              	.LFE5819:
  3382              		.section	.text._ZN15PolyphonyEngine13FindFreeVoiceEi,"ax",%progbits
  3383              		.align	1
  3384              		.global	_ZN15PolyphonyEngine13FindFreeVoiceEi
@@ -7618,11 +7618,11 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3386              		.thumb
  3387              		.thumb_func
  3389              	_ZN15PolyphonyEngine13FindFreeVoiceEi:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 128
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 128
 
 
  3390              	.LVL191:
- 3391              	.LFB5866:
+ 3391              	.LFB5820:
  358:Polyphony.cpp **** 
  359:Polyphony.cpp **** int PolyphonyEngine::FindFreeVoice(int max_voices) {
  3392              		.loc 1 359 52 is_stmt 1 view -0
@@ -7675,10 +7675,10 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3428              		.loc 1 367 1 view .LVU1031
  3429 001a 7047     		bx	lr
  3430              		.cfi_endproc
- 3431              	.LFE5866:
+ 3431              	.LFE5820:
  3433              		.section	.text._ZN15PolyphonyEngine14AssignMonoNoteEfb,"ax",%progbits
  3434              		.align	1
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 129
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 129
 
 
  3435              		.global	_ZN15PolyphonyEngine14AssignMonoNoteEfb
@@ -7687,7 +7687,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3438              		.thumb_func
  3440              	_ZN15PolyphonyEngine14AssignMonoNoteEfb:
  3441              	.LVL196:
- 3442              	.LFB5867:
+ 3442              	.LFB5821:
  368:Polyphony.cpp **** 
  369:Polyphony.cpp **** void PolyphonyEngine::AssignMonoNote(float note, bool percussive_engine) {
  3443              		.loc 1 369 74 is_stmt 1 view -0
@@ -7738,7 +7738,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3477              	.LVL197:
  3478              	.L157:
  376:Polyphony.cpp ****     } else {
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 130
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 130
 
 
  377:Polyphony.cpp ****         modulations_[0].trigger_patched = false;
@@ -7767,7 +7767,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3493              		.loc 1 380 1 view .LVU1053
  3494 0032 F7E7     		b	.L157
  3495              		.cfi_endproc
- 3496              	.LFE5867:
+ 3496              	.LFE5821:
  3498              		.section	.text._ZN15PolyphonyEngine16FindVoiceForNoteEfibi,"ax",%progbits
  3499              		.align	1
  3500              		.global	_ZN15PolyphonyEngine16FindVoiceForNoteEfibi
@@ -7776,7 +7776,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3503              		.thumb_func
  3505              	_ZN15PolyphonyEngine16FindVoiceForNoteEfibi:
  3506              	.LVL201:
- 3507              	.LFB5868:
+ 3507              	.LFB5822:
  381:Polyphony.cpp **** 
  382:Polyphony.cpp **** int PolyphonyEngine::FindVoiceForNote(float note, int engine_index, bool poly_mode, int max_voices)
  3508              		.loc 1 382 101 is_stmt 1 view -0
@@ -7798,7 +7798,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3522              	.LVL202:
  3523              		.loc 1 383 5 view .LVU1058
  3524 0008 00F56852 		add	r2, r0, #14848
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 131
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 131
 
 
  3525              	.LVL203:
@@ -7858,7 +7858,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3569              		.loc 1 390 28 is_stmt 0 view .LVU1075
  3570 003c 00F54050 		add	r0, r0, #12288
  3571              	.LVL209:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 132
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 132
 
 
  3572              		.loc 1 390 9 view .LVU1076
@@ -7918,10 +7918,10 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3619              	.L171:
  3620 0074 CDCCCC3D 		.word	1036831949
  3621              		.cfi_endproc
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 133
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 133
 
 
- 3622              	.LFE5868:
+ 3622              	.LFE5822:
  3624              		.section	.text._ZN15PolyphonyEngine16HandleTouchInputEttibi,"ax",%progbits
  3625              		.align	1
  3626              		.global	_ZN15PolyphonyEngine16HandleTouchInputEttibi
@@ -7930,7 +7930,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3629              		.thumb_func
  3631              	_ZN15PolyphonyEngine16HandleTouchInputEttibi:
  3632              	.LVL217:
- 3633              	.LFB5849:
+ 3633              	.LFB5803:
   37:Polyphony.cpp ****     bool percussive_engine = (engine_index > 7);
  3634              		.loc 1 37 169 is_stmt 1 view -0
  3635              		.cfi_startproc
@@ -7978,7 +7978,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   40:Polyphony.cpp ****         bool pad_currently_pressed = (current_touch_state_param >> i) & 1;
  3669              		.loc 1 40 5 is_stmt 1 view .LVU1098
  3670              	.LBB1605:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 134
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 134
 
 
   40:Polyphony.cpp ****         bool pad_currently_pressed = (current_touch_state_param >> i) & 1;
@@ -8038,7 +8038,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   46:Polyphony.cpp ****                 int voice_idx = FindFreeVoice(effective_num_voices); 
  3710              		.loc 1 46 13 is_stmt 1 view .LVU1114
  3711              	.LBB1625:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 135
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 135
 
 
  3712              	.LBB1620:
@@ -8098,7 +8098,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3752 0084 4423     		movs	r3, #68
  3753 0086 03FB0040 		mla	r0, r3, r0, r4
  3754              	.LVL222:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 136
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 136
 
 
   57:Polyphony.cpp ****                 }
@@ -8158,7 +8158,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   62:Polyphony.cpp ****             if (poly_mode) {
  3800              		.loc 1 62 16 is_stmt 1 discriminator 1 view .LVU1138
  3801              	.LBB1627:
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 137
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 137
 
 
  3802              	.LBB1622:
@@ -8218,7 +8218,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3844              		.loc 1 66 47 view .LVU1150
  3845 00c8 43F61022 		movw	r2, #14864
   67:Polyphony.cpp ****                      modulations_[voice_idx].trigger_patched = false; 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 138
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 138
 
 
  3846              		.loc 1 67 57 view .LVU1151
@@ -8278,7 +8278,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
   71:Polyphony.cpp ****                     voice_active_[0] = false; 
  3886              		.loc 1 71 38 discriminator 1 view .LVU1166
  3887 010c F4EEC77A 		vcmpe.f32	s15, s14
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 139
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 139
 
 
  3888 0110 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
@@ -8314,7 +8314,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3911              	.LBE1623:
  3912              	.LBE1628:
  3913              		.cfi_endproc
- 3914              	.LFE5849:
+ 3914              	.LFE5803:
  3916              		.section	.text._ZN15PolyphonyEngine15TriggerArpVoiceEii,"ax",%progbits
  3917              		.align	1
  3918              		.global	_ZN15PolyphonyEngine15TriggerArpVoiceEii
@@ -8323,7 +8323,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3921              		.thumb_func
  3923              	_ZN15PolyphonyEngine15TriggerArpVoiceEii:
  3924              	.LVL236:
- 3925              	.LFB5869:
+ 3925              	.LFB5823:
  396:Polyphony.cpp **** 
  397:Polyphony.cpp **** void PolyphonyEngine::TriggerArpVoice(int pad_idx, int current_engine_index_val) {
  3926              		.loc 1 397 82 is_stmt 1 view -0
@@ -8338,7 +8338,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3933 0002 F0B5     		push	{r4, r5, r6, r7, lr}
  3934              		.cfi_def_cfa_offset 20
  3935              		.cfi_offset 4, -20
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 140
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 140
 
 
  3936              		.cfi_offset 5, -16
@@ -8398,7 +8398,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  3967              		.loc 1 416 22 is_stmt 0 view .LVU1189
  3968 0022 00F55F51 		add	r1, r0, #14272
  403:Polyphony.cpp ****     voice_active_[0] = true;
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 141
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 141
 
 
  3969              		.loc 1 403 20 view .LVU1190
@@ -8458,7 +8458,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  4005 0044 FFF7FEFF 		bl	_ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams
  4006              	.LVL241:
  417:Polyphony.cpp **** 
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 142
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 142
 
 
  418:Polyphony.cpp ****     modulations_[0].trigger = 1.0f;
@@ -8518,7 +8518,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  424:Polyphony.cpp ****     }
  425:Polyphony.cpp **** }
  4047              		.loc 1 425 1 view .LVU1228
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 143
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 143
 
 
  4048 0068 09B0     		add	sp, sp, #36
@@ -8533,7 +8533,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  4057 006c 00000000 		.word	.LANCHOR0
  4058 0070 00000000 		.word	env_release_val
  4059              		.cfi_endproc
- 4060              	.LFE5869:
+ 4060              	.LFE5823:
  4062              		.section	.text._ZNK15PolyphonyEngine16IsAnyVoiceActiveEv,"ax",%progbits
  4063              		.align	1
  4064              		.global	_ZNK15PolyphonyEngine16IsAnyVoiceActiveEv
@@ -8542,7 +8542,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  4067              		.thumb_func
  4069              	_ZNK15PolyphonyEngine16IsAnyVoiceActiveEv:
  4070              	.LVL247:
- 4071              	.LFB5870:
+ 4071              	.LFB5824:
  426:Polyphony.cpp **** 
  427:Polyphony.cpp **** bool PolyphonyEngine::IsAnyVoiceActive() const {
  4072              		.loc 1 427 48 is_stmt 1 view -0
@@ -8578,7 +8578,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  4098              	.L202:
  428:Polyphony.cpp ****     for (int i = 0; i < NUM_VOICES; ++i) {
  4099              		.loc 1 428 23 is_stmt 0 discriminator 2 view .LVU1238
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 144
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 144
 
 
  4100              	.LBE1633:
@@ -8590,14 +8590,14 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  4101              		.loc 1 434 1 view .LVU1239
  4102 0016 7047     		bx	lr
  4103              		.cfi_endproc
- 4104              	.LFE5870:
+ 4104              	.LFE5824:
  4106              		.section	.text.startup._GLOBAL__sub_I_shared_buffer,"ax",%progbits
  4107              		.align	1
  4108              		.syntax unified
  4109              		.thumb
  4110              		.thumb_func
  4112              	_GLOBAL__sub_I_shared_buffer:
- 4113              	.LFB6592:
+ 4113              	.LFB6546:
  4114              		.loc 1 434 1 is_stmt 1 view -0
  4115              		.cfi_startproc
  4116              		@ args = 0, pretend = 0, frame = 0
@@ -8638,7 +8638,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  4149              	.LVL254:
  4150              	.L207:
  4151              		.align	2
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 145
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 145
 
 
  4152              	.L206:
@@ -8648,7 +8648,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  4156              	.LBE1638:
  4157              	.LBE1640:
  4158              		.cfi_endproc
- 4159              	.LFE6592:
+ 4159              	.LFE6546:
  4161              		.section	.init_array,"aw",%init_array
  4162              		.align	2
  4163 0000 00000000 		.word	_GLOBAL__sub_I_shared_buffer(target1)
@@ -8698,7 +8698,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  4207              		.file 43 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdint.h"
  4208              		.file 44 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
  4209              		.file 45 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 146
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 146
 
 
  4210              		.file 46 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
@@ -8758,7 +8758,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  4264              		.file 100 "eurorack/plaits/dsp/engine/chord_engine.h"
  4265              		.file 101 "eurorack/plaits/dsp/oscillator/grainlet_oscillator.h"
  4266              		.file 102 "eurorack/plaits/dsp/noise/clocked_noise.h"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 147
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 147
 
 
  4267              		.file 103 "eurorack/plaits/dsp/noise/particle.h"
@@ -8771,97 +8771,97 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 1
  4274              		.file 110 "Thaumazein.h"
  4275              		.file 111 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/new"
  4276              		.file 112 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 148
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 148
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 Polyphony.cpp
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:19     .text._ZN15PolyphonyEngineD2Ev:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:25     .text._ZN15PolyphonyEngineD2Ev:0000000000000000 _ZN15PolyphonyEngineD2Ev
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:25     .text._ZN15PolyphonyEngineD2Ev:0000000000000000 _ZN15PolyphonyEngineD1Ev
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:76     .text._ZN13VoiceEnvelope7TriggerEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:82     .text._ZN13VoiceEnvelope7TriggerEv:0000000000000000 _ZN13VoiceEnvelope7TriggerEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:181    .text._ZN13VoiceEnvelope7ReleaseEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:187    .text._ZN13VoiceEnvelope7ReleaseEv:0000000000000000 _ZN13VoiceEnvelope7ReleaseEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:266    .text._ZN13VoiceEnvelope5ResetEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:272    .text._ZN13VoiceEnvelope5ResetEv:0000000000000000 _ZN13VoiceEnvelope5ResetEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:311    .text._ZN15PolyphonyEngineC2Ev:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:317    .text._ZN15PolyphonyEngineC2Ev:0000000000000000 _ZN15PolyphonyEngineC2Ev
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:958    .text._ZN15PolyphonyEngineC2Ev:00000000000000dc $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:317    .text._ZN15PolyphonyEngineC2Ev:0000000000000000 _ZN15PolyphonyEngineC1Ev
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:977    .text._ZN15PolyphonyEngine11ResetVoicesEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:983    .text._ZN15PolyphonyEngine11ResetVoicesEv:0000000000000000 _ZN15PolyphonyEngine11ResetVoicesEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1054   .text._ZN15PolyphonyEngine14AllocateVoicesEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1060   .text._ZN15PolyphonyEngine14AllocateVoicesEv:0000000000000000 _ZN15PolyphonyEngine14AllocateVoicesEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1163   .text._ZN15PolyphonyEngine14AllocateVoicesEv:0000000000000040 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4201   .sdram_bss:0000000000000000 shared_buffer
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1168   .text._ZN15PolyphonyEngine19InitVoiceParametersEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1174   .text._ZN15PolyphonyEngine19InitVoiceParametersEv:0000000000000000 _ZN15PolyphonyEngine19InitVoiceParametersEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1552   .text._ZN15PolyphonyEngine19InitVoiceParametersEv:0000000000000138 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1562   .text._ZN15PolyphonyEngine4InitEPN5daisy9DaisySeedE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1568   .text._ZN15PolyphonyEngine4InitEPN5daisy9DaisySeedE:0000000000000000 _ZN15PolyphonyEngine4InitEPN5daisy9DaisySeedE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1608   .text._ZN15PolyphonyEngine16ProcessEnvelopesEb:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1614   .text._ZN15PolyphonyEngine16ProcessEnvelopesEb:0000000000000000 _ZN15PolyphonyEngine16ProcessEnvelopesEb
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1720   .text._ZN15PolyphonyEngine16ProcessEnvelopesEb:0000000000000078 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1725   .text._ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1731   .text._ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams:0000000000000000 _ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1793   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:1799   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:0000000000000000 _ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2002   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:00000000000000ce $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2318   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:00000000000001fc $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2328   .text._ZN15PolyphonyEngine17UpdateMonoTriggerERN6plaits11ModulationsERbb:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2334   .text._ZN15PolyphonyEngine17UpdateMonoTriggerERN6plaits11ModulationsERbb:0000000000000000 _ZN15PolyphonyEngine17UpdateMonoTriggerERN6plaits11ModulationsERbb
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2361   .text._ZN15PolyphonyEngine12SilenceVoiceEi:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2367   .text._ZN15PolyphonyEngine12SilenceVoiceEi:0000000000000000 _ZN15PolyphonyEngine12SilenceVoiceEi
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2398   .text._ZN15PolyphonyEngine14RetriggerVoiceEi:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2404   .text._ZN15PolyphonyEngine14RetriggerVoiceEi:0000000000000000 _ZN15PolyphonyEngine14RetriggerVoiceEi
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2502   .text._ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2508   .text._ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE:0000000000000000 _ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2838   .text._ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE:0000000000000174 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2844   .text._ZN15PolyphonyEngine11RenderBlockERKNS_16RenderParametersE:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2850   .text._ZN15PolyphonyEngine11RenderBlockERKNS_16RenderParametersE:0000000000000000 _ZN15PolyphonyEngine11RenderBlockERKNS_16RenderParametersE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2901   .text._ZN15PolyphonyEngine11ClearVoicesEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2907   .text._ZN15PolyphonyEngine11ClearVoicesEv:0000000000000000 _ZN15PolyphonyEngine11ClearVoicesEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2987   .text._ZN15PolyphonyEngine10PolyToMonoEi:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2993   .text._ZN15PolyphonyEngine10PolyToMonoEi:0000000000000000 _ZN15PolyphonyEngine10PolyToMonoEi
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3190   .text._ZN15PolyphonyEngine10PolyToMonoEi:00000000000000f4 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3197   .text._ZN15PolyphonyEngine14OnEngineChangeEii:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3203   .text._ZN15PolyphonyEngine14OnEngineChangeEii:0000000000000000 _ZN15PolyphonyEngine14OnEngineChangeEii
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3330   .text._ZNK15PolyphonyEngine17GetLastTouchStateEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3336   .text._ZNK15PolyphonyEngine17GetLastTouchStateEv:0000000000000000 _ZNK15PolyphonyEngine17GetLastTouchStateEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3357   .text._ZN15PolyphonyEngine20UpdateLastTouchStateEt:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3363   .text._ZN15PolyphonyEngine20UpdateLastTouchStateEt:0000000000000000 _ZN15PolyphonyEngine20UpdateLastTouchStateEt
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s 			page 149
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:19     .text._ZN15PolyphonyEngineD2Ev:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:25     .text._ZN15PolyphonyEngineD2Ev:0000000000000000 _ZN15PolyphonyEngineD2Ev
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:25     .text._ZN15PolyphonyEngineD2Ev:0000000000000000 _ZN15PolyphonyEngineD1Ev
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:76     .text._ZN13VoiceEnvelope7TriggerEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:82     .text._ZN13VoiceEnvelope7TriggerEv:0000000000000000 _ZN13VoiceEnvelope7TriggerEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:181    .text._ZN13VoiceEnvelope7ReleaseEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:187    .text._ZN13VoiceEnvelope7ReleaseEv:0000000000000000 _ZN13VoiceEnvelope7ReleaseEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:266    .text._ZN13VoiceEnvelope5ResetEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:272    .text._ZN13VoiceEnvelope5ResetEv:0000000000000000 _ZN13VoiceEnvelope5ResetEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:311    .text._ZN15PolyphonyEngineC2Ev:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:317    .text._ZN15PolyphonyEngineC2Ev:0000000000000000 _ZN15PolyphonyEngineC2Ev
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:958    .text._ZN15PolyphonyEngineC2Ev:00000000000000dc $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:317    .text._ZN15PolyphonyEngineC2Ev:0000000000000000 _ZN15PolyphonyEngineC1Ev
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:977    .text._ZN15PolyphonyEngine11ResetVoicesEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:983    .text._ZN15PolyphonyEngine11ResetVoicesEv:0000000000000000 _ZN15PolyphonyEngine11ResetVoicesEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1054   .text._ZN15PolyphonyEngine14AllocateVoicesEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1060   .text._ZN15PolyphonyEngine14AllocateVoicesEv:0000000000000000 _ZN15PolyphonyEngine14AllocateVoicesEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1163   .text._ZN15PolyphonyEngine14AllocateVoicesEv:0000000000000040 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4201   .sdram_bss:0000000000000000 shared_buffer
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1168   .text._ZN15PolyphonyEngine19InitVoiceParametersEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1174   .text._ZN15PolyphonyEngine19InitVoiceParametersEv:0000000000000000 _ZN15PolyphonyEngine19InitVoiceParametersEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1552   .text._ZN15PolyphonyEngine19InitVoiceParametersEv:0000000000000138 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1562   .text._ZN15PolyphonyEngine4InitEPN5daisy9DaisySeedE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1568   .text._ZN15PolyphonyEngine4InitEPN5daisy9DaisySeedE:0000000000000000 _ZN15PolyphonyEngine4InitEPN5daisy9DaisySeedE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1608   .text._ZN15PolyphonyEngine16ProcessEnvelopesEb:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1614   .text._ZN15PolyphonyEngine16ProcessEnvelopesEb:0000000000000000 _ZN15PolyphonyEngine16ProcessEnvelopesEb
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1720   .text._ZN15PolyphonyEngine16ProcessEnvelopesEb:0000000000000078 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1725   .text._ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1731   .text._ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams:0000000000000000 _ZN15PolyphonyEngine17UpdatePatchParamsERN6plaits5PatchERK11PatchParams
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1793   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:1799   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:0000000000000000 _ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2002   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:00000000000000ce $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2318   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:00000000000001fc $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2328   .text._ZN15PolyphonyEngine17UpdateMonoTriggerERN6plaits11ModulationsERbb:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2334   .text._ZN15PolyphonyEngine17UpdateMonoTriggerERN6plaits11ModulationsERbb:0000000000000000 _ZN15PolyphonyEngine17UpdateMonoTriggerERN6plaits11ModulationsERbb
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2361   .text._ZN15PolyphonyEngine12SilenceVoiceEi:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2367   .text._ZN15PolyphonyEngine12SilenceVoiceEi:0000000000000000 _ZN15PolyphonyEngine12SilenceVoiceEi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2398   .text._ZN15PolyphonyEngine14RetriggerVoiceEi:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2404   .text._ZN15PolyphonyEngine14RetriggerVoiceEi:0000000000000000 _ZN15PolyphonyEngine14RetriggerVoiceEi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2502   .text._ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2508   .text._ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE:0000000000000000 _ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2838   .text._ZN15PolyphonyEngine15PrepVoiceParamsERKNS_16RenderParametersE:0000000000000174 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2844   .text._ZN15PolyphonyEngine11RenderBlockERKNS_16RenderParametersE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2850   .text._ZN15PolyphonyEngine11RenderBlockERKNS_16RenderParametersE:0000000000000000 _ZN15PolyphonyEngine11RenderBlockERKNS_16RenderParametersE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2901   .text._ZN15PolyphonyEngine11ClearVoicesEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2907   .text._ZN15PolyphonyEngine11ClearVoicesEv:0000000000000000 _ZN15PolyphonyEngine11ClearVoicesEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2987   .text._ZN15PolyphonyEngine10PolyToMonoEi:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2993   .text._ZN15PolyphonyEngine10PolyToMonoEi:0000000000000000 _ZN15PolyphonyEngine10PolyToMonoEi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3190   .text._ZN15PolyphonyEngine10PolyToMonoEi:00000000000000f4 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3197   .text._ZN15PolyphonyEngine14OnEngineChangeEii:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3203   .text._ZN15PolyphonyEngine14OnEngineChangeEii:0000000000000000 _ZN15PolyphonyEngine14OnEngineChangeEii
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3330   .text._ZNK15PolyphonyEngine17GetLastTouchStateEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3336   .text._ZNK15PolyphonyEngine17GetLastTouchStateEv:0000000000000000 _ZNK15PolyphonyEngine17GetLastTouchStateEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3357   .text._ZN15PolyphonyEngine20UpdateLastTouchStateEt:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3363   .text._ZN15PolyphonyEngine20UpdateLastTouchStateEt:0000000000000000 _ZN15PolyphonyEngine20UpdateLastTouchStateEt
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s 			page 149
 
 
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3383   .text._ZN15PolyphonyEngine13FindFreeVoiceEi:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3389   .text._ZN15PolyphonyEngine13FindFreeVoiceEi:0000000000000000 _ZN15PolyphonyEngine13FindFreeVoiceEi
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3434   .text._ZN15PolyphonyEngine14AssignMonoNoteEfb:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3440   .text._ZN15PolyphonyEngine14AssignMonoNoteEfb:0000000000000000 _ZN15PolyphonyEngine14AssignMonoNoteEfb
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3499   .text._ZN15PolyphonyEngine16FindVoiceForNoteEfibi:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3505   .text._ZN15PolyphonyEngine16FindVoiceForNoteEfibi:0000000000000000 _ZN15PolyphonyEngine16FindVoiceForNoteEfibi
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3620   .text._ZN15PolyphonyEngine16FindVoiceForNoteEfibi:0000000000000074 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3625   .text._ZN15PolyphonyEngine16HandleTouchInputEttibi:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3631   .text._ZN15PolyphonyEngine16HandleTouchInputEttibi:0000000000000000 _ZN15PolyphonyEngine16HandleTouchInputEttibi
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3906   .text._ZN15PolyphonyEngine16HandleTouchInputEttibi:0000000000000128 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3917   .text._ZN15PolyphonyEngine15TriggerArpVoiceEii:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:3923   .text._ZN15PolyphonyEngine15TriggerArpVoiceEii:0000000000000000 _ZN15PolyphonyEngine15TriggerArpVoiceEii
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4057   .text._ZN15PolyphonyEngine15TriggerArpVoiceEii:000000000000006c $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4063   .text._ZNK15PolyphonyEngine16IsAnyVoiceActiveEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4069   .text._ZNK15PolyphonyEngine16IsAnyVoiceActiveEv:0000000000000000 _ZNK15PolyphonyEngine16IsAnyVoiceActiveEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4107   .text.startup._GLOBAL__sub_I_shared_buffer:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4112   .text.startup._GLOBAL__sub_I_shared_buffer:0000000000000000 _GLOBAL__sub_I_shared_buffer
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4153   .text.startup._GLOBAL__sub_I_shared_buffer:0000000000000018 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4172   .bss.poly_engine:0000000000000000 poly_engine
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4162   .init_array:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4185   .rodata._ZN15PolyphonyEngine16kTouchMidiNotes_E:0000000000000000 _ZN15PolyphonyEngine16kTouchMidiNotes_E
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4178   .rodata.MAX_ENGINE_INDEX:0000000000000000 MAX_ENGINE_INDEX
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4169   .bss.poly_engine:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4175   .rodata.MAX_ENGINE_INDEX:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4181   .rodata._ZN15PolyphonyEngine16kTouchMidiNotes_E:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:4202   .sdram_bss:0000000000000000 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2008   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:00000000000000d3 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc3bY7HD.s:2008   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:00000000000000d4 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3383   .text._ZN15PolyphonyEngine13FindFreeVoiceEi:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3389   .text._ZN15PolyphonyEngine13FindFreeVoiceEi:0000000000000000 _ZN15PolyphonyEngine13FindFreeVoiceEi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3434   .text._ZN15PolyphonyEngine14AssignMonoNoteEfb:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3440   .text._ZN15PolyphonyEngine14AssignMonoNoteEfb:0000000000000000 _ZN15PolyphonyEngine14AssignMonoNoteEfb
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3499   .text._ZN15PolyphonyEngine16FindVoiceForNoteEfibi:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3505   .text._ZN15PolyphonyEngine16FindVoiceForNoteEfibi:0000000000000000 _ZN15PolyphonyEngine16FindVoiceForNoteEfibi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3620   .text._ZN15PolyphonyEngine16FindVoiceForNoteEfibi:0000000000000074 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3625   .text._ZN15PolyphonyEngine16HandleTouchInputEttibi:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3631   .text._ZN15PolyphonyEngine16HandleTouchInputEttibi:0000000000000000 _ZN15PolyphonyEngine16HandleTouchInputEttibi
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3906   .text._ZN15PolyphonyEngine16HandleTouchInputEttibi:0000000000000128 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3917   .text._ZN15PolyphonyEngine15TriggerArpVoiceEii:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:3923   .text._ZN15PolyphonyEngine15TriggerArpVoiceEii:0000000000000000 _ZN15PolyphonyEngine15TriggerArpVoiceEii
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4057   .text._ZN15PolyphonyEngine15TriggerArpVoiceEii:000000000000006c $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4063   .text._ZNK15PolyphonyEngine16IsAnyVoiceActiveEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4069   .text._ZNK15PolyphonyEngine16IsAnyVoiceActiveEv:0000000000000000 _ZNK15PolyphonyEngine16IsAnyVoiceActiveEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4107   .text.startup._GLOBAL__sub_I_shared_buffer:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4112   .text.startup._GLOBAL__sub_I_shared_buffer:0000000000000000 _GLOBAL__sub_I_shared_buffer
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4153   .text.startup._GLOBAL__sub_I_shared_buffer:0000000000000018 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4172   .bss.poly_engine:0000000000000000 poly_engine
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4162   .init_array:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4185   .rodata._ZN15PolyphonyEngine16kTouchMidiNotes_E:0000000000000000 _ZN15PolyphonyEngine16kTouchMidiNotes_E
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4178   .rodata.MAX_ENGINE_INDEX:0000000000000000 MAX_ENGINE_INDEX
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4169   .bss.poly_engine:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4175   .rodata.MAX_ENGINE_INDEX:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4181   .rodata._ZN15PolyphonyEngine16kTouchMidiNotes_E:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:4202   .sdram_bss:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2008   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:00000000000000d3 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccgHSkJU.s:2008   .text._ZN15PolyphonyEngine15UpdateModAndEnvERN6plaits11ModulationsER13VoiceEnvelopebff:00000000000000d4 $t
 
 UNDEFINED SYMBOLS
 _ZdlPvj

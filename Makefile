@@ -18,8 +18,7 @@ CPP_SOURCES += Thaumazein.cpp \
               mpr121_daisy.cpp \
               SynthStateStorage.cpp \
               Effects/reverbsc.cpp \
-              Effects/BiquadFilters.cpp \
-              Effects/DelayEffect.cpp
+              Effects/BiquadFilters.cpp
 
 # Add .cc sources to be handled
 CC_SOURCES += $(wildcard eurorack/plaits/dsp/*.cc)

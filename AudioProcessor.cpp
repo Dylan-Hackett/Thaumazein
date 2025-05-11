@@ -76,10 +76,10 @@ void ProcessUIAndControls() {
     ProcessControls();
     ReadKnobValues();
     
-    // Delay effect removed: tempo control via delay_time knob commented out
-    // if (arp_enabled) {
-    //     arp.SetMainTempoFromKnob(delay_time_val);
-    // }
+    // Tempo control for arpeggiator via timing knob
+    if (arp_enabled) {
+        arp.SetMainTempoFromKnob(delay_time_val);
+    }
 
     float touch_control = touch_cv_value; 
     

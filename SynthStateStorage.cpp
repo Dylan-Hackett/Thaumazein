@@ -66,11 +66,7 @@ QSPIFUNC void Save(int engine_index) {
 }
 
 QSPIFUNC void InitMemoryMapped() {
-    // When firmware already runs from QSPI (BOOT_APP), QSPI is
-    // *already* in memory-mapped mode.  De-initialising it while
-    // executing code from the same region would cause an immediate
-    // fault.  Only configure QSPI if we are *not* executing from it
-    // (e.g. during a debug build running from SRAM).
+
     if(daisy::System::GetProgramMemoryRegion() != daisy::System::MemoryRegion::QSPI)
         ConfigureQSPI(QSPIHandle::Config::Mode::MEMORY_MAPPED);
 }

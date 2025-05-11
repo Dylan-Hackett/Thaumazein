@@ -1,0 +1,1340 @@
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 4
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"speech_engine.cc"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text._ZN6plaits12SpeechEngine5ResetEv,"ax",%progbits
+  19              		.align	1
+  20              		.global	_ZN6plaits12SpeechEngine5ResetEv
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	_ZN6plaits12SpeechEngine5ResetEv:
+  26              	.LVL0:
+  27              	.LFB1630:
+  28              		.file 1 "eurorack/plaits/dsp/engine/speech_engine.cc"
+   1:eurorack/plaits/dsp/engine/speech_engine.cc **** // Copyright 2016 Emilie Gillet.
+   2:eurorack/plaits/dsp/engine/speech_engine.cc **** //
+   3:eurorack/plaits/dsp/engine/speech_engine.cc **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/plaits/dsp/engine/speech_engine.cc **** //
+   5:eurorack/plaits/dsp/engine/speech_engine.cc **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/plaits/dsp/engine/speech_engine.cc **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/plaits/dsp/engine/speech_engine.cc **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/plaits/dsp/engine/speech_engine.cc **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/plaits/dsp/engine/speech_engine.cc **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/plaits/dsp/engine/speech_engine.cc **** // furnished to do so, subject to the following conditions:
+  11:eurorack/plaits/dsp/engine/speech_engine.cc **** // 
+  12:eurorack/plaits/dsp/engine/speech_engine.cc **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/plaits/dsp/engine/speech_engine.cc **** // all copies or substantial portions of the Software.
+  14:eurorack/plaits/dsp/engine/speech_engine.cc **** // 
+  15:eurorack/plaits/dsp/engine/speech_engine.cc **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/plaits/dsp/engine/speech_engine.cc **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/plaits/dsp/engine/speech_engine.cc **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/plaits/dsp/engine/speech_engine.cc **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/plaits/dsp/engine/speech_engine.cc **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/plaits/dsp/engine/speech_engine.cc **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/plaits/dsp/engine/speech_engine.cc **** // THE SOFTWARE.
+  22:eurorack/plaits/dsp/engine/speech_engine.cc **** // 
+  23:eurorack/plaits/dsp/engine/speech_engine.cc **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/plaits/dsp/engine/speech_engine.cc **** //
+  25:eurorack/plaits/dsp/engine/speech_engine.cc **** // -----------------------------------------------------------------------------
+  26:eurorack/plaits/dsp/engine/speech_engine.cc **** //
+  27:eurorack/plaits/dsp/engine/speech_engine.cc **** // Various flavours of speech synthesis.
+  28:eurorack/plaits/dsp/engine/speech_engine.cc **** 
+  29:eurorack/plaits/dsp/engine/speech_engine.cc **** #include "plaits/dsp/engine/speech_engine.h"
+  30:eurorack/plaits/dsp/engine/speech_engine.cc **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 2
+
+
+  31:eurorack/plaits/dsp/engine/speech_engine.cc **** #include "plaits/dsp/speech/lpc_speech_synth_words.h"
+  32:eurorack/plaits/dsp/engine/speech_engine.cc **** 
+  33:eurorack/plaits/dsp/engine/speech_engine.cc **** namespace plaits {
+  34:eurorack/plaits/dsp/engine/speech_engine.cc **** 
+  35:eurorack/plaits/dsp/engine/speech_engine.cc **** using namespace std;
+  36:eurorack/plaits/dsp/engine/speech_engine.cc **** using namespace stmlib;
+  37:eurorack/plaits/dsp/engine/speech_engine.cc **** 
+  38:eurorack/plaits/dsp/engine/speech_engine.cc **** void SpeechEngine::Init(BufferAllocator* allocator) {
+  39:eurorack/plaits/dsp/engine/speech_engine.cc ****   sam_speech_synth_.Init();
+  40:eurorack/plaits/dsp/engine/speech_engine.cc ****   naive_speech_synth_.Init();
+  41:eurorack/plaits/dsp/engine/speech_engine.cc ****   lpc_speech_synth_word_bank_.Init(
+  42:eurorack/plaits/dsp/engine/speech_engine.cc ****       word_banks_,
+  43:eurorack/plaits/dsp/engine/speech_engine.cc ****       LPC_SPEECH_SYNTH_NUM_WORD_BANKS,
+  44:eurorack/plaits/dsp/engine/speech_engine.cc ****       allocator);
+  45:eurorack/plaits/dsp/engine/speech_engine.cc ****   lpc_speech_synth_controller_.Init(&lpc_speech_synth_word_bank_);
+  46:eurorack/plaits/dsp/engine/speech_engine.cc ****   word_bank_quantizer_.Init();
+  47:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+  48:eurorack/plaits/dsp/engine/speech_engine.cc ****   temp_buffer_[0] = allocator->Allocate<float>(kMaxBlockSize);
+  49:eurorack/plaits/dsp/engine/speech_engine.cc ****   temp_buffer_[1] = allocator->Allocate<float>(kMaxBlockSize);
+  50:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+  51:eurorack/plaits/dsp/engine/speech_engine.cc ****   prosody_amount_ = 0.0f;
+  52:eurorack/plaits/dsp/engine/speech_engine.cc ****   speed_ = 1.0f;
+  53:eurorack/plaits/dsp/engine/speech_engine.cc **** }
+  54:eurorack/plaits/dsp/engine/speech_engine.cc **** 
+  55:eurorack/plaits/dsp/engine/speech_engine.cc **** void SpeechEngine::Reset() {
+  29              		.loc 1 55 28 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  56:eurorack/plaits/dsp/engine/speech_engine.cc ****   lpc_speech_synth_word_bank_.Reset();
+  34              		.loc 1 56 3 view .LVU1
+  35              		.loc 1 56 36 is_stmt 0 view .LVU2
+  36 0000 00F5B470 		add	r0, r0, #360
+  37              	.LVL1:
+  38              		.loc 1 56 36 view .LVU3
+  39 0004 FFF7FEBF 		b	_ZN6plaits22LPCSpeechSynthWordBank5ResetEv
+  40              	.LVL2:
+  41              		.loc 1 56 36 view .LVU4
+  42              		.cfi_endproc
+  43              	.LFE1630:
+  45              		.section	.text._ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb,"ax",%progbits
+  46              		.align	1
+  47              		.global	_ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+  48              		.syntax unified
+  49              		.thumb
+  50              		.thumb_func
+  52              	_ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb:
+  53              	.LVL3:
+  54              	.LFB1631:
+  57:eurorack/plaits/dsp/engine/speech_engine.cc **** }
+  58:eurorack/plaits/dsp/engine/speech_engine.cc **** 
+  59:eurorack/plaits/dsp/engine/speech_engine.cc **** void SpeechEngine::Render(
+  60:eurorack/plaits/dsp/engine/speech_engine.cc ****     const EngineParameters& parameters,
+  61:eurorack/plaits/dsp/engine/speech_engine.cc ****     float* out,
+  62:eurorack/plaits/dsp/engine/speech_engine.cc ****     float* aux,
+  63:eurorack/plaits/dsp/engine/speech_engine.cc ****     size_t size,
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 3
+
+
+  64:eurorack/plaits/dsp/engine/speech_engine.cc ****     bool* already_enveloped) {
+  55              		.loc 1 64 30 is_stmt 1 view -0
+  56              		.cfi_startproc
+  57              		@ args = 8, pretend = 0, frame = 8
+  58              		@ frame_needed = 0, uses_anonymous_args = 0
+  65:eurorack/plaits/dsp/engine/speech_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
+  59              		.loc 1 65 3 view .LVU6
+  60              	.LBB18:
+  61              	.LBI18:
+  62              		.file 2 "eurorack/plaits/dsp/engine/engine.h"
+   1:eurorack/plaits/dsp/engine/engine.h **** // Copyright 2016 Emilie Gillet.
+   2:eurorack/plaits/dsp/engine/engine.h **** //
+   3:eurorack/plaits/dsp/engine/engine.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/plaits/dsp/engine/engine.h **** //
+   5:eurorack/plaits/dsp/engine/engine.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/plaits/dsp/engine/engine.h **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/plaits/dsp/engine/engine.h **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/plaits/dsp/engine/engine.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/plaits/dsp/engine/engine.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/plaits/dsp/engine/engine.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/plaits/dsp/engine/engine.h **** // 
+  12:eurorack/plaits/dsp/engine/engine.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/plaits/dsp/engine/engine.h **** // all copies or substantial portions of the Software.
+  14:eurorack/plaits/dsp/engine/engine.h **** // 
+  15:eurorack/plaits/dsp/engine/engine.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/plaits/dsp/engine/engine.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/plaits/dsp/engine/engine.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/plaits/dsp/engine/engine.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/plaits/dsp/engine/engine.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/plaits/dsp/engine/engine.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/plaits/dsp/engine/engine.h **** // THE SOFTWARE.
+  22:eurorack/plaits/dsp/engine/engine.h **** // 
+  23:eurorack/plaits/dsp/engine/engine.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/plaits/dsp/engine/engine.h **** //
+  25:eurorack/plaits/dsp/engine/engine.h **** // -----------------------------------------------------------------------------
+  26:eurorack/plaits/dsp/engine/engine.h **** //
+  27:eurorack/plaits/dsp/engine/engine.h **** // Base class for all engines.
+  28:eurorack/plaits/dsp/engine/engine.h **** 
+  29:eurorack/plaits/dsp/engine/engine.h **** #ifndef PLAITS_DSP_ENGINE_ENGINE_H_
+  30:eurorack/plaits/dsp/engine/engine.h **** #define PLAITS_DSP_ENGINE_ENGINE_H_
+  31:eurorack/plaits/dsp/engine/engine.h **** 
+  32:eurorack/plaits/dsp/engine/engine.h **** #include "plaits/dsp/dsp.h"
+  33:eurorack/plaits/dsp/engine/engine.h **** 
+  34:eurorack/plaits/dsp/engine/engine.h **** #include "stmlib/dsp/units.h"
+  35:eurorack/plaits/dsp/engine/engine.h **** #include "stmlib/utils/buffer_allocator.h"
+  36:eurorack/plaits/dsp/engine/engine.h **** 
+  37:eurorack/plaits/dsp/engine/engine.h **** namespace plaits {
+  38:eurorack/plaits/dsp/engine/engine.h **** 
+  39:eurorack/plaits/dsp/engine/engine.h **** inline float NoteToFrequency(float midi_note) {
+  63              		.loc 2 39 14 view .LVU7
+  64              	.LBB19:
+  40:eurorack/plaits/dsp/engine/engine.h ****   midi_note -= 9.0f;
+  65              		.loc 2 40 3 view .LVU8
+  66              		.loc 2 40 13 is_stmt 0 view .LVU9
+  67 0000 B2EE027A 		vmov.f32	s14, #9.0e+0
+  68 0004 D1ED017A 		vldr.32	s15, [r1, #4]
+  69              	.LBE19:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 4
+
+
+  70              	.LBE18:
+  64:eurorack/plaits/dsp/engine/speech_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
+  71              		.loc 1 64 30 view .LVU10
+  72 0008 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+  73              		.cfi_def_cfa_offset 28
+  74              		.cfi_offset 4, -28
+  75              		.cfi_offset 5, -24
+  76              		.cfi_offset 6, -20
+  77              		.cfi_offset 7, -16
+  78              		.cfi_offset 8, -12
+  79              		.cfi_offset 9, -8
+  80              		.cfi_offset 14, -4
+  81              	.LBB36:
+  82              	.LBB28:
+  83              		.loc 2 40 13 view .LVU11
+  84 000c 77EEC77A 		vsub.f32	s15, s15, s14
+  85              	.LVL4:
+  41:eurorack/plaits/dsp/engine/engine.h ****   CONSTRAIN(midi_note, -128.0f, 127.0f);
+  86              		.loc 2 41 3 is_stmt 1 view .LVU12
+  87 0010 9FED897A 		vldr.32	s14, .L28
+  88              	.LBE28:
+  89              	.LBE36:
+  64:eurorack/plaits/dsp/engine/speech_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
+  90              		.loc 1 64 30 is_stmt 0 view .LVU13
+  91 0014 9046     		mov	r8, r2
+  92 0016 0546     		mov	r5, r0
+  93 0018 0E46     		mov	r6, r1
+  94 001a 1F46     		mov	r7, r3
+  95              	.LBB37:
+  96              	.LBB29:
+  97              		.loc 2 41 3 view .LVU14
+  98 001c F4EEC77A 		vcmpe.f32	s15, s14
+  99              	.LBE29:
+ 100              	.LBE37:
+  64:eurorack/plaits/dsp/engine/speech_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
+ 101              		.loc 1 64 30 view .LVU15
+ 102 0020 2DED028B 		vpush.64	{d8}
+ 103              		.cfi_def_cfa_offset 36
+ 104              		.cfi_offset 80, -36
+ 105              		.cfi_offset 81, -32
+ 106              	.LBB38:
+ 107              	.LBB30:
+ 108              		.loc 2 41 3 view .LVU16
+ 109 0024 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 110              	.LBE30:
+ 111              	.LBE38:
+  64:eurorack/plaits/dsp/engine/speech_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
+ 112              		.loc 1 64 30 view .LVU17
+ 113 0028 87B0     		sub	sp, sp, #28
+ 114              		.cfi_def_cfa_offset 64
+  64:eurorack/plaits/dsp/engine/speech_engine.cc ****   const float f0 = NoteToFrequency(parameters.note);
+ 115              		.loc 1 64 30 view .LVU18
+ 116 002a DDE91092 		ldrd	r9, r2, [sp, #64]
+ 117              	.LVL5:
+ 118              	.LBB39:
+ 119              	.LBB31:
+ 120              		.loc 2 41 3 view .LVU19
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 5
+
+
+ 121 002e 00F19B80 		bmi	.L16
+ 122              		.loc 2 41 3 is_stmt 1 view .LVU20
+ 123 0032 9FED827A 		vldr.32	s14, .L28+4
+ 124 0036 F4EE477A 		vcmp.f32	s15, s14
+ 125 003a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 126 003e 77FE277A 		vselgt.f32	s15, s14, s15
+ 127              	.LVL6:
+ 128              	.L3:
+ 129              		.loc 2 41 40 view .LVU21
+  42:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
+ 130              		.loc 2 42 3 view .LVU22
+ 131              	.LBB20:
+ 132              	.LBI20:
+ 133              		.file 3 "eurorack/stmlib/dsp/units.h"
+   1:eurorack/stmlib/dsp/units.h **** // Copyright 2014 Emilie Gillet.
+   2:eurorack/stmlib/dsp/units.h **** //
+   3:eurorack/stmlib/dsp/units.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/stmlib/dsp/units.h **** //
+   5:eurorack/stmlib/dsp/units.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/stmlib/dsp/units.h **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/stmlib/dsp/units.h **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/stmlib/dsp/units.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/stmlib/dsp/units.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/stmlib/dsp/units.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/stmlib/dsp/units.h **** // 
+  12:eurorack/stmlib/dsp/units.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/stmlib/dsp/units.h **** // all copies or substantial portions of the Software.
+  14:eurorack/stmlib/dsp/units.h **** // 
+  15:eurorack/stmlib/dsp/units.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/stmlib/dsp/units.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/stmlib/dsp/units.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/stmlib/dsp/units.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/stmlib/dsp/units.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/stmlib/dsp/units.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/stmlib/dsp/units.h **** // THE SOFTWARE.
+  22:eurorack/stmlib/dsp/units.h **** // 
+  23:eurorack/stmlib/dsp/units.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/stmlib/dsp/units.h **** //
+  25:eurorack/stmlib/dsp/units.h **** // -----------------------------------------------------------------------------
+  26:eurorack/stmlib/dsp/units.h **** //
+  27:eurorack/stmlib/dsp/units.h **** // Conversion from semitones to frequency ratio.
+  28:eurorack/stmlib/dsp/units.h **** 
+  29:eurorack/stmlib/dsp/units.h **** #ifndef STMLIB_DSP_UNITS_H_
+  30:eurorack/stmlib/dsp/units.h **** #define STMLIB_DSP_UNITS_H_
+  31:eurorack/stmlib/dsp/units.h **** 
+  32:eurorack/stmlib/dsp/units.h **** #include "stmlib/stmlib.h"
+  33:eurorack/stmlib/dsp/units.h **** #include "stmlib/dsp/dsp.h"
+  34:eurorack/stmlib/dsp/units.h **** 
+  35:eurorack/stmlib/dsp/units.h **** namespace stmlib {
+  36:eurorack/stmlib/dsp/units.h **** 
+  37:eurorack/stmlib/dsp/units.h **** extern const float lut_pitch_ratio_high[257];
+  38:eurorack/stmlib/dsp/units.h **** extern const float lut_pitch_ratio_low[257];
+  39:eurorack/stmlib/dsp/units.h **** 
+  40:eurorack/stmlib/dsp/units.h **** inline float SemitonesToRatio(float semitones) {
+ 134              		.loc 3 40 14 view .LVU23
+ 135              	.LBB21:
+  41:eurorack/stmlib/dsp/units.h ****   float pitch = semitones + 128.0f;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 6
+
+
+ 136              		.loc 3 41 3 view .LVU24
+ 137              		.loc 3 41 9 is_stmt 0 view .LVU25
+ 138 0042 9FED7F7A 		vldr.32	s14, .L28+8
+ 139              	.LBE21:
+ 140              	.LBE20:
+ 141              	.LBE31:
+ 142              	.LBE39:
+ 143              	.LBB40:
+  66:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+  67:eurorack/plaits/dsp/engine/speech_engine.cc ****   const float group = parameters.harmonics * 6.0f;
+  68:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+  69:eurorack/plaits/dsp/engine/speech_engine.cc ****   // Interpolates between the 3 models: naive, SAM, LPC.
+  70:eurorack/plaits/dsp/engine/speech_engine.cc ****   if (group <= 2.0f) {
+ 144              		.loc 1 70 3 view .LVU26
+ 145 0046 F0EE008A 		vmov.f32	s17, #2.0e+0
+ 146              	.LBE40:
+ 147              	.LBB69:
+ 148              	.LBB32:
+ 149              	.LBB25:
+ 150              	.LBB22:
+  42:eurorack/stmlib/dsp/units.h ****   MAKE_INTEGRAL_FRACTIONAL(pitch)
+  43:eurorack/stmlib/dsp/units.h **** 
+  44:eurorack/stmlib/dsp/units.h ****   return lut_pitch_ratio_high[pitch_integral] * \
+  45:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
+ 151              		.loc 3 45 74 view .LVU27
+ 152 004a 7E49     		ldr	r1, .L28+12
+ 153              	.LVL7:
+  41:eurorack/stmlib/dsp/units.h ****   MAKE_INTEGRAL_FRACTIONAL(pitch)
+ 154              		.loc 3 41 9 view .LVU28
+ 155 004c 77EE877A 		vadd.f32	s15, s15, s14
+ 156              	.LVL8:
+  42:eurorack/stmlib/dsp/units.h ****   MAKE_INTEGRAL_FRACTIONAL(pitch)
+ 157              		.loc 3 42 3 is_stmt 1 view .LVU29
+ 158              	.LBE22:
+ 159              	.LBE25:
+ 160              	.LBE32:
+ 161              	.LBE69:
+  67:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+ 162              		.loc 1 67 15 is_stmt 0 view .LVU30
+ 163 0050 96ED048A 		vldr.32	s16, [r6, #16]
+ 164              	.LBB70:
+ 165              	.LBB41:
+  71:eurorack/plaits/dsp/engine/speech_engine.cc ****     *already_enveloped = false;
+  72:eurorack/plaits/dsp/engine/speech_engine.cc ****     
+  73:eurorack/plaits/dsp/engine/speech_engine.cc ****     float blend = group;
+  74:eurorack/plaits/dsp/engine/speech_engine.cc ****     if (group <= 1.0f) {
+  75:eurorack/plaits/dsp/engine/speech_engine.cc ****       naive_speech_synth_.Render(
+  76:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.trigger == TRIGGER_RISING_EDGE,
+ 166              		.loc 1 76 22 view .LVU31
+ 167 0054 96F800C0 		ldrb	ip, [r6]	@ zero_extendqisi2
+  77:eurorack/plaits/dsp/engine/speech_engine.cc ****           f0,
+  78:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.morph,
+ 168              		.loc 1 78 22 view .LVU32
+ 169 0058 D6ED031A 		vldr.32	s3, [r6, #12]
+ 170              	.LBE41:
+ 171              	.LBE70:
+ 172              	.LBB71:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 7
+
+
+ 173              	.LBB33:
+ 174              	.LBB26:
+ 175              	.LBB23:
+  42:eurorack/stmlib/dsp/units.h **** 
+ 176              		.loc 3 42 3 view .LVU33
+ 177 005c BDEEE77A 		vcvt.s32.f32	s14, s15
+ 178              	.LVL9:
+  42:eurorack/stmlib/dsp/units.h **** 
+ 179              		.loc 3 42 3 is_stmt 1 view .LVU34
+  44:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
+ 180              		.loc 3 44 3 view .LVU35
+  44:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
+ 181              		.loc 3 44 3 is_stmt 0 view .LVU36
+ 182              	.LBE23:
+ 183              	.LBE26:
+ 184              	.LBE33:
+ 185              	.LBE71:
+ 186              	.LBB72:
+ 187              	.LBB43:
+  79:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.timbre,
+ 188              		.loc 1 79 22 view .LVU37
+ 189 0060 96ED022A 		vldr.32	s4, [r6, #8]
+ 190              	.LBE43:
+ 191              	.LBE72:
+ 192              	.LBB73:
+ 193              	.LBB34:
+ 194              	.LBB27:
+ 195              	.LBB24:
+  42:eurorack/stmlib/dsp/units.h **** 
+ 196              		.loc 3 42 3 view .LVU38
+ 197 0064 F8EEC76A 		vcvt.f32.s32	s13, s14
+  44:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
+ 198              		.loc 3 44 45 view .LVU39
+ 199 0068 17EE100A 		vmov	r0, s14	@ int
+ 200              	.LVL10:
+  42:eurorack/stmlib/dsp/units.h **** 
+ 201              		.loc 3 42 3 view .LVU40
+ 202 006c 77EEE67A 		vsub.f32	s15, s15, s13
+ 203              		.loc 3 45 27 view .LVU41
+ 204 0070 FEEECC7A 		vcvt.s32.f32	s15, s15, #8
+ 205              		.loc 3 45 74 view .LVU42
+ 206 0074 17EE903A 		vmov	r3, s15	@ int
+ 207              	.LVL11:
+ 208              		.loc 3 45 74 view .LVU43
+ 209 0078 01EB8301 		add	r1, r1, r3, lsl #2
+  44:eurorack/stmlib/dsp/units.h ****       lut_pitch_ratio_low[static_cast<int32_t>(pitch_fractional * 256.0f)];
+ 210              		.loc 3 44 45 view .LVU44
+ 211 007c 724B     		ldr	r3, .L28+16
+ 212 007e 03EB8003 		add	r3, r3, r0, lsl #2
+ 213              		.loc 3 45 74 view .LVU45
+ 214 0082 91ED000A 		vldr.32	s0, [r1]
+ 215 0086 D3ED007A 		vldr.32	s15, [r3]
+ 216 008a 20EE270A 		vmul.f32	s0, s0, s15
+ 217              	.LBE24:
+ 218              	.LBE27:
+ 219              		.loc 2 42 57 view .LVU46
+ 220 008e DFED6F7A 		vldr.32	s15, .L28+20
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 8
+
+
+ 221 0092 20EE270A 		vmul.f32	s0, s0, s15
+ 222              	.LVL12:
+ 223              		.loc 2 42 57 view .LVU47
+ 224              	.LBE34:
+ 225              	.LBE73:
+  67:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+ 226              		.loc 1 67 3 is_stmt 1 view .LVU48
+  67:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+ 227              		.loc 1 67 15 is_stmt 0 view .LVU49
+ 228 0096 F1EE087A 		vmov.f32	s15, #6.0e+0
+ 229 009a 28EE278A 		vmul.f32	s16, s16, s15
+ 230              	.LVL13:
+  70:eurorack/plaits/dsp/engine/speech_engine.cc ****     *already_enveloped = false;
+ 231              		.loc 1 70 3 is_stmt 1 view .LVU50
+ 232              	.LBB74:
+ 233 009e B4EEE88A 		vcmpe.f32	s16, s17
+ 234 00a2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 235 00a6 78D8     		bhi	.L25
+ 236              	.LBB44:
+  71:eurorack/plaits/dsp/engine/speech_engine.cc ****     
+ 237              		.loc 1 71 5 view .LVU51
+  74:eurorack/plaits/dsp/engine/speech_engine.cc ****       naive_speech_synth_.Render(
+ 238              		.loc 1 74 5 is_stmt 0 view .LVU52
+ 239 00a8 F7EE002A 		vmov.f32	s5, #1.0e+0
+  71:eurorack/plaits/dsp/engine/speech_engine.cc ****     
+ 240              		.loc 1 71 24 view .LVU53
+ 241 00ac 0023     		movs	r3, #0
+ 242 00ae 1370     		strb	r3, [r2]
+  73:eurorack/plaits/dsp/engine/speech_engine.cc ****     if (group <= 1.0f) {
+ 243              		.loc 1 73 5 is_stmt 1 view .LVU54
+ 244              	.LVL14:
+  74:eurorack/plaits/dsp/engine/speech_engine.cc ****       naive_speech_synth_.Render(
+ 245              		.loc 1 74 5 view .LVU55
+ 246 00b0 B4EEE28A 		vcmpe.f32	s16, s5
+ 247 00b4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 248 00b8 59D8     		bhi	.L26
+  75:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.trigger == TRIGGER_RISING_EDGE,
+ 249              		.loc 1 75 7 view .LVU56
+  75:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.trigger == TRIGGER_RISING_EDGE,
+ 250              		.loc 1 75 33 is_stmt 0 view .LVU57
+ 251 00ba 0CF1FF34 		add	r4, ip, #-1
+ 252 00be B0EE421A 		vmov.f32	s2, s4
+ 253 00c2 F0EE610A 		vmov.f32	s1, s3
+ 254 00c6 3B46     		mov	r3, r7
+ 255 00c8 6142     		rsbs	r1, r4, #0
+ 256 00ca D5F80022 		ldr	r2, [r5, #512]
+ 257 00ce 05F11400 		add	r0, r5, #20
+ 258 00d2 8DED050A 		vstr.32	s0, [sp, #20]	@ int
+ 259 00d6 6141     		adcs	r1, r1, r4
+ 260 00d8 CDE90089 		strd	r8, r9, [sp]
+ 261 00dc FFF7FEFF 		bl	_ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j
+ 262              	.LVL15:
+ 263              	.L27:
+  80:eurorack/plaits/dsp/engine/speech_engine.cc ****           temp_buffer_[0],
+  81:eurorack/plaits/dsp/engine/speech_engine.cc ****           aux,
+  82:eurorack/plaits/dsp/engine/speech_engine.cc ****           out,
+  83:eurorack/plaits/dsp/engine/speech_engine.cc ****           size);
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 9
+
+
+  84:eurorack/plaits/dsp/engine/speech_engine.cc ****     } else {
+  85:eurorack/plaits/dsp/engine/speech_engine.cc ****       lpc_speech_synth_controller_.Render(
+  86:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.trigger & TRIGGER_UNPATCHED,
+  87:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.trigger & TRIGGER_RISING_EDGE,
+  88:eurorack/plaits/dsp/engine/speech_engine.cc ****           -1,
+  89:eurorack/plaits/dsp/engine/speech_engine.cc ****           f0,
+  90:eurorack/plaits/dsp/engine/speech_engine.cc ****           0.0f,
+  91:eurorack/plaits/dsp/engine/speech_engine.cc ****           0.0f,
+  92:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.morph,
+  93:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.timbre,
+  94:eurorack/plaits/dsp/engine/speech_engine.cc ****           1.0f,
+  95:eurorack/plaits/dsp/engine/speech_engine.cc ****           aux,
+  96:eurorack/plaits/dsp/engine/speech_engine.cc ****           out,
+  97:eurorack/plaits/dsp/engine/speech_engine.cc ****           size);
+  98:eurorack/plaits/dsp/engine/speech_engine.cc ****       blend = 2.0f - blend;
+  99:eurorack/plaits/dsp/engine/speech_engine.cc ****     }
+ 100:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+ 101:eurorack/plaits/dsp/engine/speech_engine.cc ****     sam_speech_synth_.Render(
+ 264              		.loc 1 101 29 view .LVU58
+ 265 00e0 3178     		ldrb	r1, [r6]	@ zero_extendqisi2
+ 266 00e2 CDF80090 		str	r9, [sp]
+ 267 00e6 08EB8909 		add	r9, r8, r9, lsl #2
+ 268 00ea 481E     		subs	r0, r1, #1
+  98:eurorack/plaits/dsp/engine/speech_engine.cc ****     }
+ 269              		.loc 1 98 13 view .LVU59
+ 270 00ec 9DED050A 		vldr.32	s0, [sp, #20]	@ int
+ 271              	.LVL16:
+ 272              		.loc 1 101 5 is_stmt 1 view .LVU60
+ 273              		.loc 1 101 29 is_stmt 0 view .LVU61
+ 274 00f0 96ED021A 		vldr.32	s2, [r6, #8]
+ 275 00f4 4142     		rsbs	r1, r0, #0
+ 276 00f6 D6ED030A 		vldr.32	s1, [r6, #12]
+ 277 00fa D5E98023 		ldrd	r2, r3, [r5, #512]
+ 278 00fe 4141     		adcs	r1, r1, r0
+ 279 0100 05F1B000 		add	r0, r5, #176
+ 280 0104 FFF7FEFF 		bl	_ZN6plaits14SAMSpeechSynth6RenderEbfffPfS1_j
+ 281              	.LVL17:
+ 102:eurorack/plaits/dsp/engine/speech_engine.cc ****         parameters.trigger == TRIGGER_RISING_EDGE,
+ 103:eurorack/plaits/dsp/engine/speech_engine.cc ****         f0,
+ 104:eurorack/plaits/dsp/engine/speech_engine.cc ****         parameters.morph,
+ 105:eurorack/plaits/dsp/engine/speech_engine.cc ****         parameters.timbre,
+ 106:eurorack/plaits/dsp/engine/speech_engine.cc ****         temp_buffer_[0],
+ 107:eurorack/plaits/dsp/engine/speech_engine.cc ****         temp_buffer_[1],
+ 108:eurorack/plaits/dsp/engine/speech_engine.cc ****         size);
+ 109:eurorack/plaits/dsp/engine/speech_engine.cc ****     
+ 110:eurorack/plaits/dsp/engine/speech_engine.cc ****     blend *= blend * (3.0f - 2.0f * blend);
+ 282              		.loc 1 110 5 is_stmt 1 view .LVU62
+ 283              		.loc 1 110 28 is_stmt 0 view .LVU63
+ 284 0108 F0EE087A 		vmov.f32	s15, #3.0e+0
+ 111:eurorack/plaits/dsp/engine/speech_engine.cc ****     blend *= blend * (3.0f - 2.0f * blend);
+ 285              		.loc 1 111 11 view .LVU64
+ 286 010c 4246     		mov	r2, r8
+ 110:eurorack/plaits/dsp/engine/speech_engine.cc ****     blend *= blend * (3.0f - 2.0f * blend);
+ 287              		.loc 1 110 28 view .LVU65
+ 288 010e B0EE677A 		vmov.f32	s14, s15
+ 289 0112 A8EE687A 		vfms.f32	s14, s16, s17
+ 110:eurorack/plaits/dsp/engine/speech_engine.cc ****     blend *= blend * (3.0f - 2.0f * blend);
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 10
+
+
+ 290              		.loc 1 110 20 view .LVU66
+ 291 0116 27EE087A 		vmul.f32	s14, s14, s16
+ 110:eurorack/plaits/dsp/engine/speech_engine.cc ****     blend *= blend * (3.0f - 2.0f * blend);
+ 292              		.loc 1 110 11 view .LVU67
+ 293 011a 27EE087A 		vmul.f32	s14, s14, s16
+ 294              	.LVL18:
+ 295              		.loc 1 111 5 is_stmt 1 view .LVU68
+ 296              		.loc 1 111 28 is_stmt 0 view .LVU69
+ 297 011e E7EE687A 		vfms.f32	s15, s14, s17
+ 298              		.loc 1 111 20 view .LVU70
+ 299 0122 27EE878A 		vmul.f32	s16, s15, s14
+ 300              		.loc 1 111 11 view .LVU71
+ 301 0126 28EE078A 		vmul.f32	s16, s16, s14
+ 302              	.LVL19:
+ 112:eurorack/plaits/dsp/engine/speech_engine.cc ****     for (size_t i = 0; i < size; ++i) {
+ 303              		.loc 1 112 5 is_stmt 1 view .LVU72
+ 304              	.L11:
+ 305              	.LBB42:
+ 306              		.loc 1 112 26 discriminator 3 view .LVU73
+ 307 012a 9145     		cmp	r9, r2
+ 308 012c 7AD0     		beq	.L2
+ 113:eurorack/plaits/dsp/engine/speech_engine.cc ****       aux[i] += (temp_buffer_[0][i] - aux[i]) * blend;
+ 309              		.loc 1 113 7 discriminator 2 view .LVU74
+ 310 012e A2EB0800 		sub	r0, r2, r8
+ 311              		.loc 1 113 35 is_stmt 0 discriminator 2 view .LVU75
+ 312 0132 D5F80032 		ldr	r3, [r5, #512]
+ 313              		.loc 1 113 14 discriminator 2 view .LVU76
+ 314 0136 D7ED007A 		vldr.32	s15, [r7]
+ 315              		.loc 1 113 35 discriminator 2 view .LVU77
+ 316 013a 0344     		add	r3, r3, r0
+ 114:eurorack/plaits/dsp/engine/speech_engine.cc ****       out[i] += (temp_buffer_[1][i] - out[i]) * blend;
+ 317              		.loc 1 114 35 discriminator 2 view .LVU78
+ 318 013c D5F80412 		ldr	r1, [r5, #516]
+ 113:eurorack/plaits/dsp/engine/speech_engine.cc ****       aux[i] += (temp_buffer_[0][i] - aux[i]) * blend;
+ 319              		.loc 1 113 37 discriminator 2 view .LVU79
+ 320 0140 93ED007A 		vldr.32	s14, [r3]
+ 321              		.loc 1 114 35 discriminator 2 view .LVU80
+ 322 0144 0144     		add	r1, r1, r0
+ 113:eurorack/plaits/dsp/engine/speech_engine.cc ****       aux[i] += (temp_buffer_[0][i] - aux[i]) * blend;
+ 323              		.loc 1 113 37 discriminator 2 view .LVU81
+ 324 0146 37EE677A 		vsub.f32	s14, s14, s15
+ 113:eurorack/plaits/dsp/engine/speech_engine.cc ****       aux[i] += (temp_buffer_[0][i] - aux[i]) * blend;
+ 325              		.loc 1 113 14 discriminator 2 view .LVU82
+ 326 014a E7EE087A 		vfma.f32	s15, s14, s16
+ 327 014e E7EC017A 		vstmia.32	r7!, {s15}
+ 328              		.loc 1 114 7 is_stmt 1 discriminator 2 view .LVU83
+ 329              		.loc 1 114 14 is_stmt 0 discriminator 2 view .LVU84
+ 330 0152 D2ED007A 		vldr.32	s15, [r2]
+ 331              		.loc 1 114 37 discriminator 2 view .LVU85
+ 332 0156 91ED007A 		vldr.32	s14, [r1]
+ 333 015a 37EE677A 		vsub.f32	s14, s14, s15
+ 334              		.loc 1 114 14 discriminator 2 view .LVU86
+ 335 015e E7EE087A 		vfma.f32	s15, s14, s16
+ 336 0162 E2EC017A 		vstmia.32	r2!, {s15}
+ 112:eurorack/plaits/dsp/engine/speech_engine.cc ****     for (size_t i = 0; i < size; ++i) {
+ 337              		.loc 1 112 5 is_stmt 1 discriminator 2 view .LVU87
+ 338 0166 E0E7     		b	.L11
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 11
+
+
+ 339              	.LVL20:
+ 340              	.L16:
+ 112:eurorack/plaits/dsp/engine/speech_engine.cc ****     for (size_t i = 0; i < size; ++i) {
+ 341              		.loc 1 112 5 is_stmt 0 discriminator 2 view .LVU88
+ 342              	.LBE42:
+ 343              	.LBE44:
+ 344              	.LBE74:
+ 345              	.LBB75:
+ 346              	.LBB35:
+  41:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
+ 347              		.loc 2 41 3 view .LVU89
+ 348 0168 F0EE477A 		vmov.f32	s15, s14
+ 349              	.LVL21:
+  41:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
+ 350              		.loc 2 41 3 view .LVU90
+ 351 016c 69E7     		b	.L3
+ 352              	.LVL22:
+ 353              	.L26:
+  41:eurorack/plaits/dsp/engine/engine.h ****   return a0 * 0.25f * stmlib::SemitonesToRatio(midi_note);
+ 354              		.loc 2 41 3 view .LVU91
+ 355              	.LBE35:
+ 356              	.LBE75:
+ 357              	.LBB76:
+ 358              	.LBB45:
+  85:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.trigger & TRIGGER_UNPATCHED,
+ 359              		.loc 1 85 7 is_stmt 1 view .LVU92
+  85:eurorack/plaits/dsp/engine/speech_engine.cc ****           parameters.trigger & TRIGGER_UNPATCHED,
+ 360              		.loc 1 85 42 is_stmt 0 view .LVU93
+ 361 016e 9FED381A 		vldr.32	s2, .L28+24
+ 362 0172 4FF0FF33 		mov	r3, #-1
+ 363 0176 0CF00102 		and	r2, ip, #1
+ 364 017a CCF34001 		ubfx	r1, ip, #1, #1
+ 365 017e F0EE410A 		vmov.f32	s1, s2
+ 366 0182 05F1D400 		add	r0, r5, #212
+ 367 0186 0097     		str	r7, [sp]
+ 368 0188 8DED050A 		vstr.32	s0, [sp, #20]	@ int
+ 369 018c CDE90189 		strd	r8, r9, [sp, #4]
+ 370 0190 FFF7FEFF 		bl	_ZN6plaits24LPCSpeechSynthController6RenderEbbiffffffPfS1_j
+ 371              	.LVL23:
+  98:eurorack/plaits/dsp/engine/speech_engine.cc ****     }
+ 372              		.loc 1 98 7 is_stmt 1 view .LVU94
+  98:eurorack/plaits/dsp/engine/speech_engine.cc ****     }
+ 373              		.loc 1 98 13 is_stmt 0 view .LVU95
+ 374 0194 38EEC88A 		vsub.f32	s16, s17, s16
+ 375              	.LVL24:
+  98:eurorack/plaits/dsp/engine/speech_engine.cc ****     }
+ 376              		.loc 1 98 13 view .LVU96
+ 377 0198 A2E7     		b	.L27
+ 378              	.LVL25:
+ 379              	.L25:
+  98:eurorack/plaits/dsp/engine/speech_engine.cc ****     }
+ 380              		.loc 1 98 13 view .LVU97
+ 381              	.LBE45:
+ 382              	.LBB46:
+ 115:eurorack/plaits/dsp/engine/speech_engine.cc ****     }
+ 116:eurorack/plaits/dsp/engine/speech_engine.cc ****   } else {
+ 117:eurorack/plaits/dsp/engine/speech_engine.cc ****     // Change phonemes/words for LPC.
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 12
+
+
+ 118:eurorack/plaits/dsp/engine/speech_engine.cc ****     const int word_bank = word_bank_quantizer_.Process(
+ 383              		.loc 1 118 5 is_stmt 1 view .LVU98
+ 384              	.LBB47:
+ 385              	.LBI47:
+ 386              		.file 4 "eurorack/stmlib/dsp/hysteresis_quantizer.h"
+   1:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // Copyright 2015 Emilie Gillet.
+   2:eurorack/stmlib/dsp/hysteresis_quantizer.h **** //
+   3:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/stmlib/dsp/hysteresis_quantizer.h **** //
+   5:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // 
+  12:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // all copies or substantial portions of the Software.
+  14:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // 
+  15:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // THE SOFTWARE.
+  22:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // 
+  23:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/stmlib/dsp/hysteresis_quantizer.h **** //
+  25:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // -----------------------------------------------------------------------------
+  26:eurorack/stmlib/dsp/hysteresis_quantizer.h **** //
+  27:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // Quantize a float in [0, 1] to an integer in [0, num_steps[. Apply hysteresis
+  28:eurorack/stmlib/dsp/hysteresis_quantizer.h **** // to prevent jumps near the decision boundary.
+  29:eurorack/stmlib/dsp/hysteresis_quantizer.h **** 
+  30:eurorack/stmlib/dsp/hysteresis_quantizer.h **** #ifndef STMLIB_DSP_HYSTERESIS_QUANTIZER_H_
+  31:eurorack/stmlib/dsp/hysteresis_quantizer.h **** #define STMLIB_DSP_HYSTERESIS_QUANTIZER_H_
+  32:eurorack/stmlib/dsp/hysteresis_quantizer.h **** 
+  33:eurorack/stmlib/dsp/hysteresis_quantizer.h **** #include "stmlib/stmlib.h"
+  34:eurorack/stmlib/dsp/hysteresis_quantizer.h **** 
+  35:eurorack/stmlib/dsp/hysteresis_quantizer.h **** namespace stmlib {
+  36:eurorack/stmlib/dsp/hysteresis_quantizer.h **** 
+  37:eurorack/stmlib/dsp/hysteresis_quantizer.h **** class HysteresisQuantizer {
+  38:eurorack/stmlib/dsp/hysteresis_quantizer.h ****  public:
+  39:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   HysteresisQuantizer() { }
+  40:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   ~HysteresisQuantizer() { }
+  41:eurorack/stmlib/dsp/hysteresis_quantizer.h **** 
+  42:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   void Init() {
+  43:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     quantized_value_ = 0;
+  44:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   }
+  45:eurorack/stmlib/dsp/hysteresis_quantizer.h **** 
+  46:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   inline int Process(float value, int num_steps) {
+ 387              		.loc 4 46 14 view .LVU99
+ 388              	.LBE47:
+ 389              	.LBE46:
+ 390              	.LBE76:
+  47:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     return Process(value, num_steps, 0.25f);
+ 391              		.loc 4 47 5 view .LVU100
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 13
+
+
+ 392              	.LBB77:
+ 393              	.LBB66:
+ 394              	.LBB61:
+ 395              	.LBB48:
+ 396              	.LBI48:
+  48:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   }
+  49:eurorack/stmlib/dsp/hysteresis_quantizer.h **** 
+  50:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   inline int Process(float value, int num_steps, float hysteresis) {
+ 397              		.loc 4 50 14 view .LVU101
+ 398              	.LBE48:
+ 399              	.LBE61:
+ 400              	.LBE66:
+ 401              	.LBE77:
+  51:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     return Process(0, value, num_steps, hysteresis);
+ 402              		.loc 4 51 5 view .LVU102
+ 403              	.LBB78:
+ 404              	.LBB67:
+ 405              	.LBB62:
+ 406              	.LBB57:
+ 407              	.LBB49:
+ 408              	.LBI49:
+  52:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   }
+  53:eurorack/stmlib/dsp/hysteresis_quantizer.h **** 
+  54:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   inline int Process(int base, float value, int num_steps, float hysteresis) {
+ 409              		.loc 4 54 14 view .LVU103
+ 410              	.LBB50:
+  55:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     value *= static_cast<float>(num_steps - 1);
+ 411              		.loc 4 55 5 view .LVU104
+  56:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     value += static_cast<float>(base);
+ 412              		.loc 4 56 5 view .LVU105
+ 413              	.LBE50:
+ 414              	.LBE49:
+ 415              	.LBE57:
+ 416              	.LBE62:
+ 119:eurorack/plaits/dsp/engine/speech_engine.cc ****         (group - 2.0f) * 0.275f,
+ 417              		.loc 1 119 16 is_stmt 0 view .LVU106
+ 418 019a 38EE688A 		vsub.f32	s16, s16, s17
+ 419              	.LVL26:
+ 118:eurorack/plaits/dsp/engine/speech_engine.cc ****         (group - 2.0f) * 0.275f,
+ 420              		.loc 1 118 55 view .LVU107
+ 421 019e DFED2D7A 		vldr.32	s15, .L28+28
+ 422              	.LVL27:
+ 423              	.LBB63:
+ 424              	.LBB58:
+ 425              	.LBB54:
+ 426              	.LBB51:
+ 427              		.loc 4 56 11 view .LVU108
+ 428 01a2 B1EE007A 		vmov.f32	s14, #4.0e+0
+ 429 01a6 0CF00201 		and	r1, ip, #2
+  57:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     float hysteresis_feedback = value > static_cast<float>(quantized_value_)
+  58:eurorack/stmlib/dsp/hysteresis_quantizer.h ****         ? -hysteresis
+ 430              		.loc 4 58 9 view .LVU109
+ 431 01aa F5EE006A 		vmov.f32	s13, #2.5e-1
+ 432              	.LBE51:
+ 433              	.LBE54:
+ 434              	.LBE58:
+ 435              	.LBE63:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 14
+
+
+ 118:eurorack/plaits/dsp/engine/speech_engine.cc ****         (group - 2.0f) * 0.275f,
+ 436              		.loc 1 118 55 view .LVU110
+ 437 01ae 28EE278A 		vmul.f32	s16, s16, s15
+ 438              	.LBB64:
+ 439              	.LBB59:
+ 440              	.LBB55:
+ 441              	.LBB52:
+  56:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     float hysteresis_feedback = value > static_cast<float>(quantized_value_)
+ 442              		.loc 4 56 11 view .LVU111
+ 443 01b2 DFED277A 		vldr.32	s15, .L28+24
+ 444 01b6 E8EE077A 		vfma.f32	s15, s16, s14
+ 445              	.LVL28:
+  57:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     float hysteresis_feedback = value > static_cast<float>(quantized_value_)
+ 446              		.loc 4 57 5 is_stmt 1 view .LVU112
+  57:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     float hysteresis_feedback = value > static_cast<float>(quantized_value_)
+ 447              		.loc 4 57 41 is_stmt 0 view .LVU113
+ 448 01ba 95ED047A 		vldr.32	s14, [r5, #16]	@ int
+ 449 01be B8EEC77A 		vcvt.f32.s32	s14, s14
+ 450              		.loc 4 58 9 view .LVU114
+ 451 01c2 F4EEC77A 		vcmpe.f32	s15, s14
+ 452 01c6 BDEE007A 		vmov.f32	s14, #-2.5e-1
+ 453 01ca F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 454 01ce 37FE267A 		vselgt.f32	s14, s14, s13
+ 455              	.LVL29:
+  59:eurorack/stmlib/dsp/hysteresis_quantizer.h ****         : hysteresis;
+  60:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     int q = static_cast<int>(value + hysteresis_feedback + 0.5f);
+ 456              		.loc 4 60 5 is_stmt 1 view .LVU115
+  61:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     CONSTRAIN(q, 0, num_steps - 1);
+ 457              		.loc 4 61 5 view .LVU116
+  60:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     CONSTRAIN(q, 0, num_steps - 1);
+ 458              		.loc 4 60 36 is_stmt 0 view .LVU117
+ 459 01d2 77EE877A 		vadd.f32	s15, s15, s14
+ 460              	.LVL30:
+  60:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     CONSTRAIN(q, 0, num_steps - 1);
+ 461              		.loc 4 60 58 view .LVU118
+ 462 01d6 B6EE007A 		vmov.f32	s14, #5.0e-1
+ 463              	.LVL31:
+  60:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     CONSTRAIN(q, 0, num_steps - 1);
+ 464              		.loc 4 60 58 view .LVU119
+ 465 01da 77EE877A 		vadd.f32	s15, s15, s14
+  60:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     CONSTRAIN(q, 0, num_steps - 1);
+ 466              		.loc 4 60 9 view .LVU120
+ 467 01de FDEEE77A 		vcvt.s32.f32	s15, s15
+ 468 01e2 17EE904A 		vmov	r4, s15	@ int
+ 469 01e6 042C     		cmp	r4, #4
+ 470              	.LVL32:
+  60:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     CONSTRAIN(q, 0, num_steps - 1);
+ 471              		.loc 4 60 9 view .LVU121
+ 472 01e8 A8BF     		it	ge
+ 473 01ea 0424     		movge	r4, #4
+ 474 01ec 24EAE474 		bic	r4, r4, r4, asr #31
+ 475              	.LVL33:
+ 476              		.loc 4 61 35 is_stmt 1 view .LVU122
+  62:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     quantized_value_ = q;
+ 477              		.loc 4 62 5 view .LVU123
+ 478              	.LBE52:
+ 479              	.LBE55:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 15
+
+
+ 480              	.LBE59:
+ 481              	.LBE64:
+ 120:eurorack/plaits/dsp/engine/speech_engine.cc ****         LPC_SPEECH_SYNTH_NUM_WORD_BANKS + 1) - 1;
+ 482              		.loc 1 120 48 is_stmt 0 view .LVU124
+ 483 01f0 631E     		subs	r3, r4, #1
+ 484              	.LBB65:
+ 485              	.LBB60:
+ 486              	.LBB56:
+ 487              	.LBB53:
+ 488              		.loc 4 62 22 view .LVU125
+ 489 01f2 2C61     		str	r4, [r5, #16]
+  63:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     return q;
+ 490              		.loc 4 63 5 is_stmt 1 view .LVU126
+ 491              	.LVL34:
+ 492              		.loc 4 63 5 is_stmt 0 view .LVU127
+ 493              	.LBE53:
+ 494              	.LBE56:
+ 495              	.LBE60:
+ 496              	.LBE65:
+ 121:eurorack/plaits/dsp/engine/speech_engine.cc ****     
+ 122:eurorack/plaits/dsp/engine/speech_engine.cc ****     const bool replay_prosody = word_bank >= 0 && \
+ 497              		.loc 1 122 5 is_stmt 1 view .LVU128
+ 498              		.loc 1 122 48 is_stmt 0 view .LVU129
+ 499 01f4 DCB1     		cbz	r4, .L18
+ 500              		.loc 1 122 48 discriminator 1 view .LVU130
+ 501 01f6 B1FA81F4 		clz	r4, r1
+ 502 01fa 6409     		lsrs	r4, r4, #5
+ 503              	.L14:
+ 504              	.LVL35:
+ 123:eurorack/plaits/dsp/engine/speech_engine.cc ****         !(parameters.trigger & TRIGGER_UNPATCHED);
+ 124:eurorack/plaits/dsp/engine/speech_engine.cc ****     
+ 125:eurorack/plaits/dsp/engine/speech_engine.cc ****     *already_enveloped = replay_prosody;
+ 505              		.loc 1 125 5 is_stmt 1 discriminator 6 view .LVU131
+ 126:eurorack/plaits/dsp/engine/speech_engine.cc ****     
+ 127:eurorack/plaits/dsp/engine/speech_engine.cc ****     lpc_speech_synth_controller_.Render(
+ 506              		.loc 1 127 40 is_stmt 0 discriminator 6 view .LVU132
+ 507 01fc 0039     		subs	r1, r1, #0
+ 125:eurorack/plaits/dsp/engine/speech_engine.cc ****     
+ 508              		.loc 1 125 24 discriminator 6 view .LVU133
+ 509 01fe 1470     		strb	r4, [r2]
+ 510              		.loc 1 127 5 is_stmt 1 discriminator 6 view .LVU134
+ 511              		.loc 1 127 40 is_stmt 0 discriminator 6 view .LVU135
+ 512 0200 05F1D400 		add	r0, r5, #212
+ 513 0204 0CF00102 		and	r2, ip, #1
+ 514 0208 18BF     		it	ne
+ 515 020a 0121     		movne	r1, #1
+ 516 020c D5ED820A 		vldr.32	s1, [r5, #520]
+ 517 0210 95ED831A 		vldr.32	s2, [r5, #524]
+ 518 0214 6CB1     		cbz	r4, .L19
+ 519              	.LVL36:
+ 520              		.loc 1 127 40 discriminator 1 view .LVU136
+ 521 0216 D6ED052A 		vldr.32	s5, [r6, #20]
+ 522              	.LVL37:
+ 523              	.L15:
+ 524              		.loc 1 127 40 discriminator 4 view .LVU137
+ 525 021a 0097     		str	r7, [sp]
+ 526              	.LVL38:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 16
+
+
+ 527              		.loc 1 127 40 discriminator 4 view .LVU138
+ 528 021c CDE90189 		strd	r8, r9, [sp, #4]
+ 529 0220 FFF7FEFF 		bl	_ZN6plaits24LPCSpeechSynthController6RenderEbbiffffffPfS1_j
+ 530              	.LVL39:
+ 531              	.L2:
+ 532              		.loc 1 127 40 discriminator 4 view .LVU139
+ 533              	.LBE67:
+ 534              	.LBE78:
+ 128:eurorack/plaits/dsp/engine/speech_engine.cc ****         parameters.trigger & TRIGGER_UNPATCHED,
+ 129:eurorack/plaits/dsp/engine/speech_engine.cc ****         parameters.trigger & TRIGGER_RISING_EDGE,
+ 130:eurorack/plaits/dsp/engine/speech_engine.cc ****         word_bank,
+ 131:eurorack/plaits/dsp/engine/speech_engine.cc ****         f0,
+ 132:eurorack/plaits/dsp/engine/speech_engine.cc ****         prosody_amount_,
+ 133:eurorack/plaits/dsp/engine/speech_engine.cc ****         speed_,
+ 134:eurorack/plaits/dsp/engine/speech_engine.cc ****         parameters.morph,
+ 135:eurorack/plaits/dsp/engine/speech_engine.cc ****         parameters.timbre,
+ 136:eurorack/plaits/dsp/engine/speech_engine.cc ****         replay_prosody ? parameters.accent : 1.0f,
+ 137:eurorack/plaits/dsp/engine/speech_engine.cc ****         aux,
+ 138:eurorack/plaits/dsp/engine/speech_engine.cc ****         out,
+ 139:eurorack/plaits/dsp/engine/speech_engine.cc ****         size);
+ 140:eurorack/plaits/dsp/engine/speech_engine.cc ****   }
+ 141:eurorack/plaits/dsp/engine/speech_engine.cc **** }
+ 535              		.loc 1 141 1 view .LVU140
+ 536 0224 07B0     		add	sp, sp, #28
+ 537              		.cfi_remember_state
+ 538              		.cfi_def_cfa_offset 36
+ 539              		@ sp needed
+ 540 0226 BDEC028B 		vldm	sp!, {d8}
+ 541              		.cfi_restore 80
+ 542              		.cfi_restore 81
+ 543              		.cfi_def_cfa_offset 28
+ 544 022a BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 545              	.LVL40:
+ 546              	.L18:
+ 547              		.cfi_restore_state
+ 548              	.LBB79:
+ 549              	.LBB68:
+ 122:eurorack/plaits/dsp/engine/speech_engine.cc ****         !(parameters.trigger & TRIGGER_UNPATCHED);
+ 550              		.loc 1 122 48 view .LVU141
+ 551 022e 0024     		movs	r4, #0
+ 552 0230 E4E7     		b	.L14
+ 553              	.LVL41:
+ 554              	.L19:
+ 127:eurorack/plaits/dsp/engine/speech_engine.cc ****         parameters.trigger & TRIGGER_UNPATCHED,
+ 555              		.loc 1 127 40 view .LVU142
+ 556 0232 F7EE002A 		vmov.f32	s5, #1.0e+0
+ 557 0236 F0E7     		b	.L15
+ 558              	.L29:
+ 559              		.align	2
+ 560              	.L28:
+ 561 0238 000000C3 		.word	-1023410176
+ 562 023c 0000FE42 		.word	1123942400
+ 563 0240 00000043 		.word	1124073472
+ 564 0244 00000000 		.word	_ZN6stmlib19lut_pitch_ratio_lowE
+ 565 0248 00000000 		.word	_ZN6stmlib20lut_pitch_ratio_highE
+ 566 024c 51969639 		.word	966170193
+ 567 0250 00000000 		.word	0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 17
+
+
+ 568 0254 CDCC8C3E 		.word	1049414861
+ 569              	.LBE68:
+ 570              	.LBE79:
+ 571              		.cfi_endproc
+ 572              	.LFE1631:
+ 574              		.section	.text._ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE,"ax",%progbits
+ 575              		.align	1
+ 576              		.global	_ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE
+ 577              		.syntax unified
+ 578              		.thumb
+ 579              		.thumb_func
+ 581              	_ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE:
+ 582              	.LVL42:
+ 583              	.LFB1629:
+  38:eurorack/plaits/dsp/engine/speech_engine.cc ****   sam_speech_synth_.Init();
+ 584              		.loc 1 38 53 is_stmt 1 view -0
+ 585              		.cfi_startproc
+ 586              		@ args = 0, pretend = 0, frame = 0
+ 587              		@ frame_needed = 0, uses_anonymous_args = 0
+  39:eurorack/plaits/dsp/engine/speech_engine.cc ****   naive_speech_synth_.Init();
+ 588              		.loc 1 39 3 view .LVU144
+  38:eurorack/plaits/dsp/engine/speech_engine.cc ****   sam_speech_synth_.Init();
+ 589              		.loc 1 38 53 is_stmt 0 view .LVU145
+ 590 0000 70B5     		push	{r4, r5, r6, lr}
+ 591              		.cfi_def_cfa_offset 16
+ 592              		.cfi_offset 4, -16
+ 593              		.cfi_offset 5, -12
+ 594              		.cfi_offset 6, -8
+ 595              		.cfi_offset 14, -4
+  38:eurorack/plaits/dsp/engine/speech_engine.cc ****   sam_speech_synth_.Init();
+ 596              		.loc 1 38 53 view .LVU146
+ 597 0002 0446     		mov	r4, r0
+ 598 0004 0D46     		mov	r5, r1
+  39:eurorack/plaits/dsp/engine/speech_engine.cc ****   naive_speech_synth_.Init();
+ 599              		.loc 1 39 25 view .LVU147
+ 600 0006 B030     		adds	r0, r0, #176
+ 601              	.LVL43:
+  41:eurorack/plaits/dsp/engine/speech_engine.cc ****       word_banks_,
+ 602              		.loc 1 41 35 view .LVU148
+ 603 0008 04F5B476 		add	r6, r4, #360
+  39:eurorack/plaits/dsp/engine/speech_engine.cc ****   naive_speech_synth_.Init();
+ 604              		.loc 1 39 25 view .LVU149
+ 605 000c FFF7FEFF 		bl	_ZN6plaits14SAMSpeechSynth4InitEv
+ 606              	.LVL44:
+  40:eurorack/plaits/dsp/engine/speech_engine.cc ****   lpc_speech_synth_word_bank_.Init(
+ 607              		.loc 1 40 3 is_stmt 1 view .LVU150
+  40:eurorack/plaits/dsp/engine/speech_engine.cc ****   lpc_speech_synth_word_bank_.Init(
+ 608              		.loc 1 40 27 is_stmt 0 view .LVU151
+ 609 0010 04F11400 		add	r0, r4, #20
+ 610 0014 FFF7FEFF 		bl	_ZN6plaits16NaiveSpeechSynth4InitEv
+ 611              	.LVL45:
+  41:eurorack/plaits/dsp/engine/speech_engine.cc ****       word_banks_,
+ 612              		.loc 1 41 3 is_stmt 1 view .LVU152
+  41:eurorack/plaits/dsp/engine/speech_engine.cc ****       word_banks_,
+ 613              		.loc 1 41 35 is_stmt 0 view .LVU153
+ 614 0018 2B46     		mov	r3, r5
+ 615 001a 0422     		movs	r2, #4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 18
+
+
+ 616 001c 1649     		ldr	r1, .L35
+ 617 001e 3046     		mov	r0, r6
+ 618 0020 FFF7FEFF 		bl	_ZN6plaits22LPCSpeechSynthWordBank4InitEPKNS_26LPCSpeechSynthWordBankDataEiPN6stmlib15BufferAll
+ 619              	.LVL46:
+  45:eurorack/plaits/dsp/engine/speech_engine.cc ****   word_bank_quantizer_.Init();
+ 620              		.loc 1 45 3 is_stmt 1 view .LVU154
+  45:eurorack/plaits/dsp/engine/speech_engine.cc ****   word_bank_quantizer_.Init();
+ 621              		.loc 1 45 36 is_stmt 0 view .LVU155
+ 622 0024 3146     		mov	r1, r6
+ 623 0026 04F1D400 		add	r0, r4, #212
+ 624 002a FFF7FEFF 		bl	_ZN6plaits24LPCSpeechSynthController4InitEPNS_22LPCSpeechSynthWordBankE
+ 625              	.LVL47:
+  46:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+ 626              		.loc 1 46 3 is_stmt 1 view .LVU156
+ 627              	.LBB90:
+ 628              	.LBI90:
+  42:eurorack/stmlib/dsp/hysteresis_quantizer.h ****     quantized_value_ = 0;
+ 629              		.loc 4 42 8 view .LVU157
+ 630              	.LBB91:
+  43:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   }
+ 631              		.loc 4 43 5 view .LVU158
+ 632              	.LBE91:
+ 633              	.LBE90:
+ 634              	.LBB94:
+ 635              	.LBB95:
+ 636              	.LBB96:
+ 637              		.file 5 "eurorack/stmlib/utils/buffer_allocator.h"
+   1:eurorack/stmlib/utils/buffer_allocator.h **** // Copyright 2014 Emilie Gillet.
+   2:eurorack/stmlib/utils/buffer_allocator.h **** //
+   3:eurorack/stmlib/utils/buffer_allocator.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/stmlib/utils/buffer_allocator.h **** //
+   5:eurorack/stmlib/utils/buffer_allocator.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/stmlib/utils/buffer_allocator.h **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/stmlib/utils/buffer_allocator.h **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/stmlib/utils/buffer_allocator.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/stmlib/utils/buffer_allocator.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/stmlib/utils/buffer_allocator.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/stmlib/utils/buffer_allocator.h **** // 
+  12:eurorack/stmlib/utils/buffer_allocator.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/stmlib/utils/buffer_allocator.h **** // all copies or substantial portions of the Software.
+  14:eurorack/stmlib/utils/buffer_allocator.h **** // 
+  15:eurorack/stmlib/utils/buffer_allocator.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/stmlib/utils/buffer_allocator.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/stmlib/utils/buffer_allocator.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/stmlib/utils/buffer_allocator.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/stmlib/utils/buffer_allocator.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/stmlib/utils/buffer_allocator.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/stmlib/utils/buffer_allocator.h **** // THE SOFTWARE.
+  22:eurorack/stmlib/utils/buffer_allocator.h **** // 
+  23:eurorack/stmlib/utils/buffer_allocator.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/stmlib/utils/buffer_allocator.h **** //
+  25:eurorack/stmlib/utils/buffer_allocator.h **** // -----------------------------------------------------------------------------
+  26:eurorack/stmlib/utils/buffer_allocator.h **** //
+  27:eurorack/stmlib/utils/buffer_allocator.h **** // Stream buffer for serialization.
+  28:eurorack/stmlib/utils/buffer_allocator.h **** 
+  29:eurorack/stmlib/utils/buffer_allocator.h **** #ifndef STMLIB_UTILS_BUFFER_ALLOCATOR_H_
+  30:eurorack/stmlib/utils/buffer_allocator.h **** #define STMLIB_UTILS_BUFFER_ALLOCATOR_H_
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 19
+
+
+  31:eurorack/stmlib/utils/buffer_allocator.h **** 
+  32:eurorack/stmlib/utils/buffer_allocator.h **** #include "stmlib/stmlib.h"
+  33:eurorack/stmlib/utils/buffer_allocator.h **** 
+  34:eurorack/stmlib/utils/buffer_allocator.h **** namespace stmlib {
+  35:eurorack/stmlib/utils/buffer_allocator.h **** 
+  36:eurorack/stmlib/utils/buffer_allocator.h **** class BufferAllocator {
+  37:eurorack/stmlib/utils/buffer_allocator.h ****  public:
+  38:eurorack/stmlib/utils/buffer_allocator.h ****   BufferAllocator() { }
+  39:eurorack/stmlib/utils/buffer_allocator.h ****   ~BufferAllocator() { }
+  40:eurorack/stmlib/utils/buffer_allocator.h ****   
+  41:eurorack/stmlib/utils/buffer_allocator.h ****   BufferAllocator(void* buffer, size_t size) {
+  42:eurorack/stmlib/utils/buffer_allocator.h ****     Init(buffer, size);
+  43:eurorack/stmlib/utils/buffer_allocator.h ****   }
+  44:eurorack/stmlib/utils/buffer_allocator.h ****   
+  45:eurorack/stmlib/utils/buffer_allocator.h ****   inline void Init(void* buffer, size_t size) {
+  46:eurorack/stmlib/utils/buffer_allocator.h ****     buffer_ = static_cast<uint8_t*>(buffer);
+  47:eurorack/stmlib/utils/buffer_allocator.h ****     size_ = size;
+  48:eurorack/stmlib/utils/buffer_allocator.h ****     Free();
+  49:eurorack/stmlib/utils/buffer_allocator.h ****   }
+  50:eurorack/stmlib/utils/buffer_allocator.h **** 
+  51:eurorack/stmlib/utils/buffer_allocator.h ****   template<typename T>
+  52:eurorack/stmlib/utils/buffer_allocator.h ****   inline T* Allocate() {
+  53:eurorack/stmlib/utils/buffer_allocator.h ****     return Allocate<T>(1);
+  54:eurorack/stmlib/utils/buffer_allocator.h ****   }
+  55:eurorack/stmlib/utils/buffer_allocator.h ****   
+  56:eurorack/stmlib/utils/buffer_allocator.h ****   template<typename T>
+  57:eurorack/stmlib/utils/buffer_allocator.h ****   inline T* Allocate(size_t size) {
+  58:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
+  59:eurorack/stmlib/utils/buffer_allocator.h ****     if (size_bytes <= free_) {
+ 638              		.loc 5 59 23 is_stmt 0 view .LVU159
+ 639 002e AA68     		ldr	r2, [r5, #8]
+ 640              	.LBE96:
+ 641              	.LBE95:
+ 642              	.LBE94:
+ 643              	.LBB102:
+ 644              	.LBB92:
+  43:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   }
+ 645              		.loc 4 43 22 view .LVU160
+ 646 0030 0023     		movs	r3, #0
+ 647              	.LBE92:
+ 648              	.LBE102:
+ 649              	.LBB103:
+ 650              	.LBB100:
+ 651              	.LBB98:
+ 652              		.loc 5 59 5 view .LVU161
+ 653 0032 7F2A     		cmp	r2, #127
+ 654              	.LBE98:
+ 655              	.LBE100:
+ 656              	.LBE103:
+ 657              	.LBB104:
+ 658              	.LBB93:
+  43:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   }
+ 659              		.loc 4 43 22 view .LVU162
+ 660 0034 2361     		str	r3, [r4, #16]
+ 661              	.LVL48:
+  43:eurorack/stmlib/dsp/hysteresis_quantizer.h ****   }
+ 662              		.loc 4 43 22 view .LVU163
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 20
+
+
+ 663              	.LBE93:
+ 664              	.LBE104:
+  48:eurorack/plaits/dsp/engine/speech_engine.cc ****   temp_buffer_[1] = allocator->Allocate<float>(kMaxBlockSize);
+ 665              		.loc 1 48 3 is_stmt 1 view .LVU164
+ 666              	.LBB105:
+ 667              	.LBI94:
+  57:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
+ 668              		.loc 5 57 13 view .LVU165
+ 669              	.LBB101:
+ 670              	.LBB99:
+ 671              		.loc 5 59 5 is_stmt 0 view .LVU166
+ 672 0036 05D9     		bls	.L31
+ 673              	.LBB97:
+  60:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+ 674              		.loc 5 60 10 view .LVU167
+ 675 0038 2B68     		ldr	r3, [r5]
+ 676              	.LVL49:
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 677              		.loc 5 62 13 view .LVU168
+ 678 003a 803A     		subs	r2, r2, #128
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
+ 679              		.loc 5 61 13 view .LVU169
+ 680 003c 03F18001 		add	r1, r3, #128
+ 681              		.loc 5 62 13 view .LVU170
+ 682 0040 AA60     		str	r2, [r5, #8]
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
+ 683              		.loc 5 61 13 view .LVU171
+ 684 0042 2960     		str	r1, [r5]
+ 685              	.LVL50:
+ 686              	.L31:
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
+ 687              		.loc 5 61 13 view .LVU172
+ 688              	.LBE97:
+ 689              	.LBE99:
+ 690              	.LBE101:
+ 691              	.LBE105:
+  48:eurorack/plaits/dsp/engine/speech_engine.cc ****   temp_buffer_[1] = allocator->Allocate<float>(kMaxBlockSize);
+ 692              		.loc 1 48 19 view .LVU173
+ 693 0044 C4F80032 		str	r3, [r4, #512]
+  49:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+ 694              		.loc 1 49 3 is_stmt 1 view .LVU174
+ 695              	.LVL51:
+ 696              	.LBB106:
+ 697              	.LBI106:
+  57:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
+ 698              		.loc 5 57 13 view .LVU175
+ 699              	.LBB107:
+ 700              	.LBB108:
+  59:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+ 701              		.loc 5 59 23 is_stmt 0 view .LVU176
+ 702 0048 AB68     		ldr	r3, [r5, #8]
+  59:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+ 703              		.loc 5 59 5 view .LVU177
+ 704 004a 7F2B     		cmp	r3, #127
+ 705              	.LBB109:
+  60:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 21
+
+
+ 706              		.loc 5 60 10 view .LVU178
+ 707 004c 85BF     		ittet	hi
+ 708 004e 2A68     		ldrhi	r2, [r5]
+ 709              	.LVL52:
+ 710              		.loc 5 62 13 view .LVU179
+ 711 0050 803B     		subhi	r3, r3, #128
+ 712              	.LBE109:
+  63:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+  64:eurorack/stmlib/utils/buffer_allocator.h ****     } else {
+  65:eurorack/stmlib/utils/buffer_allocator.h ****       return NULL;
+ 713              		.loc 5 65 14 view .LVU180
+ 714 0052 0022     		movls	r2, #0
+ 715              	.LVL53:
+ 716              	.LBB110:
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+ 717              		.loc 5 62 13 view .LVU181
+ 718 0054 AB60     		strhi	r3, [r5, #8]
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 719              		.loc 5 61 13 view .LVU182
+ 720 0056 88BF     		it	hi
+ 721 0058 02F18001 		addhi	r1, r2, #128
+ 722              	.LBE110:
+ 723              	.LBE108:
+ 724              	.LBE107:
+ 725              	.LBE106:
+  51:eurorack/plaits/dsp/engine/speech_engine.cc ****   speed_ = 1.0f;
+ 726              		.loc 1 51 19 view .LVU183
+ 727 005c 4FF00003 		mov	r3, #0
+ 728              	.LBB114:
+ 729              	.LBB113:
+ 730              	.LBB112:
+ 731              	.LBB111:
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 732              		.loc 5 61 13 view .LVU184
+ 733 0060 88BF     		it	hi
+ 734 0062 2960     		strhi	r1, [r5]
+ 735              	.LBE111:
+ 736              	.LBE112:
+ 737              	.LBE113:
+ 738              	.LBE114:
+  51:eurorack/plaits/dsp/engine/speech_engine.cc ****   speed_ = 1.0f;
+ 739              		.loc 1 51 19 view .LVU185
+ 740 0064 C4F80832 		str	r3, [r4, #520]	@ float
+  52:eurorack/plaits/dsp/engine/speech_engine.cc **** }
+ 741              		.loc 1 52 10 view .LVU186
+ 742 0068 4FF07E53 		mov	r3, #1065353216
+  49:eurorack/plaits/dsp/engine/speech_engine.cc ****   
+ 743              		.loc 1 49 19 view .LVU187
+ 744 006c C4F80422 		str	r2, [r4, #516]
+  51:eurorack/plaits/dsp/engine/speech_engine.cc ****   speed_ = 1.0f;
+ 745              		.loc 1 51 3 is_stmt 1 view .LVU188
+  52:eurorack/plaits/dsp/engine/speech_engine.cc **** }
+ 746              		.loc 1 52 3 view .LVU189
+  52:eurorack/plaits/dsp/engine/speech_engine.cc **** }
+ 747              		.loc 1 52 10 is_stmt 0 view .LVU190
+ 748 0070 C4F80C32 		str	r3, [r4, #524]	@ float
+  53:eurorack/plaits/dsp/engine/speech_engine.cc **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 22
+
+
+ 749              		.loc 1 53 1 view .LVU191
+ 750 0074 70BD     		pop	{r4, r5, r6, pc}
+ 751              	.LVL54:
+ 752              	.L36:
+  53:eurorack/plaits/dsp/engine/speech_engine.cc **** 
+ 753              		.loc 1 53 1 view .LVU192
+ 754 0076 00BF     		.align	2
+ 755              	.L35:
+ 756 0078 00000000 		.word	_ZN6plaits11word_banks_E
+ 757              		.cfi_endproc
+ 758              	.LFE1629:
+ 760              		.global	_ZTVN6plaits12SpeechEngineE
+ 761              		.section	.rodata._ZTVN6plaits12SpeechEngineE,"a"
+ 762              		.align	2
+ 765              	_ZTVN6plaits12SpeechEngineE:
+ 766 0000 00000000 		.word	0
+ 767 0004 00000000 		.word	0
+ 768 0008 00000000 		.word	_ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE
+ 769 000c 00000000 		.word	_ZN6plaits12SpeechEngine5ResetEv
+ 770 0010 00000000 		.word	_ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+ 771              		.text
+ 772              	.Letext0:
+ 773              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 774              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 775              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 776              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 777              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 778              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 779              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 780              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 781              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 782              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 783              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 784              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 785              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 786              		.file 19 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 787              		.file 20 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 788              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 789              		.file 22 "eurorack/stmlib/stmlib.h"
+ 790              		.file 23 "eurorack/stmlib/dsp/filter.h"
+ 791              		.file 24 "eurorack/plaits/dsp/dsp.h"
+ 792              		.file 25 "eurorack/plaits/dsp/speech/lpc_speech_synth.h"
+ 793              		.file 26 "eurorack/plaits/dsp/speech/lpc_speech_synth_controller.h"
+ 794              		.file 27 "eurorack/plaits/dsp/oscillator/oscillator.h"
+ 795              		.file 28 "eurorack/plaits/dsp/speech/naive_speech_synth.h"
+ 796              		.file 29 "eurorack/plaits/dsp/speech/sam_speech_synth.h"
+ 797              		.file 30 "eurorack/plaits/dsp/speech/lpc_speech_synth_words.h"
+ 798              		.file 31 "eurorack/plaits/dsp/engine/speech_engine.h"
+ 799              		.file 32 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s 			page 23
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 speech_engine.cc
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s:19     .text._ZN6plaits12SpeechEngine5ResetEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s:25     .text._ZN6plaits12SpeechEngine5ResetEv:0000000000000000 _ZN6plaits12SpeechEngine5ResetEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s:46     .text._ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s:52     .text._ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000000 _ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s:561    .text._ZN6plaits12SpeechEngine6RenderERKNS_16EngineParametersEPfS4_jPb:0000000000000238 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s:575    .text._ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s:581    .text._ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000000 _ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s:756    .text._ZN6plaits12SpeechEngine4InitEPN6stmlib15BufferAllocatorE:0000000000000078 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s:765    .rodata._ZTVN6plaits12SpeechEngineE:0000000000000000 _ZTVN6plaits12SpeechEngineE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc0H1h22.s:762    .rodata._ZTVN6plaits12SpeechEngineE:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+_ZN6plaits22LPCSpeechSynthWordBank5ResetEv
+_ZN6plaits16NaiveSpeechSynth6RenderEbfffPfS1_S1_j
+_ZN6plaits14SAMSpeechSynth6RenderEbfffPfS1_j
+_ZN6plaits24LPCSpeechSynthController6RenderEbbiffffffPfS1_j
+_ZN6stmlib19lut_pitch_ratio_lowE
+_ZN6stmlib20lut_pitch_ratio_highE
+_ZN6plaits14SAMSpeechSynth4InitEv
+_ZN6plaits16NaiveSpeechSynth4InitEv
+_ZN6plaits22LPCSpeechSynthWordBank4InitEPKNS_26LPCSpeechSynthWordBankDataEiPN6stmlib15BufferAllocatorE
+_ZN6plaits24LPCSpeechSynthController4InitEPNS_22LPCSpeechSynthWordBankE
+_ZN6plaits11word_banks_E
