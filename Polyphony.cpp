@@ -4,7 +4,7 @@
 
 DSY_SDRAM_BSS char shared_buffer[262144];
 
-const int MAX_ENGINE_INDEX = 12;
+const int MAX_ENGINE_INDEX = 15;
 
 
 PolyphonyEngine poly_engine;

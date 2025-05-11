@@ -1,0 +1,150 @@
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 4
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"resources_sdram.cc"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text._ZN6plaits19PlaitsResourcesInitEv,"ax",%progbits
+  19              		.align	1
+  20              		.global	_ZN6plaits19PlaitsResourcesInitEv
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	_ZN6plaits19PlaitsResourcesInitEv:
+  26              	.LFB590:
+  27              		.file 1 "eurorack/plaits/resources_sdram.cc"
+   1:eurorack/plaits/resources_sdram.cc **** #include "plaits/resources.h"
+   2:eurorack/plaits/resources_sdram.cc **** #include <cstring>
+   3:eurorack/plaits/resources_sdram.cc **** 
+   4:eurorack/plaits/resources_sdram.cc **** namespace plaits {
+   5:eurorack/plaits/resources_sdram.cc **** 
+   6:eurorack/plaits/resources_sdram.cc **** // Allocate uninitialized copy of the integrated wavetable data in external SDRAM.
+   7:eurorack/plaits/resources_sdram.cc **** DSY_SDRAM_BSS int16_t wav_integrated_waves[WAV_INTEGRATED_WAVES_SIZE];
+   8:eurorack/plaits/resources_sdram.cc **** 
+   9:eurorack/plaits/resources_sdram.cc **** // Forward declaration of the flash-resident wavetable we renamed in resources.cc
+  10:eurorack/plaits/resources_sdram.cc **** extern const int16_t wav_integrated_waves_flash[WAV_INTEGRATED_WAVES_SIZE];
+  11:eurorack/plaits/resources_sdram.cc **** 
+  12:eurorack/plaits/resources_sdram.cc **** // Copy the wavetable from flash to SDRAM – must be called once after SDRAM is initialised.
+  13:eurorack/plaits/resources_sdram.cc **** void PlaitsResourcesInit() {
+  28              		.loc 1 13 28 view -0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  14:eurorack/plaits/resources_sdram.cc ****     memcpy(wav_integrated_waves, wav_integrated_waves_flash, sizeof(wav_integrated_waves));
+  32              		.loc 1 14 5 view .LVU1
+  33              		.loc 1 14 11 is_stmt 0 view .LVU2
+  34 0000 4FF4C332 		mov	r2, #99840
+  35 0004 0249     		ldr	r1, .L2
+  36 0006 0348     		ldr	r0, .L2+4
+  13:eurorack/plaits/resources_sdram.cc ****     memcpy(wav_integrated_waves, wav_integrated_waves_flash, sizeof(wav_integrated_waves));
+  37              		.loc 1 13 28 view .LVU3
+  38 0008 08B5     		push	{r3, lr}
+  39              		.cfi_def_cfa_offset 8
+  40              		.cfi_offset 3, -8
+  41              		.cfi_offset 14, -4
+  42              		.loc 1 14 11 view .LVU4
+  43 000a FFF7FEFF 		bl	memcpy
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 2
+
+
+  44              	.LVL0:
+  15:eurorack/plaits/resources_sdram.cc **** }
+  45              		.loc 1 15 1 view .LVU5
+  46 000e 08BD     		pop	{r3, pc}
+  47              	.L3:
+  48              		.align	2
+  49              	.L2:
+  50 0010 00000000 		.word	_ZN6plaits26wav_integrated_waves_flashE
+  51 0014 00000000 		.word	_ZN6plaits20wav_integrated_wavesE
+  52              		.cfi_endproc
+  53              	.LFE590:
+  55              		.section	.text.PlaitsResourcesInit_C,"ax",%progbits
+  56              		.align	1
+  57              		.global	PlaitsResourcesInit_C
+  58              		.syntax unified
+  59              		.thumb
+  60              		.thumb_func
+  62              	PlaitsResourcesInit_C:
+  63              	.LFB591:
+  16:eurorack/plaits/resources_sdram.cc **** 
+  17:eurorack/plaits/resources_sdram.cc **** } // namespace plaits
+  18:eurorack/plaits/resources_sdram.cc **** 
+  19:eurorack/plaits/resources_sdram.cc **** extern "C" {
+  20:eurorack/plaits/resources_sdram.cc **** void PlaitsResourcesInit_C() {
+  64              		.loc 1 20 30 is_stmt 1 view -0
+  65              		.cfi_startproc
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  68              		@ link register save eliminated.
+  21:eurorack/plaits/resources_sdram.cc ****     plaits::PlaitsResourcesInit();
+  69              		.loc 1 21 5 view .LVU7
+  70              		.loc 1 21 32 is_stmt 0 view .LVU8
+  71 0000 FFF7FEBF 		b	_ZN6plaits19PlaitsResourcesInitEv
+  72              	.LVL1:
+  73              		.cfi_endproc
+  74              	.LFE591:
+  76              		.global	_ZN6plaits20wav_integrated_wavesE
+  77              		.section	.sdram_bss,"aw"
+  78              		.align	1
+  81              	_ZN6plaits20wav_integrated_wavesE:
+  82 0000 00000000 		.space	99840
+  82      00000000 
+  82      00000000 
+  82      00000000 
+  82      00000000 
+  83              		.text
+  84              	.Letext0:
+  85              		.file 2 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+  86              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+  87              		.file 4 "lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h"
+  88              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+  89              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/cpp_type_traits.h
+  90              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+  91              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+  92              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+  93              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
+  94              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 3
+
+
+  95              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+  96              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+  97              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+  98              		.file 15 "lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_comp.h"
+  99              		.file 16 "lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ 100              		.file 17 "eurorack/stmlib/stmlib.h"
+ 101              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/stdlib.h"
+ 102              		.file 19 "lib/libdaisy/src/daisy_core.h"
+ 103              		.file 20 "eurorack/plaits/resources.h"
+ 104              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
+ 105              		.file 22 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 resources_sdram.cc
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:19     .text._ZN6plaits19PlaitsResourcesInitEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:25     .text._ZN6plaits19PlaitsResourcesInitEv:0000000000000000 _ZN6plaits19PlaitsResourcesInitEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:50     .text._ZN6plaits19PlaitsResourcesInitEv:0000000000000010 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:81     .sdram_bss:0000000000000000 _ZN6plaits20wav_integrated_wavesE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:56     .text.PlaitsResourcesInit_C:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:62     .text.PlaitsResourcesInit_C:0000000000000000 PlaitsResourcesInit_C
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:78     .sdram_bss:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+memcpy
+_ZN6plaits26wav_integrated_waves_flashE

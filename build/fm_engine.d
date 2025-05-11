@@ -108,7 +108,8 @@ build/fm_engine.o: eurorack/plaits/dsp/engine/fm_engine.cc \
  eurorack/plaits/dsp/engine/engine.h eurorack/plaits/dsp/dsp.h \
  eurorack/stmlib/stmlib.h eurorack/stmlib/dsp/units.h \
  eurorack/stmlib/dsp/dsp.h eurorack/stmlib/utils/buffer_allocator.h \
- eurorack/stmlib/dsp/parameter_interpolator.h eurorack/plaits/resources.h
+ eurorack/stmlib/dsp/parameter_interpolator.h eurorack/plaits/resources.h \
+ lib/libdaisy/src/dev/sdram.h lib/libdaisy/src/daisy_core.h
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h:
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h750xx.h:
 lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/core_cm7.h:
@@ -223,3 +224,5 @@ eurorack/stmlib/dsp/dsp.h:
 eurorack/stmlib/utils/buffer_allocator.h:
 eurorack/stmlib/dsp/parameter_interpolator.h:
 eurorack/plaits/resources.h:
+lib/libdaisy/src/dev/sdram.h:
+lib/libdaisy/src/daisy_core.h:

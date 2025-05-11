@@ -1265,8 +1265,7 @@ const int8_t* lookup_table_i8_table[] = {
   lut_lpc_excitation_pulse,
 };
 
-/*
-const int16_t wav_integrated_waves[] = {
+extern const int16_t wav_integrated_waves_flash[] = {
   -20784, -20822, -20847, -20860,
   -20860, -20847, -20822, -20784,
   -20734, -20671, -20596, -20509,
@@ -13753,6 +13752,5 @@ const int16_t wav_integrated_waves[] = {
 const int16_t* wavetables_table[] = {
   wav_integrated_waves,
 };
-*/
 
 }  // namespace plaits

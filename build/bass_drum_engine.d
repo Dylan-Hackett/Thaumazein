@@ -111,6 +111,7 @@ build/bass_drum_engine.o: eurorack/plaits/dsp/engine/bass_drum_engine.cc \
  eurorack/plaits/dsp/dsp.h \
  eurorack/plaits/dsp/oscillator/sine_oscillator.h \
  eurorack/stmlib/dsp/rsqrt.h eurorack/plaits/resources.h \
+ lib/libdaisy/src/dev/sdram.h lib/libdaisy/src/daisy_core.h \
  eurorack/plaits/dsp/drums/synthetic_bass_drum.h \
  eurorack/stmlib/utils/random.h eurorack/plaits/dsp/engine/engine.h \
  eurorack/stmlib/utils/buffer_allocator.h \
@@ -233,6 +234,8 @@ eurorack/plaits/dsp/dsp.h:
 eurorack/plaits/dsp/oscillator/sine_oscillator.h:
 eurorack/stmlib/dsp/rsqrt.h:
 eurorack/plaits/resources.h:
+lib/libdaisy/src/dev/sdram.h:
+lib/libdaisy/src/daisy_core.h:
 eurorack/plaits/dsp/drums/synthetic_bass_drum.h:
 eurorack/stmlib/utils/random.h:
 eurorack/plaits/dsp/engine/engine.h:

@@ -107,7 +107,8 @@ build/resonator.o: eurorack/plaits/dsp/physical_modelling/resonator.cc \
  eurorack/plaits/dsp/physical_modelling/resonator.h \
  eurorack/stmlib/dsp/filter.h eurorack/stmlib/stmlib.h \
  eurorack/stmlib/dsp/cosine_oscillator.h eurorack/stmlib/dsp/dsp.h \
- eurorack/stmlib/dsp/units.h eurorack/plaits/resources.h
+ eurorack/stmlib/dsp/units.h eurorack/plaits/resources.h \
+ lib/libdaisy/src/dev/sdram.h lib/libdaisy/src/daisy_core.h
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h:
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h750xx.h:
 lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/core_cm7.h:
@@ -220,3 +221,5 @@ eurorack/stmlib/dsp/cosine_oscillator.h:
 eurorack/stmlib/dsp/dsp.h:
 eurorack/stmlib/dsp/units.h:
 eurorack/plaits/resources.h:
+lib/libdaisy/src/dev/sdram.h:
+lib/libdaisy/src/daisy_core.h:

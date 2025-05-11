@@ -2,6 +2,7 @@
 #include "Arpeggiator.h"
 #include "Polyphony.h"
 #include "SynthStateStorage.h"
+#include "plaits/resources.h"
 #include <algorithm>
 
 // --- Global hardware variables ---
@@ -70,6 +71,11 @@ void InitializeHardware() {
     // Initialize Daisy Seed hardware
     hw.Configure();
     hw.Init(); // This calls SystemInit(), which sets VTOR to 0x08000000 by default
+    
+    // Initialize Plaits resources that require SDRAM
+    plaits::PlaitsResourcesInit_C();  // Correctly call namespaced C-linkage version
+    // plaits::TestLinkerFunction_C(); // This was removed, keep it removed or commented
+
     // Set sample rate to 32 kHz for lower CPU load and memory use
     hw.SetAudioSampleRate(SaiHandle::Config::SampleRate::SAI_32KHZ);
     SynthStateStorage::InitMemoryMapped(); // QSPI is configured for memory-mapped mode here

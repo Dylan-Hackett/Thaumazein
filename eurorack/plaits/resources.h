@@ -35,6 +35,7 @@
 
 
 #include "stmlib/stmlib.h"
+#include "dev/sdram.h" // Changed from daisy_core.h to ensure DSY_SDRAM_BSS is defined
 
 
 
@@ -50,6 +51,8 @@ extern const int8_t* lookup_table_i8_table[];
 
 extern const int16_t* wavetables_table[];
 
+extern DSY_SDRAM_BSS int16_t wav_integrated_waves[49920]; // Moved to SDRAM
+
 extern const float lut_sine[];
 extern const float lut_fm_frequency_quantizer[];
 extern const float lut_fold[];
@@ -62,7 +65,6 @@ extern const int16_t lut_ws_linear[];
 extern const int16_t lut_ws_bump[];
 extern const int16_t lut_ws_double_bump[];
 extern const int8_t lut_lpc_excitation_pulse[];
-extern const int16_t wav_integrated_waves[];
 #define LUT_SINE 0
 #define LUT_SINE_SIZE 1281
 #define LUT_FM_FREQUENCY_QUANTIZER 1
@@ -91,6 +93,13 @@ extern const int16_t wav_integrated_waves[];
 #define LUT_LPC_EXCITATION_PULSE_SIZE 640
 #define WAV_INTEGRATED_WAVES 0
 #define WAV_INTEGRATED_WAVES_SIZE 49920
+
+void PlaitsResourcesInit(); // Function to initialize SDRAM resources
+
+extern "C" {
+    void PlaitsResourcesInit_C();
+    // void TestLinkerFunction_C(); // Removed test function
+}
 
 }  // namespace plaits
 

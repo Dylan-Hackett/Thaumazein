@@ -110,6 +110,7 @@ build/additive_engine.o: eurorack/plaits/dsp/engine/additive_engine.cc \
  eurorack/stmlib/dsp/dsp.h eurorack/stmlib/utils/buffer_allocator.h \
  eurorack/plaits/dsp/oscillator/harmonic_oscillator.h \
  eurorack/stmlib/dsp/parameter_interpolator.h eurorack/plaits/resources.h \
+ lib/libdaisy/src/dev/sdram.h lib/libdaisy/src/daisy_core.h \
  eurorack/stmlib/dsp/cosine_oscillator.h
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h:
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h750xx.h:
@@ -226,4 +227,6 @@ eurorack/stmlib/utils/buffer_allocator.h:
 eurorack/plaits/dsp/oscillator/harmonic_oscillator.h:
 eurorack/stmlib/dsp/parameter_interpolator.h:
 eurorack/plaits/resources.h:
+lib/libdaisy/src/dev/sdram.h:
+lib/libdaisy/src/daisy_core.h:
 eurorack/stmlib/dsp/cosine_oscillator.h:

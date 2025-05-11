@@ -26,6 +26,7 @@ CC_SOURCES += $(wildcard eurorack/plaits/dsp/engine/*.cc)
 CC_SOURCES += $(wildcard eurorack/plaits/dsp/speech/*.cc)
 CC_SOURCES += $(wildcard eurorack/plaits/dsp/physical_modelling/*.cc)
 CC_SOURCES += eurorack/plaits/resources.cc
+CC_SOURCES += eurorack/plaits/resources_sdram.cc
 CC_SOURCES += $(STMLIB_DIR)/dsp/units.cc \
               $(STMLIB_DIR)/utils/random.cc
 
@@ -56,7 +57,7 @@ APP_TYPE = BOOT_QSPI
 C_INCLUDES += -Wno-unused-local-typedefs
 
 # Optimization level (can be overridden)
-OPT ?= -Os -s
+OPT ?= -Os
 
 # Set target Linker Script to QSPI (no 256k offset)
 LDSCRIPT = $(LIBDAISY_DIR)/core/STM32H750IB_qspi.lds
@@ -74,7 +75,7 @@ include $(SYSTEM_FILES_DIR)/Makefile # Include core makefile
 # --- Additions/Overrides AFTER Core Makefile --- 
 
 # Ensure 'all' target only builds the final elf
-all: $(BUILD_DIR)/$(TARGET).elf
+# all: $(BUILD_DIR)/$(TARGET).elf # COMMENTED OUT TO ALLOW CORE MAKEFILE TO BUILD .bin
 
 # Add .cc source files to the OBJECTS list defined by the core makefile
 # Use the same pattern (notdir/vpath) as the core makefile
@@ -83,7 +84,7 @@ OBJECTS += $(addprefix $(BUILD_DIR)/,$(notdir $(CC_SOURCES:.cc=.o)))
 # Add the rule for compiling .cc files
 # This pattern should match the .c/.cpp rules in the core Makefile
 $(BUILD_DIR)/%.o: %.cc $(MAKEFILE_LIST) | $(BUILD_DIR)
-	@echo Compiling $< 
+	@echo Compiling $<
 	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -c $< -o $@ $(DEPFLAGS) -Wa,-a,-ad,-alms=$(BUILD_DIR)/$(notdir $(<:.cc=.lst))
 
 # Explicitly override the linker rule AFTER OBJECTS is fully populated

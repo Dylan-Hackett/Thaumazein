@@ -104,7 +104,8 @@ build/resources.o: eurorack/plaits/resources.cc \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_usb.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h \
  lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h \
- eurorack/plaits/resources.h eurorack/stmlib/stmlib.h
+ eurorack/plaits/resources.h eurorack/stmlib/stmlib.h \
+ lib/libdaisy/src/dev/sdram.h lib/libdaisy/src/daisy_core.h
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h:
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h750xx.h:
 lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/core_cm7.h:
@@ -212,3 +213,5 @@ lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pcd_ex.h:
 lib/libdaisy/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_hcd.h:
 eurorack/plaits/resources.h:
 eurorack/stmlib/stmlib.h:
+lib/libdaisy/src/dev/sdram.h:
+lib/libdaisy/src/daisy_core.h:
