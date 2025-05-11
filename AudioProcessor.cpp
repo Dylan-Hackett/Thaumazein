@@ -1,6 +1,6 @@
 #include "Thaumazein.h"
 #include "mpr121_daisy.h"
-#include "DelayEffect.h"
+// #include "DelayEffect.h"
 #include "Polyphony.h" // Add include for PolyphonyEngine
 #include <cmath>
 #include <algorithm>
@@ -41,11 +41,7 @@ volatile int engine_retrigger_phase = 0;
 void AudioCallback(AudioHandle::InterleavingInputBuffer in,
                  AudioHandle::InterleavingOutputBuffer out,
                  size_t size) {
-    static bool audio_cb_started = false;
-    if(!audio_cb_started) {
-        hw.PrintLine("[AudioCallback] Enter");
-        audio_cb_started = true;
-    }
+    // Removed one-off debug print
     // Process UI controls at 1ms intervals inside audio callback
     static uint32_t last_ui_time = 0;
     uint32_t now_ms = hw.system.GetNow();
@@ -80,17 +76,17 @@ void ProcessUIAndControls() {
     ProcessControls();
     ReadKnobValues();
     
-    // Update Arpeggiator Tempo from Delay Time Knob if Arp is enabled
-    if (arp_enabled) {
-        arp.SetMainTempoFromKnob(delay_time_val); // delay_time_val is 0-1 from ReadKnobValues
-    }
+    // Delay effect removed: tempo control via delay_time knob commented out
+    // if (arp_enabled) {
+    //     arp.SetMainTempoFromKnob(delay_time_val);
+    // }
 
     float touch_control = touch_cv_value; 
     
     float intensity_factor = 0.5f;
 
     morph_knob_val   = morph_knob_val   * (1.0f - intensity_factor) + touch_control * intensity_factor;
-    delay_feedback_val = delay_feedback_val * (1.0f - intensity_factor) + touch_control * intensity_factor;
+    // delay_feedback_val = delay_feedback_val * (1.0f - intensity_factor) + touch_control * intensity_factor;  // Delay effect removed
 
 
 }
@@ -132,18 +128,25 @@ void RenderVoices(int engineIndex, bool poly_mode, int effective_num_voices, boo
     params.timbre_knob_val = timbre_knob_val;
     params.env_attack_val = env_attack_val;
     params.env_release_val = env_release_val;
-    params.delay_mix_val = delay_mix_val;
+    params.delay_mix_val = 0.0f;  // Delay removed, set mix to 0
     params.touch_cv_value = touch_cv_value;
     
     poly_engine.RenderBlock(params);
 }
 
 void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
-    DelayEffect::UpdateDelay();
-    
-    float dry_level = 1.0f - delay_mix_val;
-    DelayEffect::ApplyDelayToOutput(poly_engine.GetMainOutputBuffer(), out, size, dry_level);
-    
+    // Normalized output: average voices and apply master volume
+    const float* buffer = poly_engine.GetMainOutputBuffer();
+    const float norm = 1.0f / 32768.0f; // Convert int16 range to [-1,1]
+    for (size_t i = 0; i < size; i += 2) {
+        float raw = buffer[i/2];
+        // Convert to float and average voices
+        float sample = (raw * norm) / float(NUM_VOICES);
+        // Apply master volume (keep below 1.0)
+        sample *= MASTER_VOLUME;
+        out[i]   = sample;
+        out[i+1] = sample;
+    }
     UpdatePerformanceMonitors(size, out);
 }
 
