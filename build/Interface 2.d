@@ -262,7 +262,21 @@ build/Interface.o: Interface.cpp \
  eurorack/plaits/dsp/engine/wavetable_engine.h \
  eurorack/plaits/dsp/envelope.h eurorack/plaits/dsp/fx/low_pass_gate.h \
  mpr121_daisy.h VoiceEnvelope.h Effects/reverbsc.h \
- Effects/BiquadFilters.h Arpeggiator.h Polyphony.h SynthStateStorage.h
+ Effects/BiquadFilters.h Arpeggiator.h Polyphony.h SynthStateStorage.h \
+ eurorack/clouds/dsp/granular_processor.h \
+ eurorack/clouds/dsp/correlator.h eurorack/clouds/dsp/frame.h \
+ eurorack/clouds/dsp/fx/diffuser.h eurorack/clouds/dsp/fx/fx_engine.h \
+ eurorack/clouds/dsp/fx/pitch_shifter.h eurorack/clouds/dsp/fx/reverb.h \
+ eurorack/clouds/dsp/granular_sample_player.h eurorack/stmlib/dsp/atan.h \
+ eurorack/clouds/dsp/audio_buffer.h eurorack/stmlib/utils/dsp.h \
+ eurorack/clouds/dsp/mu_law.h eurorack/clouds/dsp/grain.h \
+ eurorack/clouds/resources.h eurorack/clouds/dsp/parameters.h \
+ eurorack/clouds/dsp/looping_sample_player.h \
+ eurorack/clouds/dsp/pvoc/phase_vocoder.h eurorack/stmlib/fft/shy_fft.h \
+ eurorack/clouds/dsp/pvoc/stft.h \
+ eurorack/clouds/dsp/pvoc/frame_transformation.h \
+ eurorack/clouds/dsp/sample_rate_converter.h \
+ eurorack/clouds/dsp/wsola_sample_player.h eurorack/clouds/dsp/window.h
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h7xx.h:
 lib/libdaisy/Drivers/CMSIS-Device/ST/STM32H7xx/Include/stm32h750xx.h:
 lib/libdaisy/Drivers/CMSIS_5/CMSIS/Core/Include/core_cm7.h:
@@ -589,3 +603,26 @@ Effects/BiquadFilters.h:
 Arpeggiator.h:
 Polyphony.h:
 SynthStateStorage.h:
+eurorack/clouds/dsp/granular_processor.h:
+eurorack/clouds/dsp/correlator.h:
+eurorack/clouds/dsp/frame.h:
+eurorack/clouds/dsp/fx/diffuser.h:
+eurorack/clouds/dsp/fx/fx_engine.h:
+eurorack/clouds/dsp/fx/pitch_shifter.h:
+eurorack/clouds/dsp/fx/reverb.h:
+eurorack/clouds/dsp/granular_sample_player.h:
+eurorack/stmlib/dsp/atan.h:
+eurorack/clouds/dsp/audio_buffer.h:
+eurorack/stmlib/utils/dsp.h:
+eurorack/clouds/dsp/mu_law.h:
+eurorack/clouds/dsp/grain.h:
+eurorack/clouds/resources.h:
+eurorack/clouds/dsp/parameters.h:
+eurorack/clouds/dsp/looping_sample_player.h:
+eurorack/clouds/dsp/pvoc/phase_vocoder.h:
+eurorack/stmlib/fft/shy_fft.h:
+eurorack/clouds/dsp/pvoc/stft.h:
+eurorack/clouds/dsp/pvoc/frame_transformation.h:
+eurorack/clouds/dsp/sample_rate_converter.h:
+eurorack/clouds/dsp/wsola_sample_player.h:
+eurorack/clouds/dsp/window.h:

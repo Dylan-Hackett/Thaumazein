@@ -38,6 +38,12 @@ volatile bool engine_changed_flag = false;
 // 0 = inactive, 2 = send trigger low this block, 1 = send trigger high next block
 volatile int engine_retrigger_phase = 0;
 
+// Clouds Integration: Define processor and buffers
+clouds::GranularProcessor clouds_processor;
+uint8_t cloud_buffer[118784]; // Placed in SDRAM via DSY_SDRAM_BSS in .h
+uint8_t cloud_buffer_ccm[65408]; // Placed in DTCM via DSY_DTCM_BSS in .h
+// End Clouds Integration
+
 void AudioCallback(AudioHandle::InterleavingInputBuffer in,
                  AudioHandle::InterleavingOutputBuffer out,
                  size_t size) {
@@ -68,6 +74,10 @@ void AudioCallback(AudioHandle::InterleavingInputBuffer in,
     UpdateArpState(engineIndex, poly_mode, effective_num_voices, arp_on);
     RenderVoices(engineIndex, poly_mode, effective_num_voices, arp_on);
     ApplyEffectsAndOutput(out, size);
+
+    // Clouds Integration: Call Prepare()
+    clouds_processor.Prepare();
+    // End Clouds Integration
 
     cpu_meter.OnBlockEnd(); // Mark the end of the audio block
 }
@@ -135,17 +145,49 @@ void RenderVoices(int engineIndex, bool poly_mode, int effective_num_voices, boo
 }
 
 void ApplyEffectsAndOutput(AudioHandle::InterleavingOutputBuffer out, size_t size) {
+    // Clouds Integration: Prepare input and output buffers for Clouds
+    static clouds::ShortFrame input_frames[BLOCK_SIZE];
+    static clouds::ShortFrame output_frames[BLOCK_SIZE];
+    // End Clouds Integration
+
     // Normalized output: average voices and apply master volume
     const float* buffer = poly_engine.GetMainOutputBuffer();
-    const float norm = 1.0f / 32768.0f; // Convert int16 range to [-1,1]
+    // const float norm = 1.0f / 32768.0f; // Convert int16 range to [-1,1] // Clouds handles this
+
+    // Clouds Integration: Feed synth output to Clouds input
+    for (size_t i = 0; i < BLOCK_SIZE; ++i) {
+        // Scale down to prevent overflow: average by number of voices and clamp to int16 range
+        float scaled = buffer[i] / static_cast<float>(NUM_VOICES); // keep level similar to original output path
+        if (scaled > 32767.f) scaled = 32767.f;
+        if (scaled < -32768.f) scaled = -32768.f;
+        int16_t sample_int = static_cast<int16_t>(scaled);
+        input_frames[i].l = sample_int;
+        input_frames[i].r = sample_int; // Mono input to Clouds
+    }
+    // End Clouds Integration
+
+    // Clouds Integration: Process audio through Clouds
+    clouds_processor.Process(input_frames, output_frames, BLOCK_SIZE);
+    // End Clouds Integration
+
     for (size_t i = 0; i < size; i += 2) {
-        float raw = buffer[i/2];
+        // Clouds Integration: Take output from Clouds
+        float outL = static_cast<float>(output_frames[i/2].l) / 32768.0f;
+        float outR = static_cast<float>(output_frames[i/2].r) / 32768.0f;
+        // End Clouds Integration
+        
+        // float raw = buffer[i/2]; // Original line
         // Convert to float and average voices
-        float sample = (raw * norm) / float(NUM_VOICES);
+        // float sample = (raw * norm) / float(NUM_VOICES); // Original line
+        
+        // For now, let's just use the left channel from Clouds and apply master volume.
+        // We might want to sum L+R or handle stereo properly later.
+        float sample = outL; // Using Clouds output
+        
         // Apply master volume (keep below 1.0)
         sample *= MASTER_VOLUME;
         out[i]   = sample;
-        out[i+1] = sample;
+        out[i+1] = sample; // Outputting mono for now from Clouds L channel
     }
     UpdatePerformanceMonitors(size, out);
 }

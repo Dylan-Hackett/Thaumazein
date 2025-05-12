@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 1
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 1
   41              		.cfi_offset 14, -4
   42              		.loc 1 14 11 view .LVU4
   43 000a FFF7FEFF 		bl	memcpy
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 2
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s 			page 2
 
 
   44              	.LVL0:
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 1
   92              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
   93              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstring"
   94              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 3
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s 			page 3
 
 
   95              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
@@ -132,18 +132,18 @@ ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 1
  103              		.file 20 "eurorack/plaits/resources.h"
  104              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/string.h"
  105              		.file 22 "<built-in>"
-ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s 			page 4
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s 			page 4
 
 
 DEFINED SYMBOLS
                             *ABS*:0000000000000000 resources_sdram.cc
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:19     .text._ZN6plaits19PlaitsResourcesInitEv:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:25     .text._ZN6plaits19PlaitsResourcesInitEv:0000000000000000 _ZN6plaits19PlaitsResourcesInitEv
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:50     .text._ZN6plaits19PlaitsResourcesInitEv:0000000000000010 $d
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:81     .sdram_bss:0000000000000000 _ZN6plaits20wav_integrated_wavesE
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:56     .text.PlaitsResourcesInit_C:0000000000000000 $t
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:62     .text.PlaitsResourcesInit_C:0000000000000000 PlaitsResourcesInit_C
-/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccVlCrkb.s:78     .sdram_bss:0000000000000000 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s:19     .text._ZN6plaits19PlaitsResourcesInitEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s:25     .text._ZN6plaits19PlaitsResourcesInitEv:0000000000000000 _ZN6plaits19PlaitsResourcesInitEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s:50     .text._ZN6plaits19PlaitsResourcesInitEv:0000000000000010 $d
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s:81     .sdram_bss:0000000000000000 _ZN6plaits20wav_integrated_wavesE
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s:56     .text.PlaitsResourcesInit_C:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s:62     .text.PlaitsResourcesInit_C:0000000000000000 PlaitsResourcesInit_C
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//ccjtZhLR.s:78     .sdram_bss:0000000000000000 $d
 
 UNDEFINED SYMBOLS
 memcpy

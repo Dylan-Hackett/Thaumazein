@@ -31,9 +31,7 @@
 
 #include "stmlib/stmlib.h"
 
-#ifndef TEST
-#include <stm32f4xx_conf.h>
-#endif 
+#define TEST  // Stub debug pin on non-F4 platforms
 
 namespace clouds {
 

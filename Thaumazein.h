@@ -18,6 +18,11 @@
 #include "Polyphony.h"
 #include "SynthStateStorage.h"
 
+// Clouds Integration
+#include "clouds/dsp/granular_processor.h"
+#include "clouds/dsp/parameters.h"
+// End Clouds Integration
+
 using namespace daisy;
 using namespace daisysp;
 using namespace stmlib;
@@ -101,5 +106,11 @@ extern const uint32_t ARP_LED_DURATION_MS;
 extern bool touch_sensor_present;
 
 extern PolyphonyEngine poly_engine;
+
+// Clouds Integration
+extern clouds::GranularProcessor clouds_processor;
+DSY_SDRAM_BSS extern uint8_t cloud_buffer[118784];
+DSY_SDRAM_BSS extern uint8_t cloud_buffer_ccm[65408];
+// End Clouds Integration
 
 #endif // THAUMAZEIN_H_ 

@@ -1,0 +1,150 @@
+Step 1: Instantiate and Initialize Clouds
+Inclusion: Begin by including the Mutable Instruments Clouds DSP headers (e.g. clouds/dsp/granular_processor.h and clouds/dsp/parameters.h) in the project source (likely in a central file like Thaumazein.h or the audio processing file). This gives access to the clouds::GranularProcessor class and parameter struct. Object Creation: Declare a global or static instance of clouds::GranularProcessor (e.g. clouds::GranularProcessor cloudsProcessor;) so it can be used in both initialization and the audio callback. You'll also need to allocate memory buffers for Clouds' audio processing. In the original Clouds code, two large buffers are used: one ~118KB general buffer and one ~64KB buffer (often placed in faster memory)
+github.com
+. For example:
+Define a large buffer (in SDRAM or regular RAM) for grain storage, e.g. static uint8_t cloud_buffer[118784];
+Define a smaller buffer (in CCM or DTCM memory for speed) around 65408 bytes (64KB minus a small margin) for Clouds, e.g. static uint8_t cloud_buffer_ccm[65408];
+Make sure to place the smaller buffer in fast memory if possible (using a section attribute or Daisy’s DSY_DTCM_BSS macro if available). These sizes come from the original Clouds module allocation
+github.com
+ and ensure enough memory for the granular buffers. Initialization: In the synth initialization routine (after audio hardware is set up but before audio processing begins), call the Clouds processor’s init function. For example, in InitializeSynth() or wherever other DSP components are inited:
+cpp
+Copy
+Edit
+cloudsProcessor.Init(cloud_buffer, sizeof(cloud_buffer), 
+                     cloud_buffer_ccm, sizeof(cloud_buffer_ccm));
+This mirrors the original Clouds firmware initialization, which allocates internal buffers and configures the processor
+github.com
+. After Init(), you should set initial parameter values. For instance, you may want to start with Clouds in fully dry mode so it doesn’t affect the sound until knobs are moved – do this by setting cloudsProcessor.mutable_parameters()->dry_wet = 0.0f (and other parameters to sensible defaults). Also set freeze = false initially
+github.com
+. (If the Clouds code has a separate Settings or calibration init, you can likely skip it – we will drive parameters directly via code rather than CV scaling.)
+Note: Ensure the audio sample rate and block size match Clouds’ expectations. Thaumazein is already configured for 32kHz and a block size of 32 samples per block
+github.com
+, which matches Clouds (Clouds uses 32kHz and processes audio in blocks of 32 frames
+github.com
+github.com
+). This alignment means the granular processor will run at the correct rate without additional conversion.
+Step 2: Route the Synth Output Through Clouds in the Audio Callback
+Modify the audio callback to insert Clouds at the end of the signal chain. In Thaumazein, the final mixing of voices happens in ApplyEffectsAndOutput() (called from the audio callback)
+github.com
+. We will replace or augment this function to pipe audio through the Clouds processor:
+Prepare Clouds Input: Grab the synth’s mixed output buffer (the sum of all voices) as usual. Instead of directly converting it to the hardware output, feed it into Clouds. Clouds expects stereo interleaved input in the form of 16-bit signed integers (its ShortFrame structure)
+github.com
+. We can use the existing mix buffer (which is a float array of length BLOCK_SIZE)
+github.com
+ and convert each frame to a ShortFrame. For each audio frame i (0 to 31 in a 32-sample block), do:
+Take the mixed output sample. Currently this is a float in the Daisy audio range (likely representing an int16 value – see below). Convert it to a short int. For example:
+cpp
+Copy
+Edit
+float raw = mix_buffer_out[i];                // raw mixed sample
+int16_t sample_int = static_cast<int16_t>(raw); 
+inputFrames[i].l = sample_int;
+inputFrames[i].r = sample_int;
+Here inputFrames is an array of clouds::ShortFrame[BLOCK_SIZE]. We copy the same sample to left and right, effectively giving Clouds a mono input (since the synth output is mono summed) – this routes the full synth mix into both channels of Clouds. (Optional: If you prefer to feed Clouds a stereo signal, you could route mix_buffer_out to left and, say, use the synth’s auxiliary output for right if available. But generally using the mono mix for both channels is fine for a final effect.)
+Amplitude Scaling: The synth’s mix buffer contains summed 16-bit voice outputs (each voice outputs int16 samples)
+github.com
+. In the original code, they convert these to float and divide by 32768 and by number of voices before output to scale to –1.0 to 1.0 range
+github.com
+. For Clouds, however, we want to provide the 16-bit range directly. Thus, cast or round the mixed samples to int16_t without scaling so that a value of ~32767 corresponds to 0 dB into Clouds. (Clouds internally will handle saturation and mix with dry/wet). In other words, do not apply the 1/32768 normalization or master volume when constructing inputFrames – feed the raw int16-range values to Clouds.
+Process through Clouds: Call the Clouds processor for the block. Use the Clouds API:
+cpp
+Copy
+Edit
+cloudsProcessor.Process(inputFrames, outputFrames, BLOCK_SIZE);
+where outputFrames is an array of ShortFrame[BLOCK_SIZE] to receive Clouds’ output
+github.com
+github.com
+. This performs the granular processing on the entire audio block. Internally, Clouds will mix dry vs wet and apply the granular effects according to its parameter settings.
+Collect Clouds Output: After Process(), iterate over the outputFrames and convert them back to floats for the hardware output buffer. For each frame i:
+Take the outputFrames[i].l and .r values (left and right 16-bit outputs from Clouds). Convert to float in the range –1.0 to 1.0 by dividing by 32768.0. For example:
+cpp
+Copy
+Edit
+float outL = outputFrames[i].l / 32768.f;
+float outR = outputFrames[i].r / 32768.f;
+Apply the global master volume as before. For instance:
+cpp
+Copy
+Edit
+float finalL = outL * MASTER_VOLUME;
+float finalR = outR * MASTER_VOLUME;
+Then write these to the interleaved audio output (out[2*i] = finalL; out[2*i+1] = finalR;). Using the master volume here ensures the overall output level remains consistent with how the synth behaved pre-Clouds
+github.com
+. (The original code applied MASTER_VOLUME before output; doing it after Clouds yields the same result since we fed Clouds an un-attenuated signal.)
+By implementing the above, the entire synth output is now routed through Clouds as a final effect stage. All voice audio passes into the granular processor each block, and Clouds’ stereo output is sent to the DAC.
+Tip: Make sure to handle buffer indexing carefully. Thaumazein’s audio callback uses an interleaved buffer with size samples (where size = 2*BLOCK_SIZE for stereo)
+github.com
+. When converting to/from Clouds frames, work in terms of frames (0 to 31) rather than raw sample index. Also consider adding any necessary saturation guard when casting to int16 (to prevent overflow if the summed voices exceed 16-bit range, though the synth’s voice mixing already divides by number of voices in output stage).
+Finally, if Clouds has any preparation step that needs calling each block, include that as well. In the original Clouds firmware, GranularProcessor::Prepare() is called continuously in the main loop to prepare grain buffers
+github.com
+. It’s wise to call cloudsProcessor.Prepare() periodically (for example, at the end of each audio callback or every few milliseconds) to perform any background maintenance the granular engine needs.
+Step 3: Map ADC Knobs to Clouds Parameters
+To achieve “full control of Clouds parameters using the existing ADC knobs”, you will tie each Clouds parameter to an appropriate knob value. This can be done whenever knob readings are updated (in Thaumazein, knob ADCs are read and stored every audio block in ReadKnobValues() and related calls
+github.com
+). After the knob values are read into their global variables (pitch_val, morph_knob_val, etc.), assign those values to Clouds:
+First, obtain a reference to Clouds’ parameter structure each block:
+cpp
+Copy
+Edit
+clouds::Parameters *p = cloudsProcessor.mutable_parameters();
+Now you can set fields on *p. The Parameters struct defines all the Clouds controls (position, size, pitch, density, texture, dry_wet, etc.)
+github.com
+.
+Pitch: Map the synth’s pitch knob to Clouds’ pitch transposition. For example: p->pitch = pitch_val;
+github.com
+. This way, as the user turns the pitch knob (which likely shifts the Plaits oscillator tuning), it will also shift the granular pitch. (You may want to offset or scale this value if needed – e.g. Clouds expects pitch 0.5 to be no transpose in some implementations – but as a starting point, the raw 0–1 from the knob can be used, since Clouds will interpret the 0–1 range internally as its full pitch range).
+Texture: Map the Morph knob to Clouds texture parameter. e.g. p->texture = morph_knob_val;. The Morph knob already might be modulated by touch pressure in the code
+github.com
+; using that same value means the grain texture will evolve with any existing modulation as well.
+Density: Map the Harmonics knob to grain density: p->density = harm_knob_val;. As this knob changes the oscillator’s harmonic content, it will simultaneously control how dense the Clouds granular output is, which can create rich interactions.
+Position: Map the Timbre knob to granular position: p->position = timbre_knob_val;. The Timbre knob (which might select or morph Plaits engine timbres) will also scan through the position in the Clouds buffer. This means turning that knob not only changes the oscillator timbre but also shifts the segment of audio that Clouds is granulating, effectively linking the two transformations.
+Size: You can choose a knob for grain size (duration of grains). If the synth’s Delay Time knob (ADC 0) is free (since delay was removed, it’s now only used for ARP tempo when arp is on), repurpose it: p->size = delay_time_val;. This gives the now-unused delay time knob a new role controlling grain size. The user will then adjust grain size with what was the delay time control. (If the arpeggiator is active, this knob will also still affect ARP tempo – so the user should be aware it has dual function in that case, as per the requirement of simultaneous control.)
+Wet/Dry Mix: Use the old Delay Mix knob (ADC 1, labeled delay_mix_feedback_knob) to control Clouds’ dry_wet mix. First, re-enable this ADC in the code (uncomment its init and reading in InitializeControls and ReadKnobValues). Then map: p->dry_wet = delay_mix_feedback_knob.Value(); (or the variable it’s read into). This knob will now act as an effect mix: turn it up to blend in the granular effect on top of the dry synth sound. For simplicity, you can also tie Clouds feedback to the same knob or value if a separate control is not available – in the original design this single knob controlled both delay mix and feedback together
+github.com
+. For example, set p->feedback = delay_mix_val; as well, so increasing that knob raises both the amount of wet signal and the feedback in Clouds’ buffer (similarly to how a delay’s mix/feedback might both increase). This is a compromise to achieve some feedback control without an extra physical knob. (Alternatively, see next point for using another control for feedback).
+Reverb and Feedback: Clouds includes a built-in reverb and a feedback parameter (especially effective in looping delay mode). If you have an unused control like the Mod Wheel input (ADC 11), you can dedicate it to one of these. For instance, use the mod wheel as a reverb level: p->reverb = mod_wheel.Value();. Then use the re-enabled delay mix knob exclusively for p->dry_wet and use, say, the Release envelope knob for feedback: p->feedback = env_release_val;. (This means as the user adjusts release time, they also subtly adjust feedback – which might not be intuitive, but it does fulfill the “simultaneous control” goal. Another option could be splitting the previously combined mix/feedback knob into two roles: e.g. treat the upper half of its range as affecting feedback – however, that complicates the interaction.) Choose mappings that make sense for your device and inform the user of the dual-purpose nature of each control.
+Stereo Spread: If a parameter is left, you can also map Clouds stereo_spread. For example, the Attack envelope knob could double as stereo spread: p->stereo_spread = env_attack_val;. This way longer attack also widens the stereo image of grains. It’s a somewhat arbitrary pairing, but it uses all available knobs. If this feels too odd, you can also set stereo_spread to a constant (e.g. 0.5) or tie it to an existing stereo width setting if any.
+Freeze (Buffer Hold): The Clouds freeze parameter is a boolean that locks the audio buffer (no new input)
+github.com
+. To give the user control of freeze, map it to an existing toggle or button. For example, if you have a spare touch pad or a combination, you could toggle p->freeze when a certain pad is pressed. One idea: use one of the model select touch pads (ADC 9 or 10) when held for a second as a freeze toggle. In code, you’d detect that condition and set p->freeze = true (and set false when released). This part is optional but provides the full Clouds experience if a control can be allocated for it.
+All these assignments should be done each time the knobs are read/updated – typically in the control processing part of the audio callback (or immediately before calling cloudsProcessor.Process). In Thaumazein, a good spot is right after ReadKnobValues() in the audio callback’s ProcessUIAndControls() loop
+github.com
+. By updating Clouds parameters in sync with knob reads, the knob will simultaneously affect the synth (via the existing pathways) and the Clouds effect. For example, turning the Morph knob will continue morphing the Plaits engine and adjust the Clouds texture at the same time. Because we are reusing the knob values, no extra scaling is typically needed – the ADC gives 0.0–1.0 floats which Clouds expects for its parameters (each Clouds parameter is a float 0–1 range in the Parameters struct
+github.com
+). Clouds internally interpolates and constrains these values to meaningful ranges (e.g. pitch 0–1 may map to ±2 octaves, etc.). Moreover, the Daisy AnalogControl already applies some filtering to knob moves, and Clouds will also smooth sudden changes per-block to avoid zipper noise (for example, the dry/wet mix is interpolated each audio block
+github.com
+). This means you should get smooth parameter transitions without needing heavy additional smoothing.
+Step 4: Configuration and Performance Considerations
+Sample Rate: Confirm that the Daisy is running at 32kHz – which it is, per the project settings
+github.com
+. Clouds was designed for 32kHz operation, and indeed the code initializes its internal components at 32000 Hz
+github.com
+. With the hardware already at 32k, no sample rate conversion is needed. (If in the future you change sample rate, you’d also need to adjust Clouds’ initialization or quality settings accordingly.)
+Audio Block Size: Ensure the audio callback block size remains 32 samples. Thaumazein sets BLOCK_SIZE 32 in Polyphony.h
+github.com
+ and applies it to the hardware (hw.SetAudioBlockSize(BLOCK_SIZE) is called during init
+github.com
+). This matches Clouds’ kMaxBlockSize of 32
+github.com
+. Keeping this alignment is important, as the Clouds Process function is optimized for processing 32-sample blocks. (If the block size were different, you could still call Clouds in chunks of 32 within the callback, but matching it exactly is simplest.)
+Memory and CPU: The added Clouds processor will consume a significant chunk of RAM and processing. The Daisy Seed should handle it at 32kHz/32-sample blocks, but monitor CPU usage (the project’s cpu_meter can help). If CPU usage is high, consider disabling unused Clouds features or reducing voices in the synth. Memory-wise, our allocated ~180KB for Clouds fits in Daisy’s external SDRAM easily. We reused the spare memory for Clouds, so there’s no conflict with the polyphony engine (which uses the shared SDRAM buffer via the BufferAllocator)
+github.com
+github.com
+. If necessary, you can reduce the cloud_buffer size (trading off maximum grain length) to save RAM.
+Parameter Ranges and Smoothing: The knob-to-parameter mappings suggested are mostly one-to-one and use the full 0–1 range of each knob for the 0–1 range of each Clouds parameter. This gives intuitive full-range control. If you find the effect too extreme (for example, Clouds pitch jumping too far), you can scale or bias the values (e.g., p->pitch = (pitch_val * 2.0f - 1.0f) to make center of knob = no pitch shift). Additionally, because two functions are tied to each knob, test and adjust the feel: you might fine-tune the influence on Clouds if one aspect should dominate. The system already does basic smoothing on knobs, and Clouds does per-block interpolation on critical parameters (e.g. mix, pitch, etc.), so no major additional filtering is required. Just ensure to update the Clouds parameters every block before calling Process(), so that the latest knob values are used and interpolated internally.
+By following these steps, you will have inserted a Clouds granular effect at the end of the Thaumazein synth’s signal chain. The audio routing guarantees the full synth output is processed by Clouds each block, and the control routing lets the existing knobs tweak Clouds in parallel with their normal synth duties. Be sure to test each control to verify that the dual control feels reasonable, and adjust mappings if needed (for example, if one parameter is too sensitive, apply a curve or limit). With this integration, Thaumazein will output the lush, textured effects of Clouds as a final stage, greatly expanding the sonic palette while preserving the original synth functionality. Source References: The implementation touches the following areas in the codebase:
+Audio Callback: modify ApplyEffectsAndOutput() in AudioProcessor.cpp to route through Clouds
+github.com
+.
+Clouds Init: likely add init calls in InitializeSynth() or similar (where Plaits voices are inited) using Clouds code patterns
+github.com
+.
+Knob Processing: update ProcessControls/ReadKnobValues in Interface.cpp to set Clouds parameters after reading knobs
+github.com
+.
+Global Declarations: add Clouds processor and buffers in a header or globally accessible file (e.g. Thaumazein.h alongside other externs
+github.com
+).
+By following the plan step-by-step and using the code references as a guide, you should be able to successfully embed Mutable Instruments’ Clouds into the Thaumazein synth engine. This will result in the synth’s output running through Clouds’ granular texture synthesis, with the device’s knobs affording real-time control over Clouds’ position, size, texture, density, mix, etc., on top of their original functions. 
+github.com
+github.com

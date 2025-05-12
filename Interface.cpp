@@ -38,6 +38,7 @@ AnalogControl arp_pad;               // ADC 8 (Pin 23) Arpeggiator Toggle Pad
 AnalogControl model_prev_pad;        // ADC 9 (Pin 24) Model Select Previous Pad
 AnalogControl model_next_pad;        // ADC 10 (Pin 25) Model Select Next Pad
 AnalogControl mod_wheel;             // ADC 11 (Pin 28) Mod Wheel Control
+AnalogControl delay_mix_feedback_knob; // ADC 1 (Pin 16) Delay Mix & Feedback
 
 // CPU usage monitoring
 float sample_rate = 48000.0f; 
@@ -53,6 +54,7 @@ volatile float adc_raw_values[12] = {0.0f};
 float pitch_val, harm_knob_val, timbre_knob_val, morph_knob_val;
 float env_attack_val, env_release_val;
 float delay_time_val;
+float delay_mix_feedback_val;
 
 // Simple diagnostic blink: flashes the Daisy user LED 'count' times rapidly.
 static void DebugBlink(int count)
@@ -124,6 +126,7 @@ void InitializeControls() {
     model_prev_pad.Init(hw.adc.GetPtr(9), sample_rate);        // ADC 9
     model_next_pad.Init(hw.adc.GetPtr(10), sample_rate);       // ADC 10
     mod_wheel.Init(hw.adc.GetPtr(11), sample_rate);            // ADC 11
+    delay_mix_feedback_knob.Init(hw.adc.GetPtr(1), sample_rate);  // ADC 1
 }
 
 void InitializeTouchSensor() {
@@ -196,6 +199,13 @@ void InitializeSynth() {
         arp_led_timestamps[11 - pad_idx] = hw.system.GetNow();
     });
     arp.SetDirection(Arpeggiator::AsPlayed);
+
+    // Clouds Integration: Initialize Clouds processor
+    clouds_processor.Init(cloud_buffer, sizeof(cloud_buffer),
+                          cloud_buffer_ccm, sizeof(cloud_buffer_ccm));
+    clouds_processor.mutable_parameters()->dry_wet = 0.0f;
+    clouds_processor.mutable_parameters()->freeze = false;
+    // End Clouds Integration
 
     hw.StartLog(false); // Start log immediately (non-blocking)
     DebugBlink(9);
@@ -353,6 +363,7 @@ void ProcessControls() {
     morph_knob.Process();             // ADC 6
     pitch_knob.Process();             // ADC 7
     // Process the remaining ADC-based controls
+    delay_mix_feedback_knob.Process(); // ADC 1
     arp_pad.Process();            // Process ADC 8: Arpeggiator Toggle Pad
     model_prev_pad.Process();     // Process ADC 9: Model Select Previous Pad
     model_next_pad.Process();     // Process ADC 10: Model Select Next Pad
@@ -371,6 +382,7 @@ void ProcessControls() {
 // Moved from AudioProcessor.cpp
 void ReadKnobValues() {
     delay_time_val = delay_time_knob.Value();           // ADC 0
+    delay_mix_feedback_val = delay_mix_feedback_knob.Value(); // ADC 1
     env_release_val = env_release_knob.Value();       // ADC 2
     env_attack_val = env_attack_knob.Value();        // ADC 3
     timbre_knob_val = timbre_knob.Value();            // ADC 4
@@ -387,4 +399,27 @@ void ReadKnobValues() {
     const float intensity = 0.5f;
     morph_knob_val      = morph_knob_val * (1.0f - intensity) + touch_cv_value * intensity;
     // delay_feedback_val  = delay_feedback_val * (1.0f - intensity) + touch_cv_value * intensity;
+
+    // Clouds Integration: Update Clouds parameters from knobs
+    clouds::Parameters* p = clouds_processor.mutable_parameters();
+    if (p) { // Check if p is not null, though mutable_parameters() should always return a valid pointer
+        p->pitch         = pitch_val;
+        p->texture       = morph_knob_val; // morph_knob_val is already affected by touch_cv_value above
+        p->density       = harm_knob_val;
+        p->position      = timbre_knob_val; // control position with knob again
+        p->size          = delay_time_val; // Repurposed delay time knob
+        
+        // ADC 1 (delay_mix_feedback_knob) controls dry_wet and feedback
+        p->dry_wet       = delay_mix_feedback_val;
+        p->feedback      = 0.0f;
+        p->reverb        = delay_mix_feedback_val; // same as dry_wet knob
+        p->stereo_spread = env_attack_val;
+        // Freeze when mod wheel exceeds threshold
+        p->freeze        = (mod_wheel.Value() > 0.3f);
+        // p->freeze is not yet mapped
+    }
+    // End Clouds Integration
+
+    // Always force Clouds into Granular mode
+    clouds_processor.set_playback_mode(clouds::PLAYBACK_MODE_GRANULAR);
 } 

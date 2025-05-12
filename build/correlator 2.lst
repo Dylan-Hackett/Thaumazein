@@ -1,0 +1,407 @@
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 4
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"correlator.cc"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text._ZN6clouds10Correlator4InitEPmS1_,"ax",%progbits
+  19              		.align	1
+  20              		.global	_ZN6clouds10Correlator4InitEPmS1_
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	_ZN6clouds10Correlator4InitEPmS1_:
+  26              	.LVL0:
+  27              	.LFB1413:
+  28              		.file 1 "eurorack/clouds/dsp/correlator.cc"
+   1:eurorack/clouds/dsp/correlator.cc **** // Copyright 2014 Emilie Gillet.
+   2:eurorack/clouds/dsp/correlator.cc **** //
+   3:eurorack/clouds/dsp/correlator.cc **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/clouds/dsp/correlator.cc **** //
+   5:eurorack/clouds/dsp/correlator.cc **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/clouds/dsp/correlator.cc **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/clouds/dsp/correlator.cc **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/clouds/dsp/correlator.cc **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/clouds/dsp/correlator.cc **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/clouds/dsp/correlator.cc **** // furnished to do so, subject to the following conditions:
+  11:eurorack/clouds/dsp/correlator.cc **** // 
+  12:eurorack/clouds/dsp/correlator.cc **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/clouds/dsp/correlator.cc **** // all copies or substantial portions of the Software.
+  14:eurorack/clouds/dsp/correlator.cc **** // 
+  15:eurorack/clouds/dsp/correlator.cc **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/clouds/dsp/correlator.cc **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/clouds/dsp/correlator.cc **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/clouds/dsp/correlator.cc **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/clouds/dsp/correlator.cc **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/clouds/dsp/correlator.cc **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/clouds/dsp/correlator.cc **** // THE SOFTWARE.
+  22:eurorack/clouds/dsp/correlator.cc **** // 
+  23:eurorack/clouds/dsp/correlator.cc **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/clouds/dsp/correlator.cc **** //
+  25:eurorack/clouds/dsp/correlator.cc **** // -----------------------------------------------------------------------------
+  26:eurorack/clouds/dsp/correlator.cc **** //
+  27:eurorack/clouds/dsp/correlator.cc **** // Search for stretch/shift splicing points by maximizing correlation.
+  28:eurorack/clouds/dsp/correlator.cc **** 
+  29:eurorack/clouds/dsp/correlator.cc **** #include "clouds/dsp/correlator.h"
+  30:eurorack/clouds/dsp/correlator.cc **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s 			page 2
+
+
+  31:eurorack/clouds/dsp/correlator.cc **** #include <algorithm>
+  32:eurorack/clouds/dsp/correlator.cc **** 
+  33:eurorack/clouds/dsp/correlator.cc **** namespace clouds {
+  34:eurorack/clouds/dsp/correlator.cc **** 
+  35:eurorack/clouds/dsp/correlator.cc **** using namespace std;
+  36:eurorack/clouds/dsp/correlator.cc **** 
+  37:eurorack/clouds/dsp/correlator.cc **** void Correlator::Init(uint32_t* source, uint32_t* destination) {
+  29              		.loc 1 37 64 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33              		@ link register save eliminated.
+  38:eurorack/clouds/dsp/correlator.cc ****   source_ = source;
+  34              		.loc 1 38 3 view .LVU1
+  39:eurorack/clouds/dsp/correlator.cc ****   destination_ = destination;
+  40:eurorack/clouds/dsp/correlator.cc ****   offset_ = 0;
+  35              		.loc 1 40 11 is_stmt 0 view .LVU2
+  36 0000 0023     		movs	r3, #0
+  37 0002 8360     		str	r3, [r0, #8]
+  41:eurorack/clouds/dsp/correlator.cc ****   best_match_ = 0;
+  38              		.loc 1 41 15 view .LVU3
+  39 0004 C361     		str	r3, [r0, #28]
+  42:eurorack/clouds/dsp/correlator.cc ****   done_ = true;
+  40              		.loc 1 42 9 view .LVU4
+  41 0006 0123     		movs	r3, #1
+  39:eurorack/clouds/dsp/correlator.cc ****   destination_ = destination;
+  42              		.loc 1 39 16 view .LVU5
+  43 0008 C0E90012 		strd	r1, r2, [r0]
+  40:eurorack/clouds/dsp/correlator.cc ****   best_match_ = 0;
+  44              		.loc 1 40 3 is_stmt 1 view .LVU6
+  41:eurorack/clouds/dsp/correlator.cc ****   best_match_ = 0;
+  45              		.loc 1 41 3 view .LVU7
+  46              		.loc 1 42 3 view .LVU8
+  47              		.loc 1 42 9 is_stmt 0 view .LVU9
+  48 000c 80F82430 		strb	r3, [r0, #36]
+  43:eurorack/clouds/dsp/correlator.cc **** }
+  49              		.loc 1 43 1 view .LVU10
+  50 0010 7047     		bx	lr
+  51              		.cfi_endproc
+  52              	.LFE1413:
+  54              		.section	.text._ZN6clouds10Correlator21EvaluateNextCandidateEv,"ax",%progbits
+  55              		.align	1
+  56              		.global	_ZN6clouds10Correlator21EvaluateNextCandidateEv
+  57              		.syntax unified
+  58              		.thumb
+  59              		.thumb_func
+  61              	_ZN6clouds10Correlator21EvaluateNextCandidateEv:
+  62              	.LVL1:
+  63              	.LFB1414:
+  44:eurorack/clouds/dsp/correlator.cc **** 
+  45:eurorack/clouds/dsp/correlator.cc **** void Correlator::EvaluateNextCandidate() {
+  64              		.loc 1 45 42 is_stmt 1 view -0
+  65              		.cfi_startproc
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  46:eurorack/clouds/dsp/correlator.cc ****   if (done_) {
+  68              		.loc 1 46 3 view .LVU12
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s 			page 3
+
+
+  69 0000 90F82410 		ldrb	r1, [r0, #36]	@ zero_extendqisi2
+  45:eurorack/clouds/dsp/correlator.cc ****   if (done_) {
+  70              		.loc 1 45 42 is_stmt 0 view .LVU13
+  71 0004 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  72              		.cfi_def_cfa_offset 24
+  73              		.cfi_offset 4, -24
+  74              		.cfi_offset 5, -20
+  75              		.cfi_offset 6, -16
+  76              		.cfi_offset 7, -12
+  77              		.cfi_offset 8, -8
+  78              		.cfi_offset 14, -4
+  79              		.loc 1 46 3 view .LVU14
+  80 0008 0029     		cmp	r1, #0
+  81 000a 43D1     		bne	.L2
+  47:eurorack/clouds/dsp/correlator.cc ****     return;
+  48:eurorack/clouds/dsp/correlator.cc ****   }
+  49:eurorack/clouds/dsp/correlator.cc ****   uint32_t num_words = size_ >> 5;
+  82              		.loc 1 49 3 is_stmt 1 view .LVU15
+  50:eurorack/clouds/dsp/correlator.cc ****   uint32_t offset_words = candidate_ >> 5;
+  51:eurorack/clouds/dsp/correlator.cc ****   uint32_t offset_bits = candidate_ & 0x1f;
+  52:eurorack/clouds/dsp/correlator.cc ****   uint32_t* source = &source_[0];
+  53:eurorack/clouds/dsp/correlator.cc ****   uint32_t* destination = &destination_[offset_words];
+  83              		.loc 1 53 13 is_stmt 0 view .LVU16
+  84 000c 4468     		ldr	r4, [r0, #4]
+  85 000e 0668     		ldr	r6, [r0]
+  50:eurorack/clouds/dsp/correlator.cc ****   uint32_t offset_words = candidate_ >> 5;
+  86              		.loc 1 50 27 view .LVU17
+  87 0010 D0E90452 		ldrd	r5, r2, [r0, #16]
+  88              	.LVL2:
+  51:eurorack/clouds/dsp/correlator.cc ****   uint32_t* source = &source_[0];
+  89              		.loc 1 51 3 is_stmt 1 view .LVU18
+  90 0014 043E     		subs	r6, r6, #4
+  50:eurorack/clouds/dsp/correlator.cc ****   uint32_t offset_words = candidate_ >> 5;
+  91              		.loc 1 50 38 is_stmt 0 view .LVU19
+  92 0016 5311     		asrs	r3, r2, #5
+  93              	.LVL3:
+  51:eurorack/clouds/dsp/correlator.cc ****   uint32_t* source = &source_[0];
+  94              		.loc 1 51 12 view .LVU20
+  95 0018 02F01F0C 		and	ip, r2, #31
+  96              	.LVL4:
+  52:eurorack/clouds/dsp/correlator.cc ****   uint32_t* destination = &destination_[offset_words];
+  97              		.loc 1 52 3 is_stmt 1 view .LVU21
+  98              		.loc 1 53 3 view .LVU22
+  54:eurorack/clouds/dsp/correlator.cc ****   
+  55:eurorack/clouds/dsp/correlator.cc ****   uint32_t xcorr = 0;
+  99              		.loc 1 55 3 view .LVU23
+  56:eurorack/clouds/dsp/correlator.cc ****   for (uint32_t i = 0; i < num_words; ++i) {
+ 100              		.loc 1 56 3 view .LVU24
+  49:eurorack/clouds/dsp/correlator.cc ****   uint32_t offset_words = candidate_ >> 5;
+ 101              		.loc 1 49 30 is_stmt 0 view .LVU25
+ 102 001c 6F11     		asrs	r7, r5, #5
+  53:eurorack/clouds/dsp/correlator.cc ****   
+ 103              		.loc 1 53 13 view .LVU26
+ 104 001e 04EB8304 		add	r4, r4, r3, lsl #2
+ 105              	.LVL5:
+  53:eurorack/clouds/dsp/correlator.cc ****   
+ 106              		.loc 1 53 13 view .LVU27
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s 			page 4
+
+
+ 107 0022 04EB8707 		add	r7, r4, r7, lsl #2
+ 108              	.LVL6:
+ 109              	.L5:
+ 110              	.LBB2:
+ 111              		.loc 1 56 26 is_stmt 1 discriminator 3 view .LVU28
+ 112 0026 BC42     		cmp	r4, r7
+ 113 0028 27D0     		beq	.L4
+ 114              	.LBB3:
+  57:eurorack/clouds/dsp/correlator.cc ****     uint32_t source_bits = source[i];
+ 115              		.loc 1 57 5 discriminator 2 view .LVU29
+ 116              	.LVL7:
+  58:eurorack/clouds/dsp/correlator.cc ****     uint32_t destination_bits = 0;
+ 117              		.loc 1 58 5 discriminator 2 view .LVU30
+  59:eurorack/clouds/dsp/correlator.cc ****     destination_bits |= destination[i] << offset_bits;
+ 118              		.loc 1 59 5 discriminator 2 view .LVU31
+ 119              		.loc 1 59 38 is_stmt 0 discriminator 2 view .LVU32
+ 120 002a D4F800E0 		ldr	lr, [r4]
+ 121              	.LVL8:
+  60:eurorack/clouds/dsp/correlator.cc ****     destination_bits |= destination[i + 1] >> (32 - offset_bits);
+ 122              		.loc 1 60 5 is_stmt 1 discriminator 2 view .LVU33
+  61:eurorack/clouds/dsp/correlator.cc ****     uint32_t count = ~(source_bits ^ destination_bits);
+ 123              		.loc 1 61 5 discriminator 2 view .LVU34
+  60:eurorack/clouds/dsp/correlator.cc ****     destination_bits |= destination[i + 1] >> (32 - offset_bits);
+ 124              		.loc 1 60 51 is_stmt 0 discriminator 2 view .LVU35
+ 125 002e CCF12008 		rsb	r8, ip, #32
+  60:eurorack/clouds/dsp/correlator.cc ****     destination_bits |= destination[i + 1] >> (32 - offset_bits);
+ 126              		.loc 1 60 44 discriminator 2 view .LVU36
+ 127 0032 54F8043F 		ldr	r3, [r4, #4]!
+ 128              	.LVL9:
+  59:eurorack/clouds/dsp/correlator.cc ****     destination_bits |= destination[i] << offset_bits;
+ 129              		.loc 1 59 40 discriminator 2 view .LVU37
+ 130 0036 0EFA0CFE 		lsl	lr, lr, ip
+ 131              	.LVL10:
+  60:eurorack/clouds/dsp/correlator.cc ****     destination_bits |= destination[i + 1] >> (32 - offset_bits);
+ 132              		.loc 1 60 44 discriminator 2 view .LVU38
+ 133 003a 23FA08F3 		lsr	r3, r3, r8
+  60:eurorack/clouds/dsp/correlator.cc ****     destination_bits |= destination[i + 1] >> (32 - offset_bits);
+ 134              		.loc 1 60 22 discriminator 2 view .LVU39
+ 135 003e 43EA0E03 		orr	r3, r3, lr
+ 136              	.LVL11:
+ 137              		.loc 1 61 36 discriminator 2 view .LVU40
+ 138 0042 56F804EF 		ldr	lr, [r6, #4]!
+ 139              	.LVL12:
+ 140              		.loc 1 61 36 discriminator 2 view .LVU41
+ 141 0046 83EA0E03 		eor	r3, r3, lr
+ 142              	.LVL13:
+ 143              		.loc 1 61 14 discriminator 2 view .LVU42
+ 144 004a DB43     		mvns	r3, r3
+ 145              	.LVL14:
+  62:eurorack/clouds/dsp/correlator.cc ****     count = count - ((count >> 1) & 0x55555555);
+ 146              		.loc 1 62 5 is_stmt 1 discriminator 2 view .LVU43
+ 147              		.loc 1 62 29 is_stmt 0 discriminator 2 view .LVU44
+ 148 004c 4FEA530E 		lsr	lr, r3, #1
+ 149              		.loc 1 62 35 discriminator 2 view .LVU45
+ 150 0050 0EF0553E 		and	lr, lr, #1431655765
+ 151              		.loc 1 62 11 discriminator 2 view .LVU46
+ 152 0054 A3EB0E03 		sub	r3, r3, lr
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s 			page 5
+
+
+ 153              	.LVL15:
+  63:eurorack/clouds/dsp/correlator.cc ****     count = (count & 0x33333333) + ((count >> 2) & 0x33333333);
+ 154              		.loc 1 63 5 is_stmt 1 discriminator 2 view .LVU47
+ 155              		.loc 1 63 20 is_stmt 0 discriminator 2 view .LVU48
+ 156 0058 03F0333E 		and	lr, r3, #858993459
+ 157              		.loc 1 63 44 discriminator 2 view .LVU49
+ 158 005c 9B08     		lsrs	r3, r3, #2
+ 159              	.LVL16:
+ 160              		.loc 1 63 50 discriminator 2 view .LVU50
+ 161 005e 03F03333 		and	r3, r3, #858993459
+ 162              		.loc 1 63 11 discriminator 2 view .LVU51
+ 163 0062 7344     		add	r3, r3, lr
+ 164              	.LVL17:
+  64:eurorack/clouds/dsp/correlator.cc ****     count = (((count + (count >> 4)) & 0xf0f0f0f) * 0x1010101) >> 24;
+ 165              		.loc 1 64 5 is_stmt 1 discriminator 2 view .LVU52
+ 166              		.loc 1 64 51 is_stmt 0 discriminator 2 view .LVU53
+ 167 0064 4FF0013E 		mov	lr, #16843009
+ 168              		.loc 1 64 22 discriminator 2 view .LVU54
+ 169 0068 03EB1313 		add	r3, r3, r3, lsr #4
+ 170              	.LVL18:
+ 171              		.loc 1 64 38 discriminator 2 view .LVU55
+ 172 006c 03F00F33 		and	r3, r3, #252645135
+ 173              		.loc 1 64 51 discriminator 2 view .LVU56
+ 174 0070 0EFB03F3 		mul	r3, lr, r3
+ 175              	.LVL19:
+  65:eurorack/clouds/dsp/correlator.cc ****     xcorr += count;
+ 176              		.loc 1 65 5 is_stmt 1 discriminator 2 view .LVU57
+ 177              		.loc 1 65 11 is_stmt 0 discriminator 2 view .LVU58
+ 178 0074 01EB1361 		add	r1, r1, r3, lsr #24
+ 179              	.LVL20:
+ 180              		.loc 1 65 11 discriminator 2 view .LVU59
+ 181              	.LBE3:
+  56:eurorack/clouds/dsp/correlator.cc ****     uint32_t source_bits = source[i];
+ 182              		.loc 1 56 3 is_stmt 1 discriminator 2 view .LVU60
+ 183 0078 D5E7     		b	.L5
+ 184              	.LVL21:
+ 185              	.L4:
+  56:eurorack/clouds/dsp/correlator.cc ****     uint32_t source_bits = source[i];
+ 186              		.loc 1 56 3 is_stmt 0 discriminator 2 view .LVU61
+ 187              	.LBE2:
+  66:eurorack/clouds/dsp/correlator.cc ****   }
+  67:eurorack/clouds/dsp/correlator.cc ****   if (xcorr > best_score_) {
+ 188              		.loc 1 67 3 is_stmt 1 view .LVU62
+ 189 007a 8369     		ldr	r3, [r0, #24]
+ 190 007c 8B42     		cmp	r3, r1
+  68:eurorack/clouds/dsp/correlator.cc ****     best_match_ = candidate_;
+ 191              		.loc 1 68 5 view .LVU63
+  69:eurorack/clouds/dsp/correlator.cc ****     best_score_ = xcorr;
+ 192              		.loc 1 69 17 is_stmt 0 view .LVU64
+ 193 007e 38BF     		it	cc
+ 194 0080 C0E90612 		strdcc	r1, r2, [r0, #24]
+  70:eurorack/clouds/dsp/correlator.cc ****   }
+  71:eurorack/clouds/dsp/correlator.cc ****   ++candidate_;
+ 195              		.loc 1 71 3 is_stmt 1 view .LVU65
+ 196 0084 0132     		adds	r2, r2, #1
+ 197              	.LVL22:
+  72:eurorack/clouds/dsp/correlator.cc ****   done_ = candidate_ >= size_;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s 			page 6
+
+
+ 198              		.loc 1 72 22 is_stmt 0 view .LVU66
+ 199 0086 9542     		cmp	r5, r2
+  71:eurorack/clouds/dsp/correlator.cc ****   done_ = candidate_ >= size_;
+ 200              		.loc 1 71 3 view .LVU67
+ 201 0088 4261     		str	r2, [r0, #20]
+ 202              	.LVL23:
+ 203              		.loc 1 72 3 is_stmt 1 view .LVU68
+ 204              		.loc 1 72 22 is_stmt 0 view .LVU69
+ 205 008a CCBF     		ite	gt
+ 206 008c 0022     		movgt	r2, #0
+ 207              	.LVL24:
+ 208              		.loc 1 72 22 view .LVU70
+ 209 008e 0122     		movle	r2, #1
+ 210 0090 80F82420 		strb	r2, [r0, #36]
+ 211              	.LVL25:
+ 212              	.L2:
+  73:eurorack/clouds/dsp/correlator.cc **** }
+ 213              		.loc 1 73 1 view .LVU71
+ 214 0094 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 215              		.cfi_endproc
+ 216              	.LFE1414:
+ 218              		.section	.text._ZN6clouds10Correlator11StartSearchElll,"ax",%progbits
+ 219              		.align	1
+ 220              		.global	_ZN6clouds10Correlator11StartSearchElll
+ 221              		.syntax unified
+ 222              		.thumb
+ 223              		.thumb_func
+ 225              	_ZN6clouds10Correlator11StartSearchElll:
+ 226              	.LVL26:
+ 227              	.LFB1415:
+  74:eurorack/clouds/dsp/correlator.cc **** 
+  75:eurorack/clouds/dsp/correlator.cc **** void Correlator::StartSearch(
+  76:eurorack/clouds/dsp/correlator.cc ****     int32_t size,
+  77:eurorack/clouds/dsp/correlator.cc ****     int32_t offset,
+  78:eurorack/clouds/dsp/correlator.cc ****     int32_t increment) {
+ 228              		.loc 1 78 24 is_stmt 1 view -0
+ 229              		.cfi_startproc
+ 230              		@ args = 0, pretend = 0, frame = 0
+ 231              		@ frame_needed = 0, uses_anonymous_args = 0
+ 232              		@ link register save eliminated.
+  79:eurorack/clouds/dsp/correlator.cc ****   offset_ = offset;
+ 233              		.loc 1 79 3 view .LVU73
+  80:eurorack/clouds/dsp/correlator.cc ****   increment_ = increment;
+ 234              		.loc 1 80 14 is_stmt 0 view .LVU74
+ 235 0000 C0E90223 		strd	r2, r3, [r0, #8]
+  81:eurorack/clouds/dsp/correlator.cc ****   best_score_ = 0;
+ 236              		.loc 1 81 3 is_stmt 1 view .LVU75
+ 237              		.loc 1 81 15 is_stmt 0 view .LVU76
+ 238 0004 0023     		movs	r3, #0
+ 239              	.LVL27:
+  82:eurorack/clouds/dsp/correlator.cc ****   best_match_ = 0;
+ 240              		.loc 1 82 15 view .LVU77
+ 241 0006 C0E90633 		strd	r3, r3, [r0, #24]
+  83:eurorack/clouds/dsp/correlator.cc ****   candidate_ = 0;
+ 242              		.loc 1 83 3 is_stmt 1 view .LVU78
+  84:eurorack/clouds/dsp/correlator.cc ****   size_ = size;
+ 243              		.loc 1 84 9 is_stmt 0 view .LVU79
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s 			page 7
+
+
+ 244 000a C0E90413 		strd	r1, r3, [r0, #16]
+  85:eurorack/clouds/dsp/correlator.cc ****   done_ = false;
+ 245              		.loc 1 85 3 is_stmt 1 view .LVU80
+ 246              		.loc 1 85 9 is_stmt 0 view .LVU81
+ 247 000e 80F82430 		strb	r3, [r0, #36]
+  86:eurorack/clouds/dsp/correlator.cc **** }
+ 248              		.loc 1 86 1 view .LVU82
+ 249 0012 7047     		bx	lr
+ 250              		.cfi_endproc
+ 251              	.LFE1415:
+ 253              		.text
+ 254              	.Letext0:
+ 255              		.file 2 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 256              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 257              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 258              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 259              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 260              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 261              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 262              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 263              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 264              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 265              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 266              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 267              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 268              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 269              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 270              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 271              		.file 18 "eurorack/stmlib/stmlib.h"
+ 272              		.file 19 "eurorack/clouds/dsp/correlator.h"
+ 273              		.file 20 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 correlator.cc
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s:19     .text._ZN6clouds10Correlator4InitEPmS1_:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s:25     .text._ZN6clouds10Correlator4InitEPmS1_:0000000000000000 _ZN6clouds10Correlator4InitEPmS1_
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s:55     .text._ZN6clouds10Correlator21EvaluateNextCandidateEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s:61     .text._ZN6clouds10Correlator21EvaluateNextCandidateEv:0000000000000000 _ZN6clouds10Correlator21EvaluateNextCandidateEv
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s:219    .text._ZN6clouds10Correlator11StartSearchElll:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc4hrrFW.s:225    .text._ZN6clouds10Correlator11StartSearchElll:0000000000000000 _ZN6clouds10Correlator11StartSearchElll
+
+NO UNDEFINED SYMBOLS

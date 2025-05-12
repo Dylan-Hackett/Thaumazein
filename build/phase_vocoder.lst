@@ -1,0 +1,1142 @@
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 4
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"phase_vocoder.cc"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.text._ZN6clouds12PhaseVocoder4InitEPPvPjPKfjllf,"ax",%progbits
+  19              		.align	1
+  20              		.global	_ZN6clouds12PhaseVocoder4InitEPPvPjPKfjllf
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	_ZN6clouds12PhaseVocoder4InitEPPvPjPKfjllf:
+  26              	.LVL0:
+  27              	.LFB1489:
+  28              		.file 1 "eurorack/clouds/dsp/pvoc/phase_vocoder.cc"
+   1:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // Copyright 2014 Emilie Gillet.
+   2:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** //
+   3:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** //
+   5:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // furnished to do so, subject to the following conditions:
+  11:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // 
+  12:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // all copies or substantial portions of the Software.
+  14:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // 
+  15:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  21:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // THE SOFTWARE.
+  22:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // 
+  23:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** //
+  25:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // -----------------------------------------------------------------------------
+  26:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** //
+  27:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** // Naive phase vocoder.
+  28:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** 
+  29:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** #include "clouds/dsp/pvoc/phase_vocoder.h"
+  30:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** 
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 2
+
+
+  31:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** #include <algorithm>
+  32:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** 
+  33:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** #include "stmlib/utils/buffer_allocator.h"
+  34:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** 
+  35:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** namespace clouds {
+  36:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** 
+  37:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** using namespace std;
+  38:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** using namespace stmlib;
+  39:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** 
+  40:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** void PhaseVocoder::Init(
+  41:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     void** buffer,
+  42:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     size_t* buffer_size,
+  43:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     const float* large_window_lut,
+  44:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     size_t largest_fft_size,
+  45:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     int32_t num_channels,
+  46:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     int32_t resolution,
+  47:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     float sample_rate) {
+  29              		.loc 1 47 24 view -0
+  30              		.cfi_startproc
+  31              		@ args = 12, pretend = 0, frame = 64
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  48:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   num_channels_ = num_channels;
+  33              		.loc 1 48 3 view .LVU1
+  47:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   num_channels_ = num_channels;
+  34              		.loc 1 47 24 is_stmt 0 view .LVU2
+  35 0000 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  36              		.cfi_def_cfa_offset 36
+  37              		.cfi_offset 4, -36
+  38              		.cfi_offset 5, -32
+  39              		.cfi_offset 6, -28
+  40              		.cfi_offset 7, -24
+  41              		.cfi_offset 8, -20
+  42              		.cfi_offset 9, -16
+  43              		.cfi_offset 10, -12
+  44              		.cfi_offset 11, -8
+  45              		.cfi_offset 14, -4
+  46 0004 97B0     		sub	sp, sp, #92
+  47              		.cfi_def_cfa_offset 128
+  47:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   num_channels_ = num_channels;
+  48              		.loc 1 47 24 view .LVU3
+  49 0006 0546     		mov	r5, r0
+  49:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** 
+  50:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   size_t fft_size = largest_fft_size;
+  51:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   size_t hop_ratio = 4;
+  52:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   
+  53:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   BufferAllocator allocator_0(buffer[0], buffer_size[0]);
+  50              		.loc 1 53 56 view .LVU4
+  51 0008 0E68     		ldr	r6, [r1]
+  54:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   BufferAllocator allocator_1(buffer[1], buffer_size[1]);
+  55:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   BufferAllocator* allocator[2] = { &allocator_0, &allocator_1 };
+  56:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   float* fft_buffer = allocator[0]->Allocate<float>(fft_size);
+  57:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   float* ifft_buffer = allocator[num_channels_ - 1]->Allocate<float>(fft_size);
+  58:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   
+  59:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   size_t num_textures = kMaxNumTextures;
+  52              		.loc 1 59 10 view .LVU5
+  53 000a 4FF00709 		mov	r9, #7
+  47:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   num_channels_ = num_channels;
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 3
+
+
+  54              		.loc 1 47 24 view .LVU6
+  55 000e 0993     		str	r3, [sp, #36]
+  56 0010 05F1FC08 		add	r8, r5, #252
+  53:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   BufferAllocator allocator_1(buffer[1], buffer_size[1]);
+  57              		.loc 1 53 56 view .LVU7
+  58 0014 1368     		ldr	r3, [r2]
+  59              	.LVL1:
+  60              	.LBB75:
+  60:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   size_t texture_size = (fft_size >> 1) - kHighFrequencyTruncation;
+  61:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+  61              		.loc 1 61 16 view .LVU8
+  62 0016 4FF0000A 		mov	r10, #0
+  63              	.LBE75:
+  54:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   BufferAllocator* allocator[2] = { &allocator_0, &allocator_1 };
+  64              		.loc 1 54 56 view .LVU9
+  65 001a 5268     		ldr	r2, [r2, #4]
+  66              	.LVL2:
+  67              	.LBB99:
+  68              	.LBB76:
+  62:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     short* ana_syn_buffer = allocator[i]->Allocate<short>(
+  63:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         (fft_size + (fft_size >> 1)) * 2);
+  64:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     
+  65:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     num_textures = min(
+  66:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         allocator[i]->free() / (sizeof(float) * texture_size),
+  67:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         num_textures);
+  68:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     stft_[i].Init(
+  69              		.loc 1 68 18 view .LVU10
+  70 001c C346     		mov	fp, r8
+  71              	.LBE76:
+  72              	.LBE99:
+  73              	.LBB100:
+  74              	.LBB101:
+  75              	.LBB102:
+  76              	.LBB103:
+  77              	.LBB104:
+  78              	.LBB105:
+  79              		.file 2 "eurorack/stmlib/utils/buffer_allocator.h"
+   1:eurorack/stmlib/utils/buffer_allocator.h **** // Copyright 2014 Emilie Gillet.
+   2:eurorack/stmlib/utils/buffer_allocator.h **** //
+   3:eurorack/stmlib/utils/buffer_allocator.h **** // Author: Emilie Gillet (emilie.o.gillet@gmail.com)
+   4:eurorack/stmlib/utils/buffer_allocator.h **** //
+   5:eurorack/stmlib/utils/buffer_allocator.h **** // Permission is hereby granted, free of charge, to any person obtaining a copy
+   6:eurorack/stmlib/utils/buffer_allocator.h **** // of this software and associated documentation files (the "Software"), to deal
+   7:eurorack/stmlib/utils/buffer_allocator.h **** // in the Software without restriction, including without limitation the rights
+   8:eurorack/stmlib/utils/buffer_allocator.h **** // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   9:eurorack/stmlib/utils/buffer_allocator.h **** // copies of the Software, and to permit persons to whom the Software is
+  10:eurorack/stmlib/utils/buffer_allocator.h **** // furnished to do so, subject to the following conditions:
+  11:eurorack/stmlib/utils/buffer_allocator.h **** // 
+  12:eurorack/stmlib/utils/buffer_allocator.h **** // The above copyright notice and this permission notice shall be included in
+  13:eurorack/stmlib/utils/buffer_allocator.h **** // all copies or substantial portions of the Software.
+  14:eurorack/stmlib/utils/buffer_allocator.h **** // 
+  15:eurorack/stmlib/utils/buffer_allocator.h **** // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  16:eurorack/stmlib/utils/buffer_allocator.h **** // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  17:eurorack/stmlib/utils/buffer_allocator.h **** // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  18:eurorack/stmlib/utils/buffer_allocator.h **** // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  19:eurorack/stmlib/utils/buffer_allocator.h **** // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  20:eurorack/stmlib/utils/buffer_allocator.h **** // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 4
+
+
+  21:eurorack/stmlib/utils/buffer_allocator.h **** // THE SOFTWARE.
+  22:eurorack/stmlib/utils/buffer_allocator.h **** // 
+  23:eurorack/stmlib/utils/buffer_allocator.h **** // See http://creativecommons.org/licenses/MIT/ for more information.
+  24:eurorack/stmlib/utils/buffer_allocator.h **** //
+  25:eurorack/stmlib/utils/buffer_allocator.h **** // -----------------------------------------------------------------------------
+  26:eurorack/stmlib/utils/buffer_allocator.h **** //
+  27:eurorack/stmlib/utils/buffer_allocator.h **** // Stream buffer for serialization.
+  28:eurorack/stmlib/utils/buffer_allocator.h **** 
+  29:eurorack/stmlib/utils/buffer_allocator.h **** #ifndef STMLIB_UTILS_BUFFER_ALLOCATOR_H_
+  30:eurorack/stmlib/utils/buffer_allocator.h **** #define STMLIB_UTILS_BUFFER_ALLOCATOR_H_
+  31:eurorack/stmlib/utils/buffer_allocator.h **** 
+  32:eurorack/stmlib/utils/buffer_allocator.h **** #include "stmlib/stmlib.h"
+  33:eurorack/stmlib/utils/buffer_allocator.h **** 
+  34:eurorack/stmlib/utils/buffer_allocator.h **** namespace stmlib {
+  35:eurorack/stmlib/utils/buffer_allocator.h **** 
+  36:eurorack/stmlib/utils/buffer_allocator.h **** class BufferAllocator {
+  37:eurorack/stmlib/utils/buffer_allocator.h ****  public:
+  38:eurorack/stmlib/utils/buffer_allocator.h ****   BufferAllocator() { }
+  39:eurorack/stmlib/utils/buffer_allocator.h ****   ~BufferAllocator() { }
+  40:eurorack/stmlib/utils/buffer_allocator.h ****   
+  41:eurorack/stmlib/utils/buffer_allocator.h ****   BufferAllocator(void* buffer, size_t size) {
+  42:eurorack/stmlib/utils/buffer_allocator.h ****     Init(buffer, size);
+  43:eurorack/stmlib/utils/buffer_allocator.h ****   }
+  44:eurorack/stmlib/utils/buffer_allocator.h ****   
+  45:eurorack/stmlib/utils/buffer_allocator.h ****   inline void Init(void* buffer, size_t size) {
+  46:eurorack/stmlib/utils/buffer_allocator.h ****     buffer_ = static_cast<uint8_t*>(buffer);
+  47:eurorack/stmlib/utils/buffer_allocator.h ****     size_ = size;
+  48:eurorack/stmlib/utils/buffer_allocator.h ****     Free();
+  49:eurorack/stmlib/utils/buffer_allocator.h ****   }
+  50:eurorack/stmlib/utils/buffer_allocator.h **** 
+  51:eurorack/stmlib/utils/buffer_allocator.h ****   template<typename T>
+  52:eurorack/stmlib/utils/buffer_allocator.h ****   inline T* Allocate() {
+  53:eurorack/stmlib/utils/buffer_allocator.h ****     return Allocate<T>(1);
+  54:eurorack/stmlib/utils/buffer_allocator.h ****   }
+  55:eurorack/stmlib/utils/buffer_allocator.h ****   
+  56:eurorack/stmlib/utils/buffer_allocator.h ****   template<typename T>
+  57:eurorack/stmlib/utils/buffer_allocator.h ****   inline T* Allocate(size_t size) {
+  58:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
+  59:eurorack/stmlib/utils/buffer_allocator.h ****     if (size_bytes <= free_) {
+  60:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+  63:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+  64:eurorack/stmlib/utils/buffer_allocator.h ****     } else {
+  65:eurorack/stmlib/utils/buffer_allocator.h ****       return NULL;
+  66:eurorack/stmlib/utils/buffer_allocator.h ****     }
+  67:eurorack/stmlib/utils/buffer_allocator.h ****   }
+  68:eurorack/stmlib/utils/buffer_allocator.h ****   
+  69:eurorack/stmlib/utils/buffer_allocator.h ****   inline void Free() {
+  70:eurorack/stmlib/utils/buffer_allocator.h ****     next_ = buffer_;
+  71:eurorack/stmlib/utils/buffer_allocator.h ****     free_ = size_;
+  80              		.loc 2 71 11 view .LVU11
+  81 001e 1093     		str	r3, [sp, #64]
+  82              	.LBE105:
+  83              	.LBE104:
+  84              	.LBE103:
+  85              	.LBE102:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 5
+
+
+  86              	.LBE101:
+  87              	.LBE100:
+  88              	.LBB119:
+  89              	.LBB120:
+  90              	.LBB121:
+  91              	.LBB122:
+  92              	.LBB123:
+  93              	.LBB124:
+  94 0020 1492     		str	r2, [sp, #80]
+  95              	.LBE124:
+  96              	.LBE123:
+  47:eurorack/stmlib/utils/buffer_allocator.h ****     Free();
+  97              		.loc 2 47 11 view .LVU12
+  98 0022 1592     		str	r2, [sp, #84]
+  99              	.LBE122:
+ 100              	.LBE121:
+ 101              	.LBE120:
+ 102              	.LBE119:
+  55:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   float* fft_buffer = allocator[0]->Allocate<float>(fft_size);
+ 103              		.loc 1 55 64 view .LVU13
+ 104 0024 0EAA     		add	r2, sp, #56
+ 105              	.LBB135:
+ 106              	.LBB116:
+ 107              	.LBB113:
+ 108              	.LBB110:
+  47:eurorack/stmlib/utils/buffer_allocator.h ****     Free();
+ 109              		.loc 2 47 11 view .LVU14
+ 110 0026 1193     		str	r3, [sp, #68]
+ 111              	.LBE110:
+ 112              	.LBE113:
+ 113              	.LBE116:
+ 114              	.LBE135:
+  55:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   float* fft_buffer = allocator[0]->Allocate<float>(fft_size);
+ 115              		.loc 1 55 64 view .LVU15
+ 116 0028 0C92     		str	r2, [sp, #48]
+ 117 002a 12AA     		add	r2, sp, #72
+  54:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   BufferAllocator* allocator[2] = { &allocator_0, &allocator_1 };
+ 118              		.loc 1 54 56 view .LVU16
+ 119 002c 4968     		ldr	r1, [r1, #4]
+ 120              	.LVL3:
+  55:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   float* fft_buffer = allocator[0]->Allocate<float>(fft_size);
+ 121              		.loc 1 55 64 view .LVU17
+ 122 002e 0D92     		str	r2, [sp, #52]
+ 123              	.LBB136:
+ 124              	.LBB133:
+ 125              	.LBB131:
+ 126              	.LBB129:
+ 127              	.LBB127:
+ 128              	.LBB125:
+  70:eurorack/stmlib/utils/buffer_allocator.h ****     free_ = size_;
+ 129              		.loc 2 70 11 view .LVU18
+ 130 0030 1291     		str	r1, [sp, #72]
+ 131              	.LBE125:
+ 132              	.LBE127:
+  46:eurorack/stmlib/utils/buffer_allocator.h ****     size_ = size;
+ 133              		.loc 2 46 13 view .LVU19
+ 134 0032 1391     		str	r1, [sp, #76]
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 6
+
+
+ 135              	.LBE129:
+ 136              	.LBE131:
+ 137              	.LBE133:
+ 138              	.LBE136:
+ 139              	.LBB137:
+ 140              	.LBB117:
+ 141              	.LBB114:
+ 142              	.LBB111:
+ 143              	.LBB108:
+ 144              	.LBB106:
+  70:eurorack/stmlib/utils/buffer_allocator.h ****     free_ = size_;
+ 145              		.loc 2 70 11 view .LVU20
+ 146 0034 0E96     		str	r6, [sp, #56]
+ 147              	.LBE106:
+ 148              	.LBE108:
+  46:eurorack/stmlib/utils/buffer_allocator.h ****     size_ = size;
+ 149              		.loc 2 46 13 view .LVU21
+ 150 0036 0F96     		str	r6, [sp, #60]
+ 151              	.LBE111:
+ 152              	.LBE114:
+ 153              	.LBE117:
+ 154              	.LBE137:
+  47:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   num_channels_ = num_channels;
+ 155              		.loc 1 47 24 view .LVU22
+ 156 0038 DDE92040 		ldrd	r4, r0, [sp, #128]
+ 157              	.LVL4:
+ 158              	.LBB138:
+ 159              	.LBB139:
+ 160              	.LBB140:
+  59:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+ 161              		.loc 2 59 5 view .LVU23
+ 162 003c B3EB840F 		cmp	r3, r4, lsl #2
+ 163              	.LBE140:
+ 164              	.LBE139:
+ 165              	.LBE138:
+  48:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** 
+ 166              		.loc 1 48 17 view .LVU24
+ 167 0040 C5F86401 		str	r0, [r5, #356]
+  50:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   size_t hop_ratio = 4;
+ 168              		.loc 1 50 3 is_stmt 1 view .LVU25
+ 169              	.LVL5:
+  51:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   
+ 170              		.loc 1 51 3 view .LVU26
+  53:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   BufferAllocator allocator_1(buffer[1], buffer_size[1]);
+ 171              		.loc 1 53 3 view .LVU27
+ 172              	.LBB152:
+ 173              	.LBI100:
+  41:eurorack/stmlib/utils/buffer_allocator.h ****     Init(buffer, size);
+ 174              		.loc 2 41 3 view .LVU28
+ 175              	.LBE152:
+  42:eurorack/stmlib/utils/buffer_allocator.h ****   }
+ 176              		.loc 2 42 5 view .LVU29
+ 177              	.LBB153:
+ 178              	.LBB118:
+ 179              	.LBB115:
+ 180              	.LBI102:
+  45:eurorack/stmlib/utils/buffer_allocator.h ****     buffer_ = static_cast<uint8_t*>(buffer);
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 7
+
+
+ 181              		.loc 2 45 15 view .LVU30
+ 182              	.LBB112:
+  46:eurorack/stmlib/utils/buffer_allocator.h ****     size_ = size;
+ 183              		.loc 2 46 5 view .LVU31
+  47:eurorack/stmlib/utils/buffer_allocator.h ****     Free();
+ 184              		.loc 2 47 5 view .LVU32
+  48:eurorack/stmlib/utils/buffer_allocator.h ****   }
+ 185              		.loc 2 48 5 view .LVU33
+ 186              	.LBB109:
+ 187              	.LBI104:
+  69:eurorack/stmlib/utils/buffer_allocator.h ****     next_ = buffer_;
+ 188              		.loc 2 69 15 view .LVU34
+ 189              	.LBB107:
+  70:eurorack/stmlib/utils/buffer_allocator.h ****     free_ = size_;
+ 190              		.loc 2 70 5 view .LVU35
+ 191              		.loc 2 71 5 view .LVU36
+ 192              		.loc 2 71 5 is_stmt 0 view .LVU37
+ 193              	.LBE107:
+ 194              	.LBE109:
+ 195              	.LBE112:
+ 196              	.LBE115:
+ 197              	.LBE118:
+ 198              	.LBE153:
+  54:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   BufferAllocator* allocator[2] = { &allocator_0, &allocator_1 };
+ 199              		.loc 1 54 3 is_stmt 1 view .LVU38
+ 200              	.LBB154:
+ 201              	.LBI119:
+  41:eurorack/stmlib/utils/buffer_allocator.h ****     Init(buffer, size);
+ 202              		.loc 2 41 3 view .LVU39
+ 203              	.LBE154:
+  42:eurorack/stmlib/utils/buffer_allocator.h ****   }
+ 204              		.loc 2 42 5 view .LVU40
+ 205              	.LBB155:
+ 206              	.LBB134:
+ 207              	.LBB132:
+ 208              	.LBI121:
+  45:eurorack/stmlib/utils/buffer_allocator.h ****     buffer_ = static_cast<uint8_t*>(buffer);
+ 209              		.loc 2 45 15 view .LVU41
+ 210              	.LBB130:
+  46:eurorack/stmlib/utils/buffer_allocator.h ****     size_ = size;
+ 211              		.loc 2 46 5 view .LVU42
+  47:eurorack/stmlib/utils/buffer_allocator.h ****     Free();
+ 212              		.loc 2 47 5 view .LVU43
+  48:eurorack/stmlib/utils/buffer_allocator.h ****   }
+ 213              		.loc 2 48 5 view .LVU44
+ 214              	.LBB128:
+ 215              	.LBI123:
+  69:eurorack/stmlib/utils/buffer_allocator.h ****     next_ = buffer_;
+ 216              		.loc 2 69 15 view .LVU45
+ 217              	.LBB126:
+  70:eurorack/stmlib/utils/buffer_allocator.h ****     free_ = size_;
+ 218              		.loc 2 70 5 view .LVU46
+ 219              		.loc 2 71 5 view .LVU47
+ 220              		.loc 2 71 5 is_stmt 0 view .LVU48
+ 221              	.LBE126:
+ 222              	.LBE128:
+ 223              	.LBE130:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 8
+
+
+ 224              	.LBE132:
+ 225              	.LBE134:
+ 226              	.LBE155:
+  55:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   float* fft_buffer = allocator[0]->Allocate<float>(fft_size);
+ 227              		.loc 1 55 3 is_stmt 1 view .LVU49
+  56:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   float* ifft_buffer = allocator[num_channels_ - 1]->Allocate<float>(fft_size);
+ 228              		.loc 1 56 3 view .LVU50
+ 229              	.LBB156:
+ 230              	.LBI138:
+  57:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
+ 231              		.loc 2 57 13 view .LVU51
+ 232              	.LBB148:
+  58:eurorack/stmlib/utils/buffer_allocator.h ****     if (size_bytes <= free_) {
+ 233              		.loc 2 58 12 is_stmt 0 view .LVU52
+ 234 0044 4FEA8402 		lsl	r2, r4, #2
+ 235              	.LVL6:
+ 236              	.LBB144:
+  65:eurorack/stmlib/utils/buffer_allocator.h ****     }
+ 237              		.loc 2 65 14 view .LVU53
+ 238 0048 38BF     		it	cc
+ 239 004a 0026     		movcc	r6, #0
+ 240              	.LVL7:
+  65:eurorack/stmlib/utils/buffer_allocator.h ****     }
+ 241              		.loc 2 65 14 view .LVU54
+ 242              	.LBE144:
+ 243              	.LBE148:
+ 244              	.LBE156:
+  57:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   
+ 245              		.loc 1 57 3 is_stmt 1 view .LVU55
+ 246              	.LBB157:
+ 247              	.LBB94:
+  63:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     
+ 248              		.loc 1 63 19 is_stmt 0 view .LVU56
+ 249 004c 04EB5407 		add	r7, r4, r4, lsr #1
+ 250              	.LBE94:
+ 251              	.LBE157:
+ 252              	.LBB158:
+ 253              	.LBB149:
+ 254              	.LBB145:
+ 255              	.LBB141:
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+ 256              		.loc 2 62 13 view .LVU57
+ 257 0050 24BF     		itt	cs
+ 258 0052 9B1A     		subcs	r3, r3, r2
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 259              		.loc 2 61 13 view .LVU58
+ 260 0054 B118     		addcs	r1, r6, r2
+ 261              	.LBE141:
+ 262              	.LBE145:
+ 263              	.LBE149:
+ 264              	.LBE158:
+ 265              	.LBB159:
+ 266              	.LBB95:
+ 267              	.LBB77:
+ 268              	.LBB78:
+  58:eurorack/stmlib/utils/buffer_allocator.h ****     if (size_bytes <= free_) {
+ 269              		.loc 2 58 12 view .LVU59
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 9
+
+
+ 270 0056 4FEA8707 		lsl	r7, r7, #2
+ 271              	.LBE78:
+ 272              	.LBE77:
+ 273              	.LBE95:
+ 274              	.LBE159:
+ 275              	.LBB160:
+ 276              	.LBB150:
+ 277              	.LBB146:
+ 278              	.LBB142:
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+ 279              		.loc 2 62 13 view .LVU60
+ 280 005a 28BF     		it	cs
+ 281 005c 1093     		strcs	r3, [sp, #64]
+ 282              	.LBE142:
+ 283              	.LBE146:
+ 284              	.LBE150:
+ 285              	.LBE160:
+  57:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   
+ 286              		.loc 1 57 51 view .LVU61
+ 287 005e 16AB     		add	r3, sp, #88
+ 288              	.LBB161:
+ 289              	.LBB151:
+ 290              	.LBB147:
+ 291              	.LBB143:
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 292              		.loc 2 61 13 view .LVU62
+ 293 0060 28BF     		it	cs
+ 294 0062 0E91     		strcs	r1, [sp, #56]
+ 295              	.LBE143:
+ 296              	.LBE147:
+ 297              	.LBE151:
+ 298              	.LBE161:
+  57:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   
+ 299              		.loc 1 57 51 view .LVU63
+ 300 0064 03EB8000 		add	r0, r3, r0, lsl #2
+ 301 0068 50F82C3C 		ldr	r3, [r0, #-44]
+ 302              	.LVL8:
+ 303              	.LBB162:
+ 304              	.LBI162:
+  57:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
+ 305              		.loc 2 57 13 is_stmt 1 view .LVU64
+ 306              	.LBB163:
+ 307              	.LBB164:
+  59:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+ 308              		.loc 2 59 23 is_stmt 0 view .LVU65
+ 309 006c 9968     		ldr	r1, [r3, #8]
+  59:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+ 310              		.loc 2 59 5 view .LVU66
+ 311 006e 9142     		cmp	r1, r2
+ 312              	.LBB165:
+  60:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
+ 313              		.loc 2 60 10 view .LVU67
+ 314 0070 29BF     		itett	cs
+ 315 0072 1868     		ldrcs	r0, [r3]
+ 316              	.LBE165:
+  65:eurorack/stmlib/utils/buffer_allocator.h ****     }
+ 317              		.loc 2 65 14 view .LVU68
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 10
+
+
+ 318 0074 0023     		movcc	r3, #0
+ 319              	.LVL9:
+ 320              	.LBB166:
+  60:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
+ 321              		.loc 2 60 10 view .LVU69
+ 322 0076 0790     		strcs	r0, [sp, #28]
+ 323              	.LVL10:
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 324              		.loc 2 61 13 view .LVU70
+ 325 0078 8018     		addcs	r0, r0, r2
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+ 326              		.loc 2 62 13 view .LVU71
+ 327 007a 2ABF     		itet	cs
+ 328 007c 8A1A     		subcs	r2, r1, r2
+ 329              	.LVL11:
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+ 330              		.loc 2 62 13 view .LVU72
+ 331              	.LBE166:
+  65:eurorack/stmlib/utils/buffer_allocator.h ****     }
+ 332              		.loc 2 65 14 view .LVU73
+ 333 007e 0793     		strcc	r3, [sp, #28]
+ 334              	.LVL12:
+  65:eurorack/stmlib/utils/buffer_allocator.h ****     }
+ 335              		.loc 2 65 14 view .LVU74
+ 336              	.LBE164:
+ 337              	.LBE163:
+ 338              	.LBE162:
+  59:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   size_t texture_size = (fft_size >> 1) - kHighFrequencyTruncation;
+ 339              		.loc 1 59 3 is_stmt 1 view .LVU75
+  60:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 340              		.loc 1 60 3 view .LVU76
+ 341              	.LBB170:
+ 342              	.LBB169:
+ 343              	.LBB168:
+ 344              	.LBB167:
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 345              		.loc 2 61 13 is_stmt 0 view .LVU77
+ 346 0080 1860     		strcs	r0, [r3]
+ 347 0082 05F15C00 		add	r0, r5, #92
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+ 348              		.loc 2 62 13 view .LVU78
+ 349 0086 28BF     		it	cs
+ 350 0088 9A60     		strcs	r2, [r3, #8]
+ 351              	.LBE167:
+ 352              	.LBE168:
+ 353              	.LBE169:
+ 354              	.LBE170:
+  60:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 355              		.loc 1 60 35 view .LVU79
+ 356 008a 6308     		lsrs	r3, r4, #1
+ 357              	.LVL13:
+  61:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     short* ana_syn_buffer = allocator[i]->Allocate<short>(
+ 358              		.loc 1 61 3 is_stmt 1 view .LVU80
+  60:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 359              		.loc 1 60 10 is_stmt 0 view .LVU81
+ 360 008c 103B     		subs	r3, r3, #16
+ 361              	.LVL14:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 11
+
+
+ 362              	.LBB171:
+ 363              	.LBB96:
+  66:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         num_textures);
+ 364              		.loc 1 66 47 view .LVU82
+ 365 008e 9B00     		lsls	r3, r3, #2
+ 366              	.LVL15:
+  66:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         num_textures);
+ 367              		.loc 1 66 47 view .LVU83
+ 368 0090 0893     		str	r3, [sp, #32]
+ 369              		.loc 1 68 18 view .LVU84
+ 370 0092 A308     		lsrs	r3, r4, #2
+ 371              	.LVL16:
+ 372              	.L7:
+ 373              		.loc 1 68 18 view .LVU85
+ 374              	.LBE96:
+  61:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     short* ana_syn_buffer = allocator[i]->Allocate<short>(
+ 375              		.loc 1 61 25 is_stmt 1 discriminator 3 view .LVU86
+ 376 0094 D5F86421 		ldr	r2, [r5, #356]
+ 377 0098 5245     		cmp	r2, r10
+ 378 009a 1EDC     		bgt	.L4
+ 379              	.LBE171:
+ 380              	.LBB172:
+ 381              	.LBB173:
+ 382              	.LBB174:
+ 383              	.LBB175:
+  58:eurorack/stmlib/utils/buffer_allocator.h ****     if (size_bytes <= free_) {
+ 384              		.loc 2 58 12 is_stmt 0 view .LVU87
+ 385 009c 089B     		ldr	r3, [sp, #32]
+ 386              	.LBE175:
+ 387              	.LBE174:
+ 388              	.LBE173:
+  69:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         &fft_,
+  70:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         fft_size,
+  71:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         fft_size / hop_ratio,
+  72:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         fft_buffer,
+  73:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         ifft_buffer,
+  74:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         large_window_lut,
+  75:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         ana_syn_buffer,
+  76:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         &frame_transformation_[i]);
+  77:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   }
+  78:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 389              		.loc 1 78 16 view .LVU88
+ 390 009e 0026     		movs	r6, #0
+ 391              	.LVL17:
+ 392              	.LBB191:
+ 393              	.LBB186:
+ 394              	.LBB182:
+  58:eurorack/stmlib/utils/buffer_allocator.h ****     if (size_bytes <= free_) {
+ 395              		.loc 2 58 12 view .LVU89
+ 396 00a0 09FB03F7 		mul	r7, r9, r3
+ 397              	.L5:
+ 398              	.LVL18:
+  58:eurorack/stmlib/utils/buffer_allocator.h ****     if (size_bytes <= free_) {
+ 399              		.loc 2 58 12 view .LVU90
+ 400              	.LBE182:
+ 401              	.LBE186:
+ 402              	.LBE191:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 12
+
+
+ 403              		.loc 1 78 25 is_stmt 1 discriminator 3 view .LVU91
+ 404 00a4 D5F86431 		ldr	r3, [r5, #356]
+ 405 00a8 B342     		cmp	r3, r6
+ 406 00aa 44DD     		ble	.L1
+ 407              	.LBB192:
+  79:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     float* texture_buffer = allocator[i]->Allocate<float>(
+ 408              		.loc 1 79 5 discriminator 2 view .LVU92
+ 409              		.loc 1 79 40 is_stmt 0 discriminator 2 view .LVU93
+ 410 00ac 0CAB     		add	r3, sp, #48
+ 411 00ae 53F82630 		ldr	r3, [r3, r6, lsl #2]
+ 412              	.LVL19:
+ 413              	.LBB187:
+ 414              	.LBI174:
+  57:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
+ 415              		.loc 2 57 13 is_stmt 1 discriminator 2 view .LVU94
+  57:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
+ 416              		.loc 2 57 13 is_stmt 0 discriminator 2 view .LVU95
+ 417              	.LBE187:
+ 418              	.LBE192:
+  78:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     float* texture_buffer = allocator[i]->Allocate<float>(
+ 419              		.loc 1 78 3 discriminator 2 view .LVU96
+ 420 00b2 0136     		adds	r6, r6, #1
+ 421              	.LVL20:
+ 422              	.LBB193:
+ 423              	.LBB188:
+ 424              	.LBB183:
+ 425              	.LBB176:
+  59:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+ 426              		.loc 2 59 23 discriminator 2 view .LVU97
+ 427 00b4 9A68     		ldr	r2, [r3, #8]
+  59:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+ 428              		.loc 2 59 5 discriminator 2 view .LVU98
+ 429 00b6 9742     		cmp	r7, r2
+ 430              	.LBB177:
+  60:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
+ 431              		.loc 2 60 10 discriminator 2 view .LVU99
+ 432 00b8 9BBF     		ittet	ls
+ 433 00ba 1968     		ldrls	r1, [r3]
+ 434              	.LVL21:
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+ 435              		.loc 2 62 13 discriminator 2 view .LVU100
+ 436 00bc D21B     		subls	r2, r2, r7
+ 437              	.LBE177:
+  65:eurorack/stmlib/utils/buffer_allocator.h ****     }
+ 438              		.loc 2 65 14 discriminator 2 view .LVU101
+ 439 00be 0021     		movhi	r1, #0
+ 440              	.LVL22:
+  65:eurorack/stmlib/utils/buffer_allocator.h ****     }
+ 441              		.loc 2 65 14 discriminator 2 view .LVU102
+ 442              	.LBE176:
+ 443              	.LBE183:
+ 444              	.LBE188:
+  80:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         num_textures * texture_size);
+  81:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     frame_transformation_[i].Init(texture_buffer, fft_size, num_textures);
+ 445              		.loc 1 81 5 is_stmt 1 discriminator 2 view .LVU103
+ 446              	.LBB189:
+ 447              	.LBB184:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 13
+
+
+ 448              	.LBB180:
+ 449              	.LBB178:
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 450              		.loc 2 61 13 is_stmt 0 discriminator 2 view .LVU104
+ 451 00c0 C819     		addls	r0, r1, r7
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+ 452              		.loc 2 62 13 discriminator 2 view .LVU105
+ 453 00c2 98BF     		it	ls
+ 454 00c4 9A60     		strls	r2, [r3, #8]
+ 455              	.LBE178:
+ 456              	.LBE180:
+ 457              	.LBE184:
+ 458              	.LBE189:
+ 459              		.loc 1 81 34 discriminator 2 view .LVU106
+ 460 00c6 2246     		mov	r2, r4
+ 461              	.LBB190:
+ 462              	.LBB185:
+ 463              	.LBB181:
+ 464              	.LBB179:
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 465              		.loc 2 61 13 discriminator 2 view .LVU107
+ 466 00c8 98BF     		it	ls
+ 467 00ca 1860     		strls	r0, [r3]
+ 468              	.LBE179:
+ 469              	.LBE181:
+ 470              	.LBE185:
+ 471              	.LBE190:
+ 472              		.loc 1 81 34 discriminator 2 view .LVU108
+ 473 00cc 4046     		mov	r0, r8
+ 474 00ce 4B46     		mov	r3, r9
+ 475 00d0 08F13408 		add	r8, r8, #52
+ 476 00d4 FFF7FEFF 		bl	_ZN6clouds19FrameTransformation4InitEPfll
+ 477              	.LVL23:
+ 478              		.loc 1 81 34 discriminator 2 view .LVU109
+ 479              	.LBE193:
+  78:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     float* texture_buffer = allocator[i]->Allocate<float>(
+ 480              		.loc 1 78 3 is_stmt 1 discriminator 2 view .LVU110
+  78:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     float* texture_buffer = allocator[i]->Allocate<float>(
+ 481              		.loc 1 78 3 is_stmt 0 discriminator 2 view .LVU111
+ 482 00d8 E4E7     		b	.L5
+ 483              	.LVL24:
+ 484              	.L4:
+  78:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     float* texture_buffer = allocator[i]->Allocate<float>(
+ 485              		.loc 1 78 3 discriminator 2 view .LVU112
+ 486              	.LBE172:
+ 487              	.LBB194:
+ 488              	.LBB97:
+  62:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         (fft_size + (fft_size >> 1)) * 2);
+ 489              		.loc 1 62 5 is_stmt 1 discriminator 2 view .LVU113
+  62:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         (fft_size + (fft_size >> 1)) * 2);
+ 490              		.loc 1 62 40 is_stmt 0 discriminator 2 view .LVU114
+ 491 00da 0CAA     		add	r2, sp, #48
+  68:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         &fft_,
+ 492              		.loc 1 68 18 discriminator 2 view .LVU115
+ 493 00dc 0B93     		str	r3, [sp, #44]
+ 494 00de 0A90     		str	r0, [sp, #40]
+  62:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         (fft_size + (fft_size >> 1)) * 2);
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 14
+
+
+ 495              		.loc 1 62 40 discriminator 2 view .LVU116
+ 496 00e0 52F82A20 		ldr	r2, [r2, r10, lsl #2]
+ 497              	.LVL25:
+ 498              	.LBB88:
+ 499              	.LBI77:
+  57:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
+ 500              		.loc 2 57 13 is_stmt 1 discriminator 2 view .LVU117
+  57:eurorack/stmlib/utils/buffer_allocator.h ****     size_t size_bytes = sizeof(T) * size;
+ 501              		.loc 2 57 13 is_stmt 0 discriminator 2 view .LVU118
+ 502              	.LBE88:
+ 503              	.LBE97:
+  61:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     short* ana_syn_buffer = allocator[i]->Allocate<short>(
+ 504              		.loc 1 61 3 discriminator 2 view .LVU119
+ 505 00e4 0AF1010A 		add	r10, r10, #1
+ 506              	.LVL26:
+ 507              	.LBB98:
+ 508              	.LBB89:
+ 509              	.LBB85:
+ 510              	.LBB79:
+  59:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+ 511              		.loc 2 59 23 discriminator 2 view .LVU120
+ 512 00e8 9168     		ldr	r1, [r2, #8]
+  59:eurorack/stmlib/utils/buffer_allocator.h ****       T* start = static_cast<T*>(static_cast<void*>(next_));
+ 513              		.loc 2 59 5 discriminator 2 view .LVU121
+ 514 00ea 8F42     		cmp	r7, r1
+ 515              	.LBB80:
+  60:eurorack/stmlib/utils/buffer_allocator.h ****       next_ += size_bytes;
+ 516              		.loc 2 60 10 discriminator 2 view .LVU122
+ 517 00ec 9BBF     		ittet	ls
+ 518 00ee D2F800C0 		ldrls	ip, [r2]
+ 519              	.LVL27:
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+ 520              		.loc 2 62 13 discriminator 2 view .LVU123
+ 521 00f2 C91B     		subls	r1, r1, r7
+ 522              	.LBE80:
+  65:eurorack/stmlib/utils/buffer_allocator.h ****     }
+ 523              		.loc 2 65 14 discriminator 2 view .LVU124
+ 524 00f4 4FF0000C 		movhi	ip, #0
+ 525              	.LVL28:
+  65:eurorack/stmlib/utils/buffer_allocator.h ****     }
+ 526              		.loc 2 65 14 discriminator 2 view .LVU125
+ 527              	.LBE79:
+ 528              	.LBE85:
+ 529              	.LBE89:
+  65:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         allocator[i]->free() / (sizeof(float) * texture_size),
+ 530              		.loc 1 65 5 is_stmt 1 discriminator 2 view .LVU126
+ 531              	.LBB90:
+ 532              	.LBI90:
+  72:eurorack/stmlib/utils/buffer_allocator.h ****   }
+  73:eurorack/stmlib/utils/buffer_allocator.h ****   
+  74:eurorack/stmlib/utils/buffer_allocator.h ****   inline size_t free() const { return free_; }
+ 533              		.loc 2 74 17 discriminator 2 view .LVU127
+ 534              	.LBB91:
+ 535              		.loc 2 74 32 discriminator 2 view .LVU128
+ 536              		.loc 2 74 32 is_stmt 0 discriminator 2 view .LVU129
+ 537              	.LBE91:
+ 538              	.LBE90:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 15
+
+
+ 539              	.LBB92:
+ 540              	.LBB86:
+ 541              	.LBB83:
+ 542              	.LBB81:
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 543              		.loc 2 61 13 discriminator 2 view .LVU130
+ 544 00f8 0CEB070E 		addls	lr, ip, r7
+  62:eurorack/stmlib/utils/buffer_allocator.h ****       return start;
+ 545              		.loc 2 62 13 discriminator 2 view .LVU131
+ 546 00fc 98BF     		it	ls
+ 547 00fe 9160     		strls	r1, [r2, #8]
+ 548              	.LBE81:
+ 549              	.LBE83:
+ 550              	.LBE86:
+ 551              	.LBE92:
+  66:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         num_textures);
+ 552              		.loc 1 66 30 discriminator 2 view .LVU132
+ 553 0100 0899     		ldr	r1, [sp, #32]
+ 554              	.LBB93:
+ 555              	.LBB87:
+ 556              	.LBB84:
+ 557              	.LBB82:
+  61:eurorack/stmlib/utils/buffer_allocator.h ****       free_ -= size_bytes;
+ 558              		.loc 2 61 13 discriminator 2 view .LVU133
+ 559 0102 98BF     		it	ls
+ 560 0104 C2F800E0 		strls	lr, [r2]
+ 561              	.LBE82:
+ 562              	.LBE84:
+ 563              	.LBE87:
+ 564              	.LBE93:
+  66:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         num_textures);
+ 565              		.loc 1 66 30 discriminator 2 view .LVU134
+ 566 0108 9268     		ldr	r2, [r2, #8]
+ 567 010a B2FBF1F2 		udiv	r2, r2, r1
+ 568 010e 9145     		cmp	r9, r2
+  68:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         &fft_,
+ 569              		.loc 1 68 18 discriminator 2 view .LVU135
+ 570 0110 2946     		mov	r1, r5
+ 571 0112 28BF     		it	cs
+ 572 0114 9146     		movcs	r9, r2
+ 573              	.LVL29:
+  68:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         &fft_,
+ 574              		.loc 1 68 5 is_stmt 1 discriminator 2 view .LVU136
+  68:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         &fft_,
+ 575              		.loc 1 68 18 is_stmt 0 discriminator 2 view .LVU137
+ 576 0116 099A     		ldr	r2, [sp, #36]
+ 577 0118 0292     		str	r2, [sp, #8]
+ 578 011a 079A     		ldr	r2, [sp, #28]
+ 579 011c CDE903CB 		strd	ip, fp, [sp, #12]
+ 580 0120 CDE90062 		strd	r6, r2, [sp]
+ 581 0124 2246     		mov	r2, r4
+ 582 0126 0BF1340B 		add	fp, fp, #52
+ 583 012a FFF7FEFF 		bl	_ZN6clouds4STFT4InitEPN6stmlib6ShyFFTIfLj4096ENS1_14RotationPhasorEEEjjPfS6_PKfPsPNS_19FrameTra
+ 584              	.LVL30:
+  68:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         &fft_,
+ 585              		.loc 1 68 18 discriminator 2 view .LVU138
+ 586              	.LBE98:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 16
+
+
+  61:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     short* ana_syn_buffer = allocator[i]->Allocate<short>(
+ 587              		.loc 1 61 3 is_stmt 1 discriminator 2 view .LVU139
+  61:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     short* ana_syn_buffer = allocator[i]->Allocate<short>(
+ 588              		.loc 1 61 3 is_stmt 0 discriminator 2 view .LVU140
+ 589 012e 0A98     		ldr	r0, [sp, #40]
+ 590 0130 0B9B     		ldr	r3, [sp, #44]
+ 591 0132 5030     		adds	r0, r0, #80
+ 592 0134 AEE7     		b	.L7
+ 593              	.LVL31:
+ 594              	.L1:
+  61:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     short* ana_syn_buffer = allocator[i]->Allocate<short>(
+ 595              		.loc 1 61 3 discriminator 2 view .LVU141
+ 596              	.LBE194:
+  82:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   }
+  83:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** }
+ 597              		.loc 1 83 1 view .LVU142
+ 598 0136 17B0     		add	sp, sp, #92
+ 599              		.cfi_def_cfa_offset 36
+ 600              		@ sp needed
+ 601 0138 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 602              		.loc 1 83 1 view .LVU143
+ 603              		.cfi_endproc
+ 604              	.LFE1489:
+ 606              		.section	.text._ZN6clouds12PhaseVocoder7ProcessERKNS_10ParametersEPKNS_10FloatFrameEPS4_j,"ax",%pr
+ 607              		.align	1
+ 608              		.global	_ZN6clouds12PhaseVocoder7ProcessERKNS_10ParametersEPKNS_10FloatFrameEPS4_j
+ 609              		.syntax unified
+ 610              		.thumb
+ 611              		.thumb_func
+ 613              	_ZN6clouds12PhaseVocoder7ProcessERKNS_10ParametersEPKNS_10FloatFrameEPS4_j:
+ 614              	.LVL32:
+ 615              	.LFB1490:
+  84:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** 
+  85:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** void PhaseVocoder::Process(
+  86:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     const Parameters& parameters,
+  87:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     const FloatFrame* input,
+  88:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     FloatFrame* output, size_t size) {
+ 616              		.loc 1 88 38 is_stmt 1 view -0
+ 617              		.cfi_startproc
+ 618              		@ args = 4, pretend = 0, frame = 0
+ 619              		@ frame_needed = 0, uses_anonymous_args = 0
+  89:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   const float* input_samples = &input[0].l;
+ 620              		.loc 1 89 3 view .LVU145
+  88:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   const float* input_samples = &input[0].l;
+ 621              		.loc 1 88 38 is_stmt 0 view .LVU146
+ 622 0000 2DE9F743 		push	{r0, r1, r2, r4, r5, r6, r7, r8, r9, lr}
+ 623              		.cfi_def_cfa_offset 40
+ 624              		.cfi_offset 4, -28
+ 625              		.cfi_offset 5, -24
+ 626              		.cfi_offset 6, -20
+ 627              		.cfi_offset 7, -16
+ 628              		.cfi_offset 8, -12
+ 629              		.cfi_offset 9, -8
+ 630              		.cfi_offset 14, -4
+  88:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   const float* input_samples = &input[0].l;
+ 631              		.loc 1 88 38 view .LVU147
+ 632 0004 0546     		mov	r5, r0
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 17
+
+
+ 633 0006 0F46     		mov	r7, r1
+ 634 0008 9046     		mov	r8, r2
+ 635              	.LVL33:
+  90:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   float* output_samples = &output[0].l;
+ 636              		.loc 1 90 3 is_stmt 1 view .LVU148
+  88:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   const float* input_samples = &input[0].l;
+ 637              		.loc 1 88 38 is_stmt 0 view .LVU149
+ 638 000a 9946     		mov	r9, r3
+ 639              	.LVL34:
+  91:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 640              		.loc 1 91 3 is_stmt 1 view .LVU150
+ 641              		.loc 1 91 3 is_stmt 0 view .LVU151
+ 642 000c 00F15C06 		add	r6, r0, #92
+ 643              	.LBB195:
+ 644              		.loc 1 91 16 view .LVU152
+ 645 0010 0024     		movs	r4, #0
+ 646              	.LVL35:
+ 647              	.L16:
+ 648              		.loc 1 91 25 is_stmt 1 discriminator 3 view .LVU153
+ 649 0012 D5F86431 		ldr	r3, [r5, #356]
+ 650 0016 A342     		cmp	r3, r4
+ 651 0018 0EDD     		ble	.L14
+  92:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     stft_[i].Process(
+ 652              		.loc 1 92 5 discriminator 2 view .LVU154
+ 653              		.loc 1 92 21 is_stmt 0 discriminator 2 view .LVU155
+ 654 001a 0223     		movs	r3, #2
+ 655 001c 08EB8402 		add	r2, r8, r4, lsl #2
+ 656 0020 3046     		mov	r0, r6
+ 657 0022 3946     		mov	r1, r7
+ 658 0024 0193     		str	r3, [sp, #4]
+ 659 0026 5036     		adds	r6, r6, #80
+ 660 0028 0A9B     		ldr	r3, [sp, #40]
+ 661 002a 0093     		str	r3, [sp]
+ 662 002c 09EB8403 		add	r3, r9, r4, lsl #2
+ 663 0030 FFF7FEFF 		bl	_ZN6clouds4STFT7ProcessERKNS_10ParametersEPKfPfjj
+ 664              	.LVL36:
+  91:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 665              		.loc 1 91 3 is_stmt 1 discriminator 2 view .LVU156
+ 666 0034 0134     		adds	r4, r4, #1
+ 667              	.LVL37:
+  91:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 668              		.loc 1 91 3 is_stmt 0 discriminator 2 view .LVU157
+ 669 0036 ECE7     		b	.L16
+ 670              	.L14:
+  91:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 671              		.loc 1 91 3 discriminator 2 view .LVU158
+ 672              	.LBE195:
+  93:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         parameters,
+  94:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         input_samples + i,
+  95:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         output_samples + i,
+  96:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         size,
+  97:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****         2);
+  98:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   }
+  99:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** }
+ 673              		.loc 1 99 1 view .LVU159
+ 674 0038 03B0     		add	sp, sp, #12
+ 675              		.cfi_def_cfa_offset 28
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 18
+
+
+ 676              		@ sp needed
+ 677 003a BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 678              		.loc 1 99 1 view .LVU160
+ 679              		.cfi_endproc
+ 680              	.LFE1490:
+ 682              		.section	.text._ZN6clouds12PhaseVocoder6BufferEv,"ax",%progbits
+ 683              		.align	1
+ 684              		.global	_ZN6clouds12PhaseVocoder6BufferEv
+ 685              		.syntax unified
+ 686              		.thumb
+ 687              		.thumb_func
+ 689              	_ZN6clouds12PhaseVocoder6BufferEv:
+ 690              	.LVL38:
+ 691              	.LFB1491:
+ 100:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** 
+ 101:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** void PhaseVocoder::Buffer() {
+ 692              		.loc 1 101 29 is_stmt 1 view -0
+ 693              		.cfi_startproc
+ 694              		@ args = 0, pretend = 0, frame = 0
+ 695              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 696              		.loc 1 102 3 view .LVU162
+ 101:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 697              		.loc 1 101 29 is_stmt 0 view .LVU163
+ 698 0000 70B5     		push	{r4, r5, r6, lr}
+ 699              		.cfi_def_cfa_offset 16
+ 700              		.cfi_offset 4, -16
+ 701              		.cfi_offset 5, -12
+ 702              		.cfi_offset 6, -8
+ 703              		.cfi_offset 14, -4
+ 101:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 704              		.loc 1 101 29 view .LVU164
+ 705 0002 0446     		mov	r4, r0
+ 706 0004 00F15C05 		add	r5, r0, #92
+ 707              	.LBB196:
+ 708              		.loc 1 102 16 view .LVU165
+ 709 0008 0026     		movs	r6, #0
+ 710              	.LVL39:
+ 711              	.L19:
+ 712              		.loc 1 102 25 is_stmt 1 discriminator 3 view .LVU166
+ 713 000a D4F86431 		ldr	r3, [r4, #356]
+ 714 000e B342     		cmp	r3, r6
+ 715 0010 05DD     		ble	.L17
+ 103:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****     stft_[i].Buffer();
+ 716              		.loc 1 103 5 discriminator 2 view .LVU167
+ 717              		.loc 1 103 20 is_stmt 0 discriminator 2 view .LVU168
+ 718 0012 2846     		mov	r0, r5
+ 102:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 719              		.loc 1 102 3 discriminator 2 view .LVU169
+ 720 0014 0136     		adds	r6, r6, #1
+ 721              	.LVL40:
+ 102:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 722              		.loc 1 102 3 discriminator 2 view .LVU170
+ 723 0016 5035     		adds	r5, r5, #80
+ 724              		.loc 1 103 20 discriminator 2 view .LVU171
+ 725 0018 FFF7FEFF 		bl	_ZN6clouds4STFT6BufferEv
+ 726              	.LVL41:
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 19
+
+
+ 102:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 727              		.loc 1 102 3 is_stmt 1 discriminator 2 view .LVU172
+ 102:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 728              		.loc 1 102 3 is_stmt 0 discriminator 2 view .LVU173
+ 729 001c F5E7     		b	.L19
+ 730              	.L17:
+ 102:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   for (int32_t i = 0; i < num_channels_; ++i) {
+ 731              		.loc 1 102 3 discriminator 2 view .LVU174
+ 732              	.LBE196:
+ 104:eurorack/clouds/dsp/pvoc/phase_vocoder.cc ****   }
+ 105:eurorack/clouds/dsp/pvoc/phase_vocoder.cc **** }
+ 733              		.loc 1 105 1 view .LVU175
+ 734 001e 70BD     		pop	{r4, r5, r6, pc}
+ 735              		.loc 1 105 1 view .LVU176
+ 736              		.cfi_endproc
+ 737              	.LFE1491:
+ 739              		.text
+ 740              	.Letext0:
+ 741              		.file 3 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/machine/_default_types.h"
+ 742              		.file 4 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/sys/_stdint.h"
+ 743              		.file 5 "/Library/DaisyToolchain/0.2.0/arm/lib/gcc/arm-none-eabi/10.3.1/include/stddef.h"
+ 744              		.file 6 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cmath"
+ 745              		.file 7 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/std_abs.h"
+ 746              		.file 8 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/type_traits"
+ 747              		.file 9 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/debug/debug.h"
+ 748              		.file 10 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/cstdlib"
+ 749              		.file 11 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/arm-none-eabi/thumb/v
+ 750              		.file 12 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/algorithmfwd.h"
+ 751              		.file 13 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_pair.h"
+ 752              		.file 14 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/exception_ptr.h"
+ 753              		.file 15 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/predefined_ops.h
+ 754              		.file 16 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/math.h"
+ 755              		.file 17 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/stdlib.h"
+ 756              		.file 18 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/math.h"
+ 757              		.file 19 "eurorack/stmlib/stmlib.h"
+ 758              		.file 20 "eurorack/stmlib/fft/shy_fft.h"
+ 759              		.file 21 "/Library/DaisyToolchain/0.2.0/arm/arm-none-eabi/include/c++/10.3.1/bits/stl_algobase.h"
+ 760              		.file 22 "eurorack/clouds/dsp/frame.h"
+ 761              		.file 23 "eurorack/clouds/dsp/pvoc/stft.h"
+ 762              		.file 24 "eurorack/clouds/dsp/pvoc/frame_transformation.h"
+ 763              		.file 25 "eurorack/clouds/dsp/pvoc/phase_vocoder.h"
+ 764              		.file 26 "<built-in>"
+ARM GAS  /var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 phase_vocoder.cc
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s:19     .text._ZN6clouds12PhaseVocoder4InitEPPvPjPKfjllf:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s:25     .text._ZN6clouds12PhaseVocoder4InitEPPvPjPKfjllf:0000000000000000 _ZN6clouds12PhaseVocoder4InitEPPvPjPKfjllf
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s:607    .text._ZN6clouds12PhaseVocoder7ProcessERKNS_10ParametersEPKNS_10FloatFrameEPS4_j:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s:613    .text._ZN6clouds12PhaseVocoder7ProcessERKNS_10ParametersEPKNS_10FloatFrameEPS4_j:0000000000000000 _ZN6clouds12PhaseVocoder7ProcessERKNS_10ParametersEPKNS_10FloatFrameEPS4_j
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s:683    .text._ZN6clouds12PhaseVocoder6BufferEv:0000000000000000 $t
+/var/folders/9s/8rp0_f2s1n31qbztm3b5_fdh0000gn/T//cc7tVbD7.s:689    .text._ZN6clouds12PhaseVocoder6BufferEv:0000000000000000 _ZN6clouds12PhaseVocoder6BufferEv
+
+UNDEFINED SYMBOLS
+_ZN6clouds19FrameTransformation4InitEPfll
+_ZN6clouds4STFT4InitEPN6stmlib6ShyFFTIfLj4096ENS1_14RotationPhasorEEEjjPfS6_PKfPsPNS_19FrameTransformationE
+_ZN6clouds4STFT7ProcessERKNS_10ParametersEPKfPfjj
+_ZN6clouds4STFT6BufferEv

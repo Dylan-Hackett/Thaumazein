@@ -90,7 +90,7 @@ class GranularSamplePlayer {
     bool seed_trigger = parameters.trigger;
     for (size_t t = 0; t < size; ++t) {
       grain_rate_phasor_ += 1.0f;
-      bool seed_probabilistic = Random::GetFloat() < p
+      bool seed_probabilistic = stmlib::Random::GetFloat() < p
           && target_num_grains > num_grains_;
       bool seed_deterministic = grain_rate_phasor_ >= space_between_grains;
       bool seed = seed_probabilistic || seed_deterministic || seed_trigger;
@@ -188,7 +188,7 @@ class GranularSamplePlayer {
     float grain_size = Interpolate(lut_grain_size, parameters.size, 256.0f);
     float pitch_ratio = SemitonesToRatio(pitch);
     float inv_pitch_ratio = SemitonesToRatio(-pitch);
-    float pan = 0.5f + parameters.stereo_spread * (Random::GetFloat() - 0.5f);
+    float pan = 0.5f + parameters.stereo_spread * (stmlib::Random::GetFloat() - 0.5f);
     float gain_l, gain_r;
     if (num_channels_ == 1) {
       gain_l = Interpolate(lut_sin, pan, 256.0f);
