@@ -17,11 +17,6 @@ The binary produced under `build/` should begin with:
 
 If either of these words looks wrong the bootloader will stay in DFU.
 
-## Project Overview and Tasks
-
-### Description
-Thaumazein is a polyphonic synthesizer running on the Daisy Seed platform, featuring multiple synthesis engines from Mutable Instruments Plaits, along with effects like delay and arpeggiation. It uses a touch-based interface for control.
-
 ### Current Tasks
 *   Integrate Clouds granular texture synthesizer.
 *   Optimize CPU usage further if needed.
